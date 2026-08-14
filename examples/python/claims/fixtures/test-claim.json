@@ -1,0 +1,67 @@
+{
+  "purpose": "CHARGEABLE",
+  "payer": {
+    "id": "STEDITEST",
+    "name": { "organization": "Stedi Test Payer" }
+  },
+  "submitter": {
+    "name": { "organization": "Test Data Health Services, Inc." },
+    "contact": { "phoneNumber": "3134893157", "email": "billing@example.com" },
+    "etin": "TESTSUBMITTER"
+  },
+  "insured": {
+    "insuranceType": "OTHER",
+    "memberId": "U7777788888",
+    "name": { "person": { "firstName": "John", "lastName": "Anon" } },
+    "address": {
+      "addressLine1": "2222 Random St",
+      "city": "A City",
+      "state": "NY",
+      "postalCode": "123450000"
+    },
+    "dateOfBirth": "2000-01-01",
+    "gender": "MALE",
+    "paymentResponsibilityLevelCode": "PRIMARY"
+  },
+  "authorization": {
+    "patientReleasesMedicalInfo": "YES",
+    "insuredAuthorizesAssignment": "YES",
+    "providerAcceptsAssignment": "ASSIGNED",
+    "providerSignature": "ON_FILE"
+  },
+  "encounter": {
+    "primaryDiagnosisCode": "F1111",
+    "patientCondition": {
+      "isEmploymentRelated": false,
+      "isAutoAccidentRelated": false,
+      "isOtherAccidentRelated": false
+    }
+  },
+  "billing": {
+    "taxId": { "ein": "123456789" },
+    "patientControlNumber": "STEDI-SDK-TEST-001",
+    "totalCharge": "109.20",
+    "billingProvider": {
+      "name": { "organization": "Therapy Associates" },
+      "address": {
+        "addressLine1": "123 Some St",
+        "city": "A City",
+        "state": "NY",
+        "postalCode": "123450000"
+      },
+      "contact": { "phoneNumber": "5553334444" },
+      "identifiers": { "npi": "1972884732" }
+    }
+  },
+  "serviceLines": [
+    {
+      "datesOfService": { "start": "2026-01-05", "end": "2026-01-05" },
+      "placeOfService": "02",
+      "isEmergency": false,
+      "procedureCode": { "code": "90837" },
+      "diagnosisCodes": ["F1111"],
+      "lineItemChargeAmount": "109.20",
+      "units": "1"
+    }
+  ]
+}

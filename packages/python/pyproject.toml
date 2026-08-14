@@ -1,0 +1,48 @@
+[project]
+name = "stedi"
+version = "0.0.9"
+description = "The Stedi SDK for Python."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "Apache-2.0"
+authors = [{ name = "Stedi" }]
+keywords = ["stedi", "healthcare", "edi", "sdk"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Healthcare Industry",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+    "Typing :: Typed",
+]
+# smithy-json arrives via the smithy_aws_core[json] extra.
+dependencies = [
+    "smithy_core>=0.7,<0.8",
+    "smithy_aws_core[json]>=0.8,<0.9",
+    "smithy_http[aiohttp]>=0.4.3,<0.5",
+]
+
+[project.urls]
+Homepage = "https://www.stedi.com"
+Documentation = "https://www.stedi.com/docs"
+Source = "https://github.com/Stedi/sdk"
+Issues = "https://github.com/Stedi/sdk/issues"
+
+# An allowlist, because hatchling would otherwise select sdist contents from the nearest
+# ancestor .gitignore, sweeping in whatever sits untracked beside the package.
+
+[tool.hatch.build.targets.sdist]
+include = ["src/stedi", "README.md", "LICENSE"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/stedi"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -1,5 +1,11 @@
 // smithy-typescript generated code
-import type { ApiKeyIdentity, ApiKeyIdentityProvider, HttpAuthScheme } from "@smithy/types";
+import {
+  type ApiKeyIdentity,
+  type ApiKeyIdentityProvider,
+  type HttpAuthScheme,
+  TokenIdentity,
+  TokenIdentityProvider,
+} from "@smithy/types";
 
 import type { StediHttpAuthSchemeProvider } from "./httpAuthSchemeProvider";
 
@@ -13,6 +19,8 @@ export interface HttpAuthExtensionConfiguration {
   httpAuthSchemeProvider(): StediHttpAuthSchemeProvider;
   setApiKey(apiKey: ApiKeyIdentity | ApiKeyIdentityProvider): void;
   apiKey(): ApiKeyIdentity | ApiKeyIdentityProvider | undefined;
+  setToken(token: TokenIdentity | TokenIdentityProvider): void;
+  token(): TokenIdentity | TokenIdentityProvider | undefined;
 }
 
 /**
@@ -22,6 +30,7 @@ export type HttpAuthRuntimeConfig = Partial<{
   httpAuthSchemes: HttpAuthScheme[];
   httpAuthSchemeProvider: StediHttpAuthSchemeProvider;
   apiKey: ApiKeyIdentity | ApiKeyIdentityProvider;
+  token: TokenIdentity | TokenIdentityProvider;
 }>;
 
 /**
@@ -33,6 +42,7 @@ export const getHttpAuthExtensionConfiguration = (
   const _httpAuthSchemes = runtimeConfig.httpAuthSchemes!;
   let _httpAuthSchemeProvider = runtimeConfig.httpAuthSchemeProvider!;
   let _apiKey = runtimeConfig.apiKey;
+  let _token = runtimeConfig.token;
   return {
     setHttpAuthScheme(httpAuthScheme: HttpAuthScheme): void {
       const index = _httpAuthSchemes.findIndex((scheme) => scheme.schemeId === httpAuthScheme.schemeId);
@@ -57,6 +67,12 @@ export const getHttpAuthExtensionConfiguration = (
     apiKey(): ApiKeyIdentity | ApiKeyIdentityProvider | undefined {
       return _apiKey;
     },
+    setToken(token: TokenIdentity | TokenIdentityProvider): void {
+      _token = token;
+    },
+    token(): TokenIdentity | TokenIdentityProvider | undefined {
+      return _token;
+    },
   };
 };
 
@@ -68,5 +84,6 @@ export const resolveHttpAuthRuntimeConfig = (config: HttpAuthExtensionConfigurat
     httpAuthSchemes: config.httpAuthSchemes(),
     httpAuthSchemeProvider: config.httpAuthSchemeProvider(),
     apiKey: config.apiKey(),
+    token: config.token(),
   };
 };

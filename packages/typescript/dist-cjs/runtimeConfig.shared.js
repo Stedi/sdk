@@ -25,6 +25,11 @@ const getRuntimeConfig = (config) => {
                 identityProvider: (ipc) => ipc.getIdentityProvider("smithy.api#httpApiKeyAuth"),
                 signer: new core_1.HttpApiKeyAuthSigner(),
             },
+            {
+                schemeId: "smithy.api#httpBearerAuth",
+                identityProvider: (ipc) => ipc.getIdentityProvider("smithy.api#httpBearerAuth"),
+                signer: new core_1.HttpBearerAuthSigner(),
+            },
         ],
         logger: config?.logger ?? new client_1.NoOpLogger(),
         protocol: config?.protocol ?? stediRestJsonProtocol_1.StediRestJsonProtocol,

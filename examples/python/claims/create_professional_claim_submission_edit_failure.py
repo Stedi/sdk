@@ -1,26 +1,27 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["stedi==0.0.9"]
+# dependencies = ["stedi==0.0.10"]
 # ///
 
 """Handle a claim that fails Stedi's edits.
 
-    uv run --script create_professional_claim_submission_edit_failure.py <api-key>
+    STEDI_API_KEY=<api-key> uv run --script create_professional_claim_submission_edit_failure.py
 
-An ICD-10 code that doesn't exist trips Stedi's clearinghouse edits, so the submission
-raises a typed ClaimEditException (HTTP 400) listing what failed.
+An ICD-10 code that doesn't exist trips Stedi's clearinghouse edits. The submission still
+succeeds: Stedi stores the claim and a 277CA acknowledging the rejection, never sends the
+claim to the payer, and returns the reasons in `errors`.
 
 See https://www.stedi.com/docs/healthcare/claim-edits-and-repairs for more.
 """
 
 import asyncio
-import sys
+import os
 from pathlib import Path
 from uuid import uuid4
 
 from smithy_json import JSONCodec
 from stedi import Config, Stedi
-from stedi.models import ClaimEditException, CreateProfessionalClaimSubmissionInput
+from stedi.models import CreateProfessionalClaimSubmissionInput
 
 FIXTURE = Path(__file__).parent / "fixtures" / "test-claim.json"
 INVALID_DIAGNOSIS_CODE = "FZ9888"
@@ -48,15 +49,21 @@ def new_patient_control_number() -> str:
 
 async def main(api_key: str) -> None:
     async with Stedi(Config(api_key=api_key)) as client:
-        try:
-            await client.create_professional_claim_submission(load_claim_with_invalid_diagnosis())
-        except ClaimEditException as rejection:
-            edits = rejection.errors or []
-            print(f"rejected with {len(edits)} edit failure(s):")
-            for edit in edits:
-                print(f"  [{edit.code}] {edit.description}")
-        else:
-            raise SystemExit(f"expected Stedi's edits to reject {INVALID_DIAGNOSIS_CODE}")
+        submission = await client.create_professional_claim_submission(
+            load_claim_with_invalid_diagnosis()
+        )
+
+    errors = submission.errors or []
+    if not errors:
+        raise SystemExit(f"expected Stedi's edits to reject {INVALID_DIAGNOSIS_CODE}")
+
+    print(f"claim {submission.claim_id} rejected with {len(errors)} error(s):")
+    for error in errors:
+        print(f"  {error.description}")
 
 
-asyncio.run(main(sys.argv[1]))
+api_key = os.environ.get("STEDI_API_KEY")
+if not api_key:
+    raise SystemExit("STEDI_API_KEY is not set")
+
+asyncio.run(main(api_key))

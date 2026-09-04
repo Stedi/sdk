@@ -1,11 +1,11 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["stedi==0.0.9"]
+# dependencies = ["stedi==0.0.10"]
 # ///
 
 """Read a submission back as Stedi JSON.
 
-    uv run --script get_professional_claim_submission.py <api-key>
+    STEDI_API_KEY=<api-key> uv run --script get_professional_claim_submission.py
 
 Submits the sample claim, then fetches it by submission ID. ``data`` holds the claim in the
 same shape it was submitted in; the fields around it are metadata Stedi added while
@@ -13,7 +13,7 @@ processing, such as the resolved payer and any mapping discrepancies.
 """
 
 import asyncio
-import sys
+import os
 from pathlib import Path
 from uuid import uuid4
 
@@ -62,4 +62,8 @@ async def main(api_key: str) -> None:
     print(f"  service lines:      {len(claim.service_lines)}")
 
 
-asyncio.run(main(sys.argv[1]))
+api_key = os.environ.get("STEDI_API_KEY")
+if not api_key:
+    raise SystemExit("STEDI_API_KEY is not set")
+
+asyncio.run(main(api_key))

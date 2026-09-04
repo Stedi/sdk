@@ -1,6 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
+tslib_1.__exportStar(require("./CreateEventDestinationCommand"), exports);
 tslib_1.__exportStar(require("./CreateProfessionalClaimSubmissionCommand"), exports);
+tslib_1.__exportStar(require("./DeleteEventDestinationCommand"), exports);
+tslib_1.__exportStar(require("./GetClaimCommand"), exports);
+tslib_1.__exportStar(require("./GetClaimTimelineCommand"), exports);
+tslib_1.__exportStar(require("./GetEventDestinationCommand"), exports);
+tslib_1.__exportStar(require("./GetEventDestinationEventCommand"), exports);
+tslib_1.__exportStar(require("./GetEventDestinationSecretCommand"), exports);
 tslib_1.__exportStar(require("./GetProfessionalClaimSubmissionCommand"), exports);
+tslib_1.__exportStar(require("./ListClaimsCommand"), exports);
+tslib_1.__exportStar(require("./ListEventDestinationEventsCommand"), exports);
+tslib_1.__exportStar(require("./ListEventDestinationsCommand"), exports);
+tslib_1.__exportStar(require("./RotateEventDestinationSecretCommand"), exports);
+tslib_1.__exportStar(require("./UpdateEventDestinationCommand"), exports);
 tslib_1.__exportStar(require("./ValidateProfessionalClaimSubmissionCommand"), exports);

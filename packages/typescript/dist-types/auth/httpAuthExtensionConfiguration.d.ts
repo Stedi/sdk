@@ -1,4 +1,4 @@
-import type { ApiKeyIdentity, ApiKeyIdentityProvider, HttpAuthScheme } from "@smithy/types";
+import { type ApiKeyIdentity, type ApiKeyIdentityProvider, type HttpAuthScheme, TokenIdentity, TokenIdentityProvider } from "@smithy/types";
 import type { StediHttpAuthSchemeProvider } from "./httpAuthSchemeProvider";
 /**
  * @internal
@@ -10,6 +10,8 @@ export interface HttpAuthExtensionConfiguration {
     httpAuthSchemeProvider(): StediHttpAuthSchemeProvider;
     setApiKey(apiKey: ApiKeyIdentity | ApiKeyIdentityProvider): void;
     apiKey(): ApiKeyIdentity | ApiKeyIdentityProvider | undefined;
+    setToken(token: TokenIdentity | TokenIdentityProvider): void;
+    token(): TokenIdentity | TokenIdentityProvider | undefined;
 }
 /**
  * @internal
@@ -18,6 +20,7 @@ export type HttpAuthRuntimeConfig = Partial<{
     httpAuthSchemes: HttpAuthScheme[];
     httpAuthSchemeProvider: StediHttpAuthSchemeProvider;
     apiKey: ApiKeyIdentity | ApiKeyIdentityProvider;
+    token: TokenIdentity | TokenIdentityProvider;
 }>;
 /**
  * @internal

@@ -32,16 +32,40 @@ from ._stedi_endpoints import StediEndpointResolver
 from ._stedi_transport import default_transport
 from .auth import HTTPAuthSchemeResolver
 from .models import (
+    CreateEventDestinationInput,
+    CreateEventDestinationOutput,
     CreateProfessionalClaimSubmissionInput,
     CreateProfessionalClaimSubmissionOutput,
+    DeleteEventDestinationInput,
+    DeleteEventDestinationOutput,
+    GetClaimInput,
+    GetClaimOutput,
+    GetClaimTimelineInput,
+    GetClaimTimelineOutput,
+    GetEventDestinationEventInput,
+    GetEventDestinationEventOutput,
+    GetEventDestinationInput,
+    GetEventDestinationOutput,
+    GetEventDestinationSecretInput,
+    GetEventDestinationSecretOutput,
     GetProfessionalClaimSubmissionInput,
     GetProfessionalClaimSubmissionOutput,
+    ListClaimsInput,
+    ListClaimsOutput,
+    ListEventDestinationEventsInput,
+    ListEventDestinationEventsOutput,
+    ListEventDestinationsInput,
+    ListEventDestinationsOutput,
+    RotateEventDestinationSecretInput,
+    RotateEventDestinationSecretOutput,
+    UpdateEventDestinationInput,
+    UpdateEventDestinationOutput,
     ValidateProfessionalClaimSubmissionInput,
     ValidateProfessionalClaimSubmissionOutput,
 )
 
 
-_ServiceInterceptor = Union[Interceptor[CreateProfessionalClaimSubmissionInput, CreateProfessionalClaimSubmissionOutput, Any, Any], Interceptor[GetProfessionalClaimSubmissionInput, GetProfessionalClaimSubmissionOutput, Any, Any], Interceptor[ValidateProfessionalClaimSubmissionInput, ValidateProfessionalClaimSubmissionOutput, Any, Any]]
+_ServiceInterceptor = Union[Interceptor[CreateProfessionalClaimSubmissionInput, CreateProfessionalClaimSubmissionOutput, Any, Any], Interceptor[GetProfessionalClaimSubmissionInput, GetProfessionalClaimSubmissionOutput, Any, Any], Interceptor[ValidateProfessionalClaimSubmissionInput, ValidateProfessionalClaimSubmissionOutput, Any, Any], Interceptor[GetClaimInput, GetClaimOutput, Any, Any], Interceptor[GetClaimTimelineInput, GetClaimTimelineOutput, Any, Any], Interceptor[ListClaimsInput, ListClaimsOutput, Any, Any], Interceptor[CreateEventDestinationInput, CreateEventDestinationOutput, Any, Any], Interceptor[DeleteEventDestinationInput, DeleteEventDestinationOutput, Any, Any], Interceptor[GetEventDestinationInput, GetEventDestinationOutput, Any, Any], Interceptor[GetEventDestinationEventInput, GetEventDestinationEventOutput, Any, Any], Interceptor[GetEventDestinationSecretInput, GetEventDestinationSecretOutput, Any, Any], Interceptor[ListEventDestinationEventsInput, ListEventDestinationEventsOutput, Any, Any], Interceptor[ListEventDestinationsInput, ListEventDestinationsOutput, Any, Any], Interceptor[RotateEventDestinationSecretInput, RotateEventDestinationSecretOutput, Any, Any], Interceptor[UpdateEventDestinationInput, UpdateEventDestinationOutput, Any, Any]]
 @dataclass(init=False)
 class Config:
     """Configuration for Stedi."""

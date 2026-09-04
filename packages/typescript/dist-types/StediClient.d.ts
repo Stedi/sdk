@@ -5,8 +5,20 @@ import { type HttpHandlerUserInput as __HttpHandlerUserInput } from "@smithy/cor
 import { type RetryInputConfig, type RetryResolvedConfig } from "@smithy/core/retry";
 import type { BodyLengthCalculator as __BodyLengthCalculator, CheckOptionalClientConfig as __CheckOptionalClientConfig, ChecksumConstructor as __ChecksumConstructor, Decoder as __Decoder, Encoder as __Encoder, HashConstructor as __HashConstructor, HttpHandlerOptions as __HttpHandlerOptions, Logger as __Logger, Provider as __Provider, StreamCollector as __StreamCollector, UrlParser as __UrlParser, UserAgent as __UserAgent } from "@smithy/types";
 import { type HttpAuthSchemeInputConfig, type HttpAuthSchemeResolvedConfig } from "./auth/httpAuthSchemeProvider";
+import type { CreateEventDestinationCommandInput, CreateEventDestinationCommandOutput } from "./commands/CreateEventDestinationCommand";
 import type { CreateProfessionalClaimSubmissionCommandInput, CreateProfessionalClaimSubmissionCommandOutput } from "./commands/CreateProfessionalClaimSubmissionCommand";
+import type { DeleteEventDestinationCommandInput, DeleteEventDestinationCommandOutput } from "./commands/DeleteEventDestinationCommand";
+import type { GetClaimCommandInput, GetClaimCommandOutput } from "./commands/GetClaimCommand";
+import type { GetClaimTimelineCommandInput, GetClaimTimelineCommandOutput } from "./commands/GetClaimTimelineCommand";
+import type { GetEventDestinationCommandInput, GetEventDestinationCommandOutput } from "./commands/GetEventDestinationCommand";
+import type { GetEventDestinationEventCommandInput, GetEventDestinationEventCommandOutput } from "./commands/GetEventDestinationEventCommand";
+import type { GetEventDestinationSecretCommandInput, GetEventDestinationSecretCommandOutput } from "./commands/GetEventDestinationSecretCommand";
 import type { GetProfessionalClaimSubmissionCommandInput, GetProfessionalClaimSubmissionCommandOutput } from "./commands/GetProfessionalClaimSubmissionCommand";
+import type { ListClaimsCommandInput, ListClaimsCommandOutput } from "./commands/ListClaimsCommand";
+import type { ListEventDestinationEventsCommandInput, ListEventDestinationEventsCommandOutput } from "./commands/ListEventDestinationEventsCommand";
+import type { ListEventDestinationsCommandInput, ListEventDestinationsCommandOutput } from "./commands/ListEventDestinationsCommand";
+import type { RotateEventDestinationSecretCommandInput, RotateEventDestinationSecretCommandOutput } from "./commands/RotateEventDestinationSecretCommand";
+import type { UpdateEventDestinationCommandInput, UpdateEventDestinationCommandOutput } from "./commands/UpdateEventDestinationCommand";
 import type { ValidateProfessionalClaimSubmissionCommandInput, ValidateProfessionalClaimSubmissionCommandOutput } from "./commands/ValidateProfessionalClaimSubmissionCommand";
 import { type ClientInputEndpointParameters, type ClientResolvedEndpointParameters, type EndpointParameters } from "./endpoint/EndpointParameters";
 import { type RuntimeExtension, type RuntimeExtensionsConfig } from "./runtimeExtensions";
@@ -14,11 +26,11 @@ export { __Client };
 /**
  * @public
  */
-export type ServiceInputTypes = CreateProfessionalClaimSubmissionCommandInput | GetProfessionalClaimSubmissionCommandInput | ValidateProfessionalClaimSubmissionCommandInput;
+export type ServiceInputTypes = CreateEventDestinationCommandInput | CreateProfessionalClaimSubmissionCommandInput | DeleteEventDestinationCommandInput | GetClaimCommandInput | GetClaimTimelineCommandInput | GetEventDestinationCommandInput | GetEventDestinationEventCommandInput | GetEventDestinationSecretCommandInput | GetProfessionalClaimSubmissionCommandInput | ListClaimsCommandInput | ListEventDestinationEventsCommandInput | ListEventDestinationsCommandInput | RotateEventDestinationSecretCommandInput | UpdateEventDestinationCommandInput | ValidateProfessionalClaimSubmissionCommandInput;
 /**
  * @public
  */
-export type ServiceOutputTypes = CreateProfessionalClaimSubmissionCommandOutput | GetProfessionalClaimSubmissionCommandOutput | ValidateProfessionalClaimSubmissionCommandOutput;
+export type ServiceOutputTypes = CreateEventDestinationCommandOutput | CreateProfessionalClaimSubmissionCommandOutput | DeleteEventDestinationCommandOutput | GetClaimCommandOutput | GetClaimTimelineCommandOutput | GetEventDestinationCommandOutput | GetEventDestinationEventCommandOutput | GetEventDestinationSecretCommandOutput | GetProfessionalClaimSubmissionCommandOutput | ListClaimsCommandOutput | ListEventDestinationEventsCommandOutput | ListEventDestinationsCommandOutput | RotateEventDestinationSecretCommandOutput | UpdateEventDestinationCommandOutput | ValidateProfessionalClaimSubmissionCommandOutput;
 /**
  * @public
  */

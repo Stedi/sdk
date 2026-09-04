@@ -1,40 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NotFoundException = exports.TooManyRequestsException = exports.InvalidRequestException = exports.InternalServerException = exports.ForbiddenException = exports.ConflictException = exports.AuthenticationFailedException = exports.InternalFailureException = exports.ClaimEditException = void 0;
+exports.ContentTooLargeException = exports.EventDestinationsLimitExceededException = exports.NotFoundException = exports.TooManyRequestsException = exports.InvalidRequestException = exports.InternalServerException = exports.ForbiddenException = exports.ConflictException = exports.AuthenticationFailedException = void 0;
 const StediServiceException_1 = require("./StediServiceException");
-class ClaimEditException extends StediServiceException_1.StediServiceException {
-    name = "ClaimEditException";
-    $fault = "client";
-    errors;
-    x12;
-    constructor(opts) {
-        super({
-            name: "ClaimEditException",
-            $fault: "client",
-            ...opts,
-        });
-        Object.setPrototypeOf(this, ClaimEditException.prototype);
-        this.errors = opts.errors;
-        this.x12 = opts.x12;
-    }
-}
-exports.ClaimEditException = ClaimEditException;
-class InternalFailureException extends StediServiceException_1.StediServiceException {
-    name = "InternalFailureException";
-    $fault = "server";
-    $retryable = {};
-    code;
-    constructor(opts) {
-        super({
-            name: "InternalFailureException",
-            $fault: "server",
-            ...opts,
-        });
-        Object.setPrototypeOf(this, InternalFailureException.prototype);
-        this.code = opts.code;
-    }
-}
-exports.InternalFailureException = InternalFailureException;
 class AuthenticationFailedException extends StediServiceException_1.StediServiceException {
     name = "AuthenticationFailedException";
     $fault = "client";
@@ -132,3 +99,29 @@ class NotFoundException extends StediServiceException_1.StediServiceException {
     }
 }
 exports.NotFoundException = NotFoundException;
+class EventDestinationsLimitExceededException extends StediServiceException_1.StediServiceException {
+    name = "EventDestinationsLimitExceededException";
+    $fault = "client";
+    constructor(opts) {
+        super({
+            name: "EventDestinationsLimitExceededException",
+            $fault: "client",
+            ...opts,
+        });
+        Object.setPrototypeOf(this, EventDestinationsLimitExceededException.prototype);
+    }
+}
+exports.EventDestinationsLimitExceededException = EventDestinationsLimitExceededException;
+class ContentTooLargeException extends StediServiceException_1.StediServiceException {
+    name = "ContentTooLargeException";
+    $fault = "client";
+    constructor(opts) {
+        super({
+            name: "ContentTooLargeException",
+            $fault: "client",
+            ...opts,
+        });
+        Object.setPrototypeOf(this, ContentTooLargeException.prototype);
+    }
+}
+exports.ContentTooLargeException = ContentTooLargeException;

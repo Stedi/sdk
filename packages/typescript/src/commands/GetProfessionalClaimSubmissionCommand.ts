@@ -1,7 +1,7 @@
 // smithy-typescript generated code
 import type { MetadataBearer as __MetadataBearer } from "@smithy/types";
 
-import { _ep0, _mw0, command } from "../commandBuilder";
+import { _ep1, _mw0, command } from "../commandBuilder";
 import type { GetProfessionalClaimSubmissionInput, GetProfessionalClaimSubmissionOutput } from "../models/models_0";
 import { GetProfessionalClaimSubmission$ } from "../schemas/schemas_0";
 
@@ -23,7 +23,7 @@ export interface GetProfessionalClaimSubmissionCommandInput extends GetProfessio
 export interface GetProfessionalClaimSubmissionCommandOutput extends GetProfessionalClaimSubmissionOutput, __MetadataBearer {}
 
 /**
- * Fetch a professional claim submission by ID.
+ * Retrieve a claim's data and map it to Stedi's CMS-1500 JSON format
  * @example
  * Use a bare-bones client and the command you need to make an API call.
  * ```javascript
@@ -331,6 +331,15 @@ export interface GetProfessionalClaimSubmissionCommandOutput extends GetProfessi
  * //             commercialNumber: "STRING_VALUE",
  * //           },
  * //         },
+ * //         purchasedService: { // ProfessionalClaimSubmissionPurchasedService
+ * //           chargeAmount: "STRING_VALUE", // required
+ * //           provider: { // ProfessionalClaimSubmissionPurchasedServiceProvider
+ * //             entityType: "PERSON" || "ORGANIZATION", // required
+ * //             identifiers: { // ProfessionalClaimSubmissionPurchasedServiceProviderIdentifiers
+ * //               npi: "STRING_VALUE", // required
+ * //             },
+ * //           },
+ * //         },
  * //         lineItemControlNumber: "STRING_VALUE",
  * //         drugIdentification: { // ProfessionalClaimSubmissionDrugIdentification
  * //           nationalDrugCode: "STRING_VALUE", // required
@@ -415,17 +424,353 @@ export interface GetProfessionalClaimSubmissionCommandOutput extends GetProfessi
  * @throws {@link TooManyRequestsException} (client fault)
  *  The caller has exceeded a rate limit. Retry with backoff.
  *
- * @throws {@link InternalFailureException} (server fault)
- *  The server response when an unexpected error occurred while processing request.
- *
  * @throws {@link StediServiceException}
  * <p>Base exception class for all service exceptions from Stedi service.</p>
  *
  *
+ * @example Fetch a professional claim submission
+ * ```javascript
+ * //
+ * const input = {
+ *   id: "sbm_01K6XFP3TZ8RA9X84963NMW40N"
+ * };
+ * const command = new GetProfessionalClaimSubmissionCommand(input);
+ * const response = await client.send(command);
+ * /* response is
+ * {
+ *   claimId: "clm_01K6XFP3TZ8RA9X84963NMW40M",
+ *   data: {
+ *     authorization: {
+ *       insuredAuthorizesAssignment: "YES",
+ *       patientReleasesMedicalInfo: "YES",
+ *       providerAcceptsAssignment: "ASSIGNED",
+ *       providerSignature: "ON_FILE"
+ *     },
+ *     billing: {
+ *       amountPaid: "100.00",
+ *       billingProvider: {
+ *         address: {
+ *           addressLine1: "501 Main Street",
+ *           city: "Springfield",
+ *           postalCode: "627010500",
+ *           state: "IL"
+ *         },
+ *         contact: {
+ *           phoneNumber: "2175558800"
+ *         },
+ *         identifiers: {
+ *           locationNumber: "LOC-001",
+ *           npi: "1730289013",
+ *           taxonomyCode: "207Q00000X"
+ *         },
+ *         name: {
+ *           organization: "Springfield Family Medical Center"
+ *         }
+ *       },
+ *       patientControlNumber: "CLM-2026-04219",
+ *       serviceFacility: {
+ *         address: {
+ *           addressLine1: "501 Main Street",
+ *           city: "Springfield",
+ *           postalCode: "627010500",
+ *           state: "IL"
+ *         },
+ *         identifiers: {
+ *           npi: "1730289013",
+ *           stateLicenseNumber: "IL-FAC-77821"
+ *         },
+ *         name: {
+ *           organization: "Springfield Family Medical Center"
+ *         }
+ *       },
+ *       taxId: {
+ *         ein: "841234567"
+ *       },
+ *       totalCharge: "1432.50"
+ *     },
+ *     encounter: {
+ *       attachments: [
+ *         {
+ *           attachmentControlNumber: "PWK-2026-0001",
+ *           attachmentId: "1f2e3d4c-5b6a-7980-9abc-def012345678",
+ *           reportTypeCode: "PROGRESS_REPORT",
+ *           transmissionCode: "ELECTRONICALLY_ONLY"
+ *         }
+ *       ],
+ *       claimCodes: [
+ *         "AV"
+ *       ],
+ *       claimNote: {
+ *         additionalInformation: "Patient presented with persistent cough and bronchospasm; treated in office."
+ *       },
+ *       clinicalDates: {
+ *         hospitalization: {
+ *           end: "2026-03-06",
+ *           start: "2026-03-04"
+ *         },
+ *         initialTreatment: "2026-03-03",
+ *         onsetOfCurrentIllness: "2026-03-02",
+ *         unableToWork: {
+ *           end: "2026-03-10",
+ *           start: "2026-03-03"
+ *         }
+ *       },
+ *       patientCondition: {
+ *         isAutoAccidentRelated: false,
+ *         isEmploymentRelated: false,
+ *         isOtherAccidentRelated: false
+ *       },
+ *       primaryDiagnosisCode: "J0190",
+ *       priorReferringProvider: {
+ *         identifiers: {
+ *           npi: "1083827763"
+ *         },
+ *         name: {
+ *           person: {
+ *             firstName: "David",
+ *             lastName: "Kim"
+ *           }
+ *         }
+ *       },
+ *       referenceNumbers: {
+ *         clia: "14D2089999",
+ *         priorAuthorization: "PA-2026-77831",
+ *         referral: "REF-55421"
+ *       },
+ *       referringProvider: {
+ *         identifiers: {
+ *           npi: "1245319599",
+ *           stateLicenseNumber: "IL-MD-44512"
+ *         },
+ *         name: {
+ *           person: {
+ *             firstName: "Maya",
+ *             lastName: "Patel"
+ *           }
+ *         }
+ *       },
+ *       resubmission: {
+ *         code: "REPLACEMENT_OF_PRIOR_CLAIM",
+ *         originalReferenceNumber: "CLM-ORIG-998877"
+ *       },
+ *       supervisingProvider: {
+ *         identifiers: {
+ *           npi: "1396718825"
+ *         },
+ *         name: {
+ *           person: {
+ *             firstName: "Elena",
+ *             lastName: "Rossi"
+ *           }
+ *         }
+ *       }
+ *     },
+ *     insured: {
+ *       address: {
+ *         addressLine1: "742 Evergreen Terrace",
+ *         addressLine2: "Apt 3B",
+ *         city: "Springfield",
+ *         postalCode: "627010001",
+ *         state: "IL"
+ *       },
+ *       dateOfBirth: "1982-04-12",
+ *       gender: "FEMALE",
+ *       insuranceType: "OTHER",
+ *       memberId: "W123456789",
+ *       name: {
+ *         person: {
+ *           firstName: "Sarah",
+ *           lastName: "Johnson",
+ *           middleName: "A"
+ *         }
+ *       },
+ *       paymentResponsibilityLevelCode: "PRIMARY",
+ *       planName: "Aetna Choice POS II",
+ *       policyOrGroupNumber: "GRP-AETNA-987654",
+ *       ssn: "111223333"
+ *     },
+ *     otherInsured: [
+ *       {
+ *         address: {
+ *           addressLine1: "742 Evergreen Terrace",
+ *           addressLine2: "Apt 3B",
+ *           city: "Springfield",
+ *           postalCode: "627010001",
+ *           state: "IL"
+ *         },
+ *         authorization: {
+ *           insuredAuthorizesAssignment: "YES",
+ *           patientReleasesMedicalInfo: "YES",
+ *           providerGeneratedPatientSignature: false
+ *         },
+ *         claimFilingIndicator: "BLUE_CROSS_BLUE_SHIELD",
+ *         memberId: "BCBS-IL-554433221",
+ *         name: {
+ *           person: {
+ *             firstName: "Michael",
+ *             lastName: "Johnson"
+ *           }
+ *         },
+ *         otherPayer: {
+ *           id: {
+ *             payerId: "00621"
+ *           },
+ *           name: {
+ *             organization: "Blue Cross Blue Shield of Illinois"
+ *           }
+ *         },
+ *         planName: "BCBS PPO",
+ *         policyOrGroupNumber: "BCBS-GRP-3344",
+ *         relationshipToInsured: "SPOUSE",
+ *         responsibilityLevel: "SECONDARY"
+ *       }
+ *     ],
+ *     patient: {
+ *       address: {
+ *         addressLine1: "742 Evergreen Terrace",
+ *         addressLine2: "Apt 3B",
+ *         city: "Springfield",
+ *         postalCode: "627010001",
+ *         state: "IL"
+ *       },
+ *       dateOfBirth: "2015-08-21",
+ *       gender: "MALE",
+ *       name: {
+ *         person: {
+ *           firstName: "Liam",
+ *           lastName: "Johnson"
+ *         }
+ *       },
+ *       relationshipToInsured: "CHILD"
+ *     },
+ *     payer: {
+ *       address: {
+ *         addressLine1: "151 Farmington Avenue",
+ *         city: "Hartford",
+ *         postalCode: "06156",
+ *         state: "CT"
+ *       },
+ *       id: "60054",
+ *       name: {
+ *         organization: "Aetna"
+ *       },
+ *       receiverId: "60054"
+ *     },
+ *     purpose: "CHARGEABLE",
+ *     serviceLines: [
+ *       {
+ *         datesOfService: {
+ *           end: "2026-03-03",
+ *           start: "2026-03-03"
+ *         },
+ *         diagnosisCodes: [
+ *           "J0190",
+ *           "R0602"
+ *         ],
+ *         isEmergency: false,
+ *         lineItemChargeAmount: "185.00",
+ *         lineItemControlNumber: "LN-0001",
+ *         placeOfService: "11",
+ *         procedureCode: {
+ *           code: "99213",
+ *           modifiers: [
+ *             "25"
+ *           ]
+ *         },
+ *         renderingProvider: {
+ *           identifiers: {
+ *             npi: "1396718825",
+ *             taxonomyCode: "207Q00000X"
+ *           },
+ *           name: {
+ *             person: {
+ *               firstName: "Elena",
+ *               lastName: "Rossi"
+ *             }
+ *           }
+ *         },
+ *         units: "1"
+ *       },
+ *       {
+ *         datesOfService: {
+ *           end: "2026-03-03",
+ *           start: "2026-03-03"
+ *         },
+ *         diagnosisCodes: [
+ *           "J0190"
+ *         ],
+ *         drugIdentification: {
+ *           associationNumber: {
+ *             pharmacyPrescriptionNumber: "RX-2026-118822"
+ *           },
+ *           nationalDrugCode: "00409120130",
+ *           unitCount: "300",
+ *           unitOfMeasure: "MILLIGRAM"
+ *         },
+ *         isEmergency: false,
+ *         lineItemChargeAmount: "1247.50",
+ *         lineItemControlNumber: "LN-0002",
+ *         orderingProvider: {
+ *           identifiers: {
+ *             npi: "1245319599"
+ *           },
+ *           name: {
+ *             person: {
+ *               firstName: "Maya",
+ *               lastName: "Patel"
+ *             }
+ *           }
+ *         },
+ *         placeOfService: "11",
+ *         priorAuthorizations: [
+ *           {
+ *             otherPayerPrimaryId: "60054",
+ *             priorAuthorizationNumber: "PA-2026-77831"
+ *           }
+ *         ],
+ *         procedureCode: {
+ *           code: "J1885",
+ *           modifiers: [
+ *             "JW"
+ *           ]
+ *         },
+ *         renderingProvider: {
+ *           identifiers: {
+ *             npi: "1396718825"
+ *           },
+ *           name: {
+ *             person: {
+ *               firstName: "Elena",
+ *               lastName: "Rossi"
+ *             }
+ *           }
+ *         },
+ *         units: "10"
+ *       }
+ *     ],
+ *     submitter: {
+ *       contact: {
+ *         email: "billing@acmehealth.example",
+ *         faxNumber: "3135551235",
+ *         phoneNumber: "3135551234"
+ *       },
+ *       etin: "SUBMITTER0001",
+ *       name: {
+ *         organization: "Acme Health Billing"
+ *       }
+ *     }
+ *   },
+ *   processedAt: "2026-03-03T15:30:00Z",
+ *   stediPayerId: "AETNA",
+ *   submissionId: "sbm_01K6XFP3TZ8RA9X84963NMW40N"
+ * }
+ * *\/
+ * ```
+ *
  * @internal
  */
 export class GetProfessionalClaimSubmissionCommand extends command<GetProfessionalClaimSubmissionCommandInput, GetProfessionalClaimSubmissionCommandOutput>(
-  _ep0,
+  _ep1,
   _mw0,
   "GetProfessionalClaimSubmission",
   GetProfessionalClaimSubmission$

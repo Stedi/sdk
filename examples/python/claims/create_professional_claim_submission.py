@@ -1,18 +1,18 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["stedi==0.0.9"]
+# dependencies = ["stedi==0.0.10"]
 # ///
 
 """Submit a professional claim.
 
-    uv run --script create_professional_claim_submission.py <api-key>
+    STEDI_API_KEY=<api-key> uv run --script create_professional_claim_submission.py
 
 The claim comes from fixtures/test-claim.json, which bills the Stedi test payer, so no
 real payer is contacted.
 """
 
 import asyncio
-import sys
+import os
 from pathlib import Path
 from uuid import uuid4
 
@@ -48,4 +48,8 @@ async def main(api_key: str) -> None:
     print(f"claim {submission.claim_id}, submission {submission.submission_id}")
 
 
-asyncio.run(main(sys.argv[1]))
+api_key = os.environ.get("STEDI_API_KEY")
+if not api_key:
+    raise SystemExit("STEDI_API_KEY is not set")
+
+asyncio.run(main(api_key))

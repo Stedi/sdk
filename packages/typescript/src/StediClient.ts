@@ -53,13 +53,52 @@ import {
   resolveHttpAuthSchemeConfig,
 } from "./auth/httpAuthSchemeProvider";
 import type {
+  CreateEventDestinationCommandInput,
+  CreateEventDestinationCommandOutput,
+} from "./commands/CreateEventDestinationCommand";
+import type {
   CreateProfessionalClaimSubmissionCommandInput,
   CreateProfessionalClaimSubmissionCommandOutput,
 } from "./commands/CreateProfessionalClaimSubmissionCommand";
 import type {
+  DeleteEventDestinationCommandInput,
+  DeleteEventDestinationCommandOutput,
+} from "./commands/DeleteEventDestinationCommand";
+import type { GetClaimCommandInput, GetClaimCommandOutput } from "./commands/GetClaimCommand";
+import type { GetClaimTimelineCommandInput, GetClaimTimelineCommandOutput } from "./commands/GetClaimTimelineCommand";
+import type {
+  GetEventDestinationCommandInput,
+  GetEventDestinationCommandOutput,
+} from "./commands/GetEventDestinationCommand";
+import type {
+  GetEventDestinationEventCommandInput,
+  GetEventDestinationEventCommandOutput,
+} from "./commands/GetEventDestinationEventCommand";
+import type {
+  GetEventDestinationSecretCommandInput,
+  GetEventDestinationSecretCommandOutput,
+} from "./commands/GetEventDestinationSecretCommand";
+import type {
   GetProfessionalClaimSubmissionCommandInput,
   GetProfessionalClaimSubmissionCommandOutput,
 } from "./commands/GetProfessionalClaimSubmissionCommand";
+import type { ListClaimsCommandInput, ListClaimsCommandOutput } from "./commands/ListClaimsCommand";
+import type {
+  ListEventDestinationEventsCommandInput,
+  ListEventDestinationEventsCommandOutput,
+} from "./commands/ListEventDestinationEventsCommand";
+import type {
+  ListEventDestinationsCommandInput,
+  ListEventDestinationsCommandOutput,
+} from "./commands/ListEventDestinationsCommand";
+import type {
+  RotateEventDestinationSecretCommandInput,
+  RotateEventDestinationSecretCommandOutput,
+} from "./commands/RotateEventDestinationSecretCommand";
+import type {
+  UpdateEventDestinationCommandInput,
+  UpdateEventDestinationCommandOutput,
+} from "./commands/UpdateEventDestinationCommand";
 import type {
   ValidateProfessionalClaimSubmissionCommandInput,
   ValidateProfessionalClaimSubmissionCommandOutput,
@@ -80,16 +119,40 @@ export { __Client };
  * @public
  */
 export type ServiceInputTypes =
+  | CreateEventDestinationCommandInput
   | CreateProfessionalClaimSubmissionCommandInput
+  | DeleteEventDestinationCommandInput
+  | GetClaimCommandInput
+  | GetClaimTimelineCommandInput
+  | GetEventDestinationCommandInput
+  | GetEventDestinationEventCommandInput
+  | GetEventDestinationSecretCommandInput
   | GetProfessionalClaimSubmissionCommandInput
+  | ListClaimsCommandInput
+  | ListEventDestinationEventsCommandInput
+  | ListEventDestinationsCommandInput
+  | RotateEventDestinationSecretCommandInput
+  | UpdateEventDestinationCommandInput
   | ValidateProfessionalClaimSubmissionCommandInput;
 
 /**
  * @public
  */
 export type ServiceOutputTypes =
+  | CreateEventDestinationCommandOutput
   | CreateProfessionalClaimSubmissionCommandOutput
+  | DeleteEventDestinationCommandOutput
+  | GetClaimCommandOutput
+  | GetClaimTimelineCommandOutput
+  | GetEventDestinationCommandOutput
+  | GetEventDestinationEventCommandOutput
+  | GetEventDestinationSecretCommandOutput
   | GetProfessionalClaimSubmissionCommandOutput
+  | ListClaimsCommandOutput
+  | ListEventDestinationEventsCommandOutput
+  | ListEventDestinationsCommandOutput
+  | RotateEventDestinationSecretCommandOutput
+  | UpdateEventDestinationCommandOutput
   | ValidateProfessionalClaimSubmissionCommandOutput;
 
 /**
@@ -293,6 +356,7 @@ export class StediClient extends __Client<
         identityProviderConfigProvider: async (config: StediClientResolvedConfig) =>
           new DefaultIdentityProviderConfig({
             "smithy.api#httpApiKeyAuth": config.apiKey,
+            "smithy.api#httpBearerAuth": config.token,
           }),
       })
     );

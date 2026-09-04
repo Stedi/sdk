@@ -16,19 +16,61 @@ from smithy_core.types import UnknownEnumMixin
 
 from ._private.schemas import (
     AUTHENTICATION_FAILED_EXCEPTION as _SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
-    CLAIM_EDIT_ERROR as _SCHEMA_CLAIM_EDIT_ERROR,
-    CLAIM_EDIT_EXCEPTION as _SCHEMA_CLAIM_EDIT_EXCEPTION,
+    CLAIM_ACKNOWLEDGMENT_SUMMARY as _SCHEMA_CLAIM_ACKNOWLEDGMENT_SUMMARY,
+    CLAIM_DATE_RANGE as _SCHEMA_CLAIM_DATE_RANGE,
+    CLAIM_PATIENT_NAME as _SCHEMA_CLAIM_PATIENT_NAME,
+    CLAIM_PAYMENT_INFORMATION_SUMMARY as _SCHEMA_CLAIM_PAYMENT_INFORMATION_SUMMARY,
+    CLAIM_REJECTION_ERROR as _SCHEMA_CLAIM_REJECTION_ERROR,
+    CLAIM_SUBMISSION_SUMMARY as _SCHEMA_CLAIM_SUBMISSION_SUMMARY,
+    CLAIM_SUMMARY as _SCHEMA_CLAIM_SUMMARY,
+    CLAIM_TIMELINE_EVENT as _SCHEMA_CLAIM_TIMELINE_EVENT,
     CONFLICT_EXCEPTION as _SCHEMA_CONFLICT_EXCEPTION,
+    CONTENT_TOO_LARGE_EXCEPTION as _SCHEMA_CONTENT_TOO_LARGE_EXCEPTION,
+    CREATE_EVENT_DESTINATION as _SCHEMA_CREATE_EVENT_DESTINATION,
+    CREATE_EVENT_DESTINATION_INPUT as _SCHEMA_CREATE_EVENT_DESTINATION_INPUT,
+    CREATE_EVENT_DESTINATION_OUTPUT as _SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT,
     CREATE_PROFESSIONAL_CLAIM_SUBMISSION as _SCHEMA_CREATE_PROFESSIONAL_CLAIM_SUBMISSION,
     CREATE_PROFESSIONAL_CLAIM_SUBMISSION_INPUT as _SCHEMA_CREATE_PROFESSIONAL_CLAIM_SUBMISSION_INPUT,
     CREATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT as _SCHEMA_CREATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT,
+    DELETE_EVENT_DESTINATION as _SCHEMA_DELETE_EVENT_DESTINATION,
+    DELETE_EVENT_DESTINATION_INPUT as _SCHEMA_DELETE_EVENT_DESTINATION_INPUT,
+    DELETE_EVENT_DESTINATION_OUTPUT as _SCHEMA_DELETE_EVENT_DESTINATION_OUTPUT,
+    EVENT_DESTINATIONS_DESTINATION_SUMMARY as _SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY,
+    EVENT_DESTINATIONS_EVENT_PAYLOAD as _SCHEMA_EVENT_DESTINATIONS_EVENT_PAYLOAD,
+    EVENT_DESTINATIONS_EVENT_PAYLOAD_RESOURCE_REF as _SCHEMA_EVENT_DESTINATIONS_EVENT_PAYLOAD_RESOURCE_REF,
+    EVENT_DESTINATIONS_EVENT_SUMMARY as _SCHEMA_EVENT_DESTINATIONS_EVENT_SUMMARY,
+    EVENT_DESTINATIONS_LIMIT_EXCEEDED_EXCEPTION as _SCHEMA_EVENT_DESTINATIONS_LIMIT_EXCEEDED_EXCEPTION,
+    EVENT_DESTINATIONS_V1_EVENT_PAYLOAD as _SCHEMA_EVENT_DESTINATIONS_V1_EVENT_PAYLOAD,
     FORBIDDEN_EXCEPTION as _SCHEMA_FORBIDDEN_EXCEPTION,
+    GET_CLAIM as _SCHEMA_GET_CLAIM,
+    GET_CLAIM_INPUT as _SCHEMA_GET_CLAIM_INPUT,
+    GET_CLAIM_OUTPUT as _SCHEMA_GET_CLAIM_OUTPUT,
+    GET_CLAIM_TIMELINE as _SCHEMA_GET_CLAIM_TIMELINE,
+    GET_CLAIM_TIMELINE_INPUT as _SCHEMA_GET_CLAIM_TIMELINE_INPUT,
+    GET_CLAIM_TIMELINE_OUTPUT as _SCHEMA_GET_CLAIM_TIMELINE_OUTPUT,
+    GET_EVENT_DESTINATION as _SCHEMA_GET_EVENT_DESTINATION,
+    GET_EVENT_DESTINATION_EVENT as _SCHEMA_GET_EVENT_DESTINATION_EVENT,
+    GET_EVENT_DESTINATION_EVENT_INPUT as _SCHEMA_GET_EVENT_DESTINATION_EVENT_INPUT,
+    GET_EVENT_DESTINATION_EVENT_OUTPUT as _SCHEMA_GET_EVENT_DESTINATION_EVENT_OUTPUT,
+    GET_EVENT_DESTINATION_INPUT as _SCHEMA_GET_EVENT_DESTINATION_INPUT,
+    GET_EVENT_DESTINATION_OUTPUT as _SCHEMA_GET_EVENT_DESTINATION_OUTPUT,
+    GET_EVENT_DESTINATION_SECRET as _SCHEMA_GET_EVENT_DESTINATION_SECRET,
+    GET_EVENT_DESTINATION_SECRET_INPUT as _SCHEMA_GET_EVENT_DESTINATION_SECRET_INPUT,
+    GET_EVENT_DESTINATION_SECRET_OUTPUT as _SCHEMA_GET_EVENT_DESTINATION_SECRET_OUTPUT,
     GET_PROFESSIONAL_CLAIM_SUBMISSION as _SCHEMA_GET_PROFESSIONAL_CLAIM_SUBMISSION,
     GET_PROFESSIONAL_CLAIM_SUBMISSION_INPUT as _SCHEMA_GET_PROFESSIONAL_CLAIM_SUBMISSION_INPUT,
     GET_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT as _SCHEMA_GET_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT,
-    INTERNAL_FAILURE_EXCEPTION as _SCHEMA_INTERNAL_FAILURE_EXCEPTION,
     INTERNAL_SERVER_EXCEPTION as _SCHEMA_INTERNAL_SERVER_EXCEPTION,
     INVALID_REQUEST_EXCEPTION as _SCHEMA_INVALID_REQUEST_EXCEPTION,
+    LIST_CLAIMS as _SCHEMA_LIST_CLAIMS,
+    LIST_CLAIMS_INPUT as _SCHEMA_LIST_CLAIMS_INPUT,
+    LIST_CLAIMS_OUTPUT as _SCHEMA_LIST_CLAIMS_OUTPUT,
+    LIST_EVENT_DESTINATIONS as _SCHEMA_LIST_EVENT_DESTINATIONS,
+    LIST_EVENT_DESTINATIONS_INPUT as _SCHEMA_LIST_EVENT_DESTINATIONS_INPUT,
+    LIST_EVENT_DESTINATIONS_OUTPUT as _SCHEMA_LIST_EVENT_DESTINATIONS_OUTPUT,
+    LIST_EVENT_DESTINATION_EVENTS as _SCHEMA_LIST_EVENT_DESTINATION_EVENTS,
+    LIST_EVENT_DESTINATION_EVENTS_INPUT as _SCHEMA_LIST_EVENT_DESTINATION_EVENTS_INPUT,
+    LIST_EVENT_DESTINATION_EVENTS_OUTPUT as _SCHEMA_LIST_EVENT_DESTINATION_EVENTS_OUTPUT,
     NOT_FOUND_EXCEPTION as _SCHEMA_NOT_FOUND_EXCEPTION,
     PROFESSIONAL_CLAIM_SUBMISSION_ADDRESS as _SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_ADDRESS,
     PROFESSIONAL_CLAIM_SUBMISSION_ATTACHMENT as _SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_ATTACHMENT,
@@ -56,6 +98,9 @@ from ._private.schemas import (
     PROFESSIONAL_CLAIM_SUBMISSION_PERSON_NAME as _SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PERSON_NAME,
     PROFESSIONAL_CLAIM_SUBMISSION_PRESCRIPTION_OR_COMPOUND_DRUG_ASSOCIATION_NUMBER as _SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PRESCRIPTION_OR_COMPOUND_DRUG_ASSOCIATION_NUMBER,
     PROFESSIONAL_CLAIM_SUBMISSION_PROCEDURE_CODE as _SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PROCEDURE_CODE,
+    PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE as _SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE,
+    PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER as _SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER,
+    PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER_IDENTIFIERS as _SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER_IDENTIFIERS,
     PROFESSIONAL_CLAIM_SUBMISSION_QUALIFIED_NAME as _SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_QUALIFIED_NAME,
     PROFESSIONAL_CLAIM_SUBMISSION_QUALIFIED_ORGANIZATION_NAME as _SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_QUALIFIED_ORGANIZATION_NAME,
     PROFESSIONAL_CLAIM_SUBMISSION_QUALIFIED_PERSON_NAME as _SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_QUALIFIED_PERSON_NAME,
@@ -73,7 +118,13 @@ from ._private.schemas import (
     PROFESSIONAL_CLAIM_SUBMISSION_SUPERVISING_PROVIDER as _SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_SUPERVISING_PROVIDER,
     PROFESSIONAL_CLAIM_SUBMISSION_SUPERVISING_PROVIDER_IDENTIFIERS as _SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_SUPERVISING_PROVIDER_IDENTIFIERS,
     PROFESSIONAL_CLAIM_SUBMISSION_TAX_ID as _SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_TAX_ID,
+    ROTATE_EVENT_DESTINATION_SECRET as _SCHEMA_ROTATE_EVENT_DESTINATION_SECRET,
+    ROTATE_EVENT_DESTINATION_SECRET_INPUT as _SCHEMA_ROTATE_EVENT_DESTINATION_SECRET_INPUT,
+    ROTATE_EVENT_DESTINATION_SECRET_OUTPUT as _SCHEMA_ROTATE_EVENT_DESTINATION_SECRET_OUTPUT,
     TOO_MANY_REQUESTS_EXCEPTION as _SCHEMA_TOO_MANY_REQUESTS_EXCEPTION,
+    UPDATE_EVENT_DESTINATION as _SCHEMA_UPDATE_EVENT_DESTINATION,
+    UPDATE_EVENT_DESTINATION_INPUT as _SCHEMA_UPDATE_EVENT_DESTINATION_INPUT,
+    UPDATE_EVENT_DESTINATION_OUTPUT as _SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT,
     VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION as _SCHEMA_VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION,
     VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION_INPUT as _SCHEMA_VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION_INPUT,
     VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT as _SCHEMA_VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT,
@@ -93,21 +144,17 @@ class ServiceError(ModeledError):
     """
 
 @dataclass(kw_only=True)
-class ClaimEditError:
-    """A single failed claim edit."""
-
-    code: str
-    """A code identifying the failed edit."""
+class ClaimRejectionError:
+    """An error that caused Stedi to reject the claim."""
 
     description: str
-    """Human readable description of the failed edit."""
+    """A human-readable explanation of the error."""
 
     def serialize(self, serializer: ShapeSerializer):
-        serializer.write_struct(_SCHEMA_CLAIM_EDIT_ERROR, self)
+        serializer.write_struct(_SCHEMA_CLAIM_REJECTION_ERROR, self)
 
     def serialize_members(self, serializer: ShapeSerializer):
-        serializer.write_string(_SCHEMA_CLAIM_EDIT_ERROR.members["code"], self.code)
-        serializer.write_string(_SCHEMA_CLAIM_EDIT_ERROR.members["description"], self.description)
+        serializer.write_string(_SCHEMA_CLAIM_REJECTION_ERROR.members["description"], self.description)
 
     @classmethod
     def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
@@ -120,91 +167,32 @@ class ClaimEditError:
         def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
             match schema.expect_member_index():
                 case 0:
-                    kwargs["code"] = de.read_string(_SCHEMA_CLAIM_EDIT_ERROR.members["code"])
-
-                case 1:
-                    kwargs["description"] = de.read_string(_SCHEMA_CLAIM_EDIT_ERROR.members["description"])
+                    kwargs["description"] = de.read_string(_SCHEMA_CLAIM_REJECTION_ERROR.members["description"])
 
                 case _:
                     logger.debug("Unexpected member schema: %s", schema)
 
-        deserializer.read_struct(_SCHEMA_CLAIM_EDIT_ERROR, consumer=_consumer)
-        if "code" not in kwargs:
-            kwargs["code"] = ""
+        deserializer.read_struct(_SCHEMA_CLAIM_REJECTION_ERROR, consumer=_consumer)
         if "description" not in kwargs:
             kwargs["description"] = ""
         return kwargs
 
-def _serialize_claim_edit_errors(serializer: ShapeSerializer, schema: Schema, value: list[ClaimEditError]) -> None:
+def _serialize_claim_rejection_errors(serializer: ShapeSerializer, schema: Schema, value: list[ClaimRejectionError]) -> None:
     member_schema = schema.members["member"]
     with serializer.begin_list(schema, len(value)) as ls:
         for e in value:
             ls.write_struct(member_schema, e)
 
-def _deserialize_claim_edit_errors(deserializer: ShapeDeserializer, schema: Schema) -> list[ClaimEditError]:
-    result: list[ClaimEditError] = []
+def _deserialize_claim_rejection_errors(deserializer: ShapeDeserializer, schema: Schema) -> list[ClaimRejectionError]:
+    result: list[ClaimRejectionError] = []
     def _read_value(d: ShapeDeserializer):
         if d.is_null():
             d.read_null()
 
         else:
-            result.append(ClaimEditError.deserialize(d))
+            result.append(ClaimRejectionError.deserialize(d))
     deserializer.read_list(schema, _read_value)
     return result
-
-@dataclass(kw_only=True)
-class ClaimEditException(ServiceError):
-    """
-    Exception returned when the claim fails one or more pre-submission
-    edits.
-    """
-
-    fault: Literal["client", "server"] | None = "client"
-
-    errors: list[ClaimEditError]
-    """The edits the claim failed."""
-
-    x12: str | None = None
-    """
-    A synthetic 277CA acknowledging the rejection, with one STC segment per
-    failed edit.
-    """
-
-    def serialize(self, serializer: ShapeSerializer):
-        serializer.write_struct(_SCHEMA_CLAIM_EDIT_EXCEPTION, self)
-
-    def serialize_members(self, serializer: ShapeSerializer):
-        serializer.write_string(_SCHEMA_CLAIM_EDIT_EXCEPTION.members["message"], self.message)
-        _serialize_claim_edit_errors(serializer, _SCHEMA_CLAIM_EDIT_EXCEPTION.members["errors"], self.errors)
-        if self.x12 is not None:
-            serializer.write_string(_SCHEMA_CLAIM_EDIT_EXCEPTION.members["x12"], self.x12)
-
-    @classmethod
-    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
-        return cls(**cls.deserialize_kwargs(deserializer))
-
-    @classmethod
-    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
-        kwargs: dict[str, Any] = {}
-
-        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
-            match schema.expect_member_index():
-                case 0:
-                    kwargs["message"] = de.read_string(_SCHEMA_CLAIM_EDIT_EXCEPTION.members["message"])
-
-                case 1:
-                    kwargs["errors"] = _deserialize_claim_edit_errors(de, _SCHEMA_CLAIM_EDIT_EXCEPTION.members["errors"])
-
-                case 2:
-                    kwargs["x12"] = de.read_string(_SCHEMA_CLAIM_EDIT_EXCEPTION.members["x12"])
-
-                case _:
-                    logger.debug("Unexpected member schema: %s", schema)
-
-        deserializer.read_struct(_SCHEMA_CLAIM_EDIT_EXCEPTION, consumer=_consumer)
-        if "errors" not in kwargs:
-            kwargs["errors"] = []
-        return kwargs
 
 class ProfessionalClaimSubmissionBenefitsAssignmentCertificationIndicator(UnknownEnumMixin, StrEnum):
     """
@@ -635,7 +623,7 @@ class ProfessionalClaimSubmissionPersonName:
     last_name: str
     """
     The person's last name. Don't include a name suffix such as Jr. or III
-    here; use the `suffix` property instead.
+    here. Use the `suffix` property instead.
     """
 
     first_name: str | None = None
@@ -810,7 +798,12 @@ class ProfessionalClaimSubmissionBillingProvider:
     """
 
     identifiers: ProfessionalClaimSubmissionBillingProviderIdentifiers | None = None
-    """**[CMS-1500 Box 33a, 33b]** Identifiers for the billing provider."""
+    """
+    **[CMS-1500 Box 33a, 33b]** Identifiers for the billing provider. You
+    must provide the billing provider's NPI. When the provider doesn't
+    have an NPI, you can supply an alternative, such as `commercialNumber`
+    or `locationNumber`.
+    """
 
     def serialize(self, serializer: ShapeSerializer):
         serializer.write_struct(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_BILLING_PROVIDER, self)
@@ -869,7 +862,8 @@ class ProfessionalClaimSubmissionServiceFacilityIdentifiers:
     **[CMS-1500 Box 32a]** The facility's [National Provider Identifier
     (NPI)](https://www.stedi.com/docs/healthcare/national-provider-identifier).
     Only required when the facility's NPI differs from the billing
-    provider's NPI.
+    provider's NPI. Don't include when the service facility is the
+    patient's home.
     """
 
     state_license_number: str | None = None
@@ -1011,12 +1005,19 @@ class ProfessionalClaimSubmissionServiceFacility:
     """
 
     name: ProfessionalClaimSubmissionQualifiedOrganizationName
-    """**[CMS-1500 Box 32]** The facility's organization name."""
+    """
+    **[CMS-1500 Box 32]** The facility's organization name. When services
+    were rendered in the patient's home, we recommend setting this to
+    Residence or something similar.
+    """
 
     address: ProfessionalClaimSubmissionAddress = field(repr=False)
     """
     **[CMS-1500 Box 32]** The facility's physical address. This must be a
-    street address, not a PO Box.
+    street address, not a PO Box. If the service was rendered in an area
+    where there are no street addresses, enter a description of where the
+    service was rendered. For example, 'crossroad of State Road 34 and 45'
+    or 'Exit near Mile marker 265 on Interstate 80'.
     """
 
     identifiers: ProfessionalClaimSubmissionServiceFacilityIdentifiers | None = None
@@ -1196,16 +1197,26 @@ class ProfessionalClaimSubmissionBilling:
     """
     **[CMS-1500 Box 29]** The total amount the patient, or the patient's
     representative, has already paid toward services in this claim. This is
-    the patient's payment only; do not include amounts paid by other
+    the patient's payment only. Don't include amounts paid by other
     payers.
     """
 
     service_facility: ProfessionalClaimSubmissionServiceFacility | None = None
     """
     **[CMS-1500 Box 32, 32a, 32b]** The facility where the patient
-    received care, also called the service facility location. Include when
-    services were rendered somewhere other than the billing provider's
+    received care, also called the service facility location. This can be a
+    healthcare facility like a surgical center or reference lab, or the
+    patient's address when you rendered services in their home. Include
+    when services were rendered somewhere other than the billing provider's
     address.
+
+    - For telehealth services, the service facility location is the
+      provider's address, even though the patient may have been in their
+      home or elsewhere when receiving services.
+    - When the billing provider is a physician group located at the same
+      address as a hospital but is a separate entity, you can differentiate
+      the service facility location by including the specific suite or
+      building number of the physician group.
     """
 
     def serialize(self, serializer: ShapeSerializer):
@@ -1452,24 +1463,45 @@ class ProfessionalClaimSubmissionAttachmentTransmissionCode(UnknownEnumMixin, St
 class ProfessionalClaimSubmissionAttachment:
     """
     A piece of supporting documentation attached to the claim, such as
-    medical records or an operative note. Include only when required by the
-    payer.
+    medical records or an operative note. Only include when the payer
+    requires it. Visit [Submit claim
+    attachments](https://www.stedi.com/docs/healthcare/submit-claim-attachments)
+    for more information.
     """
 
     report_type_code: ProfessionalClaimSubmissionAttachmentReportTypeCode
     """The type of report being attached."""
 
     transmission_code: ProfessionalClaimSubmissionAttachmentTransmissionCode
-    """How the attachment is transmitted to the payer."""
+    """How you're sending the attachment to the payer."""
 
     attachment_control_number: str | None = None
     """
-    A control number that identifies the attachment and links it to the
-    claim.
+    A control number assigned to the attachment. The payer uses this
+    identifier to match the attachment to the claim.
+
+    - You must include either this property or `attachmentId` in the
+      request, but not both. Including both properties will result in an
+      error.
+    - We recommend using a ULID or UUID of up to 50 characters.
+    - Stedi autogenerates a control number if you don't provide one.
     """
 
     attachment_id: str | None = None
-    """The Stedi attachment ID for a previously uploaded attachment."""
+    """
+    The unique identifier for an attachment file you previously uploaded to
+    Stedi. This value is returned in the `attachmentId` property of the
+    [Create Claim Attachment (275)
+    JSON](https://www.stedi.com/docs/healthcare/api-reference/post-healthcare-submit-claim-attachment)
+    response. Stedi uses it to generate and submit the 275 claim attachment
+    transaction to the payer.
+
+    - This property is required when you're submitting attachment files
+      through Stedi.
+    - You must include either this property or `attachmentControlNumber` in
+      the request, but not both. Including both properties will result in an
+      error.
+    """
 
     def serialize(self, serializer: ShapeSerializer):
         serializer.write_struct(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_ATTACHMENT, self)
@@ -2569,6 +2601,12 @@ class ProfessionalClaimSubmissionEncounter:
     this with `additionalDiagnosisCodes` and the diagnosis codes on the
     service lines to form the claim's diagnosis list, which can hold at
     most 12 codes.
+
+    - Use valid, billable codes at the highest level of specificity
+      available.
+    - Don't submit the decimal point (e.g., submit `I639` not `I63.9`).
+    - Don't submit header codes (codes with fewer than three characters,
+      such as `E10` for Type 1 diabetes).
     """
 
     primary_place_of_service: str | None = None
@@ -2588,6 +2626,12 @@ class ProfessionalClaimSubmissionEncounter:
     don't need to repeat codes that already appear in a service line's
     `diagnosisCodes`. Stedi places these directly after the primary
     diagnosis in the claim's diagnosis list.
+
+    - Use valid, billable codes at the highest level of specificity
+      available.
+    - Don't submit the decimal point (e.g., submit `I639` not `I63.9`).
+    - Don't submit header codes (codes with fewer than three characters,
+      such as `E10` for Type 1 diabetes).
     """
 
     patient_condition: ProfessionalClaimSubmissionPatientCondition | None = None
@@ -2602,7 +2646,7 @@ class ProfessionalClaimSubmissionEncounter:
     (NUCC) condition codes. A condition code is a two-character code that
     provides extra information about the patient's condition or the claim
     itself, such as whether the claim is part of disaster relief. For a
-    list, see the [NUCC Condition
+    list, visit the [NUCC Condition
     Codes](https://www.nucc.org/index.php/code-sets-mainmenu-41/condition-codes-mainmenu-38).
     """
 
@@ -2611,10 +2655,13 @@ class ProfessionalClaimSubmissionEncounter:
     **[CMS-1500 Box 24h]** Early and Periodic Screening, Diagnosis, and
     Treatment (EPSDT) referral condition indicators for the claim. EPSDT is
     a Medicaid program that provides preventive health care services for
-    children under age 21. Include when the claim bills an EPSDT screening
-    service, with the referral outcome of the screening; use `NOT_USED` when
-    the screening did not result in a referral. Mark services that resulted
-    from a screening with `serviceLines[].isEpsdtRelated`.
+    children under age 21.
+
+    - Include when the claim bills an EPSDT screening service, with the
+      referral outcome of the screening.
+    - Use `NOT_USED` when the screening did not result in a referral.
+    - Mark services that resulted from a screening with
+      `serviceLines[].isEpsdtRelated`.
     """
 
     clinical_dates: ProfessionalClaimSubmissionClinicalDates | None = None
@@ -2668,7 +2715,11 @@ class ProfessionalClaimSubmissionEncounter:
     resubmission: ProfessionalClaimSubmissionResubmission | None = None
     """
     **[CMS-1500 Box 22]** Whether this claim replaces or voids a
-    previously submitted claim. Leave empty for original claims.
+    previously submitted claim. Omit when you're submitting a new claim and
+    when you're resubmitting a claim that was rejected before it entered
+    the payer's processing system. You must also omit this property for
+    every resubmission to Original Medicare because Original Medicare
+    doesn't accept `REPLACEMENT_OF_PRIOR_CLAIM`.
     """
 
     reference_numbers: ProfessionalClaimSubmissionReferenceNumbers | None = None
@@ -2813,7 +2864,7 @@ class ProfessionalClaimSubmissionInsuranceType(UnknownEnumMixin, StrEnum):
     matches the plan and payer. For most commercial payers, use `OTHER`.
 
     - `MEDICARE`: Original Medicare. Don't use this for Medicare Advantage
-      plans; use `OTHER` instead.
+      plans -- use `OTHER` instead.
     - `MEDICAID`: Medicaid.
     - `TRICARE`: TRICARE, the U.S. Department of Defense's health care
       program for military members and their families.
@@ -2828,7 +2879,7 @@ class ProfessionalClaimSubmissionInsuranceType(UnknownEnumMixin, StrEnum):
     """
     MEDICARE = "MEDICARE"
     """
-    Original Medicare. Don't use this for Medicare Advantage plans; use
+    Original Medicare. Don't use this for Medicare Advantage plans -- use
     `OTHER` instead.
     """
     MEDICAID = "MEDICAID"
@@ -3694,8 +3745,12 @@ class ProfessionalClaimSubmissionPayer:
     **[CMS-1500 Carrier Block]** The Stedi payer ID for the payer being
     billed. Visit the [Payer
     Network](https://www.stedi.com/healthcare/network) for a complete list.
-    You can send the primary payer ID, the Stedi payer ID, or any alias
-    listed in the payer record.
+
+    - You can send requests using the primary payer ID, the Stedi payer ID,
+      or any alias listed in the payer record.
+    - You must include leading 0 characters. Payer IDs are alphanumeric
+      strings and must be treated as complete strings, not integers. For
+      example, use `00540` for SISCO, not `540`.
     """
 
     name: ProfessionalClaimSubmissionQualifiedOrganizationName | None = None
@@ -4247,6 +4302,156 @@ class ProfessionalClaimSubmissionProcedureCode:
     def _smithy_default(cls) -> Self:
         return cls(code="")
 
+class ProfessionalClaimSubmissionPurchasedServiceProviderEntityType(UnknownEnumMixin, StrEnum):
+    """Whether a purchased service provider is a person or an organization.    """
+    PERSON = "PERSON"
+    """
+    An individual provider, such as a physician who performed a purchased
+    interpretation.
+    """
+    ORGANIZATION = "ORGANIZATION"
+    """An organization, such as an independent laboratory.    """
+
+@dataclass(kw_only=True)
+class ProfessionalClaimSubmissionPurchasedServiceProviderIdentifiers:
+    """Identifiers for a purchased service provider."""
+
+    npi: str
+    """
+    **[CMS-1500 Box 32a]** The purchased service provider's [National
+    Provider Identifier
+    (NPI)](https://www.stedi.com/docs/healthcare/national-provider-identifier),
+    a unique 10-digit ID issued by the Centers for Medicare & Medicaid
+    Services (CMS).
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER_IDENTIFIERS, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER_IDENTIFIERS.members["npi"], self.npi)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["npi"] = de.read_string(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER_IDENTIFIERS.members["npi"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER_IDENTIFIERS, consumer=_consumer)
+        if "npi" not in kwargs:
+            kwargs["npi"] = ""
+        return kwargs
+
+    @classmethod
+    def _smithy_default(cls) -> Self:
+        return cls(npi="")
+
+@dataclass(kw_only=True)
+class ProfessionalClaimSubmissionPurchasedServiceProvider:
+    """The outside provider the billing provider bought the service from."""
+
+    entity_type: ProfessionalClaimSubmissionPurchasedServiceProviderEntityType
+    """Whether the outside provider is a person or an organization."""
+
+    identifiers: ProfessionalClaimSubmissionPurchasedServiceProviderIdentifiers
+    """Identifiers for the purchased service provider."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER.members["entityType"], self.entity_type)
+        serializer.write_struct(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER.members["identifiers"], self.identifiers)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["entity_type"] = ProfessionalClaimSubmissionPurchasedServiceProviderEntityType(de.read_string(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER.members["entityType"]))
+
+                case 1:
+                    kwargs["identifiers"] = ProfessionalClaimSubmissionPurchasedServiceProviderIdentifiers.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER, consumer=_consumer)
+        if "entity_type" not in kwargs:
+            kwargs["entity_type"] = ProfessionalClaimSubmissionPurchasedServiceProviderEntityType._corrected("")
+        if "identifiers" not in kwargs:
+            kwargs["identifiers"] = ProfessionalClaimSubmissionPurchasedServiceProviderIdentifiers._smithy_default()
+        return kwargs
+
+    @classmethod
+    def _smithy_default(cls) -> Self:
+        return cls(entity_type=ProfessionalClaimSubmissionPurchasedServiceProviderEntityType._corrected(""), identifiers=ProfessionalClaimSubmissionPurchasedServiceProviderIdentifiers._smithy_default())
+
+@dataclass(kw_only=True)
+class ProfessionalClaimSubmissionPurchasedService:
+    """
+    A service the billing provider bought from an outside provider and is
+    billing to the payer.
+    """
+
+    charge_amount: str
+    """
+    **[CMS-1500 Box 20]** The price the billing provider paid the outside
+    provider for this service.
+    """
+
+    provider: ProfessionalClaimSubmissionPurchasedServiceProvider
+    """The outside provider the billing provider bought this service from."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE.members["chargeAmount"], self.charge_amount)
+        serializer.write_struct(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE.members["provider"], self.provider)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["charge_amount"] = de.read_string(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE.members["chargeAmount"])
+
+                case 1:
+                    kwargs["provider"] = ProfessionalClaimSubmissionPurchasedServiceProvider.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE, consumer=_consumer)
+        if "charge_amount" not in kwargs:
+            kwargs["charge_amount"] = ""
+        if "provider" not in kwargs:
+            kwargs["provider"] = ProfessionalClaimSubmissionPurchasedServiceProvider._smithy_default()
+        return kwargs
+
 @dataclass(kw_only=True)
 class ProfessionalClaimSubmissionRenderingProviderIdentifiers:
     """Identifiers for the rendering provider."""
@@ -4396,8 +4601,8 @@ class ProfessionalClaimSubmissionServiceLine:
 
     dates_of_service: ProfessionalClaimSubmissionDateRange
     """
-    **[CMS-1500 Box 24a]** The date or date range on which the service was
-    provided.
+    **[CMS-1500 Box 24a]** The date or date range when the patient
+    received the service.
     """
 
     procedure_code: ProfessionalClaimSubmissionProcedureCode
@@ -4414,6 +4619,19 @@ class ProfessionalClaimSubmissionServiceLine:
     order of importance to the service, with the most relevant diagnosis
     first. Across `encounter.primaryDiagnosisCode` and the codes on every
     service line, a claim can use at most 12 distinct diagnosis codes.
+
+    - You must submit a valid, billable code at the highest level of
+      specificity. Include the 4th - 7th characters as applicable.
+    - Don't submit the decimal point for ICD codes. The decimal point is
+      implied.
+    - Don't submit ICD-10 header codes. Header codes exist to group related
+      codes and aren't valid for billing. These header codes can change
+      with each new version of ICD-10, so we recommend reviewing your
+      diagnosis codes every year to ensure that they aren't classified as
+      header codes in the most recent version. To determine whether a code
+      is a header code, you can also search the Value Set Authority Center.
+      If the 'Header' property is set, the code is a header code and you
+      shouldn't use it in claim submissions.
     """
 
     line_item_charge_amount: str
@@ -4438,7 +4656,7 @@ class ProfessionalClaimSubmissionServiceLine:
     place_of_service: str | None = None
     """
     **[CMS-1500 Box 24b]** The place of service code identifying where the
-    service was rendered. Visit [Place of Service
+    patient received the service. Visit [Place of Service
     Codes](https://www.cms.gov/medicare/coding-billing/place-of-service-codes/code-sets)
     for a complete list.
     """
@@ -4455,7 +4673,7 @@ class ProfessionalClaimSubmissionServiceLine:
     **[CMS-1500 Box 24h]** Whether the service is related to an Early and
     Periodic Screening, Diagnosis, and Treatment (EPSDT) encounter. Set this
     on services that resulted from an EPSDT screening, not on the screening
-    service itself; report the screening's referral outcome in
+    service itself. Report the screening's referral outcome in
     `encounter.epsdtReferralCodes`.
     """
 
@@ -4481,10 +4699,19 @@ class ProfessionalClaimSubmissionServiceLine:
     differs from the rendering provider for this line.
     """
 
+    purchased_service: ProfessionalClaimSubmissionPurchasedService | None = None
+    """
+    **[CMS-1500 Box 20]** The purchase of this service from a provider
+    outside the billing provider's practice, such as an independent
+    laboratory. Only include when the billing provider bought the service
+    and is billing the payer for it.
+    """
+
     line_item_control_number: str | None = None
     """
     A control number you assign to this service line for your own tracking.
-    Each must be unique within the claim.
+    Each must be unique within the claim. If you don't set it, Stedi sets
+    it for you -- a random ULID.
     """
 
     drug_identification: ProfessionalClaimSubmissionDrugIdentification | None = None
@@ -4504,7 +4731,10 @@ class ProfessionalClaimSubmissionServiceLine:
     attachments: list[ProfessionalClaimSubmissionAttachment] | None = None
     """
     **[CMS-1500 Box 24]** Supporting documentation attached to this
-    service line. Include only when required by the payer.
+    service line. Only include when the payer requires it. Visit [Submit
+    claim
+    attachments](https://www.stedi.com/docs/healthcare/submit-claim-attachments)
+    for more information.
     """
 
     prior_authorizations: list[ProfessionalClaimSubmissionServiceLinePriorAuthorizationNumber] | None = None
@@ -4541,6 +4771,9 @@ class ProfessionalClaimSubmissionServiceLine:
 
         if self.ordering_provider is not None:
             serializer.write_struct(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_SERVICE_LINE.members["orderingProvider"], self.ordering_provider)
+
+        if self.purchased_service is not None:
+            serializer.write_struct(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_SERVICE_LINE.members["purchasedService"], self.purchased_service)
 
         if self.line_item_control_number is not None:
             serializer.write_string(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_SERVICE_LINE.members["lineItemControlNumber"], self.line_item_control_number)
@@ -4601,18 +4834,21 @@ class ProfessionalClaimSubmissionServiceLine:
                     kwargs["ordering_provider"] = ProfessionalClaimSubmissionOrderingProvider.deserialize(de)
 
                 case 11:
-                    kwargs["line_item_control_number"] = de.read_string(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_SERVICE_LINE.members["lineItemControlNumber"])
+                    kwargs["purchased_service"] = ProfessionalClaimSubmissionPurchasedService.deserialize(de)
 
                 case 12:
-                    kwargs["drug_identification"] = ProfessionalClaimSubmissionDrugIdentification.deserialize(de)
+                    kwargs["line_item_control_number"] = de.read_string(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_SERVICE_LINE.members["lineItemControlNumber"])
 
                 case 13:
-                    kwargs["narrative_for_unspecified_code"] = de.read_string(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_SERVICE_LINE.members["narrativeForUnspecifiedCode"])
+                    kwargs["drug_identification"] = ProfessionalClaimSubmissionDrugIdentification.deserialize(de)
 
                 case 14:
-                    kwargs["attachments"] = _deserialize_professional_claim_submission_attachment_list(de, _SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_SERVICE_LINE.members["attachments"])
+                    kwargs["narrative_for_unspecified_code"] = de.read_string(_SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_SERVICE_LINE.members["narrativeForUnspecifiedCode"])
 
                 case 15:
+                    kwargs["attachments"] = _deserialize_professional_claim_submission_attachment_list(de, _SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_SERVICE_LINE.members["attachments"])
+
+                case 16:
                     kwargs["prior_authorizations"] = _deserialize_professional_claim_submission_service_line_prior_authorization_numbers(de, _SCHEMA_PROFESSIONAL_CLAIM_SUBMISSION_SERVICE_LINE.members["priorAuthorizations"])
 
                 case _:
@@ -4777,26 +5013,28 @@ class CreateProfessionalClaimSubmissionInput:
 
     service_lines: list[ProfessionalClaimSubmissionServiceLine] | None = None
     """
-    **[CMS-1500 Box 17, 17a, 17b, 24a-24j]** The individual services,
+    **[CMS-1500 Box 17, 17a, 17b, 20, 24a-24j]** The individual services,
     procedures, or supplies being billed. Each service line corresponds to
     one row in Box 24 of the CMS-1500 form.
     """
 
     other_insured: list[ProfessionalClaimSubmissionOtherInsured] | None = None
     """
-    **[CMS-1500 Box 9, 9a, 9d]** Coverage held by the patient under
-    another insurance policy, used for coordination of benefits. Include
-    this when the patient is covered by a payer other than the one being
-    billed.
+    **[CMS-1500 Box 9, 9a, 9d]** Coverage the patient holds under another
+    insurance policy, relevant to coordination of benefits. Include this
+    when the patient has coverage from another payer in addition to the one
+    you're billing.
     """
 
     idempotency_key: str | None = None
     """
-    A unique key that makes the request idempotent. Keys are retained for 24
-    hours. Replaying a request with the same key and the same body within
-    that window returns the original response byte-for-byte. Reusing a key
-    with a different body, or while the original request is still in flight,
-    returns a 409 ConflictException.
+    A unique string to identify this request to the server. You can safely
+    retry requests with the same idempotency key within 24 hours of making
+    the first request. This prevents you from sending duplicate claims due
+    to network errors or other intermittent failures. If you reuse a key on
+    a new request while Stedi is still processing the original, Stedi
+    returns a `409 Conflict` error. [Learn
+    more](https://www.stedi.com/docs/api-reference/index#idempotency-keys).
     """
 
     def serialize(self, serializer: ShapeSerializer):
@@ -4890,10 +5128,33 @@ class CreateProfessionalClaimSubmissionOutput:
     """The response to a professional claim submission."""
 
     claim_id: str
-    """A unique identifier for the claim within Stedi."""
+    """
+    A unique identifier for the claim within Stedi. This ID stays the same
+    throughout the claim's entire lifecycle. For example, the claim ID is
+    the same for the initial submission and any resubmissions. This is how
+    Stedi links a particular claim to responses, such as 277CA claim
+    acknowledgments.
+    """
 
     submission_id: str
-    """A unique identifier for this submission of the claim within Stedi."""
+    """
+    A unique identifier for a specific submission of a claim within Stedi.
+    Stedi generates a submission ID for the initial submission and then a
+    new submission ID for every resubmission of the same claim. This is
+    different from the claim ID, which doesn't change throughout the
+    claim's lifecycle.
+    """
+
+    errors: list[ClaimRejectionError] | None = None
+    """
+    Failed claim edits that caused Stedi to reject the claim.
+
+    - When present, Stedi stored the claim and generated a 277CA claim
+      acknowledgment for the rejection, but didn't send the claim to the
+      payer. You must fix all errors before resubmitting.
+    - When absent, the claim data passed Stedi's edits and Stedi sent the
+      claim to the payer.
+    """
 
     def serialize(self, serializer: ShapeSerializer):
         serializer.write_struct(_SCHEMA_CREATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT, self)
@@ -4901,6 +5162,8 @@ class CreateProfessionalClaimSubmissionOutput:
     def serialize_members(self, serializer: ShapeSerializer):
         serializer.write_string(_SCHEMA_CREATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT.members["claimId"], self.claim_id)
         serializer.write_string(_SCHEMA_CREATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT.members["submissionId"], self.submission_id)
+        if self.errors is not None:
+            _serialize_claim_rejection_errors(serializer, _SCHEMA_CREATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT.members["errors"], self.errors)
 
     @classmethod
     def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
@@ -4918,6 +5181,9 @@ class CreateProfessionalClaimSubmissionOutput:
                 case 1:
                     kwargs["submission_id"] = de.read_string(_SCHEMA_CREATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT.members["submissionId"])
 
+                case 2:
+                    kwargs["errors"] = _deserialize_claim_rejection_errors(de, _SCHEMA_CREATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT.members["errors"])
+
                 case _:
                     logger.debug("Unexpected member schema: %s", schema)
 
@@ -4926,49 +5192,6 @@ class CreateProfessionalClaimSubmissionOutput:
             kwargs["claim_id"] = ""
         if "submission_id" not in kwargs:
             kwargs["submission_id"] = ""
-        return kwargs
-
-@dataclass(kw_only=True)
-class InternalFailureException(ServiceError):
-    """
-    The server response when an unexpected error occurred while processing
-    request.
-    """
-
-    fault: Literal["client", "server"] | None = "server"
-    is_retry_safe: bool | None = True
-
-    code: str | None = None
-    """Error classification code"""
-
-    def serialize(self, serializer: ShapeSerializer):
-        serializer.write_struct(_SCHEMA_INTERNAL_FAILURE_EXCEPTION, self)
-
-    def serialize_members(self, serializer: ShapeSerializer):
-        serializer.write_string(_SCHEMA_INTERNAL_FAILURE_EXCEPTION.members["message"], self.message)
-        if self.code is not None:
-            serializer.write_string(_SCHEMA_INTERNAL_FAILURE_EXCEPTION.members["code"], self.code)
-
-    @classmethod
-    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
-        return cls(**cls.deserialize_kwargs(deserializer))
-
-    @classmethod
-    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
-        kwargs: dict[str, Any] = {}
-
-        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
-            match schema.expect_member_index():
-                case 0:
-                    kwargs["message"] = de.read_string(_SCHEMA_INTERNAL_FAILURE_EXCEPTION.members["message"])
-
-                case 1:
-                    kwargs["code"] = de.read_string(_SCHEMA_INTERNAL_FAILURE_EXCEPTION.members["code"])
-
-                case _:
-                    logger.debug("Unexpected member schema: %s", schema)
-
-        deserializer.read_struct(_SCHEMA_INTERNAL_FAILURE_EXCEPTION, consumer=_consumer)
         return kwargs
 
 @dataclass(kw_only=True)
@@ -5241,27 +5464,24 @@ CREATE_PROFESSIONAL_CLAIM_SUBMISSION = APIOperation(
         input_schema = _SCHEMA_CREATE_PROFESSIONAL_CLAIM_SUBMISSION_INPUT,
         output_schema = _SCHEMA_CREATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT,
         error_registry = TypeRegistry({
-            ShapeID("com.stedi.claimsmanager#ClaimEditException"): ClaimEditException,
-ShapeID("com.stedi.smithy.model.errors#AuthenticationFailedException"): AuthenticationFailedException,
+            ShapeID("com.stedi.smithy.model.errors#AuthenticationFailedException"): AuthenticationFailedException,
 ShapeID("com.stedi.smithy.model.errors#ConflictException"): ConflictException,
 ShapeID("com.stedi.smithy.model.errors#ForbiddenException"): ForbiddenException,
 ShapeID("com.stedi.smithy.model.errors#InternalServerException"): InternalServerException,
 ShapeID("com.stedi.smithy.model.errors#InvalidRequestException"): InvalidRequestException,
 ShapeID("com.stedi.smithy.model.errors#TooManyRequestsException"): TooManyRequestsException,
-ShapeID("com.stedi.smithy.model.common#InternalFailureException"): InternalFailureException,
         }),
         effective_auth_schemes = [
             ShapeID("smithy.api#httpApiKeyAuth"),
+ShapeID("smithy.api#httpBearerAuth"),
         ],
         error_schemas = [
-            _SCHEMA_CLAIM_EDIT_EXCEPTION,
-_SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
+            _SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
 _SCHEMA_CONFLICT_EXCEPTION,
 _SCHEMA_FORBIDDEN_EXCEPTION,
 _SCHEMA_INTERNAL_SERVER_EXCEPTION,
 _SCHEMA_INVALID_REQUEST_EXCEPTION,
 _SCHEMA_TOO_MANY_REQUESTS_EXCEPTION,
-_SCHEMA_INTERNAL_FAILURE_EXCEPTION,
         ]
 )
 
@@ -5270,7 +5490,18 @@ class GetProfessionalClaimSubmissionInput:
     """Input for fetching a claim submission as professional claim JSON."""
 
     id: str | None = None
-    """The claim submission ID."""
+    """
+    A unique identifier for a specific submission of a claim within Stedi.
+    Stedi generates a submission ID for the initial submission and then a
+    new submission ID for every resubmission of the same claim. This is
+    different from the claim ID, which doesn't change throughout the
+    claim's lifecycle.
+
+    You can retrieve this ID from the `submissionId` property in the
+    [Professional Claims CMS-1500 JSON submission
+    endpoint](/docs/healthcare/api-reference/post-healthcare-claims-cms-1500-json)
+    response.
+    """
 
     def serialize(self, serializer: ShapeSerializer):
         serializer.write_struct(_SCHEMA_GET_PROFESSIONAL_CLAIM_SUBMISSION_INPUT, self)
@@ -5354,7 +5585,7 @@ class ProfessionalClaimSubmissionData:
 
     service_lines: list[ProfessionalClaimSubmissionServiceLine]
     """
-    **[CMS-1500 Box 17, 17a, 17b, 24a-24j]** The individual services,
+    **[CMS-1500 Box 17, 17a, 17b, 20, 24a-24j]** The individual services,
     procedures, or supplies being billed. Each service line corresponds to
     one row in Box 24 of the CMS-1500 form.
     """
@@ -5369,10 +5600,10 @@ class ProfessionalClaimSubmissionData:
 
     other_insured: list[ProfessionalClaimSubmissionOtherInsured] | None = None
     """
-    **[CMS-1500 Box 9, 9a, 9d]** Coverage held by the patient under
-    another insurance policy, used for coordination of benefits. Include
-    this when the patient is covered by a payer other than the one being
-    billed.
+    **[CMS-1500 Box 9, 9a, 9d]** Coverage the patient holds under another
+    insurance policy, relevant to coordination of benefits. Include this
+    when the patient has coverage from another payer in addition to the one
+    you're billing.
     """
 
     def serialize(self, serializer: ShapeSerializer):
@@ -5461,13 +5692,25 @@ class ProfessionalClaimSubmissionData:
 
 @dataclass(kw_only=True)
 class GetProfessionalClaimSubmissionOutput:
-    """A professional claim submission."""
+    """The claim submission in the Stedi professional claim JSON format."""
 
     claim_id: str
-    """A unique identifier for the claim within Stedi."""
+    """
+    A unique identifier for the claim within Stedi. This ID stays the same
+    throughout the claim's entire lifecycle. For example, the claim ID is
+    the same for the initial submission and any resubmissions. This is how
+    Stedi links a particular claim to responses, such as 277CA claim
+    acknowledgments.
+    """
 
     submission_id: str
-    """A unique identifier for this submission of the claim within Stedi."""
+    """
+    A unique identifier for a specific submission of a claim within Stedi.
+    Stedi generates a submission ID for the initial submission and then a
+    new submission ID for every resubmission of the same claim. This is
+    different from the claim ID, which doesn't change throughout the
+    claim's lifecycle.
+    """
 
     data: ProfessionalClaimSubmissionData
     """The submitted claim in the Stedi professional claim JSON format."""
@@ -5573,10 +5816,10 @@ ShapeID("com.stedi.smithy.model.errors#InternalServerException"): InternalServer
 ShapeID("com.stedi.smithy.model.errors#InvalidRequestException"): InvalidRequestException,
 ShapeID("com.stedi.smithy.model.errors#NotFoundException"): NotFoundException,
 ShapeID("com.stedi.smithy.model.errors#TooManyRequestsException"): TooManyRequestsException,
-ShapeID("com.stedi.smithy.model.common#InternalFailureException"): InternalFailureException,
         }),
         effective_auth_schemes = [
             ShapeID("smithy.api#httpApiKeyAuth"),
+ShapeID("smithy.api#httpBearerAuth"),
         ],
         error_schemas = [
             _SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
@@ -5585,7 +5828,6 @@ _SCHEMA_INTERNAL_SERVER_EXCEPTION,
 _SCHEMA_INVALID_REQUEST_EXCEPTION,
 _SCHEMA_NOT_FOUND_EXCEPTION,
 _SCHEMA_TOO_MANY_REQUESTS_EXCEPTION,
-_SCHEMA_INTERNAL_FAILURE_EXCEPTION,
         ]
 )
 
@@ -5653,17 +5895,17 @@ class ValidateProfessionalClaimSubmissionInput:
 
     service_lines: list[ProfessionalClaimSubmissionServiceLine] | None = None
     """
-    **[CMS-1500 Box 17, 17a, 17b, 24a-24j]** The individual services,
+    **[CMS-1500 Box 17, 17a, 17b, 20, 24a-24j]** The individual services,
     procedures, or supplies being billed. Each service line corresponds to
     one row in Box 24 of the CMS-1500 form.
     """
 
     other_insured: list[ProfessionalClaimSubmissionOtherInsured] | None = None
     """
-    **[CMS-1500 Box 9, 9a, 9d]** Coverage held by the patient under
-    another insurance policy, used for coordination of benefits. Include
-    this when the patient is covered by a payer other than the one being
-    billed.
+    **[CMS-1500 Box 9, 9a, 9d]** Coverage the patient holds under another
+    insurance policy, relevant to coordination of benefits. Include this
+    when the patient has coverage from another payer in addition to the one
+    you're billing.
     """
 
     def serialize(self, serializer: ShapeSerializer):
@@ -5749,12 +5991,2115 @@ class ValidateProfessionalClaimSubmissionInput:
 @dataclass(kw_only=True)
 class ValidateProfessionalClaimSubmissionOutput:
     """
-    The response to a professional claim validation. A success response
-    means the claim passed validation.
+    The response to a professional claim validation. A response with no
+    errors means Stedi would accept the claim as-is.
+    """
+
+    errors: list[ClaimRejectionError] | None = None
+    """
+    Failed claim edits that would cause Stedi to reject the claim. Absent
+    when the claim passes Stedi's pre-submission checks.
     """
 
     def serialize(self, serializer: ShapeSerializer):
         serializer.write_struct(_SCHEMA_VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.errors is not None:
+            _serialize_claim_rejection_errors(serializer, _SCHEMA_VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT.members["errors"], self.errors)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["errors"] = _deserialize_claim_rejection_errors(de, _SCHEMA_VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT.members["errors"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT, consumer=_consumer)
+        return kwargs
+
+VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION = APIOperation(
+        input = ValidateProfessionalClaimSubmissionInput,
+        output = ValidateProfessionalClaimSubmissionOutput,
+        schema = _SCHEMA_VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION,
+        input_schema = _SCHEMA_VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION_INPUT,
+        output_schema = _SCHEMA_VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT,
+        error_registry = TypeRegistry({
+            ShapeID("com.stedi.smithy.model.errors#AuthenticationFailedException"): AuthenticationFailedException,
+ShapeID("com.stedi.smithy.model.errors#ForbiddenException"): ForbiddenException,
+ShapeID("com.stedi.smithy.model.errors#InternalServerException"): InternalServerException,
+ShapeID("com.stedi.smithy.model.errors#InvalidRequestException"): InvalidRequestException,
+ShapeID("com.stedi.smithy.model.errors#TooManyRequestsException"): TooManyRequestsException,
+        }),
+        effective_auth_schemes = [
+            ShapeID("smithy.api#httpApiKeyAuth"),
+ShapeID("smithy.api#httpBearerAuth"),
+        ],
+        error_schemas = [
+            _SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
+_SCHEMA_FORBIDDEN_EXCEPTION,
+_SCHEMA_INTERNAL_SERVER_EXCEPTION,
+_SCHEMA_INVALID_REQUEST_EXCEPTION,
+_SCHEMA_TOO_MANY_REQUESTS_EXCEPTION,
+        ]
+)
+
+class ClaimAcknowledgmentStatus(UnknownEnumMixin, StrEnum):
+    """
+    The status a clearinghouse or the payer reported for the claim in a
+    277CA claim acknowledgment.
+
+    - `REJECTED`: A clearinghouse or the payer rejected the claim. The payer
+      won't adjudicate the claim until you correct and resubmit it.
+    - `ACCEPTED`: A clearinghouse or the payer accepted the claim. A
+      clearinghouse acceptance means the claim passed its edits and the
+      clearinghouse forwarded it to the payer. A payer acceptance means the
+      payer will adjudicate the claim.
+    - `RECEIVED`: A clearinghouse or the payer received the claim but
+      hasn't yet accepted or rejected it.
+    - `INVALID`: Stedi couldn't determine the status because the 277CA
+      carries a status category code Stedi doesn't recognize.
+    """
+    REJECTED = "REJECTED"
+    """
+    A clearinghouse or the payer rejected the claim. The payer won't
+    adjudicate the claim until you correct and resubmit it.
+    """
+    ACCEPTED = "ACCEPTED"
+    """
+    A clearinghouse or the payer accepted the claim. A clearinghouse
+    acceptance means the claim passed its edits and the clearinghouse
+    forwarded it to the payer. A payer acceptance means the payer will
+    adjudicate the claim.
+    """
+    RECEIVED = "RECEIVED"
+    """
+    A clearinghouse or the payer received the claim but hasn't yet accepted
+    or rejected it.
+    """
+    INVALID = "INVALID"
+    """
+    Stedi couldn't determine the status because the 277CA carries a status
+    category code Stedi doesn't recognize.
+    """
+
+class ClaimType(UnknownEnumMixin, StrEnum):
+    """
+    The type of claim. Each type corresponds to a different 837 transaction
+    set and paper claim form.
+
+    - `DENTAL`: An 837D dental claim, the electronic equivalent of the ADA
+      Dental Claim Form.
+    - `INSTITUTIONAL`: An 837I institutional claim, the electronic
+      equivalent of the UB-04 form.
+    - `PROFESSIONAL`: An 837P professional claim, the electronic equivalent
+      of the CMS-1500 form.
+    """
+    DENTAL = "DENTAL"
+    """
+    An 837D dental claim, the electronic equivalent of the ADA Dental Claim
+    Form.
+    """
+    INSTITUTIONAL = "INSTITUTIONAL"
+    """
+    An 837I institutional claim, the electronic equivalent of the UB-04
+    form.
+    """
+    PROFESSIONAL = "PROFESSIONAL"
+    """
+    An 837P professional claim, the electronic equivalent of the CMS-1500
+    form.
+    """
+
+@dataclass(kw_only=True)
+class ClaimDateRange:
+    """
+    A date range. `end` is inclusive. A single date of service carries only
+    `start`.
+    """
+
+    start: str
+    """The start date of the range, in `YYYY-MM-DD` format."""
+
+    end: str | None = None
+    """The end date of the range, inclusive, in `YYYY-MM-DD` format."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CLAIM_DATE_RANGE, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_CLAIM_DATE_RANGE.members["start"], self.start)
+        if self.end is not None:
+            serializer.write_string(_SCHEMA_CLAIM_DATE_RANGE.members["end"], self.end)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["start"] = de.read_string(_SCHEMA_CLAIM_DATE_RANGE.members["start"])
+
+                case 1:
+                    kwargs["end"] = de.read_string(_SCHEMA_CLAIM_DATE_RANGE.members["end"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_CLAIM_DATE_RANGE, consumer=_consumer)
+        if "start" not in kwargs:
+            kwargs["start"] = ""
+        return kwargs
+
+class ClaimStatusReportedBy(UnknownEnumMixin, StrEnum):
+    """
+    The entity that reported a claim status.
+
+    - `PAYER`: The payer reported the status, in a 277CA claim
+      acknowledgment or an 835 ERA.
+    - `CLEARINGHOUSE`: A clearinghouse reported the status, either Stedi or
+      an intermediary clearinghouse between Stedi and the payer.
+    """
+    PAYER = "PAYER"
+    """
+    The payer reported the status, in a 277CA claim acknowledgment or an 835
+    ERA.
+    """
+    CLEARINGHOUSE = "CLEARINGHOUSE"
+    """
+    A clearinghouse reported the status, either Stedi or an intermediary
+    clearinghouse between Stedi and the payer.
+    """
+
+@dataclass(kw_only=True)
+class ClaimAcknowledgmentSummary:
+    """
+    A summary of a 277CA claim acknowledgment from a clearinghouse or the
+    payer.
+    """
+
+    id: str
+    """A unique identifier for the acknowledgment within Stedi."""
+
+    status: ClaimAcknowledgmentStatus
+    """
+    The status the clearinghouse or payer reported for the claim in the
+    277CA.
+
+    - `REJECTED`: A clearinghouse or the payer rejected the claim. The payer
+      won't adjudicate the claim until you correct and resubmit it.
+    - `ACCEPTED`: A clearinghouse or the payer accepted the claim. A
+      clearinghouse acceptance means the claim passed its edits and the
+      clearinghouse forwarded it to the payer. A payer acceptance means the
+      payer will adjudicate the claim.
+    - `RECEIVED`: A clearinghouse or the payer received the claim but
+      hasn't yet accepted or rejected it.
+    - `INVALID`: Stedi couldn't determine the status because the 277CA
+      carries a status category code Stedi doesn't recognize.
+    """
+
+    reported_by: ClaimStatusReportedBy
+    """
+    The entity that reported the status in the 277CA.
+
+    - `PAYER`: The payer reported the status in the 277CA.
+    - `CLEARINGHOUSE`: A clearinghouse reported the status, either Stedi or
+      an intermediary clearinghouse between Stedi and the payer.
+    """
+
+    source_name: str
+    """
+    The name of the clearinghouse or payer that reported the status, as it
+    appears in the 277CA.
+    """
+
+    processed_at: datetime
+    """The time Stedi processed the acknowledgment."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CLAIM_ACKNOWLEDGMENT_SUMMARY, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_CLAIM_ACKNOWLEDGMENT_SUMMARY.members["id"], self.id)
+        serializer.write_string(_SCHEMA_CLAIM_ACKNOWLEDGMENT_SUMMARY.members["status"], self.status)
+        serializer.write_string(_SCHEMA_CLAIM_ACKNOWLEDGMENT_SUMMARY.members["reportedBy"], self.reported_by)
+        serializer.write_string(_SCHEMA_CLAIM_ACKNOWLEDGMENT_SUMMARY.members["sourceName"], self.source_name)
+        serializer.write_timestamp(_SCHEMA_CLAIM_ACKNOWLEDGMENT_SUMMARY.members["processedAt"], self.processed_at)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["id"] = de.read_string(_SCHEMA_CLAIM_ACKNOWLEDGMENT_SUMMARY.members["id"])
+
+                case 1:
+                    kwargs["status"] = ClaimAcknowledgmentStatus(de.read_string(_SCHEMA_CLAIM_ACKNOWLEDGMENT_SUMMARY.members["status"]))
+
+                case 2:
+                    kwargs["reported_by"] = ClaimStatusReportedBy(de.read_string(_SCHEMA_CLAIM_ACKNOWLEDGMENT_SUMMARY.members["reportedBy"]))
+
+                case 3:
+                    kwargs["source_name"] = de.read_string(_SCHEMA_CLAIM_ACKNOWLEDGMENT_SUMMARY.members["sourceName"])
+
+                case 4:
+                    kwargs["processed_at"] = de.read_timestamp(_SCHEMA_CLAIM_ACKNOWLEDGMENT_SUMMARY.members["processedAt"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_CLAIM_ACKNOWLEDGMENT_SUMMARY, consumer=_consumer)
+        if "id" not in kwargs:
+            kwargs["id"] = ""
+        if "status" not in kwargs:
+            kwargs["status"] = ClaimAcknowledgmentStatus._corrected("")
+        if "reported_by" not in kwargs:
+            kwargs["reported_by"] = ClaimStatusReportedBy._corrected("")
+        if "source_name" not in kwargs:
+            kwargs["source_name"] = ""
+        if "processed_at" not in kwargs:
+            kwargs["processed_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        return kwargs
+
+def _serialize_claim_patient_control_numbers_list(serializer: ShapeSerializer, schema: Schema, value: list[str]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_string(member_schema, e)
+
+def _deserialize_claim_patient_control_numbers_list(deserializer: ShapeDeserializer, schema: Schema) -> list[str]:
+    result: list[str] = []
+    member_schema = schema.members["member"]
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(d.read_string(member_schema))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class ClaimPatientName:
+    """The name of the patient who received the services on the claim."""
+
+    first_name: str | None = None
+    """The patient's first name."""
+
+    middle_name: str | None = None
+    """The patient's middle name."""
+
+    last_name: str | None = None
+    """The patient's last name."""
+
+    suffix: str | None = None
+    """The patient's name suffix."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CLAIM_PATIENT_NAME, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.first_name is not None:
+            serializer.write_string(_SCHEMA_CLAIM_PATIENT_NAME.members["firstName"], self.first_name)
+
+        if self.middle_name is not None:
+            serializer.write_string(_SCHEMA_CLAIM_PATIENT_NAME.members["middleName"], self.middle_name)
+
+        if self.last_name is not None:
+            serializer.write_string(_SCHEMA_CLAIM_PATIENT_NAME.members["lastName"], self.last_name)
+
+        if self.suffix is not None:
+            serializer.write_string(_SCHEMA_CLAIM_PATIENT_NAME.members["suffix"], self.suffix)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["first_name"] = de.read_string(_SCHEMA_CLAIM_PATIENT_NAME.members["firstName"])
+
+                case 1:
+                    kwargs["middle_name"] = de.read_string(_SCHEMA_CLAIM_PATIENT_NAME.members["middleName"])
+
+                case 2:
+                    kwargs["last_name"] = de.read_string(_SCHEMA_CLAIM_PATIENT_NAME.members["lastName"])
+
+                case 3:
+                    kwargs["suffix"] = de.read_string(_SCHEMA_CLAIM_PATIENT_NAME.members["suffix"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_CLAIM_PATIENT_NAME, consumer=_consumer)
+        return kwargs
+
+class ClaimPaymentInformationStatusCode(UnknownEnumMixin, StrEnum):
+    """
+    The status the payer assigned to the claim in the 835 ERA.
+
+    - `PROCESSED_AS_PRIMARY`: The payer processed the claim as the primary
+      payer.
+    - `PROCESSED_AS_SECONDARY`: The payer processed the claim as the
+      secondary payer.
+    - `PROCESSED_AS_TERTIARY`: The payer processed the claim as the tertiary
+      payer.
+    - `DENIED`: The payer denied the claim.
+    - `PROCESSED_AS_PRIMARY_FORWARDED_TO_ADDITIONAL_PAYERS`: The payer
+      processed the claim as the primary payer and forwarded it to
+      additional payers.
+    - `PROCESSED_AS_SECONDARY_FORWARDED_TO_ADDITIONAL_PAYERS`: The payer
+      processed the claim as the secondary payer and forwarded it to
+      additional payers.
+    - `PROCESSED_AS_TERTIARY_FORWARDED_TO_ADDITIONAL_PAYERS`: The payer
+      processed the claim as the tertiary payer and forwarded it to
+      additional payers.
+    - `REVERSAL_OF_PREVIOUS_PAYMENT`: The payer reversed a payment it
+      reported earlier. The amounts are negative, so they cancel the earlier
+      payment.
+    - `NOT_OUR_CLAIM_FORWARDED_TO_ADDITIONAL_PAYERS`: The payer isn't
+      responsible for the claim and forwarded it to additional payers.
+    - `PREDETERMINATION_PRICING_ONLY`: The payer priced the claim without
+      paying it.
+    """
+    PROCESSED_AS_PRIMARY = "PROCESSED_AS_PRIMARY"
+    """The payer processed the claim as the primary payer.    """
+    PROCESSED_AS_SECONDARY = "PROCESSED_AS_SECONDARY"
+    """The payer processed the claim as the secondary payer.    """
+    PROCESSED_AS_TERTIARY = "PROCESSED_AS_TERTIARY"
+    """The payer processed the claim as the tertiary payer.    """
+    DENIED = "DENIED"
+    """The payer denied the claim.    """
+    PROCESSED_AS_PRIMARY_FORWARDED_TO_ADDITIONAL_PAYERS = "PROCESSED_AS_PRIMARY_FORWARDED_TO_ADDITIONAL_PAYERS"
+    """
+    The payer processed the claim as the primary payer and forwarded it to
+    additional payers.
+    """
+    PROCESSED_AS_SECONDARY_FORWARDED_TO_ADDITIONAL_PAYERS = "PROCESSED_AS_SECONDARY_FORWARDED_TO_ADDITIONAL_PAYERS"
+    """
+    The payer processed the claim as the secondary payer and forwarded it to
+    additional payers.
+    """
+    PROCESSED_AS_TERTIARY_FORWARDED_TO_ADDITIONAL_PAYERS = "PROCESSED_AS_TERTIARY_FORWARDED_TO_ADDITIONAL_PAYERS"
+    """
+    The payer processed the claim as the tertiary payer and forwarded it to
+    additional payers.
+    """
+    REVERSAL_OF_PREVIOUS_PAYMENT = "REVERSAL_OF_PREVIOUS_PAYMENT"
+    """
+    The payer reversed a payment it reported earlier. The amounts are
+    negative, so they cancel the earlier payment.
+    """
+    NOT_OUR_CLAIM_FORWARDED_TO_ADDITIONAL_PAYERS = "NOT_OUR_CLAIM_FORWARDED_TO_ADDITIONAL_PAYERS"
+    """
+    The payer isn't responsible for the claim and forwarded it to
+    additional payers.
+    """
+    PREDETERMINATION_PRICING_ONLY = "PREDETERMINATION_PRICING_ONLY"
+    """The payer priced the claim without paying it.    """
+
+@dataclass(kw_only=True)
+class ClaimPaymentInformationSummary:
+    """
+    A summary of the claim payment information the payer reported for a
+    claim in an 835 ERA. Each record corresponds to one CLP loop in the ERA.
+    """
+
+    id: str
+    """
+    A unique identifier for the claim payment information record within
+    Stedi.
+    """
+
+    status_code: ClaimPaymentInformationStatusCode
+    """The status the payer assigned to the claim."""
+
+    total_claim_charge_amount: str
+    """The total charge amount of the claim."""
+
+    claim_payment_amount: str
+    """
+    The amount the payer paid on the claim. This is the charge amount less
+    all adjustments, and can be positive, zero, or negative.
+    """
+
+    processed_at: datetime
+    """
+    The time Stedi processed the 835 ERA that reported this claim payment
+    information.
+    """
+
+    patient_responsibility_amount: str | None = None
+    """
+    The amount the patient owes, such as a deductible, copay, or
+    coinsurance.
+    """
+
+    check_or_eft_trace_number: str | None = None
+    """
+    The check number for check payments, or the EFT trace number for
+    electronic payments. Use it to match this claim payment information to
+    the funds the payer sent.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CLAIM_PAYMENT_INFORMATION_SUMMARY, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_CLAIM_PAYMENT_INFORMATION_SUMMARY.members["id"], self.id)
+        serializer.write_string(_SCHEMA_CLAIM_PAYMENT_INFORMATION_SUMMARY.members["statusCode"], self.status_code)
+        serializer.write_string(_SCHEMA_CLAIM_PAYMENT_INFORMATION_SUMMARY.members["totalClaimChargeAmount"], self.total_claim_charge_amount)
+        serializer.write_string(_SCHEMA_CLAIM_PAYMENT_INFORMATION_SUMMARY.members["claimPaymentAmount"], self.claim_payment_amount)
+        if self.patient_responsibility_amount is not None:
+            serializer.write_string(_SCHEMA_CLAIM_PAYMENT_INFORMATION_SUMMARY.members["patientResponsibilityAmount"], self.patient_responsibility_amount)
+
+        if self.check_or_eft_trace_number is not None:
+            serializer.write_string(_SCHEMA_CLAIM_PAYMENT_INFORMATION_SUMMARY.members["checkOrEftTraceNumber"], self.check_or_eft_trace_number)
+
+        serializer.write_timestamp(_SCHEMA_CLAIM_PAYMENT_INFORMATION_SUMMARY.members["processedAt"], self.processed_at)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["id"] = de.read_string(_SCHEMA_CLAIM_PAYMENT_INFORMATION_SUMMARY.members["id"])
+
+                case 1:
+                    kwargs["status_code"] = ClaimPaymentInformationStatusCode(de.read_string(_SCHEMA_CLAIM_PAYMENT_INFORMATION_SUMMARY.members["statusCode"]))
+
+                case 2:
+                    kwargs["total_claim_charge_amount"] = de.read_string(_SCHEMA_CLAIM_PAYMENT_INFORMATION_SUMMARY.members["totalClaimChargeAmount"])
+
+                case 3:
+                    kwargs["claim_payment_amount"] = de.read_string(_SCHEMA_CLAIM_PAYMENT_INFORMATION_SUMMARY.members["claimPaymentAmount"])
+
+                case 4:
+                    kwargs["patient_responsibility_amount"] = de.read_string(_SCHEMA_CLAIM_PAYMENT_INFORMATION_SUMMARY.members["patientResponsibilityAmount"])
+
+                case 5:
+                    kwargs["check_or_eft_trace_number"] = de.read_string(_SCHEMA_CLAIM_PAYMENT_INFORMATION_SUMMARY.members["checkOrEftTraceNumber"])
+
+                case 6:
+                    kwargs["processed_at"] = de.read_timestamp(_SCHEMA_CLAIM_PAYMENT_INFORMATION_SUMMARY.members["processedAt"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_CLAIM_PAYMENT_INFORMATION_SUMMARY, consumer=_consumer)
+        if "id" not in kwargs:
+            kwargs["id"] = ""
+        if "status_code" not in kwargs:
+            kwargs["status_code"] = ClaimPaymentInformationStatusCode._corrected("")
+        if "total_claim_charge_amount" not in kwargs:
+            kwargs["total_claim_charge_amount"] = ""
+        if "claim_payment_amount" not in kwargs:
+            kwargs["claim_payment_amount"] = ""
+        if "processed_at" not in kwargs:
+            kwargs["processed_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        return kwargs
+
+class ClaimStatus(UnknownEnumMixin, StrEnum):
+    """
+    The claim's current processing status.
+
+    - `SUBMITTED`: You submitted the claim to Stedi but haven't yet
+      received a 277CA response from Stedi or the payer.
+    - `RECEIVED`: The clearinghouse or payer has acknowledged receipt of the
+      claim. This doesn't mean the claim has been accepted for
+      adjudication.
+    - `ACCEPTED`: The payer has accepted the claim into their adjudication
+      system and it's currently being processed or adjudicated.
+    - `REJECTED`: Either Stedi or the payer rejected the claim before the
+      start of adjudication. This can happen even when the payer has
+      acknowledged receipt.
+    - `PROCESSED`: The payer has adjudicated the claim. Check
+      `totalClaimPaidAmount` to see how much was paid.
+    - `DENIED`: The payer has denied the claim.
+    - `UNKNOWN`: Stedi can't determine a single status for this claim,
+      usually because the payer's responses are mixed or incomplete.
+    """
+    SUBMITTED = "SUBMITTED"
+    """
+    You submitted the claim. No clearinghouse or payer has acknowledged it
+    yet.
+    """
+    RECEIVED = "RECEIVED"
+    """
+    A clearinghouse or the payer received the claim but hasn't yet accepted
+    or rejected it.
+    """
+    ACCEPTED = "ACCEPTED"
+    """
+    A clearinghouse or the payer accepted the claim. Check
+    `statusReportedBy` to see which one.
+    """
+    REJECTED = "REJECTED"
+    """
+    A clearinghouse or the payer rejected the claim. The payer won't
+    adjudicate the claim until you correct and resubmit it.
+    """
+    PROCESSED = "PROCESSED"
+    """
+    The payer adjudicated the claim and reported the result in an 835 ERA.
+    The payer may have paid all, part, or none of the charges. Check
+    `totalClaimPaidAmount` for the amount.
+    """
+    DENIED = "DENIED"
+    """The payer adjudicated the claim and denied it in an 835 ERA.    """
+    UNKNOWN = "UNKNOWN"
+    """
+    Stedi couldn't determine the status. The 277CA carries a status
+    category code Stedi doesn't recognize, or the 835 ERA doesn't report a
+    clear outcome for the claim.
+    """
+
+def _serialize_claim_status_list(serializer: ShapeSerializer, schema: Schema, value: list[ClaimStatus]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_string(member_schema, e)
+
+def _deserialize_claim_status_list(deserializer: ShapeDeserializer, schema: Schema) -> list[ClaimStatus]:
+    result: list[ClaimStatus] = []
+    member_schema = schema.members["member"]
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(ClaimStatus(d.read_string(member_schema)))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class ClaimSubmissionSummary:
+    """A summary of a claim submission."""
+
+    id: str
+    """
+    A unique identifier for a specific submission of a claim within Stedi.
+    Stedi generates a submission ID for the initial submission and then a
+    new submission ID for every resubmission of the same claim. This is
+    different from the claim ID, which doesn't change throughout the
+    claim's lifecycle.
+    """
+
+    patient_control_number: str
+    """The patient control number you assigned to the claim."""
+
+    total_claim_charge_amount: str
+    """The total charge amount of the submitted claim."""
+
+    processed_at: datetime
+    """The time Stedi processed the submission."""
+
+    stedi_payer_id: str | None = None
+    """
+    The payer identifier in Stedi's system. This is the Stedi payer ID
+    listed in the Stedi [Payer
+    Network](https://www.stedi.com/healthcare/network).
+    """
+
+    patient_name: ClaimPatientName | None = None
+    """The name of the patient who received the services on the claim."""
+
+    dates_of_service: ClaimDateRange | None = None
+    """
+    The dates of service from the claim. A single date of service carries
+    only `start`. Absent when the submitted dates aren't valid calendar
+    dates.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CLAIM_SUBMISSION_SUMMARY, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_CLAIM_SUBMISSION_SUMMARY.members["id"], self.id)
+        if self.stedi_payer_id is not None:
+            serializer.write_string(_SCHEMA_CLAIM_SUBMISSION_SUMMARY.members["stediPayerId"], self.stedi_payer_id)
+
+        serializer.write_string(_SCHEMA_CLAIM_SUBMISSION_SUMMARY.members["patientControlNumber"], self.patient_control_number)
+        if self.patient_name is not None:
+            serializer.write_struct(_SCHEMA_CLAIM_SUBMISSION_SUMMARY.members["patientName"], self.patient_name)
+
+        serializer.write_string(_SCHEMA_CLAIM_SUBMISSION_SUMMARY.members["totalClaimChargeAmount"], self.total_claim_charge_amount)
+        if self.dates_of_service is not None:
+            serializer.write_struct(_SCHEMA_CLAIM_SUBMISSION_SUMMARY.members["datesOfService"], self.dates_of_service)
+
+        serializer.write_timestamp(_SCHEMA_CLAIM_SUBMISSION_SUMMARY.members["processedAt"], self.processed_at)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["id"] = de.read_string(_SCHEMA_CLAIM_SUBMISSION_SUMMARY.members["id"])
+
+                case 1:
+                    kwargs["stedi_payer_id"] = de.read_string(_SCHEMA_CLAIM_SUBMISSION_SUMMARY.members["stediPayerId"])
+
+                case 2:
+                    kwargs["patient_control_number"] = de.read_string(_SCHEMA_CLAIM_SUBMISSION_SUMMARY.members["patientControlNumber"])
+
+                case 3:
+                    kwargs["patient_name"] = ClaimPatientName.deserialize(de)
+
+                case 4:
+                    kwargs["total_claim_charge_amount"] = de.read_string(_SCHEMA_CLAIM_SUBMISSION_SUMMARY.members["totalClaimChargeAmount"])
+
+                case 5:
+                    kwargs["dates_of_service"] = ClaimDateRange.deserialize(de)
+
+                case 6:
+                    kwargs["processed_at"] = de.read_timestamp(_SCHEMA_CLAIM_SUBMISSION_SUMMARY.members["processedAt"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_CLAIM_SUBMISSION_SUMMARY, consumer=_consumer)
+        if "id" not in kwargs:
+            kwargs["id"] = ""
+        if "patient_control_number" not in kwargs:
+            kwargs["patient_control_number"] = ""
+        if "total_claim_charge_amount" not in kwargs:
+            kwargs["total_claim_charge_amount"] = ""
+        if "processed_at" not in kwargs:
+            kwargs["processed_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        return kwargs
+
+@dataclass(kw_only=True)
+class ClaimSummary:
+    """The top-level fields of a claim."""
+
+    id: str
+    """
+    A unique identifier for the claim within Stedi. This ID stays the same
+    throughout the claim's entire lifecycle. For example, the claim ID is
+    the same for the initial submission and any resubmissions.
+    """
+
+    patient_control_number: str
+    """The patient control number you assigned to the claim."""
+
+    status: ClaimStatus
+    """
+    The claim's current processing status.
+
+    - `SUBMITTED`: You submitted the claim to Stedi but haven't yet
+      received a 277CA response from Stedi or the payer.
+    - `REJECTED`: Either Stedi or the payer rejected the claim before the
+      start of adjudication. This can happen even when the payer has
+      acknowledged receipt.
+    - `ACCEPTED`: The payer has accepted the claim into their adjudication
+      system and it's currently being processed or adjudicated.
+    - `RECEIVED`: The clearinghouse or payer has acknowledged receipt of the
+      claim. This doesn't mean the claim has been accepted for
+      adjudication.
+    - `PROCESSED`: The payer has adjudicated the claim. Check
+      `totalClaimPaidAmount` to see how much was paid.
+    - `DENIED`: The payer has denied the claim.
+    - `UNKNOWN`: Stedi can't determine a single status for this claim,
+      usually because the payer's responses are mixed or incomplete.
+    """
+
+    status_reported_by: ClaimStatusReportedBy
+    """
+    The entity that reported the claim's current status.
+
+    - `PAYER`: The payer reported the status, in a 277CA claim
+      acknowledgment or an 835 ERA.
+    - `CLEARINGHOUSE`: A clearinghouse reported the status, either Stedi or
+      an intermediary clearinghouse between Stedi and the payer.
+    """
+
+    type: ClaimType
+    """
+    The type of claim. Each type corresponds to a different 837 transaction
+    set.
+
+    - `PROFESSIONAL`: An 837P professional claim, the electronic equivalent
+      of the CMS-1500 form.
+    - `INSTITUTIONAL`: An 837I institutional claim, the electronic
+      equivalent of the UB-04 form.
+    - `DENTAL`: An 837D dental claim, the electronic equivalent of the ADA
+      Dental Claim Form.
+    """
+
+    total_claim_charge_amount: str
+    """The total charge amount of the claim's most recent submission."""
+
+    submitted_at: datetime
+    """The time Stedi processed the claim's most recent submission."""
+
+    stedi_payer_id: str | None = None
+    """
+    The payer identifier in Stedi's system. This is the Stedi payer ID
+    listed in the Stedi [Payer
+    Network](https://www.stedi.com/healthcare/network).
+    """
+
+    patient_name: ClaimPatientName | None = None
+    """The name of the patient who received the services on the claim."""
+
+    total_claim_paid_amount: str | None = None
+    """
+    The total amount payers have paid on this claim, summed across every
+    claim payment information record linked to it. Excludes claim payment
+    information with the `PREDETERMINATION_PRICING_ONLY` status, where the
+    payer priced the claim without paying it. Reversals carry a negative
+    amount, so they subtract from the total. Absent until Stedi receives an
+    835 ERA for the claim.
+    """
+
+    dates_of_service: ClaimDateRange | None = None
+    """
+    The dates of service from the claim's most recent submission. A single
+    date of service carries only `start`. Absent when the submitted dates
+    aren't valid calendar dates.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CLAIM_SUMMARY, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_CLAIM_SUMMARY.members["id"], self.id)
+        if self.stedi_payer_id is not None:
+            serializer.write_string(_SCHEMA_CLAIM_SUMMARY.members["stediPayerId"], self.stedi_payer_id)
+
+        serializer.write_string(_SCHEMA_CLAIM_SUMMARY.members["patientControlNumber"], self.patient_control_number)
+        if self.patient_name is not None:
+            serializer.write_struct(_SCHEMA_CLAIM_SUMMARY.members["patientName"], self.patient_name)
+
+        serializer.write_string(_SCHEMA_CLAIM_SUMMARY.members["status"], self.status)
+        serializer.write_string(_SCHEMA_CLAIM_SUMMARY.members["statusReportedBy"], self.status_reported_by)
+        serializer.write_string(_SCHEMA_CLAIM_SUMMARY.members["type"], self.type)
+        serializer.write_string(_SCHEMA_CLAIM_SUMMARY.members["totalClaimChargeAmount"], self.total_claim_charge_amount)
+        if self.total_claim_paid_amount is not None:
+            serializer.write_string(_SCHEMA_CLAIM_SUMMARY.members["totalClaimPaidAmount"], self.total_claim_paid_amount)
+
+        if self.dates_of_service is not None:
+            serializer.write_struct(_SCHEMA_CLAIM_SUMMARY.members["datesOfService"], self.dates_of_service)
+
+        serializer.write_timestamp(_SCHEMA_CLAIM_SUMMARY.members["submittedAt"], self.submitted_at)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["id"] = de.read_string(_SCHEMA_CLAIM_SUMMARY.members["id"])
+
+                case 1:
+                    kwargs["stedi_payer_id"] = de.read_string(_SCHEMA_CLAIM_SUMMARY.members["stediPayerId"])
+
+                case 2:
+                    kwargs["patient_control_number"] = de.read_string(_SCHEMA_CLAIM_SUMMARY.members["patientControlNumber"])
+
+                case 3:
+                    kwargs["patient_name"] = ClaimPatientName.deserialize(de)
+
+                case 4:
+                    kwargs["status"] = ClaimStatus(de.read_string(_SCHEMA_CLAIM_SUMMARY.members["status"]))
+
+                case 5:
+                    kwargs["status_reported_by"] = ClaimStatusReportedBy(de.read_string(_SCHEMA_CLAIM_SUMMARY.members["statusReportedBy"]))
+
+                case 6:
+                    kwargs["type"] = ClaimType(de.read_string(_SCHEMA_CLAIM_SUMMARY.members["type"]))
+
+                case 7:
+                    kwargs["total_claim_charge_amount"] = de.read_string(_SCHEMA_CLAIM_SUMMARY.members["totalClaimChargeAmount"])
+
+                case 8:
+                    kwargs["total_claim_paid_amount"] = de.read_string(_SCHEMA_CLAIM_SUMMARY.members["totalClaimPaidAmount"])
+
+                case 9:
+                    kwargs["dates_of_service"] = ClaimDateRange.deserialize(de)
+
+                case 10:
+                    kwargs["submitted_at"] = de.read_timestamp(_SCHEMA_CLAIM_SUMMARY.members["submittedAt"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_CLAIM_SUMMARY, consumer=_consumer)
+        if "id" not in kwargs:
+            kwargs["id"] = ""
+        if "patient_control_number" not in kwargs:
+            kwargs["patient_control_number"] = ""
+        if "status" not in kwargs:
+            kwargs["status"] = ClaimStatus._corrected("")
+        if "status_reported_by" not in kwargs:
+            kwargs["status_reported_by"] = ClaimStatusReportedBy._corrected("")
+        if "type" not in kwargs:
+            kwargs["type"] = ClaimType._corrected("")
+        if "total_claim_charge_amount" not in kwargs:
+            kwargs["total_claim_charge_amount"] = ""
+        if "submitted_at" not in kwargs:
+            kwargs["submitted_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        return kwargs
+
+def _serialize_claim_summaries(serializer: ShapeSerializer, schema: Schema, value: list[ClaimSummary]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_claim_summaries(deserializer: ShapeDeserializer, schema: Schema) -> list[ClaimSummary]:
+    result: list[ClaimSummary] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(ClaimSummary.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass
+class ClaimTimelineEventProfessionalClaimSubmission:
+    """
+    An 837P professional claim submission, either the initial submission or
+    a resubmission.
+    """
+
+    value: ClaimSubmissionSummary
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CLAIM_TIMELINE_EVENT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CLAIM_TIMELINE_EVENT.members["professionalClaimSubmission"], self.value)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=ClaimSubmissionSummary.deserialize(deserializer))
+
+@dataclass
+class ClaimTimelineEventDentalClaimSubmission:
+    """
+    An 837D dental claim submission, either the initial submission or a
+    resubmission.
+    """
+
+    value: ClaimSubmissionSummary
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CLAIM_TIMELINE_EVENT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CLAIM_TIMELINE_EVENT.members["dentalClaimSubmission"], self.value)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=ClaimSubmissionSummary.deserialize(deserializer))
+
+@dataclass
+class ClaimTimelineEventInstitutionalClaimSubmission:
+    """
+    An 837I institutional claim submission, either the initial submission or
+    a resubmission.
+    """
+
+    value: ClaimSubmissionSummary
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CLAIM_TIMELINE_EVENT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CLAIM_TIMELINE_EVENT.members["institutionalClaimSubmission"], self.value)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=ClaimSubmissionSummary.deserialize(deserializer))
+
+@dataclass
+class ClaimTimelineEventClaimAcknowledgment:
+    """A 277CA claim acknowledgment from a clearinghouse or the payer."""
+
+    value: ClaimAcknowledgmentSummary
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CLAIM_TIMELINE_EVENT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CLAIM_TIMELINE_EVENT.members["claimAcknowledgment"], self.value)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=ClaimAcknowledgmentSummary.deserialize(deserializer))
+
+@dataclass
+class ClaimTimelineEventClaimPaymentInformation:
+    """
+    Payment information the payer reported for this claim in an 835
+    Electronic Remittance Advice (ERA).
+    """
+
+    value: ClaimPaymentInformationSummary
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CLAIM_TIMELINE_EVENT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CLAIM_TIMELINE_EVENT.members["claimPaymentInformation"], self.value)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=ClaimPaymentInformationSummary.deserialize(deserializer))
+
+@dataclass
+class ClaimTimelineEventUnknown:
+    """
+    Represents an unknown variant.
+
+    If you receive this value, you will need to update your library to receive the
+    parsed value.
+
+    This value may not be deliberately sent.
+    """
+
+    tag: str
+
+    def serialize(self, serializer: ShapeSerializer):
+        raise SerializationError("Unknown union variants may not be serialized.")
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        raise SerializationError("Unknown union variants may not be serialized.")
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        raise NotImplementedError()
+
+ClaimTimelineEvent = Union[ClaimTimelineEventProfessionalClaimSubmission | ClaimTimelineEventDentalClaimSubmission | ClaimTimelineEventInstitutionalClaimSubmission | ClaimTimelineEventClaimAcknowledgment | ClaimTimelineEventClaimPaymentInformation | ClaimTimelineEventUnknown]
+"""
+A timeline entry in a claim's history. Exactly one property is set, and
+its name identifies the type of entry.
+"""
+class _ClaimTimelineEventDeserializer:
+    _result: ClaimTimelineEvent | None = None
+
+    def deserialize(self, deserializer: ShapeDeserializer) -> ClaimTimelineEvent:
+        self._result = None
+        deserializer.read_struct(_SCHEMA_CLAIM_TIMELINE_EVENT, self._consumer)
+
+        if self._result is None:
+            raise SerializationError("Unions must have exactly one value, but found none.")
+
+        return self._result
+
+    def _consumer(self, schema: Schema, de: ShapeDeserializer) -> None:
+        match schema.expect_member_index():
+            case 0:
+                self._set_result(ClaimTimelineEventProfessionalClaimSubmission.deserialize(de))
+
+            case 1:
+                self._set_result(ClaimTimelineEventDentalClaimSubmission.deserialize(de))
+
+            case 2:
+                self._set_result(ClaimTimelineEventInstitutionalClaimSubmission.deserialize(de))
+
+            case 3:
+                self._set_result(ClaimTimelineEventClaimAcknowledgment.deserialize(de))
+
+            case 4:
+                self._set_result(ClaimTimelineEventClaimPaymentInformation.deserialize(de))
+
+            case _:
+                self._set_result(ClaimTimelineEventUnknown(tag=schema.expect_member_name()))
+
+    def _set_result(self, value: ClaimTimelineEvent) -> None:
+        if self._result is not None:
+            raise SerializationError("Unions must have exactly one value, but found more than one.")
+        self._result = value
+
+def _serialize_claim_timeline_events(serializer: ShapeSerializer, schema: Schema, value: list[ClaimTimelineEvent]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_claim_timeline_events(deserializer: ShapeDeserializer, schema: Schema) -> list[ClaimTimelineEvent]:
+    result: list[ClaimTimelineEvent] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(_ClaimTimelineEventDeserializer().deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class GetClaimInput:
+    """Input for retrieving a claim."""
+
+    id: str | None = None
+    """
+    A unique identifier for the claim within Stedi. You can retrieve this ID
+    from the `claimId` property in the Create Professional Claim Submission
+    JSON endpoint response or from the List Claims lifecycle endpoint.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_GET_CLAIM_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.id is not None:
+            serializer.write_string(_SCHEMA_GET_CLAIM_INPUT.members["id"], self.id)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["id"] = de.read_string(_SCHEMA_GET_CLAIM_INPUT.members["id"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_GET_CLAIM_INPUT, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class GetClaimOutput:
+    """
+    The claim, with its current status and the summary fields from its most
+    recent submission.
+    """
+
+    id: str
+    """
+    A unique identifier for the claim within Stedi. This ID stays the same
+    throughout the claim's entire lifecycle. For example, the claim ID is
+    the same for the initial submission and any resubmissions.
+    """
+
+    patient_control_number: str
+    """The patient control number you assigned to the claim."""
+
+    status: ClaimStatus
+    """
+    The claim's current processing status.
+
+    - `SUBMITTED`: You submitted the claim to Stedi but haven't yet
+      received a 277CA response from Stedi or the payer.
+    - `REJECTED`: Either Stedi or the payer rejected the claim before the
+      start of adjudication. This can happen even when the payer has
+      acknowledged receipt.
+    - `ACCEPTED`: The payer has accepted the claim into their adjudication
+      system and it's currently being processed or adjudicated.
+    - `RECEIVED`: The clearinghouse or payer has acknowledged receipt of the
+      claim. This doesn't mean the claim has been accepted for
+      adjudication.
+    - `PROCESSED`: The payer has adjudicated the claim. Check
+      `totalClaimPaidAmount` to see how much was paid.
+    - `DENIED`: The payer has denied the claim.
+    - `UNKNOWN`: Stedi can't determine a single status for this claim,
+      usually because the payer's responses are mixed or incomplete.
+    """
+
+    status_reported_by: ClaimStatusReportedBy
+    """
+    The entity that reported the claim's current status.
+
+    - `PAYER`: The payer reported the status, in a 277CA claim
+      acknowledgment or an 835 ERA.
+    - `CLEARINGHOUSE`: A clearinghouse reported the status, either Stedi or
+      an intermediary clearinghouse between Stedi and the payer.
+    """
+
+    type: ClaimType
+    """
+    The type of claim. Each type corresponds to a different 837 transaction
+    set.
+
+    - `PROFESSIONAL`: An 837P professional claim, the electronic equivalent
+      of the CMS-1500 form.
+    - `INSTITUTIONAL`: An 837I institutional claim, the electronic
+      equivalent of the UB-04 form.
+    - `DENTAL`: An 837D dental claim, the electronic equivalent of the ADA
+      Dental Claim Form.
+    """
+
+    total_claim_charge_amount: str
+    """The total charge amount of the claim's most recent submission."""
+
+    submitted_at: datetime
+    """The time Stedi processed the claim's most recent submission."""
+
+    stedi_payer_id: str | None = None
+    """
+    The payer identifier in Stedi's system. This is the Stedi payer ID
+    listed in the Stedi [Payer
+    Network](https://www.stedi.com/healthcare/network).
+    """
+
+    patient_name: ClaimPatientName | None = None
+    """The name of the patient who received the services on the claim."""
+
+    total_claim_paid_amount: str | None = None
+    """
+    The total amount payers have paid on this claim, summed across every
+    claim payment information record linked to it. Excludes claim payment
+    information with the `PREDETERMINATION_PRICING_ONLY` status, where the
+    payer priced the claim without paying it. Reversals carry a negative
+    amount, so they subtract from the total. Absent until Stedi receives an
+    835 ERA for the claim.
+    """
+
+    dates_of_service: ClaimDateRange | None = None
+    """
+    The dates of service from the claim's most recent submission. A single
+    date of service carries only `start`. Absent when the submitted dates
+    aren't valid calendar dates.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_GET_CLAIM_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_GET_CLAIM_OUTPUT.members["id"], self.id)
+        if self.stedi_payer_id is not None:
+            serializer.write_string(_SCHEMA_GET_CLAIM_OUTPUT.members["stediPayerId"], self.stedi_payer_id)
+
+        serializer.write_string(_SCHEMA_GET_CLAIM_OUTPUT.members["patientControlNumber"], self.patient_control_number)
+        if self.patient_name is not None:
+            serializer.write_struct(_SCHEMA_GET_CLAIM_OUTPUT.members["patientName"], self.patient_name)
+
+        serializer.write_string(_SCHEMA_GET_CLAIM_OUTPUT.members["status"], self.status)
+        serializer.write_string(_SCHEMA_GET_CLAIM_OUTPUT.members["statusReportedBy"], self.status_reported_by)
+        serializer.write_string(_SCHEMA_GET_CLAIM_OUTPUT.members["type"], self.type)
+        serializer.write_string(_SCHEMA_GET_CLAIM_OUTPUT.members["totalClaimChargeAmount"], self.total_claim_charge_amount)
+        if self.total_claim_paid_amount is not None:
+            serializer.write_string(_SCHEMA_GET_CLAIM_OUTPUT.members["totalClaimPaidAmount"], self.total_claim_paid_amount)
+
+        if self.dates_of_service is not None:
+            serializer.write_struct(_SCHEMA_GET_CLAIM_OUTPUT.members["datesOfService"], self.dates_of_service)
+
+        serializer.write_timestamp(_SCHEMA_GET_CLAIM_OUTPUT.members["submittedAt"], self.submitted_at)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["id"] = de.read_string(_SCHEMA_GET_CLAIM_OUTPUT.members["id"])
+
+                case 1:
+                    kwargs["stedi_payer_id"] = de.read_string(_SCHEMA_GET_CLAIM_OUTPUT.members["stediPayerId"])
+
+                case 2:
+                    kwargs["patient_control_number"] = de.read_string(_SCHEMA_GET_CLAIM_OUTPUT.members["patientControlNumber"])
+
+                case 3:
+                    kwargs["patient_name"] = ClaimPatientName.deserialize(de)
+
+                case 4:
+                    kwargs["status"] = ClaimStatus(de.read_string(_SCHEMA_GET_CLAIM_OUTPUT.members["status"]))
+
+                case 5:
+                    kwargs["status_reported_by"] = ClaimStatusReportedBy(de.read_string(_SCHEMA_GET_CLAIM_OUTPUT.members["statusReportedBy"]))
+
+                case 6:
+                    kwargs["type"] = ClaimType(de.read_string(_SCHEMA_GET_CLAIM_OUTPUT.members["type"]))
+
+                case 7:
+                    kwargs["total_claim_charge_amount"] = de.read_string(_SCHEMA_GET_CLAIM_OUTPUT.members["totalClaimChargeAmount"])
+
+                case 8:
+                    kwargs["total_claim_paid_amount"] = de.read_string(_SCHEMA_GET_CLAIM_OUTPUT.members["totalClaimPaidAmount"])
+
+                case 9:
+                    kwargs["dates_of_service"] = ClaimDateRange.deserialize(de)
+
+                case 10:
+                    kwargs["submitted_at"] = de.read_timestamp(_SCHEMA_GET_CLAIM_OUTPUT.members["submittedAt"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_GET_CLAIM_OUTPUT, consumer=_consumer)
+        if "id" not in kwargs:
+            kwargs["id"] = ""
+        if "patient_control_number" not in kwargs:
+            kwargs["patient_control_number"] = ""
+        if "status" not in kwargs:
+            kwargs["status"] = ClaimStatus._corrected("")
+        if "status_reported_by" not in kwargs:
+            kwargs["status_reported_by"] = ClaimStatusReportedBy._corrected("")
+        if "type" not in kwargs:
+            kwargs["type"] = ClaimType._corrected("")
+        if "total_claim_charge_amount" not in kwargs:
+            kwargs["total_claim_charge_amount"] = ""
+        if "submitted_at" not in kwargs:
+            kwargs["submitted_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        return kwargs
+
+GET_CLAIM = APIOperation(
+        input = GetClaimInput,
+        output = GetClaimOutput,
+        schema = _SCHEMA_GET_CLAIM,
+        input_schema = _SCHEMA_GET_CLAIM_INPUT,
+        output_schema = _SCHEMA_GET_CLAIM_OUTPUT,
+        error_registry = TypeRegistry({
+            ShapeID("com.stedi.smithy.model.errors#AuthenticationFailedException"): AuthenticationFailedException,
+ShapeID("com.stedi.smithy.model.errors#ForbiddenException"): ForbiddenException,
+ShapeID("com.stedi.smithy.model.errors#InternalServerException"): InternalServerException,
+ShapeID("com.stedi.smithy.model.errors#InvalidRequestException"): InvalidRequestException,
+ShapeID("com.stedi.smithy.model.errors#NotFoundException"): NotFoundException,
+ShapeID("com.stedi.smithy.model.errors#TooManyRequestsException"): TooManyRequestsException,
+        }),
+        effective_auth_schemes = [
+            ShapeID("smithy.api#httpApiKeyAuth"),
+ShapeID("smithy.api#httpBearerAuth"),
+        ],
+        error_schemas = [
+            _SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
+_SCHEMA_FORBIDDEN_EXCEPTION,
+_SCHEMA_INTERNAL_SERVER_EXCEPTION,
+_SCHEMA_INVALID_REQUEST_EXCEPTION,
+_SCHEMA_NOT_FOUND_EXCEPTION,
+_SCHEMA_TOO_MANY_REQUESTS_EXCEPTION,
+        ]
+)
+
+@dataclass(kw_only=True)
+class GetClaimTimelineInput:
+    """Input for retrieving a claim's timeline."""
+
+    page_size: int = 100
+    """
+    The maximum number of timeline entries to return per page. Defaults to
+    100.
+    """
+
+    page_token: str | None = None
+    """
+    The `nextPageToken` from a previous call to this operation. If not
+    specified, Stedi returns the first page of results.
+    """
+
+    id: str | None = None
+    """
+    A unique identifier for the claim within Stedi. You can retrieve this ID
+    from the `claimId` property in a claim submission response or from the
+    list claims endpoint.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_GET_CLAIM_TIMELINE_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.page_size is not None:
+            serializer.write_integer(_SCHEMA_GET_CLAIM_TIMELINE_INPUT.members["pageSize"], self.page_size)
+
+        if self.page_token is not None:
+            serializer.write_string(_SCHEMA_GET_CLAIM_TIMELINE_INPUT.members["pageToken"], self.page_token)
+
+        if self.id is not None:
+            serializer.write_string(_SCHEMA_GET_CLAIM_TIMELINE_INPUT.members["id"], self.id)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["page_size"] = de.read_integer(_SCHEMA_GET_CLAIM_TIMELINE_INPUT.members["pageSize"])
+
+                case 1:
+                    kwargs["page_token"] = de.read_string(_SCHEMA_GET_CLAIM_TIMELINE_INPUT.members["pageToken"])
+
+                case 2:
+                    kwargs["id"] = de.read_string(_SCHEMA_GET_CLAIM_TIMELINE_INPUT.members["id"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_GET_CLAIM_TIMELINE_INPUT, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class GetClaimTimelineOutput:
+    """A page of a claim's timeline."""
+
+    items: list[ClaimTimelineEvent]
+    """
+    Timeline entries for the claim, newest first, including submissions,
+    acknowledgments, and claim payment information.
+    """
+
+    next_page_token: str | None = None
+    """
+    Token you can supply in subsequent requests to retrieve the next page of
+    results. If absent, there are no more results.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_GET_CLAIM_TIMELINE_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.next_page_token is not None:
+            serializer.write_string(_SCHEMA_GET_CLAIM_TIMELINE_OUTPUT.members["nextPageToken"], self.next_page_token)
+
+        _serialize_claim_timeline_events(serializer, _SCHEMA_GET_CLAIM_TIMELINE_OUTPUT.members["items"], self.items)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["next_page_token"] = de.read_string(_SCHEMA_GET_CLAIM_TIMELINE_OUTPUT.members["nextPageToken"])
+
+                case 1:
+                    kwargs["items"] = _deserialize_claim_timeline_events(de, _SCHEMA_GET_CLAIM_TIMELINE_OUTPUT.members["items"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_GET_CLAIM_TIMELINE_OUTPUT, consumer=_consumer)
+        if "items" not in kwargs:
+            kwargs["items"] = []
+        return kwargs
+
+GET_CLAIM_TIMELINE = APIOperation(
+        input = GetClaimTimelineInput,
+        output = GetClaimTimelineOutput,
+        schema = _SCHEMA_GET_CLAIM_TIMELINE,
+        input_schema = _SCHEMA_GET_CLAIM_TIMELINE_INPUT,
+        output_schema = _SCHEMA_GET_CLAIM_TIMELINE_OUTPUT,
+        error_registry = TypeRegistry({
+            ShapeID("com.stedi.smithy.model.errors#AuthenticationFailedException"): AuthenticationFailedException,
+ShapeID("com.stedi.smithy.model.errors#ForbiddenException"): ForbiddenException,
+ShapeID("com.stedi.smithy.model.errors#InternalServerException"): InternalServerException,
+ShapeID("com.stedi.smithy.model.errors#InvalidRequestException"): InvalidRequestException,
+ShapeID("com.stedi.smithy.model.errors#NotFoundException"): NotFoundException,
+ShapeID("com.stedi.smithy.model.errors#TooManyRequestsException"): TooManyRequestsException,
+        }),
+        effective_auth_schemes = [
+            ShapeID("smithy.api#httpApiKeyAuth"),
+ShapeID("smithy.api#httpBearerAuth"),
+        ],
+        error_schemas = [
+            _SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
+_SCHEMA_FORBIDDEN_EXCEPTION,
+_SCHEMA_INTERNAL_SERVER_EXCEPTION,
+_SCHEMA_INVALID_REQUEST_EXCEPTION,
+_SCHEMA_NOT_FOUND_EXCEPTION,
+_SCHEMA_TOO_MANY_REQUESTS_EXCEPTION,
+        ]
+)
+
+@dataclass(kw_only=True)
+class ListClaimsInput:
+    """Input for listing claims."""
+
+    page_size: int = 100
+    """The maximum number of claims to return per page. Defaults to 100."""
+
+    page_token: str | None = None
+    """
+    The `nextPageToken` from a previous call to this operation. If not
+    specified, Stedi returns the first page of results.
+    """
+
+    status: list[ClaimStatus] | None = None
+    """
+    Filter for claims with specific statuses. You can include this parameter
+    multiple times to filter for multiple statuses.
+
+    - `SUBMITTED`: You submitted the claim to Stedi but haven't yet
+      received a 277CA response from Stedi or the payer.
+    - `RECEIVED`: The clearinghouse or payer has acknowledged receipt of the
+      claim. This doesn't mean the claim has been accepted for
+      adjudication.
+    - `ACCEPTED`: The payer has accepted the claim into their adjudication
+      system and it's currently being processed or adjudicated.
+    - `REJECTED`: Either Stedi or the payer rejected the claim before the
+      start of adjudication. This can happen even when the payer has
+      acknowledged receipt.
+    - `PROCESSED`: The payer has adjudicated the claim. Check
+      `totalClaimPaidAmount` to see how much was paid.
+    - `DENIED`: The payer has denied the claim.
+    - `UNKNOWN`: Stedi can't determine a single status for this claim,
+      usually because the payer's responses are mixed or incomplete.
+    """
+
+    patient_control_numbers: list[str] | None = None
+    """
+    Filter for claims with specific patient control numbers. You can include
+    this parameter multiple times to filter for multiple patient control
+    numbers.
+    """
+
+    submitted_after: datetime | None = None
+    """Filter for claims with `submittedAt` after this time."""
+
+    submitted_before: datetime | None = None
+    """Filter for claims with `submittedAt` before this time."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_LIST_CLAIMS_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.page_size is not None:
+            serializer.write_integer(_SCHEMA_LIST_CLAIMS_INPUT.members["pageSize"], self.page_size)
+
+        if self.page_token is not None:
+            serializer.write_string(_SCHEMA_LIST_CLAIMS_INPUT.members["pageToken"], self.page_token)
+
+        if self.status is not None:
+            _serialize_claim_status_list(serializer, _SCHEMA_LIST_CLAIMS_INPUT.members["status"], self.status)
+
+        if self.patient_control_numbers is not None:
+            _serialize_claim_patient_control_numbers_list(serializer, _SCHEMA_LIST_CLAIMS_INPUT.members["patientControlNumbers"], self.patient_control_numbers)
+
+        if self.submitted_after is not None:
+            serializer.write_timestamp(_SCHEMA_LIST_CLAIMS_INPUT.members["submittedAfter"], self.submitted_after)
+
+        if self.submitted_before is not None:
+            serializer.write_timestamp(_SCHEMA_LIST_CLAIMS_INPUT.members["submittedBefore"], self.submitted_before)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["page_size"] = de.read_integer(_SCHEMA_LIST_CLAIMS_INPUT.members["pageSize"])
+
+                case 1:
+                    kwargs["page_token"] = de.read_string(_SCHEMA_LIST_CLAIMS_INPUT.members["pageToken"])
+
+                case 2:
+                    kwargs["status"] = _deserialize_claim_status_list(de, _SCHEMA_LIST_CLAIMS_INPUT.members["status"])
+
+                case 3:
+                    kwargs["patient_control_numbers"] = _deserialize_claim_patient_control_numbers_list(de, _SCHEMA_LIST_CLAIMS_INPUT.members["patientControlNumbers"])
+
+                case 4:
+                    kwargs["submitted_after"] = de.read_timestamp(_SCHEMA_LIST_CLAIMS_INPUT.members["submittedAfter"])
+
+                case 5:
+                    kwargs["submitted_before"] = de.read_timestamp(_SCHEMA_LIST_CLAIMS_INPUT.members["submittedBefore"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_LIST_CLAIMS_INPUT, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class ListClaimsOutput:
+    """A page of claims."""
+
+    items: list[ClaimSummary]
+    """
+    The claim records on this page, newest first by `submittedAt`. Each
+    claim record includes summary information about the most recent
+    submission, including processing status, charge and paid totals, patient
+    name, dates of service, and claim type.
+    """
+
+    next_page_token: str | None = None
+    """
+    Token you can supply in subsequent requests to retrieve the next page of
+    results. If absent, there are no more results.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_LIST_CLAIMS_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.next_page_token is not None:
+            serializer.write_string(_SCHEMA_LIST_CLAIMS_OUTPUT.members["nextPageToken"], self.next_page_token)
+
+        _serialize_claim_summaries(serializer, _SCHEMA_LIST_CLAIMS_OUTPUT.members["items"], self.items)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["next_page_token"] = de.read_string(_SCHEMA_LIST_CLAIMS_OUTPUT.members["nextPageToken"])
+
+                case 1:
+                    kwargs["items"] = _deserialize_claim_summaries(de, _SCHEMA_LIST_CLAIMS_OUTPUT.members["items"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_LIST_CLAIMS_OUTPUT, consumer=_consumer)
+        if "items" not in kwargs:
+            kwargs["items"] = []
+        return kwargs
+
+LIST_CLAIMS = APIOperation(
+        input = ListClaimsInput,
+        output = ListClaimsOutput,
+        schema = _SCHEMA_LIST_CLAIMS,
+        input_schema = _SCHEMA_LIST_CLAIMS_INPUT,
+        output_schema = _SCHEMA_LIST_CLAIMS_OUTPUT,
+        error_registry = TypeRegistry({
+            ShapeID("com.stedi.smithy.model.errors#AuthenticationFailedException"): AuthenticationFailedException,
+ShapeID("com.stedi.smithy.model.errors#ForbiddenException"): ForbiddenException,
+ShapeID("com.stedi.smithy.model.errors#InternalServerException"): InternalServerException,
+ShapeID("com.stedi.smithy.model.errors#InvalidRequestException"): InvalidRequestException,
+ShapeID("com.stedi.smithy.model.errors#TooManyRequestsException"): TooManyRequestsException,
+        }),
+        effective_auth_schemes = [
+            ShapeID("smithy.api#httpApiKeyAuth"),
+ShapeID("smithy.api#httpBearerAuth"),
+        ],
+        error_schemas = [
+            _SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
+_SCHEMA_FORBIDDEN_EXCEPTION,
+_SCHEMA_INTERNAL_SERVER_EXCEPTION,
+_SCHEMA_INVALID_REQUEST_EXCEPTION,
+_SCHEMA_TOO_MANY_REQUESTS_EXCEPTION,
+        ]
+)
+
+def _serialize_event_destinations_event_type_list(serializer: ShapeSerializer, schema: Schema, value: list[str]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_string(member_schema, e)
+
+def _deserialize_event_destinations_event_type_list(deserializer: ShapeDeserializer, schema: Schema) -> list[str]:
+    result: list[str] = []
+    member_schema = schema.members["member"]
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(d.read_string(member_schema))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+class EventDestinationsDestinationInputStatus(UnknownEnumMixin, StrEnum):
+    """The desired status of a destination, as set by the user.    """
+    ENABLED = "ENABLED"
+    """The destination is active and will receive event deliveries.    """
+    DISABLED = "DISABLED"
+    """The destination is paused and will not receive event deliveries.    """
+
+@dataclass(kw_only=True)
+class CreateEventDestinationInput:
+    """Input for creating a new destination."""
+
+    name: str | None = None
+    """
+    A human-readable name for the destination. Stedi displays this name in
+    the portal.
+    """
+
+    description: str | None = None
+    """
+    A description of the destination's purpose, such as \"Receives
+    transaction enrollment task notifications.\"
+    """
+
+    event_types: list[str] | None = None
+    """
+    The event types you want Stedi to send to this destination. Visit [event
+    types](https://www.stedi.com/docs/healthcare/event-destinations-event-types)
+    for a complete list.
+    """
+
+    destination_url: str | None = None
+    """The URL where you want Stedi to deliver payloads through HTTP `POST`."""
+
+    concurrency_limit: int | None = None
+    """
+    Maximum concurrent deliveries for this destination. If not set, Stedi
+    applies your account default (typically 5). Stedi rejects requests
+    exceeding your account maximum (typically 20) with a `400` error.
+    Contact Stedi to change your limits.
+    """
+
+    status: EventDestinationsDestinationInputStatus = EventDestinationsDestinationInputStatus("ENABLED")
+    """The destination's status upon creation. Default is `ENABLED`."""
+
+    idempotency_key: str | None = None
+    """
+    A unique string to identify this request to the server. If not set,
+    Stedi generates one automatically.
+
+    The key can be up to 255 characters. You can safely retry requests with
+    the same idempotency key within 24 hours of making the first request.
+    This prevents duplicate operations due to network errors or other
+    intermittent failures. [Learn
+    more](https://www.stedi.com/docs/api-reference/index#idempotency-keys).
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CREATE_EVENT_DESTINATION_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.name is not None:
+            serializer.write_string(_SCHEMA_CREATE_EVENT_DESTINATION_INPUT.members["name"], self.name)
+
+        if self.description is not None:
+            serializer.write_string(_SCHEMA_CREATE_EVENT_DESTINATION_INPUT.members["description"], self.description)
+
+        if self.event_types is not None:
+            _serialize_event_destinations_event_type_list(serializer, _SCHEMA_CREATE_EVENT_DESTINATION_INPUT.members["eventTypes"], self.event_types)
+
+        if self.destination_url is not None:
+            serializer.write_string(_SCHEMA_CREATE_EVENT_DESTINATION_INPUT.members["destinationUrl"], self.destination_url)
+
+        if self.concurrency_limit is not None:
+            serializer.write_integer(_SCHEMA_CREATE_EVENT_DESTINATION_INPUT.members["concurrencyLimit"], self.concurrency_limit)
+
+        if self.status is not None:
+            serializer.write_string(_SCHEMA_CREATE_EVENT_DESTINATION_INPUT.members["status"], self.status)
+
+        if self.idempotency_key is not None:
+            serializer.write_string(_SCHEMA_CREATE_EVENT_DESTINATION_INPUT.members["idempotencyKey"], self.idempotency_key)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["name"] = de.read_string(_SCHEMA_CREATE_EVENT_DESTINATION_INPUT.members["name"])
+
+                case 1:
+                    kwargs["description"] = de.read_string(_SCHEMA_CREATE_EVENT_DESTINATION_INPUT.members["description"])
+
+                case 2:
+                    kwargs["event_types"] = _deserialize_event_destinations_event_type_list(de, _SCHEMA_CREATE_EVENT_DESTINATION_INPUT.members["eventTypes"])
+
+                case 3:
+                    kwargs["destination_url"] = de.read_string(_SCHEMA_CREATE_EVENT_DESTINATION_INPUT.members["destinationUrl"])
+
+                case 4:
+                    kwargs["concurrency_limit"] = de.read_integer(_SCHEMA_CREATE_EVENT_DESTINATION_INPUT.members["concurrencyLimit"])
+
+                case 5:
+                    kwargs["status"] = EventDestinationsDestinationInputStatus(de.read_string(_SCHEMA_CREATE_EVENT_DESTINATION_INPUT.members["status"]))
+
+                case 6:
+                    kwargs["idempotency_key"] = de.read_string(_SCHEMA_CREATE_EVENT_DESTINATION_INPUT.members["idempotencyKey"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_CREATE_EVENT_DESTINATION_INPUT, consumer=_consumer)
+        return kwargs
+
+class EventDestinationsDestinationStatus(UnknownEnumMixin, StrEnum):
+    """
+    The destination's current status. Stedi only sends event payloads to
+    `ENABLED` destinations.
+    """
+    ENABLED = "ENABLED"
+    """The destination is active and will receive event deliveries.    """
+    DISABLED = "DISABLED"
+    """The destination is paused and will not receive event deliveries.    """
+
+@dataclass(kw_only=True)
+class CreateEventDestinationOutput:
+    """Output containing the created destination details and signing secret."""
+
+    id: str
+    """The unique identifier for the destination."""
+
+    created_at: datetime
+    """Creation timestamp for this destination."""
+
+    updated_at: datetime
+    """Last update timestamp for this destination."""
+
+    status: EventDestinationsDestinationStatus
+    """
+    The destination's current status. Stedi only sends event payloads to
+    `ENABLED` destinations.
+    """
+
+    name: str
+    """
+    A human-readable name for the destination. Stedi displays this name in
+    the portal.
+    """
+
+    description: str
+    """
+    A description of the destination's purpose, such as \"Receives
+    transaction enrollment task notifications.\"
+    """
+
+    event_types: list[str]
+    """
+    The event types Stedi sends to this destination. Visit [event
+    types](https://www.stedi.com/docs/healthcare/event-destinations-event-types)
+    for a complete list.
+    """
+
+    destination_url: str
+    """The URL where Stedi delivers payloads through HTTP `POST`."""
+
+    signing_secret: str = field(repr=False)
+    """
+    The signing secret for verifying event payloads. Store it securely.
+    Visit [verify event
+    signatures](https://www.stedi.com/docs/healthcare/event-destinations-message-handling#verify-authenticity-and-receipt-time)
+    for details.
+    """
+
+    last_delivery_time: datetime | None = None
+    """
+    The timestamp for Stedi's most recent delivery attempt to this
+    destination. Absent when Stedi hasn't yet attempted a delivery.
+    """
+
+    concurrency_limit: int | None = None
+    """
+    The maximum number of concurrent deliveries for this destination.
+    Contact Stedi to change your account limits.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["id"], self.id)
+        serializer.write_timestamp(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["createdAt"], self.created_at)
+        serializer.write_timestamp(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["updatedAt"], self.updated_at)
+        serializer.write_string(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["status"], self.status)
+        if self.last_delivery_time is not None:
+            serializer.write_timestamp(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["lastDeliveryTime"], self.last_delivery_time)
+
+        serializer.write_string(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["name"], self.name)
+        serializer.write_string(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["description"], self.description)
+        _serialize_event_destinations_event_type_list(serializer, _SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["eventTypes"], self.event_types)
+        serializer.write_string(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["destinationUrl"], self.destination_url)
+        if self.concurrency_limit is not None:
+            serializer.write_integer(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["concurrencyLimit"], self.concurrency_limit)
+
+        serializer.write_string(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["signingSecret"], self.signing_secret)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["id"] = de.read_string(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["id"])
+
+                case 1:
+                    kwargs["created_at"] = de.read_timestamp(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["createdAt"])
+
+                case 2:
+                    kwargs["updated_at"] = de.read_timestamp(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["updatedAt"])
+
+                case 3:
+                    kwargs["status"] = EventDestinationsDestinationStatus(de.read_string(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["status"]))
+
+                case 4:
+                    kwargs["last_delivery_time"] = de.read_timestamp(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["lastDeliveryTime"])
+
+                case 5:
+                    kwargs["name"] = de.read_string(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["name"])
+
+                case 6:
+                    kwargs["description"] = de.read_string(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["description"])
+
+                case 7:
+                    kwargs["event_types"] = _deserialize_event_destinations_event_type_list(de, _SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["eventTypes"])
+
+                case 8:
+                    kwargs["destination_url"] = de.read_string(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["destinationUrl"])
+
+                case 9:
+                    kwargs["concurrency_limit"] = de.read_integer(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["concurrencyLimit"])
+
+                case 10:
+                    kwargs["signing_secret"] = de.read_string(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT.members["signingSecret"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT, consumer=_consumer)
+        if "id" not in kwargs:
+            kwargs["id"] = ""
+        if "created_at" not in kwargs:
+            kwargs["created_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        if "updated_at" not in kwargs:
+            kwargs["updated_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        if "status" not in kwargs:
+            kwargs["status"] = EventDestinationsDestinationStatus._corrected("")
+        if "name" not in kwargs:
+            kwargs["name"] = ""
+        if "description" not in kwargs:
+            kwargs["description"] = ""
+        if "event_types" not in kwargs:
+            kwargs["event_types"] = []
+        if "destination_url" not in kwargs:
+            kwargs["destination_url"] = ""
+        if "signing_secret" not in kwargs:
+            kwargs["signing_secret"] = ""
+        return kwargs
+
+@dataclass(kw_only=True)
+class EventDestinationsLimitExceededException(ServiceError):
+    """
+    The account has reached its maximum number of event destinations. Delete
+    an existing destination or request a limit increase before creating
+    another. Not retryable --- the caller must change account state before
+    retrying.
+    """
+
+    fault: Literal["client", "server"] | None = "client"
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_EVENT_DESTINATIONS_LIMIT_EXCEEDED_EXCEPTION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_EVENT_DESTINATIONS_LIMIT_EXCEEDED_EXCEPTION.members["message"], self.message)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["message"] = de.read_string(_SCHEMA_EVENT_DESTINATIONS_LIMIT_EXCEEDED_EXCEPTION.members["message"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_EVENT_DESTINATIONS_LIMIT_EXCEEDED_EXCEPTION, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class ContentTooLargeException(ServiceError):
+    """
+    The request payload is larger than the service accepts. Send less in one
+    request.
+    """
+
+    fault: Literal["client", "server"] | None = "client"
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CONTENT_TOO_LARGE_EXCEPTION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_CONTENT_TOO_LARGE_EXCEPTION.members["message"], self.message)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["message"] = de.read_string(_SCHEMA_CONTENT_TOO_LARGE_EXCEPTION.members["message"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_CONTENT_TOO_LARGE_EXCEPTION, consumer=_consumer)
+        return kwargs
+
+CREATE_EVENT_DESTINATION = APIOperation(
+        input = CreateEventDestinationInput,
+        output = CreateEventDestinationOutput,
+        schema = _SCHEMA_CREATE_EVENT_DESTINATION,
+        input_schema = _SCHEMA_CREATE_EVENT_DESTINATION_INPUT,
+        output_schema = _SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT,
+        error_registry = TypeRegistry({
+            ShapeID("com.stedi.events#EventDestinationsLimitExceededException"): EventDestinationsLimitExceededException,
+ShapeID("com.stedi.smithy.model.errors#AuthenticationFailedException"): AuthenticationFailedException,
+ShapeID("com.stedi.smithy.model.errors#ConflictException"): ConflictException,
+ShapeID("com.stedi.smithy.model.errors#ContentTooLargeException"): ContentTooLargeException,
+ShapeID("com.stedi.smithy.model.errors#ForbiddenException"): ForbiddenException,
+ShapeID("com.stedi.smithy.model.errors#InternalServerException"): InternalServerException,
+ShapeID("com.stedi.smithy.model.errors#InvalidRequestException"): InvalidRequestException,
+ShapeID("com.stedi.smithy.model.errors#TooManyRequestsException"): TooManyRequestsException,
+        }),
+        effective_auth_schemes = [
+            ShapeID("smithy.api#httpApiKeyAuth"),
+ShapeID("smithy.api#httpBearerAuth"),
+        ],
+        error_schemas = [
+            _SCHEMA_EVENT_DESTINATIONS_LIMIT_EXCEEDED_EXCEPTION,
+_SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
+_SCHEMA_CONFLICT_EXCEPTION,
+_SCHEMA_CONTENT_TOO_LARGE_EXCEPTION,
+_SCHEMA_FORBIDDEN_EXCEPTION,
+_SCHEMA_INTERNAL_SERVER_EXCEPTION,
+_SCHEMA_INVALID_REQUEST_EXCEPTION,
+_SCHEMA_TOO_MANY_REQUESTS_EXCEPTION,
+        ]
+)
+
+@dataclass(kw_only=True)
+class DeleteEventDestinationInput:
+    """Input for deleting a destination."""
+
+    destination_id: str | None = None
+    """
+    The unique identifier for the destination. You can retrieve destination
+    IDs with the [List
+    Destinations](https://www.stedi.com/docs/healthcare/api-reference/get-event-destinations-list-destinations)
+    endpoint.
+    """
+
+    idempotency_key: str | None = None
+    """
+    A unique string to identify this request to the server. If not set,
+    Stedi generates one automatically.
+
+    The key can be up to 255 characters. You can safely retry requests with
+    the same idempotency key within 24 hours of making the first request.
+    This prevents duplicate operations due to network errors or other
+    intermittent failures. [Learn
+    more](https://www.stedi.com/docs/api-reference/index#idempotency-keys).
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_DELETE_EVENT_DESTINATION_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.destination_id is not None:
+            serializer.write_string(_SCHEMA_DELETE_EVENT_DESTINATION_INPUT.members["destinationId"], self.destination_id)
+
+        if self.idempotency_key is not None:
+            serializer.write_string(_SCHEMA_DELETE_EVENT_DESTINATION_INPUT.members["idempotencyKey"], self.idempotency_key)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["destination_id"] = de.read_string(_SCHEMA_DELETE_EVENT_DESTINATION_INPUT.members["destinationId"])
+
+                case 1:
+                    kwargs["idempotency_key"] = de.read_string(_SCHEMA_DELETE_EVENT_DESTINATION_INPUT.members["idempotencyKey"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_DELETE_EVENT_DESTINATION_INPUT, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class DeleteEventDestinationOutput:
+    """
+    A successful response confirms the destination has been permanently
+    deleted.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_DELETE_EVENT_DESTINATION_OUTPUT, self)
 
     def serialize_members(self, serializer: ShapeSerializer):
         pass
@@ -5773,34 +8118,1805 @@ class ValidateProfessionalClaimSubmissionOutput:
                 case _:
                     logger.debug("Unexpected member schema: %s", schema)
 
-        deserializer.read_struct(_SCHEMA_VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT, consumer=_consumer)
+        deserializer.read_struct(_SCHEMA_DELETE_EVENT_DESTINATION_OUTPUT, consumer=_consumer)
         return kwargs
 
-VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION = APIOperation(
-        input = ValidateProfessionalClaimSubmissionInput,
-        output = ValidateProfessionalClaimSubmissionOutput,
-        schema = _SCHEMA_VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION,
-        input_schema = _SCHEMA_VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION_INPUT,
-        output_schema = _SCHEMA_VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT,
+DELETE_EVENT_DESTINATION = APIOperation(
+        input = DeleteEventDestinationInput,
+        output = DeleteEventDestinationOutput,
+        schema = _SCHEMA_DELETE_EVENT_DESTINATION,
+        input_schema = _SCHEMA_DELETE_EVENT_DESTINATION_INPUT,
+        output_schema = _SCHEMA_DELETE_EVENT_DESTINATION_OUTPUT,
         error_registry = TypeRegistry({
-            ShapeID("com.stedi.claimsmanager#ClaimEditException"): ClaimEditException,
-ShapeID("com.stedi.smithy.model.errors#AuthenticationFailedException"): AuthenticationFailedException,
+            ShapeID("com.stedi.smithy.model.errors#AuthenticationFailedException"): AuthenticationFailedException,
+ShapeID("com.stedi.smithy.model.errors#ConflictException"): ConflictException,
+ShapeID("com.stedi.smithy.model.errors#ForbiddenException"): ForbiddenException,
+ShapeID("com.stedi.smithy.model.errors#InternalServerException"): InternalServerException,
+ShapeID("com.stedi.smithy.model.errors#InvalidRequestException"): InvalidRequestException,
+ShapeID("com.stedi.smithy.model.errors#NotFoundException"): NotFoundException,
+ShapeID("com.stedi.smithy.model.errors#TooManyRequestsException"): TooManyRequestsException,
+        }),
+        effective_auth_schemes = [
+            ShapeID("smithy.api#httpApiKeyAuth"),
+ShapeID("smithy.api#httpBearerAuth"),
+        ],
+        error_schemas = [
+            _SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
+_SCHEMA_CONFLICT_EXCEPTION,
+_SCHEMA_FORBIDDEN_EXCEPTION,
+_SCHEMA_INTERNAL_SERVER_EXCEPTION,
+_SCHEMA_INVALID_REQUEST_EXCEPTION,
+_SCHEMA_NOT_FOUND_EXCEPTION,
+_SCHEMA_TOO_MANY_REQUESTS_EXCEPTION,
+        ]
+)
+
+@dataclass(kw_only=True)
+class EventDestinationsDestinationSummary:
+    """A summary representation of a destination, returned in list responses."""
+
+    id: str
+    """The unique identifier for the destination."""
+
+    created_at: datetime
+    """Creation timestamp for this destination."""
+
+    updated_at: datetime
+    """Last update timestamp for this destination."""
+
+    status: EventDestinationsDestinationStatus
+    """
+    The destination's current status. Stedi only sends event payloads to
+    `ENABLED` destinations.
+    """
+
+    name: str
+    """
+    A human-readable name for the destination. Stedi displays this name in
+    the portal.
+    """
+
+    description: str
+    """
+    A description of the destination's purpose, such as \"Receives
+    transaction enrollment task notifications.\"
+    """
+
+    event_types: list[str]
+    """
+    The event types Stedi sends to this destination. Visit [event
+    types](https://www.stedi.com/docs/healthcare/event-destinations-event-types)
+    for a complete list.
+    """
+
+    destination_url: str
+    """The URL where Stedi delivers payloads through HTTP `POST`."""
+
+    last_delivery_time: datetime | None = None
+    """
+    The timestamp for Stedi's most recent delivery attempt to this
+    destination. Absent when Stedi hasn't yet attempted a delivery.
+    """
+
+    concurrency_limit: int | None = None
+    """
+    The maximum number of concurrent deliveries for this destination.
+    Contact Stedi to change your account limits.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["id"], self.id)
+        serializer.write_timestamp(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["createdAt"], self.created_at)
+        serializer.write_timestamp(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["updatedAt"], self.updated_at)
+        serializer.write_string(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["status"], self.status)
+        if self.last_delivery_time is not None:
+            serializer.write_timestamp(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["lastDeliveryTime"], self.last_delivery_time)
+
+        serializer.write_string(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["name"], self.name)
+        serializer.write_string(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["description"], self.description)
+        _serialize_event_destinations_event_type_list(serializer, _SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["eventTypes"], self.event_types)
+        serializer.write_string(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["destinationUrl"], self.destination_url)
+        if self.concurrency_limit is not None:
+            serializer.write_integer(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["concurrencyLimit"], self.concurrency_limit)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["id"] = de.read_string(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["id"])
+
+                case 1:
+                    kwargs["created_at"] = de.read_timestamp(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["createdAt"])
+
+                case 2:
+                    kwargs["updated_at"] = de.read_timestamp(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["updatedAt"])
+
+                case 3:
+                    kwargs["status"] = EventDestinationsDestinationStatus(de.read_string(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["status"]))
+
+                case 4:
+                    kwargs["last_delivery_time"] = de.read_timestamp(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["lastDeliveryTime"])
+
+                case 5:
+                    kwargs["name"] = de.read_string(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["name"])
+
+                case 6:
+                    kwargs["description"] = de.read_string(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["description"])
+
+                case 7:
+                    kwargs["event_types"] = _deserialize_event_destinations_event_type_list(de, _SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["eventTypes"])
+
+                case 8:
+                    kwargs["destination_url"] = de.read_string(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["destinationUrl"])
+
+                case 9:
+                    kwargs["concurrency_limit"] = de.read_integer(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY.members["concurrencyLimit"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY, consumer=_consumer)
+        if "id" not in kwargs:
+            kwargs["id"] = ""
+        if "created_at" not in kwargs:
+            kwargs["created_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        if "updated_at" not in kwargs:
+            kwargs["updated_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        if "status" not in kwargs:
+            kwargs["status"] = EventDestinationsDestinationStatus._corrected("")
+        if "name" not in kwargs:
+            kwargs["name"] = ""
+        if "description" not in kwargs:
+            kwargs["description"] = ""
+        if "event_types" not in kwargs:
+            kwargs["event_types"] = []
+        if "destination_url" not in kwargs:
+            kwargs["destination_url"] = ""
+        return kwargs
+
+def _serialize_event_destinations_destination_summary_list(serializer: ShapeSerializer, schema: Schema, value: list[EventDestinationsDestinationSummary]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_event_destinations_destination_summary_list(deserializer: ShapeDeserializer, schema: Schema) -> list[EventDestinationsDestinationSummary]:
+    result: list[EventDestinationsDestinationSummary] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EventDestinationsDestinationSummary.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+class EventDestinationsEventEnvironment(UnknownEnumMixin, StrEnum):
+    """The environment in which an event was produced.    """
+    TEST = "TEST"
+    """Test environment.    """
+    PRODUCTION = "PRODUCTION"
+    """Production environment.    """
+
+class EventDestinationsEventPayloadObjectType(UnknownEnumMixin, StrEnum):
+    """Object type discriminator for event payloads.    """
+    V1_EVENT = "v1.event"
+    """Version 1 thin event schema.    """
+
+@dataclass(kw_only=True)
+class EventDestinationsEventPayloadResourceRef:
+    """A reference to a resource affected by an event."""
+
+    id: str
+    """The resource identifier."""
+
+    type: str
+    """
+    The resource type. Uses dot notation to indicate nested resources. For
+    example, `enrollment.document` indicates a document associated with a
+    transaction enrollment request.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_EVENT_DESTINATIONS_EVENT_PAYLOAD_RESOURCE_REF, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_EVENT_DESTINATIONS_EVENT_PAYLOAD_RESOURCE_REF.members["id"], self.id)
+        serializer.write_string(_SCHEMA_EVENT_DESTINATIONS_EVENT_PAYLOAD_RESOURCE_REF.members["type"], self.type)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["id"] = de.read_string(_SCHEMA_EVENT_DESTINATIONS_EVENT_PAYLOAD_RESOURCE_REF.members["id"])
+
+                case 1:
+                    kwargs["type"] = de.read_string(_SCHEMA_EVENT_DESTINATIONS_EVENT_PAYLOAD_RESOURCE_REF.members["type"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_EVENT_DESTINATIONS_EVENT_PAYLOAD_RESOURCE_REF, consumer=_consumer)
+        if "id" not in kwargs:
+            kwargs["id"] = ""
+        if "type" not in kwargs:
+            kwargs["type"] = ""
+        return kwargs
+
+    @classmethod
+    def _smithy_default(cls) -> Self:
+        return cls(id="", type="")
+
+def _serialize_event_destinations_event_payload_resource_ref_list(serializer: ShapeSerializer, schema: Schema, value: list[EventDestinationsEventPayloadResourceRef]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_event_destinations_event_payload_resource_ref_list(deserializer: ShapeDeserializer, schema: Schema) -> list[EventDestinationsEventPayloadResourceRef]:
+    result: list[EventDestinationsEventPayloadResourceRef] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EventDestinationsEventPayloadResourceRef.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EventDestinationsV1EventPayload:
+    """
+    A v1 thin event envelope that signals a state change. Consumers fetch
+    current resource state via API using the resource reference. This is the
+    exact payload delivered to webhook destinations.
+    """
+
+    object: EventDestinationsEventPayloadObjectType
+    """
+    Object type discriminator. Identifies the schema version of this
+    payload.
+    """
+
+    account: str
+    """Stedi account identifier (UUID)."""
+
+    environment: EventDestinationsEventEnvironment
+    """The environment in which the event was produced."""
+
+    created: datetime
+    """An ISO 8601 timestamp of when the event was created."""
+
+    resource: EventDestinationsEventPayloadResourceRef
+    """
+    Information about the resource that triggered the event. You can use
+    this information to retrieve additional information about the resource.
+    """
+
+    id: str | None = None
+    """An identifier for the event, formatted as `evt_{UUID}`."""
+
+    type: str | None = None
+    """The event type in dot notation, such as `enrollment.activated`."""
+
+    related_resources: list[EventDestinationsEventPayloadResourceRef] | None = None
+    """
+    Other resources related to the event. Only present when there are
+    related resources.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_EVENT_DESTINATIONS_V1_EVENT_PAYLOAD, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_EVENT_DESTINATIONS_V1_EVENT_PAYLOAD.members["object"], self.object)
+        serializer.write_string(_SCHEMA_EVENT_DESTINATIONS_V1_EVENT_PAYLOAD.members["account"], self.account)
+        serializer.write_string(_SCHEMA_EVENT_DESTINATIONS_V1_EVENT_PAYLOAD.members["environment"], self.environment)
+        serializer.write_timestamp(_SCHEMA_EVENT_DESTINATIONS_V1_EVENT_PAYLOAD.members["created"], self.created)
+        serializer.write_struct(_SCHEMA_EVENT_DESTINATIONS_V1_EVENT_PAYLOAD.members["resource"], self.resource)
+        if self.id is not None:
+            serializer.write_string(_SCHEMA_EVENT_DESTINATIONS_V1_EVENT_PAYLOAD.members["id"], self.id)
+
+        if self.type is not None:
+            serializer.write_string(_SCHEMA_EVENT_DESTINATIONS_V1_EVENT_PAYLOAD.members["type"], self.type)
+
+        if self.related_resources is not None:
+            _serialize_event_destinations_event_payload_resource_ref_list(serializer, _SCHEMA_EVENT_DESTINATIONS_V1_EVENT_PAYLOAD.members["relatedResources"], self.related_resources)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["object"] = EventDestinationsEventPayloadObjectType(de.read_string(_SCHEMA_EVENT_DESTINATIONS_V1_EVENT_PAYLOAD.members["object"]))
+
+                case 1:
+                    kwargs["account"] = de.read_string(_SCHEMA_EVENT_DESTINATIONS_V1_EVENT_PAYLOAD.members["account"])
+
+                case 2:
+                    kwargs["environment"] = EventDestinationsEventEnvironment(de.read_string(_SCHEMA_EVENT_DESTINATIONS_V1_EVENT_PAYLOAD.members["environment"]))
+
+                case 3:
+                    kwargs["created"] = de.read_timestamp(_SCHEMA_EVENT_DESTINATIONS_V1_EVENT_PAYLOAD.members["created"])
+
+                case 4:
+                    kwargs["resource"] = EventDestinationsEventPayloadResourceRef.deserialize(de)
+
+                case 5:
+                    kwargs["id"] = de.read_string(_SCHEMA_EVENT_DESTINATIONS_V1_EVENT_PAYLOAD.members["id"])
+
+                case 6:
+                    kwargs["type"] = de.read_string(_SCHEMA_EVENT_DESTINATIONS_V1_EVENT_PAYLOAD.members["type"])
+
+                case 7:
+                    kwargs["related_resources"] = _deserialize_event_destinations_event_payload_resource_ref_list(de, _SCHEMA_EVENT_DESTINATIONS_V1_EVENT_PAYLOAD.members["relatedResources"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_EVENT_DESTINATIONS_V1_EVENT_PAYLOAD, consumer=_consumer)
+        if "object" not in kwargs:
+            kwargs["object"] = EventDestinationsEventPayloadObjectType._corrected("")
+        if "account" not in kwargs:
+            kwargs["account"] = ""
+        if "environment" not in kwargs:
+            kwargs["environment"] = EventDestinationsEventEnvironment._corrected("")
+        if "created" not in kwargs:
+            kwargs["created"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        if "resource" not in kwargs:
+            kwargs["resource"] = EventDestinationsEventPayloadResourceRef._smithy_default()
+        return kwargs
+
+@dataclass
+class EventDestinationsEventPayloadV1Event:
+    """A `v1` thin event payload."""
+
+    value: EventDestinationsV1EventPayload
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_EVENT_DESTINATIONS_EVENT_PAYLOAD, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_EVENT_DESTINATIONS_EVENT_PAYLOAD.members["v1Event"], self.value)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=EventDestinationsV1EventPayload.deserialize(deserializer))
+
+@dataclass
+class EventDestinationsEventPayloadUnknown:
+    """
+    Represents an unknown variant.
+
+    If you receive this value, you will need to update your library to receive the
+    parsed value.
+
+    This value may not be deliberately sent.
+    """
+
+    tag: str
+
+    def serialize(self, serializer: ShapeSerializer):
+        raise SerializationError("Unknown union variants may not be serialized.")
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        raise SerializationError("Unknown union variants may not be serialized.")
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        raise NotImplementedError()
+
+EventDestinationsEventPayload = Union[EventDestinationsEventPayloadV1Event | EventDestinationsEventPayloadUnknown]
+"""
+The event payload, discriminated by object type. Each variant
+corresponds to a versioned event schema.
+"""
+class _EventDestinationsEventPayloadDeserializer:
+    _result: EventDestinationsEventPayload | None = None
+
+    def deserialize(self, deserializer: ShapeDeserializer) -> EventDestinationsEventPayload:
+        self._result = None
+        deserializer.read_struct(_SCHEMA_EVENT_DESTINATIONS_EVENT_PAYLOAD, self._consumer)
+
+        if self._result is None:
+            raise SerializationError("Unions must have exactly one value, but found none.")
+
+        return self._result
+
+    def _consumer(self, schema: Schema, de: ShapeDeserializer) -> None:
+        match schema.expect_member_index():
+            case 0:
+                self._set_result(EventDestinationsEventPayloadV1Event.deserialize(de))
+
+            case _:
+                self._set_result(EventDestinationsEventPayloadUnknown(tag=schema.expect_member_name()))
+
+    def _set_result(self, value: EventDestinationsEventPayload) -> None:
+        if self._result is not None:
+            raise SerializationError("Unions must have exactly one value, but found more than one.")
+        self._result = value
+
+class EventDestinationsEventStatus(UnknownEnumMixin, StrEnum):
+    """The current status of an event.    """
+    PENDING = "PENDING"
+    """
+    Stedi is still trying to deliver the event to one or more event
+    destinations. Events may stay in this state for multiple days as Stedi
+    automatically retries.
+    """
+    DELIVERED = "DELIVERED"
+    """
+    Stedi successfully delivered the event to all relevant event
+    destinations.
+    """
+    FAILED = "FAILED"
+    """
+    Stedi couldn't deliver the event to at least one event destination and
+    is no longer retrying. Deliveries to some event destinations may have
+    been successful.
+    """
+
+def _serialize_event_destinations_event_status_list(serializer: ShapeSerializer, schema: Schema, value: list[EventDestinationsEventStatus]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_string(member_schema, e)
+
+def _deserialize_event_destinations_event_status_list(deserializer: ShapeDeserializer, schema: Schema) -> list[EventDestinationsEventStatus]:
+    result: list[EventDestinationsEventStatus] = []
+    member_schema = schema.members["member"]
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EventDestinationsEventStatus(d.read_string(member_schema)))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EventDestinationsEventSummary:
+    """A summary representation of an event, returned in list responses."""
+
+    id: str
+    """The unique identifier for the event, formatted as `evt_{UUID}`."""
+
+    status: EventDestinationsEventStatus
+    """
+    The current status of the event. Can be:
+
+    - `DELIVERED`: Stedi successfully delivered the event to all relevant
+      event destinations.
+    - `PENDING`: Stedi is still trying to deliver the event to one or more
+      event destinations. Events may stay in this state for multiple days as
+      Stedi automatically retries.
+    - `FAILED`: Stedi couldn't deliver the event to at least one event
+      destination and is no longer retrying. Deliveries to some event
+      destinations may have been successful.
+    """
+
+    created_at: datetime
+    """An ISO 8601 timestamp of when the event was created."""
+
+    event_type: str
+    """The type of event, such as `enrollment.activated`."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_EVENT_DESTINATIONS_EVENT_SUMMARY, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_EVENT_DESTINATIONS_EVENT_SUMMARY.members["id"], self.id)
+        serializer.write_string(_SCHEMA_EVENT_DESTINATIONS_EVENT_SUMMARY.members["status"], self.status)
+        serializer.write_timestamp(_SCHEMA_EVENT_DESTINATIONS_EVENT_SUMMARY.members["createdAt"], self.created_at)
+        serializer.write_string(_SCHEMA_EVENT_DESTINATIONS_EVENT_SUMMARY.members["eventType"], self.event_type)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["id"] = de.read_string(_SCHEMA_EVENT_DESTINATIONS_EVENT_SUMMARY.members["id"])
+
+                case 1:
+                    kwargs["status"] = EventDestinationsEventStatus(de.read_string(_SCHEMA_EVENT_DESTINATIONS_EVENT_SUMMARY.members["status"]))
+
+                case 2:
+                    kwargs["created_at"] = de.read_timestamp(_SCHEMA_EVENT_DESTINATIONS_EVENT_SUMMARY.members["createdAt"])
+
+                case 3:
+                    kwargs["event_type"] = de.read_string(_SCHEMA_EVENT_DESTINATIONS_EVENT_SUMMARY.members["eventType"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_EVENT_DESTINATIONS_EVENT_SUMMARY, consumer=_consumer)
+        if "id" not in kwargs:
+            kwargs["id"] = ""
+        if "status" not in kwargs:
+            kwargs["status"] = EventDestinationsEventStatus._corrected("")
+        if "created_at" not in kwargs:
+            kwargs["created_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        if "event_type" not in kwargs:
+            kwargs["event_type"] = ""
+        return kwargs
+
+def _serialize_event_destinations_event_summary_list(serializer: ShapeSerializer, schema: Schema, value: list[EventDestinationsEventSummary]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_event_destinations_event_summary_list(deserializer: ShapeDeserializer, schema: Schema) -> list[EventDestinationsEventSummary]:
+    result: list[EventDestinationsEventSummary] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EventDestinationsEventSummary.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+def _serialize_event_destinations_timestamp_filter(serializer: ShapeSerializer, schema: Schema, value: list[str]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_string(member_schema, e)
+
+def _deserialize_event_destinations_timestamp_filter(deserializer: ShapeDeserializer, schema: Schema) -> list[str]:
+    result: list[str] = []
+    member_schema = schema.members["member"]
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(d.read_string(member_schema))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class GetEventDestinationInput:
+    """Input for retrieving a destination."""
+
+    destination_id: str | None = None
+    """
+    The unique identifier for the destination. You can retrieve destination
+    IDs with the [List
+    Destinations](https://www.stedi.com/docs/healthcare/api-reference/get-event-destinations-list-destinations)
+    endpoint.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_GET_EVENT_DESTINATION_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.destination_id is not None:
+            serializer.write_string(_SCHEMA_GET_EVENT_DESTINATION_INPUT.members["destinationId"], self.destination_id)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["destination_id"] = de.read_string(_SCHEMA_GET_EVENT_DESTINATION_INPUT.members["destinationId"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_GET_EVENT_DESTINATION_INPUT, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class GetEventDestinationOutput:
+    """Output containing the destination details."""
+
+    id: str
+    """The unique identifier for the destination."""
+
+    created_at: datetime
+    """Creation timestamp for this destination."""
+
+    updated_at: datetime
+    """Last update timestamp for this destination."""
+
+    status: EventDestinationsDestinationStatus
+    """
+    The destination's current status. Stedi only sends event payloads to
+    `ENABLED` destinations.
+    """
+
+    name: str
+    """
+    A human-readable name for the destination. Stedi displays this name in
+    the portal.
+    """
+
+    description: str
+    """
+    A description of the destination's purpose, such as \"Receives
+    transaction enrollment task notifications.\"
+    """
+
+    event_types: list[str]
+    """
+    The event types Stedi sends to this destination. Visit [event
+    types](https://www.stedi.com/docs/healthcare/event-destinations-event-types)
+    for a complete list.
+    """
+
+    destination_url: str
+    """The URL where Stedi delivers payloads through HTTP `POST`."""
+
+    last_delivery_time: datetime | None = None
+    """
+    The timestamp for Stedi's most recent delivery attempt to this
+    destination. Absent when Stedi hasn't yet attempted a delivery.
+    """
+
+    concurrency_limit: int | None = None
+    """
+    The maximum number of concurrent deliveries for this destination.
+    Contact Stedi to change your account limits.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["id"], self.id)
+        serializer.write_timestamp(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["createdAt"], self.created_at)
+        serializer.write_timestamp(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["updatedAt"], self.updated_at)
+        serializer.write_string(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["status"], self.status)
+        if self.last_delivery_time is not None:
+            serializer.write_timestamp(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["lastDeliveryTime"], self.last_delivery_time)
+
+        serializer.write_string(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["name"], self.name)
+        serializer.write_string(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["description"], self.description)
+        _serialize_event_destinations_event_type_list(serializer, _SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["eventTypes"], self.event_types)
+        serializer.write_string(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["destinationUrl"], self.destination_url)
+        if self.concurrency_limit is not None:
+            serializer.write_integer(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["concurrencyLimit"], self.concurrency_limit)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["id"] = de.read_string(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["id"])
+
+                case 1:
+                    kwargs["created_at"] = de.read_timestamp(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["createdAt"])
+
+                case 2:
+                    kwargs["updated_at"] = de.read_timestamp(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["updatedAt"])
+
+                case 3:
+                    kwargs["status"] = EventDestinationsDestinationStatus(de.read_string(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["status"]))
+
+                case 4:
+                    kwargs["last_delivery_time"] = de.read_timestamp(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["lastDeliveryTime"])
+
+                case 5:
+                    kwargs["name"] = de.read_string(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["name"])
+
+                case 6:
+                    kwargs["description"] = de.read_string(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["description"])
+
+                case 7:
+                    kwargs["event_types"] = _deserialize_event_destinations_event_type_list(de, _SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["eventTypes"])
+
+                case 8:
+                    kwargs["destination_url"] = de.read_string(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["destinationUrl"])
+
+                case 9:
+                    kwargs["concurrency_limit"] = de.read_integer(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT.members["concurrencyLimit"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_GET_EVENT_DESTINATION_OUTPUT, consumer=_consumer)
+        if "id" not in kwargs:
+            kwargs["id"] = ""
+        if "created_at" not in kwargs:
+            kwargs["created_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        if "updated_at" not in kwargs:
+            kwargs["updated_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        if "status" not in kwargs:
+            kwargs["status"] = EventDestinationsDestinationStatus._corrected("")
+        if "name" not in kwargs:
+            kwargs["name"] = ""
+        if "description" not in kwargs:
+            kwargs["description"] = ""
+        if "event_types" not in kwargs:
+            kwargs["event_types"] = []
+        if "destination_url" not in kwargs:
+            kwargs["destination_url"] = ""
+        return kwargs
+
+GET_EVENT_DESTINATION = APIOperation(
+        input = GetEventDestinationInput,
+        output = GetEventDestinationOutput,
+        schema = _SCHEMA_GET_EVENT_DESTINATION,
+        input_schema = _SCHEMA_GET_EVENT_DESTINATION_INPUT,
+        output_schema = _SCHEMA_GET_EVENT_DESTINATION_OUTPUT,
+        error_registry = TypeRegistry({
+            ShapeID("com.stedi.smithy.model.errors#AuthenticationFailedException"): AuthenticationFailedException,
+ShapeID("com.stedi.smithy.model.errors#ForbiddenException"): ForbiddenException,
+ShapeID("com.stedi.smithy.model.errors#InternalServerException"): InternalServerException,
+ShapeID("com.stedi.smithy.model.errors#InvalidRequestException"): InvalidRequestException,
+ShapeID("com.stedi.smithy.model.errors#NotFoundException"): NotFoundException,
+ShapeID("com.stedi.smithy.model.errors#TooManyRequestsException"): TooManyRequestsException,
+        }),
+        effective_auth_schemes = [
+            ShapeID("smithy.api#httpApiKeyAuth"),
+ShapeID("smithy.api#httpBearerAuth"),
+        ],
+        error_schemas = [
+            _SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
+_SCHEMA_FORBIDDEN_EXCEPTION,
+_SCHEMA_INTERNAL_SERVER_EXCEPTION,
+_SCHEMA_INVALID_REQUEST_EXCEPTION,
+_SCHEMA_NOT_FOUND_EXCEPTION,
+_SCHEMA_TOO_MANY_REQUESTS_EXCEPTION,
+        ]
+)
+
+@dataclass(kw_only=True)
+class GetEventDestinationEventInput:
+    """Input for retrieving an event."""
+
+    event_id: str | None = None
+    """The unique identifier for the event, formatted as `evt_{UUID}`."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_GET_EVENT_DESTINATION_EVENT_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.event_id is not None:
+            serializer.write_string(_SCHEMA_GET_EVENT_DESTINATION_EVENT_INPUT.members["eventId"], self.event_id)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["event_id"] = de.read_string(_SCHEMA_GET_EVENT_DESTINATION_EVENT_INPUT.members["eventId"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_GET_EVENT_DESTINATION_EVENT_INPUT, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class GetEventDestinationEventOutput:
+    """Output containing the event details."""
+
+    id: str
+    """The unique identifier for the event, formatted as `evt_{UUID}`."""
+
+    status: EventDestinationsEventStatus
+    """
+    The current status of the event. Can be:
+
+    - `DELIVERED`: Stedi successfully delivered the event to all relevant
+      event destinations.
+    - `PENDING`: Stedi is still trying to deliver the event to one or more
+      event destinations. Events may stay in this state for multiple days as
+      Stedi automatically retries.
+    - `FAILED`: Stedi couldn't deliver the event to at least one event
+      destination and is no longer retrying. Deliveries to some event
+      destinations may have been successful.
+    """
+
+    created_at: datetime
+    """An ISO 8601 timestamp of when the event was created."""
+
+    event_type: str
+    """The type of event, such as `enrollment.activated`."""
+
+    event_payload: EventDestinationsEventPayload
+    """The event payload Stedi delivers to event destinations."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_GET_EVENT_DESTINATION_EVENT_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_GET_EVENT_DESTINATION_EVENT_OUTPUT.members["id"], self.id)
+        serializer.write_string(_SCHEMA_GET_EVENT_DESTINATION_EVENT_OUTPUT.members["status"], self.status)
+        serializer.write_timestamp(_SCHEMA_GET_EVENT_DESTINATION_EVENT_OUTPUT.members["createdAt"], self.created_at)
+        serializer.write_string(_SCHEMA_GET_EVENT_DESTINATION_EVENT_OUTPUT.members["eventType"], self.event_type)
+        serializer.write_struct(_SCHEMA_GET_EVENT_DESTINATION_EVENT_OUTPUT.members["eventPayload"], self.event_payload)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["id"] = de.read_string(_SCHEMA_GET_EVENT_DESTINATION_EVENT_OUTPUT.members["id"])
+
+                case 1:
+                    kwargs["status"] = EventDestinationsEventStatus(de.read_string(_SCHEMA_GET_EVENT_DESTINATION_EVENT_OUTPUT.members["status"]))
+
+                case 2:
+                    kwargs["created_at"] = de.read_timestamp(_SCHEMA_GET_EVENT_DESTINATION_EVENT_OUTPUT.members["createdAt"])
+
+                case 3:
+                    kwargs["event_type"] = de.read_string(_SCHEMA_GET_EVENT_DESTINATION_EVENT_OUTPUT.members["eventType"])
+
+                case 4:
+                    kwargs["event_payload"] = _EventDestinationsEventPayloadDeserializer().deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_GET_EVENT_DESTINATION_EVENT_OUTPUT, consumer=_consumer)
+        if "id" not in kwargs:
+            kwargs["id"] = ""
+        if "status" not in kwargs:
+            kwargs["status"] = EventDestinationsEventStatus._corrected("")
+        if "created_at" not in kwargs:
+            kwargs["created_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        if "event_type" not in kwargs:
+            kwargs["event_type"] = ""
+        if "event_payload" not in kwargs:
+            kwargs["event_payload"] = EventDestinationsEventPayloadUnknown(tag="")
+        return kwargs
+
+GET_EVENT_DESTINATION_EVENT = APIOperation(
+        input = GetEventDestinationEventInput,
+        output = GetEventDestinationEventOutput,
+        schema = _SCHEMA_GET_EVENT_DESTINATION_EVENT,
+        input_schema = _SCHEMA_GET_EVENT_DESTINATION_EVENT_INPUT,
+        output_schema = _SCHEMA_GET_EVENT_DESTINATION_EVENT_OUTPUT,
+        error_registry = TypeRegistry({
+            ShapeID("com.stedi.smithy.model.errors#AuthenticationFailedException"): AuthenticationFailedException,
+ShapeID("com.stedi.smithy.model.errors#ForbiddenException"): ForbiddenException,
+ShapeID("com.stedi.smithy.model.errors#InternalServerException"): InternalServerException,
+ShapeID("com.stedi.smithy.model.errors#InvalidRequestException"): InvalidRequestException,
+ShapeID("com.stedi.smithy.model.errors#NotFoundException"): NotFoundException,
+        }),
+        effective_auth_schemes = [
+            ShapeID("smithy.api#httpApiKeyAuth"),
+ShapeID("smithy.api#httpBearerAuth"),
+        ],
+        error_schemas = [
+            _SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
+_SCHEMA_FORBIDDEN_EXCEPTION,
+_SCHEMA_INTERNAL_SERVER_EXCEPTION,
+_SCHEMA_INVALID_REQUEST_EXCEPTION,
+_SCHEMA_NOT_FOUND_EXCEPTION,
+        ]
+)
+
+@dataclass(kw_only=True)
+class GetEventDestinationSecretInput:
+    """Input for retrieving a destination's signing secret."""
+
+    destination_id: str | None = None
+    """
+    The unique identifier for the destination. You can retrieve destination
+    IDs with the [List
+    Destinations](https://www.stedi.com/docs/healthcare/api-reference/get-event-destinations-list-destinations)
+    endpoint.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_GET_EVENT_DESTINATION_SECRET_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.destination_id is not None:
+            serializer.write_string(_SCHEMA_GET_EVENT_DESTINATION_SECRET_INPUT.members["destinationId"], self.destination_id)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["destination_id"] = de.read_string(_SCHEMA_GET_EVENT_DESTINATION_SECRET_INPUT.members["destinationId"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_GET_EVENT_DESTINATION_SECRET_INPUT, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class GetEventDestinationSecretOutput:
+    """Output containing the destination's signing secret."""
+
+    signing_secret: str = field(repr=False)
+    """
+    The signing secret for verifying event payloads. Visit [verify event
+    signatures](https://www.stedi.com/docs/healthcare/event-destinations-message-handling#verify-authenticity-and-receipt-time)
+    for details.
+    """
+
+    previous_secret_expires_at: datetime | None = None
+    """
+    Expiration timestamp for the previous secret. Only present when a secret
+    rotation is in progress.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_GET_EVENT_DESTINATION_SECRET_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_GET_EVENT_DESTINATION_SECRET_OUTPUT.members["signingSecret"], self.signing_secret)
+        if self.previous_secret_expires_at is not None:
+            serializer.write_timestamp(_SCHEMA_GET_EVENT_DESTINATION_SECRET_OUTPUT.members["previousSecretExpiresAt"], self.previous_secret_expires_at)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["signing_secret"] = de.read_string(_SCHEMA_GET_EVENT_DESTINATION_SECRET_OUTPUT.members["signingSecret"])
+
+                case 1:
+                    kwargs["previous_secret_expires_at"] = de.read_timestamp(_SCHEMA_GET_EVENT_DESTINATION_SECRET_OUTPUT.members["previousSecretExpiresAt"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_GET_EVENT_DESTINATION_SECRET_OUTPUT, consumer=_consumer)
+        if "signing_secret" not in kwargs:
+            kwargs["signing_secret"] = ""
+        return kwargs
+
+GET_EVENT_DESTINATION_SECRET = APIOperation(
+        input = GetEventDestinationSecretInput,
+        output = GetEventDestinationSecretOutput,
+        schema = _SCHEMA_GET_EVENT_DESTINATION_SECRET,
+        input_schema = _SCHEMA_GET_EVENT_DESTINATION_SECRET_INPUT,
+        output_schema = _SCHEMA_GET_EVENT_DESTINATION_SECRET_OUTPUT,
+        error_registry = TypeRegistry({
+            ShapeID("com.stedi.smithy.model.errors#AuthenticationFailedException"): AuthenticationFailedException,
+ShapeID("com.stedi.smithy.model.errors#ForbiddenException"): ForbiddenException,
+ShapeID("com.stedi.smithy.model.errors#InternalServerException"): InternalServerException,
+ShapeID("com.stedi.smithy.model.errors#InvalidRequestException"): InvalidRequestException,
+ShapeID("com.stedi.smithy.model.errors#NotFoundException"): NotFoundException,
+ShapeID("com.stedi.smithy.model.errors#TooManyRequestsException"): TooManyRequestsException,
+        }),
+        effective_auth_schemes = [
+            ShapeID("smithy.api#httpApiKeyAuth"),
+ShapeID("smithy.api#httpBearerAuth"),
+        ],
+        error_schemas = [
+            _SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
+_SCHEMA_FORBIDDEN_EXCEPTION,
+_SCHEMA_INTERNAL_SERVER_EXCEPTION,
+_SCHEMA_INVALID_REQUEST_EXCEPTION,
+_SCHEMA_NOT_FOUND_EXCEPTION,
+_SCHEMA_TOO_MANY_REQUESTS_EXCEPTION,
+        ]
+)
+
+@dataclass(kw_only=True)
+class ListEventDestinationEventsInput:
+    """Input for listing events."""
+
+    page_size: int = 100
+    """
+    The maximum number of elements to return in a page. If not specified,
+    the default is 100.
+    """
+
+    page_token: str | None = None
+    """
+    The `nextPageToken` value from a previous response. You can use this to
+    get the next page of results. If not set, Stedi returns the first page
+    of results.
+    """
+
+    event_id: str | None = None
+    """
+    Filter results by event ID, such as
+    `evt_019d554b-311b-7813-b491-0a8973762eae`.
+    """
+
+    status: list[EventDestinationsEventStatus] | None = None
+    """
+    Filter results by one or more event statuses. Can be:
+
+    - `DELIVERED`: Stedi successfully delivered the event to all relevant
+      event destinations.
+    - `PENDING`: Stedi is still trying to deliver the event to one or more
+      event destinations.
+    - `FAILED`: Stedi couldn't deliver the event to at least one event
+      destination and is no longer retrying.
+    """
+
+    event_type: str | None = None
+    """Filter results by event type, such as `enrollment.activated`."""
+
+    created: list[str] | None = None
+    """
+    Filter results by their `createdAt` timestamp. Each value is in the
+    format `operator:ISO-8601-timestamp`.
+
+    - The supported operators are `gt` (after), `gte` (at or after), `lt`
+      (before), and `lte` (at or before). For example: Setting this to
+      `lt:2024-02-01T00:00:00Z` filters for events created before the
+      specified timestamp.
+    - Combine multiple values with `&` to specify a date range. For example:
+      `created=gt:2026-01-01T00:00:00Z&created=lt:2026-02-01T00:00:00Z`.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_LIST_EVENT_DESTINATION_EVENTS_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.page_size is not None:
+            serializer.write_integer(_SCHEMA_LIST_EVENT_DESTINATION_EVENTS_INPUT.members["pageSize"], self.page_size)
+
+        if self.page_token is not None:
+            serializer.write_string(_SCHEMA_LIST_EVENT_DESTINATION_EVENTS_INPUT.members["pageToken"], self.page_token)
+
+        if self.event_id is not None:
+            serializer.write_string(_SCHEMA_LIST_EVENT_DESTINATION_EVENTS_INPUT.members["eventId"], self.event_id)
+
+        if self.status is not None:
+            _serialize_event_destinations_event_status_list(serializer, _SCHEMA_LIST_EVENT_DESTINATION_EVENTS_INPUT.members["status"], self.status)
+
+        if self.event_type is not None:
+            serializer.write_string(_SCHEMA_LIST_EVENT_DESTINATION_EVENTS_INPUT.members["eventType"], self.event_type)
+
+        if self.created is not None:
+            _serialize_event_destinations_timestamp_filter(serializer, _SCHEMA_LIST_EVENT_DESTINATION_EVENTS_INPUT.members["created"], self.created)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["page_size"] = de.read_integer(_SCHEMA_LIST_EVENT_DESTINATION_EVENTS_INPUT.members["pageSize"])
+
+                case 1:
+                    kwargs["page_token"] = de.read_string(_SCHEMA_LIST_EVENT_DESTINATION_EVENTS_INPUT.members["pageToken"])
+
+                case 2:
+                    kwargs["event_id"] = de.read_string(_SCHEMA_LIST_EVENT_DESTINATION_EVENTS_INPUT.members["eventId"])
+
+                case 3:
+                    kwargs["status"] = _deserialize_event_destinations_event_status_list(de, _SCHEMA_LIST_EVENT_DESTINATION_EVENTS_INPUT.members["status"])
+
+                case 4:
+                    kwargs["event_type"] = de.read_string(_SCHEMA_LIST_EVENT_DESTINATION_EVENTS_INPUT.members["eventType"])
+
+                case 5:
+                    kwargs["created"] = _deserialize_event_destinations_timestamp_filter(de, _SCHEMA_LIST_EVENT_DESTINATION_EVENTS_INPUT.members["created"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_LIST_EVENT_DESTINATION_EVENTS_INPUT, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class ListEventDestinationEventsOutput:
+    """Output containing the list of events."""
+
+    items: list[EventDestinationsEventSummary]
+    """The list of event summaries."""
+
+    next_page_token: str | None = None
+    """
+    Token that you can supply in subsequent requests to retrieve the next
+    page of results. If not returned, there are no more results.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_LIST_EVENT_DESTINATION_EVENTS_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.next_page_token is not None:
+            serializer.write_string(_SCHEMA_LIST_EVENT_DESTINATION_EVENTS_OUTPUT.members["nextPageToken"], self.next_page_token)
+
+        _serialize_event_destinations_event_summary_list(serializer, _SCHEMA_LIST_EVENT_DESTINATION_EVENTS_OUTPUT.members["items"], self.items)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["next_page_token"] = de.read_string(_SCHEMA_LIST_EVENT_DESTINATION_EVENTS_OUTPUT.members["nextPageToken"])
+
+                case 1:
+                    kwargs["items"] = _deserialize_event_destinations_event_summary_list(de, _SCHEMA_LIST_EVENT_DESTINATION_EVENTS_OUTPUT.members["items"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_LIST_EVENT_DESTINATION_EVENTS_OUTPUT, consumer=_consumer)
+        if "items" not in kwargs:
+            kwargs["items"] = []
+        return kwargs
+
+LIST_EVENT_DESTINATION_EVENTS = APIOperation(
+        input = ListEventDestinationEventsInput,
+        output = ListEventDestinationEventsOutput,
+        schema = _SCHEMA_LIST_EVENT_DESTINATION_EVENTS,
+        input_schema = _SCHEMA_LIST_EVENT_DESTINATION_EVENTS_INPUT,
+        output_schema = _SCHEMA_LIST_EVENT_DESTINATION_EVENTS_OUTPUT,
+        error_registry = TypeRegistry({
+            ShapeID("com.stedi.smithy.model.errors#AuthenticationFailedException"): AuthenticationFailedException,
+ShapeID("com.stedi.smithy.model.errors#ForbiddenException"): ForbiddenException,
+ShapeID("com.stedi.smithy.model.errors#InternalServerException"): InternalServerException,
+ShapeID("com.stedi.smithy.model.errors#InvalidRequestException"): InvalidRequestException,
+        }),
+        effective_auth_schemes = [
+            ShapeID("smithy.api#httpApiKeyAuth"),
+ShapeID("smithy.api#httpBearerAuth"),
+        ],
+        error_schemas = [
+            _SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
+_SCHEMA_FORBIDDEN_EXCEPTION,
+_SCHEMA_INTERNAL_SERVER_EXCEPTION,
+_SCHEMA_INVALID_REQUEST_EXCEPTION,
+        ]
+)
+
+@dataclass(kw_only=True)
+class ListEventDestinationsInput:
+    """Input for listing destinations."""
+
+    page_size: int = 25
+    """Number of items to return per page."""
+
+    page_token: str | None = None
+    """
+    The `nextPageToken` value from a previous response. You can use this to
+    get the next page of results. If not set, Stedi returns the first page
+    of results.
+    """
+
+    status: EventDestinationsDestinationStatus | None = None
+    """Filter results by destination status."""
+
+    event_type: str | None = None
+    """
+    Filter results by event type. Visit [event
+    types](https://www.stedi.com/docs/healthcare/event-destinations-event-types)
+    for a complete list.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_LIST_EVENT_DESTINATIONS_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.page_size is not None:
+            serializer.write_integer(_SCHEMA_LIST_EVENT_DESTINATIONS_INPUT.members["pageSize"], self.page_size)
+
+        if self.page_token is not None:
+            serializer.write_string(_SCHEMA_LIST_EVENT_DESTINATIONS_INPUT.members["pageToken"], self.page_token)
+
+        if self.status is not None:
+            serializer.write_string(_SCHEMA_LIST_EVENT_DESTINATIONS_INPUT.members["status"], self.status)
+
+        if self.event_type is not None:
+            serializer.write_string(_SCHEMA_LIST_EVENT_DESTINATIONS_INPUT.members["eventType"], self.event_type)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["page_size"] = de.read_integer(_SCHEMA_LIST_EVENT_DESTINATIONS_INPUT.members["pageSize"])
+
+                case 1:
+                    kwargs["page_token"] = de.read_string(_SCHEMA_LIST_EVENT_DESTINATIONS_INPUT.members["pageToken"])
+
+                case 2:
+                    kwargs["status"] = EventDestinationsDestinationStatus(de.read_string(_SCHEMA_LIST_EVENT_DESTINATIONS_INPUT.members["status"]))
+
+                case 3:
+                    kwargs["event_type"] = de.read_string(_SCHEMA_LIST_EVENT_DESTINATIONS_INPUT.members["eventType"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_LIST_EVENT_DESTINATIONS_INPUT, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class ListEventDestinationsOutput:
+    """Output containing the list of destinations."""
+
+    items: list[EventDestinationsDestinationSummary]
+    """The list of destination summaries."""
+
+    next_page_token: str | None = None
+    """
+    Token that you can supply in subsequent requests to retrieve the next
+    page of results. If not returned, there are no more results.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_LIST_EVENT_DESTINATIONS_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.next_page_token is not None:
+            serializer.write_string(_SCHEMA_LIST_EVENT_DESTINATIONS_OUTPUT.members["nextPageToken"], self.next_page_token)
+
+        _serialize_event_destinations_destination_summary_list(serializer, _SCHEMA_LIST_EVENT_DESTINATIONS_OUTPUT.members["items"], self.items)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["next_page_token"] = de.read_string(_SCHEMA_LIST_EVENT_DESTINATIONS_OUTPUT.members["nextPageToken"])
+
+                case 1:
+                    kwargs["items"] = _deserialize_event_destinations_destination_summary_list(de, _SCHEMA_LIST_EVENT_DESTINATIONS_OUTPUT.members["items"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_LIST_EVENT_DESTINATIONS_OUTPUT, consumer=_consumer)
+        if "items" not in kwargs:
+            kwargs["items"] = []
+        return kwargs
+
+LIST_EVENT_DESTINATIONS = APIOperation(
+        input = ListEventDestinationsInput,
+        output = ListEventDestinationsOutput,
+        schema = _SCHEMA_LIST_EVENT_DESTINATIONS,
+        input_schema = _SCHEMA_LIST_EVENT_DESTINATIONS_INPUT,
+        output_schema = _SCHEMA_LIST_EVENT_DESTINATIONS_OUTPUT,
+        error_registry = TypeRegistry({
+            ShapeID("com.stedi.smithy.model.errors#AuthenticationFailedException"): AuthenticationFailedException,
 ShapeID("com.stedi.smithy.model.errors#ForbiddenException"): ForbiddenException,
 ShapeID("com.stedi.smithy.model.errors#InternalServerException"): InternalServerException,
 ShapeID("com.stedi.smithy.model.errors#InvalidRequestException"): InvalidRequestException,
 ShapeID("com.stedi.smithy.model.errors#TooManyRequestsException"): TooManyRequestsException,
-ShapeID("com.stedi.smithy.model.common#InternalFailureException"): InternalFailureException,
         }),
         effective_auth_schemes = [
             ShapeID("smithy.api#httpApiKeyAuth"),
+ShapeID("smithy.api#httpBearerAuth"),
         ],
         error_schemas = [
-            _SCHEMA_CLAIM_EDIT_EXCEPTION,
-_SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
+            _SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
 _SCHEMA_FORBIDDEN_EXCEPTION,
 _SCHEMA_INTERNAL_SERVER_EXCEPTION,
 _SCHEMA_INVALID_REQUEST_EXCEPTION,
 _SCHEMA_TOO_MANY_REQUESTS_EXCEPTION,
-_SCHEMA_INTERNAL_FAILURE_EXCEPTION,
+        ]
+)
+
+@dataclass(kw_only=True)
+class RotateEventDestinationSecretInput:
+    """Input for rotating a destination's signing secret."""
+
+    destination_id: str | None = None
+    """
+    The unique identifier for the destination. You can retrieve destination
+    IDs with the [List
+    Destinations](https://www.stedi.com/docs/healthcare/api-reference/get-event-destinations-list-destinations)
+    endpoint.
+    """
+
+    previous_secret_expiry_hours: int = 24
+    """
+    The number of hours you want the previous secret to remain valid after
+    rotation.
+
+    - Default is 24 hours.
+    - Set to `0` when you want the previous secret to expire immediately ---
+      in-flight payloads signed with the previous secret fail verification.
+    - You can't rotate again until this grace period expires.
+    """
+
+    idempotency_key: str | None = None
+    """
+    A unique string to identify this request to the server. If not set,
+    Stedi generates one automatically.
+
+    The key can be up to 255 characters. You can safely retry requests with
+    the same idempotency key within 24 hours of making the first request.
+    This prevents duplicate operations due to network errors or other
+    intermittent failures. [Learn
+    more](https://www.stedi.com/docs/api-reference/index#idempotency-keys).
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ROTATE_EVENT_DESTINATION_SECRET_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.destination_id is not None:
+            serializer.write_string(_SCHEMA_ROTATE_EVENT_DESTINATION_SECRET_INPUT.members["destinationId"], self.destination_id)
+
+        if self.previous_secret_expiry_hours is not None:
+            serializer.write_integer(_SCHEMA_ROTATE_EVENT_DESTINATION_SECRET_INPUT.members["previousSecretExpiryHours"], self.previous_secret_expiry_hours)
+
+        if self.idempotency_key is not None:
+            serializer.write_string(_SCHEMA_ROTATE_EVENT_DESTINATION_SECRET_INPUT.members["idempotencyKey"], self.idempotency_key)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["destination_id"] = de.read_string(_SCHEMA_ROTATE_EVENT_DESTINATION_SECRET_INPUT.members["destinationId"])
+
+                case 1:
+                    kwargs["previous_secret_expiry_hours"] = de.read_integer(_SCHEMA_ROTATE_EVENT_DESTINATION_SECRET_INPUT.members["previousSecretExpiryHours"])
+
+                case 2:
+                    kwargs["idempotency_key"] = de.read_string(_SCHEMA_ROTATE_EVENT_DESTINATION_SECRET_INPUT.members["idempotencyKey"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ROTATE_EVENT_DESTINATION_SECRET_INPUT, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class RotateEventDestinationSecretOutput:
+    """Output containing the new signing secret."""
+
+    signing_secret: str = field(repr=False)
+    """
+    The new signing secret for verifying event payloads. Visit [verify event
+    signatures](https://www.stedi.com/docs/healthcare/event-destinations-message-handling#verify-authenticity-and-receipt-time)
+    for details.
+    """
+
+    previous_secret_expires_at: datetime | None = None
+    """
+    Expiration timestamp for the secret this rotation replaced. Equals the
+    rotation time when you set `previousSecretExpiryHours` to `0`. You
+    can't rotate again until this timestamp passes.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ROTATE_EVENT_DESTINATION_SECRET_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ROTATE_EVENT_DESTINATION_SECRET_OUTPUT.members["signingSecret"], self.signing_secret)
+        if self.previous_secret_expires_at is not None:
+            serializer.write_timestamp(_SCHEMA_ROTATE_EVENT_DESTINATION_SECRET_OUTPUT.members["previousSecretExpiresAt"], self.previous_secret_expires_at)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["signing_secret"] = de.read_string(_SCHEMA_ROTATE_EVENT_DESTINATION_SECRET_OUTPUT.members["signingSecret"])
+
+                case 1:
+                    kwargs["previous_secret_expires_at"] = de.read_timestamp(_SCHEMA_ROTATE_EVENT_DESTINATION_SECRET_OUTPUT.members["previousSecretExpiresAt"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ROTATE_EVENT_DESTINATION_SECRET_OUTPUT, consumer=_consumer)
+        if "signing_secret" not in kwargs:
+            kwargs["signing_secret"] = ""
+        return kwargs
+
+ROTATE_EVENT_DESTINATION_SECRET = APIOperation(
+        input = RotateEventDestinationSecretInput,
+        output = RotateEventDestinationSecretOutput,
+        schema = _SCHEMA_ROTATE_EVENT_DESTINATION_SECRET,
+        input_schema = _SCHEMA_ROTATE_EVENT_DESTINATION_SECRET_INPUT,
+        output_schema = _SCHEMA_ROTATE_EVENT_DESTINATION_SECRET_OUTPUT,
+        error_registry = TypeRegistry({
+            ShapeID("com.stedi.smithy.model.errors#AuthenticationFailedException"): AuthenticationFailedException,
+ShapeID("com.stedi.smithy.model.errors#ConflictException"): ConflictException,
+ShapeID("com.stedi.smithy.model.errors#ForbiddenException"): ForbiddenException,
+ShapeID("com.stedi.smithy.model.errors#InternalServerException"): InternalServerException,
+ShapeID("com.stedi.smithy.model.errors#InvalidRequestException"): InvalidRequestException,
+ShapeID("com.stedi.smithy.model.errors#NotFoundException"): NotFoundException,
+ShapeID("com.stedi.smithy.model.errors#TooManyRequestsException"): TooManyRequestsException,
+        }),
+        effective_auth_schemes = [
+            ShapeID("smithy.api#httpApiKeyAuth"),
+ShapeID("smithy.api#httpBearerAuth"),
+        ],
+        error_schemas = [
+            _SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
+_SCHEMA_CONFLICT_EXCEPTION,
+_SCHEMA_FORBIDDEN_EXCEPTION,
+_SCHEMA_INTERNAL_SERVER_EXCEPTION,
+_SCHEMA_INVALID_REQUEST_EXCEPTION,
+_SCHEMA_NOT_FOUND_EXCEPTION,
+_SCHEMA_TOO_MANY_REQUESTS_EXCEPTION,
+        ]
+)
+
+@dataclass(kw_only=True)
+class UpdateEventDestinationInput:
+    """Input for updating a destination."""
+
+    destination_id: str | None = None
+    """
+    The unique identifier for the destination. You can retrieve destination
+    IDs with the [List
+    Destinations](https://www.stedi.com/docs/healthcare/api-reference/get-event-destinations-list-destinations)
+    endpoint.
+    """
+
+    name: str | None = None
+    """
+    A human-readable name for the destination. Stedi displays this name in
+    the portal.
+    """
+
+    description: str | None = None
+    """
+    A description of the destination's purpose, such as \"Receives
+    transaction enrollment task notifications.\"
+    """
+
+    event_types: list[str] | None = None
+    """
+    The event types you want Stedi to send to this destination. Visit [event
+    types](https://www.stedi.com/docs/healthcare/event-destinations-event-types)
+    for a complete list.
+    """
+
+    destination_url: str | None = None
+    """The URL where you want Stedi to deliver payloads through HTTP `POST`."""
+
+    concurrency_limit: int | None = None
+    """
+    Maximum concurrent deliveries for this destination. If not set, Stedi
+    applies your account default (typically 5). Stedi rejects requests
+    exceeding your account maximum (typically 20) with a `400` error.
+    Contact Stedi to change your limits.
+    """
+
+    status: EventDestinationsDestinationInputStatus | None = None
+    """
+    The destination's status. Set to `ENABLED` to receive event deliveries
+    or `DISABLED` to pause them.
+    """
+
+    idempotency_key: str | None = None
+    """
+    A unique string to identify this request to the server. If not set,
+    Stedi generates one automatically.
+
+    The key can be up to 255 characters. You can safely retry requests with
+    the same idempotency key within 24 hours of making the first request.
+    This prevents duplicate operations due to network errors or other
+    intermittent failures. [Learn
+    more](https://www.stedi.com/docs/api-reference/index#idempotency-keys).
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_UPDATE_EVENT_DESTINATION_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.destination_id is not None:
+            serializer.write_string(_SCHEMA_UPDATE_EVENT_DESTINATION_INPUT.members["destinationId"], self.destination_id)
+
+        if self.name is not None:
+            serializer.write_string(_SCHEMA_UPDATE_EVENT_DESTINATION_INPUT.members["name"], self.name)
+
+        if self.description is not None:
+            serializer.write_string(_SCHEMA_UPDATE_EVENT_DESTINATION_INPUT.members["description"], self.description)
+
+        if self.event_types is not None:
+            _serialize_event_destinations_event_type_list(serializer, _SCHEMA_UPDATE_EVENT_DESTINATION_INPUT.members["eventTypes"], self.event_types)
+
+        if self.destination_url is not None:
+            serializer.write_string(_SCHEMA_UPDATE_EVENT_DESTINATION_INPUT.members["destinationUrl"], self.destination_url)
+
+        if self.concurrency_limit is not None:
+            serializer.write_integer(_SCHEMA_UPDATE_EVENT_DESTINATION_INPUT.members["concurrencyLimit"], self.concurrency_limit)
+
+        if self.status is not None:
+            serializer.write_string(_SCHEMA_UPDATE_EVENT_DESTINATION_INPUT.members["status"], self.status)
+
+        if self.idempotency_key is not None:
+            serializer.write_string(_SCHEMA_UPDATE_EVENT_DESTINATION_INPUT.members["idempotencyKey"], self.idempotency_key)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["destination_id"] = de.read_string(_SCHEMA_UPDATE_EVENT_DESTINATION_INPUT.members["destinationId"])
+
+                case 1:
+                    kwargs["name"] = de.read_string(_SCHEMA_UPDATE_EVENT_DESTINATION_INPUT.members["name"])
+
+                case 2:
+                    kwargs["description"] = de.read_string(_SCHEMA_UPDATE_EVENT_DESTINATION_INPUT.members["description"])
+
+                case 3:
+                    kwargs["event_types"] = _deserialize_event_destinations_event_type_list(de, _SCHEMA_UPDATE_EVENT_DESTINATION_INPUT.members["eventTypes"])
+
+                case 4:
+                    kwargs["destination_url"] = de.read_string(_SCHEMA_UPDATE_EVENT_DESTINATION_INPUT.members["destinationUrl"])
+
+                case 5:
+                    kwargs["concurrency_limit"] = de.read_integer(_SCHEMA_UPDATE_EVENT_DESTINATION_INPUT.members["concurrencyLimit"])
+
+                case 6:
+                    kwargs["status"] = EventDestinationsDestinationInputStatus(de.read_string(_SCHEMA_UPDATE_EVENT_DESTINATION_INPUT.members["status"]))
+
+                case 7:
+                    kwargs["idempotency_key"] = de.read_string(_SCHEMA_UPDATE_EVENT_DESTINATION_INPUT.members["idempotencyKey"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_UPDATE_EVENT_DESTINATION_INPUT, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class UpdateEventDestinationOutput:
+    """Output containing the updated destination details."""
+
+    id: str
+    """The unique identifier for the destination."""
+
+    created_at: datetime
+    """Creation timestamp for this destination."""
+
+    updated_at: datetime
+    """Last update timestamp for this destination."""
+
+    status: EventDestinationsDestinationStatus
+    """
+    The destination's current status. Stedi only sends event payloads to
+    `ENABLED` destinations.
+    """
+
+    name: str
+    """
+    A human-readable name for the destination. Stedi displays this name in
+    the portal.
+    """
+
+    description: str
+    """
+    A description of the destination's purpose, such as \"Receives
+    transaction enrollment task notifications.\"
+    """
+
+    event_types: list[str]
+    """
+    The event types Stedi sends to this destination. Visit [event
+    types](https://www.stedi.com/docs/healthcare/event-destinations-event-types)
+    for a complete list.
+    """
+
+    destination_url: str
+    """The URL where Stedi delivers payloads through HTTP `POST`."""
+
+    last_delivery_time: datetime | None = None
+    """
+    The timestamp for Stedi's most recent delivery attempt to this
+    destination. Absent when Stedi hasn't yet attempted a delivery.
+    """
+
+    concurrency_limit: int | None = None
+    """
+    The maximum number of concurrent deliveries for this destination.
+    Contact Stedi to change your account limits.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["id"], self.id)
+        serializer.write_timestamp(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["createdAt"], self.created_at)
+        serializer.write_timestamp(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["updatedAt"], self.updated_at)
+        serializer.write_string(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["status"], self.status)
+        if self.last_delivery_time is not None:
+            serializer.write_timestamp(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["lastDeliveryTime"], self.last_delivery_time)
+
+        serializer.write_string(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["name"], self.name)
+        serializer.write_string(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["description"], self.description)
+        _serialize_event_destinations_event_type_list(serializer, _SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["eventTypes"], self.event_types)
+        serializer.write_string(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["destinationUrl"], self.destination_url)
+        if self.concurrency_limit is not None:
+            serializer.write_integer(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["concurrencyLimit"], self.concurrency_limit)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["id"] = de.read_string(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["id"])
+
+                case 1:
+                    kwargs["created_at"] = de.read_timestamp(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["createdAt"])
+
+                case 2:
+                    kwargs["updated_at"] = de.read_timestamp(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["updatedAt"])
+
+                case 3:
+                    kwargs["status"] = EventDestinationsDestinationStatus(de.read_string(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["status"]))
+
+                case 4:
+                    kwargs["last_delivery_time"] = de.read_timestamp(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["lastDeliveryTime"])
+
+                case 5:
+                    kwargs["name"] = de.read_string(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["name"])
+
+                case 6:
+                    kwargs["description"] = de.read_string(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["description"])
+
+                case 7:
+                    kwargs["event_types"] = _deserialize_event_destinations_event_type_list(de, _SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["eventTypes"])
+
+                case 8:
+                    kwargs["destination_url"] = de.read_string(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["destinationUrl"])
+
+                case 9:
+                    kwargs["concurrency_limit"] = de.read_integer(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT.members["concurrencyLimit"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT, consumer=_consumer)
+        if "id" not in kwargs:
+            kwargs["id"] = ""
+        if "created_at" not in kwargs:
+            kwargs["created_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        if "updated_at" not in kwargs:
+            kwargs["updated_at"] = datetime.fromtimestamp(0, tz=timezone.utc)
+        if "status" not in kwargs:
+            kwargs["status"] = EventDestinationsDestinationStatus._corrected("")
+        if "name" not in kwargs:
+            kwargs["name"] = ""
+        if "description" not in kwargs:
+            kwargs["description"] = ""
+        if "event_types" not in kwargs:
+            kwargs["event_types"] = []
+        if "destination_url" not in kwargs:
+            kwargs["destination_url"] = ""
+        return kwargs
+
+UPDATE_EVENT_DESTINATION = APIOperation(
+        input = UpdateEventDestinationInput,
+        output = UpdateEventDestinationOutput,
+        schema = _SCHEMA_UPDATE_EVENT_DESTINATION,
+        input_schema = _SCHEMA_UPDATE_EVENT_DESTINATION_INPUT,
+        output_schema = _SCHEMA_UPDATE_EVENT_DESTINATION_OUTPUT,
+        error_registry = TypeRegistry({
+            ShapeID("com.stedi.smithy.model.errors#AuthenticationFailedException"): AuthenticationFailedException,
+ShapeID("com.stedi.smithy.model.errors#ConflictException"): ConflictException,
+ShapeID("com.stedi.smithy.model.errors#ContentTooLargeException"): ContentTooLargeException,
+ShapeID("com.stedi.smithy.model.errors#ForbiddenException"): ForbiddenException,
+ShapeID("com.stedi.smithy.model.errors#InternalServerException"): InternalServerException,
+ShapeID("com.stedi.smithy.model.errors#InvalidRequestException"): InvalidRequestException,
+ShapeID("com.stedi.smithy.model.errors#NotFoundException"): NotFoundException,
+ShapeID("com.stedi.smithy.model.errors#TooManyRequestsException"): TooManyRequestsException,
+        }),
+        effective_auth_schemes = [
+            ShapeID("smithy.api#httpApiKeyAuth"),
+ShapeID("smithy.api#httpBearerAuth"),
+        ],
+        error_schemas = [
+            _SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
+_SCHEMA_CONFLICT_EXCEPTION,
+_SCHEMA_CONTENT_TOO_LARGE_EXCEPTION,
+_SCHEMA_FORBIDDEN_EXCEPTION,
+_SCHEMA_INTERNAL_SERVER_EXCEPTION,
+_SCHEMA_INVALID_REQUEST_EXCEPTION,
+_SCHEMA_NOT_FOUND_EXCEPTION,
+_SCHEMA_TOO_MANY_REQUESTS_EXCEPTION,
         ]
 )

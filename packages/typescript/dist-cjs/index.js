@@ -8,6 +8,7 @@ tslib_1.__exportStar(require("./commands"), exports);
 var client_1 = require("@smithy/core/client");
 Object.defineProperty(exports, "$Command", { enumerable: true, get: function () { return client_1.Command; } });
 tslib_1.__exportStar(require("./schemas/schemas_0"), exports);
+tslib_1.__exportStar(require("./pagination"), exports);
 tslib_1.__exportStar(require("./models/enums"), exports);
 tslib_1.__exportStar(require("./models/errors"), exports);
 tslib_1.__exportStar(require("./models/models_0"), exports);

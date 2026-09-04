@@ -183,3 +183,63 @@ export const ProfessionalClaimSubmissionDrugIdentificationUnitOfMeasure = {
     MILLILITER: "MILLILITER",
     UNIT: "UNIT",
 };
+export const ProfessionalClaimSubmissionPurchasedServiceProviderEntityType = {
+    ORGANIZATION: "ORGANIZATION",
+    PERSON: "PERSON",
+};
+export const ClaimAcknowledgmentStatus = {
+    ACCEPTED: "ACCEPTED",
+    INVALID: "INVALID",
+    RECEIVED: "RECEIVED",
+    REJECTED: "REJECTED",
+};
+export const ClaimType = {
+    DENTAL: "DENTAL",
+    INSTITUTIONAL: "INSTITUTIONAL",
+    PROFESSIONAL: "PROFESSIONAL",
+};
+export const ClaimStatusReportedBy = {
+    CLEARINGHOUSE: "CLEARINGHOUSE",
+    PAYER: "PAYER",
+};
+export const ClaimPaymentInformationStatusCode = {
+    DENIED: "DENIED",
+    NOT_OUR_CLAIM_FORWARDED_TO_ADDITIONAL_PAYERS: "NOT_OUR_CLAIM_FORWARDED_TO_ADDITIONAL_PAYERS",
+    PREDETERMINATION_PRICING_ONLY: "PREDETERMINATION_PRICING_ONLY",
+    PROCESSED_AS_PRIMARY: "PROCESSED_AS_PRIMARY",
+    PROCESSED_AS_PRIMARY_FORWARDED_TO_ADDITIONAL_PAYERS: "PROCESSED_AS_PRIMARY_FORWARDED_TO_ADDITIONAL_PAYERS",
+    PROCESSED_AS_SECONDARY: "PROCESSED_AS_SECONDARY",
+    PROCESSED_AS_SECONDARY_FORWARDED_TO_ADDITIONAL_PAYERS: "PROCESSED_AS_SECONDARY_FORWARDED_TO_ADDITIONAL_PAYERS",
+    PROCESSED_AS_TERTIARY: "PROCESSED_AS_TERTIARY",
+    PROCESSED_AS_TERTIARY_FORWARDED_TO_ADDITIONAL_PAYERS: "PROCESSED_AS_TERTIARY_FORWARDED_TO_ADDITIONAL_PAYERS",
+    REVERSAL_OF_PREVIOUS_PAYMENT: "REVERSAL_OF_PREVIOUS_PAYMENT",
+};
+export const ClaimStatus = {
+    ACCEPTED: "ACCEPTED",
+    DENIED: "DENIED",
+    PROCESSED: "PROCESSED",
+    RECEIVED: "RECEIVED",
+    REJECTED: "REJECTED",
+    SUBMITTED: "SUBMITTED",
+    UNKNOWN: "UNKNOWN",
+};
+export const EventDestinationsDestinationInputStatus = {
+    DISABLED: "DISABLED",
+    ENABLED: "ENABLED",
+};
+export const EventDestinationsDestinationStatus = {
+    DISABLED: "DISABLED",
+    ENABLED: "ENABLED",
+};
+export const EventDestinationsEventEnvironment = {
+    PRODUCTION: "PRODUCTION",
+    TEST: "TEST",
+};
+export const EventDestinationsEventPayloadObjectType = {
+    V1_EVENT: "v1.event",
+};
+export const EventDestinationsEventStatus = {
+    DELIVERED: "DELIVERED",
+    FAILED: "FAILED",
+    PENDING: "PENDING",
+};

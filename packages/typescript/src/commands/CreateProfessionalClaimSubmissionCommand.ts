@@ -1,7 +1,7 @@
 // smithy-typescript generated code
 import type { MetadataBearer as __MetadataBearer } from "@smithy/types";
 
-import { _ep0, _mw0, command } from "../commandBuilder";
+import { _ep1, _mw0, command } from "../commandBuilder";
 import type {
   CreateProfessionalClaimSubmissionInput,
   CreateProfessionalClaimSubmissionOutput,
@@ -26,7 +26,7 @@ export interface CreateProfessionalClaimSubmissionCommandInput extends CreatePro
 export interface CreateProfessionalClaimSubmissionCommandOutput extends CreateProfessionalClaimSubmissionOutput, __MetadataBearer {}
 
 /**
- * Submit a professional claim using the Stedi JSON format.
+ * Submit a professional claim in JSON modeled after the CMS-1500 form structure
  * @example
  * Use a bare-bones client and the command you need to make an API call.
  * ```javascript
@@ -325,6 +325,15 @@ export interface CreateProfessionalClaimSubmissionCommandOutput extends CreatePr
  *           commercialNumber: "STRING_VALUE",
  *         },
  *       },
+ *       purchasedService: { // ProfessionalClaimSubmissionPurchasedService
+ *         chargeAmount: "STRING_VALUE", // required
+ *         provider: { // ProfessionalClaimSubmissionPurchasedServiceProvider
+ *           entityType: "PERSON" || "ORGANIZATION", // required
+ *           identifiers: { // ProfessionalClaimSubmissionPurchasedServiceProviderIdentifiers
+ *             npi: "STRING_VALUE", // required
+ *           },
+ *         },
+ *       },
  *       lineItemControlNumber: "STRING_VALUE",
  *       drugIdentification: { // ProfessionalClaimSubmissionDrugIdentification
  *         nationalDrugCode: "STRING_VALUE", // required
@@ -386,6 +395,11 @@ export interface CreateProfessionalClaimSubmissionCommandOutput extends CreatePr
  * // { // CreateProfessionalClaimSubmissionOutput
  * //   claimId: "STRING_VALUE", // required
  * //   submissionId: "STRING_VALUE", // required
+ * //   errors: [ // ClaimRejectionErrors
+ * //     { // ClaimRejectionError
+ * //       description: "STRING_VALUE", // required
+ * //     },
+ * //   ],
  * // };
  *
  * ```
@@ -395,9 +409,6 @@ export interface CreateProfessionalClaimSubmissionCommandOutput extends CreatePr
  * @see {@link CreateProfessionalClaimSubmissionCommandInput} for command's `input` shape.
  * @see {@link CreateProfessionalClaimSubmissionCommandOutput} for command's `response` shape.
  * @see {@link StediClientResolvedConfig | config} for StediClient's `config` shape.
- *
- * @throws {@link ClaimEditException} (client fault)
- *  Exception returned when the claim fails one or more pre-submission edits.
  *
  * @throws {@link AuthenticationFailedException} (client fault)
  *  The request credentials are missing or not valid.
@@ -417,14 +428,11 @@ export interface CreateProfessionalClaimSubmissionCommandOutput extends CreatePr
  * @throws {@link TooManyRequestsException} (client fault)
  *  The caller has exceeded a rate limit. Retry with backoff.
  *
- * @throws {@link InternalFailureException} (server fault)
- *  The server response when an unexpected error occurred while processing request.
- *
  * @throws {@link StediServiceException}
  * <p>Base exception class for all service exceptions from Stedi service.</p>
  *
  *
- * @example Submit a professional claim with primary and secondary coverage
+ * @example Submit claim
  * ```javascript
  * //
  * const input = {
@@ -435,52 +443,31 @@ export interface CreateProfessionalClaimSubmissionCommandOutput extends CreatePr
  *     providerSignature: "ON_FILE"
  *   },
  *   billing: {
- *     amountPaid: "100.00",
  *     billingProvider: {
  *       address: {
- *         addressLine1: "501 Main Street",
- *         city: "Springfield",
- *         postalCode: "627010500",
+ *         addressLine1: "123 St",
+ *         city: "City",
+ *         postalCode: "12345",
  *         state: "IL"
  *       },
- *       contact: {
- *         phoneNumber: "2175558800"
- *       },
  *       identifiers: {
- *         locationNumber: "LOC-001",
- *         npi: "1730289013",
+ *         npi: "1999999984",
  *         taxonomyCode: "207Q00000X"
  *       },
  *       name: {
- *         organization: "Springfield Family Medical Center"
+ *         organization: "Test Provider"
  *       }
  *     },
- *     patientControlNumber: "CLM-2026-04219",
- *     serviceFacility: {
- *       address: {
- *         addressLine1: "501 Main Street",
- *         city: "Springfield",
- *         postalCode: "627010500",
- *         state: "IL"
- *       },
- *       identifiers: {
- *         npi: "1730289013",
- *         stateLicenseNumber: "IL-FAC-77821"
- *       },
- *       name: {
- *         organization: "Springfield Family Medical Center"
- *       }
- *     },
+ *     patientControlNumber: "TEST-004",
  *     taxId: {
- *       ein: "841234567"
+ *       ein: "123456789"
  *     },
- *     totalCharge: "1432.50"
+ *     totalCharge: "100.00"
  *   },
  *   encounter: {
  *     attachments: [
  *       {
  *         attachmentControlNumber: "PWK-2026-0001",
- *         attachmentId: "1f2e3d4c-5b6a-7980-9abc-def012345678",
  *         reportTypeCode: "PROGRESS_REPORT",
  *         transmissionCode: "ELECTRONICALLY_ONLY"
  *       }
@@ -511,29 +498,28 @@ export interface CreateProfessionalClaimSubmissionCommandOutput extends CreatePr
  *     primaryDiagnosisCode: "J0190",
  *     priorReferringProvider: {
  *       identifiers: {
- *         npi: "1083827763"
+ *         npi: "1999999984"
  *       },
  *       name: {
  *         person: {
- *           firstName: "David",
- *           lastName: "Kim"
+ *           firstName: "John",
+ *           lastName: "Doe"
  *         }
  *       }
  *     },
  *     referenceNumbers: {
  *       clia: "14D2089999",
- *       priorAuthorization: "PA-2026-77831",
- *       referral: "REF-55421"
+ *       priorAuthorization: "PA-2026-11111",
+ *       referral: "REF-4321"
  *     },
  *     referringProvider: {
  *       identifiers: {
- *         npi: "1245319599",
- *         stateLicenseNumber: "IL-MD-44512"
+ *         npi: "1999999984"
  *       },
  *       name: {
  *         person: {
- *           firstName: "Maya",
- *           lastName: "Patel"
+ *           firstName: "Jane",
+ *           lastName: "Doe"
  *         }
  *       }
  *     },
@@ -543,12 +529,12 @@ export interface CreateProfessionalClaimSubmissionCommandOutput extends CreatePr
  *     },
  *     supervisingProvider: {
  *       identifiers: {
- *         npi: "1396718825"
+ *         npi: "1999999984"
  *       },
  *       name: {
  *         person: {
- *           firstName: "Elena",
- *           lastName: "Rossi"
+ *           firstName: "Jane",
+ *           lastName: "Smith"
  *         }
  *       }
  *     }
@@ -556,35 +542,29 @@ export interface CreateProfessionalClaimSubmissionCommandOutput extends CreatePr
  *   idempotencyKey: "0e1f9a8d-6c5b-4a3f-9d2e-7b8c1a0f4e6d",
  *   insured: {
  *     address: {
- *       addressLine1: "742 Evergreen Terrace",
- *       addressLine2: "Apt 3B",
- *       city: "Springfield",
- *       postalCode: "627010001",
+ *       addressLine1: "111 A Place",
+ *       city: "Somewhere",
+ *       postalCode: "123450000",
  *       state: "IL"
  *     },
- *     dateOfBirth: "1982-04-12",
+ *     dateOfBirth: "1990-01-01",
  *     gender: "FEMALE",
  *     insuranceType: "OTHER",
  *     memberId: "W123456789",
  *     name: {
  *       person: {
- *         firstName: "Sarah",
- *         lastName: "Johnson",
- *         middleName: "A"
+ *         firstName: "June",
+ *         lastName: "Doe"
  *       }
  *     },
- *     paymentResponsibilityLevelCode: "PRIMARY",
- *     planName: "Aetna Choice POS II",
- *     policyOrGroupNumber: "GRP-AETNA-987654",
- *     ssn: "111223333"
+ *     paymentResponsibilityLevelCode: "PRIMARY"
  *   },
  *   otherInsured: [
  *     {
  *       address: {
- *         addressLine1: "742 Evergreen Terrace",
- *         addressLine2: "Apt 3B",
- *         city: "Springfield",
- *         postalCode: "627010001",
+ *         addressLine1: "111 A Place",
+ *         city: "Somewhere",
+ *         postalCode: "123450000",
  *         state: "IL"
  *       },
  *       authorization: {
@@ -597,7 +577,7 @@ export interface CreateProfessionalClaimSubmissionCommandOutput extends CreatePr
  *       name: {
  *         person: {
  *           firstName: "Michael",
- *           lastName: "Johnson"
+ *           lastName: "Doe"
  *         }
  *       },
  *       otherPayer: {
@@ -616,34 +596,26 @@ export interface CreateProfessionalClaimSubmissionCommandOutput extends CreatePr
  *   ],
  *   patient: {
  *     address: {
- *       addressLine1: "742 Evergreen Terrace",
- *       addressLine2: "Apt 3B",
- *       city: "Springfield",
- *       postalCode: "627010001",
+ *       addressLine1: "111 A Place",
+ *       city: "Somewhere",
+ *       postalCode: "123450000",
  *       state: "IL"
  *     },
- *     dateOfBirth: "2015-08-21",
+ *     dateOfBirth: "1900-02-02",
  *     gender: "MALE",
  *     name: {
  *       person: {
  *         firstName: "Liam",
- *         lastName: "Johnson"
+ *         lastName: "Doe"
  *       }
  *     },
  *     relationshipToInsured: "CHILD"
  *   },
  *   payer: {
- *     address: {
- *       addressLine1: "151 Farmington Avenue",
- *       city: "Hartford",
- *       postalCode: "06156",
- *       state: "CT"
- *     },
  *     id: "60054",
  *     name: {
  *       organization: "Aetna"
- *     },
- *     receiverId: "60054"
+ *     }
  *   },
  *   purpose: "CHARGEABLE",
  *   serviceLines: [
@@ -653,99 +625,23 @@ export interface CreateProfessionalClaimSubmissionCommandOutput extends CreatePr
  *         start: "2026-03-03"
  *       },
  *       diagnosisCodes: [
- *         "J0190",
- *         "R0602"
- *       ],
- *       isEmergency: false,
- *       lineItemChargeAmount: "185.00",
- *       lineItemControlNumber: "LN-0001",
- *       placeOfService: "11",
- *       procedureCode: {
- *         code: "99213",
- *         modifiers: [
- *           "25"
- *         ]
- *       },
- *       renderingProvider: {
- *         identifiers: {
- *           npi: "1396718825",
- *           taxonomyCode: "207Q00000X"
- *         },
- *         name: {
- *           person: {
- *             firstName: "Elena",
- *             lastName: "Rossi"
- *           }
- *         }
- *       },
- *       units: "1"
- *     },
- *     {
- *       datesOfService: {
- *         end: "2026-03-03",
- *         start: "2026-03-03"
- *       },
- *       diagnosisCodes: [
  *         "J0190"
  *       ],
- *       drugIdentification: {
- *         associationNumber: {
- *           pharmacyPrescriptionNumber: "RX-2026-118822"
- *         },
- *         nationalDrugCode: "00409120130",
- *         unitCount: "300",
- *         unitOfMeasure: "MILLIGRAM"
- *       },
- *       isEmergency: false,
- *       lineItemChargeAmount: "1247.50",
- *       lineItemControlNumber: "LN-0002",
- *       orderingProvider: {
- *         identifiers: {
- *           npi: "1245319599"
- *         },
- *         name: {
- *           person: {
- *             firstName: "Maya",
- *             lastName: "Patel"
- *           }
- *         }
- *       },
+ *       lineItemChargeAmount: "100.00",
  *       placeOfService: "11",
- *       priorAuthorizations: [
- *         {
- *           otherPayerPrimaryId: "60054",
- *           priorAuthorizationNumber: "PA-2026-77831"
- *         }
- *       ],
  *       procedureCode: {
- *         code: "J1885",
- *         modifiers: [
- *           "JW"
- *         ]
+ *         code: "99213"
  *       },
- *       renderingProvider: {
- *         identifiers: {
- *           npi: "1396718825"
- *         },
- *         name: {
- *           person: {
- *             firstName: "Elena",
- *             lastName: "Rossi"
- *           }
- *         }
- *       },
- *       units: "10"
+ *       units: "1"
  *     }
  *   ],
  *   submitter: {
  *     contact: {
- *       email: "billing@acmehealth.example",
- *       faxNumber: "3135551235",
- *       phoneNumber: "3135551234"
+ *       phoneNumber: "5555551234"
  *     },
- *     etin: "SUBMITTER0001",
+ *     etin: "TEST001",
  *     name: {
- *       organization: "Acme Health Billing"
+ *       organization: "Test Submitter"
  *     }
  *   }
  * };
@@ -759,10 +655,139 @@ export interface CreateProfessionalClaimSubmissionCommandOutput extends CreatePr
  * *\/
  * ```
  *
+ * @example Failed edits
+ * ```javascript
+ * //
+ * const input = {
+ *   authorization: {
+ *     insuredAuthorizesAssignment: "YES",
+ *     patientReleasesMedicalInfo: "YES",
+ *     providerAcceptsAssignment: "ASSIGNED",
+ *     providerSignature: "ON_FILE"
+ *   },
+ *   billing: {
+ *     billingProvider: {
+ *       address: {
+ *         addressLine1: "123 St",
+ *         city: "City",
+ *         postalCode: "12345",
+ *         state: "IL"
+ *       },
+ *       identifiers: {
+ *         npi: "1730289013",
+ *         taxonomyCode: "207Q0000X"
+ *       },
+ *       name: {
+ *         organization: "Test Provider"
+ *       }
+ *     },
+ *     patientControlNumber: "TEST-005",
+ *     taxId: {
+ *       ein: "123456789"
+ *     },
+ *     totalCharge: "100.00"
+ *   },
+ *   encounter: {
+ *     patientCondition: {
+ *       isAutoAccidentRelated: false,
+ *       isEmploymentRelated: false,
+ *       isOtherAccidentRelated: false
+ *     },
+ *     primaryDiagnosisCode: "J0190"
+ *   },
+ *   idempotencyKey: "7f8e9d0a-1b2c-3d4e-5f6a-7b8c9d0e1f2a",
+ *   insured: {
+ *     address: {
+ *       addressLine1: "111 A Place",
+ *       city: "Somewhere",
+ *       postalCode: "123450000",
+ *       state: "IL"
+ *     },
+ *     dateOfBirth: "1990-01-01",
+ *     gender: "FEMALE",
+ *     insuranceType: "OTHER",
+ *     memberId: "W123456789",
+ *     name: {
+ *       person: {
+ *         firstName: "June",
+ *         lastName: "Doe"
+ *       }
+ *     },
+ *     paymentResponsibilityLevelCode: "PRIMARY"
+ *   },
+ *   patient: {
+ *     address: {
+ *       addressLine1: "111 A Place",
+ *       city: "Somewhere",
+ *       postalCode: "123450000",
+ *       state: "IL"
+ *     },
+ *     dateOfBirth: "1900-02-02",
+ *     gender: "MALE",
+ *     name: {
+ *       person: {
+ *         firstName: "Liam",
+ *         lastName: "Doe"
+ *       }
+ *     },
+ *     relationshipToInsured: "CHILD"
+ *   },
+ *   payer: {
+ *     id: "60054",
+ *     name: {
+ *       organization: "Aetna"
+ *     }
+ *   },
+ *   purpose: "CHARGEABLE",
+ *   serviceLines: [
+ *     {
+ *       datesOfService: {
+ *         end: "2026-03-03",
+ *         start: "2026-03-03"
+ *       },
+ *       diagnosisCodes: [
+ *         "J0190"
+ *       ],
+ *       lineItemChargeAmount: "100.00",
+ *       placeOfService: "11",
+ *       procedureCode: {
+ *         code: "99213"
+ *       },
+ *       units: "1"
+ *     }
+ *   ],
+ *   submitter: {
+ *     contact: {
+ *       phoneNumber: "5555551234"
+ *     },
+ *     etin: "TEST001",
+ *     name: {
+ *       organization: "Test Submitter"
+ *     }
+ *   }
+ * };
+ * const command = new CreateProfessionalClaimSubmissionCommand(input);
+ * const response = await client.send(command);
+ * /* response is
+ * {
+ *   claimId: "clm_5RPQXX5FM3A83RMYPQ5X2YW7KX",
+ *   errors: [
+ *     {
+ *       description: "Invalid NPI. The Billing Provider NPI of 1730289013 is invalid. The National Provider Identifier must be valid with 10 digits and no prefixes or dashes. Correct and resubmit."
+ *     },
+ *     {
+ *       description: "Invalid Taxonomy Code. The taxonomy code for Billing Provider does not meet the required format. Taxonomy codes must be 10 uppercase alphanumeric characters ending with 'X'. Correct and resubmit."
+ *     }
+ *   ],
+ *   submissionId: "sbm_7K4JDJKN3ABBH9MCAW6NE86DYV"
+ * }
+ * *\/
+ * ```
+ *
  * @internal
  */
 export class CreateProfessionalClaimSubmissionCommand extends command<CreateProfessionalClaimSubmissionCommandInput, CreateProfessionalClaimSubmissionCommandOutput>(
-  _ep0,
+  _ep1,
   _mw0,
   "CreateProfessionalClaimSubmission",
   CreateProfessionalClaimSubmission$

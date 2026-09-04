@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProfessionalClaimSubmissionDrugIdentificationUnitOfMeasure = exports.ProfessionalClaimSubmissionPurpose = exports.ProfessionalClaimSubmissionPatientRelationshipToInsured = exports.ProfessionalClaimSubmissionResponsibilityLevel = exports.ProfessionalClaimSubmissionOtherInsuredRelationshipToInsured = exports.ProfessionalClaimSubmissionMedicareSecondaryInsuranceType = exports.ProfessionalClaimSubmissionClaimFilingIndicator = exports.ProfessionalClaimSubmissionPaymentResponsibilityLevelCode = exports.ProfessionalClaimSubmissionInsuranceType = exports.ProfessionalClaimSubmissionGenderCode = exports.ProfessionalClaimSubmissionClaimFrequencyCode = exports.ProfessionalClaimSubmissionEPSDTReferralConditionIndicator = exports.ProfessionalClaimSubmissionAttachmentTransmissionCode = exports.ProfessionalClaimSubmissionAttachmentReportTypeCode = exports.ProfessionalClaimSubmissionProviderSignature = exports.ProfessionalClaimSubmissionProviderAcceptsAssignment = exports.ProfessionalClaimSubmissionReleaseOfInformationCode = exports.ProfessionalClaimSubmissionBenefitsAssignmentCertificationIndicator = void 0;
+exports.EventDestinationsEventStatus = exports.EventDestinationsEventPayloadObjectType = exports.EventDestinationsEventEnvironment = exports.EventDestinationsDestinationStatus = exports.EventDestinationsDestinationInputStatus = exports.ClaimStatus = exports.ClaimPaymentInformationStatusCode = exports.ClaimStatusReportedBy = exports.ClaimType = exports.ClaimAcknowledgmentStatus = exports.ProfessionalClaimSubmissionPurchasedServiceProviderEntityType = exports.ProfessionalClaimSubmissionDrugIdentificationUnitOfMeasure = exports.ProfessionalClaimSubmissionPurpose = exports.ProfessionalClaimSubmissionPatientRelationshipToInsured = exports.ProfessionalClaimSubmissionResponsibilityLevel = exports.ProfessionalClaimSubmissionOtherInsuredRelationshipToInsured = exports.ProfessionalClaimSubmissionMedicareSecondaryInsuranceType = exports.ProfessionalClaimSubmissionClaimFilingIndicator = exports.ProfessionalClaimSubmissionPaymentResponsibilityLevelCode = exports.ProfessionalClaimSubmissionInsuranceType = exports.ProfessionalClaimSubmissionGenderCode = exports.ProfessionalClaimSubmissionClaimFrequencyCode = exports.ProfessionalClaimSubmissionEPSDTReferralConditionIndicator = exports.ProfessionalClaimSubmissionAttachmentTransmissionCode = exports.ProfessionalClaimSubmissionAttachmentReportTypeCode = exports.ProfessionalClaimSubmissionProviderSignature = exports.ProfessionalClaimSubmissionProviderAcceptsAssignment = exports.ProfessionalClaimSubmissionReleaseOfInformationCode = exports.ProfessionalClaimSubmissionBenefitsAssignmentCertificationIndicator = void 0;
 exports.ProfessionalClaimSubmissionBenefitsAssignmentCertificationIndicator = {
     NO: "NO",
     NOT_APPLICABLE: "NOT_APPLICABLE",
@@ -185,4 +185,64 @@ exports.ProfessionalClaimSubmissionDrugIdentificationUnitOfMeasure = {
     MILLIGRAM: "MILLIGRAM",
     MILLILITER: "MILLILITER",
     UNIT: "UNIT",
+};
+exports.ProfessionalClaimSubmissionPurchasedServiceProviderEntityType = {
+    ORGANIZATION: "ORGANIZATION",
+    PERSON: "PERSON",
+};
+exports.ClaimAcknowledgmentStatus = {
+    ACCEPTED: "ACCEPTED",
+    INVALID: "INVALID",
+    RECEIVED: "RECEIVED",
+    REJECTED: "REJECTED",
+};
+exports.ClaimType = {
+    DENTAL: "DENTAL",
+    INSTITUTIONAL: "INSTITUTIONAL",
+    PROFESSIONAL: "PROFESSIONAL",
+};
+exports.ClaimStatusReportedBy = {
+    CLEARINGHOUSE: "CLEARINGHOUSE",
+    PAYER: "PAYER",
+};
+exports.ClaimPaymentInformationStatusCode = {
+    DENIED: "DENIED",
+    NOT_OUR_CLAIM_FORWARDED_TO_ADDITIONAL_PAYERS: "NOT_OUR_CLAIM_FORWARDED_TO_ADDITIONAL_PAYERS",
+    PREDETERMINATION_PRICING_ONLY: "PREDETERMINATION_PRICING_ONLY",
+    PROCESSED_AS_PRIMARY: "PROCESSED_AS_PRIMARY",
+    PROCESSED_AS_PRIMARY_FORWARDED_TO_ADDITIONAL_PAYERS: "PROCESSED_AS_PRIMARY_FORWARDED_TO_ADDITIONAL_PAYERS",
+    PROCESSED_AS_SECONDARY: "PROCESSED_AS_SECONDARY",
+    PROCESSED_AS_SECONDARY_FORWARDED_TO_ADDITIONAL_PAYERS: "PROCESSED_AS_SECONDARY_FORWARDED_TO_ADDITIONAL_PAYERS",
+    PROCESSED_AS_TERTIARY: "PROCESSED_AS_TERTIARY",
+    PROCESSED_AS_TERTIARY_FORWARDED_TO_ADDITIONAL_PAYERS: "PROCESSED_AS_TERTIARY_FORWARDED_TO_ADDITIONAL_PAYERS",
+    REVERSAL_OF_PREVIOUS_PAYMENT: "REVERSAL_OF_PREVIOUS_PAYMENT",
+};
+exports.ClaimStatus = {
+    ACCEPTED: "ACCEPTED",
+    DENIED: "DENIED",
+    PROCESSED: "PROCESSED",
+    RECEIVED: "RECEIVED",
+    REJECTED: "REJECTED",
+    SUBMITTED: "SUBMITTED",
+    UNKNOWN: "UNKNOWN",
+};
+exports.EventDestinationsDestinationInputStatus = {
+    DISABLED: "DISABLED",
+    ENABLED: "ENABLED",
+};
+exports.EventDestinationsDestinationStatus = {
+    DISABLED: "DISABLED",
+    ENABLED: "ENABLED",
+};
+exports.EventDestinationsEventEnvironment = {
+    PRODUCTION: "PRODUCTION",
+    TEST: "TEST",
+};
+exports.EventDestinationsEventPayloadObjectType = {
+    V1_EVENT: "v1.event",
+};
+exports.EventDestinationsEventStatus = {
+    DELIVERED: "DELIVERED",
+    FAILED: "FAILED",
+    PENDING: "PENDING",
 };

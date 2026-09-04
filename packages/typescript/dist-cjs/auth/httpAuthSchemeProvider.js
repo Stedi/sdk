@@ -20,11 +20,17 @@ function createSmithyApiHttpApiKeyAuthHttpAuthOption(authParameters) {
         },
     };
 }
+function createSmithyApiHttpBearerAuthHttpAuthOption(authParameters) {
+    return {
+        schemeId: "smithy.api#httpBearerAuth",
+    };
+}
 const defaultStediHttpAuthSchemeProvider = (authParameters) => {
     const options = [];
     switch (authParameters.operation) {
         default: {
             options.push(createSmithyApiHttpApiKeyAuthHttpAuthOption(authParameters));
+            options.push(createSmithyApiHttpBearerAuthHttpAuthOption(authParameters));
         }
     }
     return options;
@@ -32,9 +38,11 @@ const defaultStediHttpAuthSchemeProvider = (authParameters) => {
 exports.defaultStediHttpAuthSchemeProvider = defaultStediHttpAuthSchemeProvider;
 const resolveHttpAuthSchemeConfig = (config) => {
     const apiKey = (0, core_1.memoizeIdentityProvider)(config.apiKey, core_1.isIdentityExpired, core_1.doesIdentityRequireRefresh);
+    const token = (0, core_1.memoizeIdentityProvider)(config.token, core_1.isIdentityExpired, core_1.doesIdentityRequireRefresh);
     return Object.assign(config, {
         authSchemePreference: (0, client_1.normalizeProvider)(config.authSchemePreference ?? []),
         apiKey,
+        token,
     });
 };
 exports.resolveHttpAuthSchemeConfig = resolveHttpAuthSchemeConfig;

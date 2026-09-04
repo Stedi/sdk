@@ -1,7 +1,7 @@
 {
   "name": "@stedi/sdk",
   "description": "The Stedi SDK for TypeScript / Node.js.",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "scripts": {
     "build": "concurrently 'npm:build:cjs' 'npm:build:es' 'npm:build:types'",
     "build:cjs": "tsc -p tsconfig.cjs.json",
@@ -34,7 +34,7 @@
     "@types/node": "^20.14.8"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.0.0"
   },
   "typesVersions": {
     "<4.5": {
@@ -44,7 +44,8 @@
     }
   },
   "files": [
-    "dist-*/**"
+    "dist-*/**",
+    "CHANGELOG.md"
   ],
   "license": "Apache-2.0",
   "author": {

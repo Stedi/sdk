@@ -16,6 +16,13 @@ export const command = makeBuilder<StediClientResolvedConfig, ServiceInputTypes,
  * @internal
  */
 export const _ep0: EndpointParameterInstructions = {
+  ServiceComponent: { type: "staticContextParams", value: `EventsService` },
+};
+
+/**
+ * @internal
+ */
+export const _ep1: EndpointParameterInstructions = {
   ServiceComponent: { type: "staticContextParams", value: `SdkClaimsService` },
 };
 

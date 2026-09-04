@@ -450,7 +450,7 @@ export declare const ProfessionalClaimSubmissionInsuranceType: {
      */
     readonly MEDICAID: "MEDICAID";
     /**
-     * Original Medicare. Don't use this for Medicare Advantage plans; use `OTHER` instead.
+     * Original Medicare. Don't use this for Medicare Advantage plans – use `OTHER` instead.
      */
     readonly MEDICARE: "MEDICARE";
     /**
@@ -774,3 +774,265 @@ export declare const ProfessionalClaimSubmissionDrugIdentificationUnitOfMeasure:
  * @public
  */
 export type ProfessionalClaimSubmissionDrugIdentificationUnitOfMeasure = (typeof ProfessionalClaimSubmissionDrugIdentificationUnitOfMeasure)[keyof typeof ProfessionalClaimSubmissionDrugIdentificationUnitOfMeasure];
+/**
+ * @public
+ * @enum
+ */
+export declare const ProfessionalClaimSubmissionPurchasedServiceProviderEntityType: {
+    /**
+     * An organization, such as an independent laboratory.
+     */
+    readonly ORGANIZATION: "ORGANIZATION";
+    /**
+     * An individual provider, such as a physician who performed a purchased interpretation.
+     */
+    readonly PERSON: "PERSON";
+};
+/**
+ * @public
+ */
+export type ProfessionalClaimSubmissionPurchasedServiceProviderEntityType = (typeof ProfessionalClaimSubmissionPurchasedServiceProviderEntityType)[keyof typeof ProfessionalClaimSubmissionPurchasedServiceProviderEntityType];
+/**
+ * @public
+ * @enum
+ */
+export declare const ClaimAcknowledgmentStatus: {
+    /**
+     * A clearinghouse or the payer accepted the claim. A clearinghouse acceptance means the claim passed its edits and the clearinghouse forwarded it to the payer. A payer acceptance means the payer will adjudicate the claim.
+     */
+    readonly ACCEPTED: "ACCEPTED";
+    /**
+     * Stedi couldn't determine the status because the 277CA carries a status category code Stedi doesn't recognize.
+     */
+    readonly INVALID: "INVALID";
+    /**
+     * A clearinghouse or the payer received the claim but hasn't yet accepted or rejected it.
+     */
+    readonly RECEIVED: "RECEIVED";
+    /**
+     * A clearinghouse or the payer rejected the claim. The payer won't adjudicate the claim until you correct and resubmit it.
+     */
+    readonly REJECTED: "REJECTED";
+};
+/**
+ * @public
+ */
+export type ClaimAcknowledgmentStatus = (typeof ClaimAcknowledgmentStatus)[keyof typeof ClaimAcknowledgmentStatus];
+/**
+ * @public
+ * @enum
+ */
+export declare const ClaimType: {
+    /**
+     * An 837D dental claim, the electronic equivalent of the ADA Dental Claim Form.
+     */
+    readonly DENTAL: "DENTAL";
+    /**
+     * An 837I institutional claim, the electronic equivalent of the UB-04 form.
+     */
+    readonly INSTITUTIONAL: "INSTITUTIONAL";
+    /**
+     * An 837P professional claim, the electronic equivalent of the CMS-1500 form.
+     */
+    readonly PROFESSIONAL: "PROFESSIONAL";
+};
+/**
+ * @public
+ */
+export type ClaimType = (typeof ClaimType)[keyof typeof ClaimType];
+/**
+ * @public
+ * @enum
+ */
+export declare const ClaimStatusReportedBy: {
+    /**
+     * A clearinghouse reported the status, either Stedi or an intermediary clearinghouse between Stedi and the payer.
+     */
+    readonly CLEARINGHOUSE: "CLEARINGHOUSE";
+    /**
+     * The payer reported the status, in a 277CA claim acknowledgment or an 835 ERA.
+     */
+    readonly PAYER: "PAYER";
+};
+/**
+ * @public
+ */
+export type ClaimStatusReportedBy = (typeof ClaimStatusReportedBy)[keyof typeof ClaimStatusReportedBy];
+/**
+ * @public
+ * @enum
+ */
+export declare const ClaimPaymentInformationStatusCode: {
+    /**
+     * The payer denied the claim.
+     */
+    readonly DENIED: "DENIED";
+    /**
+     * The payer isn't responsible for the claim and forwarded it to additional payers.
+     */
+    readonly NOT_OUR_CLAIM_FORWARDED_TO_ADDITIONAL_PAYERS: "NOT_OUR_CLAIM_FORWARDED_TO_ADDITIONAL_PAYERS";
+    /**
+     * The payer priced the claim without paying it.
+     */
+    readonly PREDETERMINATION_PRICING_ONLY: "PREDETERMINATION_PRICING_ONLY";
+    /**
+     * The payer processed the claim as the primary payer.
+     */
+    readonly PROCESSED_AS_PRIMARY: "PROCESSED_AS_PRIMARY";
+    /**
+     * The payer processed the claim as the primary payer and forwarded it to additional payers.
+     */
+    readonly PROCESSED_AS_PRIMARY_FORWARDED_TO_ADDITIONAL_PAYERS: "PROCESSED_AS_PRIMARY_FORWARDED_TO_ADDITIONAL_PAYERS";
+    /**
+     * The payer processed the claim as the secondary payer.
+     */
+    readonly PROCESSED_AS_SECONDARY: "PROCESSED_AS_SECONDARY";
+    /**
+     * The payer processed the claim as the secondary payer and forwarded it to additional payers.
+     */
+    readonly PROCESSED_AS_SECONDARY_FORWARDED_TO_ADDITIONAL_PAYERS: "PROCESSED_AS_SECONDARY_FORWARDED_TO_ADDITIONAL_PAYERS";
+    /**
+     * The payer processed the claim as the tertiary payer.
+     */
+    readonly PROCESSED_AS_TERTIARY: "PROCESSED_AS_TERTIARY";
+    /**
+     * The payer processed the claim as the tertiary payer and forwarded it to additional payers.
+     */
+    readonly PROCESSED_AS_TERTIARY_FORWARDED_TO_ADDITIONAL_PAYERS: "PROCESSED_AS_TERTIARY_FORWARDED_TO_ADDITIONAL_PAYERS";
+    /**
+     * The payer reversed a payment it reported earlier. The amounts are negative, so they cancel the earlier payment.
+     */
+    readonly REVERSAL_OF_PREVIOUS_PAYMENT: "REVERSAL_OF_PREVIOUS_PAYMENT";
+};
+/**
+ * @public
+ */
+export type ClaimPaymentInformationStatusCode = (typeof ClaimPaymentInformationStatusCode)[keyof typeof ClaimPaymentInformationStatusCode];
+/**
+ * @public
+ * @enum
+ */
+export declare const ClaimStatus: {
+    /**
+     * A clearinghouse or the payer accepted the claim. Check `statusReportedBy` to see which one.
+     */
+    readonly ACCEPTED: "ACCEPTED";
+    /**
+     * The payer adjudicated the claim and denied it in an 835 ERA.
+     */
+    readonly DENIED: "DENIED";
+    /**
+     * The payer adjudicated the claim and reported the result in an 835 ERA. The payer may have paid all, part, or none of the charges. Check `totalClaimPaidAmount` for the amount.
+     */
+    readonly PROCESSED: "PROCESSED";
+    /**
+     * A clearinghouse or the payer received the claim but hasn't yet accepted or rejected it.
+     */
+    readonly RECEIVED: "RECEIVED";
+    /**
+     * A clearinghouse or the payer rejected the claim. The payer won't adjudicate the claim until you correct and resubmit it.
+     */
+    readonly REJECTED: "REJECTED";
+    /**
+     * You submitted the claim. No clearinghouse or payer has acknowledged it yet.
+     */
+    readonly SUBMITTED: "SUBMITTED";
+    /**
+     * Stedi couldn't determine the status. The 277CA carries a status category code Stedi doesn't recognize, or the 835 ERA doesn't report a clear outcome for the claim.
+     */
+    readonly UNKNOWN: "UNKNOWN";
+};
+/**
+ * @public
+ */
+export type ClaimStatus = (typeof ClaimStatus)[keyof typeof ClaimStatus];
+/**
+ * @public
+ * @enum
+ */
+export declare const EventDestinationsDestinationInputStatus: {
+    /**
+     * The destination is paused and will not receive event deliveries.
+     */
+    readonly DISABLED: "DISABLED";
+    /**
+     * The destination is active and will receive event deliveries.
+     */
+    readonly ENABLED: "ENABLED";
+};
+/**
+ * @public
+ */
+export type EventDestinationsDestinationInputStatus = (typeof EventDestinationsDestinationInputStatus)[keyof typeof EventDestinationsDestinationInputStatus];
+/**
+ * @public
+ * @enum
+ */
+export declare const EventDestinationsDestinationStatus: {
+    /**
+     * The destination is paused and will not receive event deliveries.
+     */
+    readonly DISABLED: "DISABLED";
+    /**
+     * The destination is active and will receive event deliveries.
+     */
+    readonly ENABLED: "ENABLED";
+};
+/**
+ * @public
+ */
+export type EventDestinationsDestinationStatus = (typeof EventDestinationsDestinationStatus)[keyof typeof EventDestinationsDestinationStatus];
+/**
+ * @public
+ * @enum
+ */
+export declare const EventDestinationsEventEnvironment: {
+    /**
+     * Production environment.
+     */
+    readonly PRODUCTION: "PRODUCTION";
+    /**
+     * Test environment.
+     */
+    readonly TEST: "TEST";
+};
+/**
+ * @public
+ */
+export type EventDestinationsEventEnvironment = (typeof EventDestinationsEventEnvironment)[keyof typeof EventDestinationsEventEnvironment];
+/**
+ * @public
+ * @enum
+ */
+export declare const EventDestinationsEventPayloadObjectType: {
+    /**
+     * Version 1 thin event schema.
+     */
+    readonly V1_EVENT: "v1.event";
+};
+/**
+ * @public
+ */
+export type EventDestinationsEventPayloadObjectType = (typeof EventDestinationsEventPayloadObjectType)[keyof typeof EventDestinationsEventPayloadObjectType];
+/**
+ * @public
+ * @enum
+ */
+export declare const EventDestinationsEventStatus: {
+    /**
+     * Stedi successfully delivered the event to all relevant event destinations.
+     */
+    readonly DELIVERED: "DELIVERED";
+    /**
+     * Stedi couldn't deliver the event to at least one event destination and is no longer retrying. Deliveries to some event destinations may have been successful.
+     */
+    readonly FAILED: "FAILED";
+    /**
+     * Stedi is still trying to deliver the event to one or more event destinations. Events may stay in this state for multiple days as Stedi automatically retries.
+     */
+    readonly PENDING: "PENDING";
+};
+/**
+ * @public
+ */
+export type EventDestinationsEventStatus = (typeof EventDestinationsEventStatus)[keyof typeof EventDestinationsEventStatus];

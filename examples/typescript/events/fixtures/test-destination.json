@@ -1,0 +1,9 @@
+{
+  "name": "Stedi SDK example",
+  "description": "Created by a Stedi SDK example; safe to delete.",
+  "eventTypes": [
+    "enrollment.activated"
+  ],
+  "destinationUrl": "https://example.com/webhooks",
+  "status": "ENABLED"
+}

@@ -1,5 +1,5 @@
 // smithy-typescript generated code
-import { HttpApiKeyAuthSigner } from "@smithy/core";
+import { HttpApiKeyAuthSigner, HttpBearerAuthSigner } from "@smithy/core";
 import { Sha256 } from "@smithy/core/checksum";
 import { NoOpLogger } from "@smithy/core/client";
 import { parseUrl } from "@smithy/core/protocols";
@@ -30,6 +30,12 @@ export const getRuntimeConfig = (config: StediClientConfig) => {
         identityProvider: (ipc: IdentityProviderConfig) =>
           ipc.getIdentityProvider("smithy.api#httpApiKeyAuth"),
         signer: new HttpApiKeyAuthSigner(),
+      },
+      {
+        schemeId: "smithy.api#httpBearerAuth",
+        identityProvider: (ipc: IdentityProviderConfig) =>
+          ipc.getIdentityProvider("smithy.api#httpBearerAuth"),
+        signer: new HttpBearerAuthSigner(),
       },
     ],
     logger: config?.logger ?? new NoOpLogger(),

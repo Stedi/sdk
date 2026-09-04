@@ -1,6 +1,6 @@
 [project]
 name = "stedi"
-version = "0.0.9"
+version = "0.0.10"
 description = "The Stedi SDK for Python."
 readme = "README.md"
 requires-python = ">=3.12"
@@ -18,6 +18,7 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Topic :: Software Development :: Libraries",
     "Typing :: Typed",
 ]
@@ -33,6 +34,7 @@ Homepage = "https://www.stedi.com"
 Documentation = "https://www.stedi.com/docs"
 Source = "https://github.com/Stedi/sdk"
 Issues = "https://github.com/Stedi/sdk/issues"
+Changelog = "https://github.com/Stedi/sdk/blob/main/packages/python/CHANGELOG.md"
 
 # An allowlist, because hatchling would otherwise select sdist contents from the nearest
 # ancestor .gitignore, sweeping in whatever sits untracked beside the package.

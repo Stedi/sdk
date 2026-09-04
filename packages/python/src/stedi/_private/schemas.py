@@ -2,24 +2,16 @@
 
 from types import MappingProxyType
 
-from smithy_core.prelude import BOOLEAN, STRING, TIMESTAMP, UNIT
+from smithy_core.prelude import BOOLEAN, INTEGER, STRING, TIMESTAMP, UNIT
 from smithy_core.schemas import Schema
 from smithy_core.shapes import ShapeID, ShapeType
 from smithy_core.traits import Trait
 
 
-CLAIM_EDIT_ERROR = Schema.collection(
-    id=ShapeID("com.stedi.claimsmanager#ClaimEditError"),
+CLAIM_REJECTION_ERROR = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager#ClaimRejectionError"),
 
     members={
-        "code": {
-            "target": STRING,
-            "traits": [
-                Trait.new(id=ShapeID("smithy.api#required")),
-
-            ],
-        },
-
         "description": {
             "target": STRING,
             "traits": [
@@ -31,44 +23,12 @@ CLAIM_EDIT_ERROR = Schema.collection(
     }
 )
 
-CLAIM_EDIT_ERRORS = Schema.collection(
-    id=ShapeID("com.stedi.claimsmanager#ClaimEditErrors"),
+CLAIM_REJECTION_ERRORS = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager#ClaimRejectionErrors"),
     shape_type=ShapeType.LIST,
     members={
         "member": {
-            "target": CLAIM_EDIT_ERROR,
-        },
-
-    }
-)
-
-CLAIM_EDIT_EXCEPTION = Schema.collection(
-    id=ShapeID("com.stedi.claimsmanager#ClaimEditException"),
-
-    traits=[
-        Trait.new(id=ShapeID("smithy.api#error"), value="client"),
-        Trait.new(id=ShapeID("smithy.api#httpError"), value=400),
-
-    ],
-    members={
-        "message": {
-            "target": STRING,
-            "traits": [
-                Trait.new(id=ShapeID("smithy.api#required")),
-
-            ],
-        },
-
-        "errors": {
-            "target": CLAIM_EDIT_ERRORS,
-            "traits": [
-                Trait.new(id=ShapeID("smithy.api#required")),
-
-            ],
-        },
-
-        "x12": {
-            "target": STRING,
+            "target": CLAIM_REJECTION_ERROR,
         },
 
     }
@@ -1950,7 +1910,10 @@ PROFESSIONAL_CLAIM_SUBMISSION_DATE_OF_BIRTH = Schema(
     id=ShapeID("com.stedi.claimsmanager.cms1500v2#ProfessionalClaimSubmissionDateOfBirth"),
     shape_type=ShapeType.STRING,
     traits=[
-        Trait.new(id=ShapeID("smithy.api#pattern"), value="^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$"),
+        Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                "min": 1,
+                "max": 35,
+            })),
         Trait.new(id=ShapeID("smithy.api#sensitive")),
 
     ],
@@ -3203,6 +3166,94 @@ PROFESSIONAL_CLAIM_SUBMISSION_PROCEDURE_CODE = Schema.collection(
     }
 )
 
+PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER_ENTITY_TYPE = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.cms1500v2#ProfessionalClaimSubmissionPurchasedServiceProviderEntityType"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "PERSON": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PERSON"),
+
+            ],
+        },
+
+        "ORGANIZATION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ORGANIZATION"),
+
+            ],
+        },
+
+    }
+)
+
+PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER_IDENTIFIERS = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.cms1500v2#ProfessionalClaimSubmissionPurchasedServiceProviderIdentifiers"),
+
+    members={
+        "npi": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 2,
+                        "max": 80,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.cms1500v2#ProfessionalClaimSubmissionPurchasedServiceProvider"),
+
+    members={
+        "entityType": {
+            "target": PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER_ENTITY_TYPE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "identifiers": {
+            "target": PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER_IDENTIFIERS,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.cms1500v2#ProfessionalClaimSubmissionPurchasedService"),
+
+    members={
+        "chargeAmount": {
+            "target": PROFESSIONAL_CLAIM_SUBMISSION_AMOUNT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "provider": {
+            "target": PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE_PROVIDER,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
 PROFESSIONAL_CLAIM_SUBMISSION_RENDERING_PROVIDER_IDENTIFIERS = Schema.collection(
     id=ShapeID("com.stedi.claimsmanager.cms1500v2#ProfessionalClaimSubmissionRenderingProviderIdentifiers"),
 
@@ -3357,6 +3408,10 @@ PROFESSIONAL_CLAIM_SUBMISSION_SERVICE_LINE = Schema.collection(
 
         "orderingProvider": {
             "target": PROFESSIONAL_CLAIM_SUBMISSION_ORDERING_PROVIDER,
+        },
+
+        "purchasedService": {
+            "target": PROFESSIONAL_CLAIM_SUBMISSION_PURCHASED_SERVICE,
         },
 
         "lineItemControlNumber": {
@@ -3599,30 +3654,8 @@ CREATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT = Schema.collection(
             ],
         },
 
-    }
-)
-
-INTERNAL_FAILURE_EXCEPTION = Schema.collection(
-    id=ShapeID("com.stedi.smithy.model.common#InternalFailureException"),
-
-    traits=[
-        Trait.new(id=ShapeID("smithy.api#unstable")),
-        Trait.new(id=ShapeID("smithy.api#error"), value="server"),
-        Trait.new(id=ShapeID("smithy.api#httpError"), value=500),
-        Trait.new(id=ShapeID("smithy.api#retryable")),
-
-    ],
-    members={
-        "message": {
-            "target": STRING,
-            "traits": [
-                Trait.new(id=ShapeID("smithy.api#required")),
-
-            ],
-        },
-
-        "code": {
-            "target": STRING,
+        "errors": {
+            "target": CLAIM_REJECTION_ERRORS,
         },
 
     }
@@ -3798,7 +3831,7 @@ CREATE_PROFESSIONAL_CLAIM_SUBMISSION = Schema(
             })),
         Trait.new(id=ShapeID("smithy.api#examples"), value=(
                 MappingProxyType({
-                    "title": "Submit a professional claim with primary and secondary coverage",
+                    "title": "Submit claim",
                     "input": MappingProxyType({
                         "idempotencyKey": "0e1f9a8d-6c5b-4a3f-9d2e-7b8c1a0f4e6d",
                         "purpose": "CHARGEABLE",
@@ -3807,323 +3840,334 @@ CREATE_PROFESSIONAL_CLAIM_SUBMISSION = Schema(
                             "name": MappingProxyType({
                                 "organization": "Aetna",
                             }),
-                            "receiverId": "60054",
-                            "address": MappingProxyType({
-                                "addressLine1": "151 Farmington Avenue",
-                                "city": "Hartford",
-                                "state": "CT",
-                                "postalCode": "06156",
-                            }),
-                        }),
-                        "submitter": MappingProxyType({
-                            "name": MappingProxyType({
-                                "organization": "Acme Health Billing",
-                            }),
-                            "contact": MappingProxyType({
-                                "phoneNumber": "3135551234",
-                                "email": "billing@acmehealth.example",
-                                "faxNumber": "3135551235",
-                            }),
-                            "etin": "SUBMITTER0001",
                         }),
                         "insured": MappingProxyType({
-                            "insuranceType": "OTHER",
                             "memberId": "W123456789",
                             "name": MappingProxyType({
                                 "person": MappingProxyType({
-                                    "firstName": "Sarah",
-                                    "lastName": "Johnson",
-                                    "middleName": "A",
+                                    "firstName": "June",
+                                    "lastName": "Doe",
                                 }),
                             }),
-                            "address": MappingProxyType({
-                                "addressLine1": "742 Evergreen Terrace",
-                                "addressLine2": "Apt 3B",
-                                "city": "Springfield",
-                                "state": "IL",
-                                "postalCode": "627010001",
-                            }),
-                            "policyOrGroupNumber": "GRP-AETNA-987654",
-                            "dateOfBirth": "1982-04-12",
+                            "dateOfBirth": "1990-01-01",
                             "gender": "FEMALE",
-                            "ssn": "111223333",
-                            "planName": "Aetna Choice POS II",
+                            "insuranceType": "OTHER",
                             "paymentResponsibilityLevelCode": "PRIMARY",
+                            "address": MappingProxyType({
+                                "addressLine1": "111 A Place",
+                                "city": "Somewhere",
+                                "postalCode": "123450000",
+                                "state": "IL",
+                            }),
                         }),
                         "patient": MappingProxyType({
+                            "address": MappingProxyType({
+                                "addressLine1": "111 A Place",
+                                "city": "Somewhere",
+                                "postalCode": "123450000",
+                                "state": "IL",
+                            }),
+                            "dateOfBirth": "1900-02-02",
+                            "gender": "MALE",
                             "name": MappingProxyType({
                                 "person": MappingProxyType({
                                     "firstName": "Liam",
-                                    "lastName": "Johnson",
+                                    "lastName": "Doe",
                                 }),
-                            }),
-                            "dateOfBirth": "2015-08-21",
-                            "gender": "MALE",
-                            "address": MappingProxyType({
-                                "addressLine1": "742 Evergreen Terrace",
-                                "addressLine2": "Apt 3B",
-                                "city": "Springfield",
-                                "state": "IL",
-                                "postalCode": "627010001",
                             }),
                             "relationshipToInsured": "CHILD",
                         }),
-                        "authorization": MappingProxyType({
-                            "patientReleasesMedicalInfo": "YES",
-                            "insuredAuthorizesAssignment": "YES",
-                            "providerAcceptsAssignment": "ASSIGNED",
-                            "providerSignature": "ON_FILE",
-                        }),
-                        "encounter": MappingProxyType({
-                            "primaryDiagnosisCode": "J0190",
-                            "patientCondition": MappingProxyType({
-                                "isEmploymentRelated": False,
-                                "isAutoAccidentRelated": False,
-                                "isOtherAccidentRelated": False,
+                        "otherInsured": (
+                            MappingProxyType({
+                                "address": MappingProxyType({
+                                    "addressLine1": "111 A Place",
+                                    "city": "Somewhere",
+                                    "postalCode": "123450000",
+                                    "state": "IL",
+                                }),
+                                "authorization": MappingProxyType({
+                                    "insuredAuthorizesAssignment": "YES",
+                                    "patientReleasesMedicalInfo": "YES",
+                                    "providerGeneratedPatientSignature": False,
+                                }),
+                                "claimFilingIndicator": "BLUE_CROSS_BLUE_SHIELD",
+                                "memberId": "BCBS-IL-554433221",
+                                "name": MappingProxyType({
+                                    "person": MappingProxyType({
+                                        "firstName": "Michael",
+                                        "lastName": "Doe",
+                                    }),
+                                }),
+                                "otherPayer": MappingProxyType({
+                                    "id": MappingProxyType({
+                                        "payerId": "00621",
+                                    }),
+                                    "name": MappingProxyType({
+                                        "organization": "Blue Cross Blue Shield of Illinois",
+                                    }),
+                                }),
+                                "planName": "BCBS PPO",
+                                "policyOrGroupNumber": "BCBS-GRP-3344",
+                                "relationshipToInsured": "SPOUSE",
+                                "responsibilityLevel": "SECONDARY",
                             }),
+                        ),
+                        "encounter": MappingProxyType({
+                            "attachments": (
+                                MappingProxyType({
+                                    "attachmentControlNumber": "PWK-2026-0001",
+                                    "reportTypeCode": "PROGRESS_REPORT",
+                                    "transmissionCode": "ELECTRONICALLY_ONLY",
+                                }),
+                            ),
                             "claimCodes": (
                                 "AV",
                             ),
-                            "clinicalDates": MappingProxyType({
-                                "onsetOfCurrentIllness": "2026-03-02",
-                                "initialTreatment": "2026-03-03",
-                                "unableToWork": MappingProxyType({
-                                    "start": "2026-03-03",
-                                    "end": "2026-03-10",
-                                }),
-                                "hospitalization": MappingProxyType({
-                                    "start": "2026-03-04",
-                                    "end": "2026-03-06",
-                                }),
-                            }),
-                            "referringProvider": MappingProxyType({
-                                "name": MappingProxyType({
-                                    "person": MappingProxyType({
-                                        "firstName": "Maya",
-                                        "lastName": "Patel",
-                                    }),
-                                }),
-                                "identifiers": MappingProxyType({
-                                    "npi": "1245319599",
-                                    "stateLicenseNumber": "IL-MD-44512",
-                                }),
-                            }),
-                            "priorReferringProvider": MappingProxyType({
-                                "name": MappingProxyType({
-                                    "person": MappingProxyType({
-                                        "firstName": "David",
-                                        "lastName": "Kim",
-                                    }),
-                                }),
-                                "identifiers": MappingProxyType({
-                                    "npi": "1083827763",
-                                }),
-                            }),
-                            "supervisingProvider": MappingProxyType({
-                                "name": MappingProxyType({
-                                    "person": MappingProxyType({
-                                        "firstName": "Elena",
-                                        "lastName": "Rossi",
-                                    }),
-                                }),
-                                "identifiers": MappingProxyType({
-                                    "npi": "1396718825",
-                                }),
-                            }),
                             "claimNote": MappingProxyType({
                                 "additionalInformation": "Patient presented with persistent cough and bronchospasm; treated in office.",
                             }),
-                            "attachments": (
-                                MappingProxyType({
-                                    "reportTypeCode": "PROGRESS_REPORT",
-                                    "transmissionCode": "ELECTRONICALLY_ONLY",
-                                    "attachmentControlNumber": "PWK-2026-0001",
-                                    "attachmentId": "1f2e3d4c-5b6a-7980-9abc-def012345678",
+                            "clinicalDates": MappingProxyType({
+                                "hospitalization": MappingProxyType({
+                                    "end": "2026-03-06",
+                                    "start": "2026-03-04",
                                 }),
-                            ),
+                                "initialTreatment": "2026-03-03",
+                                "onsetOfCurrentIllness": "2026-03-02",
+                                "unableToWork": MappingProxyType({
+                                    "end": "2026-03-10",
+                                    "start": "2026-03-03",
+                                }),
+                            }),
+                            "patientCondition": MappingProxyType({
+                                "isAutoAccidentRelated": False,
+                                "isEmploymentRelated": False,
+                                "isOtherAccidentRelated": False,
+                            }),
+                            "primaryDiagnosisCode": "J0190",
+                            "priorReferringProvider": MappingProxyType({
+                                "identifiers": MappingProxyType({
+                                    "npi": "1999999984",
+                                }),
+                                "name": MappingProxyType({
+                                    "person": MappingProxyType({
+                                        "firstName": "John",
+                                        "lastName": "Doe",
+                                    }),
+                                }),
+                            }),
+                            "referenceNumbers": MappingProxyType({
+                                "clia": "14D2089999",
+                                "priorAuthorization": "PA-2026-11111",
+                                "referral": "REF-4321",
+                            }),
+                            "referringProvider": MappingProxyType({
+                                "identifiers": MappingProxyType({
+                                    "npi": "1999999984",
+                                }),
+                                "name": MappingProxyType({
+                                    "person": MappingProxyType({
+                                        "firstName": "Jane",
+                                        "lastName": "Doe",
+                                    }),
+                                }),
+                            }),
                             "resubmission": MappingProxyType({
                                 "code": "REPLACEMENT_OF_PRIOR_CLAIM",
                                 "originalReferenceNumber": "CLM-ORIG-998877",
                             }),
-                            "referenceNumbers": MappingProxyType({
-                                "priorAuthorization": "PA-2026-77831",
-                                "referral": "REF-55421",
-                                "clia": "14D2089999",
-                            }),
-                        }),
-                        "billing": MappingProxyType({
-                            "taxId": MappingProxyType({
-                                "ein": "841234567",
-                            }),
-                            "patientControlNumber": "CLM-2026-04219",
-                            "totalCharge": "1432.50",
-                            "amountPaid": "100.00",
-                            "serviceFacility": MappingProxyType({
-                                "name": MappingProxyType({
-                                    "organization": "Springfield Family Medical Center",
-                                }),
-                                "address": MappingProxyType({
-                                    "addressLine1": "501 Main Street",
-                                    "city": "Springfield",
-                                    "state": "IL",
-                                    "postalCode": "627010500",
-                                }),
+                            "supervisingProvider": MappingProxyType({
                                 "identifiers": MappingProxyType({
-                                    "npi": "1730289013",
-                                    "stateLicenseNumber": "IL-FAC-77821",
+                                    "npi": "1999999984",
                                 }),
-                            }),
-                            "billingProvider": MappingProxyType({
                                 "name": MappingProxyType({
-                                    "organization": "Springfield Family Medical Center",
-                                }),
-                                "address": MappingProxyType({
-                                    "addressLine1": "501 Main Street",
-                                    "city": "Springfield",
-                                    "state": "IL",
-                                    "postalCode": "627010500",
-                                }),
-                                "contact": MappingProxyType({
-                                    "phoneNumber": "2175558800",
-                                }),
-                                "identifiers": MappingProxyType({
-                                    "npi": "1730289013",
-                                    "taxonomyCode": "207Q00000X",
-                                    "locationNumber": "LOC-001",
+                                    "person": MappingProxyType({
+                                        "firstName": "Jane",
+                                        "lastName": "Smith",
+                                    }),
                                 }),
                             }),
                         }),
                         "serviceLines": (
                             MappingProxyType({
-                                "datesOfService": MappingProxyType({
-                                    "start": "2026-03-03",
-                                    "end": "2026-03-03",
-                                }),
-                                "placeOfService": "11",
-                                "isEmergency": False,
                                 "procedureCode": MappingProxyType({
                                     "code": "99213",
-                                    "modifiers": (
-                                        "25",
-                                    ),
                                 }),
-                                "diagnosisCodes": (
-                                    "J0190",
-                                    "R0602",
-                                ),
-                                "lineItemChargeAmount": "185.00",
-                                "units": "1",
-                                "renderingProvider": MappingProxyType({
-                                    "name": MappingProxyType({
-                                        "person": MappingProxyType({
-                                            "firstName": "Elena",
-                                            "lastName": "Rossi",
-                                        }),
-                                    }),
-                                    "identifiers": MappingProxyType({
-                                        "npi": "1396718825",
-                                        "taxonomyCode": "207Q00000X",
-                                    }),
-                                }),
-                                "lineItemControlNumber": "LN-0001",
-                            }),
-                            MappingProxyType({
+                                "lineItemChargeAmount": "100.00",
+                                "placeOfService": "11",
                                 "datesOfService": MappingProxyType({
                                     "start": "2026-03-03",
                                     "end": "2026-03-03",
                                 }),
-                                "placeOfService": "11",
-                                "isEmergency": False,
-                                "procedureCode": MappingProxyType({
-                                    "code": "J1885",
-                                    "modifiers": (
-                                        "JW",
-                                    ),
-                                }),
                                 "diagnosisCodes": (
                                     "J0190",
                                 ),
-                                "lineItemChargeAmount": "1247.50",
-                                "units": "10",
-                                "renderingProvider": MappingProxyType({
-                                    "name": MappingProxyType({
-                                        "person": MappingProxyType({
-                                            "firstName": "Elena",
-                                            "lastName": "Rossi",
-                                        }),
-                                    }),
-                                    "identifiers": MappingProxyType({
-                                        "npi": "1396718825",
-                                    }),
-                                }),
-                                "orderingProvider": MappingProxyType({
-                                    "name": MappingProxyType({
-                                        "person": MappingProxyType({
-                                            "firstName": "Maya",
-                                            "lastName": "Patel",
-                                        }),
-                                    }),
-                                    "identifiers": MappingProxyType({
-                                        "npi": "1245319599",
-                                    }),
-                                }),
-                                "drugIdentification": MappingProxyType({
-                                    "nationalDrugCode": "00409120130",
-                                    "unitCount": "300",
-                                    "unitOfMeasure": "MILLIGRAM",
-                                    "associationNumber": MappingProxyType({
-                                        "pharmacyPrescriptionNumber": "RX-2026-118822",
-                                    }),
-                                }),
-                                "priorAuthorizations": (
-                                    MappingProxyType({
-                                        "priorAuthorizationNumber": "PA-2026-77831",
-                                        "otherPayerPrimaryId": "60054",
-                                    }),
-                                ),
-                                "lineItemControlNumber": "LN-0002",
+                                "units": "1",
                             }),
                         ),
-                        "otherInsured": (
-                            MappingProxyType({
+                        "authorization": MappingProxyType({
+                            "providerSignature": "ON_FILE",
+                            "providerAcceptsAssignment": "ASSIGNED",
+                            "insuredAuthorizesAssignment": "YES",
+                            "patientReleasesMedicalInfo": "YES",
+                        }),
+                        "submitter": MappingProxyType({
+                            "name": MappingProxyType({
+                                "organization": "Test Submitter",
+                            }),
+                            "etin": "TEST001",
+                            "contact": MappingProxyType({
+                                "phoneNumber": "5555551234",
+                            }),
+                        }),
+                        "billing": MappingProxyType({
+                            "billingProvider": MappingProxyType({
                                 "name": MappingProxyType({
-                                    "person": MappingProxyType({
-                                        "firstName": "Michael",
-                                        "lastName": "Johnson",
-                                    }),
+                                    "organization": "Test Provider",
                                 }),
-                                "memberId": "BCBS-IL-554433221",
-                                "responsibilityLevel": "SECONDARY",
-                                "relationshipToInsured": "SPOUSE",
-                                "claimFilingIndicator": "BLUE_CROSS_BLUE_SHIELD",
-                                "otherPayer": MappingProxyType({
-                                    "name": MappingProxyType({
-                                        "organization": "Blue Cross Blue Shield of Illinois",
-                                    }),
-                                    "id": MappingProxyType({
-                                        "payerId": "00621",
-                                    }),
+                                "identifiers": MappingProxyType({
+                                    "npi": "1999999984",
+                                    "taxonomyCode": "207Q00000X",
                                 }),
                                 "address": MappingProxyType({
-                                    "addressLine1": "742 Evergreen Terrace",
-                                    "addressLine2": "Apt 3B",
-                                    "city": "Springfield",
+                                    "addressLine1": "123 St",
+                                    "city": "City",
                                     "state": "IL",
-                                    "postalCode": "627010001",
-                                }),
-                                "policyOrGroupNumber": "BCBS-GRP-3344",
-                                "planName": "BCBS PPO",
-                                "authorization": MappingProxyType({
-                                    "insuredAuthorizesAssignment": "YES",
-                                    "providerGeneratedPatientSignature": False,
-                                    "patientReleasesMedicalInfo": "YES",
+                                    "postalCode": "12345",
                                 }),
                             }),
-                        ),
+                            "taxId": MappingProxyType({
+                                "ein": "123456789",
+                            }),
+                            "patientControlNumber": "TEST-004",
+                            "totalCharge": "100.00",
+                        }),
                     }),
                     "output": MappingProxyType({
                         "claimId": "clm_01K6XFP3TZ8RA9X84963NMW40M",
                         "submissionId": "sbm_01K6XFP3TZ8RA9X84963NMW40N",
+                    }),
+                }),
+                MappingProxyType({
+                    "title": "Failed edits",
+                    "input": MappingProxyType({
+                        "idempotencyKey": "7f8e9d0a-1b2c-3d4e-5f6a-7b8c9d0e1f2a",
+                        "purpose": "CHARGEABLE",
+                        "payer": MappingProxyType({
+                            "id": "60054",
+                            "name": MappingProxyType({
+                                "organization": "Aetna",
+                            }),
+                        }),
+                        "insured": MappingProxyType({
+                            "memberId": "W123456789",
+                            "name": MappingProxyType({
+                                "person": MappingProxyType({
+                                    "firstName": "June",
+                                    "lastName": "Doe",
+                                }),
+                            }),
+                            "dateOfBirth": "1990-01-01",
+                            "gender": "FEMALE",
+                            "insuranceType": "OTHER",
+                            "paymentResponsibilityLevelCode": "PRIMARY",
+                            "address": MappingProxyType({
+                                "addressLine1": "111 A Place",
+                                "city": "Somewhere",
+                                "postalCode": "123450000",
+                                "state": "IL",
+                            }),
+                        }),
+                        "patient": MappingProxyType({
+                            "address": MappingProxyType({
+                                "addressLine1": "111 A Place",
+                                "city": "Somewhere",
+                                "postalCode": "123450000",
+                                "state": "IL",
+                            }),
+                            "dateOfBirth": "1900-02-02",
+                            "gender": "MALE",
+                            "name": MappingProxyType({
+                                "person": MappingProxyType({
+                                    "firstName": "Liam",
+                                    "lastName": "Doe",
+                                }),
+                            }),
+                            "relationshipToInsured": "CHILD",
+                        }),
+                        "encounter": MappingProxyType({
+                            "primaryDiagnosisCode": "J0190",
+                            "patientCondition": MappingProxyType({
+                                "isAutoAccidentRelated": False,
+                                "isEmploymentRelated": False,
+                                "isOtherAccidentRelated": False,
+                            }),
+                        }),
+                        "serviceLines": (
+                            MappingProxyType({
+                                "procedureCode": MappingProxyType({
+                                    "code": "99213",
+                                }),
+                                "lineItemChargeAmount": "100.00",
+                                "placeOfService": "11",
+                                "datesOfService": MappingProxyType({
+                                    "start": "2026-03-03",
+                                    "end": "2026-03-03",
+                                }),
+                                "diagnosisCodes": (
+                                    "J0190",
+                                ),
+                                "units": "1",
+                            }),
+                        ),
+                        "authorization": MappingProxyType({
+                            "providerSignature": "ON_FILE",
+                            "providerAcceptsAssignment": "ASSIGNED",
+                            "insuredAuthorizesAssignment": "YES",
+                            "patientReleasesMedicalInfo": "YES",
+                        }),
+                        "submitter": MappingProxyType({
+                            "name": MappingProxyType({
+                                "organization": "Test Submitter",
+                            }),
+                            "etin": "TEST001",
+                            "contact": MappingProxyType({
+                                "phoneNumber": "5555551234",
+                            }),
+                        }),
+                        "billing": MappingProxyType({
+                            "billingProvider": MappingProxyType({
+                                "name": MappingProxyType({
+                                    "organization": "Test Provider",
+                                }),
+                                "identifiers": MappingProxyType({
+                                    "npi": "1730289013",
+                                    "taxonomyCode": "207Q0000X",
+                                }),
+                                "address": MappingProxyType({
+                                    "addressLine1": "123 St",
+                                    "city": "City",
+                                    "state": "IL",
+                                    "postalCode": "12345",
+                                }),
+                            }),
+                            "taxId": MappingProxyType({
+                                "ein": "123456789",
+                            }),
+                            "patientControlNumber": "TEST-005",
+                            "totalCharge": "100.00",
+                        }),
+                    }),
+                    "output": MappingProxyType({
+                        "claimId": "clm_5RPQXX5FM3A83RMYPQ5X2YW7KX",
+                        "submissionId": "sbm_7K4JDJKN3ABBH9MCAW6NE86DYV",
+                        "errors": (
+                            MappingProxyType({
+                                "description": "Invalid NPI. The Billing Provider NPI of 1730289013 is invalid. The National Provider Identifier must be valid with 10 digits and no prefixes or dashes. Correct and resubmit.",
+                            }),
+                            MappingProxyType({
+                                "description": "Invalid Taxonomy Code. The taxonomy code for Billing Provider does not meet the required format. Taxonomy codes must be 10 uppercase alphanumeric characters ending with 'X'. Correct and resubmit.",
+                            }),
+                        ),
                     }),
                 }),
             )),
@@ -4328,6 +4372,341 @@ GET_PROFESSIONAL_CLAIM_SUBMISSION = Schema(
                     "value": "SdkClaimsService",
                 }),
             })),
+        Trait.new(id=ShapeID("smithy.api#examples"), value=(
+                MappingProxyType({
+                    "title": "Fetch a professional claim submission",
+                    "input": MappingProxyType({
+                        "id": "sbm_01K6XFP3TZ8RA9X84963NMW40N",
+                    }),
+                    "output": MappingProxyType({
+                        "claimId": "clm_01K6XFP3TZ8RA9X84963NMW40M",
+                        "submissionId": "sbm_01K6XFP3TZ8RA9X84963NMW40N",
+                        "stediPayerId": "AETNA",
+                        "processedAt": "2026-03-03T15:30:00Z",
+                        "data": MappingProxyType({
+                            "purpose": "CHARGEABLE",
+                            "payer": MappingProxyType({
+                                "id": "60054",
+                                "name": MappingProxyType({
+                                    "organization": "Aetna",
+                                }),
+                                "receiverId": "60054",
+                                "address": MappingProxyType({
+                                    "addressLine1": "151 Farmington Avenue",
+                                    "city": "Hartford",
+                                    "state": "CT",
+                                    "postalCode": "06156",
+                                }),
+                            }),
+                            "submitter": MappingProxyType({
+                                "name": MappingProxyType({
+                                    "organization": "Acme Health Billing",
+                                }),
+                                "contact": MappingProxyType({
+                                    "phoneNumber": "3135551234",
+                                    "email": "billing@acmehealth.example",
+                                    "faxNumber": "3135551235",
+                                }),
+                                "etin": "SUBMITTER0001",
+                            }),
+                            "insured": MappingProxyType({
+                                "insuranceType": "OTHER",
+                                "memberId": "W123456789",
+                                "name": MappingProxyType({
+                                    "person": MappingProxyType({
+                                        "firstName": "Sarah",
+                                        "lastName": "Johnson",
+                                        "middleName": "A",
+                                    }),
+                                }),
+                                "address": MappingProxyType({
+                                    "addressLine1": "742 Evergreen Terrace",
+                                    "addressLine2": "Apt 3B",
+                                    "city": "Springfield",
+                                    "state": "IL",
+                                    "postalCode": "627010001",
+                                }),
+                                "policyOrGroupNumber": "GRP-AETNA-987654",
+                                "dateOfBirth": "1982-04-12",
+                                "gender": "FEMALE",
+                                "ssn": "111223333",
+                                "planName": "Aetna Choice POS II",
+                                "paymentResponsibilityLevelCode": "PRIMARY",
+                            }),
+                            "patient": MappingProxyType({
+                                "name": MappingProxyType({
+                                    "person": MappingProxyType({
+                                        "firstName": "Liam",
+                                        "lastName": "Johnson",
+                                    }),
+                                }),
+                                "dateOfBirth": "2015-08-21",
+                                "gender": "MALE",
+                                "address": MappingProxyType({
+                                    "addressLine1": "742 Evergreen Terrace",
+                                    "addressLine2": "Apt 3B",
+                                    "city": "Springfield",
+                                    "state": "IL",
+                                    "postalCode": "627010001",
+                                }),
+                                "relationshipToInsured": "CHILD",
+                            }),
+                            "authorization": MappingProxyType({
+                                "patientReleasesMedicalInfo": "YES",
+                                "insuredAuthorizesAssignment": "YES",
+                                "providerAcceptsAssignment": "ASSIGNED",
+                                "providerSignature": "ON_FILE",
+                            }),
+                            "encounter": MappingProxyType({
+                                "primaryDiagnosisCode": "J0190",
+                                "patientCondition": MappingProxyType({
+                                    "isEmploymentRelated": False,
+                                    "isAutoAccidentRelated": False,
+                                    "isOtherAccidentRelated": False,
+                                }),
+                                "claimCodes": (
+                                    "AV",
+                                ),
+                                "clinicalDates": MappingProxyType({
+                                    "onsetOfCurrentIllness": "2026-03-02",
+                                    "initialTreatment": "2026-03-03",
+                                    "unableToWork": MappingProxyType({
+                                        "start": "2026-03-03",
+                                        "end": "2026-03-10",
+                                    }),
+                                    "hospitalization": MappingProxyType({
+                                        "start": "2026-03-04",
+                                        "end": "2026-03-06",
+                                    }),
+                                }),
+                                "referringProvider": MappingProxyType({
+                                    "name": MappingProxyType({
+                                        "person": MappingProxyType({
+                                            "firstName": "Maya",
+                                            "lastName": "Patel",
+                                        }),
+                                    }),
+                                    "identifiers": MappingProxyType({
+                                        "npi": "1245319599",
+                                        "stateLicenseNumber": "IL-MD-44512",
+                                    }),
+                                }),
+                                "priorReferringProvider": MappingProxyType({
+                                    "name": MappingProxyType({
+                                        "person": MappingProxyType({
+                                            "firstName": "David",
+                                            "lastName": "Kim",
+                                        }),
+                                    }),
+                                    "identifiers": MappingProxyType({
+                                        "npi": "1083827763",
+                                    }),
+                                }),
+                                "supervisingProvider": MappingProxyType({
+                                    "name": MappingProxyType({
+                                        "person": MappingProxyType({
+                                            "firstName": "Elena",
+                                            "lastName": "Rossi",
+                                        }),
+                                    }),
+                                    "identifiers": MappingProxyType({
+                                        "npi": "1396718825",
+                                    }),
+                                }),
+                                "claimNote": MappingProxyType({
+                                    "additionalInformation": "Patient presented with persistent cough and bronchospasm; treated in office.",
+                                }),
+                                "attachments": (
+                                    MappingProxyType({
+                                        "reportTypeCode": "PROGRESS_REPORT",
+                                        "transmissionCode": "ELECTRONICALLY_ONLY",
+                                        "attachmentControlNumber": "PWK-2026-0001",
+                                        "attachmentId": "1f2e3d4c-5b6a-7980-9abc-def012345678",
+                                    }),
+                                ),
+                                "resubmission": MappingProxyType({
+                                    "code": "REPLACEMENT_OF_PRIOR_CLAIM",
+                                    "originalReferenceNumber": "CLM-ORIG-998877",
+                                }),
+                                "referenceNumbers": MappingProxyType({
+                                    "priorAuthorization": "PA-2026-77831",
+                                    "referral": "REF-55421",
+                                    "clia": "14D2089999",
+                                }),
+                            }),
+                            "billing": MappingProxyType({
+                                "taxId": MappingProxyType({
+                                    "ein": "841234567",
+                                }),
+                                "patientControlNumber": "CLM-2026-04219",
+                                "totalCharge": "1432.50",
+                                "amountPaid": "100.00",
+                                "serviceFacility": MappingProxyType({
+                                    "name": MappingProxyType({
+                                        "organization": "Springfield Family Medical Center",
+                                    }),
+                                    "address": MappingProxyType({
+                                        "addressLine1": "501 Main Street",
+                                        "city": "Springfield",
+                                        "state": "IL",
+                                        "postalCode": "627010500",
+                                    }),
+                                    "identifiers": MappingProxyType({
+                                        "npi": "1730289013",
+                                        "stateLicenseNumber": "IL-FAC-77821",
+                                    }),
+                                }),
+                                "billingProvider": MappingProxyType({
+                                    "name": MappingProxyType({
+                                        "organization": "Springfield Family Medical Center",
+                                    }),
+                                    "address": MappingProxyType({
+                                        "addressLine1": "501 Main Street",
+                                        "city": "Springfield",
+                                        "state": "IL",
+                                        "postalCode": "627010500",
+                                    }),
+                                    "contact": MappingProxyType({
+                                        "phoneNumber": "2175558800",
+                                    }),
+                                    "identifiers": MappingProxyType({
+                                        "npi": "1730289013",
+                                        "taxonomyCode": "207Q00000X",
+                                        "locationNumber": "LOC-001",
+                                    }),
+                                }),
+                            }),
+                            "serviceLines": (
+                                MappingProxyType({
+                                    "datesOfService": MappingProxyType({
+                                        "start": "2026-03-03",
+                                        "end": "2026-03-03",
+                                    }),
+                                    "placeOfService": "11",
+                                    "isEmergency": False,
+                                    "procedureCode": MappingProxyType({
+                                        "code": "99213",
+                                        "modifiers": (
+                                            "25",
+                                        ),
+                                    }),
+                                    "diagnosisCodes": (
+                                        "J0190",
+                                        "R0602",
+                                    ),
+                                    "lineItemChargeAmount": "185.00",
+                                    "units": "1",
+                                    "renderingProvider": MappingProxyType({
+                                        "name": MappingProxyType({
+                                            "person": MappingProxyType({
+                                                "firstName": "Elena",
+                                                "lastName": "Rossi",
+                                            }),
+                                        }),
+                                        "identifiers": MappingProxyType({
+                                            "npi": "1396718825",
+                                            "taxonomyCode": "207Q00000X",
+                                        }),
+                                    }),
+                                    "lineItemControlNumber": "LN-0001",
+                                }),
+                                MappingProxyType({
+                                    "datesOfService": MappingProxyType({
+                                        "start": "2026-03-03",
+                                        "end": "2026-03-03",
+                                    }),
+                                    "placeOfService": "11",
+                                    "isEmergency": False,
+                                    "procedureCode": MappingProxyType({
+                                        "code": "J1885",
+                                        "modifiers": (
+                                            "JW",
+                                        ),
+                                    }),
+                                    "diagnosisCodes": (
+                                        "J0190",
+                                    ),
+                                    "lineItemChargeAmount": "1247.50",
+                                    "units": "10",
+                                    "renderingProvider": MappingProxyType({
+                                        "name": MappingProxyType({
+                                            "person": MappingProxyType({
+                                                "firstName": "Elena",
+                                                "lastName": "Rossi",
+                                            }),
+                                        }),
+                                        "identifiers": MappingProxyType({
+                                            "npi": "1396718825",
+                                        }),
+                                    }),
+                                    "orderingProvider": MappingProxyType({
+                                        "name": MappingProxyType({
+                                            "person": MappingProxyType({
+                                                "firstName": "Maya",
+                                                "lastName": "Patel",
+                                            }),
+                                        }),
+                                        "identifiers": MappingProxyType({
+                                            "npi": "1245319599",
+                                        }),
+                                    }),
+                                    "drugIdentification": MappingProxyType({
+                                        "nationalDrugCode": "00409120130",
+                                        "unitCount": "300",
+                                        "unitOfMeasure": "MILLIGRAM",
+                                        "associationNumber": MappingProxyType({
+                                            "pharmacyPrescriptionNumber": "RX-2026-118822",
+                                        }),
+                                    }),
+                                    "priorAuthorizations": (
+                                        MappingProxyType({
+                                            "priorAuthorizationNumber": "PA-2026-77831",
+                                            "otherPayerPrimaryId": "60054",
+                                        }),
+                                    ),
+                                    "lineItemControlNumber": "LN-0002",
+                                }),
+                            ),
+                            "otherInsured": (
+                                MappingProxyType({
+                                    "name": MappingProxyType({
+                                        "person": MappingProxyType({
+                                            "firstName": "Michael",
+                                            "lastName": "Johnson",
+                                        }),
+                                    }),
+                                    "memberId": "BCBS-IL-554433221",
+                                    "responsibilityLevel": "SECONDARY",
+                                    "relationshipToInsured": "SPOUSE",
+                                    "claimFilingIndicator": "BLUE_CROSS_BLUE_SHIELD",
+                                    "otherPayer": MappingProxyType({
+                                        "name": MappingProxyType({
+                                            "organization": "Blue Cross Blue Shield of Illinois",
+                                        }),
+                                        "id": MappingProxyType({
+                                            "payerId": "00621",
+                                        }),
+                                    }),
+                                    "address": MappingProxyType({
+                                        "addressLine1": "742 Evergreen Terrace",
+                                        "addressLine2": "Apt 3B",
+                                        "city": "Springfield",
+                                        "state": "IL",
+                                        "postalCode": "627010001",
+                                    }),
+                                    "policyOrGroupNumber": "BCBS-GRP-3344",
+                                    "planName": "BCBS PPO",
+                                    "authorization": MappingProxyType({
+                                        "insuredAuthorizesAssignment": "YES",
+                                        "providerGeneratedPatientSignature": False,
+                                        "patientReleasesMedicalInfo": "YES",
+                                    }),
+                                }),
+                            ),
+                        }),
+                    }),
+                }),
+            )),
         Trait.new(id=ShapeID("smithy.api#http"), value=MappingProxyType({
                 "method": "GET",
                 "uri": "/2025-03-07/professional-claim-submissions/{id}",
@@ -4429,7 +4808,12 @@ VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION_OUTPUT = Schema.collection(
         Trait.new(id=ShapeID("smithy.api#output")),
 
     ],
+    members={
+        "errors": {
+            "target": CLAIM_REJECTION_ERRORS,
+        },
 
+    }
 )
 
 VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION = Schema(
@@ -4442,9 +4826,3211 @@ VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION = Schema(
                     "value": "SdkClaimsService",
                 }),
             })),
+        Trait.new(id=ShapeID("smithy.api#examples"), value=(
+                MappingProxyType({
+                    "title": "Validate claim",
+                    "input": MappingProxyType({
+                        "purpose": "CHARGEABLE",
+                        "payer": MappingProxyType({
+                            "id": "60054",
+                            "name": MappingProxyType({
+                                "organization": "Aetna",
+                            }),
+                        }),
+                        "insured": MappingProxyType({
+                            "memberId": "W123456789",
+                            "name": MappingProxyType({
+                                "person": MappingProxyType({
+                                    "firstName": "June",
+                                    "lastName": "Doe",
+                                }),
+                            }),
+                            "dateOfBirth": "1990-01-01",
+                            "gender": "FEMALE",
+                            "insuranceType": "OTHER",
+                            "paymentResponsibilityLevelCode": "PRIMARY",
+                            "address": MappingProxyType({
+                                "addressLine1": "111 A Place",
+                                "city": "Somewhere",
+                                "postalCode": "123450000",
+                                "state": "IL",
+                            }),
+                        }),
+                        "patient": MappingProxyType({
+                            "address": MappingProxyType({
+                                "addressLine1": "111 A Place",
+                                "city": "Somewhere",
+                                "postalCode": "123450000",
+                                "state": "IL",
+                            }),
+                            "dateOfBirth": "1900-02-02",
+                            "gender": "MALE",
+                            "name": MappingProxyType({
+                                "person": MappingProxyType({
+                                    "firstName": "Liam",
+                                    "lastName": "Doe",
+                                }),
+                            }),
+                            "relationshipToInsured": "CHILD",
+                        }),
+                        "otherInsured": (
+                            MappingProxyType({
+                                "address": MappingProxyType({
+                                    "addressLine1": "111 A Place",
+                                    "city": "Somewhere",
+                                    "postalCode": "123450000",
+                                    "state": "IL",
+                                }),
+                                "authorization": MappingProxyType({
+                                    "insuredAuthorizesAssignment": "YES",
+                                    "patientReleasesMedicalInfo": "YES",
+                                    "providerGeneratedPatientSignature": False,
+                                }),
+                                "claimFilingIndicator": "BLUE_CROSS_BLUE_SHIELD",
+                                "memberId": "BCBS-IL-554433221",
+                                "name": MappingProxyType({
+                                    "person": MappingProxyType({
+                                        "firstName": "Michael",
+                                        "lastName": "Doe",
+                                    }),
+                                }),
+                                "otherPayer": MappingProxyType({
+                                    "id": MappingProxyType({
+                                        "payerId": "00621",
+                                    }),
+                                    "name": MappingProxyType({
+                                        "organization": "Blue Cross Blue Shield of Illinois",
+                                    }),
+                                }),
+                                "planName": "BCBS PPO",
+                                "policyOrGroupNumber": "BCBS-GRP-3344",
+                                "relationshipToInsured": "SPOUSE",
+                                "responsibilityLevel": "SECONDARY",
+                            }),
+                        ),
+                        "encounter": MappingProxyType({
+                            "attachments": (
+                                MappingProxyType({
+                                    "attachmentControlNumber": "PWK-2026-0001",
+                                    "reportTypeCode": "PROGRESS_REPORT",
+                                    "transmissionCode": "ELECTRONICALLY_ONLY",
+                                }),
+                            ),
+                            "claimCodes": (
+                                "AV",
+                            ),
+                            "claimNote": MappingProxyType({
+                                "additionalInformation": "Patient presented with persistent cough and bronchospasm; treated in office.",
+                            }),
+                            "clinicalDates": MappingProxyType({
+                                "hospitalization": MappingProxyType({
+                                    "end": "2026-03-06",
+                                    "start": "2026-03-04",
+                                }),
+                                "initialTreatment": "2026-03-03",
+                                "onsetOfCurrentIllness": "2026-03-02",
+                                "unableToWork": MappingProxyType({
+                                    "end": "2026-03-10",
+                                    "start": "2026-03-03",
+                                }),
+                            }),
+                            "patientCondition": MappingProxyType({
+                                "isAutoAccidentRelated": False,
+                                "isEmploymentRelated": False,
+                                "isOtherAccidentRelated": False,
+                            }),
+                            "primaryDiagnosisCode": "J0190",
+                            "priorReferringProvider": MappingProxyType({
+                                "identifiers": MappingProxyType({
+                                    "npi": "1999999984",
+                                }),
+                                "name": MappingProxyType({
+                                    "person": MappingProxyType({
+                                        "firstName": "John",
+                                        "lastName": "Doe",
+                                    }),
+                                }),
+                            }),
+                            "referenceNumbers": MappingProxyType({
+                                "clia": "14D2089999",
+                                "priorAuthorization": "PA-2026-11111",
+                                "referral": "REF-4321",
+                            }),
+                            "referringProvider": MappingProxyType({
+                                "identifiers": MappingProxyType({
+                                    "npi": "1999999984",
+                                }),
+                                "name": MappingProxyType({
+                                    "person": MappingProxyType({
+                                        "firstName": "Jane",
+                                        "lastName": "Doe",
+                                    }),
+                                }),
+                            }),
+                            "resubmission": MappingProxyType({
+                                "code": "REPLACEMENT_OF_PRIOR_CLAIM",
+                                "originalReferenceNumber": "CLM-ORIG-998877",
+                            }),
+                            "supervisingProvider": MappingProxyType({
+                                "identifiers": MappingProxyType({
+                                    "npi": "1999999984",
+                                }),
+                                "name": MappingProxyType({
+                                    "person": MappingProxyType({
+                                        "firstName": "Jane",
+                                        "lastName": "Smith",
+                                    }),
+                                }),
+                            }),
+                        }),
+                        "serviceLines": (
+                            MappingProxyType({
+                                "procedureCode": MappingProxyType({
+                                    "code": "99213",
+                                }),
+                                "lineItemChargeAmount": "100.00",
+                                "placeOfService": "11",
+                                "datesOfService": MappingProxyType({
+                                    "start": "2026-03-03",
+                                    "end": "2026-03-03",
+                                }),
+                                "diagnosisCodes": (
+                                    "J0190",
+                                ),
+                                "units": "1",
+                            }),
+                        ),
+                        "authorization": MappingProxyType({
+                            "providerSignature": "ON_FILE",
+                            "providerAcceptsAssignment": "ASSIGNED",
+                            "insuredAuthorizesAssignment": "YES",
+                            "patientReleasesMedicalInfo": "YES",
+                        }),
+                        "submitter": MappingProxyType({
+                            "name": MappingProxyType({
+                                "organization": "Test Submitter",
+                            }),
+                            "etin": "TEST001",
+                            "contact": MappingProxyType({
+                                "phoneNumber": "5555551234",
+                            }),
+                        }),
+                        "billing": MappingProxyType({
+                            "billingProvider": MappingProxyType({
+                                "name": MappingProxyType({
+                                    "organization": "Test Provider",
+                                }),
+                                "identifiers": MappingProxyType({
+                                    "npi": "1999999984",
+                                    "taxonomyCode": "207Q00000X",
+                                }),
+                                "address": MappingProxyType({
+                                    "addressLine1": "123 St",
+                                    "city": "City",
+                                    "state": "IL",
+                                    "postalCode": "12345",
+                                }),
+                            }),
+                            "taxId": MappingProxyType({
+                                "ein": "123456789",
+                            }),
+                            "patientControlNumber": "TEST-004",
+                            "totalCharge": "100.00",
+                        }),
+                    }),
+                    "output": MappingProxyType({}),
+                }),
+                MappingProxyType({
+                    "title": "Failed edits",
+                    "input": MappingProxyType({
+                        "purpose": "CHARGEABLE",
+                        "payer": MappingProxyType({
+                            "id": "60054",
+                            "name": MappingProxyType({
+                                "organization": "Aetna",
+                            }),
+                        }),
+                        "insured": MappingProxyType({
+                            "memberId": "W123456789",
+                            "name": MappingProxyType({
+                                "person": MappingProxyType({
+                                    "firstName": "June",
+                                    "lastName": "Doe",
+                                }),
+                            }),
+                            "dateOfBirth": "1990-01-01",
+                            "gender": "FEMALE",
+                            "insuranceType": "OTHER",
+                            "paymentResponsibilityLevelCode": "PRIMARY",
+                            "address": MappingProxyType({
+                                "addressLine1": "111 A Place",
+                                "city": "Somewhere",
+                                "postalCode": "123450000",
+                                "state": "IL",
+                            }),
+                        }),
+                        "patient": MappingProxyType({
+                            "address": MappingProxyType({
+                                "addressLine1": "111 A Place",
+                                "city": "Somewhere",
+                                "postalCode": "123450000",
+                                "state": "IL",
+                            }),
+                            "dateOfBirth": "1900-02-02",
+                            "gender": "MALE",
+                            "name": MappingProxyType({
+                                "person": MappingProxyType({
+                                    "firstName": "Liam",
+                                    "lastName": "Doe",
+                                }),
+                            }),
+                            "relationshipToInsured": "CHILD",
+                        }),
+                        "encounter": MappingProxyType({
+                            "primaryDiagnosisCode": "J0190",
+                            "patientCondition": MappingProxyType({
+                                "isAutoAccidentRelated": False,
+                                "isEmploymentRelated": False,
+                                "isOtherAccidentRelated": False,
+                            }),
+                        }),
+                        "serviceLines": (
+                            MappingProxyType({
+                                "procedureCode": MappingProxyType({
+                                    "code": "99213",
+                                }),
+                                "lineItemChargeAmount": "100.00",
+                                "placeOfService": "11",
+                                "datesOfService": MappingProxyType({
+                                    "start": "2026-03-03",
+                                    "end": "2026-03-03",
+                                }),
+                                "diagnosisCodes": (
+                                    "J0190",
+                                ),
+                                "units": "1",
+                            }),
+                        ),
+                        "authorization": MappingProxyType({
+                            "providerSignature": "ON_FILE",
+                            "providerAcceptsAssignment": "ASSIGNED",
+                            "insuredAuthorizesAssignment": "YES",
+                            "patientReleasesMedicalInfo": "YES",
+                        }),
+                        "submitter": MappingProxyType({
+                            "name": MappingProxyType({
+                                "organization": "Test Submitter",
+                            }),
+                            "etin": "TEST001",
+                            "contact": MappingProxyType({
+                                "phoneNumber": "5555551234",
+                            }),
+                        }),
+                        "billing": MappingProxyType({
+                            "billingProvider": MappingProxyType({
+                                "name": MappingProxyType({
+                                    "organization": "Test Provider",
+                                }),
+                                "identifiers": MappingProxyType({
+                                    "npi": "1730289013",
+                                    "taxonomyCode": "207Q0000X",
+                                }),
+                                "address": MappingProxyType({
+                                    "addressLine1": "123 St",
+                                    "city": "City",
+                                    "state": "IL",
+                                    "postalCode": "12345",
+                                }),
+                            }),
+                            "taxId": MappingProxyType({
+                                "ein": "123456789",
+                            }),
+                            "patientControlNumber": "TEST-005",
+                            "totalCharge": "100.00",
+                        }),
+                    }),
+                    "output": MappingProxyType({
+                        "errors": (
+                            MappingProxyType({
+                                "description": "Invalid NPI. The Billing Provider NPI of 1730289013 is invalid. The National Provider Identifier must be valid with 10 digits and no prefixes or dashes. Correct and resubmit.",
+                            }),
+                            MappingProxyType({
+                                "description": "Invalid Taxonomy Code. The taxonomy code for Billing Provider does not meet the required format. Taxonomy codes must be 10 uppercase alphanumeric characters ending with 'X'. Correct and resubmit.",
+                            }),
+                        ),
+                    }),
+                }),
+            )),
         Trait.new(id=ShapeID("smithy.api#http"), value=MappingProxyType({
                 "method": "POST",
                 "uri": "/2025-03-07/professional-claim-submissions/validate",
+                "code": 200,
+            })),
+
+    ],
+
+)
+
+CLAIM_ACKNOWLEDGMENT_ID = Schema(
+    id=ShapeID("com.stedi.claimsmanager.common#ClaimAcknowledgmentId"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#pattern"), value="^(ack_)?[0-7][0-9A-HJKMNP-TV-Z]{25}$"),
+
+    ],
+
+)
+
+CLAIM_ACKNOWLEDGMENT_STATUS = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.common#ClaimAcknowledgmentStatus"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "REJECTED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="REJECTED"),
+
+            ],
+        },
+
+        "ACCEPTED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ACCEPTED"),
+
+            ],
+        },
+
+        "RECEIVED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="RECEIVED"),
+
+            ],
+        },
+
+        "INVALID": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="INVALID"),
+
+            ],
+        },
+
+    }
+)
+
+CLAIM_PAYMENT_INFORMATION_ID = Schema(
+    id=ShapeID("com.stedi.claimsmanager.common#ClaimPaymentInformationId"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#pattern"), value="^clp_[0-7][0-9A-HJKMNP-TV-Z]{25}$"),
+
+    ],
+
+)
+
+CLAIM_TYPE = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.common#ClaimType"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "DENTAL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DENTAL"),
+
+            ],
+        },
+
+        "INSTITUTIONAL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="INSTITUTIONAL"),
+
+            ],
+        },
+
+        "PROFESSIONAL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PROFESSIONAL"),
+
+            ],
+        },
+
+    }
+)
+
+CLAIM_ISO_DATE = Schema(
+    id=ShapeID("com.stedi.claimsmanager.public#ClaimIsoDate"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#pattern"), value="^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$"),
+
+    ],
+
+)
+
+CLAIM_DATE_RANGE = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public#ClaimDateRange"),
+
+    members={
+        "start": {
+            "target": CLAIM_ISO_DATE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "end": {
+            "target": CLAIM_ISO_DATE,
+        },
+
+    }
+)
+
+CLAIM_MONETARY_AMOUNT = Schema(
+    id=ShapeID("com.stedi.claimsmanager.public#ClaimMonetaryAmount"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#pattern"), value="^-?\\d+\\.\\d{2}$"),
+
+    ],
+
+)
+
+CLAIM_PATIENT_CONTROL_NUMBER = Schema(
+    id=ShapeID("com.stedi.claimsmanager.public#ClaimPatientControlNumber"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                "min": 1,
+                "max": 38,
+            })),
+
+    ],
+
+)
+
+CLAIM_STATUS_REPORTED_BY = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#ClaimStatusReportedBy"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "PAYER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PAYER"),
+
+            ],
+        },
+
+        "CLEARINGHOUSE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CLEARINGHOUSE"),
+
+            ],
+        },
+
+    }
+)
+
+CLAIM_ACKNOWLEDGMENT_SUMMARY = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#ClaimAcknowledgmentSummary"),
+
+    members={
+        "id": {
+            "target": CLAIM_ACKNOWLEDGMENT_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "status": {
+            "target": CLAIM_ACKNOWLEDGMENT_STATUS,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "reportedBy": {
+            "target": CLAIM_STATUS_REPORTED_BY,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "sourceName": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "processedAt": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+CLAIM_PATIENT_CONTROL_NUMBERS_LIST = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#ClaimPatientControlNumbersList"),
+    shape_type=ShapeType.LIST,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                "min": 1,
+                "max": 20,
+            })),
+
+    ],
+    members={
+        "member": {
+            "target": CLAIM_PATIENT_CONTROL_NUMBER,
+        },
+
+    }
+)
+
+CLAIM_PATIENT_NAME = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#ClaimPatientName"),
+
+    members={
+        "firstName": {
+            "target": STRING,
+        },
+
+        "middleName": {
+            "target": STRING,
+        },
+
+        "lastName": {
+            "target": STRING,
+        },
+
+        "suffix": {
+            "target": STRING,
+        },
+
+    }
+)
+
+CLAIM_PAYMENT_INFORMATION_STATUS_CODE = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#ClaimPaymentInformationStatusCode"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "PROCESSED_AS_PRIMARY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PROCESSED_AS_PRIMARY"),
+
+            ],
+        },
+
+        "PROCESSED_AS_SECONDARY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PROCESSED_AS_SECONDARY"),
+
+            ],
+        },
+
+        "PROCESSED_AS_TERTIARY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PROCESSED_AS_TERTIARY"),
+
+            ],
+        },
+
+        "DENIED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DENIED"),
+
+            ],
+        },
+
+        "PROCESSED_AS_PRIMARY_FORWARDED_TO_ADDITIONAL_PAYERS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PROCESSED_AS_PRIMARY_FORWARDED_TO_ADDITIONAL_PAYERS"),
+
+            ],
+        },
+
+        "PROCESSED_AS_SECONDARY_FORWARDED_TO_ADDITIONAL_PAYERS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PROCESSED_AS_SECONDARY_FORWARDED_TO_ADDITIONAL_PAYERS"),
+
+            ],
+        },
+
+        "PROCESSED_AS_TERTIARY_FORWARDED_TO_ADDITIONAL_PAYERS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PROCESSED_AS_TERTIARY_FORWARDED_TO_ADDITIONAL_PAYERS"),
+
+            ],
+        },
+
+        "REVERSAL_OF_PREVIOUS_PAYMENT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="REVERSAL_OF_PREVIOUS_PAYMENT"),
+
+            ],
+        },
+
+        "NOT_OUR_CLAIM_FORWARDED_TO_ADDITIONAL_PAYERS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="NOT_OUR_CLAIM_FORWARDED_TO_ADDITIONAL_PAYERS"),
+
+            ],
+        },
+
+        "PREDETERMINATION_PRICING_ONLY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PREDETERMINATION_PRICING_ONLY"),
+
+            ],
+        },
+
+    }
+)
+
+CLAIM_PAYMENT_INFORMATION_SUMMARY = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#ClaimPaymentInformationSummary"),
+
+    members={
+        "id": {
+            "target": CLAIM_PAYMENT_INFORMATION_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "statusCode": {
+            "target": CLAIM_PAYMENT_INFORMATION_STATUS_CODE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "totalClaimChargeAmount": {
+            "target": CLAIM_MONETARY_AMOUNT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "claimPaymentAmount": {
+            "target": CLAIM_MONETARY_AMOUNT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "patientResponsibilityAmount": {
+            "target": CLAIM_MONETARY_AMOUNT,
+        },
+
+        "checkOrEftTraceNumber": {
+            "target": STRING,
+        },
+
+        "processedAt": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+CLAIM_STATUS = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#ClaimStatus"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "SUBMITTED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SUBMITTED"),
+
+            ],
+        },
+
+        "RECEIVED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="RECEIVED"),
+
+            ],
+        },
+
+        "ACCEPTED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ACCEPTED"),
+
+            ],
+        },
+
+        "REJECTED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="REJECTED"),
+
+            ],
+        },
+
+        "PROCESSED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PROCESSED"),
+
+            ],
+        },
+
+        "DENIED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DENIED"),
+
+            ],
+        },
+
+        "UNKNOWN": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="UNKNOWN"),
+
+            ],
+        },
+
+    }
+)
+
+CLAIM_STATUS_LIST = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#ClaimStatusList"),
+    shape_type=ShapeType.LIST,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                "min": 1,
+                "max": 20,
+            })),
+
+    ],
+    members={
+        "member": {
+            "target": CLAIM_STATUS,
+        },
+
+    }
+)
+
+CLAIM_SUBMISSION_SUMMARY = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#ClaimSubmissionSummary"),
+
+    members={
+        "id": {
+            "target": CLAIM_SUBMISSION_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "stediPayerId": {
+            "target": CLAIM_STEDI_PAYER_ID,
+        },
+
+        "patientControlNumber": {
+            "target": CLAIM_PATIENT_CONTROL_NUMBER,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "patientName": {
+            "target": CLAIM_PATIENT_NAME,
+        },
+
+        "totalClaimChargeAmount": {
+            "target": CLAIM_MONETARY_AMOUNT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "datesOfService": {
+            "target": CLAIM_DATE_RANGE,
+        },
+
+        "processedAt": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+CLAIM_SUMMARY = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#ClaimSummary"),
+
+    members={
+        "id": {
+            "target": CLAIM_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "stediPayerId": {
+            "target": CLAIM_STEDI_PAYER_ID,
+        },
+
+        "patientControlNumber": {
+            "target": CLAIM_PATIENT_CONTROL_NUMBER,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "patientName": {
+            "target": CLAIM_PATIENT_NAME,
+        },
+
+        "status": {
+            "target": CLAIM_STATUS,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "statusReportedBy": {
+            "target": CLAIM_STATUS_REPORTED_BY,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "type": {
+            "target": CLAIM_TYPE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "totalClaimChargeAmount": {
+            "target": CLAIM_MONETARY_AMOUNT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "totalClaimPaidAmount": {
+            "target": CLAIM_MONETARY_AMOUNT,
+        },
+
+        "datesOfService": {
+            "target": CLAIM_DATE_RANGE,
+        },
+
+        "submittedAt": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+CLAIM_SUMMARIES = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#ClaimSummaries"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": CLAIM_SUMMARY,
+        },
+
+    }
+)
+
+CLAIM_TIMELINE_EVENT = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#ClaimTimelineEvent"),
+    shape_type=ShapeType.UNION,
+    members={
+        "professionalClaimSubmission": {
+            "target": CLAIM_SUBMISSION_SUMMARY,
+        },
+
+        "dentalClaimSubmission": {
+            "target": CLAIM_SUBMISSION_SUMMARY,
+        },
+
+        "institutionalClaimSubmission": {
+            "target": CLAIM_SUBMISSION_SUMMARY,
+        },
+
+        "claimAcknowledgment": {
+            "target": CLAIM_ACKNOWLEDGMENT_SUMMARY,
+        },
+
+        "claimPaymentInformation": {
+            "target": CLAIM_PAYMENT_INFORMATION_SUMMARY,
+        },
+
+    }
+)
+
+CLAIM_TIMELINE_EVENTS = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#ClaimTimelineEvents"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": CLAIM_TIMELINE_EVENT,
+        },
+
+    }
+)
+
+GET_CLAIM_INPUT = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#GetClaimInput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#input")),
+
+    ],
+    members={
+        "id": {
+            "target": CLAIM_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#httpLabel")),
+
+            ],
+        },
+
+    }
+)
+
+GET_CLAIM_OUTPUT = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#GetClaimOutput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#output")),
+
+    ],
+    members={
+        "id": {
+            "target": CLAIM_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "stediPayerId": {
+            "target": CLAIM_STEDI_PAYER_ID,
+        },
+
+        "patientControlNumber": {
+            "target": CLAIM_PATIENT_CONTROL_NUMBER,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "patientName": {
+            "target": CLAIM_PATIENT_NAME,
+        },
+
+        "status": {
+            "target": CLAIM_STATUS,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "statusReportedBy": {
+            "target": CLAIM_STATUS_REPORTED_BY,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "type": {
+            "target": CLAIM_TYPE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "totalClaimChargeAmount": {
+            "target": CLAIM_MONETARY_AMOUNT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "totalClaimPaidAmount": {
+            "target": CLAIM_MONETARY_AMOUNT,
+        },
+
+        "datesOfService": {
+            "target": CLAIM_DATE_RANGE,
+        },
+
+        "submittedAt": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+GET_CLAIM = Schema(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#GetClaim"),
+    shape_type=ShapeType.OPERATION,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#internal")),
+        Trait.new(id=ShapeID("smithy.rules#staticContextParams"), value=MappingProxyType({
+                "ServiceComponent": MappingProxyType({
+                    "value": "SdkClaimsService",
+                }),
+            })),
+        Trait.new(id=ShapeID("smithy.api#examples"), value=(
+                MappingProxyType({
+                    "title": "Retrieve a claim",
+                    "input": MappingProxyType({
+                        "id": "clm_01K6XFP3TZ8RA9X84963NMW40N",
+                    }),
+                    "output": MappingProxyType({
+                        "id": "clm_01K6XFP3TZ8RA9X84963NMW40N",
+                        "stediPayerId": "ABCDE",
+                        "patientControlNumber": "123456",
+                        "patientName": MappingProxyType({
+                            "firstName": "John",
+                            "middleName": "Michael",
+                            "lastName": "Doe",
+                            "suffix": "Jr",
+                        }),
+                        "status": "PROCESSED",
+                        "statusReportedBy": "PAYER",
+                        "type": "PROFESSIONAL",
+                        "totalClaimChargeAmount": "832.00",
+                        "totalClaimPaidAmount": "200.00",
+                        "datesOfService": MappingProxyType({
+                            "start": "2026-01-05",
+                        }),
+                        "submittedAt": "2026-01-16T10:00:00Z",
+                    }),
+                }),
+            )),
+        Trait.new(id=ShapeID("smithy.api#http"), value=MappingProxyType({
+                "method": "GET",
+                "uri": "/2025-03-07/claims/{id}",
+                "code": 200,
+            })),
+        Trait.new(id=ShapeID("smithy.api#readonly")),
+
+    ],
+
+)
+
+PAGE_SIZE = Schema(
+    id=ShapeID("com.stedi.smithy.model.common#PageSize"),
+    shape_type=ShapeType.INTEGER,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#box")),
+        Trait.new(id=ShapeID("smithy.api#range"), value=MappingProxyType({
+                "min": 1,
+            })),
+
+    ],
+
+)
+
+PAGE_TOKEN = Schema(
+    id=ShapeID("com.stedi.smithy.model.common#PageToken"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                "min": 1,
+                "max": 1024,
+            })),
+
+    ],
+
+)
+
+GET_CLAIM_TIMELINE_INPUT = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#GetClaimTimelineInput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#input")),
+
+    ],
+    members={
+        "pageSize": {
+            "target": PAGE_SIZE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value=100),
+                Trait.new(id=ShapeID("smithy.api#range"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 500,
+                    })),
+                Trait.new(id=ShapeID("smithy.api#httpQuery"), value="pageSize"),
+
+            ],
+        },
+
+        "pageToken": {
+            "target": PAGE_TOKEN,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#httpQuery"), value="pageToken"),
+
+            ],
+        },
+
+        "id": {
+            "target": CLAIM_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#httpLabel")),
+
+            ],
+        },
+
+    }
+)
+
+GET_CLAIM_TIMELINE_OUTPUT = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#GetClaimTimelineOutput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#output")),
+
+    ],
+    members={
+        "nextPageToken": {
+            "target": PAGE_TOKEN,
+        },
+
+        "items": {
+            "target": CLAIM_TIMELINE_EVENTS,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+GET_CLAIM_TIMELINE = Schema(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#GetClaimTimeline"),
+    shape_type=ShapeType.OPERATION,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#internal")),
+        Trait.new(id=ShapeID("smithy.api#paginated"), value=MappingProxyType({
+                "items": "items",
+                "inputToken": "pageToken",
+                "outputToken": "nextPageToken",
+                "pageSize": "pageSize",
+            })),
+        Trait.new(id=ShapeID("smithy.rules#staticContextParams"), value=MappingProxyType({
+                "ServiceComponent": MappingProxyType({
+                    "value": "SdkClaimsService",
+                }),
+            })),
+        Trait.new(id=ShapeID("smithy.api#examples"), value=(
+                MappingProxyType({
+                    "title": "Retrieve a claim's timeline",
+                    "input": MappingProxyType({
+                        "id": "clm_01K6XFP3TZ8RA9X84963NMW40N",
+                        "pageSize": 100,
+                    }),
+                    "output": MappingProxyType({
+                        "items": (
+                            MappingProxyType({
+                                "claimPaymentInformation": MappingProxyType({
+                                    "id": "clp_01K6XFP3TZ8RA9X84963NMW43R",
+                                    "statusCode": "PROCESSED_AS_PRIMARY",
+                                    "totalClaimChargeAmount": "250.00",
+                                    "claimPaymentAmount": "200.00",
+                                    "patientResponsibilityAmount": "50.00",
+                                    "checkOrEftTraceNumber": "TRN123456789",
+                                    "processedAt": "2026-01-16T10:00:00Z",
+                                }),
+                            }),
+                            MappingProxyType({
+                                "claimAcknowledgment": MappingProxyType({
+                                    "id": "ack_01K6XFP3TZ8RA9X84963NMW42Q",
+                                    "status": "ACCEPTED",
+                                    "reportedBy": "PAYER",
+                                    "sourceName": "ACME INSURANCE",
+                                    "processedAt": "2026-01-08T09:30:00Z",
+                                }),
+                            }),
+                            MappingProxyType({
+                                "professionalClaimSubmission": MappingProxyType({
+                                    "id": "sbm_01K6XFP3TZ8RA9X84963NMW41P",
+                                    "stediPayerId": "ABCDE",
+                                    "patientControlNumber": "123456",
+                                    "patientName": MappingProxyType({
+                                        "firstName": "John",
+                                        "middleName": "Michael",
+                                        "lastName": "Doe",
+                                        "suffix": "Jr",
+                                    }),
+                                    "totalClaimChargeAmount": "250.00",
+                                    "datesOfService": MappingProxyType({
+                                        "start": "2026-01-05",
+                                    }),
+                                    "processedAt": "2026-01-07T15:12:45Z",
+                                }),
+                            }),
+                        ),
+                        "nextPageToken": "eyJsYXN0SWQiOiIwMUs2WEZQMyJ9",
+                    }),
+                }),
+            )),
+        Trait.new(id=ShapeID("smithy.api#http"), value=MappingProxyType({
+                "method": "GET",
+                "uri": "/2025-03-07/claims/{id}/timeline",
+                "code": 200,
+            })),
+        Trait.new(id=ShapeID("smithy.api#readonly")),
+
+    ],
+
+)
+
+LIST_CLAIMS_INPUT = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#ListClaimsInput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#input")),
+
+    ],
+    members={
+        "pageSize": {
+            "target": PAGE_SIZE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value=100),
+                Trait.new(id=ShapeID("smithy.api#range"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 500,
+                    })),
+                Trait.new(id=ShapeID("smithy.api#httpQuery"), value="pageSize"),
+
+            ],
+        },
+
+        "pageToken": {
+            "target": PAGE_TOKEN,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#httpQuery"), value="pageToken"),
+
+            ],
+        },
+
+        "status": {
+            "target": CLAIM_STATUS_LIST,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#httpQuery"), value="status"),
+
+            ],
+        },
+
+        "patientControlNumbers": {
+            "target": CLAIM_PATIENT_CONTROL_NUMBERS_LIST,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#httpQuery"), value="patientControlNumbers"),
+
+            ],
+        },
+
+        "submittedAfter": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#httpQuery"), value="submittedAfter"),
+
+            ],
+        },
+
+        "submittedBefore": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#httpQuery"), value="submittedBefore"),
+
+            ],
+        },
+
+    }
+)
+
+LIST_CLAIMS_OUTPUT = Schema.collection(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#ListClaimsOutput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#output")),
+
+    ],
+    members={
+        "nextPageToken": {
+            "target": PAGE_TOKEN,
+        },
+
+        "items": {
+            "target": CLAIM_SUMMARIES,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+LIST_CLAIMS = Schema(
+    id=ShapeID("com.stedi.claimsmanager.public.claim#ListClaims"),
+    shape_type=ShapeType.OPERATION,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#internal")),
+        Trait.new(id=ShapeID("smithy.api#paginated"), value=MappingProxyType({
+                "items": "items",
+                "inputToken": "pageToken",
+                "outputToken": "nextPageToken",
+                "pageSize": "pageSize",
+            })),
+        Trait.new(id=ShapeID("smithy.rules#staticContextParams"), value=MappingProxyType({
+                "ServiceComponent": MappingProxyType({
+                    "value": "SdkClaimsService",
+                }),
+            })),
+        Trait.new(id=ShapeID("smithy.api#examples"), value=(
+                MappingProxyType({
+                    "title": "List claims",
+                    "input": MappingProxyType({
+                        "pageSize": 100,
+                    }),
+                    "output": MappingProxyType({
+                        "items": (
+                            MappingProxyType({
+                                "id": "clm_01K6XFP3TZ8RA9X84963NMW40N",
+                                "stediPayerId": "ABCDE",
+                                "patientControlNumber": "123456",
+                                "patientName": MappingProxyType({
+                                    "firstName": "John",
+                                    "middleName": "Michael",
+                                    "lastName": "Doe",
+                                    "suffix": "Jr",
+                                }),
+                                "status": "PROCESSED",
+                                "statusReportedBy": "PAYER",
+                                "type": "PROFESSIONAL",
+                                "totalClaimChargeAmount": "832.00",
+                                "totalClaimPaidAmount": "200.00",
+                                "datesOfService": MappingProxyType({
+                                    "start": "2026-01-05",
+                                }),
+                                "submittedAt": "2026-01-16T10:00:00Z",
+                            }),
+                            MappingProxyType({
+                                "id": "clm_01K6XFP3TZ8RA9X84963NMW41P",
+                                "stediPayerId": "ABCDE",
+                                "patientControlNumber": "123457",
+                                "patientName": MappingProxyType({
+                                    "firstName": "Jane",
+                                    "lastName": "Doe",
+                                }),
+                                "status": "SUBMITTED",
+                                "statusReportedBy": "CLEARINGHOUSE",
+                                "type": "PROFESSIONAL",
+                                "totalClaimChargeAmount": "125.00",
+                                "submittedAt": "2026-01-06T10:00:00Z",
+                            }),
+                        ),
+                        "nextPageToken": "eyJsYXN0SWQiOiIwMUs2WEZQMyJ9",
+                    }),
+                }),
+            )),
+        Trait.new(id=ShapeID("smithy.api#http"), value=MappingProxyType({
+                "method": "GET",
+                "uri": "/2025-03-07/claims",
+                "code": 200,
+            })),
+        Trait.new(id=ShapeID("smithy.api#readonly")),
+
+    ],
+
+)
+
+EVENT_DESTINATIONS_DESCRIPTION = Schema(
+    id=ShapeID("com.stedi.events#EventDestinationsDescription"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                "max": 1024,
+            })),
+
+    ],
+
+)
+
+EVENT_DESTINATIONS_DESTINATION_URL = Schema(
+    id=ShapeID("com.stedi.events#EventDestinationsDestinationUrl"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#pattern"), value="^https://.+$"),
+
+    ],
+
+)
+
+EVENT_DESTINATIONS_EVENT_TYPE = Schema(
+    id=ShapeID("com.stedi.events#EventDestinationsEventType"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                "min": 1,
+                "max": 255,
+            })),
+
+    ],
+
+)
+
+EVENT_DESTINATIONS_EVENT_TYPE_LIST = Schema.collection(
+    id=ShapeID("com.stedi.events#EventDestinationsEventTypeList"),
+    shape_type=ShapeType.LIST,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#uniqueItems")),
+        Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                "min": 1,
+            })),
+
+    ],
+    members={
+        "member": {
+            "target": EVENT_DESTINATIONS_EVENT_TYPE,
+        },
+
+    }
+)
+
+EVENT_DESTINATIONS_NAME = Schema(
+    id=ShapeID("com.stedi.events#EventDestinationsName"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                "min": 1,
+                "max": 255,
+            })),
+
+    ],
+
+)
+
+EVENT_DESTINATIONS_DESTINATION_INPUT_STATUS = Schema.collection(
+    id=ShapeID("com.stedi.events#EventDestinationsDestinationInputStatus"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "ENABLED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ENABLED"),
+
+            ],
+        },
+
+        "DISABLED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DISABLED"),
+
+            ],
+        },
+
+    }
+)
+
+CREATE_EVENT_DESTINATION_INPUT = Schema.collection(
+    id=ShapeID("com.stedi.events#CreateEventDestinationInput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#input")),
+
+    ],
+    members={
+        "name": {
+            "target": EVENT_DESTINATIONS_NAME,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "description": {
+            "target": EVENT_DESTINATIONS_DESCRIPTION,
+        },
+
+        "eventTypes": {
+            "target": EVENT_DESTINATIONS_EVENT_TYPE_LIST,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "destinationUrl": {
+            "target": EVENT_DESTINATIONS_DESTINATION_URL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "concurrencyLimit": {
+            "target": INTEGER,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#range"), value=MappingProxyType({
+                        "min": 1,
+                    })),
+
+            ],
+        },
+
+        "status": {
+            "target": EVENT_DESTINATIONS_DESTINATION_INPUT_STATUS,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="ENABLED"),
+
+            ],
+        },
+
+        "idempotencyKey": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#httpHeader"), value="Idempotency-Key"),
+                Trait.new(id=ShapeID("smithy.api#idempotencyToken")),
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 255,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+EVENT_DESTINATIONS_ENTITY_ID = Schema(
+    id=ShapeID("com.stedi.events#EventDestinationsEntityId"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#pattern"), value="^[a-z]{3,5}_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"),
+
+    ],
+
+)
+
+EVENT_DESTINATIONS_SIGNING_SECRET = Schema(
+    id=ShapeID("com.stedi.events#EventDestinationsSigningSecret"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                "min": 30,
+                "max": 255,
+            })),
+        Trait.new(id=ShapeID("smithy.api#pattern"), value="^whsec_[A-Za-z0-9+/=]+$"),
+        Trait.new(id=ShapeID("smithy.api#sensitive")),
+
+    ],
+
+)
+
+EVENT_DESTINATIONS_DESTINATION_STATUS = Schema.collection(
+    id=ShapeID("com.stedi.events#EventDestinationsDestinationStatus"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "ENABLED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ENABLED"),
+
+            ],
+        },
+
+        "DISABLED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DISABLED"),
+
+            ],
+        },
+
+    }
+)
+
+CREATE_EVENT_DESTINATION_OUTPUT = Schema.collection(
+    id=ShapeID("com.stedi.events#CreateEventDestinationOutput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#output")),
+
+    ],
+    members={
+        "id": {
+            "target": EVENT_DESTINATIONS_ENTITY_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "createdAt": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "updatedAt": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "status": {
+            "target": EVENT_DESTINATIONS_DESTINATION_STATUS,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "lastDeliveryTime": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+
+            ],
+        },
+
+        "name": {
+            "target": EVENT_DESTINATIONS_NAME,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "description": {
+            "target": EVENT_DESTINATIONS_DESCRIPTION,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "eventTypes": {
+            "target": EVENT_DESTINATIONS_EVENT_TYPE_LIST,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "destinationUrl": {
+            "target": EVENT_DESTINATIONS_DESTINATION_URL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "concurrencyLimit": {
+            "target": INTEGER,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#range"), value=MappingProxyType({
+                        "min": 1,
+                    })),
+
+            ],
+        },
+
+        "signingSecret": {
+            "target": EVENT_DESTINATIONS_SIGNING_SECRET,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+EVENT_DESTINATIONS_LIMIT_EXCEEDED_EXCEPTION = Schema.collection(
+    id=ShapeID("com.stedi.events#EventDestinationsLimitExceededException"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#error"), value="client"),
+        Trait.new(id=ShapeID("smithy.api#httpError"), value=403),
+
+    ],
+    members={
+        "message": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+CONTENT_TOO_LARGE_EXCEPTION = Schema.collection(
+    id=ShapeID("com.stedi.smithy.model.errors#ContentTooLargeException"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#error"), value="client"),
+        Trait.new(id=ShapeID("smithy.api#httpError"), value=413),
+
+    ],
+    members={
+        "message": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+CREATE_EVENT_DESTINATION = Schema(
+    id=ShapeID("com.stedi.events#CreateEventDestination"),
+    shape_type=ShapeType.OPERATION,
+    traits=[
+        Trait.new(id=ShapeID("smithy.rules#staticContextParams"), value=MappingProxyType({
+                "ServiceComponent": MappingProxyType({
+                    "value": "EventsService",
+                }),
+            })),
+        Trait.new(id=ShapeID("smithy.api#examples"), value=(
+                MappingProxyType({
+                    "title": "Create a destination",
+                    "input": MappingProxyType({
+                        "name": "My Destination",
+                        "eventTypes": (
+                            "enrollment.activated",
+                        ),
+                        "destinationUrl": "https://example.com/webhooks",
+                        "status": "ENABLED",
+                        "idempotencyKey": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                    }),
+                    "output": MappingProxyType({
+                        "id": "dst_550e8400-e29b-41d4-a716-446655440000",
+                        "name": "My Destination",
+                        "description": "Receives enrollment notifications",
+                        "eventTypes": (
+                            "enrollment.activated",
+                        ),
+                        "destinationUrl": "https://example.com/webhooks",
+                        "status": "ENABLED",
+                        "createdAt": "2026-02-01T12:00:00Z",
+                        "updatedAt": "2026-02-01T12:00:00Z",
+                        "signingSecret": "whsec_YWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXoxMjM0NTY=",
+                    }),
+                }),
+            )),
+        Trait.new(id=ShapeID("smithy.api#http"), value=MappingProxyType({
+                "method": "POST",
+                "uri": "/2026-02-01/destinations",
+                "code": 201,
+            })),
+
+    ],
+
+)
+
+DELETE_EVENT_DESTINATION_INPUT = Schema.collection(
+    id=ShapeID("com.stedi.events#DeleteEventDestinationInput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#input")),
+
+    ],
+    members={
+        "destinationId": {
+            "target": EVENT_DESTINATIONS_ENTITY_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#httpLabel")),
+
+            ],
+        },
+
+        "idempotencyKey": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#httpHeader"), value="Idempotency-Key"),
+                Trait.new(id=ShapeID("smithy.api#idempotencyToken")),
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 255,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+DELETE_EVENT_DESTINATION_OUTPUT = Schema.collection(
+    id=ShapeID("com.stedi.events#DeleteEventDestinationOutput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#output")),
+
+    ],
+
+)
+
+DELETE_EVENT_DESTINATION = Schema(
+    id=ShapeID("com.stedi.events#DeleteEventDestination"),
+    shape_type=ShapeType.OPERATION,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#idempotent")),
+        Trait.new(id=ShapeID("smithy.rules#staticContextParams"), value=MappingProxyType({
+                "ServiceComponent": MappingProxyType({
+                    "value": "EventsService",
+                }),
+            })),
+        Trait.new(id=ShapeID("smithy.api#examples"), value=(
+                MappingProxyType({
+                    "title": "Delete a destination",
+                    "input": MappingProxyType({
+                        "destinationId": "dst_550e8400-e29b-41d4-a716-446655440000",
+                        "idempotencyKey": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+                    }),
+                    "output": MappingProxyType({}),
+                }),
+            )),
+        Trait.new(id=ShapeID("smithy.api#http"), value=MappingProxyType({
+                "method": "DELETE",
+                "uri": "/2026-02-01/destinations/{destinationId}",
+                "code": 204,
+            })),
+
+    ],
+
+)
+
+EVENT_DESTINATIONS_DESTINATION_SUMMARY = Schema.collection(
+    id=ShapeID("com.stedi.events#EventDestinationsDestinationSummary"),
+
+    members={
+        "id": {
+            "target": EVENT_DESTINATIONS_ENTITY_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "createdAt": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "updatedAt": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "status": {
+            "target": EVENT_DESTINATIONS_DESTINATION_STATUS,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "lastDeliveryTime": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+
+            ],
+        },
+
+        "name": {
+            "target": EVENT_DESTINATIONS_NAME,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "description": {
+            "target": EVENT_DESTINATIONS_DESCRIPTION,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "eventTypes": {
+            "target": EVENT_DESTINATIONS_EVENT_TYPE_LIST,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "destinationUrl": {
+            "target": EVENT_DESTINATIONS_DESTINATION_URL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "concurrencyLimit": {
+            "target": INTEGER,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#range"), value=MappingProxyType({
+                        "min": 1,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+EVENT_DESTINATIONS_DESTINATION_SUMMARY_LIST = Schema.collection(
+    id=ShapeID("com.stedi.events#EventDestinationsDestinationSummaryList"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": EVENT_DESTINATIONS_DESTINATION_SUMMARY,
+        },
+
+    }
+)
+
+EVENT_DESTINATIONS_EVENT_ENVIRONMENT = Schema.collection(
+    id=ShapeID("com.stedi.events#EventDestinationsEventEnvironment"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "TEST": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="TEST"),
+
+            ],
+        },
+
+        "PRODUCTION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PRODUCTION"),
+
+            ],
+        },
+
+    }
+)
+
+EVENT_DESTINATIONS_EVENT_PAYLOAD_OBJECT_TYPE = Schema.collection(
+    id=ShapeID("com.stedi.events#EventDestinationsEventPayloadObjectType"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "V1_EVENT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="v1.event"),
+
+            ],
+        },
+
+    }
+)
+
+EVENT_DESTINATIONS_EVENT_PAYLOAD_RESOURCE_REF = Schema.collection(
+    id=ShapeID("com.stedi.events#EventDestinationsEventPayloadResourceRef"),
+
+    members={
+        "id": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "type": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+EVENT_DESTINATIONS_EVENT_PAYLOAD_RESOURCE_REF_LIST = Schema.collection(
+    id=ShapeID("com.stedi.events#EventDestinationsEventPayloadResourceRefList"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": EVENT_DESTINATIONS_EVENT_PAYLOAD_RESOURCE_REF,
+        },
+
+    }
+)
+
+EVENT_DESTINATIONS_V1_EVENT_PAYLOAD = Schema.collection(
+    id=ShapeID("com.stedi.events#EventDestinationsV1EventPayload"),
+
+    members={
+        "object": {
+            "target": EVENT_DESTINATIONS_EVENT_PAYLOAD_OBJECT_TYPE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "account": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "environment": {
+            "target": EVENT_DESTINATIONS_EVENT_ENVIRONMENT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "created": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "resource": {
+            "target": EVENT_DESTINATIONS_EVENT_PAYLOAD_RESOURCE_REF,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "id": {
+            "target": STRING,
+        },
+
+        "type": {
+            "target": STRING,
+        },
+
+        "relatedResources": {
+            "target": EVENT_DESTINATIONS_EVENT_PAYLOAD_RESOURCE_REF_LIST,
+        },
+
+    }
+)
+
+EVENT_DESTINATIONS_EVENT_PAYLOAD = Schema.collection(
+    id=ShapeID("com.stedi.events#EventDestinationsEventPayload"),
+    shape_type=ShapeType.UNION,
+    members={
+        "v1Event": {
+            "target": EVENT_DESTINATIONS_V1_EVENT_PAYLOAD,
+        },
+
+    }
+)
+
+EVENT_DESTINATIONS_EVENT_STATUS = Schema.collection(
+    id=ShapeID("com.stedi.events#EventDestinationsEventStatus"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "PENDING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PENDING"),
+
+            ],
+        },
+
+        "DELIVERED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DELIVERED"),
+
+            ],
+        },
+
+        "FAILED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="FAILED"),
+
+            ],
+        },
+
+    }
+)
+
+EVENT_DESTINATIONS_EVENT_STATUS_LIST = Schema.collection(
+    id=ShapeID("com.stedi.events#EventDestinationsEventStatusList"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": EVENT_DESTINATIONS_EVENT_STATUS,
+        },
+
+    }
+)
+
+EVENT_DESTINATIONS_EVENT_SUMMARY = Schema.collection(
+    id=ShapeID("com.stedi.events#EventDestinationsEventSummary"),
+
+    members={
+        "id": {
+            "target": EVENT_DESTINATIONS_ENTITY_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "status": {
+            "target": EVENT_DESTINATIONS_EVENT_STATUS,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "createdAt": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "eventType": {
+            "target": EVENT_DESTINATIONS_EVENT_TYPE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+EVENT_DESTINATIONS_EVENT_SUMMARY_LIST = Schema.collection(
+    id=ShapeID("com.stedi.events#EventDestinationsEventSummaryList"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": EVENT_DESTINATIONS_EVENT_SUMMARY,
+        },
+
+    }
+)
+
+EVENT_DESTINATIONS_TIMESTAMP_FILTER = Schema.collection(
+    id=ShapeID("com.stedi.events#EventDestinationsTimestampFilter"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": STRING,
+        },
+
+    }
+)
+
+GET_EVENT_DESTINATION_INPUT = Schema.collection(
+    id=ShapeID("com.stedi.events#GetEventDestinationInput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#input")),
+
+    ],
+    members={
+        "destinationId": {
+            "target": EVENT_DESTINATIONS_ENTITY_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#httpLabel")),
+
+            ],
+        },
+
+    }
+)
+
+GET_EVENT_DESTINATION_OUTPUT = Schema.collection(
+    id=ShapeID("com.stedi.events#GetEventDestinationOutput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#output")),
+
+    ],
+    members={
+        "id": {
+            "target": EVENT_DESTINATIONS_ENTITY_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "createdAt": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "updatedAt": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "status": {
+            "target": EVENT_DESTINATIONS_DESTINATION_STATUS,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "lastDeliveryTime": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+
+            ],
+        },
+
+        "name": {
+            "target": EVENT_DESTINATIONS_NAME,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "description": {
+            "target": EVENT_DESTINATIONS_DESCRIPTION,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "eventTypes": {
+            "target": EVENT_DESTINATIONS_EVENT_TYPE_LIST,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "destinationUrl": {
+            "target": EVENT_DESTINATIONS_DESTINATION_URL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "concurrencyLimit": {
+            "target": INTEGER,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#range"), value=MappingProxyType({
+                        "min": 1,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+GET_EVENT_DESTINATION = Schema(
+    id=ShapeID("com.stedi.events#GetEventDestination"),
+    shape_type=ShapeType.OPERATION,
+    traits=[
+        Trait.new(id=ShapeID("smithy.rules#staticContextParams"), value=MappingProxyType({
+                "ServiceComponent": MappingProxyType({
+                    "value": "EventsService",
+                }),
+            })),
+        Trait.new(id=ShapeID("smithy.api#examples"), value=(
+                MappingProxyType({
+                    "title": "Get a destination",
+                    "input": MappingProxyType({
+                        "destinationId": "dst_550e8400-e29b-41d4-a716-446655440000",
+                    }),
+                    "output": MappingProxyType({
+                        "id": "dst_550e8400-e29b-41d4-a716-446655440000",
+                        "name": "My Destination",
+                        "description": "Receives enrollment notifications",
+                        "eventTypes": (
+                            "enrollment.activated",
+                        ),
+                        "destinationUrl": "https://example.com/webhooks",
+                        "status": "ENABLED",
+                        "createdAt": "2026-02-01T12:00:00Z",
+                        "updatedAt": "2026-02-01T12:00:00Z",
+                    }),
+                }),
+            )),
+        Trait.new(id=ShapeID("smithy.api#http"), value=MappingProxyType({
+                "method": "GET",
+                "uri": "/2026-02-01/destinations/{destinationId}",
+                "code": 200,
+            })),
+        Trait.new(id=ShapeID("smithy.api#readonly")),
+
+    ],
+
+)
+
+GET_EVENT_DESTINATION_EVENT_INPUT = Schema.collection(
+    id=ShapeID("com.stedi.events#GetEventDestinationEventInput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#input")),
+
+    ],
+    members={
+        "eventId": {
+            "target": EVENT_DESTINATIONS_ENTITY_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#httpLabel")),
+
+            ],
+        },
+
+    }
+)
+
+GET_EVENT_DESTINATION_EVENT_OUTPUT = Schema.collection(
+    id=ShapeID("com.stedi.events#GetEventDestinationEventOutput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#output")),
+
+    ],
+    members={
+        "id": {
+            "target": EVENT_DESTINATIONS_ENTITY_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "status": {
+            "target": EVENT_DESTINATIONS_EVENT_STATUS,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "createdAt": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "eventType": {
+            "target": EVENT_DESTINATIONS_EVENT_TYPE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "eventPayload": {
+            "target": EVENT_DESTINATIONS_EVENT_PAYLOAD,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+GET_EVENT_DESTINATION_EVENT = Schema(
+    id=ShapeID("com.stedi.events#GetEventDestinationEvent"),
+    shape_type=ShapeType.OPERATION,
+    traits=[
+        Trait.new(id=ShapeID("smithy.rules#staticContextParams"), value=MappingProxyType({
+                "ServiceComponent": MappingProxyType({
+                    "value": "EventsService",
+                }),
+            })),
+        Trait.new(id=ShapeID("smithy.api#examples"), value=(
+                MappingProxyType({
+                    "title": "Get an event",
+                    "input": MappingProxyType({
+                        "eventId": "evt_550e8400-e29b-41d4-a716-446655440000",
+                    }),
+                    "output": MappingProxyType({
+                        "id": "evt_550e8400-e29b-41d4-a716-446655440000",
+                        "eventType": "enrollment.activated",
+                        "status": "DELIVERED",
+                        "eventPayload": MappingProxyType({
+                            "v1Event": MappingProxyType({
+                                "object": "v1.event",
+                                "id": "evt_550e8400-e29b-41d4-a716-446655440000",
+                                "type": "enrollment.activated",
+                                "account": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                                "environment": "PRODUCTION",
+                                "created": "2026-02-01T12:00:00.000Z",
+                                "resource": MappingProxyType({
+                                    "id": "enr_661f9511-f3ac-52e5-b827-557766551111",
+                                    "type": "enrollment",
+                                }),
+                            }),
+                        }),
+                        "createdAt": "2026-02-01T12:00:00Z",
+                    }),
+                }),
+            )),
+        Trait.new(id=ShapeID("smithy.api#http"), value=MappingProxyType({
+                "method": "GET",
+                "uri": "/2026-02-01/events/{eventId}",
+                "code": 200,
+            })),
+        Trait.new(id=ShapeID("smithy.api#readonly")),
+
+    ],
+
+)
+
+GET_EVENT_DESTINATION_SECRET_INPUT = Schema.collection(
+    id=ShapeID("com.stedi.events#GetEventDestinationSecretInput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#input")),
+
+    ],
+    members={
+        "destinationId": {
+            "target": EVENT_DESTINATIONS_ENTITY_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#httpLabel")),
+
+            ],
+        },
+
+    }
+)
+
+GET_EVENT_DESTINATION_SECRET_OUTPUT = Schema.collection(
+    id=ShapeID("com.stedi.events#GetEventDestinationSecretOutput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#output")),
+
+    ],
+    members={
+        "signingSecret": {
+            "target": EVENT_DESTINATIONS_SIGNING_SECRET,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "previousSecretExpiresAt": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+
+            ],
+        },
+
+    }
+)
+
+GET_EVENT_DESTINATION_SECRET = Schema(
+    id=ShapeID("com.stedi.events#GetEventDestinationSecret"),
+    shape_type=ShapeType.OPERATION,
+    traits=[
+        Trait.new(id=ShapeID("smithy.rules#staticContextParams"), value=MappingProxyType({
+                "ServiceComponent": MappingProxyType({
+                    "value": "EventsService",
+                }),
+            })),
+        Trait.new(id=ShapeID("smithy.api#examples"), value=(
+                MappingProxyType({
+                    "title": "Get destination secret",
+                    "input": MappingProxyType({
+                        "destinationId": "dst_550e8400-e29b-41d4-a716-446655440000",
+                    }),
+                    "output": MappingProxyType({
+                        "signingSecret": "whsec_YWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXoxMjM0NTY=",
+                    }),
+                }),
+            )),
+        Trait.new(id=ShapeID("smithy.api#http"), value=MappingProxyType({
+                "method": "GET",
+                "uri": "/2026-02-01/destinations/{destinationId}/secret",
+                "code": 200,
+            })),
+        Trait.new(id=ShapeID("smithy.api#readonly")),
+
+    ],
+
+)
+
+LIST_EVENT_DESTINATION_EVENTS_INPUT = Schema.collection(
+    id=ShapeID("com.stedi.events#ListEventDestinationEventsInput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#input")),
+
+    ],
+    members={
+        "pageSize": {
+            "target": PAGE_SIZE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value=100),
+                Trait.new(id=ShapeID("smithy.api#range"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 1000,
+                    })),
+                Trait.new(id=ShapeID("smithy.api#httpQuery"), value="pageSize"),
+
+            ],
+        },
+
+        "pageToken": {
+            "target": PAGE_TOKEN,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#httpQuery"), value="pageToken"),
+
+            ],
+        },
+
+        "eventId": {
+            "target": EVENT_DESTINATIONS_ENTITY_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#httpQuery"), value="eventId"),
+
+            ],
+        },
+
+        "status": {
+            "target": EVENT_DESTINATIONS_EVENT_STATUS_LIST,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#httpQuery"), value="status"),
+
+            ],
+        },
+
+        "eventType": {
+            "target": EVENT_DESTINATIONS_EVENT_TYPE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#httpQuery"), value="eventType"),
+
+            ],
+        },
+
+        "created": {
+            "target": EVENT_DESTINATIONS_TIMESTAMP_FILTER,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#httpQuery"), value="created"),
+
+            ],
+        },
+
+    }
+)
+
+LIST_EVENT_DESTINATION_EVENTS_OUTPUT = Schema.collection(
+    id=ShapeID("com.stedi.events#ListEventDestinationEventsOutput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#output")),
+
+    ],
+    members={
+        "nextPageToken": {
+            "target": PAGE_TOKEN,
+        },
+
+        "items": {
+            "target": EVENT_DESTINATIONS_EVENT_SUMMARY_LIST,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+LIST_EVENT_DESTINATION_EVENTS = Schema(
+    id=ShapeID("com.stedi.events#ListEventDestinationEvents"),
+    shape_type=ShapeType.OPERATION,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#paginated"), value=MappingProxyType({
+                "inputToken": "pageToken",
+                "outputToken": "nextPageToken",
+                "items": "items",
+            })),
+        Trait.new(id=ShapeID("smithy.rules#staticContextParams"), value=MappingProxyType({
+                "ServiceComponent": MappingProxyType({
+                    "value": "EventsService",
+                }),
+            })),
+        Trait.new(id=ShapeID("smithy.api#examples"), value=(
+                MappingProxyType({
+                    "title": "List events",
+                    "input": MappingProxyType({}),
+                    "output": MappingProxyType({
+                        "items": (
+                            MappingProxyType({
+                                "id": "evt_550e8400-e29b-41d4-a716-446655440000",
+                                "eventType": "enrollment.activated",
+                                "status": "DELIVERED",
+                                "createdAt": "2026-02-01T12:00:00Z",
+                            }),
+                        ),
+                    }),
+                }),
+            )),
+        Trait.new(id=ShapeID("smithy.api#http"), value=MappingProxyType({
+                "method": "GET",
+                "uri": "/2026-02-01/events",
+                "code": 200,
+            })),
+        Trait.new(id=ShapeID("smithy.api#readonly")),
+
+    ],
+
+)
+
+LIST_EVENT_DESTINATIONS_INPUT = Schema.collection(
+    id=ShapeID("com.stedi.events#ListEventDestinationsInput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#input")),
+
+    ],
+    members={
+        "pageSize": {
+            "target": PAGE_SIZE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value=25),
+                Trait.new(id=ShapeID("smithy.api#range"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 100,
+                    })),
+                Trait.new(id=ShapeID("smithy.api#httpQuery"), value="pageSize"),
+
+            ],
+        },
+
+        "pageToken": {
+            "target": PAGE_TOKEN,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#httpQuery"), value="pageToken"),
+
+            ],
+        },
+
+        "status": {
+            "target": EVENT_DESTINATIONS_DESTINATION_STATUS,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#httpQuery"), value="status"),
+
+            ],
+        },
+
+        "eventType": {
+            "target": EVENT_DESTINATIONS_EVENT_TYPE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#httpQuery"), value="eventType"),
+
+            ],
+        },
+
+    }
+)
+
+LIST_EVENT_DESTINATIONS_OUTPUT = Schema.collection(
+    id=ShapeID("com.stedi.events#ListEventDestinationsOutput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#output")),
+
+    ],
+    members={
+        "nextPageToken": {
+            "target": PAGE_TOKEN,
+        },
+
+        "items": {
+            "target": EVENT_DESTINATIONS_DESTINATION_SUMMARY_LIST,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+LIST_EVENT_DESTINATIONS = Schema(
+    id=ShapeID("com.stedi.events#ListEventDestinations"),
+    shape_type=ShapeType.OPERATION,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#paginated"), value=MappingProxyType({
+                "inputToken": "pageToken",
+                "outputToken": "nextPageToken",
+                "items": "items",
+            })),
+        Trait.new(id=ShapeID("smithy.rules#staticContextParams"), value=MappingProxyType({
+                "ServiceComponent": MappingProxyType({
+                    "value": "EventsService",
+                }),
+            })),
+        Trait.new(id=ShapeID("smithy.api#examples"), value=(
+                MappingProxyType({
+                    "title": "List destinations",
+                    "input": MappingProxyType({}),
+                    "output": MappingProxyType({
+                        "items": (
+                            MappingProxyType({
+                                "id": "dst_550e8400-e29b-41d4-a716-446655440000",
+                                "name": "My Destination",
+                                "description": "Receives enrollment notifications",
+                                "destinationUrl": "https://example.com/webhooks",
+                                "status": "ENABLED",
+                                "eventTypes": (
+                                    "enrollment.activated",
+                                ),
+                                "createdAt": "2026-02-01T12:00:00Z",
+                                "updatedAt": "2026-02-01T12:00:00Z",
+                                "lastDeliveryTime": "2026-02-01T12:00:01Z",
+                            }),
+                        ),
+                    }),
+                }),
+            )),
+        Trait.new(id=ShapeID("smithy.api#http"), value=MappingProxyType({
+                "method": "GET",
+                "uri": "/2026-02-01/destinations",
+                "code": 200,
+            })),
+        Trait.new(id=ShapeID("smithy.api#readonly")),
+
+    ],
+
+)
+
+ROTATE_EVENT_DESTINATION_SECRET_INPUT = Schema.collection(
+    id=ShapeID("com.stedi.events#RotateEventDestinationSecretInput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#input")),
+
+    ],
+    members={
+        "destinationId": {
+            "target": EVENT_DESTINATIONS_ENTITY_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#httpLabel")),
+
+            ],
+        },
+
+        "previousSecretExpiryHours": {
+            "target": INTEGER,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value=24),
+                Trait.new(id=ShapeID("smithy.api#range"), value=MappingProxyType({
+                        "min": 0,
+                        "max": 720,
+                    })),
+
+            ],
+        },
+
+        "idempotencyKey": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#httpHeader"), value="Idempotency-Key"),
+                Trait.new(id=ShapeID("smithy.api#idempotencyToken")),
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 255,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+ROTATE_EVENT_DESTINATION_SECRET_OUTPUT = Schema.collection(
+    id=ShapeID("com.stedi.events#RotateEventDestinationSecretOutput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#output")),
+
+    ],
+    members={
+        "signingSecret": {
+            "target": EVENT_DESTINATIONS_SIGNING_SECRET,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "previousSecretExpiresAt": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+
+            ],
+        },
+
+    }
+)
+
+ROTATE_EVENT_DESTINATION_SECRET = Schema(
+    id=ShapeID("com.stedi.events#RotateEventDestinationSecret"),
+    shape_type=ShapeType.OPERATION,
+    traits=[
+        Trait.new(id=ShapeID("smithy.rules#staticContextParams"), value=MappingProxyType({
+                "ServiceComponent": MappingProxyType({
+                    "value": "EventsService",
+                }),
+            })),
+        Trait.new(id=ShapeID("smithy.api#examples"), value=(
+                MappingProxyType({
+                    "title": "Rotate destination secret",
+                    "input": MappingProxyType({
+                        "destinationId": "dst_550e8400-e29b-41d4-a716-446655440000",
+                        "previousSecretExpiryHours": 24,
+                        "idempotencyKey": "d4e5f6a7-b8c9-0123-defa-234567890123",
+                    }),
+                    "output": MappingProxyType({
+                        "signingSecret": "whsec_bmV3c2VjcmV0Zm9ycm90YXRpb25leGFtcGxlMTIzNA==",
+                        "previousSecretExpiresAt": "2025-01-01T00:00:00Z",
+                    }),
+                }),
+            )),
+        Trait.new(id=ShapeID("smithy.api#http"), value=MappingProxyType({
+                "method": "POST",
+                "uri": "/2026-02-01/destinations/{destinationId}/secret/rotate",
+                "code": 200,
+            })),
+
+    ],
+
+)
+
+UPDATE_EVENT_DESTINATION_INPUT = Schema.collection(
+    id=ShapeID("com.stedi.events#UpdateEventDestinationInput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#input")),
+
+    ],
+    members={
+        "destinationId": {
+            "target": EVENT_DESTINATIONS_ENTITY_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#httpLabel")),
+
+            ],
+        },
+
+        "name": {
+            "target": EVENT_DESTINATIONS_NAME,
+        },
+
+        "description": {
+            "target": EVENT_DESTINATIONS_DESCRIPTION,
+        },
+
+        "eventTypes": {
+            "target": EVENT_DESTINATIONS_EVENT_TYPE_LIST,
+        },
+
+        "destinationUrl": {
+            "target": EVENT_DESTINATIONS_DESTINATION_URL,
+        },
+
+        "concurrencyLimit": {
+            "target": INTEGER,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#range"), value=MappingProxyType({
+                        "min": 1,
+                    })),
+
+            ],
+        },
+
+        "status": {
+            "target": EVENT_DESTINATIONS_DESTINATION_INPUT_STATUS,
+        },
+
+        "idempotencyKey": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#httpHeader"), value="Idempotency-Key"),
+                Trait.new(id=ShapeID("smithy.api#idempotencyToken")),
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 255,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+UPDATE_EVENT_DESTINATION_OUTPUT = Schema.collection(
+    id=ShapeID("com.stedi.events#UpdateEventDestinationOutput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#output")),
+
+    ],
+    members={
+        "id": {
+            "target": EVENT_DESTINATIONS_ENTITY_ID,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "createdAt": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "updatedAt": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "status": {
+            "target": EVENT_DESTINATIONS_DESTINATION_STATUS,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "lastDeliveryTime": {
+            "target": TIMESTAMP,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#timestampFormat"), value="date-time"),
+
+            ],
+        },
+
+        "name": {
+            "target": EVENT_DESTINATIONS_NAME,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "description": {
+            "target": EVENT_DESTINATIONS_DESCRIPTION,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "eventTypes": {
+            "target": EVENT_DESTINATIONS_EVENT_TYPE_LIST,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "destinationUrl": {
+            "target": EVENT_DESTINATIONS_DESTINATION_URL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "concurrencyLimit": {
+            "target": INTEGER,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#range"), value=MappingProxyType({
+                        "min": 1,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+UPDATE_EVENT_DESTINATION = Schema(
+    id=ShapeID("com.stedi.events#UpdateEventDestination"),
+    shape_type=ShapeType.OPERATION,
+    traits=[
+        Trait.new(id=ShapeID("smithy.rules#staticContextParams"), value=MappingProxyType({
+                "ServiceComponent": MappingProxyType({
+                    "value": "EventsService",
+                }),
+            })),
+        Trait.new(id=ShapeID("smithy.api#examples"), value=(
+                MappingProxyType({
+                    "title": "Update a destination",
+                    "input": MappingProxyType({
+                        "destinationId": "dst_550e8400-e29b-41d4-a716-446655440000",
+                        "name": "Updated Destination Name",
+                        "status": "DISABLED",
+                        "idempotencyKey": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+                    }),
+                    "output": MappingProxyType({
+                        "id": "dst_550e8400-e29b-41d4-a716-446655440000",
+                        "name": "Updated Destination Name",
+                        "description": "",
+                        "eventTypes": (
+                            "enrollment.activated",
+                        ),
+                        "destinationUrl": "https://example.com/webhooks",
+                        "status": "DISABLED",
+                        "createdAt": "2026-02-01T12:00:00Z",
+                        "updatedAt": "2026-02-02T08:30:00Z",
+                    }),
+                }),
+            )),
+        Trait.new(id=ShapeID("smithy.api#http"), value=MappingProxyType({
+                "method": "POST",
+                "uri": "/2026-02-01/destinations/{destinationId}",
                 "code": 200,
             })),
 
@@ -4502,6 +8088,23 @@ STEDI = Schema(
                                     MappingProxyType({
                                         "ref": "ServiceComponent",
                                     }),
+                                    "EventsService",
+                                ),
+                            }),
+                        ),
+                        "endpoint": MappingProxyType({
+                            "url": "https://events.us.stedi.com",
+                        }),
+                        "type": "endpoint",
+                    }),
+                    MappingProxyType({
+                        "conditions": (
+                            MappingProxyType({
+                                "fn": "stringEquals",
+                                "argv": (
+                                    MappingProxyType({
+                                        "ref": "ServiceComponent",
+                                    }),
                                     "SdkClaimsService",
                                 ),
                             }),
@@ -4520,8 +8123,10 @@ STEDI = Schema(
             })),
         Trait.new(id=ShapeID("smithy.api#auth"), value=(
                 "smithy.api#httpApiKeyAuth",
+                "smithy.api#httpBearerAuth",
             )),
         Trait.new(id=ShapeID("aws.protocols#restJson1")),
+        Trait.new(id=ShapeID("smithy.api#httpBearerAuth")),
         Trait.new(id=ShapeID("smithy.api#cors"), value=MappingProxyType({
                 "additionalAllowedHeaders": (
                     "Content-Type",

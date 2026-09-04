@@ -1,4 +1,4 @@
-import { HttpApiKeyAuthSigner } from "@smithy/core";
+import { HttpApiKeyAuthSigner, HttpBearerAuthSigner } from "@smithy/core";
 import type { IdentityProviderConfig } from "@smithy/types";
 import { StediRestJsonProtocol } from "./protocol/stediRestJsonProtocol";
 import type { StediClientConfig } from "./StediClient";
@@ -15,11 +15,15 @@ export declare const getRuntimeConfig: (config: StediClientConfig) => {
     }) => import("@smithy/types").EndpointV2;
     extensions: import("./runtimeExtensions").RuntimeExtension[];
     httpAuthSchemeProvider: import("./auth/httpAuthSchemeProvider").StediHttpAuthSchemeProvider;
-    httpAuthSchemes: {
+    httpAuthSchemes: ({
         schemeId: string;
         identityProvider: (ipc: IdentityProviderConfig) => import("@smithy/types").IdentityProvider<import("@smithy/types").Identity> | undefined;
         signer: HttpApiKeyAuthSigner;
-    }[];
+    } | {
+        schemeId: string;
+        identityProvider: (ipc: IdentityProviderConfig) => import("@smithy/types").IdentityProvider<import("@smithy/types").Identity> | undefined;
+        signer: HttpBearerAuthSigner;
+    })[];
     logger: import("@smithy/types").Logger;
     protocol: import("@smithy/types").ClientProtocol<any, any> | import("@smithy/types").ClientProtocolCtor<any, any> | typeof StediRestJsonProtocol;
     protocolSettings: {

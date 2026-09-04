@@ -12,6 +12,8 @@ import {
   type HttpAuthSchemeProvider,
   type Provider,
   HttpApiKeyAuthLocation,
+  TokenIdentity,
+  TokenIdentityProvider,
 } from "@smithy/types";
 
 import type { StediClientResolvedConfig } from "../StediClient";
@@ -56,6 +58,12 @@ function createSmithyApiHttpApiKeyAuthHttpAuthOption(authParameters: StediHttpAu
   };
 }
 
+function createSmithyApiHttpBearerAuthHttpAuthOption(authParameters: StediHttpAuthSchemeParameters): HttpAuthOption {
+  return {
+    schemeId: "smithy.api#httpBearerAuth",
+  };
+}
+
 /**
  * @internal
  */
@@ -69,6 +77,7 @@ export const defaultStediHttpAuthSchemeProvider: StediHttpAuthSchemeProvider = (
   switch (authParameters.operation) {
     default: {
       options.push(createSmithyApiHttpApiKeyAuthHttpAuthOption(authParameters));
+      options.push(createSmithyApiHttpBearerAuthHttpAuthOption(authParameters));
     }
   }
   return options;
@@ -101,6 +110,10 @@ export interface HttpAuthSchemeInputConfig {
    * The API key to use when making requests.
    */
   apiKey?: ApiKeyIdentity | ApiKeyIdentityProvider;
+  /**
+   * The token used to authenticate requests.
+   */
+  token?: TokenIdentity | TokenIdentityProvider;
 }
 
 /**
@@ -130,6 +143,10 @@ export interface HttpAuthSchemeResolvedConfig {
    * The API key to use when making requests.
    */
   readonly apiKey?: ApiKeyIdentityProvider;
+  /**
+   * The token used to authenticate requests.
+   */
+  readonly token?: TokenIdentityProvider;
 }
 
 /**
@@ -139,8 +156,10 @@ export const resolveHttpAuthSchemeConfig = <T>(
   config: T & HttpAuthSchemeInputConfig
 ): T & HttpAuthSchemeResolvedConfig => {
   const apiKey = memoizeIdentityProvider(config.apiKey, isIdentityExpired, doesIdentityRequireRefresh);
+  const token = memoizeIdentityProvider(config.token, isIdentityExpired, doesIdentityRequireRefresh);
   return Object.assign(config, {
     authSchemePreference: normalizeProvider(config.authSchemePreference ?? []),
     apiKey,
+    token,
   }) as T & HttpAuthSchemeResolvedConfig;
 };

@@ -1,46 +1,6 @@
 import type { ExceptionOptionType as __ExceptionOptionType } from "@smithy/core/client";
-import type { ClaimEditError, ValidationFailure } from "./models_0";
+import type { ValidationFailure } from "./models_0";
 import { StediServiceException as __BaseException } from "./StediServiceException";
-/**
- * Exception returned when the claim fails one or more pre-submission edits.
- * @public
- */
-export declare class ClaimEditException extends __BaseException {
-    readonly name: "ClaimEditException";
-    readonly $fault: "client";
-    /**
-     * The edits the claim failed.
-     * @public
-     */
-    errors: ClaimEditError[] | undefined;
-    /**
-     * A synthetic 277CA acknowledging the rejection, with one STC segment per failed edit.
-     * @public
-     */
-    x12?: string | undefined;
-    /**
-     * @internal
-     */
-    constructor(opts: __ExceptionOptionType<ClaimEditException, __BaseException>);
-}
-/**
- * The server response when an unexpected error occurred while processing request.
- * @public
- */
-export declare class InternalFailureException extends __BaseException {
-    readonly name: "InternalFailureException";
-    readonly $fault: "server";
-    $retryable: {};
-    /**
-     * Error classification code
-     * @public
-     */
-    code?: string | undefined;
-    /**
-     * @internal
-     */
-    constructor(opts: __ExceptionOptionType<InternalFailureException, __BaseException>);
-}
 /**
  * The request credentials are missing or not valid.
  * @public
@@ -133,4 +93,28 @@ export declare class NotFoundException extends __BaseException {
      * @internal
      */
     constructor(opts: __ExceptionOptionType<NotFoundException, __BaseException>);
+}
+/**
+ * The account has reached its maximum number of event destinations. Delete an existing destination or request a limit increase before creating another. Not retryable — the caller must change account state before retrying.
+ * @public
+ */
+export declare class EventDestinationsLimitExceededException extends __BaseException {
+    readonly name: "EventDestinationsLimitExceededException";
+    readonly $fault: "client";
+    /**
+     * @internal
+     */
+    constructor(opts: __ExceptionOptionType<EventDestinationsLimitExceededException, __BaseException>);
+}
+/**
+ * The request payload is larger than the service accepts. Send less in one request.
+ * @public
+ */
+export declare class ContentTooLargeException extends __BaseException {
+    readonly name: "ContentTooLargeException";
+    readonly $fault: "client";
+    /**
+     * @internal
+     */
+    constructor(opts: __ExceptionOptionType<ContentTooLargeException, __BaseException>);
 }

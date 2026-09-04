@@ -1,20 +1,20 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["stedi==0.0.9"]
+# dependencies = ["stedi==0.0.10"]
 # ///
 
 """Check a professional claim without submitting it.
 
-    uv run --script validate_professional_claim_submission.py <api-key>
+    STEDI_API_KEY=<api-key> uv run --script validate_professional_claim_submission.py
 
 Runs the same payer checks, claim edits, and X12 mapping as
 create_professional_claim_submission, but persists and delivers nothing — so you can
-validate a claim while a user is still filling out a form. An empty success response
+validate a claim while a user is still filling out a form. A response with no errors
 means the claim would be accepted.
 """
 
 import asyncio
-import sys
+import os
 from pathlib import Path
 
 from smithy_json import JSONCodec
@@ -36,9 +36,20 @@ def load_claim() -> ValidateProfessionalClaimSubmissionInput:
 
 async def main(api_key: str) -> None:
     async with Stedi(Config(api_key=api_key)) as client:
-        await client.validate_professional_claim_submission(load_claim())
+        validation = await client.validate_professional_claim_submission(load_claim())
 
-    print("valid: the claim would be accepted for submission")
+    errors = validation.errors or []
+    if not errors:
+        print("valid: the claim would be accepted for submission")
+        return
+
+    print(f"invalid: {len(errors)} error(s) would reject the claim:")
+    for error in errors:
+        print(f"  {error.description}")
 
 
-asyncio.run(main(sys.argv[1]))
+api_key = os.environ.get("STEDI_API_KEY")
+if not api_key:
+    raise SystemExit("STEDI_API_KEY is not set")
+
+asyncio.run(main(api_key))

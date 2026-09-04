@@ -1,35 +1,4 @@
 import { StediServiceException as __BaseException } from "./StediServiceException";
-export class ClaimEditException extends __BaseException {
-    name = "ClaimEditException";
-    $fault = "client";
-    errors;
-    x12;
-    constructor(opts) {
-        super({
-            name: "ClaimEditException",
-            $fault: "client",
-            ...opts,
-        });
-        Object.setPrototypeOf(this, ClaimEditException.prototype);
-        this.errors = opts.errors;
-        this.x12 = opts.x12;
-    }
-}
-export class InternalFailureException extends __BaseException {
-    name = "InternalFailureException";
-    $fault = "server";
-    $retryable = {};
-    code;
-    constructor(opts) {
-        super({
-            name: "InternalFailureException",
-            $fault: "server",
-            ...opts,
-        });
-        Object.setPrototypeOf(this, InternalFailureException.prototype);
-        this.code = opts.code;
-    }
-}
 export class AuthenticationFailedException extends __BaseException {
     name = "AuthenticationFailedException";
     $fault = "client";
@@ -118,5 +87,29 @@ export class NotFoundException extends __BaseException {
             ...opts,
         });
         Object.setPrototypeOf(this, NotFoundException.prototype);
+    }
+}
+export class EventDestinationsLimitExceededException extends __BaseException {
+    name = "EventDestinationsLimitExceededException";
+    $fault = "client";
+    constructor(opts) {
+        super({
+            name: "EventDestinationsLimitExceededException",
+            $fault: "client",
+            ...opts,
+        });
+        Object.setPrototypeOf(this, EventDestinationsLimitExceededException.prototype);
+    }
+}
+export class ContentTooLargeException extends __BaseException {
+    name = "ContentTooLargeException";
+    $fault = "client";
+    constructor(opts) {
+        super({
+            name: "ContentTooLargeException",
+            $fault: "client",
+            ...opts,
+        });
+        Object.setPrototypeOf(this, ContentTooLargeException.prototype);
     }
 }

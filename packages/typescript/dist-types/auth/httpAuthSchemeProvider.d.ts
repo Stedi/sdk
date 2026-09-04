@@ -1,4 +1,4 @@
-import { type ApiKeyIdentity, type ApiKeyIdentityProvider, type HandlerExecutionContext, type HttpAuthScheme, type HttpAuthSchemeParameters, type HttpAuthSchemeParametersProvider, type HttpAuthSchemeProvider, type Provider } from "@smithy/types";
+import { type ApiKeyIdentity, type ApiKeyIdentityProvider, type HandlerExecutionContext, type HttpAuthScheme, type HttpAuthSchemeParameters, type HttpAuthSchemeParametersProvider, type HttpAuthSchemeProvider, type Provider, TokenIdentity, TokenIdentityProvider } from "@smithy/types";
 import type { StediClientResolvedConfig } from "../StediClient";
 /**
  * @internal
@@ -48,6 +48,10 @@ export interface HttpAuthSchemeInputConfig {
      * The API key to use when making requests.
      */
     apiKey?: ApiKeyIdentity | ApiKeyIdentityProvider;
+    /**
+     * The token used to authenticate requests.
+     */
+    token?: TokenIdentity | TokenIdentityProvider;
 }
 /**
  * @internal
@@ -74,6 +78,10 @@ export interface HttpAuthSchemeResolvedConfig {
      * The API key to use when making requests.
      */
     readonly apiKey?: ApiKeyIdentityProvider;
+    /**
+     * The token used to authenticate requests.
+     */
+    readonly token?: TokenIdentityProvider;
 }
 /**
  * @internal

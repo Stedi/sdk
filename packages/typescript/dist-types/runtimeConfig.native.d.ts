@@ -40,11 +40,16 @@ export declare const getRuntimeConfig: (config: StediClientConfig) => {
     useFipsEndpoint?: boolean | import("@smithy/types").Provider<boolean | undefined>;
     serviceConfiguredEndpoint?: never;
     authSchemePreference?: string[] | import("@smithy/types").Provider<string[]>;
-    httpAuthSchemes: {
+    httpAuthSchemes: ({
         schemeId: string;
         identityProvider: (ipc: import("@smithy/types").IdentityProviderConfig) => import("@smithy/types").IdentityProvider<import("@smithy/types").Identity> | undefined;
         signer: import("@smithy/core").HttpApiKeyAuthSigner;
-    }[];
+    } | {
+        schemeId: string;
+        identityProvider: (ipc: import("@smithy/types").IdentityProviderConfig) => import("@smithy/types").IdentityProvider<import("@smithy/types").Identity> | undefined;
+        signer: import("@smithy/core").HttpBearerAuthSigner;
+    })[];
     httpAuthSchemeProvider: import("./auth/httpAuthSchemeProvider").StediHttpAuthSchemeProvider;
     apiKey?: import("@smithy/types").ApiKeyIdentity | import("@smithy/types").ApiKeyIdentityProvider;
+    token?: import("@smithy/types").TokenIdentity | import("@smithy/types").TokenIdentityProvider;
 };

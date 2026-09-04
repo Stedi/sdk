@@ -1,13 +1,15 @@
 import { BinaryDecisionDiagram } from "@smithy/core/endpoints";
-const a = { "ref": "Endpoint" };
+const a = "stringEquals", b = { "ref": "Endpoint" }, c = { "ref": "ServiceComponent" };
 const _data = {
     conditions: [
-        ["isSet", [a]],
-        ["stringEquals", [{ ref: "ServiceComponent" }, "SdkClaimsService"]]
+        ["isSet", [b]],
+        [a, [c, "EventsService"]],
+        [a, [c, "SdkClaimsService"]]
     ],
     results: [
         [-1],
-        [a, {}],
+        [b, {}],
+        ["https://events.us.stedi.com", {}],
         ["https://claims.us.stedi.com", {}],
         [-1, "Unknown ServiceComponent"]
     ]
@@ -17,6 +19,7 @@ const r = 100_000_000;
 const nodes = new Int32Array([
     -1, 1, -1,
     0, r + 1, 3,
-    1, r + 2, r + 3,
+    1, r + 2, 4,
+    2, r + 3, r + 4,
 ]);
 export const bdd = BinaryDecisionDiagram.from(nodes, root, _data.conditions, _data.results);

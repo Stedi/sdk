@@ -24,7 +24,7 @@ declare const ValidateProfessionalClaimSubmissionCommand_base: {
     getEndpointParameterInstructions(): import("@smithy/types").EndpointParameterInstructions;
 };
 /**
- * Validate a professional claim in the Stedi JSON format without submitting it.
+ * Validate a professional claim in the Stedi JSON format without submitting it
  * @example
  * Use a bare-bones client and the command you need to make an API call.
  * ```javascript
@@ -323,6 +323,15 @@ declare const ValidateProfessionalClaimSubmissionCommand_base: {
  *           commercialNumber: "STRING_VALUE",
  *         },
  *       },
+ *       purchasedService: { // ProfessionalClaimSubmissionPurchasedService
+ *         chargeAmount: "STRING_VALUE", // required
+ *         provider: { // ProfessionalClaimSubmissionPurchasedServiceProvider
+ *           entityType: "PERSON" || "ORGANIZATION", // required
+ *           identifiers: { // ProfessionalClaimSubmissionPurchasedServiceProviderIdentifiers
+ *             npi: "STRING_VALUE", // required
+ *           },
+ *         },
+ *       },
  *       lineItemControlNumber: "STRING_VALUE",
  *       drugIdentification: { // ProfessionalClaimSubmissionDrugIdentification
  *         nationalDrugCode: "STRING_VALUE", // required
@@ -380,7 +389,13 @@ declare const ValidateProfessionalClaimSubmissionCommand_base: {
  * };
  * const command = new ValidateProfessionalClaimSubmissionCommand(input);
  * const response = await client.send(command);
- * // {};
+ * // { // ValidateProfessionalClaimSubmissionOutput
+ * //   errors: [ // ClaimRejectionErrors
+ * //     { // ClaimRejectionError
+ * //       description: "STRING_VALUE", // required
+ * //     },
+ * //   ],
+ * // };
  *
  * ```
  *
@@ -389,9 +404,6 @@ declare const ValidateProfessionalClaimSubmissionCommand_base: {
  * @see {@link ValidateProfessionalClaimSubmissionCommandInput} for command's `input` shape.
  * @see {@link ValidateProfessionalClaimSubmissionCommandOutput} for command's `response` shape.
  * @see {@link StediClientResolvedConfig | config} for StediClient's `config` shape.
- *
- * @throws {@link ClaimEditException} (client fault)
- *  Exception returned when the claim fails one or more pre-submission edits.
  *
  * @throws {@link AuthenticationFailedException} (client fault)
  *  The request credentials are missing or not valid.
@@ -408,12 +420,354 @@ declare const ValidateProfessionalClaimSubmissionCommand_base: {
  * @throws {@link TooManyRequestsException} (client fault)
  *  The caller has exceeded a rate limit. Retry with backoff.
  *
- * @throws {@link InternalFailureException} (server fault)
- *  The server response when an unexpected error occurred while processing request.
- *
  * @throws {@link StediServiceException}
  * <p>Base exception class for all service exceptions from Stedi service.</p>
  *
+ *
+ * @example Validate claim
+ * ```javascript
+ * //
+ * const input = {
+ *   authorization: {
+ *     insuredAuthorizesAssignment: "YES",
+ *     patientReleasesMedicalInfo: "YES",
+ *     providerAcceptsAssignment: "ASSIGNED",
+ *     providerSignature: "ON_FILE"
+ *   },
+ *   billing: {
+ *     billingProvider: {
+ *       address: {
+ *         addressLine1: "123 St",
+ *         city: "City",
+ *         postalCode: "12345",
+ *         state: "IL"
+ *       },
+ *       identifiers: {
+ *         npi: "1999999984",
+ *         taxonomyCode: "207Q00000X"
+ *       },
+ *       name: {
+ *         organization: "Test Provider"
+ *       }
+ *     },
+ *     patientControlNumber: "TEST-004",
+ *     taxId: {
+ *       ein: "123456789"
+ *     },
+ *     totalCharge: "100.00"
+ *   },
+ *   encounter: {
+ *     attachments: [
+ *       {
+ *         attachmentControlNumber: "PWK-2026-0001",
+ *         reportTypeCode: "PROGRESS_REPORT",
+ *         transmissionCode: "ELECTRONICALLY_ONLY"
+ *       }
+ *     ],
+ *     claimCodes: [
+ *       "AV"
+ *     ],
+ *     claimNote: {
+ *       additionalInformation: "Patient presented with persistent cough and bronchospasm; treated in office."
+ *     },
+ *     clinicalDates: {
+ *       hospitalization: {
+ *         end: "2026-03-06",
+ *         start: "2026-03-04"
+ *       },
+ *       initialTreatment: "2026-03-03",
+ *       onsetOfCurrentIllness: "2026-03-02",
+ *       unableToWork: {
+ *         end: "2026-03-10",
+ *         start: "2026-03-03"
+ *       }
+ *     },
+ *     patientCondition: {
+ *       isAutoAccidentRelated: false,
+ *       isEmploymentRelated: false,
+ *       isOtherAccidentRelated: false
+ *     },
+ *     primaryDiagnosisCode: "J0190",
+ *     priorReferringProvider: {
+ *       identifiers: {
+ *         npi: "1999999984"
+ *       },
+ *       name: {
+ *         person: {
+ *           firstName: "John",
+ *           lastName: "Doe"
+ *         }
+ *       }
+ *     },
+ *     referenceNumbers: {
+ *       clia: "14D2089999",
+ *       priorAuthorization: "PA-2026-11111",
+ *       referral: "REF-4321"
+ *     },
+ *     referringProvider: {
+ *       identifiers: {
+ *         npi: "1999999984"
+ *       },
+ *       name: {
+ *         person: {
+ *           firstName: "Jane",
+ *           lastName: "Doe"
+ *         }
+ *       }
+ *     },
+ *     resubmission: {
+ *       code: "REPLACEMENT_OF_PRIOR_CLAIM",
+ *       originalReferenceNumber: "CLM-ORIG-998877"
+ *     },
+ *     supervisingProvider: {
+ *       identifiers: {
+ *         npi: "1999999984"
+ *       },
+ *       name: {
+ *         person: {
+ *           firstName: "Jane",
+ *           lastName: "Smith"
+ *         }
+ *       }
+ *     }
+ *   },
+ *   insured: {
+ *     address: {
+ *       addressLine1: "111 A Place",
+ *       city: "Somewhere",
+ *       postalCode: "123450000",
+ *       state: "IL"
+ *     },
+ *     dateOfBirth: "1990-01-01",
+ *     gender: "FEMALE",
+ *     insuranceType: "OTHER",
+ *     memberId: "W123456789",
+ *     name: {
+ *       person: {
+ *         firstName: "June",
+ *         lastName: "Doe"
+ *       }
+ *     },
+ *     paymentResponsibilityLevelCode: "PRIMARY"
+ *   },
+ *   otherInsured: [
+ *     {
+ *       address: {
+ *         addressLine1: "111 A Place",
+ *         city: "Somewhere",
+ *         postalCode: "123450000",
+ *         state: "IL"
+ *       },
+ *       authorization: {
+ *         insuredAuthorizesAssignment: "YES",
+ *         patientReleasesMedicalInfo: "YES",
+ *         providerGeneratedPatientSignature: false
+ *       },
+ *       claimFilingIndicator: "BLUE_CROSS_BLUE_SHIELD",
+ *       memberId: "BCBS-IL-554433221",
+ *       name: {
+ *         person: {
+ *           firstName: "Michael",
+ *           lastName: "Doe"
+ *         }
+ *       },
+ *       otherPayer: {
+ *         id: {
+ *           payerId: "00621"
+ *         },
+ *         name: {
+ *           organization: "Blue Cross Blue Shield of Illinois"
+ *         }
+ *       },
+ *       planName: "BCBS PPO",
+ *       policyOrGroupNumber: "BCBS-GRP-3344",
+ *       relationshipToInsured: "SPOUSE",
+ *       responsibilityLevel: "SECONDARY"
+ *     }
+ *   ],
+ *   patient: {
+ *     address: {
+ *       addressLine1: "111 A Place",
+ *       city: "Somewhere",
+ *       postalCode: "123450000",
+ *       state: "IL"
+ *     },
+ *     dateOfBirth: "1900-02-02",
+ *     gender: "MALE",
+ *     name: {
+ *       person: {
+ *         firstName: "Liam",
+ *         lastName: "Doe"
+ *       }
+ *     },
+ *     relationshipToInsured: "CHILD"
+ *   },
+ *   payer: {
+ *     id: "60054",
+ *     name: {
+ *       organization: "Aetna"
+ *     }
+ *   },
+ *   purpose: "CHARGEABLE",
+ *   serviceLines: [
+ *     {
+ *       datesOfService: {
+ *         end: "2026-03-03",
+ *         start: "2026-03-03"
+ *       },
+ *       diagnosisCodes: [
+ *         "J0190"
+ *       ],
+ *       lineItemChargeAmount: "100.00",
+ *       placeOfService: "11",
+ *       procedureCode: {
+ *         code: "99213"
+ *       },
+ *       units: "1"
+ *     }
+ *   ],
+ *   submitter: {
+ *     contact: {
+ *       phoneNumber: "5555551234"
+ *     },
+ *     etin: "TEST001",
+ *     name: {
+ *       organization: "Test Submitter"
+ *     }
+ *   }
+ * };
+ * const command = new ValidateProfessionalClaimSubmissionCommand(input);
+ * const response = await client.send(command);
+ * /* response is
+ * { /* empty *\/ }
+ * *\/
+ * ```
+ *
+ * @example Failed edits
+ * ```javascript
+ * //
+ * const input = {
+ *   authorization: {
+ *     insuredAuthorizesAssignment: "YES",
+ *     patientReleasesMedicalInfo: "YES",
+ *     providerAcceptsAssignment: "ASSIGNED",
+ *     providerSignature: "ON_FILE"
+ *   },
+ *   billing: {
+ *     billingProvider: {
+ *       address: {
+ *         addressLine1: "123 St",
+ *         city: "City",
+ *         postalCode: "12345",
+ *         state: "IL"
+ *       },
+ *       identifiers: {
+ *         npi: "1730289013",
+ *         taxonomyCode: "207Q0000X"
+ *       },
+ *       name: {
+ *         organization: "Test Provider"
+ *       }
+ *     },
+ *     patientControlNumber: "TEST-005",
+ *     taxId: {
+ *       ein: "123456789"
+ *     },
+ *     totalCharge: "100.00"
+ *   },
+ *   encounter: {
+ *     patientCondition: {
+ *       isAutoAccidentRelated: false,
+ *       isEmploymentRelated: false,
+ *       isOtherAccidentRelated: false
+ *     },
+ *     primaryDiagnosisCode: "J0190"
+ *   },
+ *   insured: {
+ *     address: {
+ *       addressLine1: "111 A Place",
+ *       city: "Somewhere",
+ *       postalCode: "123450000",
+ *       state: "IL"
+ *     },
+ *     dateOfBirth: "1990-01-01",
+ *     gender: "FEMALE",
+ *     insuranceType: "OTHER",
+ *     memberId: "W123456789",
+ *     name: {
+ *       person: {
+ *         firstName: "June",
+ *         lastName: "Doe"
+ *       }
+ *     },
+ *     paymentResponsibilityLevelCode: "PRIMARY"
+ *   },
+ *   patient: {
+ *     address: {
+ *       addressLine1: "111 A Place",
+ *       city: "Somewhere",
+ *       postalCode: "123450000",
+ *       state: "IL"
+ *     },
+ *     dateOfBirth: "1900-02-02",
+ *     gender: "MALE",
+ *     name: {
+ *       person: {
+ *         firstName: "Liam",
+ *         lastName: "Doe"
+ *       }
+ *     },
+ *     relationshipToInsured: "CHILD"
+ *   },
+ *   payer: {
+ *     id: "60054",
+ *     name: {
+ *       organization: "Aetna"
+ *     }
+ *   },
+ *   purpose: "CHARGEABLE",
+ *   serviceLines: [
+ *     {
+ *       datesOfService: {
+ *         end: "2026-03-03",
+ *         start: "2026-03-03"
+ *       },
+ *       diagnosisCodes: [
+ *         "J0190"
+ *       ],
+ *       lineItemChargeAmount: "100.00",
+ *       placeOfService: "11",
+ *       procedureCode: {
+ *         code: "99213"
+ *       },
+ *       units: "1"
+ *     }
+ *   ],
+ *   submitter: {
+ *     contact: {
+ *       phoneNumber: "5555551234"
+ *     },
+ *     etin: "TEST001",
+ *     name: {
+ *       organization: "Test Submitter"
+ *     }
+ *   }
+ * };
+ * const command = new ValidateProfessionalClaimSubmissionCommand(input);
+ * const response = await client.send(command);
+ * /* response is
+ * {
+ *   errors: [
+ *     {
+ *       description: "Invalid NPI. The Billing Provider NPI of 1730289013 is invalid. The National Provider Identifier must be valid with 10 digits and no prefixes or dashes. Correct and resubmit."
+ *     },
+ *     {
+ *       description: "Invalid Taxonomy Code. The taxonomy code for Billing Provider does not meet the required format. Taxonomy codes must be 10 uppercase alphanumeric characters ending with 'X'. Correct and resubmit."
+ *     }
+ *   ]
+ * }
+ * *\/
+ * ```
  *
  * @internal
  */
@@ -422,7 +776,7 @@ export declare class ValidateProfessionalClaimSubmissionCommand extends Validate
     protected static __types: {
         api: {
             input: ValidateProfessionalClaimSubmissionInput;
-            output: {};
+            output: ValidateProfessionalClaimSubmissionOutput;
         };
         sdk: {
             input: ValidateProfessionalClaimSubmissionCommandInput;

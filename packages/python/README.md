@@ -23,15 +23,25 @@ pip install stedi
 
 ## Authentication
 
-You must authenticate every request with a Stedi API key. Set the API key on the `Config` you use to construct the client:
+You must authenticate every request with a Stedi API key. Set the API key on the `Config` you use to construct the client. The client is async, so build it inside a running event loop:
 
 ```python
+import asyncio
+
 from stedi import Config, Stedi
 
-client = Stedi(Config(api_key="..."))
+
+async def main() -> None:
+    async with Stedi(Config(api_key="...")) as client:
+        ...  # send operations here — see the Quickstart below
+
+
+asyncio.run(main())
 ```
 
-Visit the [Stedi documentation][apikeydocs] for how to obtain and manage API keys.
+An API key is the only credential the Python client accepts; OAuth access tokens are
+supported in the TypeScript SDK. Visit the [Stedi documentation][apikeydocs] for how to
+obtain and manage API keys.
 
 ## Quickstart
 
@@ -46,12 +56,13 @@ from stedi import Config, Stedi
 
 async def main() -> None:
     # Submit a complete CMS-1500 claim. See the runnable claims example for a full payload.
+    # `load_claim` is your own function — the runnable examples read a JSON fixture.
     claim = load_claim()
 
     async with Stedi(Config(api_key="...")) as client:
         response = await client.create_professional_claim_submission(claim)
 
-        print(f"{response.status}: {response.claim_id}")
+        print(f"claim {response.claim_id}, submission {response.submission_id}")
 
 
 asyncio.run(main())
@@ -69,18 +80,36 @@ from stedi import Config, Stedi
 
 async def main() -> None:
     async with Stedi(Config(api_key="...")) as client:
-        # The client routes each operation to the correct Stedi host automatically.
         # `claim` is a CreateProfessionalClaimSubmissionInput, as built in the Quickstart above.
         await client.create_professional_claim_submission(claim)
 ```
 
 ## Available operations
 
-| Method | Input model | Description |
-| --- | --- | --- |
-| `create_professional_claim_submission` | `CreateProfessionalClaimSubmissionInput` | Submit a professional claim using the Stedi JSON format. |
-| `get_professional_claim_submission` | `GetProfessionalClaimSubmissionInput` | Fetch a professional claim submission by ID. |
-| `validate_professional_claim_submission` | `ValidateProfessionalClaimSubmissionInput` | Validate a professional claim in the Stedi JSON format without submitting it. |
+### Claims
+
+| Method | Description |
+| --- | --- |
+| `create_professional_claim_submission` | Submit a professional claim in JSON modeled after the CMS-1500 form structure |
+| `get_claim` | Retrieve summary information for a claim, including current processing status and key details from its most recent submission |
+| `get_claim_timeline` | Retrieve a paginated list of a claim's timeline entries, newest first. Timeline entries include submissions, acknowledgments, and claim payment information |
+| `get_professional_claim_submission` | Retrieve a claim's data and map it to Stedi's CMS-1500 JSON format |
+| `list_claims` | Retrieve a paginated list of claim records, newest first. Filter by status, patient control numbers, or submission time |
+| `validate_professional_claim_submission` | Validate a professional claim in the Stedi JSON format without submitting it |
+
+### Event Destinations
+
+| Method | Description |
+| --- | --- |
+| `create_event_destination` | Creates an event destination. Returns destination details and a signing secret for verifying event payloads. |
+| `delete_event_destination` | Deletes an existing destination. This action is irreversible. Deleting a destination that is already deleted succeeds with the same response (idempotent). |
+| `get_event_destination` | Retrieves details for an existing event destination. |
+| `get_event_destination_event` | Retrieves the details of an existing event by its identifier. |
+| `get_event_destination_secret` | Retrieves the current signing secret for a destination. Use this secret to verify the authenticity of event payloads. |
+| `list_event_destination_events` | Lists all events for your account. Results are paginated. |
+| `list_event_destinations` | Lists all destinations configured for your account. Results are paginated. |
+| `rotate_event_destination_secret` | Rotates the signing secret for a destination. The previous secret remains valid for the period specified by `previousSecretExpiryHours` (or `0` for immediate invalidation) to allow for a graceful transition. |
+| `update_event_destination` | Updates an existing destination configuration. |
 
 This list grows as Stedi releases more APIs through the SDK.
 
@@ -89,32 +118,32 @@ This list grows as Stedi releases more APIs through the SDK.
 Configure everything through the `Config`, including the API key:
 
 ```python
-from stedi import Config, Stedi
-from smithy_core.retries import RetryStrategyOptions
+import asyncio
+
+from stedi import Config, RetryStrategyOptions, Stedi
 
 
 async def main() -> None:
     config = Config(
         api_key="...",
-        # Retry policy — defaults to StandardRetryStrategy(max_attempts=3).
-        retry_strategy=RetryStrategyOptions(max_attempts=8),
+        # Retry policy — the client defaults to StandardRetryStrategy(max_attempts=3).
+        retry_strategy=RetryStrategyOptions(max_attempts=4),
     )
 
     async with Stedi(config) as client:
         ...
-```
 
-`Config` also accepts `interceptors` (hooks around each request) and other
-low-level transport options. See the `Config` constructor for complete details.
+
+asyncio.run(main())
+```
 
 ## Error handling
 
-Service errors are raised as `CallError`:
+Service errors are raised as `CallError`. Every error class under `stedi.models` is a
+subclass, so catch `CallError` for any of them, or a specific class for one:
 
 ```python
-from smithy_core.exceptions import CallError
-
-from stedi import Config, Stedi
+from stedi import CallError, Config, Stedi
 
 
 async def main() -> None:
@@ -138,7 +167,7 @@ Access runnable, end-to-end examples for every operation in the
 
 ## License
 
-Apache-2.0
+[Apache-2.0][license]
 
 <!-- Reference links — swap these in one place if URLs change. -->
 [docs]: https://www.stedi.com/docs

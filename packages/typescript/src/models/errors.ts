@@ -1,70 +1,8 @@
 // smithy-typescript generated code
 import type { ExceptionOptionType as __ExceptionOptionType } from "@smithy/core/client";
 
-import type { ClaimEditError, ValidationFailure } from "./models_0";
+import type { ValidationFailure } from "./models_0";
 import { StediServiceException as __BaseException } from "./StediServiceException";
-
-/**
- * Exception returned when the claim fails one or more pre-submission edits.
- * @public
- */
-export class ClaimEditException extends __BaseException {
-  readonly name = "ClaimEditException" as const;
-  readonly $fault = "client" as const;
-  /**
-   * The edits the claim failed.
-   * @public
-   */
-  errors: ClaimEditError[] | undefined;
-
-  /**
-   * A synthetic 277CA acknowledging the rejection, with one STC segment per failed edit.
-   * @public
-   */
-  x12?: string | undefined;
-
-  /**
-   * @internal
-   */
-  constructor(opts: __ExceptionOptionType<ClaimEditException, __BaseException>) {
-    super({
-      name: "ClaimEditException",
-      $fault: "client",
-      ...opts,
-    });
-    Object.setPrototypeOf(this, ClaimEditException.prototype);
-    this.errors = opts.errors;
-    this.x12 = opts.x12;
-  }
-}
-
-/**
- * The server response when an unexpected error occurred while processing request.
- * @public
- */
-export class InternalFailureException extends __BaseException {
-  readonly name = "InternalFailureException" as const;
-  readonly $fault = "server" as const;
-  $retryable = {};
-  /**
-   * Error classification code
-   * @public
-   */
-  code?: string | undefined;
-
-  /**
-   * @internal
-   */
-  constructor(opts: __ExceptionOptionType<InternalFailureException, __BaseException>) {
-    super({
-      name: "InternalFailureException",
-      $fault: "server",
-      ...opts,
-    });
-    Object.setPrototypeOf(this, InternalFailureException.prototype);
-    this.code = opts.code;
-  }
-}
 
 /**
  * The request credentials are missing or not valid.
@@ -214,5 +152,45 @@ export class NotFoundException extends __BaseException {
       ...opts,
     });
     Object.setPrototypeOf(this, NotFoundException.prototype);
+  }
+}
+
+/**
+ * The account has reached its maximum number of event destinations. Delete an existing destination or request a limit increase before creating another. Not retryable — the caller must change account state before retrying.
+ * @public
+ */
+export class EventDestinationsLimitExceededException extends __BaseException {
+  readonly name = "EventDestinationsLimitExceededException" as const;
+  readonly $fault = "client" as const;
+  /**
+   * @internal
+   */
+  constructor(opts: __ExceptionOptionType<EventDestinationsLimitExceededException, __BaseException>) {
+    super({
+      name: "EventDestinationsLimitExceededException",
+      $fault: "client",
+      ...opts,
+    });
+    Object.setPrototypeOf(this, EventDestinationsLimitExceededException.prototype);
+  }
+}
+
+/**
+ * The request payload is larger than the service accepts. Send less in one request.
+ * @public
+ */
+export class ContentTooLargeException extends __BaseException {
+  readonly name = "ContentTooLargeException" as const;
+  readonly $fault = "client" as const;
+  /**
+   * @internal
+   */
+  constructor(opts: __ExceptionOptionType<ContentTooLargeException, __BaseException>) {
+    super({
+      name: "ContentTooLargeException",
+      $fault: "client",
+      ...opts,
+    });
+    Object.setPrototypeOf(this, ContentTooLargeException.prototype);
   }
 }

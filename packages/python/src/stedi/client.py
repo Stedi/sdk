@@ -13,12 +13,48 @@ from smithy_http.plugins import user_agent_plugin
 from ._stedi_user_agent import stedi_user_agent_plugin
 from .config import Config, Plugin
 from .models import (
+    CREATE_EVENT_DESTINATION,
     CREATE_PROFESSIONAL_CLAIM_SUBMISSION,
+    CreateEventDestinationInput,
+    CreateEventDestinationOutput,
     CreateProfessionalClaimSubmissionInput,
     CreateProfessionalClaimSubmissionOutput,
+    DELETE_EVENT_DESTINATION,
+    DeleteEventDestinationInput,
+    DeleteEventDestinationOutput,
+    GET_CLAIM,
+    GET_CLAIM_TIMELINE,
+    GET_EVENT_DESTINATION,
+    GET_EVENT_DESTINATION_EVENT,
+    GET_EVENT_DESTINATION_SECRET,
     GET_PROFESSIONAL_CLAIM_SUBMISSION,
+    GetClaimInput,
+    GetClaimOutput,
+    GetClaimTimelineInput,
+    GetClaimTimelineOutput,
+    GetEventDestinationEventInput,
+    GetEventDestinationEventOutput,
+    GetEventDestinationInput,
+    GetEventDestinationOutput,
+    GetEventDestinationSecretInput,
+    GetEventDestinationSecretOutput,
     GetProfessionalClaimSubmissionInput,
     GetProfessionalClaimSubmissionOutput,
+    LIST_CLAIMS,
+    LIST_EVENT_DESTINATIONS,
+    LIST_EVENT_DESTINATION_EVENTS,
+    ListClaimsInput,
+    ListClaimsOutput,
+    ListEventDestinationEventsInput,
+    ListEventDestinationEventsOutput,
+    ListEventDestinationsInput,
+    ListEventDestinationsOutput,
+    ROTATE_EVENT_DESTINATION_SECRET,
+    RotateEventDestinationSecretInput,
+    RotateEventDestinationSecretOutput,
+    UPDATE_EVENT_DESTINATION,
+    UpdateEventDestinationInput,
+    UpdateEventDestinationOutput,
     VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION,
     ValidateProfessionalClaimSubmissionInput,
     ValidateProfessionalClaimSubmissionOutput,
@@ -62,7 +98,8 @@ class Stedi:
         plugins: list[Plugin] | None = None
     ) -> CreateProfessionalClaimSubmissionOutput:
         """
-        Submit a professional claim using the Stedi JSON format.
+        Submit a professional claim in JSON modeled after the CMS-1500 form
+        structure
 
         Args:
             input:
@@ -114,7 +151,7 @@ class Stedi:
         plugins: list[Plugin] | None = None
     ) -> GetProfessionalClaimSubmissionOutput:
         """
-        Fetch a professional claim submission by ID.
+        Retrieve a claim's data and map it to Stedi's CMS-1500 JSON format
 
         Args:
             input:
@@ -167,7 +204,7 @@ class Stedi:
     ) -> ValidateProfessionalClaimSubmissionOutput:
         """
         Validate a professional claim in the Stedi JSON format without
-        submitting it.
+        submitting it
 
         Args:
             input:
@@ -203,6 +240,641 @@ class Stedi:
         call = ClientCall(
             input=input,
             operation=VALIDATE_PROFESSIONAL_CLAIM_SUBMISSION,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def get_claim(
+        self,
+        input: GetClaimInput,
+        plugins: list[Plugin] | None = None
+    ) -> GetClaimOutput:
+        """
+        Retrieve summary information for a claim, including current processing
+        status and key details from its most recent submission
+
+        Args:
+            input:
+                An instance of `GetClaimInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `GetClaimOutput`.
+        """
+        operation_plugins: list[Plugin] = [
+
+        ]
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError("protocol and transport MUST be set on the config to make calls.")
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(
+            protocol=config.protocol,
+            transport=config.transport
+        )
+        call = ClientCall(
+            input=input,
+            operation=GET_CLAIM,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def get_claim_timeline(
+        self,
+        input: GetClaimTimelineInput,
+        plugins: list[Plugin] | None = None
+    ) -> GetClaimTimelineOutput:
+        """
+        Retrieve a paginated list of a claim's timeline entries, newest first.
+        Timeline entries include submissions, acknowledgments, and claim payment
+        information
+
+        Args:
+            input:
+                An instance of `GetClaimTimelineInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `GetClaimTimelineOutput`.
+        """
+        operation_plugins: list[Plugin] = [
+
+        ]
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError("protocol and transport MUST be set on the config to make calls.")
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(
+            protocol=config.protocol,
+            transport=config.transport
+        )
+        call = ClientCall(
+            input=input,
+            operation=GET_CLAIM_TIMELINE,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def list_claims(
+        self,
+        input: ListClaimsInput,
+        plugins: list[Plugin] | None = None
+    ) -> ListClaimsOutput:
+        """
+        Retrieve a paginated list of claim records, newest first. Filter by
+        status, patient control numbers, or submission time
+
+        Args:
+            input:
+                An instance of `ListClaimsInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `ListClaimsOutput`.
+        """
+        operation_plugins: list[Plugin] = [
+
+        ]
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError("protocol and transport MUST be set on the config to make calls.")
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(
+            protocol=config.protocol,
+            transport=config.transport
+        )
+        call = ClientCall(
+            input=input,
+            operation=LIST_CLAIMS,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def create_event_destination(
+        self,
+        input: CreateEventDestinationInput,
+        plugins: list[Plugin] | None = None
+    ) -> CreateEventDestinationOutput:
+        """
+        Creates an event destination. Returns destination details and a signing
+        secret for verifying event payloads.
+
+        Args:
+            input:
+                An instance of `CreateEventDestinationInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `CreateEventDestinationOutput`.
+        """
+        operation_plugins: list[Plugin] = [
+
+        ]
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError("protocol and transport MUST be set on the config to make calls.")
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(
+            protocol=config.protocol,
+            transport=config.transport
+        )
+        call = ClientCall(
+            input=input,
+            operation=CREATE_EVENT_DESTINATION,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def delete_event_destination(
+        self,
+        input: DeleteEventDestinationInput,
+        plugins: list[Plugin] | None = None
+    ) -> DeleteEventDestinationOutput:
+        """
+        Deletes an existing destination. This action is irreversible. Deleting a
+        destination that is already deleted succeeds with the same response
+        (idempotent).
+
+        Args:
+            input:
+                An instance of `DeleteEventDestinationInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `DeleteEventDestinationOutput`.
+        """
+        operation_plugins: list[Plugin] = [
+
+        ]
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError("protocol and transport MUST be set on the config to make calls.")
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(
+            protocol=config.protocol,
+            transport=config.transport
+        )
+        call = ClientCall(
+            input=input,
+            operation=DELETE_EVENT_DESTINATION,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def get_event_destination(
+        self,
+        input: GetEventDestinationInput,
+        plugins: list[Plugin] | None = None
+    ) -> GetEventDestinationOutput:
+        """
+        Retrieves details for an existing event destination.
+
+        Args:
+            input:
+                An instance of `GetEventDestinationInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `GetEventDestinationOutput`.
+        """
+        operation_plugins: list[Plugin] = [
+
+        ]
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError("protocol and transport MUST be set on the config to make calls.")
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(
+            protocol=config.protocol,
+            transport=config.transport
+        )
+        call = ClientCall(
+            input=input,
+            operation=GET_EVENT_DESTINATION,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def get_event_destination_event(
+        self,
+        input: GetEventDestinationEventInput,
+        plugins: list[Plugin] | None = None
+    ) -> GetEventDestinationEventOutput:
+        """
+        Retrieves the details of an existing event by its identifier.
+
+        Args:
+            input:
+                An instance of `GetEventDestinationEventInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `GetEventDestinationEventOutput`.
+        """
+        operation_plugins: list[Plugin] = [
+
+        ]
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError("protocol and transport MUST be set on the config to make calls.")
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(
+            protocol=config.protocol,
+            transport=config.transport
+        )
+        call = ClientCall(
+            input=input,
+            operation=GET_EVENT_DESTINATION_EVENT,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def get_event_destination_secret(
+        self,
+        input: GetEventDestinationSecretInput,
+        plugins: list[Plugin] | None = None
+    ) -> GetEventDestinationSecretOutput:
+        """
+        Retrieves the current signing secret for a destination. Use this secret
+        to verify the authenticity of event payloads.
+
+        Args:
+            input:
+                An instance of `GetEventDestinationSecretInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `GetEventDestinationSecretOutput`.
+        """
+        operation_plugins: list[Plugin] = [
+
+        ]
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError("protocol and transport MUST be set on the config to make calls.")
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(
+            protocol=config.protocol,
+            transport=config.transport
+        )
+        call = ClientCall(
+            input=input,
+            operation=GET_EVENT_DESTINATION_SECRET,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def list_event_destination_events(
+        self,
+        input: ListEventDestinationEventsInput,
+        plugins: list[Plugin] | None = None
+    ) -> ListEventDestinationEventsOutput:
+        """
+        Lists all events for your account. Results are paginated.
+
+        Args:
+            input:
+                An instance of `ListEventDestinationEventsInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `ListEventDestinationEventsOutput`.
+        """
+        operation_plugins: list[Plugin] = [
+
+        ]
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError("protocol and transport MUST be set on the config to make calls.")
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(
+            protocol=config.protocol,
+            transport=config.transport
+        )
+        call = ClientCall(
+            input=input,
+            operation=LIST_EVENT_DESTINATION_EVENTS,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def list_event_destinations(
+        self,
+        input: ListEventDestinationsInput,
+        plugins: list[Plugin] | None = None
+    ) -> ListEventDestinationsOutput:
+        """
+        Lists all destinations configured for your account. Results are
+        paginated.
+
+        Args:
+            input:
+                An instance of `ListEventDestinationsInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `ListEventDestinationsOutput`.
+        """
+        operation_plugins: list[Plugin] = [
+
+        ]
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError("protocol and transport MUST be set on the config to make calls.")
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(
+            protocol=config.protocol,
+            transport=config.transport
+        )
+        call = ClientCall(
+            input=input,
+            operation=LIST_EVENT_DESTINATIONS,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def rotate_event_destination_secret(
+        self,
+        input: RotateEventDestinationSecretInput,
+        plugins: list[Plugin] | None = None
+    ) -> RotateEventDestinationSecretOutput:
+        """
+        Rotates the signing secret for a destination. The previous secret
+        remains valid for the period specified by `previousSecretExpiryHours`
+        (or `0` for immediate invalidation) to allow for a graceful transition.
+
+        Args:
+            input:
+                An instance of `RotateEventDestinationSecretInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `RotateEventDestinationSecretOutput`.
+        """
+        operation_plugins: list[Plugin] = [
+
+        ]
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError("protocol and transport MUST be set on the config to make calls.")
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(
+            protocol=config.protocol,
+            transport=config.transport
+        )
+        call = ClientCall(
+            input=input,
+            operation=ROTATE_EVENT_DESTINATION_SECRET,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def update_event_destination(
+        self,
+        input: UpdateEventDestinationInput,
+        plugins: list[Plugin] | None = None
+    ) -> UpdateEventDestinationOutput:
+        """
+        Updates an existing destination configuration.
+
+        Args:
+            input:
+                An instance of `UpdateEventDestinationInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `UpdateEventDestinationOutput`.
+        """
+        operation_plugins: list[Plugin] = [
+
+        ]
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError("protocol and transport MUST be set on the config to make calls.")
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(
+            protocol=config.protocol,
+            transport=config.transport
+        )
+        call = ClientCall(
+            input=input,
+            operation=UPDATE_EVENT_DESTINATION,
             context=TypedProperties({"config": config}),
             interceptor=InterceptorChain(config.interceptors),
             auth_scheme_resolver=config.auth_scheme_resolver,

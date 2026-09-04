@@ -40,6 +40,7 @@ class StediClient extends client_2.Client {
             httpAuthSchemeParametersProvider: httpAuthSchemeProvider_1.defaultStediHttpAuthSchemeParametersProvider,
             identityProviderConfigProvider: async (config) => new core_1.DefaultIdentityProviderConfig({
                 "smithy.api#httpApiKeyAuth": config.apiKey,
+                "smithy.api#httpBearerAuth": config.token,
             }),
         }));
         this.middlewareStack.use((0, core_1.getHttpSigningPlugin)(this.config));

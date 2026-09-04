@@ -2,6 +2,7 @@ export const getHttpAuthExtensionConfiguration = (runtimeConfig) => {
     const _httpAuthSchemes = runtimeConfig.httpAuthSchemes;
     let _httpAuthSchemeProvider = runtimeConfig.httpAuthSchemeProvider;
     let _apiKey = runtimeConfig.apiKey;
+    let _token = runtimeConfig.token;
     return {
         setHttpAuthScheme(httpAuthScheme) {
             const index = _httpAuthSchemes.findIndex((scheme) => scheme.schemeId === httpAuthScheme.schemeId);
@@ -27,6 +28,12 @@ export const getHttpAuthExtensionConfiguration = (runtimeConfig) => {
         apiKey() {
             return _apiKey;
         },
+        setToken(token) {
+            _token = token;
+        },
+        token() {
+            return _token;
+        },
     };
 };
 export const resolveHttpAuthRuntimeConfig = (config) => {
@@ -34,5 +41,6 @@ export const resolveHttpAuthRuntimeConfig = (config) => {
         httpAuthSchemes: config.httpAuthSchemes(),
         httpAuthSchemeProvider: config.httpAuthSchemeProvider(),
         apiKey: config.apiKey(),
+        token: config.token(),
     };
 };

@@ -13,8 +13,11 @@ from smithy_http.plugins import user_agent_plugin
 from ._stedi_user_agent import stedi_user_agent_plugin
 from .config import Config, Plugin
 from .models import (
+    CREATE_ELIGIBILITY_CHECK,
     CREATE_EVENT_DESTINATION,
     CREATE_PROFESSIONAL_CLAIM_SUBMISSION,
+    CreateEligibilityCheckInput,
+    CreateEligibilityCheckOutput,
     CreateEventDestinationInput,
     CreateEventDestinationOutput,
     CreateProfessionalClaimSubmissionInput,
@@ -400,6 +403,58 @@ class Stedi:
         call = ClientCall(
             input=input,
             operation=LIST_CLAIMS,
+            context=TypedProperties({"config": config}),
+            interceptor=InterceptorChain(config.interceptors),
+            auth_scheme_resolver=config.auth_scheme_resolver,
+            supported_auth_schemes=config.auth_schemes,
+            endpoint_resolver=config.endpoint_resolver,
+            retry_strategy=retry_strategy,
+        )
+
+        return await pipeline(call)
+
+    async def create_eligibility_check(
+        self,
+        input: CreateEligibilityCheckInput,
+        plugins: list[Plugin] | None = None
+    ) -> CreateEligibilityCheckOutput:
+        """
+        Submit a real-time 270/271 eligibility check in JSON format
+
+        Args:
+            input:
+                An instance of `CreateEligibilityCheckInput`.
+            plugins:
+                A list of callables that modify the configuration dynamically.
+                Changes made by these plugins only apply for the duration of the
+                operation execution and will not affect any other operation
+                invocations.
+
+        Returns:
+            An instance of `CreateEligibilityCheckOutput`.
+        """
+        operation_plugins: list[Plugin] = [
+
+        ]
+        if plugins:
+            operation_plugins.extend(plugins)
+        config = deepcopy(self._config)
+        for plugin in operation_plugins:
+            plugin(config)
+        if config.protocol is None or config.transport is None:
+            raise ExpectationNotMetError("protocol and transport MUST be set on the config to make calls.")
+
+        retry_strategy = await self._retry_strategy_resolver.resolve_retry_strategy(
+            retry_strategy=config.retry_strategy
+        )
+
+        pipeline = RequestPipeline(
+            protocol=config.protocol,
+            transport=config.transport
+        )
+        call = ClientCall(
+            input=input,
+            operation=CREATE_ELIGIBILITY_CHECK,
             context=TypedProperties({"config": config}),
             interceptor=InterceptorChain(config.interceptors),
             auth_scheme_resolver=config.auth_scheme_resolver,

@@ -11,4 +11,6 @@ We'll acknowledge within two business days and follow up with an estimated remed
 
 ## Supported versions
 
-Pre-1.0 (`0.x`) releases receive security fixes on the latest published minor only. Post-1.0 support policy will be published with the v1.0 release notes.
+Security fixes ship in the next release from `main`. Only the latest published version of `@stedi/sdk` and `stedi` is supported — upgrading to the newest release is how you receive a fix. We do not maintain release branches or backport fixes to earlier versions.
+
+When a new major version ships, the previous major is no longer supported from that date.

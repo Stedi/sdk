@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["stedi==0.0.10"]
+# dependencies = ["stedi==1.0.0"]
 # ///
 
 """Rotate a destination's signing secret.

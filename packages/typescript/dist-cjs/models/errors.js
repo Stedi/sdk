@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ContentTooLargeException = exports.EventDestinationsLimitExceededException = exports.NotFoundException = exports.TooManyRequestsException = exports.InvalidRequestException = exports.InternalServerException = exports.ForbiddenException = exports.ConflictException = exports.AuthenticationFailedException = void 0;
+exports.EventDestinationsLimitExceededException = exports.ContentTooLargeException = exports.EligibilityCheckSerializationException = exports.NotFoundException = exports.TooManyRequestsException = exports.InvalidRequestException = exports.InternalServerException = exports.ForbiddenException = exports.ConflictException = exports.AuthenticationFailedException = void 0;
 const StediServiceException_1 = require("./StediServiceException");
 class AuthenticationFailedException extends StediServiceException_1.StediServiceException {
     name = "AuthenticationFailedException";
@@ -99,19 +99,19 @@ class NotFoundException extends StediServiceException_1.StediServiceException {
     }
 }
 exports.NotFoundException = NotFoundException;
-class EventDestinationsLimitExceededException extends StediServiceException_1.StediServiceException {
-    name = "EventDestinationsLimitExceededException";
+class EligibilityCheckSerializationException extends StediServiceException_1.StediServiceException {
+    name = "EligibilityCheckSerializationException";
     $fault = "client";
     constructor(opts) {
         super({
-            name: "EventDestinationsLimitExceededException",
+            name: "EligibilityCheckSerializationException",
             $fault: "client",
             ...opts,
         });
-        Object.setPrototypeOf(this, EventDestinationsLimitExceededException.prototype);
+        Object.setPrototypeOf(this, EligibilityCheckSerializationException.prototype);
     }
 }
-exports.EventDestinationsLimitExceededException = EventDestinationsLimitExceededException;
+exports.EligibilityCheckSerializationException = EligibilityCheckSerializationException;
 class ContentTooLargeException extends StediServiceException_1.StediServiceException {
     name = "ContentTooLargeException";
     $fault = "client";
@@ -125,3 +125,16 @@ class ContentTooLargeException extends StediServiceException_1.StediServiceExcep
     }
 }
 exports.ContentTooLargeException = ContentTooLargeException;
+class EventDestinationsLimitExceededException extends StediServiceException_1.StediServiceException {
+    name = "EventDestinationsLimitExceededException";
+    $fault = "client";
+    constructor(opts) {
+        super({
+            name: "EventDestinationsLimitExceededException",
+            $fault: "client",
+            ...opts,
+        });
+        Object.setPrototypeOf(this, EventDestinationsLimitExceededException.prototype);
+    }
+}
+exports.EventDestinationsLimitExceededException = EventDestinationsLimitExceededException;

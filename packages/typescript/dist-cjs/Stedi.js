@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Stedi = void 0;
 const client_1 = require("@smithy/core/client");
+const CreateEligibilityCheckCommand_1 = require("./commands/CreateEligibilityCheckCommand");
 const CreateEventDestinationCommand_1 = require("./commands/CreateEventDestinationCommand");
 const CreateProfessionalClaimSubmissionCommand_1 = require("./commands/CreateProfessionalClaimSubmissionCommand");
 const DeleteEventDestinationCommand_1 = require("./commands/DeleteEventDestinationCommand");
@@ -29,6 +30,7 @@ const commands = {
     GetClaimCommand: GetClaimCommand_1.GetClaimCommand,
     GetClaimTimelineCommand: GetClaimTimelineCommand_1.GetClaimTimelineCommand,
     ListClaimsCommand: ListClaimsCommand_1.ListClaimsCommand,
+    CreateEligibilityCheckCommand: CreateEligibilityCheckCommand_1.CreateEligibilityCheckCommand,
     CreateEventDestinationCommand: CreateEventDestinationCommand_1.CreateEventDestinationCommand,
     DeleteEventDestinationCommand: DeleteEventDestinationCommand_1.DeleteEventDestinationCommand,
     GetEventDestinationCommand: GetEventDestinationCommand_1.GetEventDestinationCommand,

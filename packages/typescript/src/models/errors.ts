@@ -156,22 +156,22 @@ export class NotFoundException extends __BaseException {
 }
 
 /**
- * The account has reached its maximum number of event destinations. Delete an existing destination or request a limit increase before creating another. Not retryable — the caller must change account state before retrying.
+ * The request body could not be parsed.
  * @public
  */
-export class EventDestinationsLimitExceededException extends __BaseException {
-  readonly name = "EventDestinationsLimitExceededException" as const;
+export class EligibilityCheckSerializationException extends __BaseException {
+  readonly name = "EligibilityCheckSerializationException" as const;
   readonly $fault = "client" as const;
   /**
    * @internal
    */
-  constructor(opts: __ExceptionOptionType<EventDestinationsLimitExceededException, __BaseException>) {
+  constructor(opts: __ExceptionOptionType<EligibilityCheckSerializationException, __BaseException>) {
     super({
-      name: "EventDestinationsLimitExceededException",
+      name: "EligibilityCheckSerializationException",
       $fault: "client",
       ...opts,
     });
-    Object.setPrototypeOf(this, EventDestinationsLimitExceededException.prototype);
+    Object.setPrototypeOf(this, EligibilityCheckSerializationException.prototype);
   }
 }
 
@@ -192,5 +192,25 @@ export class ContentTooLargeException extends __BaseException {
       ...opts,
     });
     Object.setPrototypeOf(this, ContentTooLargeException.prototype);
+  }
+}
+
+/**
+ * The account has reached its maximum number of event destinations. Delete an existing destination or request a limit increase before creating another. Not retryable — the caller must change account state before retrying.
+ * @public
+ */
+export class EventDestinationsLimitExceededException extends __BaseException {
+  readonly name = "EventDestinationsLimitExceededException" as const;
+  readonly $fault = "client" as const;
+  /**
+   * @internal
+   */
+  constructor(opts: __ExceptionOptionType<EventDestinationsLimitExceededException, __BaseException>) {
+    super({
+      name: "EventDestinationsLimitExceededException",
+      $fault: "client",
+      ...opts,
+    });
+    Object.setPrototypeOf(this, EventDestinationsLimitExceededException.prototype);
   }
 }

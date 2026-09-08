@@ -1,4 +1,5 @@
 // smithy-typescript generated code
+export * from "./CreateEligibilityCheckCommand";
 export * from "./CreateEventDestinationCommand";
 export * from "./CreateProfessionalClaimSubmissionCommand";
 export * from "./DeleteEventDestinationCommand";

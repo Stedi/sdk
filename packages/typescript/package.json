@@ -1,7 +1,7 @@
 {
   "name": "@stedi/sdk",
   "description": "The Stedi SDK for TypeScript / Node.js.",
-  "version": "0.0.10",
+  "version": "1.0.0",
   "scripts": {
     "build": "concurrently 'npm:build:cjs' 'npm:build:es' 'npm:build:types'",
     "build:cjs": "tsc -p tsconfig.cjs.json",

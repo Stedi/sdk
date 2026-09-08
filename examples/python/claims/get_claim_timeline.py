@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["stedi==0.0.10"]
+# dependencies = ["stedi==1.0.0"]
 # ///
 
 """Retrieve a paginated history of a claim's submissions, 277CA acknowledgments, and 835 ERAs.

@@ -19,4 +19,8 @@ export declare const _ep1: EndpointParameterInstructions;
 /**
  * @internal
  */
+export declare const _ep2: EndpointParameterInstructions;
+/**
+ * @internal
+ */
 export declare const _mw0: (Command: any, cs: any, config: any, o: any) => never[];

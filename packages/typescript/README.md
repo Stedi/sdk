@@ -102,6 +102,12 @@ await client.createProfessionalClaimSubmission(claim);
 | `listClaims` | Retrieve a paginated list of claim records, newest first. Filter by status, patient control numbers, or submission time |
 | `validateProfessionalClaimSubmission` | Validate a professional claim in the Stedi JSON format without submitting it |
 
+### Eligibility Check
+
+| Method | Description |
+| --- | --- |
+| `createEligibilityCheck` | Submit a real-time 270/271 eligibility check in JSON format |
+
 ### Event Destinations
 
 | Method | Description |

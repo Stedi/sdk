@@ -1,7 +1,7 @@
 // smithy-typescript generated code
 import type { MetadataBearer as __MetadataBearer } from "@smithy/types";
 
-import { _ep1, _mw0, command } from "../commandBuilder";
+import { _ep2, _mw0, command } from "../commandBuilder";
 import type { GetClaimInput, GetClaimOutput } from "../models/models_0";
 import { GetClaim$ } from "../schemas/schemas_0";
 
@@ -124,7 +124,7 @@ export interface GetClaimCommandOutput extends GetClaimOutput, __MetadataBearer 
  * @internal
  */
 export class GetClaimCommand extends command<GetClaimCommandInput, GetClaimCommandOutput>(
-  _ep1,
+  _ep2,
   _mw0,
   "GetClaim",
   GetClaim$

@@ -97,6 +97,12 @@ async def main() -> None:
 | `list_claims` | Retrieve a paginated list of claim records, newest first. Filter by status, patient control numbers, or submission time |
 | `validate_professional_claim_submission` | Validate a professional claim in the Stedi JSON format without submitting it |
 
+### Eligibility Check
+
+| Method | Description |
+| --- | --- |
+| `create_eligibility_check` | Submit a real-time 270/271 eligibility check in JSON format |
+
 ### Event Destinations
 
 | Method | Description |

@@ -26,6 +26,9 @@ from ._private.schemas import (
     CLAIM_TIMELINE_EVENT as _SCHEMA_CLAIM_TIMELINE_EVENT,
     CONFLICT_EXCEPTION as _SCHEMA_CONFLICT_EXCEPTION,
     CONTENT_TOO_LARGE_EXCEPTION as _SCHEMA_CONTENT_TOO_LARGE_EXCEPTION,
+    CREATE_ELIGIBILITY_CHECK as _SCHEMA_CREATE_ELIGIBILITY_CHECK,
+    CREATE_ELIGIBILITY_CHECK_INPUT as _SCHEMA_CREATE_ELIGIBILITY_CHECK_INPUT,
+    CREATE_ELIGIBILITY_CHECK_OUTPUT as _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT,
     CREATE_EVENT_DESTINATION as _SCHEMA_CREATE_EVENT_DESTINATION,
     CREATE_EVENT_DESTINATION_INPUT as _SCHEMA_CREATE_EVENT_DESTINATION_INPUT,
     CREATE_EVENT_DESTINATION_OUTPUT as _SCHEMA_CREATE_EVENT_DESTINATION_OUTPUT,
@@ -35,6 +38,100 @@ from ._private.schemas import (
     DELETE_EVENT_DESTINATION as _SCHEMA_DELETE_EVENT_DESTINATION,
     DELETE_EVENT_DESTINATION_INPUT as _SCHEMA_DELETE_EVENT_DESTINATION_INPUT,
     DELETE_EVENT_DESTINATION_OUTPUT as _SCHEMA_DELETE_EVENT_DESTINATION_OUTPUT,
+    ELIGIBILITY_CHECK_ADDITIONAL_INFORMATION_WITH_NAME as _SCHEMA_ELIGIBILITY_CHECK_ADDITIONAL_INFORMATION_WITH_NAME,
+    ELIGIBILITY_CHECK_ADDRESS as _SCHEMA_ELIGIBILITY_CHECK_ADDRESS,
+    ELIGIBILITY_CHECK_BENEFITS as _SCHEMA_ELIGIBILITY_CHECK_BENEFITS,
+    ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION as _SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION,
+    ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER as _SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER,
+    ELIGIBILITY_CHECK_CANNOT_PROCESS as _SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS,
+    ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN as _SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN,
+    ELIGIBILITY_CHECK_CONTACT as _SCHEMA_ELIGIBILITY_CHECK_CONTACT,
+    ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION as _SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION,
+    ELIGIBILITY_CHECK_COST_CONTAINMENT as _SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT,
+    ELIGIBILITY_CHECK_COVERAGE_BASIS as _SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS,
+    ELIGIBILITY_CHECK_CO_INSURANCE as _SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE,
+    ELIGIBILITY_CHECK_CO_PAYMENT as _SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT,
+    ELIGIBILITY_CHECK_DATE_RANGE as _SCHEMA_ELIGIBILITY_CHECK_DATE_RANGE,
+    ELIGIBILITY_CHECK_DEDUCTIBLE as _SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE,
+    ELIGIBILITY_CHECK_DEPENDENT as _SCHEMA_ELIGIBILITY_CHECK_DEPENDENT,
+    ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION as _SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION,
+    ELIGIBILITY_CHECK_DIAGNOSIS as _SCHEMA_ELIGIBILITY_CHECK_DIAGNOSIS,
+    ELIGIBILITY_CHECK_DIAGNOSIS_CODE as _SCHEMA_ELIGIBILITY_CHECK_DIAGNOSIS_CODE,
+    ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION as _SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+    ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES as _SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+    ELIGIBILITY_CHECK_ELIGIBILITY_STATUS as _SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS,
+    ELIGIBILITY_CHECK_ENTITY_PROVIDER as _SCHEMA_ELIGIBILITY_CHECK_ENTITY_PROVIDER,
+    ELIGIBILITY_CHECK_EXCLUSION as _SCHEMA_ELIGIBILITY_CHECK_EXCLUSION,
+    ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY as _SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY,
+    ELIGIBILITY_CHECK_INVALID_BENEFIT as _SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT,
+    ELIGIBILITY_CHECK_INVALID_ENTRIES as _SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRIES,
+    ELIGIBILITY_CHECK_INVALID_ENTRY_REASON as _SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRY_REASON,
+    ELIGIBILITY_CHECK_LIMITATION as _SCHEMA_ELIGIBILITY_CHECK_LIMITATION,
+    ELIGIBILITY_CHECK_MAINTENANCE as _SCHEMA_ELIGIBILITY_CHECK_MAINTENANCE,
+    ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR as _SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR,
+    ELIGIBILITY_CHECK_META as _SCHEMA_ELIGIBILITY_CHECK_META,
+    ELIGIBILITY_CHECK_NETWORK as _SCHEMA_ELIGIBILITY_CHECK_NETWORK,
+    ELIGIBILITY_CHECK_NON_COVERED as _SCHEMA_ELIGIBILITY_CHECK_NON_COVERED,
+    ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY as _SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY,
+    ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER as _SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER,
+    ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA as _SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA,
+    ELIGIBILITY_CHECK_OUT_OF_POCKET as _SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET,
+    ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES as _SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES,
+    ELIGIBILITY_CHECK_PAYER as _SCHEMA_ELIGIBILITY_CHECK_PAYER,
+    ELIGIBILITY_CHECK_PERSON_NAME as _SCHEMA_ELIGIBILITY_CHECK_PERSON_NAME,
+    ELIGIBILITY_CHECK_PERSON_OR_ORGANIZATION_NAME as _SCHEMA_ELIGIBILITY_CHECK_PERSON_OR_ORGANIZATION_NAME,
+    ELIGIBILITY_CHECK_PLACE_OF_SERVICE as _SCHEMA_ELIGIBILITY_CHECK_PLACE_OF_SERVICE,
+    ELIGIBILITY_CHECK_PLAN as _SCHEMA_ELIGIBILITY_CHECK_PLAN,
+    ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION as _SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION,
+    ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER as _SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER,
+    ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY as _SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY,
+    ELIGIBILITY_CHECK_PROVIDER as _SCHEMA_ELIGIBILITY_CHECK_PROVIDER,
+    ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION as _SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION,
+    ELIGIBILITY_CHECK_QUALIFIED_PERSON_NAME as _SCHEMA_ELIGIBILITY_CHECK_QUALIFIED_PERSON_NAME,
+    ELIGIBILITY_CHECK_QUANTITY as _SCHEMA_ELIGIBILITY_CHECK_QUANTITY,
+    ELIGIBILITY_CHECK_RELATED_ENTITY as _SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY,
+    ELIGIBILITY_CHECK_REQUEST_ADDRESS as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_ADDRESS,
+    ELIGIBILITY_CHECK_REQUEST_DEPENDENT as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT,
+    ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION,
+    ELIGIBILITY_CHECK_REQUEST_DEPENDENT_NAME as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_NAME,
+    ELIGIBILITY_CHECK_REQUEST_DEPENDENT_PERSON_NAME as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_PERSON_NAME,
+    ELIGIBILITY_CHECK_REQUEST_ENCOUNTER as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER,
+    ELIGIBILITY_CHECK_REQUEST_ENCOUNTER_ADDITIONAL_INFORMATION as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER_ADDITIONAL_INFORMATION,
+    ELIGIBILITY_CHECK_REQUEST_ENCOUNTER_DATES as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER_DATES,
+    ELIGIBILITY_CHECK_REQUEST_ENTITY_PROVIDER as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENTITY_PROVIDER,
+    ELIGIBILITY_CHECK_REQUEST_PLACE_OF_SERVICE as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_PLACE_OF_SERVICE,
+    ELIGIBILITY_CHECK_REQUEST_PROVIDER as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER,
+    ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION,
+    ELIGIBILITY_CHECK_REQUEST_PROVIDER_NAME as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_NAME,
+    ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME,
+    ELIGIBILITY_CHECK_REQUEST_SERVICE as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_SERVICE,
+    ELIGIBILITY_CHECK_REQUEST_STATE_LICENSE as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_STATE_LICENSE,
+    ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER,
+    ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION,
+    ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS,
+    ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_NAME as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_NAME,
+    ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_PERSON_NAME as _SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_PERSON_NAME,
+    ELIGIBILITY_CHECK_RESERVE as _SCHEMA_ELIGIBILITY_CHECK_RESERVE,
+    ELIGIBILITY_CHECK_RESPONSE_ERROR as _SCHEMA_ELIGIBILITY_CHECK_RESPONSE_ERROR,
+    ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED as _SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED,
+    ELIGIBILITY_CHECK_SERIALIZATION_EXCEPTION as _SCHEMA_ELIGIBILITY_CHECK_SERIALIZATION_EXCEPTION,
+    ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER as _SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER,
+    ELIGIBILITY_CHECK_SERVICE_CODE as _SCHEMA_ELIGIBILITY_CHECK_SERVICE_CODE,
+    ELIGIBILITY_CHECK_SERVICE_CODE_RANGE as _SCHEMA_ELIGIBILITY_CHECK_SERVICE_CODE_RANGE,
+    ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT as _SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT,
+    ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_DELIVERY as _SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_DELIVERY,
+    ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_FREQUENCY as _SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_FREQUENCY,
+    ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_PERIOD as _SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_PERIOD,
+    ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_QUANTITY as _SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_QUANTITY,
+    ELIGIBILITY_CHECK_SERVICE_LIMIT as _SCHEMA_ELIGIBILITY_CHECK_SERVICE_LIMIT,
+    ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE as _SCHEMA_ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+    ELIGIBILITY_CHECK_SPEND_DOWN as _SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN,
+    ELIGIBILITY_CHECK_STATE_LICENSE as _SCHEMA_ELIGIBILITY_CHECK_STATE_LICENSE,
+    ELIGIBILITY_CHECK_SUBSCRIBER as _SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER,
+    ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION as _SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION,
+    ELIGIBILITY_CHECK_SUBSCRIBER_TRACE_NUMBER as _SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_TRACE_NUMBER,
+    ELIGIBILITY_CHECK_UNLIMITED as _SCHEMA_ELIGIBILITY_CHECK_UNLIMITED,
+    ELIGIBILITY_CHECK_WARNING as _SCHEMA_ELIGIBILITY_CHECK_WARNING,
     EVENT_DESTINATIONS_DESTINATION_SUMMARY as _SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY,
     EVENT_DESTINATIONS_EVENT_PAYLOAD as _SCHEMA_EVENT_DESTINATIONS_EVENT_PAYLOAD,
     EVENT_DESTINATIONS_EVENT_PAYLOAD_RESOURCE_REF as _SCHEMA_EVENT_DESTINATIONS_EVENT_PAYLOAD_RESOURCE_REF,
@@ -7639,6 +7736,14253 @@ _SCHEMA_TOO_MANY_REQUESTS_EXCEPTION,
         ]
 )
 
+@dataclass(kw_only=True)
+class EligibilityCheckRequestDependentAdditionalInformation:
+    """Additional identification numbers for the dependent."""
+
+    ssn: str | None = None
+    """
+    The dependent's Social Security Number (SSN). Don't use this for
+    Federally-administered programs, such as Medicare.
+    """
+
+    group_number: str | None = None
+    """The group number for the dependent's insurance plan."""
+
+    identity_card_number: str | None = None
+    """
+    The dependent's identity card number. Include this when this number
+    differs from the subscriber's member ID.
+    """
+
+    eligibility_category: str | None = None
+    """The eligibility category for the dependent."""
+
+    plan_number: str | None = None
+    """The plan number for the dependent's insurance plan."""
+
+    group_or_policy_number: str | None = None
+    """The group or policy number."""
+
+    contract_number: str | None = None
+    """The contract number associated with the dependent's insurance plan."""
+
+    patient_account_number: str | None = None
+    """The patient account number for the dependent."""
+
+    mbi: str | None = None
+    """
+    The dependent's Medicare Beneficiary Identifier (MBI). The 270 carries
+    it as the Health Insurance Claim (HIC) number, which CMS retired in
+    favor of the MBI.
+    """
+
+    identification_card_serial_number: str | None = None
+    """
+    The identification card serial number, when it differs from the member
+    ID.
+    """
+
+    insurance_policy_number: str | None = None
+    """The dependent's insurance policy number."""
+
+    plan_network_id: str | None = None
+    """The plan network identification number for the dependent."""
+
+    agency_claim_number: str | None = None
+    """The agency claim number associated with the dependent."""
+
+    medical_record_id: str | None = None
+    """The medical record identification number for the dependent."""
+
+    issue_number: str | None = None
+    """The issue number for the dependent's insurance policy."""
+
+    member_id: str | None = None
+    """
+    The dependent's member ID. Only set this when checking eligibility with
+    a Property and Casualty payer and the patient identifier is a member ID
+    that would be used in an 837 claim. If the dependent has their own
+    member ID for a health plan, identify them in the `subscriber` object
+    instead.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.ssn is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["ssn"], self.ssn)
+
+        if self.group_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["groupNumber"], self.group_number)
+
+        if self.identity_card_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["identityCardNumber"], self.identity_card_number)
+
+        if self.eligibility_category is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["eligibilityCategory"], self.eligibility_category)
+
+        if self.plan_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["planNumber"], self.plan_number)
+
+        if self.group_or_policy_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["groupOrPolicyNumber"], self.group_or_policy_number)
+
+        if self.contract_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["contractNumber"], self.contract_number)
+
+        if self.patient_account_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["patientAccountNumber"], self.patient_account_number)
+
+        if self.mbi is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["mbi"], self.mbi)
+
+        if self.identification_card_serial_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["identificationCardSerialNumber"], self.identification_card_serial_number)
+
+        if self.insurance_policy_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["insurancePolicyNumber"], self.insurance_policy_number)
+
+        if self.plan_network_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["planNetworkId"], self.plan_network_id)
+
+        if self.agency_claim_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["agencyClaimNumber"], self.agency_claim_number)
+
+        if self.medical_record_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["medicalRecordId"], self.medical_record_id)
+
+        if self.issue_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["issueNumber"], self.issue_number)
+
+        if self.member_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["memberId"], self.member_id)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["ssn"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["ssn"])
+
+                case 1:
+                    kwargs["group_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["groupNumber"])
+
+                case 2:
+                    kwargs["identity_card_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["identityCardNumber"])
+
+                case 3:
+                    kwargs["eligibility_category"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["eligibilityCategory"])
+
+                case 4:
+                    kwargs["plan_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["planNumber"])
+
+                case 5:
+                    kwargs["group_or_policy_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["groupOrPolicyNumber"])
+
+                case 6:
+                    kwargs["contract_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["contractNumber"])
+
+                case 7:
+                    kwargs["patient_account_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["patientAccountNumber"])
+
+                case 8:
+                    kwargs["mbi"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["mbi"])
+
+                case 9:
+                    kwargs["identification_card_serial_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["identificationCardSerialNumber"])
+
+                case 10:
+                    kwargs["insurance_policy_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["insurancePolicyNumber"])
+
+                case 11:
+                    kwargs["plan_network_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["planNetworkId"])
+
+                case 12:
+                    kwargs["agency_claim_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["agencyClaimNumber"])
+
+                case 13:
+                    kwargs["medical_record_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["medicalRecordId"])
+
+                case 14:
+                    kwargs["issue_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["issueNumber"])
+
+                case 15:
+                    kwargs["member_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION.members["memberId"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckRequestAddress:
+    """The address of the entity."""
+
+    address_line1: str
+    """The first line of the address."""
+
+    city: str
+    """The city."""
+
+    address_line2: str | None = None
+    """The second line of the address."""
+
+    state: str | None = None
+    """
+    The US state or Canadian province code with unknown option. For example,
+    `TN` for Tennessee or `NB` for New Brunswick.
+    """
+
+    postal_code: str | None = None
+    """
+    The United States or Canadian postal code, excluding punctuation and
+    blanks.
+    """
+
+    country: str | None = None
+    """
+    The two-letter country code from [Part 1 of ISO
+    3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+    """
+
+    country_subdivision: str | None = None
+    """
+    The country subdivision code from [Part 2 of ISO
+    3166](https://en.wikipedia.org/wiki/ISO_3166-2).
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ADDRESS, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ADDRESS.members["addressLine1"], self.address_line1)
+        if self.address_line2 is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ADDRESS.members["addressLine2"], self.address_line2)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ADDRESS.members["city"], self.city)
+        if self.state is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ADDRESS.members["state"], self.state)
+
+        if self.postal_code is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ADDRESS.members["postalCode"], self.postal_code)
+
+        if self.country is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ADDRESS.members["country"], self.country)
+
+        if self.country_subdivision is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ADDRESS.members["countrySubdivision"], self.country_subdivision)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["address_line1"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ADDRESS.members["addressLine1"])
+
+                case 1:
+                    kwargs["address_line2"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ADDRESS.members["addressLine2"])
+
+                case 2:
+                    kwargs["city"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ADDRESS.members["city"])
+
+                case 3:
+                    kwargs["state"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ADDRESS.members["state"])
+
+                case 4:
+                    kwargs["postal_code"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ADDRESS.members["postalCode"])
+
+                case 5:
+                    kwargs["country"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ADDRESS.members["country"])
+
+                case 6:
+                    kwargs["country_subdivision"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ADDRESS.members["countrySubdivision"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ADDRESS, consumer=_consumer)
+        if "address_line1" not in kwargs:
+            kwargs["address_line1"] = ""
+        if "city" not in kwargs:
+            kwargs["city"] = ""
+        return kwargs
+
+class EligibilityCheckRequestPatientGender(UnknownEnumMixin, StrEnum):
+    """Code indicating the patient's gender.    """
+    FEMALE = "FEMALE"
+    """Female    """
+    MALE = "MALE"
+    """Male    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckRequestDependentPersonName:
+    """The name of a dependent, who is always a person."""
+
+    first_name: str
+    """The dependent's first name."""
+
+    last_name: str
+    """
+    The dependent's last name. **Don't** include the dependent's name
+    suffix, such as Jr. or III. Use the designated `suffix` property
+    instead.
+    """
+
+    middle_name: str | None = None
+    """The dependent's middle name or middle initial."""
+
+    suffix: str | None = None
+    """
+    The dependent's name suffix, such as Jr. or III. Only include the
+    dependent's personal name suffix - **don't** include professional or
+    academic titles, such as M.D. or MBA.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_PERSON_NAME, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_PERSON_NAME.members["firstName"], self.first_name)
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_PERSON_NAME.members["lastName"], self.last_name)
+        if self.middle_name is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_PERSON_NAME.members["middleName"], self.middle_name)
+
+        if self.suffix is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_PERSON_NAME.members["suffix"], self.suffix)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["first_name"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_PERSON_NAME.members["firstName"])
+
+                case 1:
+                    kwargs["last_name"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_PERSON_NAME.members["lastName"])
+
+                case 2:
+                    kwargs["middle_name"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_PERSON_NAME.members["middleName"])
+
+                case 3:
+                    kwargs["suffix"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_PERSON_NAME.members["suffix"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_PERSON_NAME, consumer=_consumer)
+        if "first_name" not in kwargs:
+            kwargs["first_name"] = ""
+        if "last_name" not in kwargs:
+            kwargs["last_name"] = ""
+        return kwargs
+
+    @classmethod
+    def _smithy_default(cls) -> Self:
+        return cls(first_name="", last_name="")
+
+@dataclass(kw_only=True)
+class EligibilityCheckRequestDependentName:
+    """The dependent's name."""
+
+    person: EligibilityCheckRequestDependentPersonName
+    """The dependent's name."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_NAME, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_NAME.members["person"], self.person)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["person"] = EligibilityCheckRequestDependentPersonName.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT_NAME, consumer=_consumer)
+        if "person" not in kwargs:
+            kwargs["person"] = EligibilityCheckRequestDependentPersonName._smithy_default()
+        return kwargs
+
+    @classmethod
+    def _smithy_default(cls) -> Self:
+        return cls(person=EligibilityCheckRequestDependentPersonName._smithy_default())
+
+class EligibilityCheckRequestEntityProviderCode(UnknownEnumMixin, StrEnum):
+    """
+    A code indicating the type of provider. Visit [Eligibility code
+    lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#provider-codes)
+    for a complete list.
+    """
+    ADMITTING = "ADMITTING"
+    """Admitting    """
+    ATTENDING = "ATTENDING"
+    """Attending    """
+    BILLING = "BILLING"
+    """Billing    """
+    CONSULTING = "CONSULTING"
+    """Consulting    """
+    COVERING = "COVERING"
+    """Covering    """
+    HOSPITAL = "HOSPITAL"
+    """Hospital    """
+    HOME_HEALTH_CARE = "HOME_HEALTH_CARE"
+    """Home Health Care    """
+    LABORATORY = "LABORATORY"
+    """Laboratory    """
+    OTHER_PHYSICIAN = "OTHER_PHYSICIAN"
+    """Other Physician    """
+    PHARMACIST = "PHARMACIST"
+    """Pharmacist    """
+    PHARMACY = "PHARMACY"
+    """Pharmacy    """
+    PRIMARY_CARE_PHYSICIAN = "PRIMARY_CARE_PHYSICIAN"
+    """Primary Care Physician    """
+    PERFORMING = "PERFORMING"
+    """Performing    """
+    RURAL_HEALTH_CLINIC = "RURAL_HEALTH_CLINIC"
+    """Rural Health Clinic    """
+    REFERRING = "REFERRING"
+    """Referring    """
+    SUBMITTING = "SUBMITTING"
+    """Submitting    """
+    SKILLED_NURSING_FACILITY = "SKILLED_NURSING_FACILITY"
+    """Skilled Nursing Facility    """
+    SUPERVISING = "SUPERVISING"
+    """Supervising    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckRequestEntityProvider:
+    """Information about a provider's role and taxonomy."""
+
+    code: EligibilityCheckRequestEntityProviderCode | None = None
+    """
+    A code indicating the type of provider. Visit [Eligibility code
+    lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#provider-codes)
+    for a complete list.
+    """
+
+    reference: str | None = None
+    """The provider's taxonomy code."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENTITY_PROVIDER, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.code is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENTITY_PROVIDER.members["code"], self.code)
+
+        if self.reference is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENTITY_PROVIDER.members["reference"], self.reference)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["code"] = EligibilityCheckRequestEntityProviderCode(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENTITY_PROVIDER.members["code"]))
+
+                case 1:
+                    kwargs["reference"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENTITY_PROVIDER.members["reference"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENTITY_PROVIDER, consumer=_consumer)
+        return kwargs
+
+class EligibilityCheckRequestDependentRelationship(UnknownEnumMixin, StrEnum):
+    """The dependent's relationship to the subscriber.    """
+    SPOUSE = "SPOUSE"
+    """Spouse    """
+    CHILD = "CHILD"
+    """Child    """
+    OTHER_ADULT = "OTHER_ADULT"
+    """Other Adult    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckRequestDependent:
+    """
+    A dependent for which you want to retrieve benefits information.
+
+    - You can only submit one dependent per eligibility check.
+    - Only include the patient's information here when they are listed as a
+      dependent on the subscriber's insurance plan AND the payer cannot
+      uniquely identify them through information outside the subscriber's
+      policy. For example, if the dependent has their own member ID number,
+      you should identify them in the `subscriber` object instead. This
+      includes member IDs that differ only by a suffix, such as `01`,
+      because the patient can still be uniquely identified.
+    - Most Medicaid plans don't support dependents, with a [few
+      exceptions](https://www.stedi.com/docs/healthcare/send-eligibility-checks#medicaid-dependents).
+      Sending this information to payers that don't support dependents will
+      either cause an error, or the payer may ignore the information and
+      return results for the subscriber instead.
+    - Each payer has different requirements, so you should supply the fields
+      necessary for each payer to identify the dependent in their system.
+      However, we **strongly recommend** including the dependent's date of
+      birth in the request when available because many payers return errors
+      without it.
+    - Enter the patient's name exactly as written on their insurance card,
+      if available, including any special or punctuation characters such as
+      apostrophes, hyphens (dashes), or spaces. Visit [patient
+      names](https://www.stedi.com/docs/healthcare/send-eligibility-checks#patient-names)
+      for all best practices to avoid unnecessary failures.
+    """
+
+    name: EligibilityCheckRequestDependentName
+    """The dependent's name."""
+
+    relation_to_subscriber: EligibilityCheckRequestDependentRelationship | None = None
+    """The dependent's relationship to the subscriber."""
+
+    date_of_birth: str | None = None
+    """
+    The dependent's date of birth (DOB). We **strongly recommend**
+    including the DOB in your request. Many payers need this information to
+    identify the patient in their system and may immediately return an error
+    when it's not provided.
+    """
+
+    gender: EligibilityCheckRequestPatientGender | None = None
+    """Code indicating the dependent's gender."""
+
+    additional_information: EligibilityCheckRequestDependentAdditionalInformation | None = None
+    """Additional identification numbers for the dependent."""
+
+    address: EligibilityCheckRequestAddress | None = None
+    """The dependent's address."""
+
+    provider: EligibilityCheckRequestEntityProvider | None = None
+    """
+    Information about a provider associated with the dependent who isn't
+    the entity requesting the eligibility check, such as a referring
+    provider. The requesting provider is specified in the request's root
+    `provider`.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT.members["name"], self.name)
+        if self.relation_to_subscriber is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT.members["relationToSubscriber"], self.relation_to_subscriber)
+
+        if self.date_of_birth is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT.members["dateOfBirth"], self.date_of_birth)
+
+        if self.gender is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT.members["gender"], self.gender)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT.members["additionalInformation"], self.additional_information)
+
+        if self.address is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT.members["address"], self.address)
+
+        if self.provider is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT.members["provider"], self.provider)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["name"] = EligibilityCheckRequestDependentName.deserialize(de)
+
+                case 1:
+                    kwargs["relation_to_subscriber"] = EligibilityCheckRequestDependentRelationship(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT.members["relationToSubscriber"]))
+
+                case 2:
+                    kwargs["date_of_birth"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT.members["dateOfBirth"])
+
+                case 3:
+                    kwargs["gender"] = EligibilityCheckRequestPatientGender(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT.members["gender"]))
+
+                case 4:
+                    kwargs["additional_information"] = EligibilityCheckRequestDependentAdditionalInformation.deserialize(de)
+
+                case 5:
+                    kwargs["address"] = EligibilityCheckRequestAddress.deserialize(de)
+
+                case 6:
+                    kwargs["provider"] = EligibilityCheckRequestEntityProvider.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT, consumer=_consumer)
+        if "name" not in kwargs:
+            kwargs["name"] = EligibilityCheckRequestDependentName._smithy_default()
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckRequestEncounterAdditionalInformation:
+    """Additional information about the encounter."""
+
+    prior_auth_number: str | None = None
+    """The prior authorization number for a particular benefit or procedure."""
+
+    referral_number: str | None = None
+    """The referral number for a particular benefit or procedure."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER_ADDITIONAL_INFORMATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.prior_auth_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER_ADDITIONAL_INFORMATION.members["priorAuthNumber"], self.prior_auth_number)
+
+        if self.referral_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER_ADDITIONAL_INFORMATION.members["referralNumber"], self.referral_number)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["prior_auth_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER_ADDITIONAL_INFORMATION.members["priorAuthNumber"])
+
+                case 1:
+                    kwargs["referral_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER_ADDITIONAL_INFORMATION.members["referralNumber"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER_ADDITIONAL_INFORMATION, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckDateRange:
+    """
+    A calendar date range. Both bounds are optional and at least one is
+    always present; `end` is inclusive. A point-in-time date is carried in
+    `start`.
+    """
+
+    start: str | None = None
+    """The start of the range, or a single point-in-time date."""
+
+    end: str | None = None
+    """The inclusive end of the range."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DATE_RANGE, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.start is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DATE_RANGE.members["start"], self.start)
+
+        if self.end is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DATE_RANGE.members["end"], self.end)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["start"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DATE_RANGE.members["start"])
+
+                case 1:
+                    kwargs["end"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DATE_RANGE.members["end"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_DATE_RANGE, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckRequestEncounterDates:
+    """
+    Dates of service for the eligibility inquiry. If you don't specify a
+    service date, the payer defaults to using the current date in their
+    timezone.
+    """
+
+    service: EligibilityCheckDateRange | None = None
+    """The service date or date range."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER_DATES, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER_DATES.members["service"], self.service)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["service"] = EligibilityCheckDateRange.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER_DATES, consumer=_consumer)
+        return kwargs
+
+class EligibilityCheckPlaceOfServiceCode(UnknownEnumMixin, StrEnum):
+    """
+    Standardized code identifying the type of healthcare facility where
+    providers may deliver services.
+    """
+    PHARMACY = "01"
+    """Pharmacy    """
+    SCHOOL = "03"
+    """School    """
+    HOMELESS_SHELTER = "04"
+    """Homeless Shelter    """
+    INDIAN_HEALTH_SERVICE_FREE_STANDING_FACILITY = "05"
+    """Indian Health Service Free-standing Facility    """
+    INDIAN_HEALTH_SERVICE_PROVIDER_BASED_FACILITY = "06"
+    """Indian Health Service Provider-based Facility    """
+    TRIBAL_638_FREE_STANDING_FACILITY = "07"
+    """Tribal 638 Free-standing Facility    """
+    TRIBAL_638_PROVIDER_BASED_FACILITY = "08"
+    """Tribal 638 Provider-based Facility    """
+    OFFICE = "11"
+    """Office    """
+    HOME = "12"
+    """Home    """
+    ASSISTED_LIVING_FACILITY = "13"
+    """Assisted Living Facility    """
+    GROUP_HOME = "14"
+    """Group Home    """
+    MOBILE_UNIT = "15"
+    """Mobile Unit    """
+    URGENT_CARE_FACILITY = "20"
+    """Urgent Care Facility    """
+    INPATIENT_HOSPITAL = "21"
+    """Inpatient Hospital    """
+    OUTPATIENT_HOSPITAL = "22"
+    """Outpatient Hospital    """
+    EMERGENCY_ROOM_HOSPITAL = "23"
+    """Emergency Room - Hospital    """
+    AMBULATORY_SURGICAL_CENTER = "24"
+    """Ambulatory Surgical Center    """
+    BIRTHING_CENTER = "25"
+    """Birthing Center    """
+    MILITARY_TREATMENT_FACILITY = "26"
+    """Military Treatment Facility    """
+    SKILLED_NURSING_FACILITY = "31"
+    """Skilled Nursing Facility    """
+    NURSING_FACILITY = "32"
+    """Nursing Facility    """
+    CUSTODIAL_CARE_FACILITY = "33"
+    """Custodial Care Facility    """
+    HOSPICE = "34"
+    """Hospice    """
+    AMBULANCE_LAND = "41"
+    """Ambulance - Land    """
+    AMBULANCE_AIR_OR_WATER = "42"
+    """Ambulance - Air or Water    """
+    INDEPENDENT_CLINIC = "49"
+    """Independent Clinic    """
+    FEDERALLY_QUALIFIED_HEALTH_CENTER = "50"
+    """Federally Qualified Health Center    """
+    INPATIENT_PSYCHIATRIC_FACILITY = "51"
+    """Inpatient Psychiatric Facility    """
+    PSYCHIATRIC_FACILITY_PARTIAL_HOSPITALIZATION = "52"
+    """Psychiatric Facility - Partial Hospitalization    """
+    COMMUNITY_MENTAL_HEALTH_CENTER = "53"
+    """Community Mental Health Center    """
+    INTERMEDIATE_CARE_FACILITY_MENTALLY_RETARDED = "54"
+    """Intermediate Care Facility/Mentally Retarded    """
+    RESIDENTIAL_SUBSTANCE_ABUSE_TREATMENT_FACILITY = "55"
+    """Residential Substance Abuse Treatment Facility    """
+    PSYCHIATRIC_RESIDENTIAL_TREATMENT_CENTER = "56"
+    """Psychiatric Residential Treatment Center    """
+    NON_RESIDENTIAL_SUBSTANCE_ABUSE_TREATMENT_FACILITY = "57"
+    """Non-residential Substance Abuse Treatment Facility    """
+    MASS_IMMUNIZATION_CENTER = "60"
+    """Mass Immunization Center    """
+    COMPREHENSIVE_INPATIENT_REHABILITATION_FACILITY = "61"
+    """Comprehensive Inpatient Rehabilitation Facility    """
+    COMPREHENSIVE_OUTPATIENT_REHABILITATION_FACILITY = "62"
+    """Comprehensive Outpatient Rehabilitation Facility    """
+    END_STAGE_RENAL_DISEASE_TREATMENT_FACILITY = "65"
+    """End-Stage Renal Disease Treatment Facility    """
+    STATE_OR_LOCAL_PUBLIC_HEALTH_CLINIC = "71"
+    """State or Local Public Health Clinic    """
+    RURAL_HEALTH_CLINIC = "72"
+    """Rural Health Clinic    """
+    INDEPENDENT_LABORATORY = "81"
+    """Independent Laboratory    """
+    OTHER_PLACE_OF_SERVICE = "99"
+    """Other Place of Service    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckRequestPlaceOfService:
+    """The type of facility where providers deliver the service."""
+
+    code: EligibilityCheckPlaceOfServiceCode
+    """The place of service code identifying the type of facility."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PLACE_OF_SERVICE, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PLACE_OF_SERVICE.members["code"], self.code)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["code"] = EligibilityCheckPlaceOfServiceCode(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PLACE_OF_SERVICE.members["code"]))
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PLACE_OF_SERVICE, consumer=_consumer)
+        if "code" not in kwargs:
+            kwargs["code"] = EligibilityCheckPlaceOfServiceCode._corrected("")
+        return kwargs
+
+class EligibilityCheckRequestServiceCodeSystem(UnknownEnumMixin, StrEnum):
+    """
+    Identifies the external code list that the specified procedure or
+    service code belongs to.
+    """
+    STC = "STC"
+    """Service Type Code    """
+    CDT = "CDT"
+    """Current Dental Terminology (CDT) procedure code    """
+    CPT = "CPT"
+    """Current Procedural Terminology (CPT) procedure code    """
+    NDC = "NDC"
+    """National Drug Code (NDC)    """
+    HCPCS = "HCPCS"
+    """Healthcare Common Procedure Coding System (HCPCS) code    """
+    ICD_10_PCS = "ICD-10-PCS"
+    """ICD-10 Procedure Coding System (ICD-10-PCS) code    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckRequestService:
+    """
+    A service or procedure code identifying the type of service for which
+    you want to receive benefits information.
+    """
+
+    value: str
+    """The service or procedure code value."""
+
+    system: EligibilityCheckRequestServiceCodeSystem
+    """The code system that the `value` belongs to, such as CPT, HCPCS, or STC."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SERVICE, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SERVICE.members["value"], self.value)
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SERVICE.members["system"], self.system)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["value"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SERVICE.members["value"])
+
+                case 1:
+                    kwargs["system"] = EligibilityCheckRequestServiceCodeSystem(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SERVICE.members["system"]))
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SERVICE, consumer=_consumer)
+        if "value" not in kwargs:
+            kwargs["value"] = ""
+        if "system" not in kwargs:
+            kwargs["system"] = EligibilityCheckRequestServiceCodeSystem._corrected("")
+        return kwargs
+
+def _serialize_eligibility_check_request_service_list(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckRequestService]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_request_service_list(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckRequestService]:
+    result: list[EligibilityCheckRequestService] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckRequestService.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckRequestEncounter:
+    """
+    Details about the eligibility or benefit information you are requesting
+    for the patient.
+
+    - You can optionally include service type codes (STCs) or procedure
+      codes to request benefits for specific services.
+    - You can specify either a single service date or a date range using
+      `dates.service`. The payer defaults to using the current date in their
+      timezone if you don't include one.
+    - When checking eligibility for today, omit the service date to ensure
+      consistent behavior across payers.
+    - We recommend submitting dates up to 12 months in the past or up to the
+      end of the current month. Payers aren't required to support dates
+      outside these ranges. However, some payers such as the Centers for
+      Medicare and Medicaid Services (CMS) do support requests for dates
+      further in the future - especially the next calendar month. Check the
+      payer's documentation to determine their specific behavior.
+    """
+
+    services: list[EligibilityCheckRequestService] | None = None
+    """
+    One or more codes classifying the type of services for which you want to
+    receive benefits information.
+
+    - You can include service type codes (STCs) or procedure codes to
+      request specific types of benefits information. For medical benefits,
+      you'll almost always need an STC because most medical payers don't
+      support procedure codes (CPT/HCPCS/CDT). For dental benefits, many
+      payers support procedure codes. Visit [STCs and procedure
+      codes](https://www.stedi.com/docs/healthcare/eligibility-stc-procedure-codes)
+      for guidance on choosing the right codes.
+    - We recommend including one service per request. Not all payers support
+      all service type codes, not all payers support multiple codes in the
+      same request, and payers aren't required to respond with exactly the
+      same codes you sent.
+    - If you don't specify any services, Stedi defaults to using service
+      type code `30` (Health Benefit Plan Coverage).
+    """
+
+    dates: EligibilityCheckRequestEncounterDates | None = None
+    """The dates of service for the eligibility inquiry."""
+
+    place_of_service: EligibilityCheckRequestPlaceOfService | None = None
+    """
+    The type of facility where providers deliver the service. Uses one of
+    the [place of service
+    codes](https://www.cms.gov/medicare/coding-billing/place-of-service-codes/code-sets).
+    """
+
+    additional_information: EligibilityCheckRequestEncounterAdditionalInformation | None = None
+    """Additional information about the encounter."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.services is not None:
+            _serialize_eligibility_check_request_service_list(serializer, _SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER.members["services"], self.services)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER.members["dates"], self.dates)
+
+        if self.place_of_service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER.members["placeOfService"], self.place_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER.members["additionalInformation"], self.additional_information)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["services"] = _deserialize_eligibility_check_request_service_list(de, _SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER.members["services"])
+
+                case 1:
+                    kwargs["dates"] = EligibilityCheckRequestEncounterDates.deserialize(de)
+
+                case 2:
+                    kwargs["place_of_service"] = EligibilityCheckRequestPlaceOfService.deserialize(de)
+
+                case 3:
+                    kwargs["additional_information"] = EligibilityCheckRequestEncounterAdditionalInformation.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_ENCOUNTER, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckRequestStateLicense:
+    """The provider's state license information."""
+
+    number: str
+    """The provider's state license number."""
+
+    state: str | None = None
+    """The state or province code that issued the license."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_STATE_LICENSE, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.state is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_STATE_LICENSE.members["state"], self.state)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_STATE_LICENSE.members["number"], self.number)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["state"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_STATE_LICENSE.members["state"])
+
+                case 1:
+                    kwargs["number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_STATE_LICENSE.members["number"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_STATE_LICENSE, consumer=_consumer)
+        if "number" not in kwargs:
+            kwargs["number"] = ""
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckRequestProviderAdditionalInformation:
+    """
+    Additional identification numbers for the provider. Only include when
+    specifically required by a payer.
+    """
+
+    state_license: EligibilityCheckRequestStateLicense | None = None
+    """
+    The provider's state license information. If you include this, you must
+    provide at least the license `number`.
+    """
+
+    medicare_provider_number: str | None = None
+    """The provider's Medicare provider number."""
+
+    medicaid_provider_number: str | None = None
+    """The provider's Medicaid provider number."""
+
+    facility_id_number: str | None = None
+    """The ID number for the provider's facility."""
+
+    contract_number: str | None = None
+    """The provider's contract number."""
+
+    plan_network_id: str | None = None
+    """The provider's plan network identification number."""
+
+    facility_network_id: str | None = None
+    """The provider's facility network identification number."""
+
+    personal_identification_number: str | None = None
+    """The provider's personal identification number."""
+
+    electronic_device_pin: str | None = None
+    """The provider's electronic device PIN."""
+
+    submitter_id: str | None = None
+    """The provider's submitter ID."""
+
+    user_id: str | None = None
+    """The provider's user ID."""
+
+    prior_identifier_number: str | None = None
+    """The provider's prior identifier number."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.state_license is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["stateLicense"], self.state_license)
+
+        if self.medicare_provider_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["medicareProviderNumber"], self.medicare_provider_number)
+
+        if self.medicaid_provider_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["medicaidProviderNumber"], self.medicaid_provider_number)
+
+        if self.facility_id_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["facilityIdNumber"], self.facility_id_number)
+
+        if self.contract_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["contractNumber"], self.contract_number)
+
+        if self.plan_network_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["planNetworkId"], self.plan_network_id)
+
+        if self.facility_network_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["facilityNetworkId"], self.facility_network_id)
+
+        if self.personal_identification_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["personalIdentificationNumber"], self.personal_identification_number)
+
+        if self.electronic_device_pin is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["electronicDevicePin"], self.electronic_device_pin)
+
+        if self.submitter_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["submitterId"], self.submitter_id)
+
+        if self.user_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["userId"], self.user_id)
+
+        if self.prior_identifier_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["priorIdentifierNumber"], self.prior_identifier_number)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["state_license"] = EligibilityCheckRequestStateLicense.deserialize(de)
+
+                case 1:
+                    kwargs["medicare_provider_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["medicareProviderNumber"])
+
+                case 2:
+                    kwargs["medicaid_provider_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["medicaidProviderNumber"])
+
+                case 3:
+                    kwargs["facility_id_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["facilityIdNumber"])
+
+                case 4:
+                    kwargs["contract_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["contractNumber"])
+
+                case 5:
+                    kwargs["plan_network_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["planNetworkId"])
+
+                case 6:
+                    kwargs["facility_network_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["facilityNetworkId"])
+
+                case 7:
+                    kwargs["personal_identification_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["personalIdentificationNumber"])
+
+                case 8:
+                    kwargs["electronic_device_pin"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["electronicDevicePin"])
+
+                case 9:
+                    kwargs["submitter_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["submitterId"])
+
+                case 10:
+                    kwargs["user_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["userId"])
+
+                case 11:
+                    kwargs["prior_identifier_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION.members["priorIdentifierNumber"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckRequestProviderPersonName:
+    """The name of a provider who is a person."""
+
+    last_name: str
+    """The provider's last name."""
+
+    first_name: str | None = None
+    """The provider's first name."""
+
+    middle_name: str | None = None
+    """The provider's middle name or middle initial."""
+
+    suffix: str | None = None
+    """The provider's name suffix, such as Jr. or III."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.first_name is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME.members["firstName"], self.first_name)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME.members["lastName"], self.last_name)
+        if self.middle_name is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME.members["middleName"], self.middle_name)
+
+        if self.suffix is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME.members["suffix"], self.suffix)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["first_name"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME.members["firstName"])
+
+                case 1:
+                    kwargs["last_name"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME.members["lastName"])
+
+                case 2:
+                    kwargs["middle_name"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME.members["middleName"])
+
+                case 3:
+                    kwargs["suffix"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME.members["suffix"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME, consumer=_consumer)
+        if "last_name" not in kwargs:
+            kwargs["last_name"] = ""
+        return kwargs
+
+@dataclass
+class EligibilityCheckRequestProviderNamePerson:
+    """The name of a provider who is a person."""
+
+    value: EligibilityCheckRequestProviderPersonName
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_NAME, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_NAME.members["person"], self.value)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=EligibilityCheckRequestProviderPersonName.deserialize(deserializer))
+
+@dataclass
+class EligibilityCheckRequestProviderNameOrganization:
+    """An organization's business name."""
+
+    value: str
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_NAME, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_NAME.members["organization"], self.value)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=deserializer.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_NAME.members["organization"]))
+
+@dataclass
+class EligibilityCheckRequestProviderNameUnknown:
+    """
+    Represents an unknown variant.
+
+    If you receive this value, you will need to update your library to receive the
+    parsed value.
+
+    This value may not be deliberately sent.
+    """
+
+    tag: str
+
+    def serialize(self, serializer: ShapeSerializer):
+        raise SerializationError("Unknown union variants may not be serialized.")
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        raise SerializationError("Unknown union variants may not be serialized.")
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        raise NotImplementedError()
+
+EligibilityCheckRequestProviderName = Union[EligibilityCheckRequestProviderNamePerson | EligibilityCheckRequestProviderNameOrganization | EligibilityCheckRequestProviderNameUnknown]
+"""The provider's name, as either a person or an organization."""
+class _EligibilityCheckRequestProviderNameDeserializer:
+    _result: EligibilityCheckRequestProviderName | None = None
+
+    def deserialize(self, deserializer: ShapeDeserializer) -> EligibilityCheckRequestProviderName:
+        self._result = None
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_NAME, self._consumer)
+
+        if self._result is None:
+            raise SerializationError("Unions must have exactly one value, but found none.")
+
+        return self._result
+
+    def _consumer(self, schema: Schema, de: ShapeDeserializer) -> None:
+        match schema.expect_member_index():
+            case 0:
+                self._set_result(EligibilityCheckRequestProviderNamePerson.deserialize(de))
+
+            case 1:
+                self._set_result(EligibilityCheckRequestProviderNameOrganization.deserialize(de))
+
+            case _:
+                self._set_result(EligibilityCheckRequestProviderNameUnknown(tag=schema.expect_member_name()))
+
+    def _set_result(self, value: EligibilityCheckRequestProviderName) -> None:
+        if self._result is not None:
+            raise SerializationError("Unions must have exactly one value, but found more than one.")
+        self._result = value
+
+class EligibilityCheckRequestProviderType(UnknownEnumMixin, StrEnum):
+    """The type of provider making the request.    """
+    PROVIDER = "PROVIDER"
+    """Provider    """
+    THIRD_PARTY_ADMINISTRATOR = "THIRD_PARTY_ADMINISTRATOR"
+    """Third Party Administrator    """
+    EMPLOYER = "EMPLOYER"
+    """Employer    """
+    HOSPITAL = "HOSPITAL"
+    """Hospital    """
+    FACILITY = "FACILITY"
+    """Facility    """
+    GATEWAY_PROVIDER = "GATEWAY_PROVIDER"
+    """Gateway Provider    """
+    PLAN_SPONSOR = "PLAN_SPONSOR"
+    """Plan Sponsor    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckRequestProvider:
+    """
+    Information about the entity requesting the eligibility check. This may
+    be an individual practitioner, a medical group, a hospital, or another
+    type of healthcare provider.
+
+    - You must provide the provider's name as either a person (with
+      `name.person`) or an organization (with `name.organization`).
+    - You must also provide an identifier - this is typically the
+      provider's [National Provider
+      Identifier](https://www.stedi.com/docs/healthcare/national-provider-identifier)
+      (`npi`). If the provider doesn't have an NPI, you can supply an
+      alternative, such as their `tin` or `ssn`.
+    - Don't include additional properties, such as `tin` or `address`,
+      unless they are specifically required or suggested by the payer.
+    """
+
+    name: EligibilityCheckRequestProviderName
+    """The provider's name, as either a person or an organization."""
+
+    type: EligibilityCheckRequestProviderType | None = None
+    """The type of provider making the request."""
+
+    npi: str | None = None
+    """
+    The provider's [National Provider Identifier
+    (NPI)](https://www.stedi.com/docs/healthcare/national-provider-identifier).
+
+    All healthcare providers eligible for an NPI must provide this
+    identifier. Some non-traditional providers such as transportation
+    services, durable medical equipment (DME) suppliers, or alternative
+    medicine practitioners can't receive an NPI. If the provider doesn't
+    have an NPI, payers virtually never support requests with alternate IDs.
+    In the rare circumstance that a payer has instructed you to use an
+    alternate ID, the payer will typically require you to supply either
+    their `tin` or `ssn` instead.
+    """
+
+    tin: str | None = None
+    """
+    The provider's Federal Taxpayer Identification Number. This is
+    typically the provider's EIN (Employer Identification Number), but you
+    may use the provider's SSN if the provider doesn't have an EIN. Only
+    include if the payer requires it.
+    """
+
+    ein: str | None = None
+    """
+    The Employer Identification Number (EIN), distinct from the Federal
+    Taxpayer Identification Number in `tin`. Only include when the payer
+    requires it.
+    """
+
+    ssn: str | None = None
+    """
+    The provider's Social Security Number (SSN).
+
+    - Only include when specifically instructed by a payer - for example, if
+      the provider doesn't have an
+      [NPI](https://www.stedi.com/docs/healthcare/national-provider-identifier).
+      This use case is very rarely supported, and is typically when the
+      provider is a non-medical provider, such as a social worker, home
+      health aide, or transportation service.
+    - If the payer has instructed you to send an EIN but the provider
+      operates using their SSN, use `provider.tin` instead of this field.
+    - Don't use this for Federally-administered programs, such as Medicare.
+    """
+
+    service_provider_number: str | None = None
+    """
+    The provider's service provider number. Only include when specifically
+    instructed by a payer - for example, when the provider doesn't have an
+    [NPI](https://www.stedi.com/docs/healthcare/national-provider-identifier).
+    This use case is very rarely supported, and is typically when the
+    provider is a non-medical provider, such as a social worker, home health
+    aide, or transportation service.
+    """
+
+    pharmacy_processor_number: str | None = None
+    """
+    The provider's pharmacy processor number. Only include when
+    specifically instructed by a payer - for example, when the provider
+    doesn't have an
+    [NPI](https://www.stedi.com/docs/healthcare/national-provider-identifier).
+    This use case is very rarely supported, and is typically when the
+    provider is a non-medical provider, such as a social worker, home health
+    aide, or transportation service.
+    """
+
+    address: EligibilityCheckRequestAddress | None = None
+    """
+    The provider's address. Only include when specifically instructed by a
+    payer, such as when the provider has multiple locations and you need to
+    identify the specific location making the request.
+    """
+
+    additional_information: EligibilityCheckRequestProviderAdditionalInformation | None = None
+    """
+    Additional identification numbers for the provider. Only include when
+    specifically required by a payer.
+    """
+
+    provider: EligibilityCheckRequestEntityProvider | None = None
+    """
+    Information about the provider's role and taxonomy. Only include when
+    required by a payer.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["name"], self.name)
+        if self.type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["type"], self.type)
+
+        if self.npi is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["npi"], self.npi)
+
+        if self.tin is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["tin"], self.tin)
+
+        if self.ein is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["ein"], self.ein)
+
+        if self.ssn is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["ssn"], self.ssn)
+
+        if self.service_provider_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["serviceProviderNumber"], self.service_provider_number)
+
+        if self.pharmacy_processor_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["pharmacyProcessorNumber"], self.pharmacy_processor_number)
+
+        if self.address is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["address"], self.address)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["additionalInformation"], self.additional_information)
+
+        if self.provider is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["provider"], self.provider)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["name"] = _EligibilityCheckRequestProviderNameDeserializer().deserialize(de)
+
+                case 1:
+                    kwargs["type"] = EligibilityCheckRequestProviderType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["type"]))
+
+                case 2:
+                    kwargs["npi"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["npi"])
+
+                case 3:
+                    kwargs["tin"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["tin"])
+
+                case 4:
+                    kwargs["ein"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["ein"])
+
+                case 5:
+                    kwargs["ssn"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["ssn"])
+
+                case 6:
+                    kwargs["service_provider_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["serviceProviderNumber"])
+
+                case 7:
+                    kwargs["pharmacy_processor_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["pharmacyProcessorNumber"])
+
+                case 8:
+                    kwargs["address"] = EligibilityCheckRequestAddress.deserialize(de)
+
+                case 9:
+                    kwargs["additional_information"] = EligibilityCheckRequestProviderAdditionalInformation.deserialize(de)
+
+                case 10:
+                    kwargs["provider"] = EligibilityCheckRequestEntityProvider.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER, consumer=_consumer)
+        if "name" not in kwargs:
+            kwargs["name"] = EligibilityCheckRequestProviderNameUnknown(tag="")
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckRequestSubscriberAdditionalInformation:
+    """
+    Additional identification numbers for the subscriber. Use this object
+    when you need to provide an identification number other than or in
+    addition to the subscriber's member ID. For example, you may provide
+    the patient account number.
+
+    Don't include the health insurance claim number or the medicaid
+    recipient ID number here unless they are different from the member ID.
+    """
+
+    ssn: str | None = None
+    """
+    The subscriber's Social Security Number (SSN). Many commercial and
+    government payers ignore this property due to concerns about member
+    privacy. However, some Medicaid programs support alternative searches
+    using the patient's Social Security Number, instead of the member ID.
+    """
+
+    group_number: str | None = None
+    """The group number associated with the subscriber's insurance policy."""
+
+    identity_card_number: str | None = None
+    """
+    The subscriber's identity card number. Include this property when this
+    number differs from the subscriber's member ID. This is common in
+    Medicaid.
+    """
+
+    medicaid_recipient_id: str | None = None
+    """
+    The Medicaid Recipient Identification Number. You can provide this
+    number to identify the subscriber when it is the primary number the
+    payer knows a member by (such as for Medicare or Medicaid). Don't
+    supply this value unless it differs from the `memberId`.
+    """
+
+    case_number: str | None = None
+    """The case number associated with the subscriber."""
+
+    plan_number: str | None = None
+    """The plan number for the subscriber's insurance plan."""
+
+    group_or_policy_number: str | None = None
+    """The group or policy number."""
+
+    contract_number: str | None = None
+    """The contract number associated with the subscriber's insurance plan."""
+
+    patient_account_number: str | None = None
+    """The patient account number for the subscriber."""
+
+    mbi: str | None = None
+    """
+    The subscriber's Medicare Beneficiary Identifier (MBI). The 270 carries
+    it as the Health Insurance Claim (HIC) number, which CMS retired in
+    favor of the MBI. Don't include it unless it differs from the member
+    ID.
+    """
+
+    identification_card_serial_number: str | None = None
+    """
+    The identification card serial number, when it differs from the member
+    ID.
+    """
+
+    insurance_policy_number: str | None = None
+    """The subscriber's insurance policy number."""
+
+    plan_network_id: str | None = None
+    """The plan network identification number for the subscriber."""
+
+    agency_claim_number: str | None = None
+    """The agency claim number associated with the subscriber."""
+
+    medical_record_id: str | None = None
+    """The medical record identification number for the subscriber."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.ssn is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["ssn"], self.ssn)
+
+        if self.group_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["groupNumber"], self.group_number)
+
+        if self.identity_card_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["identityCardNumber"], self.identity_card_number)
+
+        if self.medicaid_recipient_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["medicaidRecipientId"], self.medicaid_recipient_id)
+
+        if self.case_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["caseNumber"], self.case_number)
+
+        if self.plan_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["planNumber"], self.plan_number)
+
+        if self.group_or_policy_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["groupOrPolicyNumber"], self.group_or_policy_number)
+
+        if self.contract_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["contractNumber"], self.contract_number)
+
+        if self.patient_account_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["patientAccountNumber"], self.patient_account_number)
+
+        if self.mbi is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["mbi"], self.mbi)
+
+        if self.identification_card_serial_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["identificationCardSerialNumber"], self.identification_card_serial_number)
+
+        if self.insurance_policy_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["insurancePolicyNumber"], self.insurance_policy_number)
+
+        if self.plan_network_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["planNetworkId"], self.plan_network_id)
+
+        if self.agency_claim_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["agencyClaimNumber"], self.agency_claim_number)
+
+        if self.medical_record_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["medicalRecordId"], self.medical_record_id)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["ssn"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["ssn"])
+
+                case 1:
+                    kwargs["group_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["groupNumber"])
+
+                case 2:
+                    kwargs["identity_card_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["identityCardNumber"])
+
+                case 3:
+                    kwargs["medicaid_recipient_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["medicaidRecipientId"])
+
+                case 4:
+                    kwargs["case_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["caseNumber"])
+
+                case 5:
+                    kwargs["plan_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["planNumber"])
+
+                case 6:
+                    kwargs["group_or_policy_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["groupOrPolicyNumber"])
+
+                case 7:
+                    kwargs["contract_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["contractNumber"])
+
+                case 8:
+                    kwargs["patient_account_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["patientAccountNumber"])
+
+                case 9:
+                    kwargs["mbi"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["mbi"])
+
+                case 10:
+                    kwargs["identification_card_serial_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["identificationCardSerialNumber"])
+
+                case 11:
+                    kwargs["insurance_policy_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["insurancePolicyNumber"])
+
+                case 12:
+                    kwargs["plan_network_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["planNetworkId"])
+
+                case 13:
+                    kwargs["agency_claim_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["agencyClaimNumber"])
+
+                case 14:
+                    kwargs["medical_record_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION.members["medicalRecordId"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckRequestSubscriberAddress:
+    """
+    The subscriber's address. When providing address information:
+
+    - `addressLine1` and `city` are **required** for standard eligibility
+      checks and MBI lookups with SSN. We also recommend including `state`
+      for member identification.
+    - When performing an [MBI lookup without
+      SSN](https://www.stedi.com/docs/healthcare/mbi-lookup) (Payer ID:
+      `MBILUNOSSN`), only `state` is required. You can omit `addressLine1`
+      and `city`.
+    """
+
+    address_line1: str | None = None
+    """
+    The first line of the address. Required for all payers except payer ID
+    `MBILUNOSSN`.
+    """
+
+    address_line2: str | None = None
+    """The second line of the address."""
+
+    city: str | None = None
+    """The city. Required for all payers except payer ID `MBILUNOSSN`."""
+
+    state: str | None = None
+    """
+    The US state or Canadian province code. Required for payer ID
+    `MBILUNOSSN`.
+    """
+
+    postal_code: str | None = None
+    """
+    The United States or Canadian postal code, excluding punctuation and
+    blanks.
+    """
+
+    country: str | None = None
+    """
+    The two-letter country code from [Part 1 of ISO
+    3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+    """
+
+    country_subdivision: str | None = None
+    """
+    The country subdivision code from [Part 2 of ISO
+    3166](https://en.wikipedia.org/wiki/ISO_3166-2).
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.address_line1 is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS.members["addressLine1"], self.address_line1)
+
+        if self.address_line2 is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS.members["addressLine2"], self.address_line2)
+
+        if self.city is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS.members["city"], self.city)
+
+        if self.state is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS.members["state"], self.state)
+
+        if self.postal_code is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS.members["postalCode"], self.postal_code)
+
+        if self.country is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS.members["country"], self.country)
+
+        if self.country_subdivision is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS.members["countrySubdivision"], self.country_subdivision)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["address_line1"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS.members["addressLine1"])
+
+                case 1:
+                    kwargs["address_line2"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS.members["addressLine2"])
+
+                case 2:
+                    kwargs["city"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS.members["city"])
+
+                case 3:
+                    kwargs["state"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS.members["state"])
+
+                case 4:
+                    kwargs["postal_code"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS.members["postalCode"])
+
+                case 5:
+                    kwargs["country"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS.members["country"])
+
+                case 6:
+                    kwargs["country_subdivision"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS.members["countrySubdivision"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckRequestSubscriberPersonName:
+    """The name of a subscriber who is a person."""
+
+    first_name: str | None = None
+    """The subscriber's first name."""
+
+    last_name: str | None = None
+    """
+    The subscriber's last name. **Don't** include the subscriber's name
+    suffix, such as Jr. or III. Use the designated `suffix` property
+    instead.
+    """
+
+    middle_name: str | None = None
+    """The subscriber's middle name or middle initial."""
+
+    suffix: str | None = None
+    """
+    The subscriber's name suffix, such as Jr. or III. Only include the
+    subscriber's personal name suffix - **don't** include professional or
+    academic titles, such as M.D. or MBA.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_PERSON_NAME, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.first_name is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_PERSON_NAME.members["firstName"], self.first_name)
+
+        if self.last_name is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_PERSON_NAME.members["lastName"], self.last_name)
+
+        if self.middle_name is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_PERSON_NAME.members["middleName"], self.middle_name)
+
+        if self.suffix is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_PERSON_NAME.members["suffix"], self.suffix)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["first_name"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_PERSON_NAME.members["firstName"])
+
+                case 1:
+                    kwargs["last_name"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_PERSON_NAME.members["lastName"])
+
+                case 2:
+                    kwargs["middle_name"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_PERSON_NAME.members["middleName"])
+
+                case 3:
+                    kwargs["suffix"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_PERSON_NAME.members["suffix"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_PERSON_NAME, consumer=_consumer)
+        return kwargs
+
+@dataclass
+class EligibilityCheckRequestSubscriberNamePerson:
+    """The name of a subscriber who is a person."""
+
+    value: EligibilityCheckRequestSubscriberPersonName
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_NAME, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_NAME.members["person"], self.value)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=EligibilityCheckRequestSubscriberPersonName.deserialize(deserializer))
+
+@dataclass
+class EligibilityCheckRequestSubscriberNameOrganization:
+    """An organization's business name."""
+
+    value: str
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_NAME, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_NAME.members["organization"], self.value)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=deserializer.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_NAME.members["organization"]))
+
+@dataclass
+class EligibilityCheckRequestSubscriberNameUnknown:
+    """
+    Represents an unknown variant.
+
+    If you receive this value, you will need to update your library to receive the
+    parsed value.
+
+    This value may not be deliberately sent.
+    """
+
+    tag: str
+
+    def serialize(self, serializer: ShapeSerializer):
+        raise SerializationError("Unknown union variants may not be serialized.")
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        raise SerializationError("Unknown union variants may not be serialized.")
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        raise NotImplementedError()
+
+EligibilityCheckRequestSubscriberName = Union[EligibilityCheckRequestSubscriberNamePerson | EligibilityCheckRequestSubscriberNameOrganization | EligibilityCheckRequestSubscriberNameUnknown]
+"""The subscriber's name, as either a person or an organization."""
+class _EligibilityCheckRequestSubscriberNameDeserializer:
+    _result: EligibilityCheckRequestSubscriberName | None = None
+
+    def deserialize(self, deserializer: ShapeDeserializer) -> EligibilityCheckRequestSubscriberName:
+        self._result = None
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_NAME, self._consumer)
+
+        if self._result is None:
+            raise SerializationError("Unions must have exactly one value, but found none.")
+
+        return self._result
+
+    def _consumer(self, schema: Schema, de: ShapeDeserializer) -> None:
+        match schema.expect_member_index():
+            case 0:
+                self._set_result(EligibilityCheckRequestSubscriberNamePerson.deserialize(de))
+
+            case 1:
+                self._set_result(EligibilityCheckRequestSubscriberNameOrganization.deserialize(de))
+
+            case _:
+                self._set_result(EligibilityCheckRequestSubscriberNameUnknown(tag=schema.expect_member_name()))
+
+    def _set_result(self, value: EligibilityCheckRequestSubscriberName) -> None:
+        if self._result is not None:
+            raise SerializationError("Unions must have exactly one value, but found more than one.")
+        self._result = value
+
+@dataclass(kw_only=True)
+class EligibilityCheckRequestSubscriber:
+    """
+    The primary policyholder for the insurance plan *or* a dependent with a
+    unique member ID. If a dependent has a unique member ID, include their
+    information here and leave `dependent` empty.
+
+    - At a minimum, our API requires that you supply at least one of these
+      fields in the request: `memberId`, `dateOfBirth`, or
+      `name.person.lastName`. However, each payer has different
+      requirements, so you should supply the fields necessary for each payer
+      to identify the subscriber in their system.
+    - When you provide all four of `memberId`, `dateOfBirth`,
+      `name.person.firstName`, and `name.person.lastName`, payers must
+      return a response if the member is in their database. Some payers may
+      be able to search with less information, but this varies by payer.
+    - We recommend always including the patient's member ID when possible.
+    - Enter the patient's name exactly as written on their insurance card,
+      if available, including any special or punctuation characters such as
+      apostrophes, hyphens (dashes), or spaces. Visit [patient
+      names](https://www.stedi.com/docs/healthcare/send-eligibility-checks#patient-names)
+      for all best practices to avoid unnecessary failures.
+    """
+
+    name: EligibilityCheckRequestSubscriberName | None = None
+    """The subscriber's name, as either a person or an organization."""
+
+    member_id: str | None = None
+    """The member ID for the subscriber's insurance policy."""
+
+    date_of_birth: str | None = None
+    """The subscriber's date of birth."""
+
+    gender: EligibilityCheckRequestPatientGender | None = None
+    """Code indicating the subscriber's gender."""
+
+    additional_information: EligibilityCheckRequestSubscriberAdditionalInformation | None = None
+    """
+    Additional identification numbers for the subscriber. Use this object
+    when you need to provide an identification number other than or in
+    addition to the subscriber's member ID. For example, you may provide
+    the patient account number.
+
+    Don't include the health insurance claim number or the medicaid
+    recipient ID number here unless they are different from the member ID.
+    """
+
+    address: EligibilityCheckRequestSubscriberAddress | None = None
+    """The subscriber's address."""
+
+    provider: EligibilityCheckRequestEntityProvider | None = None
+    """
+    Information about a provider associated with the subscriber who isn't
+    the entity requesting the eligibility check, such as a referring
+    provider. The requesting provider is specified in the request's root
+    `provider`.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.name is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER.members["name"], self.name)
+
+        if self.member_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER.members["memberId"], self.member_id)
+
+        if self.date_of_birth is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER.members["dateOfBirth"], self.date_of_birth)
+
+        if self.gender is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER.members["gender"], self.gender)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER.members["additionalInformation"], self.additional_information)
+
+        if self.address is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER.members["address"], self.address)
+
+        if self.provider is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER.members["provider"], self.provider)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["name"] = _EligibilityCheckRequestSubscriberNameDeserializer().deserialize(de)
+
+                case 1:
+                    kwargs["member_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER.members["memberId"])
+
+                case 2:
+                    kwargs["date_of_birth"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER.members["dateOfBirth"])
+
+                case 3:
+                    kwargs["gender"] = EligibilityCheckRequestPatientGender(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER.members["gender"]))
+
+                case 4:
+                    kwargs["additional_information"] = EligibilityCheckRequestSubscriberAdditionalInformation.deserialize(de)
+
+                case 5:
+                    kwargs["address"] = EligibilityCheckRequestSubscriberAddress.deserialize(de)
+
+                case 6:
+                    kwargs["provider"] = EligibilityCheckRequestEntityProvider.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class CreateEligibilityCheckInput:
+    """The eligibility check request payload."""
+
+    payer_id: str | None = None
+    """
+    The payer ID. Visit the [Payer
+    Network](https://www.stedi.com/healthcare/network) for a complete list.
+
+    - You can send requests using the primary payer ID, the Stedi payer ID,
+      or any alias listed in the payer record.
+    - You must include leading `0` characters - payer IDs are alphanumeric
+      strings and must be treated as complete strings, not integers. For
+      example, use `00540` for SISCO, not `540`.
+    """
+
+    payer_name: str | None = None
+    """The payer's name, such as Cigna or Aetna."""
+
+    provider: EligibilityCheckRequestProvider | None = None
+    """
+    Information about the entity requesting the eligibility check. This may
+    be an individual practitioner, a medical group, a hospital, or another
+    type of healthcare provider.
+
+    - You must provide the provider's name as either a person (with
+      `name.person`) or an organization (with `name.organization`).
+    - You must also provide an identifier - this is typically the
+      provider's [National Provider
+      Identifier](https://www.stedi.com/docs/healthcare/national-provider-identifier)
+      (`npi`). If the provider doesn't have an NPI, you can supply an
+      alternative, such as their `tin` or `ssn`.
+    - Don't include additional properties, such as `tin` or `address`,
+      unless they are specifically required or suggested by the payer.
+    """
+
+    subscriber: EligibilityCheckRequestSubscriber | None = None
+    """
+    The primary policyholder for the insurance plan *or* a dependent with a
+    unique member ID. If a dependent has a unique member ID, include their
+    information here and leave `dependent` empty.
+
+    - At a minimum, our API requires that you supply at least one of these
+      fields in the request: `memberId`, `dateOfBirth`, or
+      `name.person.lastName`. However, each payer has different
+      requirements, so you should supply the fields necessary for each payer
+      to identify the subscriber in their system.
+    - When you provide all four of `memberId`, `dateOfBirth`,
+      `name.person.firstName`, and `name.person.lastName`, payers must
+      return a response if the member is in their database. Some payers may
+      be able to search with less information, but this varies by payer.
+    - We recommend always including the patient's member ID when possible.
+    - Enter the patient's name exactly as written on their insurance card,
+      if available, including any special or punctuation characters such as
+      apostrophes, hyphens (dashes), or spaces. Visit [patient
+      names](https://www.stedi.com/docs/healthcare/send-eligibility-checks#patient-names)
+      for all best practices to avoid unnecessary failures.
+    """
+
+    dependent: EligibilityCheckRequestDependent | None = None
+    """
+    A dependent for which you want to retrieve benefits information.
+
+    - You can only submit one dependent per eligibility check.
+    - Only include the patient's information here when they are listed as a
+      dependent on the subscriber's insurance plan AND the payer cannot
+      uniquely identify them through information outside the subscriber's
+      policy. For example, if the dependent has their own member ID number,
+      you should identify them in the `subscriber` object instead. This
+      includes member IDs that differ only by a suffix, such as `01`,
+      because the patient can still be uniquely identified.
+    - Most Medicaid plans don't support dependents, with a [few
+      exceptions](https://www.stedi.com/docs/healthcare/send-eligibility-checks#medicaid-dependents).
+      Sending this information to payers that don't support dependents will
+      either cause an error, or the payer may ignore the information and
+      return results for the subscriber instead.
+    - Each payer has different requirements, so you should supply the fields
+      necessary for each payer to identify the dependent in their system.
+      However, we **strongly recommend** including the dependent's date of
+      birth in the request when available because many payers return errors
+      without it.
+    - Enter the patient's name exactly as written on their insurance card,
+      if available, including any special or punctuation characters such as
+      apostrophes, hyphens (dashes), or spaces. Visit [patient
+      names](https://www.stedi.com/docs/healthcare/send-eligibility-checks#patient-names)
+      for all best practices to avoid unnecessary failures.
+    """
+
+    encounter: EligibilityCheckRequestEncounter | None = None
+    """
+    Details about the eligibility or benefit information you are requesting
+    for the patient.
+
+    - You can optionally include service type codes (STCs) or procedure
+      codes to request benefits for specific services.
+    - You can specify either a single service date or a date range using
+      `dates.service`. The payer defaults to using the current date in their
+      timezone if you don't include one.
+    - When checking eligibility for today, omit the service date to ensure
+      consistent behavior across payers.
+    - We recommend submitting dates up to 12 months in the past or up to the
+      end of the current month. Payers aren't required to support dates
+      outside these ranges. However, some payers such as the Centers for
+      Medicare and Medicaid Services (CMS) do support requests for dates
+      further in the future - especially the next calendar month. Check the
+      payer's documentation to determine their specific behavior.
+    """
+
+    external_patient_id: str | None = None
+    """
+    A unique identifier for the patient that Stedi uses to identify and
+    correlate historical eligibility checks for the same individual. We
+    recommend including this value in all requests.
+    """
+
+    eligibility_search_id: str | None = None
+    """
+    An identifier that allows Stedi to group eligibility checks for the same
+    patient into a unified record in the Stedi portal called an [eligibility
+    search](https://www.stedi.com/docs/healthcare/eligibility-views).
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_INPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.payer_id is not None:
+            serializer.write_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_INPUT.members["payerId"], self.payer_id)
+
+        if self.payer_name is not None:
+            serializer.write_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_INPUT.members["payerName"], self.payer_name)
+
+        if self.provider is not None:
+            serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_INPUT.members["provider"], self.provider)
+
+        if self.subscriber is not None:
+            serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_INPUT.members["subscriber"], self.subscriber)
+
+        if self.dependent is not None:
+            serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_INPUT.members["dependent"], self.dependent)
+
+        if self.encounter is not None:
+            serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_INPUT.members["encounter"], self.encounter)
+
+        if self.external_patient_id is not None:
+            serializer.write_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_INPUT.members["externalPatientId"], self.external_patient_id)
+
+        if self.eligibility_search_id is not None:
+            serializer.write_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_INPUT.members["eligibilitySearchId"], self.eligibility_search_id)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["payer_id"] = de.read_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_INPUT.members["payerId"])
+
+                case 1:
+                    kwargs["payer_name"] = de.read_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_INPUT.members["payerName"])
+
+                case 2:
+                    kwargs["provider"] = EligibilityCheckRequestProvider.deserialize(de)
+
+                case 3:
+                    kwargs["subscriber"] = EligibilityCheckRequestSubscriber.deserialize(de)
+
+                case 4:
+                    kwargs["dependent"] = EligibilityCheckRequestDependent.deserialize(de)
+
+                case 5:
+                    kwargs["encounter"] = EligibilityCheckRequestEncounter.deserialize(de)
+
+                case 6:
+                    kwargs["external_patient_id"] = de.read_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_INPUT.members["externalPatientId"])
+
+                case 7:
+                    kwargs["eligibility_search_id"] = de.read_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_INPUT.members["eligibilitySearchId"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_INPUT, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckAdditionalInformationWithName:
+    """Additional information with description."""
+
+    number: str
+    """The identification number."""
+
+    name: str | None = None
+    """The name or description associated with `number`."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ADDITIONAL_INFORMATION_WITH_NAME, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ADDITIONAL_INFORMATION_WITH_NAME.members["number"], self.number)
+        if self.name is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ADDITIONAL_INFORMATION_WITH_NAME.members["name"], self.name)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ADDITIONAL_INFORMATION_WITH_NAME.members["number"])
+
+                case 1:
+                    kwargs["name"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ADDITIONAL_INFORMATION_WITH_NAME.members["name"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_ADDITIONAL_INFORMATION_WITH_NAME, consumer=_consumer)
+        if "number" not in kwargs:
+            kwargs["number"] = ""
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckDependentAdditionalInformation:
+    """Additional identifying information about the dependent."""
+
+    plan: EligibilityCheckAdditionalInformationWithName | None = None
+    """The plan number and plan description."""
+
+    group: EligibilityCheckAdditionalInformationWithName | None = None
+    """The group number and group description."""
+
+    plan_network: EligibilityCheckAdditionalInformationWithName | None = None
+    """
+    The plan network identification number and the plan, group, or plan
+    network name.
+    """
+
+    group_or_policy_number: str | None = None
+    """The group or policy number."""
+
+    member_id: str | None = None
+    """
+    The member identification number - only used when checking eligibility
+    with a Workers' Compensation or Property and Casualty insurer.
+    """
+
+    family_unit_number: str | None = None
+    """The family unit number."""
+
+    class_of_contract_code: str | None = None
+    """
+    The class of contract code - used to identify the applicable class of
+    contract for claims processing.
+    """
+
+    contract_number: str | None = None
+    """
+    The contract number of a contract between the payer and the provider
+    that requested the eligibility check.
+    """
+
+    medical_record_id: str | None = None
+    """The medical record identification number."""
+
+    patient_account_number: str | None = None
+    """
+    The patient account number. If you included this value in the original
+    eligibility request, the payer will return the same value here in the
+    response.
+    """
+
+    mbi: str | None = None
+    """
+    The patient's Medicare Beneficiary Identifier (MBI). If you receive an
+    MBI, we recommend sending a follow-up eligibility check to CMS (payer
+    ID: CMS) for additional benefits data. Visit [Medicare Beneficiary
+    Identifier
+    documentation](https://www.cms.gov/training-education/partner-outreach-resources/new-medicare-card/medical-beneficiary-identifiers-mbis)
+    for more information about the MBI format. This most commonly occurs
+    with patients who are covered by both Medicare and Medicaid.
+    """
+
+    identification_card_serial_number: str | None = None
+    """
+    Used when the identification card has a number in addition to the member
+    ID.
+    """
+
+    identity_card_number: str | None = None
+    """
+    The identity card number. Present when this number differs from the
+    member ID.
+    """
+
+    issue_number: str | None = None
+    """The issue number."""
+
+    insurance_policy_number: str | None = None
+    """The insurance policy number."""
+
+    medicaid_recipient_id: str | None = None
+    """The Medicaid recipient identification number."""
+
+    prior_identifier_number: str | None = None
+    """The prior identifier number."""
+
+    ssn: str | None = None
+    """The patient's Social Security Number (SSN)."""
+
+    agency_claim_number: str | None = None
+    """
+    The agency claim number, only used when the information source is a
+    Property and Casualty payer.
+    """
+
+    eligibility_category: str | None = None
+    """The eligibility category for the dependent."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.plan is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["plan"], self.plan)
+
+        if self.group is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["group"], self.group)
+
+        if self.plan_network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["planNetwork"], self.plan_network)
+
+        if self.group_or_policy_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["groupOrPolicyNumber"], self.group_or_policy_number)
+
+        if self.member_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["memberId"], self.member_id)
+
+        if self.family_unit_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["familyUnitNumber"], self.family_unit_number)
+
+        if self.class_of_contract_code is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["classOfContractCode"], self.class_of_contract_code)
+
+        if self.contract_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["contractNumber"], self.contract_number)
+
+        if self.medical_record_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["medicalRecordId"], self.medical_record_id)
+
+        if self.patient_account_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["patientAccountNumber"], self.patient_account_number)
+
+        if self.mbi is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["mbi"], self.mbi)
+
+        if self.identification_card_serial_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["identificationCardSerialNumber"], self.identification_card_serial_number)
+
+        if self.identity_card_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["identityCardNumber"], self.identity_card_number)
+
+        if self.issue_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["issueNumber"], self.issue_number)
+
+        if self.insurance_policy_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["insurancePolicyNumber"], self.insurance_policy_number)
+
+        if self.medicaid_recipient_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["medicaidRecipientId"], self.medicaid_recipient_id)
+
+        if self.prior_identifier_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["priorIdentifierNumber"], self.prior_identifier_number)
+
+        if self.ssn is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["ssn"], self.ssn)
+
+        if self.agency_claim_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["agencyClaimNumber"], self.agency_claim_number)
+
+        if self.eligibility_category is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["eligibilityCategory"], self.eligibility_category)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["plan"] = EligibilityCheckAdditionalInformationWithName.deserialize(de)
+
+                case 1:
+                    kwargs["group"] = EligibilityCheckAdditionalInformationWithName.deserialize(de)
+
+                case 2:
+                    kwargs["plan_network"] = EligibilityCheckAdditionalInformationWithName.deserialize(de)
+
+                case 3:
+                    kwargs["group_or_policy_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["groupOrPolicyNumber"])
+
+                case 4:
+                    kwargs["member_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["memberId"])
+
+                case 5:
+                    kwargs["family_unit_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["familyUnitNumber"])
+
+                case 6:
+                    kwargs["class_of_contract_code"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["classOfContractCode"])
+
+                case 7:
+                    kwargs["contract_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["contractNumber"])
+
+                case 8:
+                    kwargs["medical_record_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["medicalRecordId"])
+
+                case 9:
+                    kwargs["patient_account_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["patientAccountNumber"])
+
+                case 10:
+                    kwargs["mbi"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["mbi"])
+
+                case 11:
+                    kwargs["identification_card_serial_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["identificationCardSerialNumber"])
+
+                case 12:
+                    kwargs["identity_card_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["identityCardNumber"])
+
+                case 13:
+                    kwargs["issue_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["issueNumber"])
+
+                case 14:
+                    kwargs["insurance_policy_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["insurancePolicyNumber"])
+
+                case 15:
+                    kwargs["medicaid_recipient_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["medicaidRecipientId"])
+
+                case 16:
+                    kwargs["prior_identifier_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["priorIdentifierNumber"])
+
+                case 17:
+                    kwargs["ssn"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["ssn"])
+
+                case 18:
+                    kwargs["agency_claim_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["agencyClaimNumber"])
+
+                case 19:
+                    kwargs["eligibility_category"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION.members["eligibilityCategory"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckAddress:
+    """The address of the entity."""
+
+    address_line1: str | None = None
+    """The first line of the address."""
+
+    address_line2: str | None = None
+    """The second line of the address."""
+
+    city: str | None = None
+    """The city."""
+
+    state: str | None = None
+    """
+    The US state or Canadian province code with unknown option. For example,
+    `TN` for Tennessee or `NB` for New Brunswick.
+    """
+
+    postal_code: str | None = None
+    """
+    The United States or Canadian postal code, excluding punctuation and
+    blanks.
+    """
+
+    country: str | None = None
+    """
+    The two-letter country code from [Part 1 of ISO
+    3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+    """
+
+    country_subdivision: str | None = None
+    """
+    The country subdivision code from [Part 2 of ISO
+    3166](https://en.wikipedia.org/wiki/ISO_3166-2).
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ADDRESS, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.address_line1 is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ADDRESS.members["addressLine1"], self.address_line1)
+
+        if self.address_line2 is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ADDRESS.members["addressLine2"], self.address_line2)
+
+        if self.city is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ADDRESS.members["city"], self.city)
+
+        if self.state is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ADDRESS.members["state"], self.state)
+
+        if self.postal_code is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ADDRESS.members["postalCode"], self.postal_code)
+
+        if self.country is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ADDRESS.members["country"], self.country)
+
+        if self.country_subdivision is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ADDRESS.members["countrySubdivision"], self.country_subdivision)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["address_line1"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ADDRESS.members["addressLine1"])
+
+                case 1:
+                    kwargs["address_line2"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ADDRESS.members["addressLine2"])
+
+                case 2:
+                    kwargs["city"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ADDRESS.members["city"])
+
+                case 3:
+                    kwargs["state"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ADDRESS.members["state"])
+
+                case 4:
+                    kwargs["postal_code"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ADDRESS.members["postalCode"])
+
+                case 5:
+                    kwargs["country"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ADDRESS.members["country"])
+
+                case 6:
+                    kwargs["country_subdivision"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ADDRESS.members["countrySubdivision"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_ADDRESS, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckPatientAttributeDateRanges:
+    """
+    Contains the dates associated with patient attributes, as ISO 8601 date
+    ranges. These provide temporal context for patient-specific data and
+    eligibility periods.
+    """
+
+    discharge: EligibilityCheckDateRange | None = None
+    """The discharge date."""
+
+    issue: EligibilityCheckDateRange | None = None
+    """The issue date."""
+
+    effective_date_of_change: EligibilityCheckDateRange | None = None
+    """The effective date of change."""
+
+    plan: EligibilityCheckDateRange | None = None
+    """Plan effective dates."""
+
+    eligibility: EligibilityCheckDateRange | None = None
+    """Plan eligibility dates."""
+
+    added: EligibilityCheckDateRange | None = None
+    """
+    Added date. Payers may return this information in the case of
+    retroactive eligibility.
+    """
+
+    cobra: EligibilityCheckDateRange | None = None
+    """Consolidated Omnibus Budget Reconciliation Act (COBRA) date."""
+
+    premium_paid_to_date: EligibilityCheckDateRange | None = None
+    """Premium paid to date."""
+
+    enrollment: EligibilityCheckDateRange | None = None
+    """The enrollment date."""
+
+    admission: EligibilityCheckDateRange | None = None
+    """The admission date or dates."""
+
+    date_of_death: EligibilityCheckDateRange | None = None
+    """The date of death."""
+
+    certification: EligibilityCheckDateRange | None = None
+    """The certification date."""
+
+    service: EligibilityCheckDateRange | None = None
+    """The service date or dates."""
+
+    policy: EligibilityCheckDateRange | None = None
+    """The policy date."""
+
+    date_of_last_update: EligibilityCheckDateRange | None = None
+    """The date when the patient information was last updated."""
+
+    status: EligibilityCheckDateRange | None = None
+    """The status date."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.discharge is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES.members["discharge"], self.discharge)
+
+        if self.issue is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES.members["issue"], self.issue)
+
+        if self.effective_date_of_change is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES.members["effectiveDateOfChange"], self.effective_date_of_change)
+
+        if self.plan is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES.members["plan"], self.plan)
+
+        if self.eligibility is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES.members["eligibility"], self.eligibility)
+
+        if self.added is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES.members["added"], self.added)
+
+        if self.cobra is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES.members["cobra"], self.cobra)
+
+        if self.premium_paid_to_date is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES.members["premiumPaidToDate"], self.premium_paid_to_date)
+
+        if self.enrollment is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES.members["enrollment"], self.enrollment)
+
+        if self.admission is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES.members["admission"], self.admission)
+
+        if self.date_of_death is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES.members["dateOfDeath"], self.date_of_death)
+
+        if self.certification is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES.members["certification"], self.certification)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES.members["service"], self.service)
+
+        if self.policy is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES.members["policy"], self.policy)
+
+        if self.date_of_last_update is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES.members["dateOfLastUpdate"], self.date_of_last_update)
+
+        if self.status is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES.members["status"], self.status)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["discharge"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 1:
+                    kwargs["issue"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 2:
+                    kwargs["effective_date_of_change"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 3:
+                    kwargs["plan"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 4:
+                    kwargs["eligibility"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 5:
+                    kwargs["added"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 6:
+                    kwargs["cobra"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 7:
+                    kwargs["premium_paid_to_date"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 8:
+                    kwargs["enrollment"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 9:
+                    kwargs["admission"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 10:
+                    kwargs["date_of_death"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 11:
+                    kwargs["certification"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 12:
+                    kwargs["service"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 13:
+                    kwargs["policy"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 14:
+                    kwargs["date_of_last_update"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 15:
+                    kwargs["status"] = EligibilityCheckDateRange.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES, consumer=_consumer)
+        return kwargs
+
+class EligibilityCheckResponsePatientGender(UnknownEnumMixin, StrEnum):
+    """Code indicating the patient's gender.    """
+    FEMALE = "FEMALE"
+    """Female    """
+    MALE = "MALE"
+    """Male    """
+    REPORTED_UNKNOWN = "UNKNOWN"
+    """Unknown. The payer stated that the patient's gender is unknown.    """
+
+class EligibilityCheckMaintenanceIndicator(UnknownEnumMixin, StrEnum):
+    """
+    Indicates whether the payer signaled that the patient's identifying
+    information differs from what you submitted.
+    """
+    NONE = "NONE"
+    """
+    The payer didn't signal a change to the patient's identifying
+    information.
+    """
+    PAYER_INDICATED = "PAYER_INDICATED"
+    """
+    The payer indicated that the patient's identifying information differs
+    from the information you submitted. The values returned in this response
+    reflect the payer's records.
+    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckMaintenance:
+    """
+    Information indicating whether the payer signaled that the patient's
+    identifying information differs from what you submitted.
+    """
+
+    indicator: EligibilityCheckMaintenanceIndicator | None = None
+    """
+    Whether the payer signaled that the patient's identifying information
+    differs from what you submitted.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_MAINTENANCE, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_MAINTENANCE.members["indicator"], self.indicator)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["indicator"] = EligibilityCheckMaintenanceIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_MAINTENANCE.members["indicator"]))
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_MAINTENANCE, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckPersonName:
+    """A person's name. Maps to elements NM103 through NM107."""
+
+    first_name: str | None = None
+    """The person's first name."""
+
+    last_name: str | None = None
+    """The person's last name."""
+
+    middle_name: str | None = None
+    """The person's middle name or initial."""
+
+    suffix: str | None = None
+    """The person's name suffix, such as Jr. or III."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PERSON_NAME, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.first_name is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PERSON_NAME.members["firstName"], self.first_name)
+
+        if self.last_name is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PERSON_NAME.members["lastName"], self.last_name)
+
+        if self.middle_name is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PERSON_NAME.members["middleName"], self.middle_name)
+
+        if self.suffix is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PERSON_NAME.members["suffix"], self.suffix)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["first_name"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PERSON_NAME.members["firstName"])
+
+                case 1:
+                    kwargs["last_name"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PERSON_NAME.members["lastName"])
+
+                case 2:
+                    kwargs["middle_name"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PERSON_NAME.members["middleName"])
+
+                case 3:
+                    kwargs["suffix"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PERSON_NAME.members["suffix"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_PERSON_NAME, consumer=_consumer)
+        return kwargs
+
+    @classmethod
+    def _smithy_default(cls) -> Self:
+        return cls()
+
+@dataclass(kw_only=True)
+class EligibilityCheckQualifiedPersonName:
+    """A person's name."""
+
+    person: EligibilityCheckPersonName
+    """The person's name."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_QUALIFIED_PERSON_NAME, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_QUALIFIED_PERSON_NAME.members["person"], self.person)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["person"] = EligibilityCheckPersonName.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_QUALIFIED_PERSON_NAME, consumer=_consumer)
+        if "person" not in kwargs:
+            kwargs["person"] = EligibilityCheckPersonName._smithy_default()
+        return kwargs
+
+    @classmethod
+    def _smithy_default(cls) -> Self:
+        return cls(person=EligibilityCheckPersonName._smithy_default())
+
+class EligibilityCheckEntityProviderCode(UnknownEnumMixin, StrEnum):
+    """
+    A code indicating the type of provider. Visit [Eligibility code
+    lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#provider-codes)
+    for a complete list.
+    """
+    ADMITTING = "ADMITTING"
+    """Admitting    """
+    ATTENDING = "ATTENDING"
+    """Attending    """
+    BILLING = "BILLING"
+    """Billing    """
+    CONSULTING = "CONSULTING"
+    """Consulting    """
+    COVERING = "COVERING"
+    """Covering    """
+    HOSPITAL = "HOSPITAL"
+    """Hospital    """
+    HOME_HEALTH_CARE = "HOME_HEALTH_CARE"
+    """Home Health Care    """
+    LABORATORY = "LABORATORY"
+    """Laboratory    """
+    OTHER_PHYSICIAN = "OTHER_PHYSICIAN"
+    """Other Physician    """
+    PHARMACIST = "PHARMACIST"
+    """Pharmacist    """
+    PHARMACY = "PHARMACY"
+    """Pharmacy    """
+    PRIMARY_CARE_PHYSICIAN = "PRIMARY_CARE_PHYSICIAN"
+    """Primary Care Physician    """
+    PERFORMING = "PERFORMING"
+    """Performing    """
+    RURAL_HEALTH_CLINIC = "RURAL_HEALTH_CLINIC"
+    """Rural Health Clinic    """
+    REFERRING = "REFERRING"
+    """Referring    """
+    SUBMITTING = "SUBMITTING"
+    """Submitting    """
+    SKILLED_NURSING_FACILITY = "SKILLED_NURSING_FACILITY"
+    """Skilled Nursing Facility    """
+    SUPERVISING = "SUPERVISING"
+    """Supervising    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckEntityProvider:
+    """Information about a provider associated with the related entity."""
+
+    code: EligibilityCheckEntityProviderCode | None = None
+    """
+    A code that communicates the entity's role in the type of benefits
+    information in the response. Visit [Eligibility code
+    lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#provider-codes)
+    for a complete list.
+    """
+
+    reference: str | None = None
+    """The provider's taxonomy code."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ENTITY_PROVIDER, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.code is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ENTITY_PROVIDER.members["code"], self.code)
+
+        if self.reference is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ENTITY_PROVIDER.members["reference"], self.reference)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["code"] = EligibilityCheckEntityProviderCode(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ENTITY_PROVIDER.members["code"]))
+
+                case 1:
+                    kwargs["reference"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ENTITY_PROVIDER.members["reference"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_ENTITY_PROVIDER, consumer=_consumer)
+        return kwargs
+
+class EligibilityCheckDependentRelationship(UnknownEnumMixin, StrEnum):
+    """The dependent's relationship to the subscriber.    """
+    SPOUSE = "SPOUSE"
+    """Spouse    """
+    CHILD = "CHILD"
+    """Child    """
+    EMPLOYEE = "EMPLOYEE"
+    """Employee    """
+    REPORTED_UNKNOWN = "UNKNOWN"
+    """
+    Unknown. The payer reported that relationship information is
+    unavailable.
+    """
+    ORGAN_DONOR = "ORGAN_DONOR"
+    """Organ Donor    """
+    CADAVER_DONOR = "CADAVER_DONOR"
+    """Cadaver Donor    """
+    LIFE_PARTNER = "LIFE_PARTNER"
+    """Life Partner    """
+    OTHER_RELATIONSHIP = "OTHER_RELATIONSHIP"
+    """Other Relationship    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckDependent:
+    """
+    Information about the dependent from the eligibility check request. Note
+    that the payer may return the dependent in the subscriber object
+    instead. When present, this object will always include the dependent's
+    name for identification, but many payers also include the date of birth
+    and other identifying information.
+    """
+
+    name: EligibilityCheckQualifiedPersonName
+    """The dependent's name."""
+
+    address: EligibilityCheckAddress | None = None
+    """The address of the entity, such as a provider or organization."""
+
+    provider: EligibilityCheckEntityProvider | None = None
+    """Information about a provider associated with this entity."""
+
+    dates: EligibilityCheckPatientAttributeDateRanges | None = None
+    """Dates associated with patient attributes, as ISO 8601 date ranges."""
+
+    date_of_birth: str | None = None
+    """
+    The patient's date of birth as an ISO 8601 `YYYY-MM-DD` string. For
+    example, `1985-03-15` represents March 15, 1985.
+    """
+
+    gender: EligibilityCheckResponsePatientGender | None = None
+    """Code indicating the patient's gender."""
+
+    birth_sequence_number: int | None = None
+    """
+    The number assigned to each family member born with the same birth date,
+    such as twins or triplets. Indicates the birth order when there are
+    multiple births associated with the provided birth date.
+    """
+
+    maintenance: EligibilityCheckMaintenance | None = None
+    """
+    Maintenance information indicating whether the payer signaled that the
+    patient's identifying information differs from what you submitted.
+    """
+
+    relation_to_subscriber: EligibilityCheckDependentRelationship | None = None
+    """The dependent's relationship to the subscriber."""
+
+    additional_information: EligibilityCheckDependentAdditionalInformation | None = None
+    """Additional identifying information for the dependent."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.address is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT.members["address"], self.address)
+
+        if self.provider is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT.members["provider"], self.provider)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT.members["dates"], self.dates)
+
+        if self.date_of_birth is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT.members["dateOfBirth"], self.date_of_birth)
+
+        if self.gender is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT.members["gender"], self.gender)
+
+        if self.birth_sequence_number is not None:
+            serializer.write_long(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT.members["birthSequenceNumber"], self.birth_sequence_number)
+
+        if self.maintenance is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT.members["maintenance"], self.maintenance)
+
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT.members["name"], self.name)
+        if self.relation_to_subscriber is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT.members["relationToSubscriber"], self.relation_to_subscriber)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT.members["additionalInformation"], self.additional_information)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["address"] = EligibilityCheckAddress.deserialize(de)
+
+                case 1:
+                    kwargs["provider"] = EligibilityCheckEntityProvider.deserialize(de)
+
+                case 2:
+                    kwargs["dates"] = EligibilityCheckPatientAttributeDateRanges.deserialize(de)
+
+                case 3:
+                    kwargs["date_of_birth"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT.members["dateOfBirth"])
+
+                case 4:
+                    kwargs["gender"] = EligibilityCheckResponsePatientGender(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT.members["gender"]))
+
+                case 5:
+                    kwargs["birth_sequence_number"] = de.read_long(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT.members["birthSequenceNumber"])
+
+                case 6:
+                    kwargs["maintenance"] = EligibilityCheckMaintenance.deserialize(de)
+
+                case 7:
+                    kwargs["name"] = EligibilityCheckQualifiedPersonName.deserialize(de)
+
+                case 8:
+                    kwargs["relation_to_subscriber"] = EligibilityCheckDependentRelationship(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT.members["relationToSubscriber"]))
+
+                case 9:
+                    kwargs["additional_information"] = EligibilityCheckDependentAdditionalInformation.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_DEPENDENT, consumer=_consumer)
+        if "name" not in kwargs:
+            kwargs["name"] = EligibilityCheckQualifiedPersonName._smithy_default()
+        return kwargs
+
+class EligibilityCheckResponseErrorLocation(UnknownEnumMixin, StrEnum):
+    """The location in the 271 response where an error occurred.    """
+    ENVELOPE = "ENVELOPE"
+    """Error from the 2000A loop (envelope/information source level).    """
+    PAYER = "PAYER"
+    """Error from the 2100A loop (payer name level).    """
+    PROVIDER = "PROVIDER"
+    """Error from the 2100B loop (provider/information receiver level).    """
+    SUBSCRIBER = "SUBSCRIBER"
+    """Error from the 2100C loop (subscriber name level).    """
+    SUBSCRIBER_BENEFITS = "SUBSCRIBER_BENEFITS"
+    """
+    Error from the 2110C loop (subscriber eligibility/benefit information
+    level).
+    """
+    DEPENDENT = "DEPENDENT"
+    """Error from the 2100D loop (dependent name level).    """
+    DEPENDENT_BENEFITS = "DEPENDENT_BENEFITS"
+    """
+    Error from the 2110D loop (dependent eligibility/benefit information
+    level).
+    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckResponseError:
+    """An error from the payer."""
+
+    code: str
+    """The AAA reject reason code."""
+
+    description: str
+    """The human-readable description of the error."""
+
+    followup_action: str
+    """The recommended follow-up action."""
+
+    location: EligibilityCheckResponseErrorLocation
+    """The location in the 271 response where the error occurred."""
+
+    possible_resolutions: str | None = None
+    """Detailed guidance on possible ways to resolve the error."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_RESPONSE_ERROR, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RESPONSE_ERROR.members["code"], self.code)
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RESPONSE_ERROR.members["description"], self.description)
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RESPONSE_ERROR.members["followupAction"], self.followup_action)
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RESPONSE_ERROR.members["location"], self.location)
+        if self.possible_resolutions is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RESPONSE_ERROR.members["possibleResolutions"], self.possible_resolutions)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["code"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RESPONSE_ERROR.members["code"])
+
+                case 1:
+                    kwargs["description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RESPONSE_ERROR.members["description"])
+
+                case 2:
+                    kwargs["followup_action"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RESPONSE_ERROR.members["followupAction"])
+
+                case 3:
+                    kwargs["location"] = EligibilityCheckResponseErrorLocation(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RESPONSE_ERROR.members["location"]))
+
+                case 4:
+                    kwargs["possible_resolutions"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RESPONSE_ERROR.members["possibleResolutions"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_RESPONSE_ERROR, consumer=_consumer)
+        if "code" not in kwargs:
+            kwargs["code"] = ""
+        if "description" not in kwargs:
+            kwargs["description"] = ""
+        if "followup_action" not in kwargs:
+            kwargs["followup_action"] = ""
+        if "location" not in kwargs:
+            kwargs["location"] = EligibilityCheckResponseErrorLocation._corrected("")
+        return kwargs
+
+def _serialize_eligibility_check_response_error_list(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckResponseError]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_response_error_list(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckResponseError]:
+    result: list[EligibilityCheckResponseError] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckResponseError.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+class EligibilityCheckTraceType(UnknownEnumMixin, StrEnum):
+    """Which transaction a trace number refers to.    """
+    CURRENT_TRANSACTION = "CURRENT_TRANSACTION"
+    """
+    Current Transaction Trace Numbers. The payer assigned this trace number
+    to this response.
+    """
+    REFERENCED_TRANSACTION = "REFERENCED_TRANSACTION"
+    """
+    Referenced Transaction Trace Numbers. The payer is echoing a trace
+    number that was sent in the original eligibility check request.
+    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckSubscriberTraceNumber:
+    """
+    A trace number the payer assigned to this transaction or echoed back
+    from the request.
+    """
+
+    type: EligibilityCheckTraceType | None = None
+    """
+    Whether the payer assigned this trace number to the current transaction
+    (`CURRENT_TRANSACTION`) or is echoing one from the original request
+    (`REFERENCED_TRANSACTION`).
+    """
+
+    reference_identification: str | None = None
+    """The unique trace number assigned to the transaction."""
+
+    originating_company_identifier: str | None = None
+    """The identifier of the organization that assigned the trace number."""
+
+    secondary_reference_identification: str | None = None
+    """
+    Identifies a subdivision within the organization that assigned the trace
+    number.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_TRACE_NUMBER, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_TRACE_NUMBER.members["type"], self.type)
+
+        if self.reference_identification is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_TRACE_NUMBER.members["referenceIdentification"], self.reference_identification)
+
+        if self.originating_company_identifier is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_TRACE_NUMBER.members["originatingCompanyIdentifier"], self.originating_company_identifier)
+
+        if self.secondary_reference_identification is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_TRACE_NUMBER.members["secondaryReferenceIdentification"], self.secondary_reference_identification)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["type"] = EligibilityCheckTraceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_TRACE_NUMBER.members["type"]))
+
+                case 1:
+                    kwargs["reference_identification"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_TRACE_NUMBER.members["referenceIdentification"])
+
+                case 2:
+                    kwargs["originating_company_identifier"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_TRACE_NUMBER.members["originatingCompanyIdentifier"])
+
+                case 3:
+                    kwargs["secondary_reference_identification"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_TRACE_NUMBER.members["secondaryReferenceIdentification"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_TRACE_NUMBER, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_subscriber_trace_numbers(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckSubscriberTraceNumber]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_subscriber_trace_numbers(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckSubscriberTraceNumber]:
+    result: list[EligibilityCheckSubscriberTraceNumber] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckSubscriberTraceNumber.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckMeta:
+    """
+    Metadata about the response. Stedi uses this data for tracking and
+    troubleshooting.
+    """
+
+    trace_id: str | None = None
+    """
+    The transaction identifier from the response's `BHT03` element. Matches
+    the request's `BHT03` if provided, otherwise matches the
+    Stedi-generated `outboundTraceId`.
+    """
+
+    outbound_trace_id: str | None = None
+    """
+    The transaction identifier Stedi assigns to the outbound request's
+    `BHT03` element.
+
+    Although this is a unique identifier, we recommend using `id` instead to
+    identify and track eligibility checks. An eligibility check's `id` is
+    guaranteed to be globally unique, and you can use it to deep link to the
+    eligibility check's results within the Stedi portal.
+    """
+
+    subscriber_trace_numbers: list[EligibilityCheckSubscriberTraceNumber] | None = None
+    """
+    A unique identifier the payer may assign to the transaction. Stedi
+    doesn't support setting a subscriber trace number in the eligibility
+    check request because there is no need to include a trace number for
+    real-time queries.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_META, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.trace_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_META.members["traceId"], self.trace_id)
+
+        if self.outbound_trace_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_META.members["outboundTraceId"], self.outbound_trace_id)
+
+        if self.subscriber_trace_numbers is not None:
+            _serialize_eligibility_check_subscriber_trace_numbers(serializer, _SCHEMA_ELIGIBILITY_CHECK_META.members["subscriberTraceNumbers"], self.subscriber_trace_numbers)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["trace_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_META.members["traceId"])
+
+                case 1:
+                    kwargs["outbound_trace_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_META.members["outboundTraceId"])
+
+                case 2:
+                    kwargs["subscriber_trace_numbers"] = _deserialize_eligibility_check_subscriber_trace_numbers(de, _SCHEMA_ELIGIBILITY_CHECK_META.members["subscriberTraceNumbers"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_META, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_edi_numbers(serializer: ShapeSerializer, schema: Schema, value: list[str]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_string(member_schema, e)
+
+def _deserialize_eligibility_check_edi_numbers(deserializer: ShapeDeserializer, schema: Schema) -> list[str]:
+    result: list[str] = []
+    member_schema = schema.members["member"]
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(d.read_string(member_schema))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+def _serialize_eligibility_check_emails(serializer: ShapeSerializer, schema: Schema, value: list[str]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_string(member_schema, e)
+
+def _deserialize_eligibility_check_emails(deserializer: ShapeDeserializer, schema: Schema) -> list[str]:
+    result: list[str] = []
+    member_schema = schema.members["member"]
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(d.read_string(member_schema))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+def _serialize_eligibility_check_fax_numbers(serializer: ShapeSerializer, schema: Schema, value: list[str]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_string(member_schema, e)
+
+def _deserialize_eligibility_check_fax_numbers(deserializer: ShapeDeserializer, schema: Schema) -> list[str]:
+    result: list[str] = []
+    member_schema = schema.members["member"]
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(d.read_string(member_schema))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+def _serialize_eligibility_check_phone_numbers(serializer: ShapeSerializer, schema: Schema, value: list[str]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_string(member_schema, e)
+
+def _deserialize_eligibility_check_phone_numbers(deserializer: ShapeDeserializer, schema: Schema) -> list[str]:
+    result: list[str] = []
+    member_schema = schema.members["member"]
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(d.read_string(member_schema))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+def _serialize_eligibility_check_urls(serializer: ShapeSerializer, schema: Schema, value: list[str]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_string(member_schema, e)
+
+def _deserialize_eligibility_check_urls(deserializer: ShapeDeserializer, schema: Schema) -> list[str]:
+    result: list[str] = []
+    member_schema = schema.members["member"]
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(d.read_string(member_schema))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckContact:
+    """Information about a contact person for the entity."""
+
+    name: str | None = None
+    """The name of the contact person."""
+
+    phone_numbers: list[str] | None = None
+    """The contact's phone numbers."""
+
+    emails: list[str] | None = None
+    """The contact's email addresses."""
+
+    fax_numbers: list[str] | None = None
+    """The contact's fax numbers."""
+
+    edi_numbers: list[str] | None = None
+    """The contact's EDI numbers."""
+
+    urls: list[str] | None = None
+    """The contact's URLs."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CONTACT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.name is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CONTACT.members["name"], self.name)
+
+        if self.phone_numbers is not None:
+            _serialize_eligibility_check_phone_numbers(serializer, _SCHEMA_ELIGIBILITY_CHECK_CONTACT.members["phoneNumbers"], self.phone_numbers)
+
+        if self.emails is not None:
+            _serialize_eligibility_check_emails(serializer, _SCHEMA_ELIGIBILITY_CHECK_CONTACT.members["emails"], self.emails)
+
+        if self.fax_numbers is not None:
+            _serialize_eligibility_check_fax_numbers(serializer, _SCHEMA_ELIGIBILITY_CHECK_CONTACT.members["faxNumbers"], self.fax_numbers)
+
+        if self.edi_numbers is not None:
+            _serialize_eligibility_check_edi_numbers(serializer, _SCHEMA_ELIGIBILITY_CHECK_CONTACT.members["ediNumbers"], self.edi_numbers)
+
+        if self.urls is not None:
+            _serialize_eligibility_check_urls(serializer, _SCHEMA_ELIGIBILITY_CHECK_CONTACT.members["urls"], self.urls)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["name"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CONTACT.members["name"])
+
+                case 1:
+                    kwargs["phone_numbers"] = _deserialize_eligibility_check_phone_numbers(de, _SCHEMA_ELIGIBILITY_CHECK_CONTACT.members["phoneNumbers"])
+
+                case 2:
+                    kwargs["emails"] = _deserialize_eligibility_check_emails(de, _SCHEMA_ELIGIBILITY_CHECK_CONTACT.members["emails"])
+
+                case 3:
+                    kwargs["fax_numbers"] = _deserialize_eligibility_check_fax_numbers(de, _SCHEMA_ELIGIBILITY_CHECK_CONTACT.members["faxNumbers"])
+
+                case 4:
+                    kwargs["edi_numbers"] = _deserialize_eligibility_check_edi_numbers(de, _SCHEMA_ELIGIBILITY_CHECK_CONTACT.members["ediNumbers"])
+
+                case 5:
+                    kwargs["urls"] = _deserialize_eligibility_check_urls(de, _SCHEMA_ELIGIBILITY_CHECK_CONTACT.members["urls"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_CONTACT, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_entity_contacts(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckContact]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_entity_contacts(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckContact]:
+    result: list[EligibilityCheckContact] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckContact.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass
+class EligibilityCheckPersonOrOrganizationNamePerson:
+    """A person's name. Maps to elements NM103 through NM107."""
+
+    value: EligibilityCheckPersonName
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PERSON_OR_ORGANIZATION_NAME, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PERSON_OR_ORGANIZATION_NAME.members["person"], self.value)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=EligibilityCheckPersonName.deserialize(deserializer))
+
+@dataclass
+class EligibilityCheckPersonOrOrganizationNameOrganization:
+    """An organization's name. Maps to element NM103."""
+
+    value: str
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PERSON_OR_ORGANIZATION_NAME, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PERSON_OR_ORGANIZATION_NAME.members["organization"], self.value)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=deserializer.read_string(_SCHEMA_ELIGIBILITY_CHECK_PERSON_OR_ORGANIZATION_NAME.members["organization"]))
+
+@dataclass
+class EligibilityCheckPersonOrOrganizationNameUnknown:
+    """
+    Represents an unknown variant.
+
+    If you receive this value, you will need to update your library to receive the
+    parsed value.
+
+    This value may not be deliberately sent.
+    """
+
+    tag: str
+
+    def serialize(self, serializer: ShapeSerializer):
+        raise SerializationError("Unknown union variants may not be serialized.")
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        raise SerializationError("Unknown union variants may not be serialized.")
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        raise NotImplementedError()
+
+EligibilityCheckPersonOrOrganizationName = Union[EligibilityCheckPersonOrOrganizationNamePerson | EligibilityCheckPersonOrOrganizationNameOrganization | EligibilityCheckPersonOrOrganizationNameUnknown]
+"""A name that is either a person or an organization."""
+class _EligibilityCheckPersonOrOrganizationNameDeserializer:
+    _result: EligibilityCheckPersonOrOrganizationName | None = None
+
+    def deserialize(self, deserializer: ShapeDeserializer) -> EligibilityCheckPersonOrOrganizationName:
+        self._result = None
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_PERSON_OR_ORGANIZATION_NAME, self._consumer)
+
+        if self._result is None:
+            raise SerializationError("Unions must have exactly one value, but found none.")
+
+        return self._result
+
+    def _consumer(self, schema: Schema, de: ShapeDeserializer) -> None:
+        match schema.expect_member_index():
+            case 0:
+                self._set_result(EligibilityCheckPersonOrOrganizationNamePerson.deserialize(de))
+
+            case 1:
+                self._set_result(EligibilityCheckPersonOrOrganizationNameOrganization.deserialize(de))
+
+            case _:
+                self._set_result(EligibilityCheckPersonOrOrganizationNameUnknown(tag=schema.expect_member_name()))
+
+    def _set_result(self, value: EligibilityCheckPersonOrOrganizationName) -> None:
+        if self._result is not None:
+            raise SerializationError("Unions must have exactly one value, but found more than one.")
+        self._result = value
+
+class EligibilityCheckPayerEntityIdentifierCode(UnknownEnumMixin, StrEnum):
+    """The entity identifier code for the payer.    """
+    THIRD_PARTY_ADMINISTRATOR = "THIRD_PARTY_ADMINISTRATOR"
+    """Third Party Administrator    """
+    EMPLOYER = "EMPLOYER"
+    """Employer    """
+    GATEWAY_PROVIDER = "GATEWAY_PROVIDER"
+    """Gateway Provider    """
+    PLAN_SPONSOR = "PLAN_SPONSOR"
+    """Plan Sponsor    """
+    PAYER = "PAYER"
+    """Payer    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckPayer:
+    """
+    Information about the payer providing the benefits information. The
+    response will always include the payer's business name and an
+    identifier, such as the payer's tax ID. Most payers also include
+    contact information.
+    """
+
+    type: EligibilityCheckPayerEntityIdentifierCode
+    """The entity identifier code for the payer."""
+
+    name: EligibilityCheckPersonOrOrganizationName | None = None
+    """The entity's name, as either a person or an organization."""
+
+    contacts: list[EligibilityCheckContact] | None = None
+    """The entity's contact information."""
+
+    ein: str | None = None
+    """
+    The Employer Identification Number (EIN), distinct from the Federal
+    Taxpayer Identification Number in `tin`.
+    """
+
+    etin: str | None = None
+    """Electronic Transmitter Identification Number."""
+
+    tin: str | None = None
+    """The Federal Taxpayer Identification Number."""
+
+    naic_id: str | None = None
+    """National Association of Insurance Commissioners Identification"""
+
+    identification: str | None = None
+    """
+    Typically the identification the payer reported for itself in the 271
+    response (`NM109` with the `PI` qualifier). This value comes from the
+    payer and may not match a [Stedi Payer
+    Network](https://www.stedi.com/healthcare/network) ID; use the
+    root-level `payerId` for the canonical payer ID.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PAYER, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.name is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PAYER.members["name"], self.name)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PAYER.members["type"], self.type)
+        if self.contacts is not None:
+            _serialize_eligibility_check_entity_contacts(serializer, _SCHEMA_ELIGIBILITY_CHECK_PAYER.members["contacts"], self.contacts)
+
+        if self.ein is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PAYER.members["ein"], self.ein)
+
+        if self.etin is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PAYER.members["etin"], self.etin)
+
+        if self.tin is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PAYER.members["tin"], self.tin)
+
+        if self.naic_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PAYER.members["naicId"], self.naic_id)
+
+        if self.identification is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PAYER.members["identification"], self.identification)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["name"] = _EligibilityCheckPersonOrOrganizationNameDeserializer().deserialize(de)
+
+                case 1:
+                    kwargs["type"] = EligibilityCheckPayerEntityIdentifierCode(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PAYER.members["type"]))
+
+                case 2:
+                    kwargs["contacts"] = _deserialize_eligibility_check_entity_contacts(de, _SCHEMA_ELIGIBILITY_CHECK_PAYER.members["contacts"])
+
+                case 3:
+                    kwargs["ein"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PAYER.members["ein"])
+
+                case 4:
+                    kwargs["etin"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PAYER.members["etin"])
+
+                case 5:
+                    kwargs["tin"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PAYER.members["tin"])
+
+                case 6:
+                    kwargs["naic_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PAYER.members["naicId"])
+
+                case 7:
+                    kwargs["identification"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PAYER.members["identification"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_PAYER, consumer=_consumer)
+        if "type" not in kwargs:
+            kwargs["type"] = EligibilityCheckPayerEntityIdentifierCode._corrected("")
+        return kwargs
+
+    @classmethod
+    def _smithy_default(cls) -> Self:
+        return cls(type=EligibilityCheckPayerEntityIdentifierCode._corrected(""))
+
+@dataclass(kw_only=True)
+class EligibilityCheckEligibilityAndBenefitAdditionalInformation:
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan: EligibilityCheckAdditionalInformationWithName | None = None
+    """The insurance plan number and, when the payer sends one, the plan name."""
+
+    group: EligibilityCheckAdditionalInformationWithName | None = None
+    """
+    The group number for the patient's health insurance plan and, when the
+    payer sends one, the group name.
+    """
+
+    group_or_policy_number: str | None = None
+    """
+    A group or policy number from the payer. Present when Stedi can't
+    determine the type. Contact the payer for confirmation.
+    """
+
+    member_id: str | None = None
+    """The patient's member ID."""
+
+    family_unit_number: str | None = None
+    """
+    The family unit number. Pharmacy benefits managers (PBMs) return this
+    when the patient has a suffix to their member ID. For all other payers,
+    the suffix is considered part of the member ID.
+    """
+
+    referral_number: str | None = None
+    """The referral number."""
+
+    alternative_list_id: str | None = None
+    """
+    The alternative list ID. This identifier lets the payer point to a list
+    of drugs and their alternatives, along with the formulary status that
+    applies to the patient.
+    """
+
+    coverage_list_id: str | None = None
+    """
+    The coverage list ID. This identifier lets the payer point to a list of
+    drugs that have coverage limitations for the patient.
+    """
+
+    mbi: str | None = None
+    """
+    The Medicare Beneficiary Identifier (MBI), the randomized identifier CMS
+    uses to identify Medicare beneficiaries. If you receive an MBI, we
+    recommend sending a follow-up eligibility check to CMS (payer ID: CMS)
+    for additional benefits data. Visit [Medicare Beneficiary Identifier
+    documentation](https://www.cms.gov/training-education/partner-outreach-resources/new-medicare-card/medical-beneficiary-identifiers-mbis)
+    for more information about the MBI format. This most commonly occurs
+    with patients who are covered by both Medicare and Medicaid.
+    """
+
+    drug_formulary_number: str | None = None
+    """The drug formulary number."""
+
+    prior_auth_number: str | None = None
+    """The prior authorization number."""
+
+    insurance_policy_number: str | None = None
+    """The insurance policy number."""
+
+    medical_assistance_category: str | None = None
+    """The medical assistance category."""
+
+    medicaid_recipient_id: str | None = None
+    """The Medicaid recipient identification number."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.plan is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["plan"], self.plan)
+
+        if self.group is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["group"], self.group)
+
+        if self.group_or_policy_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["groupOrPolicyNumber"], self.group_or_policy_number)
+
+        if self.member_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["memberId"], self.member_id)
+
+        if self.family_unit_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["familyUnitNumber"], self.family_unit_number)
+
+        if self.referral_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["referralNumber"], self.referral_number)
+
+        if self.alternative_list_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["alternativeListId"], self.alternative_list_id)
+
+        if self.coverage_list_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["coverageListId"], self.coverage_list_id)
+
+        if self.mbi is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["mbi"], self.mbi)
+
+        if self.drug_formulary_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["drugFormularyNumber"], self.drug_formulary_number)
+
+        if self.prior_auth_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["priorAuthNumber"], self.prior_auth_number)
+
+        if self.insurance_policy_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["insurancePolicyNumber"], self.insurance_policy_number)
+
+        if self.medical_assistance_category is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["medicalAssistanceCategory"], self.medical_assistance_category)
+
+        if self.medicaid_recipient_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["medicaidRecipientId"], self.medicaid_recipient_id)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["plan"] = EligibilityCheckAdditionalInformationWithName.deserialize(de)
+
+                case 1:
+                    kwargs["group"] = EligibilityCheckAdditionalInformationWithName.deserialize(de)
+
+                case 2:
+                    kwargs["group_or_policy_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["groupOrPolicyNumber"])
+
+                case 3:
+                    kwargs["member_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["memberId"])
+
+                case 4:
+                    kwargs["family_unit_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["familyUnitNumber"])
+
+                case 5:
+                    kwargs["referral_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["referralNumber"])
+
+                case 6:
+                    kwargs["alternative_list_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["alternativeListId"])
+
+                case 7:
+                    kwargs["coverage_list_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["coverageListId"])
+
+                case 8:
+                    kwargs["mbi"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["mbi"])
+
+                case 9:
+                    kwargs["drug_formulary_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["drugFormularyNumber"])
+
+                case 10:
+                    kwargs["prior_auth_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["priorAuthNumber"])
+
+                case 11:
+                    kwargs["insurance_policy_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["insurancePolicyNumber"])
+
+                case 12:
+                    kwargs["medical_assistance_category"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["medicalAssistanceCategory"])
+
+                case 13:
+                    kwargs["medicaid_recipient_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION.members["medicaidRecipientId"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION, consumer=_consumer)
+        return kwargs
+
+class EligibilityCheckCoverageLevel(UnknownEnumMixin, StrEnum):
+    """Code indicating the level of coverage for the patient.    """
+    CHILDREN_ONLY = "CHILDREN_ONLY"
+    """Children Only    """
+    DEPENDENTS_ONLY = "DEPENDENTS_ONLY"
+    """Dependents Only    """
+    EMPLOYEE_AND_CHILDREN = "EMPLOYEE_AND_CHILDREN"
+    """Employee and Children    """
+    EMPLOYEE_ONLY = "EMPLOYEE_ONLY"
+    """Employee Only    """
+    EMPLOYEE_AND_SPOUSE = "EMPLOYEE_AND_SPOUSE"
+    """Employee and Spouse    """
+    FAMILY = "FAMILY"
+    """Family    """
+    INDIVIDUAL = "INDIVIDUAL"
+    """Individual    """
+    SPOUSE_AND_CHILDREN = "SPOUSE_AND_CHILDREN"
+    """Spouse and Children    """
+    SPOUSE_ONLY = "SPOUSE_ONLY"
+    """Spouse Only    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckEligibilityAndBenefitDateRanges:
+    """
+    Contains the dates associated with specific benefits, as ISO 8601 date
+    ranges. These dates determine eligibility for individual benefits,
+    separate from overall plan eligibility dates.
+    """
+
+    discharge: EligibilityCheckDateRange | None = None
+    """The discharge date."""
+
+    period: EligibilityCheckDateRange | None = None
+    """A period date range."""
+
+    completion: EligibilityCheckDateRange | None = None
+    """The completion date."""
+
+    coordination_of_benefits: EligibilityCheckDateRange | None = None
+    """The coordination of benefits date."""
+
+    plan: EligibilityCheckDateRange | None = None
+    """Plan effective dates."""
+
+    benefit: EligibilityCheckDateRange | None = None
+    """The benefit date."""
+
+    primary_care_provider: EligibilityCheckDateRange | None = None
+    """The primary care provider date."""
+
+    latest_visit: EligibilityCheckDateRange | None = None
+    """The latest visit or consultation date."""
+
+    added: EligibilityCheckDateRange | None = None
+    """
+    Added date. Payers may return this information in the case of
+    retroactive eligibility.
+    """
+
+    eligibility: EligibilityCheckDateRange | None = None
+    """Plan eligibility dates."""
+
+    admission: EligibilityCheckDateRange | None = None
+    """The admission date or dates."""
+
+    service: EligibilityCheckDateRange | None = None
+    """The service date or dates."""
+
+    date_of_last_update: EligibilityCheckDateRange | None = None
+    """The date when the plan information was last updated."""
+
+    status: EligibilityCheckDateRange | None = None
+    """The status date."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.discharge is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES.members["discharge"], self.discharge)
+
+        if self.period is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES.members["period"], self.period)
+
+        if self.completion is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES.members["completion"], self.completion)
+
+        if self.coordination_of_benefits is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES.members["coordinationOfBenefits"], self.coordination_of_benefits)
+
+        if self.plan is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES.members["plan"], self.plan)
+
+        if self.benefit is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES.members["benefit"], self.benefit)
+
+        if self.primary_care_provider is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES.members["primaryCareProvider"], self.primary_care_provider)
+
+        if self.latest_visit is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES.members["latestVisit"], self.latest_visit)
+
+        if self.added is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES.members["added"], self.added)
+
+        if self.eligibility is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES.members["eligibility"], self.eligibility)
+
+        if self.admission is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES.members["admission"], self.admission)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES.members["service"], self.service)
+
+        if self.date_of_last_update is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES.members["dateOfLastUpdate"], self.date_of_last_update)
+
+        if self.status is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES.members["status"], self.status)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["discharge"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 1:
+                    kwargs["period"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 2:
+                    kwargs["completion"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 3:
+                    kwargs["coordination_of_benefits"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 4:
+                    kwargs["plan"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 5:
+                    kwargs["benefit"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 6:
+                    kwargs["primary_care_provider"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 7:
+                    kwargs["latest_visit"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 8:
+                    kwargs["added"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 9:
+                    kwargs["eligibility"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 10:
+                    kwargs["admission"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 11:
+                    kwargs["service"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 12:
+                    kwargs["date_of_last_update"] = EligibilityCheckDateRange.deserialize(de)
+
+                case 13:
+                    kwargs["status"] = EligibilityCheckDateRange.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckDiagnosisCode:
+    """A single diagnosis code with its optional definition."""
+
+    value: str
+    """The diagnosis code value."""
+
+    definition: str | None = None
+    """The human-readable definition of the diagnosis code."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DIAGNOSIS_CODE, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DIAGNOSIS_CODE.members["value"], self.value)
+        if self.definition is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DIAGNOSIS_CODE.members["definition"], self.definition)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["value"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DIAGNOSIS_CODE.members["value"])
+
+                case 1:
+                    kwargs["definition"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DIAGNOSIS_CODE.members["definition"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_DIAGNOSIS_CODE, consumer=_consumer)
+        if "value" not in kwargs:
+            kwargs["value"] = ""
+        return kwargs
+
+def _serialize_eligibility_check_diagnosis_codes(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckDiagnosisCode]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_diagnosis_codes(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckDiagnosisCode]:
+    result: list[EligibilityCheckDiagnosisCode] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckDiagnosisCode.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+class EligibilityCheckDiagnosisCodeSystem(UnknownEnumMixin, StrEnum):
+    """The code system for diagnosis codes. Only supports ICD-10-CM.    """
+    ICD_10_CM = "ICD-10-CM"
+    """
+    International Classification of Diseases, 10th Revision, Clinical
+    Modification (ICD-10-CM), the diagnosis code set maintained by CMS.
+    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckDiagnosis:
+    """
+    A diagnosis associated with this benefit entry. Includes a code system
+    and one or more diagnosis codes.
+    """
+
+    code_system: EligibilityCheckDiagnosisCodeSystem
+    """The code system for diagnosis codes. Only supports ICD-10-CM."""
+
+    codes: list[EligibilityCheckDiagnosisCode]
+    """Diagnosis codes associated with this benefit entry."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DIAGNOSIS, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DIAGNOSIS.members["codeSystem"], self.code_system)
+        _serialize_eligibility_check_diagnosis_codes(serializer, _SCHEMA_ELIGIBILITY_CHECK_DIAGNOSIS.members["codes"], self.codes)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["code_system"] = EligibilityCheckDiagnosisCodeSystem(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DIAGNOSIS.members["codeSystem"]))
+
+                case 1:
+                    kwargs["codes"] = _deserialize_eligibility_check_diagnosis_codes(de, _SCHEMA_ELIGIBILITY_CHECK_DIAGNOSIS.members["codes"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_DIAGNOSIS, consumer=_consumer)
+        if "code_system" not in kwargs:
+            kwargs["code_system"] = EligibilityCheckDiagnosisCodeSystem._corrected("")
+        if "codes" not in kwargs:
+            kwargs["codes"] = []
+        return kwargs
+
+class EligibilityCheckInsuranceType(UnknownEnumMixin, StrEnum):
+    """Code identifying the type of insurance policy.    """
+    DISABILITY = "DISABILITY"
+    """Disability    """
+    MEDICARE_POINT_OF_SERVICE_POS = "MEDICARE_POINT_OF_SERVICE_POS"
+    """Medicare Point of Service (POS)    """
+    MULTIPLE_OPTIONS_HEALTH_PLAN = "MULTIPLE_OPTIONS_HEALTH_PLAN"
+    """Multiple Options Health Plan    """
+    MEDICARE_SECONDARY_WORKING_AGED_BENEFICIARY_OR_SPOUSE_WITH_EMPLOYER_GROUP_HEALTH_PLAN = "MEDICARE_SECONDARY_WORKING_AGED_BENEFICIARY_OR_SPOUSE_WITH_EMPLOYER_GROUP_HEALTH_PLAN"
+    """
+    Medicare Secondary Working Aged Beneficiary or Spouse with Employer
+    Group Health Plan
+    """
+    MEDICARE_SECONDARY_ENDSTAGE_RENAL_DISEASE_BENEFICIARY_IN_THE_MANDATED_COORDINATION_PERIOD_WITH_AN_EMPLOYERS_GROUP_HEALTH_PLAN = "MEDICARE_SECONDARY_ENDSTAGE_RENAL_DISEASE_BENEFICIARY_IN_THE_MANDATED_COORDINATION_PERIOD_WITH_AN_EMPLOYERS_GROUP_HEALTH_PLAN"
+    """
+    Medicare Secondary End-Stage Renal Disease Beneficiary in the Mandated
+    Coordination Period with an Employer's Group Health Plan
+    """
+    MEDICARE_SECONDARY_NOFAULT_INSURANCE_INCLUDING_AUTO_IS_PRIMARY = "MEDICARE_SECONDARY_NOFAULT_INSURANCE_INCLUDING_AUTO_IS_PRIMARY"
+    """Medicare Secondary, No-fault Insurance including Auto is Primary    """
+    MEDICARE_SECONDARY_WORKERS_COMPENSATION = "MEDICARE_SECONDARY_WORKERS_COMPENSATION"
+    """Medicare Secondary Worker's Compensation    """
+    MEDICARE_SECONDARY_PUBLIC_HEALTH_SERVICE_PHS_OR_OTHER_FEDERAL_AGENCY = "MEDICARE_SECONDARY_PUBLIC_HEALTH_SERVICE_PHS_OR_OTHER_FEDERAL_AGENCY"
+    """Medicare Secondary Public Health Service (PHS) or Other Federal Agency    """
+    MEDICARE_SECONDARY_BLACK_LUNG = "MEDICARE_SECONDARY_BLACK_LUNG"
+    """Medicare Secondary Black Lung    """
+    MEDICARE_SECONDARY_VETERANS_ADMINISTRATION = "MEDICARE_SECONDARY_VETERANS_ADMINISTRATION"
+    """Medicare Secondary Veteran's Administration    """
+    MEDICARE_SECONDARY_DISABLED_BENEFICIARY_UNDER_AGE_65_WITH_LARGE_GROUP_HEALTH_PLAN_LGHP = "MEDICARE_SECONDARY_DISABLED_BENEFICIARY_UNDER_AGE_65_WITH_LARGE_GROUP_HEALTH_PLAN_LGHP"
+    """
+    Medicare Secondary Disabled Beneficiary Under Age 65 with Large Group
+    Health Plan (LGHP)
+    """
+    MEDICARE_SECONDARY_OTHER_LIABILITY_INSURANCE_IS_PRIMARY = "MEDICARE_SECONDARY_OTHER_LIABILITY_INSURANCE_IS_PRIMARY"
+    """Medicare Secondary, Other Liability Insurance is Primary    """
+    AUTO_INSURANCE_POLICY = "AUTO_INSURANCE_POLICY"
+    """Auto Insurance Policy    """
+    COMMERCIAL = "COMMERCIAL"
+    """Commercial    """
+    CONSOLIDATED_OMNIBUS_BUDGET_RECONCILIATION_ACT_COBRA = "CONSOLIDATED_OMNIBUS_BUDGET_RECONCILIATION_ACT_COBRA"
+    """Consolidated Omnibus Budget Reconciliation Act (COBRA)    """
+    MEDICARE_CONDITIONALLY_PRIMARY = "MEDICARE_CONDITIONALLY_PRIMARY"
+    """Medicare Conditionally Primary    """
+    DISABILITY_BENEFITS = "DISABILITY_BENEFITS"
+    """Disability Benefits    """
+    EXCLUSIVE_PROVIDER_ORGANIZATION = "EXCLUSIVE_PROVIDER_ORGANIZATION"
+    """Exclusive Provider Organization    """
+    FAMILY_OR_FRIENDS = "FAMILY_OR_FRIENDS"
+    """Family or Friends    """
+    GROUP_POLICY = "GROUP_POLICY"
+    """Group Policy    """
+    HEALTH_MAINTENANCE_ORGANIZATION_HMO = "HEALTH_MAINTENANCE_ORGANIZATION_HMO"
+    """Health Maintenance Organization (HMO)    """
+    HEALTH_MAINTENANCE_ORGANIZATION_HMO_MEDICARE_RISK = "HEALTH_MAINTENANCE_ORGANIZATION_HMO_MEDICARE_RISK"
+    """Health Maintenance Organization (HMO) - Medicare Risk    """
+    SPECIAL_LOW_INCOME_MEDICARE_BENEFICIARY = "SPECIAL_LOW_INCOME_MEDICARE_BENEFICIARY"
+    """Special Low Income Medicare Beneficiary    """
+    INDEMNITY = "INDEMNITY"
+    """Indemnity    """
+    INDIVIDUAL_POLICY = "INDIVIDUAL_POLICY"
+    """Individual Policy    """
+    LONG_TERM_CARE = "LONG_TERM_CARE"
+    """Long Term Care    """
+    LONG_TERM_POLICY = "LONG_TERM_POLICY"
+    """Long Term Policy    """
+    LIFE_INSURANCE = "LIFE_INSURANCE"
+    """Life Insurance    """
+    LITIGATION = "LITIGATION"
+    """Litigation    """
+    MEDICARE_PART_A = "MEDICARE_PART_A"
+    """Medicare Part A    """
+    MEDICARE_PART_B = "MEDICARE_PART_B"
+    """Medicare Part B    """
+    MEDICAID = "MEDICAID"
+    """Medicaid    """
+    MEDIGAP_PART_A = "MEDIGAP_PART_A"
+    """Medigap Part A    """
+    MEDIGAP_PART_B = "MEDIGAP_PART_B"
+    """Medigap Part B    """
+    MEDICARE_PRIMARY = "MEDICARE_PRIMARY"
+    """Medicare Primary    """
+    OTHER = "OTHER"
+    """
+    Other. When Medicare or a Medicare Part D administrator returns this
+    value, it indicates Medicare Part D coverage.
+    """
+    PROPERTY_INSURANCE_PERSONAL = "PROPERTY_INSURANCE_PERSONAL"
+    """Property Insurance - Personal    """
+    PERSONAL = "PERSONAL"
+    """Personal    """
+    PERSONAL_PAYMENT_CASH_NO_INSURANCE = "PERSONAL_PAYMENT_CASH_NO_INSURANCE"
+    """Personal Payment (Cash - No Insurance)    """
+    PREFERRED_PROVIDER_ORGANIZATION_PPO = "PREFERRED_PROVIDER_ORGANIZATION_PPO"
+    """Preferred Provider Organization (PPO)    """
+    POINT_OF_SERVICE_POS = "POINT_OF_SERVICE_POS"
+    """Point of Service (POS)    """
+    QUALIFIED_MEDICARE_BENEFICIARY = "QUALIFIED_MEDICARE_BENEFICIARY"
+    """Qualified Medicare Beneficiary    """
+    PROPERTY_INSURANCE_REAL = "PROPERTY_INSURANCE_REAL"
+    """Property Insurance - Real    """
+    SUPPLEMENTAL_POLICY = "SUPPLEMENTAL_POLICY"
+    """Supplemental Policy    """
+    TAX_EQUITY_FISCAL_RESPONSIBILITY_ACT_TEFRA = "TAX_EQUITY_FISCAL_RESPONSIBILITY_ACT_TEFRA"
+    """Tax Equity Fiscal Responsibility Act (TEFRA)    """
+    WORKERS_COMPENSATION = "WORKERS_COMPENSATION"
+    """Workers Compensation    """
+    WRAP_UP_POLICY = "WRAP_UP_POLICY"
+    """Wrap Up Policy    """
+
+def _serialize_eligibility_check_messages(serializer: ShapeSerializer, schema: Schema, value: list[str]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_string(member_schema, e)
+
+def _deserialize_eligibility_check_messages(deserializer: ShapeDeserializer, schema: Schema) -> list[str]:
+    result: list[str] = []
+    member_schema = schema.members["member"]
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(d.read_string(member_schema))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+class EligibilityCheckNetworkIndicator(UnknownEnumMixin, StrEnum):
+    """
+    Code indicating whether the benefit is in-network or out-of-network.
+
+    Note that this property **doesn't indicate** whether the provider is in
+    or out-of-network for the patient. To determine that, you must check
+    with the payer directly.
+    """
+    IN_NETWORK = "IN_NETWORK"
+    """
+    In Network. The benefit applies when the service is delivered
+    in-network.
+    """
+    OUT_OF_NETWORK = "OUT_OF_NETWORK"
+    """
+    Out of Network. The benefit applies when the service is delivered
+    out-of-network.
+    """
+    IN_AND_OUT_OF_NETWORK = "IN_AND_OUT_OF_NETWORK"
+    """
+    In and Out of Network. The benefit applies to both in-network and
+    out-of-network care.
+    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckNetwork:
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    indicator: EligibilityCheckNetworkIndicator | None = None
+    """Code indicating whether the benefit is in-network or out-of-network."""
+
+    id: str | None = None
+    """The plan network identification number."""
+
+    description: str | None = None
+    """The plan, group, or plan network name."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NETWORK, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NETWORK.members["indicator"], self.indicator)
+
+        if self.id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NETWORK.members["id"], self.id)
+
+        if self.description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NETWORK.members["description"], self.description)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["indicator"] = EligibilityCheckNetworkIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NETWORK.members["indicator"]))
+
+                case 1:
+                    kwargs["id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NETWORK.members["id"])
+
+                case 2:
+                    kwargs["description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NETWORK.members["description"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_NETWORK, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckPlaceOfService:
+    """
+    Identifies a type of healthcare facility where providers may deliver
+    services. Place of service codes are standardized identifiers used
+    across the healthcare industry.
+    """
+
+    code: EligibilityCheckPlaceOfServiceCode | None = None
+    """The place of service code identifying the type of facility."""
+
+    name: str | None = None
+    """The human-readable name of the place of service."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PLACE_OF_SERVICE, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.code is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PLACE_OF_SERVICE.members["code"], self.code)
+
+        if self.name is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PLACE_OF_SERVICE.members["name"], self.name)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["code"] = EligibilityCheckPlaceOfServiceCode(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PLACE_OF_SERVICE.members["code"]))
+
+                case 1:
+                    kwargs["name"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PLACE_OF_SERVICE.members["name"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_PLACE_OF_SERVICE, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_places_of_service(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckPlaceOfService]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_places_of_service(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckPlaceOfService]:
+    result: list[EligibilityCheckPlaceOfService] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckPlaceOfService.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+class EligibilityCheckPriorAuthIndicator(UnknownEnumMixin, StrEnum):
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+    REQUIRED = "REQUIRED"
+    """
+    Required. The benefit is subject to prior authorization or
+    certification.
+    """
+    NOT_REQUIRED = "NOT_REQUIRED"
+    """
+    Not Required. The benefit isn't subject to prior authorization or
+    certification.
+    """
+
+class EligibilityCheckEntityRelationship(UnknownEnumMixin, StrEnum):
+    """Code specifying the relationship between the entity and the patient.    """
+    PARENT = "PARENT"
+    """Parent    """
+    CHILD = "CHILD"
+    """Child    """
+    DOMESTIC_PARTNER = "DOMESTIC_PARTNER"
+    """Domestic Partner    """
+    SPOUSE = "SPOUSE"
+    """Spouse    """
+    EMPLOYEE = "EMPLOYEE"
+    """Employee    """
+    OTHER = "OTHER"
+    """Other    """
+    UNKNOWN_RELATIONSHIP = "UNKNOWN_RELATIONSHIP"
+    """Unknown    """
+
+class EligibilityCheckRelatedEntityIdentifierCode(UnknownEnumMixin, StrEnum):
+    """The entity identifier code for the benefit related entity.    """
+    CONTRACTED_SERVICE_PROVIDER = "CONTRACTED_SERVICE_PROVIDER"
+    """Contracted Service Provider    """
+    PREFERRED_PROVIDER_ORGANIZATION = "PREFERRED_PROVIDER_ORGANIZATION"
+    """Preferred Provider Organization    """
+    PROVIDER = "PROVIDER"
+    """Provider    """
+    THIRD_PARTY_ADMINISTRATOR = "THIRD_PARTY_ADMINISTRATOR"
+    """Third Party Administrator    """
+    EMPLOYER = "EMPLOYER"
+    """Employer    """
+    OTHER_PHYSICIAN = "OTHER_PHYSICIAN"
+    """Other Physician    """
+    FACILITY = "FACILITY"
+    """Facility    """
+    GATEWAY_PROVIDER = "GATEWAY_PROVIDER"
+    """Gateway Provider    """
+    GROUP = "GROUP"
+    """Group    """
+    INDEPENDENT_PHYSICIANS_ASSOCIATION = "INDEPENDENT_PHYSICIANS_ASSOCIATION"
+    """Independent Physicians Association    """
+    INSURED_OR_SUBSCRIBER = "INSURED_OR_SUBSCRIBER"
+    """Insured or Subscriber    """
+    LEGAL_REPRESENTATIVE = "LEGAL_REPRESENTATIVE"
+    """Legal Representative    """
+    ORIGIN_CARRIER = "ORIGIN_CARRIER"
+    """Origin Carrier    """
+    PRIMARY_CARE_PROVIDER = "PRIMARY_CARE_PROVIDER"
+    """Primary Care Provider    """
+    PRIOR_INSURANCE_CARRIER = "PRIOR_INSURANCE_CARRIER"
+    """Prior Insurance Carrier    """
+    PLAN_SPONSOR = "PLAN_SPONSOR"
+    """Plan Sponsor    """
+    PAYER = "PAYER"
+    """Payer    """
+    PRIMARY_PAYER = "PRIMARY_PAYER"
+    """Primary Payer    """
+    SECONDARY_PAYER = "SECONDARY_PAYER"
+    """Secondary Payer    """
+    TERTIARY_PAYER = "TERTIARY_PAYER"
+    """Tertiary Payer    """
+    PARTY_PERFORMING_VERIFICATION = "PARTY_PERFORMING_VERIFICATION"
+    """Party Performing Verification    """
+    VENDOR = "VENDOR"
+    """Vendor    """
+    ORGANIZATION_COMPLETING_CONFIGURATION_CHANGE = "ORGANIZATION_COMPLETING_CONFIGURATION_CHANGE"
+    """Organization Completing Configuration Change    """
+    UTILIZATION_MANAGEMENT_ORGANIZATION = "UTILIZATION_MANAGEMENT_ORGANIZATION"
+    """Utilization Management Organization    """
+    MANAGED_CARE_ORGANIZATION = "MANAGED_CARE_ORGANIZATION"
+    """Managed Care Organization    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckRelatedEntity:
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    type: EligibilityCheckRelatedEntityIdentifierCode
+    """The entity identifier code for the benefit related entity."""
+
+    name: EligibilityCheckPersonOrOrganizationName | None = None
+    """The entity's name, as either a person or an organization."""
+
+    relationship: EligibilityCheckEntityRelationship | None = None
+    """Code specifying the relationship between the entity and the patient."""
+
+    address: EligibilityCheckAddress | None = None
+    """The address of the entity, such as a provider or organization."""
+
+    provider: EligibilityCheckEntityProvider | None = None
+    """Information about a provider associated with the related entity."""
+
+    contacts: list[EligibilityCheckContact] | None = None
+    """The entity's contact information."""
+
+    ein: str | None = None
+    """
+    The Employer Identification Number (EIN), distinct from the Federal
+    Taxpayer Identification Number in `tin`.
+    """
+
+    ssn: str | None = None
+    """Social Security Number."""
+
+    etin: str | None = None
+    """Electronic Transmitter Identification Number."""
+
+    facility_id: str | None = None
+    """Facility Identification."""
+
+    tin: str | None = None
+    """The Federal Taxpayer Identification Number."""
+
+    member_id: str | None = None
+    """Member Identification Number"""
+
+    naic_id: str | None = None
+    """National Association of Insurance Commissioners Identification"""
+
+    payer_id: str | None = None
+    """Payer Identification"""
+
+    pharmacy_processor_number: str | None = None
+    """Pharmacy Processor Number"""
+
+    service_provider_number: str | None = None
+    """Service Provider Number"""
+
+    npi: str | None = None
+    """Centers for Medicare and Medicaid Services National Provider Identifier"""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.name is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["name"], self.name)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["type"], self.type)
+        if self.relationship is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["relationship"], self.relationship)
+
+        if self.address is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["address"], self.address)
+
+        if self.provider is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["provider"], self.provider)
+
+        if self.contacts is not None:
+            _serialize_eligibility_check_entity_contacts(serializer, _SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["contacts"], self.contacts)
+
+        if self.ein is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["ein"], self.ein)
+
+        if self.ssn is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["ssn"], self.ssn)
+
+        if self.etin is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["etin"], self.etin)
+
+        if self.facility_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["facilityId"], self.facility_id)
+
+        if self.tin is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["tin"], self.tin)
+
+        if self.member_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["memberId"], self.member_id)
+
+        if self.naic_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["naicId"], self.naic_id)
+
+        if self.payer_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["payerId"], self.payer_id)
+
+        if self.pharmacy_processor_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["pharmacyProcessorNumber"], self.pharmacy_processor_number)
+
+        if self.service_provider_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["serviceProviderNumber"], self.service_provider_number)
+
+        if self.npi is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["npi"], self.npi)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["name"] = _EligibilityCheckPersonOrOrganizationNameDeserializer().deserialize(de)
+
+                case 1:
+                    kwargs["type"] = EligibilityCheckRelatedEntityIdentifierCode(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["type"]))
+
+                case 2:
+                    kwargs["relationship"] = EligibilityCheckEntityRelationship(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["relationship"]))
+
+                case 3:
+                    kwargs["address"] = EligibilityCheckAddress.deserialize(de)
+
+                case 4:
+                    kwargs["provider"] = EligibilityCheckEntityProvider.deserialize(de)
+
+                case 5:
+                    kwargs["contacts"] = _deserialize_eligibility_check_entity_contacts(de, _SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["contacts"])
+
+                case 6:
+                    kwargs["ein"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["ein"])
+
+                case 7:
+                    kwargs["ssn"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["ssn"])
+
+                case 8:
+                    kwargs["etin"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["etin"])
+
+                case 9:
+                    kwargs["facility_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["facilityId"])
+
+                case 10:
+                    kwargs["tin"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["tin"])
+
+                case 11:
+                    kwargs["member_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["memberId"])
+
+                case 12:
+                    kwargs["naic_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["naicId"])
+
+                case 13:
+                    kwargs["payer_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["payerId"])
+
+                case 14:
+                    kwargs["pharmacy_processor_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["pharmacyProcessorNumber"])
+
+                case 15:
+                    kwargs["service_provider_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["serviceProviderNumber"])
+
+                case 16:
+                    kwargs["npi"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY.members["npi"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_RELATED_ENTITY, consumer=_consumer)
+        if "type" not in kwargs:
+            kwargs["type"] = EligibilityCheckRelatedEntityIdentifierCode._corrected("")
+        return kwargs
+
+def _serialize_eligibility_check_related_entities(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckRelatedEntity]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_related_entities(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckRelatedEntity]:
+    result: list[EligibilityCheckRelatedEntity] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckRelatedEntity.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckServiceCode:
+    """A single service or procedure code with its definition."""
+
+    value: str
+    """The service or procedure code value."""
+
+    definition: str | None = None
+    """The human-readable definition of the code."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_CODE, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_CODE.members["value"], self.value)
+        if self.definition is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_CODE.members["definition"], self.definition)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["value"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_CODE.members["value"])
+
+                case 1:
+                    kwargs["definition"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_CODE.members["definition"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_CODE, consumer=_consumer)
+        if "value" not in kwargs:
+            kwargs["value"] = ""
+        return kwargs
+
+    @classmethod
+    def _smithy_default(cls) -> Self:
+        return cls(value="")
+
+@dataclass(kw_only=True)
+class EligibilityCheckServiceCodeRange:
+    """
+    A range of service or procedure codes, defined by start and end codes.
+    For example, CPT codes 99201 through 99215.
+    """
+
+    start: EligibilityCheckServiceCode
+    """The first code in the range."""
+
+    end: EligibilityCheckServiceCode
+    """The last code in the range. The range is inclusive of this code."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_CODE_RANGE, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_CODE_RANGE.members["start"], self.start)
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_CODE_RANGE.members["end"], self.end)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["start"] = EligibilityCheckServiceCode.deserialize(de)
+
+                case 1:
+                    kwargs["end"] = EligibilityCheckServiceCode.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_CODE_RANGE, consumer=_consumer)
+        if "start" not in kwargs:
+            kwargs["start"] = EligibilityCheckServiceCode._smithy_default()
+        if "end" not in kwargs:
+            kwargs["end"] = EligibilityCheckServiceCode._smithy_default()
+        return kwargs
+
+class EligibilityCheckResponseServiceCodeSystem(UnknownEnumMixin, StrEnum):
+    """
+    Identifies the external code list used to provide the specified
+    procedure or service codes.
+    """
+    STC = "STC"
+    """
+    Service Type Code. The X12 code list that identifies categories of
+    service, like `30` (Health Benefit Plan Coverage).
+    """
+    CDT = "CDT"
+    """
+    Current Dental Terminology (CDT), the dental procedure code set
+    maintained by the American Dental Association.
+    """
+    CPT = "CPT"
+    """
+    Current Procedural Terminology (CPT), the procedure code set maintained
+    by the American Medical Association.
+    """
+    NDC = "NDC"
+    """National Drug Code (NDC), the drug identifier maintained by the FDA.    """
+    HCPCS = "HCPCS"
+    """
+    Healthcare Common Procedure Coding System (HCPCS), the procedure and
+    supply code set maintained by CMS.
+    """
+    ICD_10_PCS = "ICD-10-PCS"
+    """
+    ICD-10 Procedure Coding System (ICD-10-PCS), the inpatient procedure
+    code set maintained by CMS.
+    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckServiceOrProcedure:
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    value: str | None = None
+    """The service or procedure code value."""
+
+    definition: str | None = None
+    """The human-readable definition of the code."""
+
+    system: EligibilityCheckResponseServiceCodeSystem | None = None
+    """The code system that the `value` belongs to, such as CPT, HCPCS, or STC."""
+
+    range: EligibilityCheckServiceCodeRange | None = None
+    """
+    A range of service or procedure codes, defined by start and end codes.
+    For example, CPT codes 99201 through 99215.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.value is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE.members["value"], self.value)
+
+        if self.definition is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE.members["definition"], self.definition)
+
+        if self.system is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE.members["system"], self.system)
+
+        if self.range is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE.members["range"], self.range)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["value"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE.members["value"])
+
+                case 1:
+                    kwargs["definition"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE.members["definition"])
+
+                case 2:
+                    kwargs["system"] = EligibilityCheckResponseServiceCodeSystem(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE.members["system"]))
+
+                case 3:
+                    kwargs["range"] = EligibilityCheckServiceCodeRange.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE, consumer=_consumer)
+        return kwargs
+
+class EligibilityCheckServiceDeliveryLimitPattern(UnknownEnumMixin, StrEnum):
+    """
+    The time for routine shipments or deliveries. Visit [Eligibility code
+    lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#delivery-pattern-time-codes)
+    for a complete list.
+    """
+    FIRST_SHIFT = "FIRST_SHIFT"
+    """1st Shift (Normal Working Hours)    """
+    SECOND_SHIFT = "SECOND_SHIFT"
+    """2nd Shift    """
+    THIRD_SHIFT = "THIRD_SHIFT"
+    """3rd Shift    """
+    AM = "AM"
+    """A.M.    """
+    PM = "PM"
+    """P.M.    """
+    AS_DIRECTED = "AS_DIRECTED"
+    """As Directed    """
+    ANY_SHIFT = "ANY_SHIFT"
+    """Any Shift    """
+    NONE = "NONE"
+    """None. Also used to cancel or override a previously sent pattern.    """
+
+class EligibilityCheckServiceDeliveryLimitSchedule(UnknownEnumMixin, StrEnum):
+    """
+    The routine shipments, deliveries, or calendar pattern for the service
+    delivery. Visit [Eligibility code
+    lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#delivery-frequency-codes)
+    for a complete list.
+    """
+    FIRST_WEEK_OF_THE_MONTH = "FIRST_WEEK_OF_THE_MONTH"
+    """1st Week of the Month    """
+    SECOND_WEEK_OF_THE_MONTH = "SECOND_WEEK_OF_THE_MONTH"
+    """2nd Week of the Month    """
+    THIRD_WEEK_OF_THE_MONTH = "THIRD_WEEK_OF_THE_MONTH"
+    """3rd Week of the Month    """
+    FOURTH_WEEK_OF_THE_MONTH = "FOURTH_WEEK_OF_THE_MONTH"
+    """4th Week of the Month    """
+    FIFTH_WEEK_OF_THE_MONTH = "FIFTH_WEEK_OF_THE_MONTH"
+    """5th Week of the Month    """
+    FIRST_AND_THIRD_WEEKS_OF_THE_MONTH = "FIRST_AND_THIRD_WEEKS_OF_THE_MONTH"
+    """1st & 3rd Weeks of the Month    """
+    SECOND_AND_FOURTH_WEEKS_OF_THE_MONTH = "SECOND_AND_FOURTH_WEEKS_OF_THE_MONTH"
+    """2nd & 4th Weeks of the Month    """
+    FIRST_WORKING_DAY_OF_PERIOD = "FIRST_WORKING_DAY_OF_PERIOD"
+    """1st Working Day of Period    """
+    LAST_WORKING_DAY_OF_PERIOD = "LAST_WORKING_DAY_OF_PERIOD"
+    """Last Working Day of Period    """
+    MONDAY_THROUGH_FRIDAY = "MONDAY_THROUGH_FRIDAY"
+    """Monday through Friday    """
+    MONDAY_THROUGH_SATURDAY = "MONDAY_THROUGH_SATURDAY"
+    """Monday through Saturday    """
+    MONDAY_THROUGH_SUNDAY = "MONDAY_THROUGH_SUNDAY"
+    """Monday through Sunday    """
+    MONDAY = "MONDAY"
+    """Monday    """
+    TUESDAY = "TUESDAY"
+    """Tuesday    """
+    WEDNESDAY = "WEDNESDAY"
+    """Wednesday    """
+    THURSDAY = "THURSDAY"
+    """Thursday    """
+    FRIDAY = "FRIDAY"
+    """Friday    """
+    SATURDAY = "SATURDAY"
+    """Saturday    """
+    SUNDAY = "SUNDAY"
+    """Sunday    """
+    MONDAY_THROUGH_THURSDAY = "MONDAY_THROUGH_THURSDAY"
+    """Monday through Thursday    """
+    IMMEDIATELY = "IMMEDIATELY"
+    """Immediately    """
+    AS_DIRECTED = "AS_DIRECTED"
+    """As Directed    """
+    DAILY_MONDAY_THROUGH_FRIDAY = "DAILY_MONDAY_THROUGH_FRIDAY"
+    """Daily Mon. through Fri.    """
+    HALF_MONDAY_AND_HALF_THURSDAY = "HALF_MONDAY_AND_HALF_THURSDAY"
+    """
+    1/2 Mon. & 1/2 Thurs. The service is split, with half delivered on
+    Monday and half on Thursday.
+    """
+    HALF_TUESDAY_AND_HALF_THURSDAY = "HALF_TUESDAY_AND_HALF_THURSDAY"
+    """
+    1/2 Tues. & 1/2 Thurs. The service is split, with half delivered on
+    Tuesday and half on Thursday.
+    """
+    HALF_WEDNESDAY_AND_HALF_FRIDAY = "HALF_WEDNESDAY_AND_HALF_FRIDAY"
+    """
+    1/2 Wed. & 1/2 Fri. The service is split, with half delivered on
+    Wednesday and half on Friday.
+    """
+    ONCE_ANYTIME_MONDAY_THROUGH_FRIDAY = "ONCE_ANYTIME_MONDAY_THROUGH_FRIDAY"
+    """Once Anytime Mon. through Fri.    """
+    TUESDAY_THROUGH_FRIDAY = "TUESDAY_THROUGH_FRIDAY"
+    """Tuesday through Friday    """
+    MONDAY_TUESDAY_AND_THURSDAY = "MONDAY_TUESDAY_AND_THURSDAY"
+    """Monday, Tuesday and Thursday    """
+    MONDAY_TUESDAY_AND_FRIDAY = "MONDAY_TUESDAY_AND_FRIDAY"
+    """Monday, Tuesday and Friday    """
+    WEDNESDAY_AND_THURSDAY = "WEDNESDAY_AND_THURSDAY"
+    """Wednesday and Thursday    """
+    MONDAY_WEDNESDAY_AND_THURSDAY = "MONDAY_WEDNESDAY_AND_THURSDAY"
+    """Monday, Wednesday and Thursday    """
+    TUESDAY_THURSDAY_AND_FRIDAY = "TUESDAY_THURSDAY_AND_FRIDAY"
+    """Tuesday, Thursday and Friday    """
+    HALF_TUESDAY_AND_HALF_FRIDAY = "HALF_TUESDAY_AND_HALF_FRIDAY"
+    """
+    1/2 Tue. & 1/2 Fri. The service is split, with half delivered on Tuesday
+    and half on Friday.
+    """
+    HALF_MONDAY_AND_HALF_WEDNESDAY = "HALF_MONDAY_AND_HALF_WEDNESDAY"
+    """
+    1/2 Mon. & 1/2 Wed. The service is split, with half delivered on Monday
+    and half on Wednesday.
+    """
+    THIRD_MONDAY_THIRD_WEDNESDAY_AND_THIRD_FRIDAY = "THIRD_MONDAY_THIRD_WEDNESDAY_AND_THIRD_FRIDAY"
+    """
+    1/3 Mon., 1/3 Wed., 1/3 Fri. The service is split into thirds delivered
+    on Monday, Wednesday, and Friday.
+    """
+    WHENEVER_NECESSARY = "WHENEVER_NECESSARY"
+    """Whenever Necessary    """
+    HALF_BY_WEDNESDAY_BALANCE_BY_FRIDAY = "HALF_BY_WEDNESDAY_BALANCE_BY_FRIDAY"
+    """
+    1/2 By Wed., Bal. By Fri. Half the service is delivered by Wednesday and
+    the balance by Friday.
+    """
+    NONE = "NONE"
+    """None. Also used to cancel or override a previously sent pattern.    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckServiceDeliveryLimitDelivery:
+    """
+    The delivery schedule and time pattern for a service delivery limit,
+    like Monday through Friday during AM hours, or first week of the month.
+    """
+
+    schedule: EligibilityCheckServiceDeliveryLimitSchedule | None = None
+    """The days or calendar pattern on which the service can be delivered."""
+
+    pattern: EligibilityCheckServiceDeliveryLimitPattern | None = None
+    """The time of day at which the service can be delivered."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_DELIVERY, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.schedule is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_DELIVERY.members["schedule"], self.schedule)
+
+        if self.pattern is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_DELIVERY.members["pattern"], self.pattern)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["schedule"] = EligibilityCheckServiceDeliveryLimitSchedule(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_DELIVERY.members["schedule"]))
+
+                case 1:
+                    kwargs["pattern"] = EligibilityCheckServiceDeliveryLimitPattern(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_DELIVERY.members["pattern"]))
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_DELIVERY, consumer=_consumer)
+        return kwargs
+
+class EligibilityCheckServiceDeliveryLimitFrequencyQualifier(UnknownEnumMixin, StrEnum):
+    """The unit of measurement for the frequency.    """
+    DAYS = "DAYS"
+    """Days    """
+    MONTHS = "MONTHS"
+    """Months    """
+    VISIT = "VISIT"
+    """Visit    """
+    WEEK = "WEEK"
+    """Week    """
+    YEARS = "YEARS"
+    """Years    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckServiceDeliveryLimitFrequency:
+    """
+    The frequency for a service delivery limit, like per day, per week, or
+    per month.
+    """
+
+    value: str | None = None
+    """
+    How often the service can be delivered, expressed in the unit given by
+    `qualifier`. For example, `2` when the `qualifier` is `MONTHS` means
+    every two months.
+    """
+
+    qualifier: EligibilityCheckServiceDeliveryLimitFrequencyQualifier | None = None
+    """The unit of measure for `value`."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_FREQUENCY, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.value is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_FREQUENCY.members["value"], self.value)
+
+        if self.qualifier is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_FREQUENCY.members["qualifier"], self.qualifier)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["value"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_FREQUENCY.members["value"])
+
+                case 1:
+                    kwargs["qualifier"] = EligibilityCheckServiceDeliveryLimitFrequencyQualifier(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_FREQUENCY.members["qualifier"]))
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_FREQUENCY, consumer=_consumer)
+        return kwargs
+
+class EligibilityCheckServiceDeliveryLimitPeriodQualifier(UnknownEnumMixin, StrEnum):
+    """
+    The time period for the benefit information. Visit [Eligibility code
+    lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#time-qualifier-codes)
+    for a complete list.
+    """
+    HOUR = "HOUR"
+    """Hour    """
+    DAY = "DAY"
+    """Day    """
+    YEARS = "YEARS"
+    """Years    """
+    SERVICE_YEAR = "SERVICE_YEAR"
+    """
+    Service Year. The plan's own 12-month benefit year, which may not align
+    with the calendar year.
+    """
+    CALENDAR_YEAR = "CALENDAR_YEAR"
+    """Calendar Year    """
+    YEAR_TO_DATE = "YEAR_TO_DATE"
+    """
+    Year to Date. Accumulated from the start of the year through the date of
+    the response.
+    """
+    CONTRACT = "CONTRACT"
+    """Contract. The term of the patient's contract with the plan.    """
+    EPISODE = "EPISODE"
+    """Episode. A single episode of care.    """
+    VISIT = "VISIT"
+    """Visit    """
+    OUTLIER = "OUTLIER"
+    """Outlier. Applies to care that falls outside the plan's normal limits.    """
+    REMAINING = "REMAINING"
+    """Remaining. The portion of the limit the patient hasn't used yet.    """
+    EXCEEDED = "EXCEEDED"
+    """Exceeded. The patient has gone past the limit.    """
+    NOT_EXCEEDED = "NOT_EXCEEDED"
+    """Not Exceeded. The patient hasn't reached the limit.    """
+    LIFETIME = "LIFETIME"
+    """Lifetime    """
+    LIFETIME_REMAINING = "LIFETIME_REMAINING"
+    """
+    Lifetime Remaining. The portion of the lifetime limit the patient
+    hasn't used yet.
+    """
+    MONTH = "MONTH"
+    """Month    """
+    WEEK = "WEEK"
+    """Week    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckServiceDeliveryLimitPeriod:
+    """
+    The time period for a service delivery limit, like per year, per day, or
+    lifetime.
+    """
+
+    value: int | None = None
+    """
+    The number of periods the limit spans. For example, `12` when the
+    `qualifier` is `MONTH`.
+    """
+
+    qualifier: EligibilityCheckServiceDeliveryLimitPeriodQualifier | None = None
+    """The type of time period `value` counts."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_PERIOD, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.value is not None:
+            serializer.write_long(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_PERIOD.members["value"], self.value)
+
+        if self.qualifier is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_PERIOD.members["qualifier"], self.qualifier)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["value"] = de.read_long(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_PERIOD.members["value"])
+
+                case 1:
+                    kwargs["qualifier"] = EligibilityCheckServiceDeliveryLimitPeriodQualifier(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_PERIOD.members["qualifier"]))
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_PERIOD, consumer=_consumer)
+        return kwargs
+
+class EligibilityCheckServiceDeliveryLimitQuantityQualifier(UnknownEnumMixin, StrEnum):
+    """The type of quantity for the benefit.    """
+    DAYS = "DAYS"
+    """Days    """
+    UNITS = "UNITS"
+    """Units    """
+    HOURS = "HOURS"
+    """Hours    """
+    MONTH = "MONTH"
+    """Month    """
+    VISITS = "VISITS"
+    """Visits    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckServiceDeliveryLimitQuantity:
+    """
+    The quantity and unit for a service delivery limit, like 10 visits, 5
+    days, or 100 units.
+    """
+
+    value: str | None = None
+    """
+    The number of units the limit allows. For example, `10` when the
+    `qualifier` is `VISITS`.
+    """
+
+    qualifier: EligibilityCheckServiceDeliveryLimitQuantityQualifier | None = None
+    """The unit of measure for `value`."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_QUANTITY, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.value is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_QUANTITY.members["value"], self.value)
+
+        if self.qualifier is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_QUANTITY.members["qualifier"], self.qualifier)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["value"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_QUANTITY.members["value"])
+
+                case 1:
+                    kwargs["qualifier"] = EligibilityCheckServiceDeliveryLimitQuantityQualifier(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_QUANTITY.members["qualifier"]))
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_QUANTITY, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckServiceDeliveryLimit:
+    """
+    A service delivery limit combining quantity, time period, frequency, and
+    delivery schedule. For example, 10 visits per year, weekly, Monday
+    through Friday.
+    """
+
+    quantity: EligibilityCheckServiceDeliveryLimitQuantity | None = None
+    """How much of the service the limit allows, like 10 visits."""
+
+    period: EligibilityCheckServiceDeliveryLimitPeriod | None = None
+    """The time period the limit applies over, like per calendar year."""
+
+    frequency: EligibilityCheckServiceDeliveryLimitFrequency | None = None
+    """How often the service can be delivered within the period, like weekly."""
+
+    delivery: EligibilityCheckServiceDeliveryLimitDelivery | None = None
+    """The days and time of day on which the service can be delivered."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.quantity is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT.members["quantity"], self.quantity)
+
+        if self.period is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT.members["period"], self.period)
+
+        if self.frequency is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT.members["frequency"], self.frequency)
+
+        if self.delivery is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT.members["delivery"], self.delivery)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["quantity"] = EligibilityCheckServiceDeliveryLimitQuantity.deserialize(de)
+
+                case 1:
+                    kwargs["period"] = EligibilityCheckServiceDeliveryLimitPeriod.deserialize(de)
+
+                case 2:
+                    kwargs["frequency"] = EligibilityCheckServiceDeliveryLimitFrequency.deserialize(de)
+
+                case 3:
+                    kwargs["delivery"] = EligibilityCheckServiceDeliveryLimitDelivery.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT, consumer=_consumer)
+        return kwargs
+
+@dataclass
+class EligibilityCheckServiceLimitAgeMaximum:
+    """The maximum patient age (in years) for this benefit."""
+
+    value: int
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_LIMIT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_integer(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_LIMIT.members["ageMaximum"], self.value)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=deserializer.read_integer(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_LIMIT.members["ageMaximum"]))
+
+@dataclass
+class EligibilityCheckServiceLimitAgeMinimum:
+    """The minimum patient age (in years) for this benefit."""
+
+    value: int
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_LIMIT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_integer(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_LIMIT.members["ageMinimum"], self.value)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=deserializer.read_integer(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_LIMIT.members["ageMinimum"]))
+
+@dataclass
+class EligibilityCheckServiceLimitDelivery:
+    """
+    A restriction on how much of the service the patient can receive, and
+    how often or when it can be delivered.
+    """
+
+    value: EligibilityCheckServiceDeliveryLimit
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_LIMIT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_LIMIT.members["delivery"], self.value)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(value=EligibilityCheckServiceDeliveryLimit.deserialize(deserializer))
+
+@dataclass
+class EligibilityCheckServiceLimitUnknown:
+    """
+    Represents an unknown variant.
+
+    If you receive this value, you will need to update your library to receive the
+    parsed value.
+
+    This value may not be deliberately sent.
+    """
+
+    tag: str
+
+    def serialize(self, serializer: ShapeSerializer):
+        raise SerializationError("Unknown union variants may not be serialized.")
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        raise SerializationError("Unknown union variants may not be serialized.")
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        raise NotImplementedError()
+
+EligibilityCheckServiceLimit = Union[EligibilityCheckServiceLimitAgeMaximum | EligibilityCheckServiceLimitAgeMinimum | EligibilityCheckServiceLimitDelivery | EligibilityCheckServiceLimitUnknown]
+"""
+A service limit specified as an age boundary or a delivery restriction.
+For example, minimum age 18, or 10 visits per year on weekdays.
+"""
+class _EligibilityCheckServiceLimitDeserializer:
+    _result: EligibilityCheckServiceLimit | None = None
+
+    def deserialize(self, deserializer: ShapeDeserializer) -> EligibilityCheckServiceLimit:
+        self._result = None
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICE_LIMIT, self._consumer)
+
+        if self._result is None:
+            raise SerializationError("Unions must have exactly one value, but found none.")
+
+        return self._result
+
+    def _consumer(self, schema: Schema, de: ShapeDeserializer) -> None:
+        match schema.expect_member_index():
+            case 0:
+                self._set_result(EligibilityCheckServiceLimitAgeMaximum.deserialize(de))
+
+            case 1:
+                self._set_result(EligibilityCheckServiceLimitAgeMinimum.deserialize(de))
+
+            case 2:
+                self._set_result(EligibilityCheckServiceLimitDelivery.deserialize(de))
+
+            case _:
+                self._set_result(EligibilityCheckServiceLimitUnknown(tag=schema.expect_member_name()))
+
+    def _set_result(self, value: EligibilityCheckServiceLimit) -> None:
+        if self._result is not None:
+            raise SerializationError("Unions must have exactly one value, but found more than one.")
+        self._result = value
+
+def _serialize_eligibility_check_service_limits(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckServiceLimit]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_service_limits(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckServiceLimit]:
+    result: list[EligibilityCheckServiceLimit] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(_EligibilityCheckServiceLimitDeserializer().deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckBenefitDescription:
+    """
+    A payer-authored description of a benefit. Payers sometimes use this
+    type to communicate information that's difficult to capture elsewhere
+    in the response. The description is included as free text in `messages`
+    or identifiers in `additionalInformation`.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_benefit_descriptions(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckBenefitDescription]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_benefit_descriptions(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckBenefitDescription]:
+    result: list[EligibilityCheckBenefitDescription] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckBenefitDescription.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckBenefitDisclaimer:
+    """
+    A legal or advisory disclaimer attached to the benefit information. The
+    X12 standard discourages use of this type, but many commercial payers
+    still send disclaimers. When present, the disclaimer text arrives in
+    `messages`, and there should be only one disclaimer per individual
+    response.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_benefit_disclaimers(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckBenefitDisclaimer]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_benefit_disclaimers(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckBenefitDisclaimer]:
+    result: list[EligibilityCheckBenefitDisclaimer] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckBenefitDisclaimer.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckCannotProcess:
+    """
+    Indicates that the payer couldn't process your request. A common cause
+    is requesting benefits information for a service type or procedure code
+    the payer doesn't support.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_CANNOT_PROCESS, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_cannot_processes(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckCannotProcess]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_cannot_processes(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckCannotProcess]:
+    result: list[EligibilityCheckCannotProcess] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckCannotProcess.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckCardReportedStolen:
+    """
+    A fraud alert indicating the patient's insurance card was reported lost
+    or stolen. This typically means that the payer has flagged the
+    patient's member ID to prevent identity theft. The patient may still
+    have active coverage, but you likely won't be able to run transactions
+    with the patient's information until they resolve the issue.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_card_reported_stolens(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckCardReportedStolen]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_card_reported_stolens(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckCardReportedStolen]:
+    result: list[EligibilityCheckCardReportedStolen] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckCardReportedStolen.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+class EligibilityCheckTimePeriod(UnknownEnumMixin, StrEnum):
+    """
+    Code specifying the time period for the benefit information. Visit
+    [Eligibility code
+    lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#time-qualifier-codes)
+    for a complete list.
+    """
+    HOUR = "HOUR"
+    """Hour    """
+    DAY = "DAY"
+    """Day    """
+    N24_HOURS = "24_HOURS"
+    """24 Hours    """
+    YEARS = "YEARS"
+    """Years    """
+    SERVICE_YEAR = "SERVICE_YEAR"
+    """
+    Service Year. The plan's own 12-month benefit year, which may not align
+    with the calendar year.
+    """
+    CALENDAR_YEAR = "CALENDAR_YEAR"
+    """
+    Calendar Year. For a deductible, this is the patient's total for the
+    year rather than the amount they still owe.
+    """
+    YEAR_TO_DATE = "YEAR_TO_DATE"
+    """
+    Year to Date. Accumulated from the start of the year through the date of
+    the response.
+    """
+    CONTRACT = "CONTRACT"
+    """Contract. The term of the patient's contract with the plan.    """
+    EPISODE = "EPISODE"
+    """Episode. A single episode of care.    """
+    VISIT = "VISIT"
+    """Visit    """
+    OUTLIER = "OUTLIER"
+    """Outlier. Applies to care that falls outside the plan's normal limits.    """
+    REMAINING = "REMAINING"
+    """
+    Remaining. For a deductible, this is the amount the patient still owes
+    rather than their total for the year.
+    """
+    EXCEEDED = "EXCEEDED"
+    """Exceeded. The patient has gone past the limit.    """
+    NOT_EXCEEDED = "NOT_EXCEEDED"
+    """Not Exceeded. The patient hasn't reached the limit.    """
+    LIFETIME = "LIFETIME"
+    """Lifetime    """
+    LIFETIME_REMAINING = "LIFETIME_REMAINING"
+    """
+    Lifetime Remaining. The portion of the lifetime limit the patient
+    hasn't used yet.
+    """
+    MONTH = "MONTH"
+    """Month    """
+    WEEK = "WEEK"
+    """Week    """
+    ADMISSION = "ADMISSION"
+    """Admission. Applies per hospital admission.    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckCoInsurance:
+    """
+    A co-insurance benefit entry. The `percent` is the patient's share of
+    costs, expressed as a decimal (such as `0.8` for 80%). The decimal
+    precision reflects what the payer sent. A value of `0` indicates the
+    payer reported no co-insurance responsibility.
+    """
+
+    percent: str
+    """
+    The percentage value for this benefit, expressed as a decimal (e.g.,
+    0.80 for 80%).
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    time_period: EligibilityCheckTimePeriod | None = None
+    """
+    Code specifying the time period for the benefit information. Visit
+    [Eligibility code
+    lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#time-qualifier-codes)
+    for a complete list.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["diagnosis"], self.diagnosis)
+
+        if self.time_period is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["timePeriod"], self.time_period)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["time_period"] = EligibilityCheckTimePeriod(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["timePeriod"]))
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_CO_INSURANCE, consumer=_consumer)
+        if "percent" not in kwargs:
+            kwargs["percent"] = ""
+        return kwargs
+
+def _serialize_eligibility_check_co_insurances(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckCoInsurance]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_co_insurances(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckCoInsurance]:
+    result: list[EligibilityCheckCoInsurance] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckCoInsurance.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckContactFollowingEntityForInformation:
+    """
+    Indicates that the payer can't supply the information you requested and
+    is directing you to another entity. The entity's information is listed
+    in the `relatedEntities` array.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_contact_following_entity_for_informations(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckContactFollowingEntityForInformation]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_contact_following_entity_for_informations(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckContactFollowingEntityForInformation]:
+    result: list[EligibilityCheckContactFollowingEntityForInformation] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckContactFollowingEntityForInformation.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+class EligibilityCheckQuantityQualifier(UnknownEnumMixin, StrEnum):
+    """Code indicating the type of quantity for the benefit.    """
+    MINIMUM = "MINIMUM"
+    """Minimum    """
+    QUANTITY_USED = "QUANTITY_USED"
+    """
+    Quantity Used. The portion of the benefit the patient has already
+    consumed.
+    """
+    COVERED_ACTUAL = "COVERED_ACTUAL"
+    """Covered - Actual. A confirmed count of covered units.    """
+    COVERED_ESTIMATED = "COVERED_ESTIMATED"
+    """Covered - Estimated. An estimated count of covered units.    """
+    NUMBER_OF_CO_INSURANCE_DAYS = "NUMBER_OF_CO_INSURANCE_DAYS"
+    """Number of Co-insurance Days    """
+    DEDUCTIBLE_BLOOD_UNITS = "DEDUCTIBLE_BLOOD_UNITS"
+    """
+    Deductible Blood Units. The number of units of blood the patient must
+    pay for before the plan covers them.
+    """
+    DAYS = "DAYS"
+    """Days    """
+    HOURS = "HOURS"
+    """Hours    """
+    LIFE_TIME_RESERVE_ACTUAL = "LIFE_TIME_RESERVE_ACTUAL"
+    """
+    Life-time Reserve - Actual. A confirmed count of Medicare lifetime
+    reserve days.
+    """
+    LIFE_TIME_RESERVE_ESTIMATED = "LIFE_TIME_RESERVE_ESTIMATED"
+    """
+    Life-time Reserve - Estimated. An estimated count of Medicare lifetime
+    reserve days.
+    """
+    MAXIMUM = "MAXIMUM"
+    """Maximum    """
+    MONTH = "MONTH"
+    """Month    """
+    NUMBER_OF_SERVICES_OR_PROCEDURES = "NUMBER_OF_SERVICES_OR_PROCEDURES"
+    """Number of Services or Procedures    """
+    QUANTITY_APPROVED = "QUANTITY_APPROVED"
+    """Quantity Approved. The number of units the payer has authorized.    """
+    VISITS = "VISITS"
+    """Visits    """
+    YEARS = "YEARS"
+    """Years    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckQuantity:
+    """
+    A quantity value with a qualifier describing the unit of measure. For
+    example, a value of `10` with a qualifier of `VISITS` means 10 visits.
+    """
+
+    value: str | None = None
+    """
+    The numeric quantity. For example, `10` when the `qualifier` is
+    `VISITS`.
+    """
+
+    qualifier: EligibilityCheckQuantityQualifier | None = None
+    """The unit of measure for `value`."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_QUANTITY, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.value is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_QUANTITY.members["value"], self.value)
+
+        if self.qualifier is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_QUANTITY.members["qualifier"], self.qualifier)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["value"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_QUANTITY.members["value"])
+
+                case 1:
+                    kwargs["qualifier"] = EligibilityCheckQuantityQualifier(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_QUANTITY.members["qualifier"]))
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_QUANTITY, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckCoPayment:
+    """
+    A copayment benefit entry. The `amount` is the fixed amount the patient
+    pays for a service. The decimal precision reflects what the payer sent
+    (e.g., `25.0` or `40`).
+    """
+
+    amount: str
+    """The monetary amount for this benefit."""
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    time_period: EligibilityCheckTimePeriod | None = None
+    """
+    Code specifying the time period for the benefit information. Visit
+    [Eligibility code
+    lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#time-qualifier-codes)
+    for a complete list.
+    """
+
+    quantity: EligibilityCheckQuantity | None = None
+    """
+    The quantity the `amount` applies to, when the payer sends one. For
+    example, 60 days of inpatient care.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["diagnosis"], self.diagnosis)
+
+        if self.time_period is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["timePeriod"], self.time_period)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["amount"], self.amount)
+        if self.quantity is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["quantity"], self.quantity)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["time_period"] = EligibilityCheckTimePeriod(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["timePeriod"]))
+
+                case 14:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT.members["amount"])
+
+                case 15:
+                    kwargs["quantity"] = EligibilityCheckQuantity.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_CO_PAYMENT, consumer=_consumer)
+        if "amount" not in kwargs:
+            kwargs["amount"] = ""
+        return kwargs
+
+def _serialize_eligibility_check_co_payments(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckCoPayment]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_co_payments(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckCoPayment]:
+    result: list[EligibilityCheckCoPayment] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckCoPayment.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckCostContainment:
+    """
+    A cost containment benefit entry. Cost containment refers to rules a
+    health plan may have in place to control the cost of care. This benefit
+    is typically included when the patient has Medicaid coverage. The
+    `amount` represents the total the patient pays out-of-pocket before
+    benefits begin. The decimal precision reflects what the payer sent
+    (e.g., `500.0` or `500`).
+    """
+
+    amount: str
+    """The monetary amount for this benefit."""
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    time_period: EligibilityCheckTimePeriod | None = None
+    """
+    Code specifying the time period for the benefit information. Visit
+    [Eligibility code
+    lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#time-qualifier-codes)
+    for a complete list.
+    """
+
+    quantity: EligibilityCheckQuantity | None = None
+    """
+    The quantity the `amount` applies to, when the payer sends one. For
+    example, 60 days of inpatient care.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["diagnosis"], self.diagnosis)
+
+        if self.time_period is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["timePeriod"], self.time_period)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["amount"], self.amount)
+        if self.quantity is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["quantity"], self.quantity)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["time_period"] = EligibilityCheckTimePeriod(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["timePeriod"]))
+
+                case 14:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT.members["amount"])
+
+                case 15:
+                    kwargs["quantity"] = EligibilityCheckQuantity.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_COST_CONTAINMENT, consumer=_consumer)
+        if "amount" not in kwargs:
+            kwargs["amount"] = ""
+        return kwargs
+
+def _serialize_eligibility_check_cost_containments(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckCostContainment]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_cost_containments(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckCostContainment]:
+    result: list[EligibilityCheckCostContainment] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckCostContainment.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckCoverageBasis:
+    """
+    Describes the financial basis of the patient's health plan or
+    eligibility for enrollment. For example, payers may use this type to
+    indicate that a plan is fully insured, meaning the payer assumes full
+    financial responsibility for medical claims. Payers may also use this
+    type to indicate carve-out benefits, such as when the patient is
+    enrolled in state-managed health programs, or to explain why a member
+    was allowed to enroll in the plan (such as age range or having a
+    disability). The detail is usually included as free text in `messages`
+    or identifiers in `additionalInformation`.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_COVERAGE_BASIS, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_coverage_bases(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckCoverageBasis]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_coverage_bases(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckCoverageBasis]:
+    result: list[EligibilityCheckCoverageBasis] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckCoverageBasis.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckDeductible:
+    """
+    A deductible benefit entry. The `amount` is what the patient must pay
+    before the plan begins covering costs. The decimal precision reflects
+    what the payer sent (e.g., `1500.0` or `1000`). Check `timePeriod` to
+    determine what the amount represents. A calendar-year deductible is the
+    patient's total for the year, while a remaining deductible is the
+    amount still owed before the plan pays.
+    """
+
+    amount: str
+    """The monetary amount for this benefit."""
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    time_period: EligibilityCheckTimePeriod | None = None
+    """
+    Code specifying the time period for the benefit information. Visit
+    [Eligibility code
+    lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#time-qualifier-codes)
+    for a complete list.
+    """
+
+    quantity: EligibilityCheckQuantity | None = None
+    """
+    The quantity the `amount` applies to, when the payer sends one. For
+    example, 60 days of inpatient care.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["diagnosis"], self.diagnosis)
+
+        if self.time_period is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["timePeriod"], self.time_period)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["amount"], self.amount)
+        if self.quantity is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["quantity"], self.quantity)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["time_period"] = EligibilityCheckTimePeriod(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["timePeriod"]))
+
+                case 14:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE.members["amount"])
+
+                case 15:
+                    kwargs["quantity"] = EligibilityCheckQuantity.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_DEDUCTIBLE, consumer=_consumer)
+        if "amount" not in kwargs:
+            kwargs["amount"] = ""
+        return kwargs
+
+def _serialize_eligibility_check_deductibles(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckDeductible]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_deductibles(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckDeductible]:
+    result: list[EligibilityCheckDeductible] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckDeductible.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckExclusion:
+    """
+    A service or condition the plan doesn't cover for any patient. This is
+    different from a `nonCovered` entry, which reports that this patient
+    doesn't have coverage for a specific service you submitted in the
+    request.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_EXCLUSION, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_exclusions(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckExclusion]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_exclusions(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckExclusion]:
+    result: list[EligibilityCheckExclusion] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckExclusion.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckHealthCareFacility:
+    """
+    Identifies a medical facility associated with the benefit, typically
+    indicating an institution or provider network the patient is required or
+    expected to use. The facility's information is available in the
+    `relatedEntities` array. Rarely returned.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_health_care_facilities(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckHealthCareFacility]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_health_care_facilities(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckHealthCareFacility]:
+    result: list[EligibilityCheckHealthCareFacility] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckHealthCareFacility.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+class EligibilityCheckInvalidEntryReasonCode(UnknownEnumMixin, StrEnum):
+    """Machine-readable codes identifying why a benefit entry is invalid.    """
+    MISSING_AMOUNT = "MISSING_AMOUNT"
+    """Required amount is missing for a benefit that expects an amount.    """
+    MISSING_PERCENT = "MISSING_PERCENT"
+    """Required percent is missing for a benefit that expects a percent.    """
+    UNEXPECTED_AMOUNT = "UNEXPECTED_AMOUNT"
+    """Benefit has an unexpected amount value.    """
+    UNEXPECTED_PERCENT = "UNEXPECTED_PERCENT"
+    """Benefit has an unexpected percent value.    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckInvalidEntryReason:
+    """A specific reason why a benefit entry is invalid."""
+
+    code: EligibilityCheckInvalidEntryReasonCode
+    """A machine-readable code identifying the validation issue."""
+
+    description: str
+    """A human-readable description of the validation issue."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRY_REASON, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRY_REASON.members["code"], self.code)
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRY_REASON.members["description"], self.description)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["code"] = EligibilityCheckInvalidEntryReasonCode(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRY_REASON.members["code"]))
+
+                case 1:
+                    kwargs["description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRY_REASON.members["description"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRY_REASON, consumer=_consumer)
+        if "code" not in kwargs:
+            kwargs["code"] = EligibilityCheckInvalidEntryReasonCode._corrected("")
+        if "description" not in kwargs:
+            kwargs["description"] = ""
+        return kwargs
+
+def _serialize_eligibility_check_invalid_entry_reasons(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckInvalidEntryReason]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_invalid_entry_reasons(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckInvalidEntryReason]:
+    result: list[EligibilityCheckInvalidEntryReason] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckInvalidEntryReason.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckInvalidBenefit:
+    """
+    An invalid benefit entry that Stedi couldn't include in the standard
+    benefit arrays due to data validation issues. This structure includes
+    all possible benefit properties (amount, percent, quantity) to capture
+    what the payer actually sent.
+    """
+
+    invalid_reasons: list[EligibilityCheckInvalidEntryReason]
+    """Reasons explaining why this entry is invalid."""
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    time_period: EligibilityCheckTimePeriod | None = None
+    """
+    Code specifying the time period for the benefit information. Visit
+    [Eligibility code
+    lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#time-qualifier-codes)
+    for a complete list.
+    """
+
+    amount: str | None = None
+    """The monetary amount, if present."""
+
+    percent: str | None = None
+    """The percentage, if present."""
+
+    quantity: EligibilityCheckQuantity | None = None
+    """The quantity, if present."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["diagnosis"], self.diagnosis)
+
+        if self.time_period is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["timePeriod"], self.time_period)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["percent"], self.percent)
+
+        if self.quantity is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["quantity"], self.quantity)
+
+        _serialize_eligibility_check_invalid_entry_reasons(serializer, _SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["invalidReasons"], self.invalid_reasons)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["time_period"] = EligibilityCheckTimePeriod(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["timePeriod"]))
+
+                case 14:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["amount"])
+
+                case 15:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["percent"])
+
+                case 16:
+                    kwargs["quantity"] = EligibilityCheckQuantity.deserialize(de)
+
+                case 17:
+                    kwargs["invalid_reasons"] = _deserialize_eligibility_check_invalid_entry_reasons(de, _SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT.members["invalidReasons"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT, consumer=_consumer)
+        if "invalid_reasons" not in kwargs:
+            kwargs["invalid_reasons"] = []
+        return kwargs
+
+def _serialize_eligibility_check_invalid_benefits(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckInvalidBenefit]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_invalid_benefits(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckInvalidBenefit]:
+    result: list[EligibilityCheckInvalidBenefit] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckInvalidBenefit.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckInvalidEntries:
+    """
+    Benefit entries that Stedi marked as invalid. Stedi marks entries when
+    they're missing required data, like a co-insurance benefit without a
+    percentage or a deductible without an amount. Stedi also marks entries
+    when they have unexpected data, like a co-payment with a percentage
+    instead of an amount.
+    """
+
+    co_insurance: list[EligibilityCheckInvalidBenefit] | None = None
+    """Invalid co-insurance entries."""
+
+    co_payment: list[EligibilityCheckInvalidBenefit] | None = None
+    """Invalid co-payment entries."""
+
+    deductible: list[EligibilityCheckInvalidBenefit] | None = None
+    """Invalid deductible entries."""
+
+    out_of_pocket: list[EligibilityCheckInvalidBenefit] | None = None
+    """Invalid out-of-pocket entries."""
+
+    cost_containment: list[EligibilityCheckInvalidBenefit] | None = None
+    """Invalid cost containment entries."""
+
+    spend_down: list[EligibilityCheckInvalidBenefit] | None = None
+    """Invalid spend down entries."""
+
+    limitations: list[EligibilityCheckInvalidBenefit] | None = None
+    """Invalid limitation entries."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRIES, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.co_insurance is not None:
+            _serialize_eligibility_check_invalid_benefits(serializer, _SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRIES.members["coInsurance"], self.co_insurance)
+
+        if self.co_payment is not None:
+            _serialize_eligibility_check_invalid_benefits(serializer, _SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRIES.members["coPayment"], self.co_payment)
+
+        if self.deductible is not None:
+            _serialize_eligibility_check_invalid_benefits(serializer, _SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRIES.members["deductible"], self.deductible)
+
+        if self.out_of_pocket is not None:
+            _serialize_eligibility_check_invalid_benefits(serializer, _SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRIES.members["outOfPocket"], self.out_of_pocket)
+
+        if self.cost_containment is not None:
+            _serialize_eligibility_check_invalid_benefits(serializer, _SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRIES.members["costContainment"], self.cost_containment)
+
+        if self.spend_down is not None:
+            _serialize_eligibility_check_invalid_benefits(serializer, _SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRIES.members["spendDown"], self.spend_down)
+
+        if self.limitations is not None:
+            _serialize_eligibility_check_invalid_benefits(serializer, _SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRIES.members["limitations"], self.limitations)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["co_insurance"] = _deserialize_eligibility_check_invalid_benefits(de, _SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRIES.members["coInsurance"])
+
+                case 1:
+                    kwargs["co_payment"] = _deserialize_eligibility_check_invalid_benefits(de, _SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRIES.members["coPayment"])
+
+                case 2:
+                    kwargs["deductible"] = _deserialize_eligibility_check_invalid_benefits(de, _SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRIES.members["deductible"])
+
+                case 3:
+                    kwargs["out_of_pocket"] = _deserialize_eligibility_check_invalid_benefits(de, _SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRIES.members["outOfPocket"])
+
+                case 4:
+                    kwargs["cost_containment"] = _deserialize_eligibility_check_invalid_benefits(de, _SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRIES.members["costContainment"])
+
+                case 5:
+                    kwargs["spend_down"] = _deserialize_eligibility_check_invalid_benefits(de, _SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRIES.members["spendDown"])
+
+                case 6:
+                    kwargs["limitations"] = _deserialize_eligibility_check_invalid_benefits(de, _SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRIES.members["limitations"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRIES, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckLimitation:
+    """
+    A benefit limitation entry, expressed as an amount, percent, or
+    quantity. Dental and vision plans often use this benefit type to specify
+    an annual maximum benefit amount.
+
+    The Affordable Care Act prevents most commercial health plans from
+    imposing limits on annual or lifetime benefit amounts, but this
+    generally doesn't apply to government health plans and some commercial
+    health plans may be exempt.
+
+    When present, the `amount` indicates the maximum benefit amount the plan
+    allocates to the patient. The `messages` array often includes values
+    like \"ANNUAL MAXIMUM\".
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    time_period: EligibilityCheckTimePeriod | None = None
+    """
+    Code specifying the time period for the benefit information. Visit
+    [Eligibility code
+    lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#time-qualifier-codes)
+    for a complete list.
+    """
+
+    amount: str | None = None
+    """The monetary amount for this limitation."""
+
+    percent: str | None = None
+    """
+    The percentage value for this limitation, expressed as a decimal (e.g.,
+    0.80 for 80%).
+    """
+
+    quantity: EligibilityCheckQuantity | None = None
+    """
+    The quantity for this limitation, when the payer expresses the limit as
+    a count rather than an amount or percentage. For example, 20 visits.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["diagnosis"], self.diagnosis)
+
+        if self.time_period is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["timePeriod"], self.time_period)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["percent"], self.percent)
+
+        if self.quantity is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["quantity"], self.quantity)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["time_period"] = EligibilityCheckTimePeriod(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["timePeriod"]))
+
+                case 14:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["amount"])
+
+                case 15:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION.members["percent"])
+
+                case 16:
+                    kwargs["quantity"] = EligibilityCheckQuantity.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_LIMITATION, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_limitations(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckLimitation]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_limitations(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckLimitation]:
+    result: list[EligibilityCheckLimitation] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckLimitation.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckManagedCareCoordinator:
+    """
+    A care coordinator associated with the patient's managed care
+    arrangement. When present, the care coordinator's details are in the
+    `relatedEntities` array.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_managed_care_coordinators(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckManagedCareCoordinator]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_managed_care_coordinators(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckManagedCareCoordinator]:
+    result: list[EligibilityCheckManagedCareCoordinator] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckManagedCareCoordinator.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckNonCovered:
+    """
+    Indicates that the patient's plan doesn't cover a specific service
+    type you submitted in the eligibility check. Note that the absence of a
+    `nonCovered` entry doesn't mean that a specific service is covered.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_NON_COVERED, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_non_covereds(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckNonCovered]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_non_covereds(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckNonCovered]:
+    result: list[EligibilityCheckNonCovered] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckNonCovered.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckNotDeemedMedicalNecessity:
+    """
+    Indicates the payer has determined this service isn't medically
+    necessary and won't cover it on that basis.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_not_deemed_medical_necessities(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckNotDeemedMedicalNecessity]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_not_deemed_medical_necessities(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckNotDeemedMedicalNecessity]:
+    result: list[EligibilityCheckNotDeemedMedicalNecessity] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckNotDeemedMedicalNecessity.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckOtherOrAdditionalPayer:
+    """
+    Indicates another payer that has coverage responsibility for the
+    patient. This is the signal for coordination of benefits (COB)
+    scenarios. The other payer's details are available in the
+    `relatedEntities` array.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_other_or_additional_payers(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckOtherOrAdditionalPayer]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_other_or_additional_payers(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckOtherOrAdditionalPayer]:
+    result: list[EligibilityCheckOtherOrAdditionalPayer] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckOtherOrAdditionalPayer.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckOtherSourceOfData:
+    """
+    Indicates the information provided came from a source other than the
+    payer's own system. Rarely returned.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_other_source_of_datas(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckOtherSourceOfData]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_other_source_of_datas(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckOtherSourceOfData]:
+    result: list[EligibilityCheckOtherSourceOfData] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckOtherSourceOfData.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckOutOfPocket:
+    """
+    An out-of-pocket maximum benefit entry. The `amount` is the limit on
+    what the patient pays. The decimal precision reflects what the payer
+    sent (e.g., `5000.0` or `5000`). Check `timePeriod` to determine whether
+    an amount is the full maximum or the amount remaining.
+    """
+
+    amount: str
+    """The monetary amount for this benefit."""
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    time_period: EligibilityCheckTimePeriod | None = None
+    """
+    Code specifying the time period for the benefit information. Visit
+    [Eligibility code
+    lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#time-qualifier-codes)
+    for a complete list.
+    """
+
+    quantity: EligibilityCheckQuantity | None = None
+    """
+    The quantity the `amount` applies to, when the payer sends one. For
+    example, 60 days of inpatient care.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["diagnosis"], self.diagnosis)
+
+        if self.time_period is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["timePeriod"], self.time_period)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["amount"], self.amount)
+        if self.quantity is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["quantity"], self.quantity)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["time_period"] = EligibilityCheckTimePeriod(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["timePeriod"]))
+
+                case 14:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET.members["amount"])
+
+                case 15:
+                    kwargs["quantity"] = EligibilityCheckQuantity.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_OUT_OF_POCKET, consumer=_consumer)
+        if "amount" not in kwargs:
+            kwargs["amount"] = ""
+        return kwargs
+
+def _serialize_eligibility_check_out_of_pockets(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckOutOfPocket]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_out_of_pockets(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckOutOfPocket]:
+    result: list[EligibilityCheckOutOfPocket] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckOutOfPocket.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckPreExistingCondition:
+    """
+    Indicates coverage for this benefit is restricted because of a
+    pre-existing condition.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_pre_existing_conditions(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckPreExistingCondition]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_pre_existing_conditions(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckPreExistingCondition]:
+    result: list[EligibilityCheckPreExistingCondition] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckPreExistingCondition.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckPrimaryCareProvider:
+    """
+    The patient's assigned primary care provider (PCP). A PCP is the main
+    healthcare provider responsible for managing a patient's care and
+    coordinating referrals to specialists. When present, the provider's
+    information is available in the `relatedEntities` array.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_primary_care_providers(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckPrimaryCareProvider]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_primary_care_providers(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckPrimaryCareProvider]:
+    result: list[EligibilityCheckPrimaryCareProvider] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckPrimaryCareProvider.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckPriorYearsHistory:
+    """Benefit information relating to a previous coverage year."""
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_prior_years_histories(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckPriorYearsHistory]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_prior_years_histories(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckPriorYearsHistory]:
+    result: list[EligibilityCheckPriorYearsHistory] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckPriorYearsHistory.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckReserve:
+    """
+    Benefits the payer holds in reserve for the patient. This type is
+    primarily used by Medicare (HETS) to indicate lifetime reserve benefit
+    amounts separate from annual limits. For example, Medicare Lifetime
+    Reserve days -- the limited pool of additional inpatient hospital days a
+    patient can use after exhausting a benefit period.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_RESERVE, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_RESERVE.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_RESERVE, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_reserves(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckReserve]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_reserves(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckReserve]:
+    result: list[EligibilityCheckReserve] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckReserve.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckSecondSurgicalOpinionRequired:
+    """
+    Indicates the plan requires a second surgical opinion before this
+    benefit is available. This is a precondition for obtaining the benefit.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_second_surgical_opinion_requireds(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckSecondSurgicalOpinionRequired]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_second_surgical_opinion_requireds(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckSecondSurgicalOpinionRequired]:
+    result: list[EligibilityCheckSecondSurgicalOpinionRequired] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckSecondSurgicalOpinionRequired.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckServicesRestrictedToFollowingProvider:
+    """
+    Indicates the benefit is available only when delivered by a particular
+    provider, identified in `relatedEntities`. This doesn't confirm whether
+    that provider is in or out of network with the payer.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_services_restricted_to_following_providers(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckServicesRestrictedToFollowingProvider]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_services_restricted_to_following_providers(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckServicesRestrictedToFollowingProvider]:
+    result: list[EligibilityCheckServicesRestrictedToFollowingProvider] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckServicesRestrictedToFollowingProvider.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckSpendDown:
+    """
+    A spend down benefit entry. Spend down is a process that allows
+    individuals with high medical expenses to qualify for Medicaid even if
+    their income is above the Medicaid income limit. The `amount` represents
+    the total the patient pays out-of-pocket before they can receive
+    Medicaid benefits. The decimal precision reflects what the payer sent
+    (e.g., `1500.0` or `1500`).
+    """
+
+    amount: str
+    """The monetary amount for this benefit."""
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    time_period: EligibilityCheckTimePeriod | None = None
+    """
+    Code specifying the time period for the benefit information. Visit
+    [Eligibility code
+    lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#time-qualifier-codes)
+    for a complete list.
+    """
+
+    quantity: EligibilityCheckQuantity | None = None
+    """
+    The quantity the `amount` applies to, when the payer sends one. For
+    example, 60 days of inpatient care.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["diagnosis"], self.diagnosis)
+
+        if self.time_period is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["timePeriod"], self.time_period)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["amount"], self.amount)
+        if self.quantity is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["quantity"], self.quantity)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["time_period"] = EligibilityCheckTimePeriod(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["timePeriod"]))
+
+                case 14:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN.members["amount"])
+
+                case 15:
+                    kwargs["quantity"] = EligibilityCheckQuantity.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_SPEND_DOWN, consumer=_consumer)
+        if "amount" not in kwargs:
+            kwargs["amount"] = ""
+        return kwargs
+
+def _serialize_eligibility_check_spend_downs(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckSpendDown]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_spend_downs(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckSpendDown]:
+    result: list[EligibilityCheckSpendDown] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckSpendDown.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+class EligibilityCheckCoverageStatus(UnknownEnumMixin, StrEnum):
+    """
+    The patient's coverage status, indicating whether their coverage is
+    active or inactive for specific services.
+    """
+    ACTIVE_COVERAGE = "ACTIVE_COVERAGE"
+    """The patient has active coverage for the specified service.    """
+    ACTIVE_FULL_RISK_CAPITATION = "ACTIVE_FULL_RISK_CAPITATION"
+    """
+    The patient has active coverage under a full risk capitation
+    arrangement, where the provider receives a fixed payment per patient
+    regardless of the services provided.
+    """
+    ACTIVE_SERVICES_CAPITATED = "ACTIVE_SERVICES_CAPITATED"
+    """
+    The patient has active coverage where some services are capitated (the
+    provider receives a fixed payment) and others aren't.
+    """
+    ACTIVE_SERVICES_CAPITATED_TO_PRIMARY_CARE_PROVIDER = "ACTIVE_SERVICES_CAPITATED_TO_PRIMARY_CARE_PROVIDER"
+    """
+    The patient has active coverage where services provided by the primary
+    care physician are capitated (the provider receives a fixed payment).
+    """
+    ACTIVE_PENDING_INVESTIGATION = "ACTIVE_PENDING_INVESTIGATION"
+    """
+    The patient has active coverage, but the payer is investigating the
+    patient's eligibility or coverage details.
+    """
+    INACTIVE = "INACTIVE"
+    """The patient doesn't have active coverage for the specified service.    """
+    INACTIVE_PENDING_ELIGIBILITY_UPDATE = "INACTIVE_PENDING_ELIGIBILITY_UPDATE"
+    """
+    The patient's coverage is inactive while the payer updates their
+    eligibility information.
+    """
+    INACTIVE_PENDING_INVESTIGATION = "INACTIVE_PENDING_INVESTIGATION"
+    """
+    The patient's coverage is inactive while the payer investigates the
+    patient's eligibility or coverage details.
+    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckEligibilityStatus:
+    """
+    Whether the patient has active or inactive coverage for a specific
+    service, network, and coverage level. For example, active coverage for
+    service type code `30` (Health Benefit Plan Coverage) at the individual
+    coverage level.
+    """
+
+    status: EligibilityCheckCoverageStatus
+    """
+    The patient's coverage status, indicating whether their coverage is
+    active or inactive for specific services.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["diagnosis"], self.diagnosis)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["status"], self.status)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["status"] = EligibilityCheckCoverageStatus(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS.members["status"]))
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_ELIGIBILITY_STATUS, consumer=_consumer)
+        if "status" not in kwargs:
+            kwargs["status"] = EligibilityCheckCoverageStatus._corrected("")
+        return kwargs
+
+def _serialize_eligibility_check_eligibility_statuses(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckEligibilityStatus]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_eligibility_statuses(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckEligibilityStatus]:
+    result: list[EligibilityCheckEligibilityStatus] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckEligibilityStatus.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckUnlimited:
+    """
+    Indicates that there's no limit for the benefit. For example, unlimited
+    physical therapy visits or unlimited preventive care.
+    """
+
+    coverage_level: EligibilityCheckCoverageLevel = EligibilityCheckCoverageLevel("INDIVIDUAL")
+    """
+    The level of coverage this benefit applies to, such as `INDIVIDUAL` or
+    `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a
+    coverage level.
+    """
+
+    insurance_type: EligibilityCheckInsuranceType | None = None
+    """Code identifying the type of insurance policy."""
+
+    network: EligibilityCheckNetwork | None = None
+    """
+    Network information for a benefit, including the in-plan network
+    indicator and plan network identification.
+    """
+
+    prior_auth_indicator: EligibilityCheckPriorAuthIndicator | None = None
+    """
+    Code indicating whether the benefit is subject to prior authorization or
+    certification.
+    """
+
+    service: EligibilityCheckServiceOrProcedure | None = None
+    """
+    The service or procedure that this benefit applies to, using a code or
+    code range within a code system like CPT, HCPCS, or NDC.
+    """
+
+    messages: list[str] | None = None
+    """
+    Free-form messages from the payer providing additional information about
+    this benefit entry, like prior authorization requirements, network
+    restrictions, benefit limits, or plan details. Message content isn't
+    standardized and varies by payer.
+    """
+
+    service_limits: list[EligibilityCheckServiceLimit] | None = None
+    """
+    Service delivery limits for this benefit, like visit frequency
+    restrictions, age boundaries, or delivery schedules.
+    """
+
+    dates: EligibilityCheckEligibilityAndBenefitDateRanges | None = None
+    """Dates associated with this benefit, as ISO 8601 date ranges."""
+
+    related_entities: list[EligibilityCheckRelatedEntity] | None = None
+    """
+    Another entity associated with the eligibility or benefits. This could
+    be a provider, an individual, an organization, or another payer.
+    """
+
+    places_of_service: list[EligibilityCheckPlaceOfService] | None = None
+    """
+    The locations where providers may deliver healthcare services for this
+    benefit. Common examples include physician offices, hospitals, and
+    patient homes. When present, this indicates facility-specific coverage
+    details.
+    """
+
+    additional_information: EligibilityCheckEligibilityAndBenefitAdditionalInformation | None = None
+    """
+    Additional plan, group, and policy identification numbers for this
+    benefit entry.
+    """
+
+    plan_coverage_description: str | None = None
+    """
+    The plan coverage description from EB05. Populated when the EB05 value
+    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
+    rather than a plan name).
+    """
+
+    diagnosis: EligibilityCheckDiagnosis | None = None
+    """
+    The diagnosis this benefit covers. Present when the benefit is limited
+    to specific diagnoses from the patient's diagnosis list.
+    """
+
+    amount: str | None = None
+    """The monetary amount associated with this benefit."""
+
+    percent: str | None = None
+    """The percentage associated with this benefit."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["coverageLevel"], self.coverage_level)
+        if self.insurance_type is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["insuranceType"], self.insurance_type)
+
+        if self.network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["network"], self.network)
+
+        if self.prior_auth_indicator is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["priorAuthIndicator"], self.prior_auth_indicator)
+
+        if self.service is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["service"], self.service)
+
+        if self.messages is not None:
+            _serialize_eligibility_check_messages(serializer, _SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["messages"], self.messages)
+
+        if self.service_limits is not None:
+            _serialize_eligibility_check_service_limits(serializer, _SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["serviceLimits"], self.service_limits)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["dates"], self.dates)
+
+        if self.related_entities is not None:
+            _serialize_eligibility_check_related_entities(serializer, _SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["relatedEntities"], self.related_entities)
+
+        if self.places_of_service is not None:
+            _serialize_eligibility_check_places_of_service(serializer, _SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["placesOfService"], self.places_of_service)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["additionalInformation"], self.additional_information)
+
+        if self.plan_coverage_description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["planCoverageDescription"], self.plan_coverage_description)
+
+        if self.diagnosis is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["diagnosis"], self.diagnosis)
+
+        if self.amount is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["amount"], self.amount)
+
+        if self.percent is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["percent"], self.percent)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["coverage_level"] = EligibilityCheckCoverageLevel(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["coverageLevel"]))
+
+                case 1:
+                    kwargs["insurance_type"] = EligibilityCheckInsuranceType(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["insuranceType"]))
+
+                case 2:
+                    kwargs["network"] = EligibilityCheckNetwork.deserialize(de)
+
+                case 3:
+                    kwargs["prior_auth_indicator"] = EligibilityCheckPriorAuthIndicator(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["priorAuthIndicator"]))
+
+                case 4:
+                    kwargs["service"] = EligibilityCheckServiceOrProcedure.deserialize(de)
+
+                case 5:
+                    kwargs["messages"] = _deserialize_eligibility_check_messages(de, _SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["messages"])
+
+                case 6:
+                    kwargs["service_limits"] = _deserialize_eligibility_check_service_limits(de, _SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["serviceLimits"])
+
+                case 7:
+                    kwargs["dates"] = EligibilityCheckEligibilityAndBenefitDateRanges.deserialize(de)
+
+                case 8:
+                    kwargs["related_entities"] = _deserialize_eligibility_check_related_entities(de, _SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["relatedEntities"])
+
+                case 9:
+                    kwargs["places_of_service"] = _deserialize_eligibility_check_places_of_service(de, _SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["placesOfService"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckEligibilityAndBenefitAdditionalInformation.deserialize(de)
+
+                case 11:
+                    kwargs["plan_coverage_description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["planCoverageDescription"])
+
+                case 12:
+                    kwargs["diagnosis"] = EligibilityCheckDiagnosis.deserialize(de)
+
+                case 13:
+                    kwargs["amount"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["amount"])
+
+                case 14:
+                    kwargs["percent"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED.members["percent"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_UNLIMITED, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_unlimiteds(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckUnlimited]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_unlimiteds(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckUnlimited]:
+    result: list[EligibilityCheckUnlimited] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckUnlimited.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckBenefits:
+    """
+    Benefit information from the payer, organized into categories like
+    cost-sharing (co-insurance, deductibles, copayments), coverage details
+    (exclusions, limitations), and eligibility statuses.
+    """
+
+    statuses: list[EligibilityCheckEligibilityStatus] | None = None
+    """
+    Eligibility status benefit entries from the payer. Each entry indicates
+    whether the patient has active or inactive coverage for a specific
+    service, network, and coverage level.
+    """
+
+    co_insurance: list[EligibilityCheckCoInsurance] | None = None
+    """
+    A list of co-insurance benefit entries from the payer.
+
+    The `percent` is the patient's share of costs, expressed as a decimal
+    (such as `0.8` for 80%). The decimal precision reflects what the payer
+    sent. A value of `0` indicates the payer reported no co-insurance
+    responsibility.
+    """
+
+    co_payment: list[EligibilityCheckCoPayment] | None = None
+    """
+    A list of copayment benefit entries from the payer.
+
+    The `amount` is the fixed amount the patient pays for a service. The
+    decimal precision reflects what the payer sent (for example, `25.0` or
+    `40`).
+    """
+
+    deductible: list[EligibilityCheckDeductible] | None = None
+    """
+    A list of deductible benefit entries from the payer.
+
+    The `amount` is what the patient must pay before the plan begins
+    covering costs. The decimal precision reflects what the payer sent (for
+    example, `1500.0` or `1000`). Check `timePeriod` to determine what the
+    amount represents. A calendar-year deductible is the patient's total
+    for the year, while a remaining deductible is the amount still owed
+    before the plan pays.
+    """
+
+    out_of_pocket: list[EligibilityCheckOutOfPocket] | None = None
+    """
+    A list of out-of-pocket maximum benefit entries from the payer.
+
+    The `amount` is the limit on what the patient pays. The decimal
+    precision reflects what the payer sent (for example, `5000.0` or
+    `5000`). Check `timePeriod` to determine whether an amount is the full
+    maximum or the amount remaining.
+    """
+
+    cost_containment: list[EligibilityCheckCostContainment] | None = None
+    """
+    A list of cost containment benefit entries from the payer.
+
+    Cost containment refers to rules a health plan may have in place to
+    control the cost of care. This benefit is typically included when the
+    patient has Medicaid coverage. The `amount` represents the total the
+    patient pays out-of-pocket before benefits begin. The decimal precision
+    reflects what the payer sent (for example, `500.0` or `500`).
+    """
+
+    spend_down: list[EligibilityCheckSpendDown] | None = None
+    """
+    A list of spend down benefit entries from the payer.
+
+    Spend down is a process that allows individuals with high medical
+    expenses to qualify for Medicaid even if their income is above the
+    Medicaid income limit. The `amount` represents the total the patient
+    pays out-of-pocket before they can receive Medicaid benefits. The
+    decimal precision reflects what the payer sent (for example, `1500.0` or
+    `1500`).
+    """
+
+    limitations: list[EligibilityCheckLimitation] | None = None
+    """
+    A list of benefit limitation entries, expressed as an amount, percent,
+    or quantity.
+
+    Dental and vision plans often use this benefit type to specify an annual
+    maximum benefit amount.
+
+    The Affordable Care Act prevents most commercial health plans from
+    imposing limits on annual or lifetime benefit amounts, but this
+    generally doesn't apply to government health plans and some commercial
+    health plans may be exempt.
+
+    When present, the `amount` indicates the maximum benefit amount the plan
+    allocates to the patient. The `messages` array often includes values
+    like \"ANNUAL MAXIMUM\".
+    """
+
+    coverage_basis: list[EligibilityCheckCoverageBasis] | None = None
+    """
+    A list of coverage basis entries from the payer.
+
+    Describes the financial basis of the patient's health plan or
+    eligibility for enrollment. For example, payers may use this type to
+    indicate that a plan is fully insured, meaning the payer assumes full
+    financial responsibility for medical claims. Payers may also use this
+    type to indicate carve-out benefits, such as when the patient is
+    enrolled in state-managed health programs, or to explain why a member
+    was allowed to enroll in the plan (such as age range or having a
+    disability). The detail is usually included as free text in `messages`
+    or identifiers in `additionalInformation`.
+    """
+
+    benefit_description: list[EligibilityCheckBenefitDescription] | None = None
+    """
+    A list of free-text benefit descriptions from the payer.
+
+    Payers sometimes use this type to communicate information that's
+    difficult to capture elsewhere in the response. The description is
+    included as free text in `messages` or identifiers in
+    `additionalInformation`.
+    """
+
+    exclusions: list[EligibilityCheckExclusion] | None = None
+    """
+    A list of services or conditions the plan excludes from coverage.
+
+    An exclusion is a service or condition the plan doesn't cover for any
+    patient. This is different from a `nonCovered` entry, which reports that
+    this patient doesn't have coverage for a specific service you submitted
+    in the request.
+    """
+
+    unlimited: list[EligibilityCheckUnlimited] | None = None
+    """
+    A list of unlimited benefits for the patient's plan.
+
+    For example, unlimited physical therapy visits or unlimited preventive
+    care.
+    """
+
+    non_covered: list[EligibilityCheckNonCovered] | None = None
+    """
+    A list of non-covered services for the patient.
+
+    Indicates that the patient's plan doesn't cover a specific service
+    type you submitted in the eligibility check. Note that the absence of a
+    `nonCovered` entry doesn't mean that a specific service is covered.
+    """
+
+    reserve: list[EligibilityCheckReserve] | None = None
+    """
+    A list of reserve benefits for the patient.
+
+    This type is primarily used by Medicare (HETS) to indicate lifetime
+    reserve benefit amounts separate from annual limits. For example,
+    Medicare Lifetime Reserve days -- the limited pool of additional
+    inpatient hospital days a patient can use after exhausting a benefit
+    period.
+    """
+
+    primary_care_provider: list[EligibilityCheckPrimaryCareProvider] | None = None
+    """
+    A list of primary care providers for the patient.
+
+    A PCP is the main healthcare provider responsible for managing a
+    patient's care and coordinating referrals to specialists. When present,
+    the provider's information is available in the `relatedEntities` array.
+    """
+
+    pre_existing_condition: list[EligibilityCheckPreExistingCondition] | None = None
+    """
+    A list of coverage restrictions due to pre-existing conditions.
+
+    Indicates coverage for this benefit is restricted because of a
+    pre-existing condition.
+    """
+
+    managed_care_coordinator: list[EligibilityCheckManagedCareCoordinator] | None = None
+    """
+    A list of managed care coordinator information for the patient.
+
+    When present, the care coordinator's details are in the
+    `relatedEntities` array.
+    """
+
+    services_restricted_to_following_provider: list[EligibilityCheckServicesRestrictedToFollowingProvider] | None = None
+    """
+    A list of services restricted to specific providers.
+
+    Indicates the benefit is available only when delivered by a particular
+    provider, identified in `relatedEntities`. This doesn't confirm whether
+    that provider is in or out of network with the payer.
+    """
+
+    not_deemed_medical_necessity: list[EligibilityCheckNotDeemedMedicalNecessity] | None = None
+    """
+    A list of services the payer determined aren't medically necessary for
+    the patient.
+
+    Indicates the payer has determined this service isn't medically
+    necessary and won't cover it on that basis.
+    """
+
+    benefit_disclaimer: list[EligibilityCheckBenefitDisclaimer] | None = None
+    """
+    A list of disclaimers from the payer.
+
+    A legal or advisory disclaimer attached to the benefit information. The
+    X12 standard discourages use of this type, but many commercial payers
+    still send disclaimers. When present, the disclaimer text arrives in
+    `messages`, and there should be only one disclaimer per individual
+    response.
+    """
+
+    second_surgical_opinion_required: list[EligibilityCheckSecondSurgicalOpinionRequired] | None = None
+    """
+    A list of benefits requiring a second surgical opinion for coverage.
+
+    Indicates the plan requires a second surgical opinion before this
+    benefit is available. This is a precondition for obtaining the benefit.
+    """
+
+    other_or_additional_payer: list[EligibilityCheckOtherOrAdditionalPayer] | None = None
+    """
+    A list of other payers with coverage responsibility for the patient.
+
+    Indicates another payer that has coverage responsibility for the
+    patient. This is the signal for coordination of benefits (COB)
+    scenarios. The other payer's details are available in the
+    `relatedEntities` array.
+    """
+
+    prior_years_history: list[EligibilityCheckPriorYearsHistory] | None = None
+    """A list of historical benefits information for the patient."""
+
+    card_reported_stolen: list[EligibilityCheckCardReportedStolen] | None = None
+    """
+    A list of entries indicating the patient's card has been reported lost
+    or stolen.
+
+    This typically means that the payer has flagged the patient's member ID
+    to prevent identity theft. The patient may still have active coverage,
+    but you likely won't be able to run transactions with the patient's
+    information until they resolve the issue.
+    """
+
+    contact_following_entity_for_information: list[EligibilityCheckContactFollowingEntityForInformation] | None = None
+    """
+    A list of entries directing you to contact another entity for benefit
+    information.
+
+    Indicates that the payer can't supply the information you requested and
+    is directing you to another entity. The entity's information is listed
+    in the `relatedEntities` array.
+    """
+
+    cannot_process: list[EligibilityCheckCannotProcess] | None = None
+    """
+    A list of entries indicating the payer couldn't process your request.
+
+    Indicates that the payer couldn't process your request. A common cause
+    is requesting benefits information for a service type or procedure code
+    the payer doesn't support.
+    """
+
+    other_source_of_data: list[EligibilityCheckOtherSourceOfData] | None = None
+    """
+    A list of entries indicating the benefit information originates from
+    another source.
+
+    Indicates the information provided came from a source other than the
+    payer's own system. Rarely returned.
+    """
+
+    health_care_facility: list[EligibilityCheckHealthCareFacility] | None = None
+    """
+    A list of health care facility information relevant to the patient's
+    benefits.
+
+    These typically indicate an institution or provider network the patient
+    is required or expected to use. The facility's information is available
+    in the `relatedEntities` array. Rarely returned.
+    """
+
+    invalid_entries: EligibilityCheckInvalidEntries | None = None
+    """
+    Benefit entries that Stedi couldn't include in the standard arrays due
+    to data validation issues, such as missing required amounts or incorrect
+    unit types.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_BENEFITS, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.statuses is not None:
+            _serialize_eligibility_check_eligibility_statuses(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["statuses"], self.statuses)
+
+        if self.co_insurance is not None:
+            _serialize_eligibility_check_co_insurances(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["coInsurance"], self.co_insurance)
+
+        if self.co_payment is not None:
+            _serialize_eligibility_check_co_payments(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["coPayment"], self.co_payment)
+
+        if self.deductible is not None:
+            _serialize_eligibility_check_deductibles(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["deductible"], self.deductible)
+
+        if self.out_of_pocket is not None:
+            _serialize_eligibility_check_out_of_pockets(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["outOfPocket"], self.out_of_pocket)
+
+        if self.cost_containment is not None:
+            _serialize_eligibility_check_cost_containments(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["costContainment"], self.cost_containment)
+
+        if self.spend_down is not None:
+            _serialize_eligibility_check_spend_downs(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["spendDown"], self.spend_down)
+
+        if self.limitations is not None:
+            _serialize_eligibility_check_limitations(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["limitations"], self.limitations)
+
+        if self.coverage_basis is not None:
+            _serialize_eligibility_check_coverage_bases(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["coverageBasis"], self.coverage_basis)
+
+        if self.benefit_description is not None:
+            _serialize_eligibility_check_benefit_descriptions(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["benefitDescription"], self.benefit_description)
+
+        if self.exclusions is not None:
+            _serialize_eligibility_check_exclusions(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["exclusions"], self.exclusions)
+
+        if self.unlimited is not None:
+            _serialize_eligibility_check_unlimiteds(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["unlimited"], self.unlimited)
+
+        if self.non_covered is not None:
+            _serialize_eligibility_check_non_covereds(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["nonCovered"], self.non_covered)
+
+        if self.reserve is not None:
+            _serialize_eligibility_check_reserves(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["reserve"], self.reserve)
+
+        if self.primary_care_provider is not None:
+            _serialize_eligibility_check_primary_care_providers(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["primaryCareProvider"], self.primary_care_provider)
+
+        if self.pre_existing_condition is not None:
+            _serialize_eligibility_check_pre_existing_conditions(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["preExistingCondition"], self.pre_existing_condition)
+
+        if self.managed_care_coordinator is not None:
+            _serialize_eligibility_check_managed_care_coordinators(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["managedCareCoordinator"], self.managed_care_coordinator)
+
+        if self.services_restricted_to_following_provider is not None:
+            _serialize_eligibility_check_services_restricted_to_following_providers(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["servicesRestrictedToFollowingProvider"], self.services_restricted_to_following_provider)
+
+        if self.not_deemed_medical_necessity is not None:
+            _serialize_eligibility_check_not_deemed_medical_necessities(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["notDeemedMedicalNecessity"], self.not_deemed_medical_necessity)
+
+        if self.benefit_disclaimer is not None:
+            _serialize_eligibility_check_benefit_disclaimers(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["benefitDisclaimer"], self.benefit_disclaimer)
+
+        if self.second_surgical_opinion_required is not None:
+            _serialize_eligibility_check_second_surgical_opinion_requireds(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["secondSurgicalOpinionRequired"], self.second_surgical_opinion_required)
+
+        if self.other_or_additional_payer is not None:
+            _serialize_eligibility_check_other_or_additional_payers(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["otherOrAdditionalPayer"], self.other_or_additional_payer)
+
+        if self.prior_years_history is not None:
+            _serialize_eligibility_check_prior_years_histories(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["priorYearsHistory"], self.prior_years_history)
+
+        if self.card_reported_stolen is not None:
+            _serialize_eligibility_check_card_reported_stolens(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["cardReportedStolen"], self.card_reported_stolen)
+
+        if self.contact_following_entity_for_information is not None:
+            _serialize_eligibility_check_contact_following_entity_for_informations(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["contactFollowingEntityForInformation"], self.contact_following_entity_for_information)
+
+        if self.cannot_process is not None:
+            _serialize_eligibility_check_cannot_processes(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["cannotProcess"], self.cannot_process)
+
+        if self.other_source_of_data is not None:
+            _serialize_eligibility_check_other_source_of_datas(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["otherSourceOfData"], self.other_source_of_data)
+
+        if self.health_care_facility is not None:
+            _serialize_eligibility_check_health_care_facilities(serializer, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["healthCareFacility"], self.health_care_facility)
+
+        if self.invalid_entries is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["invalidEntries"], self.invalid_entries)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["statuses"] = _deserialize_eligibility_check_eligibility_statuses(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["statuses"])
+
+                case 1:
+                    kwargs["co_insurance"] = _deserialize_eligibility_check_co_insurances(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["coInsurance"])
+
+                case 2:
+                    kwargs["co_payment"] = _deserialize_eligibility_check_co_payments(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["coPayment"])
+
+                case 3:
+                    kwargs["deductible"] = _deserialize_eligibility_check_deductibles(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["deductible"])
+
+                case 4:
+                    kwargs["out_of_pocket"] = _deserialize_eligibility_check_out_of_pockets(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["outOfPocket"])
+
+                case 5:
+                    kwargs["cost_containment"] = _deserialize_eligibility_check_cost_containments(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["costContainment"])
+
+                case 6:
+                    kwargs["spend_down"] = _deserialize_eligibility_check_spend_downs(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["spendDown"])
+
+                case 7:
+                    kwargs["limitations"] = _deserialize_eligibility_check_limitations(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["limitations"])
+
+                case 8:
+                    kwargs["coverage_basis"] = _deserialize_eligibility_check_coverage_bases(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["coverageBasis"])
+
+                case 9:
+                    kwargs["benefit_description"] = _deserialize_eligibility_check_benefit_descriptions(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["benefitDescription"])
+
+                case 10:
+                    kwargs["exclusions"] = _deserialize_eligibility_check_exclusions(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["exclusions"])
+
+                case 11:
+                    kwargs["unlimited"] = _deserialize_eligibility_check_unlimiteds(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["unlimited"])
+
+                case 12:
+                    kwargs["non_covered"] = _deserialize_eligibility_check_non_covereds(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["nonCovered"])
+
+                case 13:
+                    kwargs["reserve"] = _deserialize_eligibility_check_reserves(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["reserve"])
+
+                case 14:
+                    kwargs["primary_care_provider"] = _deserialize_eligibility_check_primary_care_providers(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["primaryCareProvider"])
+
+                case 15:
+                    kwargs["pre_existing_condition"] = _deserialize_eligibility_check_pre_existing_conditions(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["preExistingCondition"])
+
+                case 16:
+                    kwargs["managed_care_coordinator"] = _deserialize_eligibility_check_managed_care_coordinators(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["managedCareCoordinator"])
+
+                case 17:
+                    kwargs["services_restricted_to_following_provider"] = _deserialize_eligibility_check_services_restricted_to_following_providers(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["servicesRestrictedToFollowingProvider"])
+
+                case 18:
+                    kwargs["not_deemed_medical_necessity"] = _deserialize_eligibility_check_not_deemed_medical_necessities(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["notDeemedMedicalNecessity"])
+
+                case 19:
+                    kwargs["benefit_disclaimer"] = _deserialize_eligibility_check_benefit_disclaimers(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["benefitDisclaimer"])
+
+                case 20:
+                    kwargs["second_surgical_opinion_required"] = _deserialize_eligibility_check_second_surgical_opinion_requireds(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["secondSurgicalOpinionRequired"])
+
+                case 21:
+                    kwargs["other_or_additional_payer"] = _deserialize_eligibility_check_other_or_additional_payers(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["otherOrAdditionalPayer"])
+
+                case 22:
+                    kwargs["prior_years_history"] = _deserialize_eligibility_check_prior_years_histories(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["priorYearsHistory"])
+
+                case 23:
+                    kwargs["card_reported_stolen"] = _deserialize_eligibility_check_card_reported_stolens(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["cardReportedStolen"])
+
+                case 24:
+                    kwargs["contact_following_entity_for_information"] = _deserialize_eligibility_check_contact_following_entity_for_informations(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["contactFollowingEntityForInformation"])
+
+                case 25:
+                    kwargs["cannot_process"] = _deserialize_eligibility_check_cannot_processes(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["cannotProcess"])
+
+                case 26:
+                    kwargs["other_source_of_data"] = _deserialize_eligibility_check_other_source_of_datas(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["otherSourceOfData"])
+
+                case 27:
+                    kwargs["health_care_facility"] = _deserialize_eligibility_check_health_care_facilities(de, _SCHEMA_ELIGIBILITY_CHECK_BENEFITS.members["healthCareFacility"])
+
+                case 28:
+                    kwargs["invalid_entries"] = EligibilityCheckInvalidEntries.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_BENEFITS, consumer=_consumer)
+        return kwargs
+
+    @classmethod
+    def _smithy_default(cls) -> Self:
+        return cls()
+
+@dataclass(kw_only=True)
+class EligibilityCheckPlan:
+    """An insurance plan and its benefits."""
+
+    benefits: EligibilityCheckBenefits
+    """
+    Benefit information from the payer, organized into categories like
+    cost-sharing (co-insurance, deductibles, copayments), coverage details
+    (exclusions, limitations), and eligibility statuses.
+    """
+
+    name: str | None = None
+    """
+    The name of the plan. Stedi derives this from the plan names the payer
+    sends in the benefit entries. This property is present when the payer
+    sends consistent plan names, and absent when the data is missing,
+    ambiguous, or contradictory. When absent, check each benefit's
+    `planCoverageDescription` for the plan information.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PLAN, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PLAN.members["benefits"], self.benefits)
+        if self.name is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PLAN.members["name"], self.name)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["benefits"] = EligibilityCheckBenefits.deserialize(de)
+
+                case 1:
+                    kwargs["name"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PLAN.members["name"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_PLAN, consumer=_consumer)
+        if "benefits" not in kwargs:
+            kwargs["benefits"] = EligibilityCheckBenefits._smithy_default()
+        return kwargs
+
+def _serialize_eligibility_check_plans(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckPlan]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_plans(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckPlan]:
+    result: list[EligibilityCheckPlan] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckPlan.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class EligibilityCheckStateLicense:
+    """The provider's state license information."""
+
+    number: str
+    """The provider's state license number."""
+
+    state: str | None = None
+    """The state or province code that issued the license."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_STATE_LICENSE, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.state is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_STATE_LICENSE.members["state"], self.state)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_STATE_LICENSE.members["number"], self.number)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["state"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_STATE_LICENSE.members["state"])
+
+                case 1:
+                    kwargs["number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_STATE_LICENSE.members["number"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_STATE_LICENSE, consumer=_consumer)
+        if "number" not in kwargs:
+            kwargs["number"] = ""
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckProviderAdditionalInformation:
+    """Additional identifying information about the provider."""
+
+    state_license: EligibilityCheckStateLicense | None = None
+    """The provider's state license information."""
+
+    medicare_provider_number: str | None = None
+    """The provider's Medicare provider number."""
+
+    medicaid_provider_number: str | None = None
+    """The provider's Medicaid provider number."""
+
+    facility_id_number: str | None = None
+    """The ID number for the provider's facility."""
+
+    personal_identification_number: str | None = None
+    """The provider's personal identification number."""
+
+    contract_number: str | None = None
+    """The provider's contract number."""
+
+    electronic_device_pin: str | None = None
+    """The provider's electronic device PIN."""
+
+    submitter_id: str | None = None
+    """The provider's submitter ID."""
+
+    user_id: str | None = None
+    """The provider's user ID."""
+
+    plan_network_id: str | None = None
+    """The provider's plan network identification number."""
+
+    facility_network_id: str | None = None
+    """The provider's facility network identification number."""
+
+    prior_identifier_number: str | None = None
+    """The provider's prior identifier number."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.state_license is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["stateLicense"], self.state_license)
+
+        if self.medicare_provider_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["medicareProviderNumber"], self.medicare_provider_number)
+
+        if self.medicaid_provider_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["medicaidProviderNumber"], self.medicaid_provider_number)
+
+        if self.facility_id_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["facilityIdNumber"], self.facility_id_number)
+
+        if self.personal_identification_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["personalIdentificationNumber"], self.personal_identification_number)
+
+        if self.contract_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["contractNumber"], self.contract_number)
+
+        if self.electronic_device_pin is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["electronicDevicePin"], self.electronic_device_pin)
+
+        if self.submitter_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["submitterId"], self.submitter_id)
+
+        if self.user_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["userId"], self.user_id)
+
+        if self.plan_network_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["planNetworkId"], self.plan_network_id)
+
+        if self.facility_network_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["facilityNetworkId"], self.facility_network_id)
+
+        if self.prior_identifier_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["priorIdentifierNumber"], self.prior_identifier_number)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["state_license"] = EligibilityCheckStateLicense.deserialize(de)
+
+                case 1:
+                    kwargs["medicare_provider_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["medicareProviderNumber"])
+
+                case 2:
+                    kwargs["medicaid_provider_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["medicaidProviderNumber"])
+
+                case 3:
+                    kwargs["facility_id_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["facilityIdNumber"])
+
+                case 4:
+                    kwargs["personal_identification_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["personalIdentificationNumber"])
+
+                case 5:
+                    kwargs["contract_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["contractNumber"])
+
+                case 6:
+                    kwargs["electronic_device_pin"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["electronicDevicePin"])
+
+                case 7:
+                    kwargs["submitter_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["submitterId"])
+
+                case 8:
+                    kwargs["user_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["userId"])
+
+                case 9:
+                    kwargs["plan_network_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["planNetworkId"])
+
+                case 10:
+                    kwargs["facility_network_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["facilityNetworkId"])
+
+                case 11:
+                    kwargs["prior_identifier_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION.members["priorIdentifierNumber"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION, consumer=_consumer)
+        return kwargs
+
+class EligibilityCheckProviderEntityIdentifierCode(UnknownEnumMixin, StrEnum):
+    """A code identifying the type of provider.    """
+    PROVIDER = "PROVIDER"
+    """Provider    """
+    THIRD_PARTY_ADMINISTRATOR = "THIRD_PARTY_ADMINISTRATOR"
+    """Third Party Administrator    """
+    EMPLOYER = "EMPLOYER"
+    """Employer    """
+    HOSPITAL = "HOSPITAL"
+    """Hospital    """
+    FACILITY = "FACILITY"
+    """Facility    """
+    GATEWAY_PROVIDER = "GATEWAY_PROVIDER"
+    """Gateway Provider    """
+    PLAN_SPONSOR = "PLAN_SPONSOR"
+    """Plan Sponsor    """
+    PAYER = "PAYER"
+    """Payer    """
+
+@dataclass(kw_only=True)
+class EligibilityCheckProvider:
+    """
+    Information about the entity that submitted the original eligibility
+    check request. This may be an individual practitioner, a medical group,
+    a hospital, or another type of healthcare provider. This object will
+    always include at least one identifier, such as the provider's
+    [NPI](https://www.stedi.com/docs/healthcare/national-provider-identifier),
+    tax ID, or EIN.
+    """
+
+    type: EligibilityCheckProviderEntityIdentifierCode
+    """A code identifying the type of provider."""
+
+    name: EligibilityCheckPersonOrOrganizationName | None = None
+    """The entity's name, as either a person or an organization."""
+
+    address: EligibilityCheckAddress | None = None
+    """The address of the entity, such as a provider or organization."""
+
+    provider: EligibilityCheckEntityProvider | None = None
+    """Information about the provider's role and taxonomy."""
+
+    tin: str | None = None
+    """The Federal Taxpayer Identification Number."""
+
+    ssn: str | None = None
+    """The Social Security Number (SSN)."""
+
+    ein: str | None = None
+    """
+    The Employer Identification Number (EIN), distinct from the Federal
+    Taxpayer Identification Number in `tin`.
+    """
+
+    pharmacy_processor_number: str | None = None
+    """The pharmacy processor number."""
+
+    service_provider_number: str | None = None
+    """
+    The service provider number. This is an identification number the payer
+    assigns.
+    """
+
+    npi: str | None = None
+    """
+    The provider's [National Provider Identifier
+    (NPI)](https://www.stedi.com/docs/healthcare/national-provider-identifier).
+    """
+
+    additional_information: EligibilityCheckProviderAdditionalInformation | None = None
+    """Additional identifying information for the provider."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.name is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER.members["name"], self.name)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER.members["type"], self.type)
+        if self.address is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER.members["address"], self.address)
+
+        if self.provider is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER.members["provider"], self.provider)
+
+        if self.tin is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER.members["tin"], self.tin)
+
+        if self.ssn is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER.members["ssn"], self.ssn)
+
+        if self.ein is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER.members["ein"], self.ein)
+
+        if self.pharmacy_processor_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER.members["pharmacyProcessorNumber"], self.pharmacy_processor_number)
+
+        if self.service_provider_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER.members["serviceProviderNumber"], self.service_provider_number)
+
+        if self.npi is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER.members["npi"], self.npi)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER.members["additionalInformation"], self.additional_information)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["name"] = _EligibilityCheckPersonOrOrganizationNameDeserializer().deserialize(de)
+
+                case 1:
+                    kwargs["type"] = EligibilityCheckProviderEntityIdentifierCode(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER.members["type"]))
+
+                case 2:
+                    kwargs["address"] = EligibilityCheckAddress.deserialize(de)
+
+                case 3:
+                    kwargs["provider"] = EligibilityCheckEntityProvider.deserialize(de)
+
+                case 4:
+                    kwargs["tin"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER.members["tin"])
+
+                case 5:
+                    kwargs["ssn"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER.members["ssn"])
+
+                case 6:
+                    kwargs["ein"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER.members["ein"])
+
+                case 7:
+                    kwargs["pharmacy_processor_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER.members["pharmacyProcessorNumber"])
+
+                case 8:
+                    kwargs["service_provider_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER.members["serviceProviderNumber"])
+
+                case 9:
+                    kwargs["npi"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER.members["npi"])
+
+                case 10:
+                    kwargs["additional_information"] = EligibilityCheckProviderAdditionalInformation.deserialize(de)
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_PROVIDER, consumer=_consumer)
+        if "type" not in kwargs:
+            kwargs["type"] = EligibilityCheckProviderEntityIdentifierCode._corrected("")
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckSubscriberAdditionalInformation:
+    """Additional identifying information about the subscriber."""
+
+    plan: EligibilityCheckAdditionalInformationWithName | None = None
+    """The plan number and plan description."""
+
+    group: EligibilityCheckAdditionalInformationWithName | None = None
+    """The group number and group description."""
+
+    plan_network: EligibilityCheckAdditionalInformationWithName | None = None
+    """
+    The plan network identification number and the plan, group, or plan
+    network name.
+    """
+
+    group_or_policy_number: str | None = None
+    """The group or policy number."""
+
+    member_id: str | None = None
+    """
+    The member identification number - only used when checking eligibility
+    with a Workers' Compensation or Property and Casualty insurer.
+    """
+
+    family_unit_number: str | None = None
+    """The family unit number."""
+
+    class_of_contract_code: str | None = None
+    """
+    The class of contract code - used to identify the applicable class of
+    contract for claims processing.
+    """
+
+    contract_number: str | None = None
+    """
+    The contract number of a contract between the payer and the provider
+    that requested the eligibility check.
+    """
+
+    medical_record_id: str | None = None
+    """The medical record identification number."""
+
+    patient_account_number: str | None = None
+    """
+    The patient account number. If you included this value in the original
+    eligibility request, the payer will return the same value here in the
+    response.
+    """
+
+    mbi: str | None = None
+    """
+    The patient's Medicare Beneficiary Identifier (MBI). If you receive an
+    MBI, we recommend sending a follow-up eligibility check to CMS (payer
+    ID: CMS) for additional benefits data. Visit [Medicare Beneficiary
+    Identifier
+    documentation](https://www.cms.gov/training-education/partner-outreach-resources/new-medicare-card/medical-beneficiary-identifiers-mbis)
+    for more information about the MBI format. This most commonly occurs
+    with patients who are covered by both Medicare and Medicaid.
+    """
+
+    identification_card_serial_number: str | None = None
+    """
+    Used when the identification card has a number in addition to the member
+    ID.
+    """
+
+    identity_card_number: str | None = None
+    """
+    The identity card number. Present when this number differs from the
+    member ID.
+    """
+
+    issue_number: str | None = None
+    """The issue number."""
+
+    insurance_policy_number: str | None = None
+    """The insurance policy number."""
+
+    medicaid_recipient_id: str | None = None
+    """The Medicaid recipient identification number."""
+
+    prior_identifier_number: str | None = None
+    """The prior identifier number."""
+
+    ssn: str | None = None
+    """The patient's Social Security Number (SSN)."""
+
+    agency_claim_number: str | None = None
+    """
+    The agency claim number, only used when the information source is a
+    Property and Casualty payer.
+    """
+
+    case_number: str | None = None
+    """The case number associated with the subscriber."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.plan is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["plan"], self.plan)
+
+        if self.group is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["group"], self.group)
+
+        if self.plan_network is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["planNetwork"], self.plan_network)
+
+        if self.group_or_policy_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["groupOrPolicyNumber"], self.group_or_policy_number)
+
+        if self.member_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["memberId"], self.member_id)
+
+        if self.family_unit_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["familyUnitNumber"], self.family_unit_number)
+
+        if self.class_of_contract_code is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["classOfContractCode"], self.class_of_contract_code)
+
+        if self.contract_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["contractNumber"], self.contract_number)
+
+        if self.medical_record_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["medicalRecordId"], self.medical_record_id)
+
+        if self.patient_account_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["patientAccountNumber"], self.patient_account_number)
+
+        if self.mbi is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["mbi"], self.mbi)
+
+        if self.identification_card_serial_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["identificationCardSerialNumber"], self.identification_card_serial_number)
+
+        if self.identity_card_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["identityCardNumber"], self.identity_card_number)
+
+        if self.issue_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["issueNumber"], self.issue_number)
+
+        if self.insurance_policy_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["insurancePolicyNumber"], self.insurance_policy_number)
+
+        if self.medicaid_recipient_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["medicaidRecipientId"], self.medicaid_recipient_id)
+
+        if self.prior_identifier_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["priorIdentifierNumber"], self.prior_identifier_number)
+
+        if self.ssn is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["ssn"], self.ssn)
+
+        if self.agency_claim_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["agencyClaimNumber"], self.agency_claim_number)
+
+        if self.case_number is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["caseNumber"], self.case_number)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["plan"] = EligibilityCheckAdditionalInformationWithName.deserialize(de)
+
+                case 1:
+                    kwargs["group"] = EligibilityCheckAdditionalInformationWithName.deserialize(de)
+
+                case 2:
+                    kwargs["plan_network"] = EligibilityCheckAdditionalInformationWithName.deserialize(de)
+
+                case 3:
+                    kwargs["group_or_policy_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["groupOrPolicyNumber"])
+
+                case 4:
+                    kwargs["member_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["memberId"])
+
+                case 5:
+                    kwargs["family_unit_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["familyUnitNumber"])
+
+                case 6:
+                    kwargs["class_of_contract_code"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["classOfContractCode"])
+
+                case 7:
+                    kwargs["contract_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["contractNumber"])
+
+                case 8:
+                    kwargs["medical_record_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["medicalRecordId"])
+
+                case 9:
+                    kwargs["patient_account_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["patientAccountNumber"])
+
+                case 10:
+                    kwargs["mbi"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["mbi"])
+
+                case 11:
+                    kwargs["identification_card_serial_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["identificationCardSerialNumber"])
+
+                case 12:
+                    kwargs["identity_card_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["identityCardNumber"])
+
+                case 13:
+                    kwargs["issue_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["issueNumber"])
+
+                case 14:
+                    kwargs["insurance_policy_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["insurancePolicyNumber"])
+
+                case 15:
+                    kwargs["medicaid_recipient_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["medicaidRecipientId"])
+
+                case 16:
+                    kwargs["prior_identifier_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["priorIdentifierNumber"])
+
+                case 17:
+                    kwargs["ssn"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["ssn"])
+
+                case 18:
+                    kwargs["agency_claim_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["agencyClaimNumber"])
+
+                case 19:
+                    kwargs["case_number"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION.members["caseNumber"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckSubscriber:
+    """
+    Information about the primary policyholder for the insurance plan listed
+    in the original eligibility check request. The response will always
+    include either the subscriber's name or member ID for identification,
+    but most payers will also return the subscriber's date of birth and
+    other identifying information.
+    """
+
+    address: EligibilityCheckAddress | None = None
+    """The address of the entity, such as a provider or organization."""
+
+    provider: EligibilityCheckEntityProvider | None = None
+    """Information about a provider associated with this entity."""
+
+    dates: EligibilityCheckPatientAttributeDateRanges | None = None
+    """Dates associated with patient attributes, as ISO 8601 date ranges."""
+
+    date_of_birth: str | None = None
+    """
+    The patient's date of birth as an ISO 8601 `YYYY-MM-DD` string. For
+    example, `1985-03-15` represents March 15, 1985.
+    """
+
+    gender: EligibilityCheckResponsePatientGender | None = None
+    """Code indicating the patient's gender."""
+
+    birth_sequence_number: int | None = None
+    """
+    The number assigned to each family member born with the same birth date,
+    such as twins or triplets. Indicates the birth order when there are
+    multiple births associated with the provided birth date.
+    """
+
+    maintenance: EligibilityCheckMaintenance | None = None
+    """
+    Maintenance information indicating whether the payer signaled that the
+    patient's identifying information differs from what you submitted.
+    """
+
+    name: EligibilityCheckPersonOrOrganizationName | None = None
+    """The entity's name, as either a person or an organization."""
+
+    additional_information: EligibilityCheckSubscriberAdditionalInformation | None = None
+    """Additional identifying information for the subscriber."""
+
+    member_id: str | None = None
+    """The member ID for the insurance policy."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.address is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER.members["address"], self.address)
+
+        if self.provider is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER.members["provider"], self.provider)
+
+        if self.dates is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER.members["dates"], self.dates)
+
+        if self.date_of_birth is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER.members["dateOfBirth"], self.date_of_birth)
+
+        if self.gender is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER.members["gender"], self.gender)
+
+        if self.birth_sequence_number is not None:
+            serializer.write_long(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER.members["birthSequenceNumber"], self.birth_sequence_number)
+
+        if self.maintenance is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER.members["maintenance"], self.maintenance)
+
+        if self.name is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER.members["name"], self.name)
+
+        if self.additional_information is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER.members["additionalInformation"], self.additional_information)
+
+        if self.member_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER.members["memberId"], self.member_id)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["address"] = EligibilityCheckAddress.deserialize(de)
+
+                case 1:
+                    kwargs["provider"] = EligibilityCheckEntityProvider.deserialize(de)
+
+                case 2:
+                    kwargs["dates"] = EligibilityCheckPatientAttributeDateRanges.deserialize(de)
+
+                case 3:
+                    kwargs["date_of_birth"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER.members["dateOfBirth"])
+
+                case 4:
+                    kwargs["gender"] = EligibilityCheckResponsePatientGender(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER.members["gender"]))
+
+                case 5:
+                    kwargs["birth_sequence_number"] = de.read_long(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER.members["birthSequenceNumber"])
+
+                case 6:
+                    kwargs["maintenance"] = EligibilityCheckMaintenance.deserialize(de)
+
+                case 7:
+                    kwargs["name"] = _EligibilityCheckPersonOrOrganizationNameDeserializer().deserialize(de)
+
+                case 8:
+                    kwargs["additional_information"] = EligibilityCheckSubscriberAdditionalInformation.deserialize(de)
+
+                case 9:
+                    kwargs["member_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER.members["memberId"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckWarning:
+    """
+    An issue with your eligibility request that could affect the results, or
+    information about the response.
+    """
+
+    code: str | None = None
+    """The warning code."""
+
+    description: str | None = None
+    """The warning description."""
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_WARNING, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.code is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_WARNING.members["code"], self.code)
+
+        if self.description is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_WARNING.members["description"], self.description)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["code"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_WARNING.members["code"])
+
+                case 1:
+                    kwargs["description"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_WARNING.members["description"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_WARNING, consumer=_consumer)
+        return kwargs
+
+def _serialize_eligibility_check_warnings(serializer: ShapeSerializer, schema: Schema, value: list[EligibilityCheckWarning]) -> None:
+    member_schema = schema.members["member"]
+    with serializer.begin_list(schema, len(value)) as ls:
+        for e in value:
+            ls.write_struct(member_schema, e)
+
+def _deserialize_eligibility_check_warnings(deserializer: ShapeDeserializer, schema: Schema) -> list[EligibilityCheckWarning]:
+    result: list[EligibilityCheckWarning] = []
+    def _read_value(d: ShapeDeserializer):
+        if d.is_null():
+            d.read_null()
+
+        else:
+            result.append(EligibilityCheckWarning.deserialize(d))
+    deserializer.read_list(schema, _read_value)
+    return result
+
+@dataclass(kw_only=True)
+class CreateEligibilityCheckOutput:
+    """The eligibility check response payload."""
+
+    id: str
+    """
+    A globally unique identifier for this eligibility check across all Stedi
+    accounts. It's formatted as `ec_<uuid>`. For example:
+    `ec_550e8400-e29b-41d4-a716-446655440000`. You can use this ID to track
+    this eligibility check and to construct deep links to eligibility checks
+    in the Stedi portal.
+    """
+
+    x12: str
+    """
+    Typically this property contains the raw X12 EDI [271 Eligibility
+    Benefit
+    Response](https://portal.stedi.com/app/guides/view/hipaa/health-care-eligibility-benefit-response-x279a1/01GS66YHZPB37ABF34DBPSR213)
+    from the payer.
+
+    In some circumstances, this property may contain a [999 Implementation
+    Acknowledgment](https://portal.stedi.com/app/guides/view/hipaa/implementation-acknowledgment-x231a1/01HMRQV0N8SPHG58M4ZG1CRHH0)
+    instead of a 271. A 999 indicates validation errors in the X12 EDI
+    transaction, such as improper formatting or missing or invalid values.
+
+    If this property contains a 999, many of the other response properties
+    will be empty, as Stedi populates them with information from the 271.
+    """
+
+    payer: EligibilityCheckPayer
+    """
+    Information about the payer providing the benefits information. The
+    response will always include the payer's business name and an
+    identifier, such as the payer's tax ID. Most payers also include
+    contact information.
+    """
+
+    meta: EligibilityCheckMeta | None = None
+    """
+    Metadata about the response. Stedi uses this data for tracking and
+    troubleshooting.
+    """
+
+    payer_id: str | None = None
+    """
+    The primary payer ID from the [Stedi Payer
+    Network](https://www.stedi.com/healthcare/network). This ID is
+    consistent across eligibility and claims systems and matches the payer
+    ID printed on the member's ID card. You can use it as the `payerId` in
+    subsequent eligibility check requests.
+    """
+
+    eligibility_search_id: str | None = None
+    """
+    An identifier that allows Stedi to group eligibility checks for the same
+    patient into a unified record in the Stedi portal called an [eligibility
+    search](https://www.stedi.com/docs/healthcare/eligibility-views).
+
+    This property is for use by Stedi tools only, such as Stedi's MCP
+    server.
+    """
+
+    warnings: list[EligibilityCheckWarning] | None = None
+    """
+    Issues with your eligibility request that could affect the results, or
+    information about the response. For example, warnings can help explain
+    why the request was rejected.
+    """
+
+    provider: EligibilityCheckProvider | None = None
+    """
+    Information about the entity that submitted the original eligibility
+    check request. This may be an individual practitioner, a medical group,
+    a hospital, or another type of healthcare provider. This object will
+    always include at least one identifier, such as the provider's
+    [NPI](https://www.stedi.com/docs/healthcare/national-provider-identifier),
+    tax ID, or EIN.
+    """
+
+    subscriber: EligibilityCheckSubscriber | None = None
+    """
+    Information about the primary policyholder for the insurance plan listed
+    in the original eligibility check request. The response will always
+    include either the subscriber's name or member ID for identification,
+    but most payers will also return the subscriber's date of birth and
+    other identifying information.
+    """
+
+    dependent: EligibilityCheckDependent | None = None
+    """
+    Information about the dependent from the eligibility check request. Note
+    that the payer may return the dependent in the subscriber object
+    instead. When present, this object will always include the dependent's
+    name for identification, but many payers also include the date of birth
+    and other identifying information.
+    """
+
+    plans: list[EligibilityCheckPlan] | None = None
+    """
+    The patient's insurance plans, grouped by plan name. Each plan contains
+    the benefits that apply to the patient.
+    """
+
+    errors: list[EligibilityCheckResponseError] | None = None
+    """
+    `AAA` rejection errors from the payer. [`AAA`
+    errors](https://www.stedi.com/docs/healthcare/eligibility-troubleshooting#payer-aaa-errors)
+    specify the reasons for the rejection and any recommended follow-up
+    actions.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["id"], self.id)
+        if self.meta is not None:
+            serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["meta"], self.meta)
+
+        if self.payer_id is not None:
+            serializer.write_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["payerId"], self.payer_id)
+
+        if self.eligibility_search_id is not None:
+            serializer.write_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["eligibilitySearchId"], self.eligibility_search_id)
+
+        if self.warnings is not None:
+            _serialize_eligibility_check_warnings(serializer, _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["warnings"], self.warnings)
+
+        serializer.write_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["x12"], self.x12)
+        serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["payer"], self.payer)
+        if self.provider is not None:
+            serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["provider"], self.provider)
+
+        if self.subscriber is not None:
+            serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["subscriber"], self.subscriber)
+
+        if self.dependent is not None:
+            serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["dependent"], self.dependent)
+
+        if self.plans is not None:
+            _serialize_eligibility_check_plans(serializer, _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["plans"], self.plans)
+
+        if self.errors is not None:
+            _serialize_eligibility_check_response_error_list(serializer, _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["errors"], self.errors)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["id"] = de.read_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["id"])
+
+                case 1:
+                    kwargs["meta"] = EligibilityCheckMeta.deserialize(de)
+
+                case 2:
+                    kwargs["payer_id"] = de.read_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["payerId"])
+
+                case 3:
+                    kwargs["eligibility_search_id"] = de.read_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["eligibilitySearchId"])
+
+                case 4:
+                    kwargs["warnings"] = _deserialize_eligibility_check_warnings(de, _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["warnings"])
+
+                case 5:
+                    kwargs["x12"] = de.read_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["x12"])
+
+                case 6:
+                    kwargs["payer"] = EligibilityCheckPayer.deserialize(de)
+
+                case 7:
+                    kwargs["provider"] = EligibilityCheckProvider.deserialize(de)
+
+                case 8:
+                    kwargs["subscriber"] = EligibilityCheckSubscriber.deserialize(de)
+
+                case 9:
+                    kwargs["dependent"] = EligibilityCheckDependent.deserialize(de)
+
+                case 10:
+                    kwargs["plans"] = _deserialize_eligibility_check_plans(de, _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["plans"])
+
+                case 11:
+                    kwargs["errors"] = _deserialize_eligibility_check_response_error_list(de, _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["errors"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT, consumer=_consumer)
+        if "id" not in kwargs:
+            kwargs["id"] = ""
+        if "x12" not in kwargs:
+            kwargs["x12"] = ""
+        if "payer" not in kwargs:
+            kwargs["payer"] = EligibilityCheckPayer._smithy_default()
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckSerializationException(ServiceError):
+    """The request body could not be parsed."""
+
+    fault: Literal["client", "server"] | None = "client"
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_SERIALIZATION_EXCEPTION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_SERIALIZATION_EXCEPTION.members["message"], self.message)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["message"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_SERIALIZATION_EXCEPTION.members["message"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_SERIALIZATION_EXCEPTION, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class ContentTooLargeException(ServiceError):
+    """
+    The request payload is larger than the service accepts. Send less in one
+    request.
+    """
+
+    fault: Literal["client", "server"] | None = "client"
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CONTENT_TOO_LARGE_EXCEPTION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_CONTENT_TOO_LARGE_EXCEPTION.members["message"], self.message)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["message"] = de.read_string(_SCHEMA_CONTENT_TOO_LARGE_EXCEPTION.members["message"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_CONTENT_TOO_LARGE_EXCEPTION, consumer=_consumer)
+        return kwargs
+
+CREATE_ELIGIBILITY_CHECK = APIOperation(
+        input = CreateEligibilityCheckInput,
+        output = CreateEligibilityCheckOutput,
+        schema = _SCHEMA_CREATE_ELIGIBILITY_CHECK,
+        input_schema = _SCHEMA_CREATE_ELIGIBILITY_CHECK_INPUT,
+        output_schema = _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT,
+        error_registry = TypeRegistry({
+            ShapeID("com.stedi.eligibility.v4.errors#EligibilityCheckSerializationException"): EligibilityCheckSerializationException,
+ShapeID("com.stedi.smithy.model.errors#AuthenticationFailedException"): AuthenticationFailedException,
+ShapeID("com.stedi.smithy.model.errors#ContentTooLargeException"): ContentTooLargeException,
+ShapeID("com.stedi.smithy.model.errors#ForbiddenException"): ForbiddenException,
+ShapeID("com.stedi.smithy.model.errors#InternalServerException"): InternalServerException,
+ShapeID("com.stedi.smithy.model.errors#InvalidRequestException"): InvalidRequestException,
+ShapeID("com.stedi.smithy.model.errors#TooManyRequestsException"): TooManyRequestsException,
+        }),
+        effective_auth_schemes = [
+            ShapeID("smithy.api#httpApiKeyAuth"),
+ShapeID("smithy.api#httpBearerAuth"),
+        ],
+        error_schemas = [
+            _SCHEMA_ELIGIBILITY_CHECK_SERIALIZATION_EXCEPTION,
+_SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
+_SCHEMA_CONTENT_TOO_LARGE_EXCEPTION,
+_SCHEMA_FORBIDDEN_EXCEPTION,
+_SCHEMA_INTERNAL_SERVER_EXCEPTION,
+_SCHEMA_INVALID_REQUEST_EXCEPTION,
+_SCHEMA_TOO_MANY_REQUESTS_EXCEPTION,
+        ]
+)
+
 def _serialize_event_destinations_event_type_list(serializer: ShapeSerializer, schema: Schema, value: list[str]) -> None:
     member_schema = schema.members["member"]
     with serializer.begin_list(schema, len(value)) as ls:
@@ -7967,40 +22311,6 @@ class EventDestinationsLimitExceededException(ServiceError):
                     logger.debug("Unexpected member schema: %s", schema)
 
         deserializer.read_struct(_SCHEMA_EVENT_DESTINATIONS_LIMIT_EXCEEDED_EXCEPTION, consumer=_consumer)
-        return kwargs
-
-@dataclass(kw_only=True)
-class ContentTooLargeException(ServiceError):
-    """
-    The request payload is larger than the service accepts. Send less in one
-    request.
-    """
-
-    fault: Literal["client", "server"] | None = "client"
-
-    def serialize(self, serializer: ShapeSerializer):
-        serializer.write_struct(_SCHEMA_CONTENT_TOO_LARGE_EXCEPTION, self)
-
-    def serialize_members(self, serializer: ShapeSerializer):
-        serializer.write_string(_SCHEMA_CONTENT_TOO_LARGE_EXCEPTION.members["message"], self.message)
-
-    @classmethod
-    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
-        return cls(**cls.deserialize_kwargs(deserializer))
-
-    @classmethod
-    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
-        kwargs: dict[str, Any] = {}
-
-        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
-            match schema.expect_member_index():
-                case 0:
-                    kwargs["message"] = de.read_string(_SCHEMA_CONTENT_TOO_LARGE_EXCEPTION.members["message"])
-
-                case _:
-                    logger.debug("Unexpected member schema: %s", schema)
-
-        deserializer.read_struct(_SCHEMA_CONTENT_TOO_LARGE_EXCEPTION, consumer=_consumer)
         return kwargs
 
 CREATE_EVENT_DESTINATION = APIOperation(

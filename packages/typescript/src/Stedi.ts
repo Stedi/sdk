@@ -3,6 +3,11 @@ import { createAggregatedClient } from "@smithy/core/client";
 import type { HttpHandlerOptions as __HttpHandlerOptions, PaginationConfiguration, Paginator } from "@smithy/types";
 
 import {
+  type CreateEligibilityCheckCommandInput,
+  type CreateEligibilityCheckCommandOutput,
+  CreateEligibilityCheckCommand,
+} from "./commands/CreateEligibilityCheckCommand";
+import {
   type CreateEventDestinationCommandInput,
   type CreateEventDestinationCommandOutput,
   CreateEventDestinationCommand,
@@ -86,6 +91,7 @@ const commands = {
   GetClaimCommand,
   GetClaimTimelineCommand,
   ListClaimsCommand,
+  CreateEligibilityCheckCommand,
   CreateEventDestinationCommand,
   DeleteEventDestinationCommand,
   GetEventDestinationCommand,
@@ -205,6 +211,23 @@ export interface Stedi {
     args: ListClaimsCommandInput,
     options: __HttpHandlerOptions,
     cb: (err: any, data?: ListClaimsCommandOutput) => void
+  ): void;
+
+  /**
+   * @see {@link CreateEligibilityCheckCommand}
+   */
+  createEligibilityCheck(
+    args: CreateEligibilityCheckCommandInput,
+    options?: __HttpHandlerOptions
+  ): Promise<CreateEligibilityCheckCommandOutput>;
+  createEligibilityCheck(
+    args: CreateEligibilityCheckCommandInput,
+    cb: (err: any, data?: CreateEligibilityCheckCommandOutput) => void
+  ): void;
+  createEligibilityCheck(
+    args: CreateEligibilityCheckCommandInput,
+    options: __HttpHandlerOptions,
+    cb: (err: any, data?: CreateEligibilityCheckCommandOutput) => void
   ): void;
 
   /**

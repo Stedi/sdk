@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["stedi==0.0.10"]
+# dependencies = ["stedi==1.0.0"]
 # ///
 
 """Retrieve a paginated list of claim records, ordered by most recent submission first.

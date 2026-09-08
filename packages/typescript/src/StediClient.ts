@@ -53,6 +53,10 @@ import {
   resolveHttpAuthSchemeConfig,
 } from "./auth/httpAuthSchemeProvider";
 import type {
+  CreateEligibilityCheckCommandInput,
+  CreateEligibilityCheckCommandOutput,
+} from "./commands/CreateEligibilityCheckCommand";
+import type {
   CreateEventDestinationCommandInput,
   CreateEventDestinationCommandOutput,
 } from "./commands/CreateEventDestinationCommand";
@@ -119,6 +123,7 @@ export { __Client };
  * @public
  */
 export type ServiceInputTypes =
+  | CreateEligibilityCheckCommandInput
   | CreateEventDestinationCommandInput
   | CreateProfessionalClaimSubmissionCommandInput
   | DeleteEventDestinationCommandInput
@@ -139,6 +144,7 @@ export type ServiceInputTypes =
  * @public
  */
 export type ServiceOutputTypes =
+  | CreateEligibilityCheckCommandOutput
   | CreateEventDestinationCommandOutput
   | CreateProfessionalClaimSubmissionCommandOutput
   | DeleteEventDestinationCommandOutput

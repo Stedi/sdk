@@ -1,0 +1,15 @@
+{
+  "payerId": "60054",
+  "provider": {
+    "name": { "organization": "Provider Name" },
+    "npi": "1999999984"
+  },
+  "subscriber": {
+    "name": { "person": { "firstName": "Jane", "lastName": "Doe" } },
+    "memberId": "AETNA12345",
+    "dateOfBirth": "2004-04-04"
+  },
+  "encounter": {
+    "services": [{ "value": "30", "system": "STC" }]
+  }
+}

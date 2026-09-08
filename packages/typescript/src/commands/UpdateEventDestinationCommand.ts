@@ -1,7 +1,7 @@
 // smithy-typescript generated code
 import type { MetadataBearer as __MetadataBearer } from "@smithy/types";
 
-import { _ep0, _mw0, command } from "../commandBuilder";
+import { _ep1, _mw0, command } from "../commandBuilder";
 import type { UpdateEventDestinationInput, UpdateEventDestinationOutput } from "../models/models_0";
 import { UpdateEventDestination$ } from "../schemas/schemas_0";
 
@@ -127,7 +127,7 @@ export interface UpdateEventDestinationCommandOutput extends UpdateEventDestinat
  * @public
  */
 export class UpdateEventDestinationCommand extends command<UpdateEventDestinationCommandInput, UpdateEventDestinationCommandOutput>(
-  _ep0,
+  _ep1,
   _mw0,
   "UpdateEventDestination",
   UpdateEventDestination$

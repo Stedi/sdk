@@ -1,4 +1,5 @@
 import { createAggregatedClient } from "@smithy/core/client";
+import { CreateEligibilityCheckCommand, } from "./commands/CreateEligibilityCheckCommand";
 import { CreateEventDestinationCommand, } from "./commands/CreateEventDestinationCommand";
 import { CreateProfessionalClaimSubmissionCommand, } from "./commands/CreateProfessionalClaimSubmissionCommand";
 import { DeleteEventDestinationCommand, } from "./commands/DeleteEventDestinationCommand";
@@ -26,6 +27,7 @@ const commands = {
     GetClaimCommand,
     GetClaimTimelineCommand,
     ListClaimsCommand,
+    CreateEligibilityCheckCommand,
     CreateEventDestinationCommand,
     DeleteEventDestinationCommand,
     GetEventDestinationCommand,

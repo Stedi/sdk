@@ -1,4 +1,5 @@
 import type { HttpHandlerOptions as __HttpHandlerOptions, PaginationConfiguration, Paginator } from "@smithy/types";
+import { type CreateEligibilityCheckCommandInput, type CreateEligibilityCheckCommandOutput } from "./commands/CreateEligibilityCheckCommand";
 import { type CreateEventDestinationCommandInput, type CreateEventDestinationCommandOutput } from "./commands/CreateEventDestinationCommand";
 import { type CreateProfessionalClaimSubmissionCommandInput, type CreateProfessionalClaimSubmissionCommandOutput } from "./commands/CreateProfessionalClaimSubmissionCommand";
 import { type DeleteEventDestinationCommandInput, type DeleteEventDestinationCommandOutput } from "./commands/DeleteEventDestinationCommand";
@@ -53,6 +54,12 @@ export interface Stedi {
     listClaims(args: ListClaimsCommandInput, options?: __HttpHandlerOptions): Promise<ListClaimsCommandOutput>;
     listClaims(args: ListClaimsCommandInput, cb: (err: any, data?: ListClaimsCommandOutput) => void): void;
     listClaims(args: ListClaimsCommandInput, options: __HttpHandlerOptions, cb: (err: any, data?: ListClaimsCommandOutput) => void): void;
+    /**
+     * @see {@link CreateEligibilityCheckCommand}
+     */
+    createEligibilityCheck(args: CreateEligibilityCheckCommandInput, options?: __HttpHandlerOptions): Promise<CreateEligibilityCheckCommandOutput>;
+    createEligibilityCheck(args: CreateEligibilityCheckCommandInput, cb: (err: any, data?: CreateEligibilityCheckCommandOutput) => void): void;
+    createEligibilityCheck(args: CreateEligibilityCheckCommandInput, options: __HttpHandlerOptions, cb: (err: any, data?: CreateEligibilityCheckCommandOutput) => void): void;
     /**
      * @see {@link CreateEventDestinationCommand}
      */

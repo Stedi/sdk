@@ -1,7 +1,7 @@
 // smithy-typescript generated code
 import type { MetadataBearer as __MetadataBearer } from "@smithy/types";
 
-import { _ep0, _mw0, command } from "../commandBuilder";
+import { _ep1, _mw0, command } from "../commandBuilder";
 import type { RotateEventDestinationSecretInput, RotateEventDestinationSecretOutput } from "../models/models_0";
 import { RotateEventDestinationSecret$ } from "../schemas/schemas_0";
 
@@ -98,7 +98,7 @@ export interface RotateEventDestinationSecretCommandOutput extends RotateEventDe
  * @public
  */
 export class RotateEventDestinationSecretCommand extends command<RotateEventDestinationSecretCommandInput, RotateEventDestinationSecretCommandOutput>(
-  _ep0,
+  _ep1,
   _mw0,
   "RotateEventDestinationSecret",
   RotateEventDestinationSecret$

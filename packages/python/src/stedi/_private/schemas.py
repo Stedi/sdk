@@ -2,7 +2,7 @@
 
 from types import MappingProxyType
 
-from smithy_core.prelude import BOOLEAN, INTEGER, STRING, TIMESTAMP, UNIT
+from smithy_core.prelude import BOOLEAN, INTEGER, LONG, STRING, TIMESTAMP, UNIT
 from smithy_core.schemas import Schema
 from smithy_core.shapes import ShapeID, ShapeType
 from smithy_core.traits import Trait
@@ -6315,6 +6315,9018 @@ LIST_CLAIMS = Schema(
 
 )
 
+ELIGIBILITY_CHECK_SSN = Schema(
+    id=ShapeID("com.stedi.eligibility.v4.common#EligibilityCheckSsn"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#pattern"), value="^\\d{9}$"),
+
+    ],
+
+)
+
+ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestDependentAdditionalInformation"),
+
+    members={
+        "ssn": {
+            "target": ELIGIBILITY_CHECK_SSN,
+        },
+
+        "groupNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "identityCardNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "eligibilityCategory": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "planNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "groupOrPolicyNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "contractNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "patientAccountNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "mbi": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "identificationCardSerialNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "insurancePolicyNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "planNetworkId": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "agencyClaimNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "medicalRecordId": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "issueNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "memberId": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_ADDRESS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestAddress"),
+
+    members={
+        "addressLine1": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 55,
+                    })),
+
+            ],
+        },
+
+        "addressLine2": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 55,
+                    })),
+
+            ],
+        },
+
+        "city": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 2,
+                        "max": 30,
+                    })),
+
+            ],
+        },
+
+        "state": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 2,
+                        "max": 2,
+                    })),
+
+            ],
+        },
+
+        "postalCode": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 5,
+                        "max": 9,
+                    })),
+
+            ],
+        },
+
+        "country": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 2,
+                        "max": 2,
+                    })),
+
+            ],
+        },
+
+        "countrySubdivision": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 3,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_ISO_DATE = Schema(
+    id=ShapeID("com.stedi.eligibility.v4.common#EligibilityCheckIsoDate"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#pattern"), value="^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$"),
+
+    ],
+
+)
+
+ELIGIBILITY_CHECK_REQUEST_PATIENT_GENDER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestPatientGender"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "FEMALE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="FEMALE"),
+
+            ],
+        },
+
+        "MALE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MALE"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_DEPENDENT_PERSON_NAME = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestDependentPersonName"),
+
+    members={
+        "firstName": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 35,
+                    })),
+
+            ],
+        },
+
+        "lastName": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 60,
+                    })),
+
+            ],
+        },
+
+        "middleName": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 25,
+                    })),
+
+            ],
+        },
+
+        "suffix": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 10,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_DEPENDENT_NAME = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestDependentName"),
+
+    members={
+        "person": {
+            "target": ELIGIBILITY_CHECK_REQUEST_DEPENDENT_PERSON_NAME,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_ENTITY_PROVIDER_CODE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestEntityProviderCode"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "ADMITTING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ADMITTING"),
+
+            ],
+        },
+
+        "ATTENDING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ATTENDING"),
+
+            ],
+        },
+
+        "BILLING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="BILLING"),
+
+            ],
+        },
+
+        "CONSULTING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CONSULTING"),
+
+            ],
+        },
+
+        "COVERING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="COVERING"),
+
+            ],
+        },
+
+        "HOSPITAL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HOSPITAL"),
+
+            ],
+        },
+
+        "HOME_HEALTH_CARE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HOME_HEALTH_CARE"),
+
+            ],
+        },
+
+        "LABORATORY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="LABORATORY"),
+
+            ],
+        },
+
+        "OTHER_PHYSICIAN": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="OTHER_PHYSICIAN"),
+
+            ],
+        },
+
+        "PHARMACIST": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PHARMACIST"),
+
+            ],
+        },
+
+        "PHARMACY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PHARMACY"),
+
+            ],
+        },
+
+        "PRIMARY_CARE_PHYSICIAN": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PRIMARY_CARE_PHYSICIAN"),
+
+            ],
+        },
+
+        "PERFORMING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PERFORMING"),
+
+            ],
+        },
+
+        "RURAL_HEALTH_CLINIC": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="RURAL_HEALTH_CLINIC"),
+
+            ],
+        },
+
+        "REFERRING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="REFERRING"),
+
+            ],
+        },
+
+        "SUBMITTING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SUBMITTING"),
+
+            ],
+        },
+
+        "SKILLED_NURSING_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SKILLED_NURSING_FACILITY"),
+
+            ],
+        },
+
+        "SUPERVISING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SUPERVISING"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_ENTITY_PROVIDER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestEntityProvider"),
+
+    members={
+        "code": {
+            "target": ELIGIBILITY_CHECK_REQUEST_ENTITY_PROVIDER_CODE,
+        },
+
+        "reference": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_DEPENDENT_RELATIONSHIP = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestDependentRelationship"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "SPOUSE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SPOUSE"),
+
+            ],
+        },
+
+        "CHILD": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CHILD"),
+
+            ],
+        },
+
+        "OTHER_ADULT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="OTHER_ADULT"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_DEPENDENT = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestDependent"),
+
+    members={
+        "name": {
+            "target": ELIGIBILITY_CHECK_REQUEST_DEPENDENT_NAME,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "relationToSubscriber": {
+            "target": ELIGIBILITY_CHECK_REQUEST_DEPENDENT_RELATIONSHIP,
+        },
+
+        "dateOfBirth": {
+            "target": ELIGIBILITY_CHECK_ISO_DATE,
+        },
+
+        "gender": {
+            "target": ELIGIBILITY_CHECK_REQUEST_PATIENT_GENDER,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION,
+        },
+
+        "address": {
+            "target": ELIGIBILITY_CHECK_REQUEST_ADDRESS,
+        },
+
+        "provider": {
+            "target": ELIGIBILITY_CHECK_REQUEST_ENTITY_PROVIDER,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_ENCOUNTER_ADDITIONAL_INFORMATION = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestEncounterAdditionalInformation"),
+
+    members={
+        "priorAuthNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "referralNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_DATE_RANGE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckDateRange"),
+
+    members={
+        "start": {
+            "target": ELIGIBILITY_CHECK_ISO_DATE,
+        },
+
+        "end": {
+            "target": ELIGIBILITY_CHECK_ISO_DATE,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_ENCOUNTER_DATES = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestEncounterDates"),
+
+    members={
+        "service": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PLACE_OF_SERVICE_CODE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPlaceOfServiceCode"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "PHARMACY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="01"),
+
+            ],
+        },
+
+        "SCHOOL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="03"),
+
+            ],
+        },
+
+        "HOMELESS_SHELTER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="04"),
+
+            ],
+        },
+
+        "INDIAN_HEALTH_SERVICE_FREE_STANDING_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="05"),
+
+            ],
+        },
+
+        "INDIAN_HEALTH_SERVICE_PROVIDER_BASED_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="06"),
+
+            ],
+        },
+
+        "TRIBAL_638_FREE_STANDING_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="07"),
+
+            ],
+        },
+
+        "TRIBAL_638_PROVIDER_BASED_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="08"),
+
+            ],
+        },
+
+        "OFFICE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="11"),
+
+            ],
+        },
+
+        "HOME": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="12"),
+
+            ],
+        },
+
+        "ASSISTED_LIVING_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="13"),
+
+            ],
+        },
+
+        "GROUP_HOME": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="14"),
+
+            ],
+        },
+
+        "MOBILE_UNIT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="15"),
+
+            ],
+        },
+
+        "URGENT_CARE_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="20"),
+
+            ],
+        },
+
+        "INPATIENT_HOSPITAL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="21"),
+
+            ],
+        },
+
+        "OUTPATIENT_HOSPITAL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="22"),
+
+            ],
+        },
+
+        "EMERGENCY_ROOM_HOSPITAL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="23"),
+
+            ],
+        },
+
+        "AMBULATORY_SURGICAL_CENTER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="24"),
+
+            ],
+        },
+
+        "BIRTHING_CENTER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="25"),
+
+            ],
+        },
+
+        "MILITARY_TREATMENT_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="26"),
+
+            ],
+        },
+
+        "SKILLED_NURSING_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="31"),
+
+            ],
+        },
+
+        "NURSING_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="32"),
+
+            ],
+        },
+
+        "CUSTODIAL_CARE_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="33"),
+
+            ],
+        },
+
+        "HOSPICE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="34"),
+
+            ],
+        },
+
+        "AMBULANCE_LAND": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="41"),
+
+            ],
+        },
+
+        "AMBULANCE_AIR_OR_WATER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="42"),
+
+            ],
+        },
+
+        "INDEPENDENT_CLINIC": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="49"),
+
+            ],
+        },
+
+        "FEDERALLY_QUALIFIED_HEALTH_CENTER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="50"),
+
+            ],
+        },
+
+        "INPATIENT_PSYCHIATRIC_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="51"),
+
+            ],
+        },
+
+        "PSYCHIATRIC_FACILITY_PARTIAL_HOSPITALIZATION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="52"),
+
+            ],
+        },
+
+        "COMMUNITY_MENTAL_HEALTH_CENTER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="53"),
+
+            ],
+        },
+
+        "INTERMEDIATE_CARE_FACILITY_MENTALLY_RETARDED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="54"),
+
+            ],
+        },
+
+        "RESIDENTIAL_SUBSTANCE_ABUSE_TREATMENT_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="55"),
+
+            ],
+        },
+
+        "PSYCHIATRIC_RESIDENTIAL_TREATMENT_CENTER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="56"),
+
+            ],
+        },
+
+        "NON_RESIDENTIAL_SUBSTANCE_ABUSE_TREATMENT_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="57"),
+
+            ],
+        },
+
+        "MASS_IMMUNIZATION_CENTER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="60"),
+
+            ],
+        },
+
+        "COMPREHENSIVE_INPATIENT_REHABILITATION_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="61"),
+
+            ],
+        },
+
+        "COMPREHENSIVE_OUTPATIENT_REHABILITATION_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="62"),
+
+            ],
+        },
+
+        "END_STAGE_RENAL_DISEASE_TREATMENT_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="65"),
+
+            ],
+        },
+
+        "STATE_OR_LOCAL_PUBLIC_HEALTH_CLINIC": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="71"),
+
+            ],
+        },
+
+        "RURAL_HEALTH_CLINIC": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="72"),
+
+            ],
+        },
+
+        "INDEPENDENT_LABORATORY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="81"),
+
+            ],
+        },
+
+        "OTHER_PLACE_OF_SERVICE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="99"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_PLACE_OF_SERVICE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestPlaceOfService"),
+
+    members={
+        "code": {
+            "target": ELIGIBILITY_CHECK_PLACE_OF_SERVICE_CODE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_SERVICE_CODE_SYSTEM = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestServiceCodeSystem"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "STC": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="STC"),
+
+            ],
+        },
+
+        "CDT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CDT"),
+
+            ],
+        },
+
+        "CPT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CPT"),
+
+            ],
+        },
+
+        "NDC": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="NDC"),
+
+            ],
+        },
+
+        "HCPCS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HCPCS"),
+
+            ],
+        },
+
+        "ICD_10_PCS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ICD-10-PCS"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_SERVICE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestService"),
+
+    members={
+        "value": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 48,
+                    })),
+
+            ],
+        },
+
+        "system": {
+            "target": ELIGIBILITY_CHECK_REQUEST_SERVICE_CODE_SYSTEM,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_SERVICE_LIST = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestServiceList"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_REQUEST_SERVICE,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_ENCOUNTER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestEncounter"),
+
+    members={
+        "services": {
+            "target": ELIGIBILITY_CHECK_REQUEST_SERVICE_LIST,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_REQUEST_ENCOUNTER_DATES,
+        },
+
+        "placeOfService": {
+            "target": ELIGIBILITY_CHECK_REQUEST_PLACE_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_REQUEST_ENCOUNTER_ADDITIONAL_INFORMATION,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_STATE_LICENSE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestStateLicense"),
+
+    members={
+        "state": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 2,
+                        "max": 2,
+                    })),
+
+            ],
+        },
+
+        "number": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestProviderAdditionalInformation"),
+
+    members={
+        "stateLicense": {
+            "target": ELIGIBILITY_CHECK_REQUEST_STATE_LICENSE,
+        },
+
+        "medicareProviderNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "medicaidProviderNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "facilityIdNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "contractNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "planNetworkId": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "facilityNetworkId": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "personalIdentificationNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "electronicDevicePin": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "submitterId": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "userId": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "priorIdentifierNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_EIN = Schema(
+    id=ShapeID("com.stedi.eligibility.v4.common#EligibilityCheckEin"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#pattern"), value="^\\d{9}$"),
+
+    ],
+
+)
+
+ELIGIBILITY_CHECK_REQUEST_ORGANIZATION_NAME = Schema(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestOrganizationName"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                "min": 1,
+                "max": 60,
+            })),
+
+    ],
+
+)
+
+ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestProviderPersonName"),
+
+    members={
+        "firstName": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 35,
+                    })),
+
+            ],
+        },
+
+        "lastName": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 60,
+                    })),
+
+            ],
+        },
+
+        "middleName": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 25,
+                    })),
+
+            ],
+        },
+
+        "suffix": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 10,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_PROVIDER_NAME = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestProviderName"),
+    shape_type=ShapeType.UNION,
+    members={
+        "person": {
+            "target": ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME,
+        },
+
+        "organization": {
+            "target": ELIGIBILITY_CHECK_REQUEST_ORGANIZATION_NAME,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_NPI = Schema(
+    id=ShapeID("com.stedi.eligibility.v4.common#EligibilityCheckNpi"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#pattern"), value="^\\d{10}$"),
+
+    ],
+
+)
+
+ELIGIBILITY_CHECK_TAX_ID = Schema(
+    id=ShapeID("com.stedi.eligibility.v4.common#EligibilityCheckTaxId"),
+    shape_type=ShapeType.STRING,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#pattern"), value="^\\d{9}$"),
+
+    ],
+
+)
+
+ELIGIBILITY_CHECK_REQUEST_PROVIDER_TYPE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestProviderType"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "PROVIDER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PROVIDER"),
+
+            ],
+        },
+
+        "THIRD_PARTY_ADMINISTRATOR": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="THIRD_PARTY_ADMINISTRATOR"),
+
+            ],
+        },
+
+        "EMPLOYER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="EMPLOYER"),
+
+            ],
+        },
+
+        "HOSPITAL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HOSPITAL"),
+
+            ],
+        },
+
+        "FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="FACILITY"),
+
+            ],
+        },
+
+        "GATEWAY_PROVIDER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="GATEWAY_PROVIDER"),
+
+            ],
+        },
+
+        "PLAN_SPONSOR": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PLAN_SPONSOR"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_PROVIDER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestProvider"),
+
+    members={
+        "name": {
+            "target": ELIGIBILITY_CHECK_REQUEST_PROVIDER_NAME,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "type": {
+            "target": ELIGIBILITY_CHECK_REQUEST_PROVIDER_TYPE,
+        },
+
+        "npi": {
+            "target": ELIGIBILITY_CHECK_NPI,
+        },
+
+        "tin": {
+            "target": ELIGIBILITY_CHECK_TAX_ID,
+        },
+
+        "ein": {
+            "target": ELIGIBILITY_CHECK_EIN,
+        },
+
+        "ssn": {
+            "target": ELIGIBILITY_CHECK_SSN,
+        },
+
+        "serviceProviderNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 2,
+                        "max": 80,
+                    })),
+
+            ],
+        },
+
+        "pharmacyProcessorNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 2,
+                        "max": 80,
+                    })),
+
+            ],
+        },
+
+        "address": {
+            "target": ELIGIBILITY_CHECK_REQUEST_ADDRESS,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_REQUEST_PROVIDER_ADDITIONAL_INFORMATION,
+        },
+
+        "provider": {
+            "target": ELIGIBILITY_CHECK_REQUEST_ENTITY_PROVIDER,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestSubscriberAdditionalInformation"),
+
+    members={
+        "ssn": {
+            "target": ELIGIBILITY_CHECK_SSN,
+        },
+
+        "groupNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "identityCardNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "medicaidRecipientId": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "caseNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "planNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "groupOrPolicyNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "contractNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "patientAccountNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "mbi": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "identificationCardSerialNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "insurancePolicyNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "planNetworkId": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "agencyClaimNumber": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+        "medicalRecordId": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 50,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestSubscriberAddress"),
+
+    members={
+        "addressLine1": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 55,
+                    })),
+
+            ],
+        },
+
+        "addressLine2": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 55,
+                    })),
+
+            ],
+        },
+
+        "city": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 2,
+                        "max": 30,
+                    })),
+
+            ],
+        },
+
+        "state": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 2,
+                        "max": 2,
+                    })),
+
+            ],
+        },
+
+        "postalCode": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 5,
+                        "max": 9,
+                    })),
+
+            ],
+        },
+
+        "country": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 2,
+                        "max": 2,
+                    })),
+
+            ],
+        },
+
+        "countrySubdivision": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 3,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_PERSON_NAME = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestSubscriberPersonName"),
+
+    members={
+        "firstName": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 35,
+                    })),
+
+            ],
+        },
+
+        "lastName": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 60,
+                    })),
+
+            ],
+        },
+
+        "middleName": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 25,
+                    })),
+
+            ],
+        },
+
+        "suffix": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 10,
+                    })),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_NAME = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestSubscriberName"),
+    shape_type=ShapeType.UNION,
+    members={
+        "person": {
+            "target": ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_PERSON_NAME,
+        },
+
+        "organization": {
+            "target": ELIGIBILITY_CHECK_REQUEST_ORGANIZATION_NAME,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.request#EligibilityCheckRequestSubscriber"),
+
+    members={
+        "name": {
+            "target": ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_NAME,
+        },
+
+        "memberId": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 2,
+                        "max": 80,
+                    })),
+
+            ],
+        },
+
+        "dateOfBirth": {
+            "target": ELIGIBILITY_CHECK_ISO_DATE,
+        },
+
+        "gender": {
+            "target": ELIGIBILITY_CHECK_REQUEST_PATIENT_GENDER,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION,
+        },
+
+        "address": {
+            "target": ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDRESS,
+        },
+
+        "provider": {
+            "target": ELIGIBILITY_CHECK_REQUEST_ENTITY_PROVIDER,
+        },
+
+    }
+)
+
+CREATE_ELIGIBILITY_CHECK_INPUT = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4#CreateEligibilityCheckInput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#input")),
+
+    ],
+    members={
+        "payerId": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 80,
+                    })),
+
+            ],
+        },
+
+        "payerName": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 60,
+                    })),
+
+            ],
+        },
+
+        "provider": {
+            "target": ELIGIBILITY_CHECK_REQUEST_PROVIDER,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "subscriber": {
+            "target": ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "dependent": {
+            "target": ELIGIBILITY_CHECK_REQUEST_DEPENDENT,
+        },
+
+        "encounter": {
+            "target": ELIGIBILITY_CHECK_REQUEST_ENCOUNTER,
+        },
+
+        "externalPatientId": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
+                        "max": 36,
+                    })),
+
+            ],
+        },
+
+        "eligibilitySearchId": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_ADDITIONAL_INFORMATION_WITH_NAME = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckAdditionalInformationWithName"),
+
+    members={
+        "number": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "name": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckDependentAdditionalInformation"),
+
+    members={
+        "plan": {
+            "target": ELIGIBILITY_CHECK_ADDITIONAL_INFORMATION_WITH_NAME,
+        },
+
+        "group": {
+            "target": ELIGIBILITY_CHECK_ADDITIONAL_INFORMATION_WITH_NAME,
+        },
+
+        "planNetwork": {
+            "target": ELIGIBILITY_CHECK_ADDITIONAL_INFORMATION_WITH_NAME,
+        },
+
+        "groupOrPolicyNumber": {
+            "target": STRING,
+        },
+
+        "memberId": {
+            "target": STRING,
+        },
+
+        "familyUnitNumber": {
+            "target": STRING,
+        },
+
+        "classOfContractCode": {
+            "target": STRING,
+        },
+
+        "contractNumber": {
+            "target": STRING,
+        },
+
+        "medicalRecordId": {
+            "target": STRING,
+        },
+
+        "patientAccountNumber": {
+            "target": STRING,
+        },
+
+        "mbi": {
+            "target": STRING,
+        },
+
+        "identificationCardSerialNumber": {
+            "target": STRING,
+        },
+
+        "identityCardNumber": {
+            "target": STRING,
+        },
+
+        "issueNumber": {
+            "target": STRING,
+        },
+
+        "insurancePolicyNumber": {
+            "target": STRING,
+        },
+
+        "medicaidRecipientId": {
+            "target": STRING,
+        },
+
+        "priorIdentifierNumber": {
+            "target": STRING,
+        },
+
+        "ssn": {
+            "target": STRING,
+        },
+
+        "agencyClaimNumber": {
+            "target": STRING,
+        },
+
+        "eligibilityCategory": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_ADDRESS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckAddress"),
+
+    members={
+        "addressLine1": {
+            "target": STRING,
+        },
+
+        "addressLine2": {
+            "target": STRING,
+        },
+
+        "city": {
+            "target": STRING,
+        },
+
+        "state": {
+            "target": STRING,
+        },
+
+        "postalCode": {
+            "target": STRING,
+        },
+
+        "country": {
+            "target": STRING,
+        },
+
+        "countrySubdivision": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPatientAttributeDateRanges"),
+
+    members={
+        "discharge": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "issue": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "effectiveDateOfChange": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "plan": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "eligibility": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "added": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "cobra": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "premiumPaidToDate": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "enrollment": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "admission": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "dateOfDeath": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "certification": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "policy": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "dateOfLastUpdate": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "status": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_RESPONSE_PATIENT_GENDER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckResponsePatientGender"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "FEMALE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="FEMALE"),
+
+            ],
+        },
+
+        "MALE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MALE"),
+
+            ],
+        },
+
+        "REPORTED_UNKNOWN": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="UNKNOWN"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_MAINTENANCE_INDICATOR = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckMaintenanceIndicator"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "NONE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="NONE"),
+
+            ],
+        },
+
+        "PAYER_INDICATED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PAYER_INDICATED"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_MAINTENANCE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckMaintenance"),
+
+    members={
+        "indicator": {
+            "target": ELIGIBILITY_CHECK_MAINTENANCE_INDICATOR,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PERSON_NAME = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPersonName"),
+
+    members={
+        "firstName": {
+            "target": STRING,
+        },
+
+        "lastName": {
+            "target": STRING,
+        },
+
+        "middleName": {
+            "target": STRING,
+        },
+
+        "suffix": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_QUALIFIED_PERSON_NAME = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckQualifiedPersonName"),
+
+    members={
+        "person": {
+            "target": ELIGIBILITY_CHECK_PERSON_NAME,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_ENTITY_PROVIDER_CODE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckEntityProviderCode"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "ADMITTING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ADMITTING"),
+
+            ],
+        },
+
+        "ATTENDING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ATTENDING"),
+
+            ],
+        },
+
+        "BILLING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="BILLING"),
+
+            ],
+        },
+
+        "CONSULTING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CONSULTING"),
+
+            ],
+        },
+
+        "COVERING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="COVERING"),
+
+            ],
+        },
+
+        "HOSPITAL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HOSPITAL"),
+
+            ],
+        },
+
+        "HOME_HEALTH_CARE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HOME_HEALTH_CARE"),
+
+            ],
+        },
+
+        "LABORATORY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="LABORATORY"),
+
+            ],
+        },
+
+        "OTHER_PHYSICIAN": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="OTHER_PHYSICIAN"),
+
+            ],
+        },
+
+        "PHARMACIST": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PHARMACIST"),
+
+            ],
+        },
+
+        "PHARMACY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PHARMACY"),
+
+            ],
+        },
+
+        "PRIMARY_CARE_PHYSICIAN": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PRIMARY_CARE_PHYSICIAN"),
+
+            ],
+        },
+
+        "PERFORMING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PERFORMING"),
+
+            ],
+        },
+
+        "RURAL_HEALTH_CLINIC": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="RURAL_HEALTH_CLINIC"),
+
+            ],
+        },
+
+        "REFERRING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="REFERRING"),
+
+            ],
+        },
+
+        "SUBMITTING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SUBMITTING"),
+
+            ],
+        },
+
+        "SKILLED_NURSING_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SKILLED_NURSING_FACILITY"),
+
+            ],
+        },
+
+        "SUPERVISING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SUPERVISING"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_ENTITY_PROVIDER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckEntityProvider"),
+
+    members={
+        "code": {
+            "target": ELIGIBILITY_CHECK_ENTITY_PROVIDER_CODE,
+        },
+
+        "reference": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_DEPENDENT_RELATIONSHIP = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckDependentRelationship"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "SPOUSE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SPOUSE"),
+
+            ],
+        },
+
+        "CHILD": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CHILD"),
+
+            ],
+        },
+
+        "EMPLOYEE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="EMPLOYEE"),
+
+            ],
+        },
+
+        "REPORTED_UNKNOWN": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="UNKNOWN"),
+
+            ],
+        },
+
+        "ORGAN_DONOR": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ORGAN_DONOR"),
+
+            ],
+        },
+
+        "CADAVER_DONOR": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CADAVER_DONOR"),
+
+            ],
+        },
+
+        "LIFE_PARTNER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="LIFE_PARTNER"),
+
+            ],
+        },
+
+        "OTHER_RELATIONSHIP": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="OTHER_RELATIONSHIP"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_DEPENDENT = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckDependent"),
+
+    members={
+        "address": {
+            "target": ELIGIBILITY_CHECK_ADDRESS,
+        },
+
+        "provider": {
+            "target": ELIGIBILITY_CHECK_ENTITY_PROVIDER,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES,
+        },
+
+        "dateOfBirth": {
+            "target": ELIGIBILITY_CHECK_ISO_DATE,
+        },
+
+        "gender": {
+            "target": ELIGIBILITY_CHECK_RESPONSE_PATIENT_GENDER,
+        },
+
+        "birthSequenceNumber": {
+            "target": LONG,
+        },
+
+        "maintenance": {
+            "target": ELIGIBILITY_CHECK_MAINTENANCE,
+        },
+
+        "name": {
+            "target": ELIGIBILITY_CHECK_QUALIFIED_PERSON_NAME,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "relationToSubscriber": {
+            "target": ELIGIBILITY_CHECK_DEPENDENT_RELATIONSHIP,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_DEPENDENT_ADDITIONAL_INFORMATION,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_RESPONSE_ERROR_LOCATION = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckResponseErrorLocation"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "ENVELOPE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ENVELOPE"),
+
+            ],
+        },
+
+        "PAYER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PAYER"),
+
+            ],
+        },
+
+        "PROVIDER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PROVIDER"),
+
+            ],
+        },
+
+        "SUBSCRIBER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SUBSCRIBER"),
+
+            ],
+        },
+
+        "SUBSCRIBER_BENEFITS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SUBSCRIBER_BENEFITS"),
+
+            ],
+        },
+
+        "DEPENDENT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DEPENDENT"),
+
+            ],
+        },
+
+        "DEPENDENT_BENEFITS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DEPENDENT_BENEFITS"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_RESPONSE_ERROR = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckResponseError"),
+
+    members={
+        "code": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "description": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "followupAction": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "location": {
+            "target": ELIGIBILITY_CHECK_RESPONSE_ERROR_LOCATION,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "possibleResolutions": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_RESPONSE_ERROR_LIST = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckResponseErrorList"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_RESPONSE_ERROR,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_TRACE_TYPE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckTraceType"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "CURRENT_TRANSACTION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CURRENT_TRANSACTION"),
+
+            ],
+        },
+
+        "REFERENCED_TRANSACTION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="REFERENCED_TRANSACTION"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SUBSCRIBER_TRACE_NUMBER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckSubscriberTraceNumber"),
+
+    members={
+        "type": {
+            "target": ELIGIBILITY_CHECK_TRACE_TYPE,
+        },
+
+        "referenceIdentification": {
+            "target": STRING,
+        },
+
+        "originatingCompanyIdentifier": {
+            "target": STRING,
+        },
+
+        "secondaryReferenceIdentification": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SUBSCRIBER_TRACE_NUMBERS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckSubscriberTraceNumbers"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_SUBSCRIBER_TRACE_NUMBER,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_META = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckMeta"),
+
+    members={
+        "traceId": {
+            "target": STRING,
+        },
+
+        "outboundTraceId": {
+            "target": STRING,
+        },
+
+        "subscriberTraceNumbers": {
+            "target": ELIGIBILITY_CHECK_SUBSCRIBER_TRACE_NUMBERS,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_EDI_NUMBERS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckEdiNumbers"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_EMAILS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckEmails"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_FAX_NUMBERS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckFaxNumbers"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PHONE_NUMBERS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPhoneNumbers"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_URLS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckUrls"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_CONTACT = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckContact"),
+
+    members={
+        "name": {
+            "target": STRING,
+        },
+
+        "phoneNumbers": {
+            "target": ELIGIBILITY_CHECK_PHONE_NUMBERS,
+        },
+
+        "emails": {
+            "target": ELIGIBILITY_CHECK_EMAILS,
+        },
+
+        "faxNumbers": {
+            "target": ELIGIBILITY_CHECK_FAX_NUMBERS,
+        },
+
+        "ediNumbers": {
+            "target": ELIGIBILITY_CHECK_EDI_NUMBERS,
+        },
+
+        "urls": {
+            "target": ELIGIBILITY_CHECK_URLS,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_ENTITY_CONTACTS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckEntityContacts"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_CONTACT,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_ORGANIZATION_NAME = Schema(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckOrganizationName"),
+    shape_type=ShapeType.STRING,
+
+)
+
+ELIGIBILITY_CHECK_PERSON_OR_ORGANIZATION_NAME = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPersonOrOrganizationName"),
+    shape_type=ShapeType.UNION,
+    members={
+        "person": {
+            "target": ELIGIBILITY_CHECK_PERSON_NAME,
+        },
+
+        "organization": {
+            "target": ELIGIBILITY_CHECK_ORGANIZATION_NAME,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PAYER_ENTITY_IDENTIFIER_CODE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPayerEntityIdentifierCode"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "THIRD_PARTY_ADMINISTRATOR": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="THIRD_PARTY_ADMINISTRATOR"),
+
+            ],
+        },
+
+        "EMPLOYER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="EMPLOYER"),
+
+            ],
+        },
+
+        "GATEWAY_PROVIDER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="GATEWAY_PROVIDER"),
+
+            ],
+        },
+
+        "PLAN_SPONSOR": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PLAN_SPONSOR"),
+
+            ],
+        },
+
+        "PAYER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PAYER"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PAYER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPayer"),
+
+    members={
+        "name": {
+            "target": ELIGIBILITY_CHECK_PERSON_OR_ORGANIZATION_NAME,
+        },
+
+        "type": {
+            "target": ELIGIBILITY_CHECK_PAYER_ENTITY_IDENTIFIER_CODE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "contacts": {
+            "target": ELIGIBILITY_CHECK_ENTITY_CONTACTS,
+        },
+
+        "ein": {
+            "target": STRING,
+        },
+
+        "etin": {
+            "target": STRING,
+        },
+
+        "tin": {
+            "target": STRING,
+        },
+
+        "naicId": {
+            "target": STRING,
+        },
+
+        "identification": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckEligibilityAndBenefitAdditionalInformation"),
+
+    members={
+        "plan": {
+            "target": ELIGIBILITY_CHECK_ADDITIONAL_INFORMATION_WITH_NAME,
+        },
+
+        "group": {
+            "target": ELIGIBILITY_CHECK_ADDITIONAL_INFORMATION_WITH_NAME,
+        },
+
+        "groupOrPolicyNumber": {
+            "target": STRING,
+        },
+
+        "memberId": {
+            "target": STRING,
+        },
+
+        "familyUnitNumber": {
+            "target": STRING,
+        },
+
+        "referralNumber": {
+            "target": STRING,
+        },
+
+        "alternativeListId": {
+            "target": STRING,
+        },
+
+        "coverageListId": {
+            "target": STRING,
+        },
+
+        "mbi": {
+            "target": STRING,
+        },
+
+        "drugFormularyNumber": {
+            "target": STRING,
+        },
+
+        "priorAuthNumber": {
+            "target": STRING,
+        },
+
+        "insurancePolicyNumber": {
+            "target": STRING,
+        },
+
+        "medicalAssistanceCategory": {
+            "target": STRING,
+        },
+
+        "medicaidRecipientId": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_COVERAGE_LEVEL = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckCoverageLevel"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "CHILDREN_ONLY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CHILDREN_ONLY"),
+
+            ],
+        },
+
+        "DEPENDENTS_ONLY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DEPENDENTS_ONLY"),
+
+            ],
+        },
+
+        "EMPLOYEE_AND_CHILDREN": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="EMPLOYEE_AND_CHILDREN"),
+
+            ],
+        },
+
+        "EMPLOYEE_ONLY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="EMPLOYEE_ONLY"),
+
+            ],
+        },
+
+        "EMPLOYEE_AND_SPOUSE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="EMPLOYEE_AND_SPOUSE"),
+
+            ],
+        },
+
+        "FAMILY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="FAMILY"),
+
+            ],
+        },
+
+        "INDIVIDUAL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="INDIVIDUAL"),
+
+            ],
+        },
+
+        "SPOUSE_AND_CHILDREN": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SPOUSE_AND_CHILDREN"),
+
+            ],
+        },
+
+        "SPOUSE_ONLY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SPOUSE_ONLY"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckEligibilityAndBenefitDateRanges"),
+
+    members={
+        "discharge": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "period": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "completion": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "coordinationOfBenefits": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "plan": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "benefit": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "primaryCareProvider": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "latestVisit": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "added": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "eligibility": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "admission": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "dateOfLastUpdate": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+        "status": {
+            "target": ELIGIBILITY_CHECK_DATE_RANGE,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_DIAGNOSIS_CODE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckDiagnosisCode"),
+
+    members={
+        "value": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "definition": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_DIAGNOSIS_CODES = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckDiagnosisCodes"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS_CODE,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_DIAGNOSIS_CODE_SYSTEM = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckDiagnosisCodeSystem"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "ICD_10_CM": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ICD-10-CM"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_DIAGNOSIS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckDiagnosis"),
+
+    members={
+        "codeSystem": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS_CODE_SYSTEM,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "codes": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS_CODES,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_INSURANCE_TYPE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckInsuranceType"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "DISABILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DISABILITY"),
+
+            ],
+        },
+
+        "MEDICARE_POINT_OF_SERVICE_POS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MEDICARE_POINT_OF_SERVICE_POS"),
+
+            ],
+        },
+
+        "MULTIPLE_OPTIONS_HEALTH_PLAN": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MULTIPLE_OPTIONS_HEALTH_PLAN"),
+
+            ],
+        },
+
+        "MEDICARE_SECONDARY_WORKING_AGED_BENEFICIARY_OR_SPOUSE_WITH_EMPLOYER_GROUP_HEALTH_PLAN": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MEDICARE_SECONDARY_WORKING_AGED_BENEFICIARY_OR_SPOUSE_WITH_EMPLOYER_GROUP_HEALTH_PLAN"),
+
+            ],
+        },
+
+        "MEDICARE_SECONDARY_ENDSTAGE_RENAL_DISEASE_BENEFICIARY_IN_THE_MANDATED_COORDINATION_PERIOD_WITH_AN_EMPLOYERS_GROUP_HEALTH_PLAN": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MEDICARE_SECONDARY_ENDSTAGE_RENAL_DISEASE_BENEFICIARY_IN_THE_MANDATED_COORDINATION_PERIOD_WITH_AN_EMPLOYERS_GROUP_HEALTH_PLAN"),
+
+            ],
+        },
+
+        "MEDICARE_SECONDARY_NOFAULT_INSURANCE_INCLUDING_AUTO_IS_PRIMARY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MEDICARE_SECONDARY_NOFAULT_INSURANCE_INCLUDING_AUTO_IS_PRIMARY"),
+
+            ],
+        },
+
+        "MEDICARE_SECONDARY_WORKERS_COMPENSATION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MEDICARE_SECONDARY_WORKERS_COMPENSATION"),
+
+            ],
+        },
+
+        "MEDICARE_SECONDARY_PUBLIC_HEALTH_SERVICE_PHS_OR_OTHER_FEDERAL_AGENCY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MEDICARE_SECONDARY_PUBLIC_HEALTH_SERVICE_PHS_OR_OTHER_FEDERAL_AGENCY"),
+
+            ],
+        },
+
+        "MEDICARE_SECONDARY_BLACK_LUNG": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MEDICARE_SECONDARY_BLACK_LUNG"),
+
+            ],
+        },
+
+        "MEDICARE_SECONDARY_VETERANS_ADMINISTRATION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MEDICARE_SECONDARY_VETERANS_ADMINISTRATION"),
+
+            ],
+        },
+
+        "MEDICARE_SECONDARY_DISABLED_BENEFICIARY_UNDER_AGE_65_WITH_LARGE_GROUP_HEALTH_PLAN_LGHP": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MEDICARE_SECONDARY_DISABLED_BENEFICIARY_UNDER_AGE_65_WITH_LARGE_GROUP_HEALTH_PLAN_LGHP"),
+
+            ],
+        },
+
+        "MEDICARE_SECONDARY_OTHER_LIABILITY_INSURANCE_IS_PRIMARY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MEDICARE_SECONDARY_OTHER_LIABILITY_INSURANCE_IS_PRIMARY"),
+
+            ],
+        },
+
+        "AUTO_INSURANCE_POLICY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="AUTO_INSURANCE_POLICY"),
+
+            ],
+        },
+
+        "COMMERCIAL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="COMMERCIAL"),
+
+            ],
+        },
+
+        "CONSOLIDATED_OMNIBUS_BUDGET_RECONCILIATION_ACT_COBRA": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CONSOLIDATED_OMNIBUS_BUDGET_RECONCILIATION_ACT_COBRA"),
+
+            ],
+        },
+
+        "MEDICARE_CONDITIONALLY_PRIMARY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MEDICARE_CONDITIONALLY_PRIMARY"),
+
+            ],
+        },
+
+        "DISABILITY_BENEFITS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DISABILITY_BENEFITS"),
+
+            ],
+        },
+
+        "EXCLUSIVE_PROVIDER_ORGANIZATION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="EXCLUSIVE_PROVIDER_ORGANIZATION"),
+
+            ],
+        },
+
+        "FAMILY_OR_FRIENDS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="FAMILY_OR_FRIENDS"),
+
+            ],
+        },
+
+        "GROUP_POLICY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="GROUP_POLICY"),
+
+            ],
+        },
+
+        "HEALTH_MAINTENANCE_ORGANIZATION_HMO": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HEALTH_MAINTENANCE_ORGANIZATION_HMO"),
+
+            ],
+        },
+
+        "HEALTH_MAINTENANCE_ORGANIZATION_HMO_MEDICARE_RISK": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HEALTH_MAINTENANCE_ORGANIZATION_HMO_MEDICARE_RISK"),
+
+            ],
+        },
+
+        "SPECIAL_LOW_INCOME_MEDICARE_BENEFICIARY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SPECIAL_LOW_INCOME_MEDICARE_BENEFICIARY"),
+
+            ],
+        },
+
+        "INDEMNITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="INDEMNITY"),
+
+            ],
+        },
+
+        "INDIVIDUAL_POLICY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="INDIVIDUAL_POLICY"),
+
+            ],
+        },
+
+        "LONG_TERM_CARE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="LONG_TERM_CARE"),
+
+            ],
+        },
+
+        "LONG_TERM_POLICY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="LONG_TERM_POLICY"),
+
+            ],
+        },
+
+        "LIFE_INSURANCE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="LIFE_INSURANCE"),
+
+            ],
+        },
+
+        "LITIGATION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="LITIGATION"),
+
+            ],
+        },
+
+        "MEDICARE_PART_A": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MEDICARE_PART_A"),
+
+            ],
+        },
+
+        "MEDICARE_PART_B": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MEDICARE_PART_B"),
+
+            ],
+        },
+
+        "MEDICAID": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MEDICAID"),
+
+            ],
+        },
+
+        "MEDIGAP_PART_A": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MEDIGAP_PART_A"),
+
+            ],
+        },
+
+        "MEDIGAP_PART_B": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MEDIGAP_PART_B"),
+
+            ],
+        },
+
+        "MEDICARE_PRIMARY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MEDICARE_PRIMARY"),
+
+            ],
+        },
+
+        "OTHER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="OTHER"),
+
+            ],
+        },
+
+        "PROPERTY_INSURANCE_PERSONAL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PROPERTY_INSURANCE_PERSONAL"),
+
+            ],
+        },
+
+        "PERSONAL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PERSONAL"),
+
+            ],
+        },
+
+        "PERSONAL_PAYMENT_CASH_NO_INSURANCE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PERSONAL_PAYMENT_CASH_NO_INSURANCE"),
+
+            ],
+        },
+
+        "PREFERRED_PROVIDER_ORGANIZATION_PPO": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PREFERRED_PROVIDER_ORGANIZATION_PPO"),
+
+            ],
+        },
+
+        "POINT_OF_SERVICE_POS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="POINT_OF_SERVICE_POS"),
+
+            ],
+        },
+
+        "QUALIFIED_MEDICARE_BENEFICIARY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="QUALIFIED_MEDICARE_BENEFICIARY"),
+
+            ],
+        },
+
+        "PROPERTY_INSURANCE_REAL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PROPERTY_INSURANCE_REAL"),
+
+            ],
+        },
+
+        "SUPPLEMENTAL_POLICY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SUPPLEMENTAL_POLICY"),
+
+            ],
+        },
+
+        "TAX_EQUITY_FISCAL_RESPONSIBILITY_ACT_TEFRA": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="TAX_EQUITY_FISCAL_RESPONSIBILITY_ACT_TEFRA"),
+
+            ],
+        },
+
+        "WORKERS_COMPENSATION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="WORKERS_COMPENSATION"),
+
+            ],
+        },
+
+        "WRAP_UP_POLICY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="WRAP_UP_POLICY"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_MESSAGES = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckMessages"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_NETWORK_INDICATOR = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckNetworkIndicator"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "IN_NETWORK": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="IN_NETWORK"),
+
+            ],
+        },
+
+        "OUT_OF_NETWORK": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="OUT_OF_NETWORK"),
+
+            ],
+        },
+
+        "IN_AND_OUT_OF_NETWORK": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="IN_AND_OUT_OF_NETWORK"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_NETWORK = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckNetwork"),
+
+    members={
+        "indicator": {
+            "target": ELIGIBILITY_CHECK_NETWORK_INDICATOR,
+        },
+
+        "id": {
+            "target": STRING,
+        },
+
+        "description": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PLACE_OF_SERVICE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPlaceOfService"),
+
+    members={
+        "code": {
+            "target": ELIGIBILITY_CHECK_PLACE_OF_SERVICE_CODE,
+        },
+
+        "name": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PLACES_OF_SERVICE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPlacesOfService"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_PLACE_OF_SERVICE,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPriorAuthIndicator"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "REQUIRED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="REQUIRED"),
+
+            ],
+        },
+
+        "NOT_REQUIRED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="NOT_REQUIRED"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_ENTITY_RELATIONSHIP = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckEntityRelationship"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "PARENT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PARENT"),
+
+            ],
+        },
+
+        "CHILD": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CHILD"),
+
+            ],
+        },
+
+        "DOMESTIC_PARTNER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DOMESTIC_PARTNER"),
+
+            ],
+        },
+
+        "SPOUSE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SPOUSE"),
+
+            ],
+        },
+
+        "EMPLOYEE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="EMPLOYEE"),
+
+            ],
+        },
+
+        "OTHER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="OTHER"),
+
+            ],
+        },
+
+        "UNKNOWN_RELATIONSHIP": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="UNKNOWN_RELATIONSHIP"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_RELATED_ENTITY_IDENTIFIER_CODE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckRelatedEntityIdentifierCode"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "CONTRACTED_SERVICE_PROVIDER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CONTRACTED_SERVICE_PROVIDER"),
+
+            ],
+        },
+
+        "PREFERRED_PROVIDER_ORGANIZATION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PREFERRED_PROVIDER_ORGANIZATION"),
+
+            ],
+        },
+
+        "PROVIDER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PROVIDER"),
+
+            ],
+        },
+
+        "THIRD_PARTY_ADMINISTRATOR": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="THIRD_PARTY_ADMINISTRATOR"),
+
+            ],
+        },
+
+        "EMPLOYER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="EMPLOYER"),
+
+            ],
+        },
+
+        "OTHER_PHYSICIAN": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="OTHER_PHYSICIAN"),
+
+            ],
+        },
+
+        "FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="FACILITY"),
+
+            ],
+        },
+
+        "GATEWAY_PROVIDER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="GATEWAY_PROVIDER"),
+
+            ],
+        },
+
+        "GROUP": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="GROUP"),
+
+            ],
+        },
+
+        "INDEPENDENT_PHYSICIANS_ASSOCIATION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="INDEPENDENT_PHYSICIANS_ASSOCIATION"),
+
+            ],
+        },
+
+        "INSURED_OR_SUBSCRIBER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="INSURED_OR_SUBSCRIBER"),
+
+            ],
+        },
+
+        "LEGAL_REPRESENTATIVE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="LEGAL_REPRESENTATIVE"),
+
+            ],
+        },
+
+        "ORIGIN_CARRIER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ORIGIN_CARRIER"),
+
+            ],
+        },
+
+        "PRIMARY_CARE_PROVIDER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PRIMARY_CARE_PROVIDER"),
+
+            ],
+        },
+
+        "PRIOR_INSURANCE_CARRIER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PRIOR_INSURANCE_CARRIER"),
+
+            ],
+        },
+
+        "PLAN_SPONSOR": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PLAN_SPONSOR"),
+
+            ],
+        },
+
+        "PAYER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PAYER"),
+
+            ],
+        },
+
+        "PRIMARY_PAYER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PRIMARY_PAYER"),
+
+            ],
+        },
+
+        "SECONDARY_PAYER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SECONDARY_PAYER"),
+
+            ],
+        },
+
+        "TERTIARY_PAYER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="TERTIARY_PAYER"),
+
+            ],
+        },
+
+        "PARTY_PERFORMING_VERIFICATION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PARTY_PERFORMING_VERIFICATION"),
+
+            ],
+        },
+
+        "VENDOR": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="VENDOR"),
+
+            ],
+        },
+
+        "ORGANIZATION_COMPLETING_CONFIGURATION_CHANGE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ORGANIZATION_COMPLETING_CONFIGURATION_CHANGE"),
+
+            ],
+        },
+
+        "UTILIZATION_MANAGEMENT_ORGANIZATION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="UTILIZATION_MANAGEMENT_ORGANIZATION"),
+
+            ],
+        },
+
+        "MANAGED_CARE_ORGANIZATION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MANAGED_CARE_ORGANIZATION"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_RELATED_ENTITY = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckRelatedEntity"),
+
+    members={
+        "name": {
+            "target": ELIGIBILITY_CHECK_PERSON_OR_ORGANIZATION_NAME,
+        },
+
+        "type": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITY_IDENTIFIER_CODE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "relationship": {
+            "target": ELIGIBILITY_CHECK_ENTITY_RELATIONSHIP,
+        },
+
+        "address": {
+            "target": ELIGIBILITY_CHECK_ADDRESS,
+        },
+
+        "provider": {
+            "target": ELIGIBILITY_CHECK_ENTITY_PROVIDER,
+        },
+
+        "contacts": {
+            "target": ELIGIBILITY_CHECK_ENTITY_CONTACTS,
+        },
+
+        "ein": {
+            "target": STRING,
+        },
+
+        "ssn": {
+            "target": STRING,
+        },
+
+        "etin": {
+            "target": STRING,
+        },
+
+        "facilityId": {
+            "target": STRING,
+        },
+
+        "tin": {
+            "target": STRING,
+        },
+
+        "memberId": {
+            "target": STRING,
+        },
+
+        "naicId": {
+            "target": STRING,
+        },
+
+        "payerId": {
+            "target": STRING,
+        },
+
+        "pharmacyProcessorNumber": {
+            "target": STRING,
+        },
+
+        "serviceProviderNumber": {
+            "target": STRING,
+        },
+
+        "npi": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_RELATED_ENTITIES = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckRelatedEntities"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITY,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SERVICE_CODE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckServiceCode"),
+
+    members={
+        "value": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "definition": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SERVICE_CODE_RANGE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckServiceCodeRange"),
+
+    members={
+        "start": {
+            "target": ELIGIBILITY_CHECK_SERVICE_CODE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "end": {
+            "target": ELIGIBILITY_CHECK_SERVICE_CODE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_RESPONSE_SERVICE_CODE_SYSTEM = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckResponseServiceCodeSystem"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "STC": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="STC"),
+
+            ],
+        },
+
+        "CDT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CDT"),
+
+            ],
+        },
+
+        "CPT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CPT"),
+
+            ],
+        },
+
+        "NDC": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="NDC"),
+
+            ],
+        },
+
+        "HCPCS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HCPCS"),
+
+            ],
+        },
+
+        "ICD_10_PCS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ICD-10-PCS"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckServiceOrProcedure"),
+
+    members={
+        "value": {
+            "target": STRING,
+        },
+
+        "definition": {
+            "target": STRING,
+        },
+
+        "system": {
+            "target": ELIGIBILITY_CHECK_RESPONSE_SERVICE_CODE_SYSTEM,
+        },
+
+        "range": {
+            "target": ELIGIBILITY_CHECK_SERVICE_CODE_RANGE,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_PATTERN = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckServiceDeliveryLimitPattern"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "FIRST_SHIFT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="FIRST_SHIFT"),
+
+            ],
+        },
+
+        "SECOND_SHIFT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SECOND_SHIFT"),
+
+            ],
+        },
+
+        "THIRD_SHIFT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="THIRD_SHIFT"),
+
+            ],
+        },
+
+        "AM": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="AM"),
+
+            ],
+        },
+
+        "PM": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PM"),
+
+            ],
+        },
+
+        "AS_DIRECTED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="AS_DIRECTED"),
+
+            ],
+        },
+
+        "ANY_SHIFT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ANY_SHIFT"),
+
+            ],
+        },
+
+        "NONE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="NONE"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_SCHEDULE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckServiceDeliveryLimitSchedule"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "FIRST_WEEK_OF_THE_MONTH": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="FIRST_WEEK_OF_THE_MONTH"),
+
+            ],
+        },
+
+        "SECOND_WEEK_OF_THE_MONTH": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SECOND_WEEK_OF_THE_MONTH"),
+
+            ],
+        },
+
+        "THIRD_WEEK_OF_THE_MONTH": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="THIRD_WEEK_OF_THE_MONTH"),
+
+            ],
+        },
+
+        "FOURTH_WEEK_OF_THE_MONTH": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="FOURTH_WEEK_OF_THE_MONTH"),
+
+            ],
+        },
+
+        "FIFTH_WEEK_OF_THE_MONTH": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="FIFTH_WEEK_OF_THE_MONTH"),
+
+            ],
+        },
+
+        "FIRST_AND_THIRD_WEEKS_OF_THE_MONTH": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="FIRST_AND_THIRD_WEEKS_OF_THE_MONTH"),
+
+            ],
+        },
+
+        "SECOND_AND_FOURTH_WEEKS_OF_THE_MONTH": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SECOND_AND_FOURTH_WEEKS_OF_THE_MONTH"),
+
+            ],
+        },
+
+        "FIRST_WORKING_DAY_OF_PERIOD": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="FIRST_WORKING_DAY_OF_PERIOD"),
+
+            ],
+        },
+
+        "LAST_WORKING_DAY_OF_PERIOD": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="LAST_WORKING_DAY_OF_PERIOD"),
+
+            ],
+        },
+
+        "MONDAY_THROUGH_FRIDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MONDAY_THROUGH_FRIDAY"),
+
+            ],
+        },
+
+        "MONDAY_THROUGH_SATURDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MONDAY_THROUGH_SATURDAY"),
+
+            ],
+        },
+
+        "MONDAY_THROUGH_SUNDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MONDAY_THROUGH_SUNDAY"),
+
+            ],
+        },
+
+        "MONDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MONDAY"),
+
+            ],
+        },
+
+        "TUESDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="TUESDAY"),
+
+            ],
+        },
+
+        "WEDNESDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="WEDNESDAY"),
+
+            ],
+        },
+
+        "THURSDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="THURSDAY"),
+
+            ],
+        },
+
+        "FRIDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="FRIDAY"),
+
+            ],
+        },
+
+        "SATURDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SATURDAY"),
+
+            ],
+        },
+
+        "SUNDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SUNDAY"),
+
+            ],
+        },
+
+        "MONDAY_THROUGH_THURSDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MONDAY_THROUGH_THURSDAY"),
+
+            ],
+        },
+
+        "IMMEDIATELY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="IMMEDIATELY"),
+
+            ],
+        },
+
+        "AS_DIRECTED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="AS_DIRECTED"),
+
+            ],
+        },
+
+        "DAILY_MONDAY_THROUGH_FRIDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DAILY_MONDAY_THROUGH_FRIDAY"),
+
+            ],
+        },
+
+        "HALF_MONDAY_AND_HALF_THURSDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HALF_MONDAY_AND_HALF_THURSDAY"),
+
+            ],
+        },
+
+        "HALF_TUESDAY_AND_HALF_THURSDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HALF_TUESDAY_AND_HALF_THURSDAY"),
+
+            ],
+        },
+
+        "HALF_WEDNESDAY_AND_HALF_FRIDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HALF_WEDNESDAY_AND_HALF_FRIDAY"),
+
+            ],
+        },
+
+        "ONCE_ANYTIME_MONDAY_THROUGH_FRIDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ONCE_ANYTIME_MONDAY_THROUGH_FRIDAY"),
+
+            ],
+        },
+
+        "TUESDAY_THROUGH_FRIDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="TUESDAY_THROUGH_FRIDAY"),
+
+            ],
+        },
+
+        "MONDAY_TUESDAY_AND_THURSDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MONDAY_TUESDAY_AND_THURSDAY"),
+
+            ],
+        },
+
+        "MONDAY_TUESDAY_AND_FRIDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MONDAY_TUESDAY_AND_FRIDAY"),
+
+            ],
+        },
+
+        "WEDNESDAY_AND_THURSDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="WEDNESDAY_AND_THURSDAY"),
+
+            ],
+        },
+
+        "MONDAY_WEDNESDAY_AND_THURSDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MONDAY_WEDNESDAY_AND_THURSDAY"),
+
+            ],
+        },
+
+        "TUESDAY_THURSDAY_AND_FRIDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="TUESDAY_THURSDAY_AND_FRIDAY"),
+
+            ],
+        },
+
+        "HALF_TUESDAY_AND_HALF_FRIDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HALF_TUESDAY_AND_HALF_FRIDAY"),
+
+            ],
+        },
+
+        "HALF_MONDAY_AND_HALF_WEDNESDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HALF_MONDAY_AND_HALF_WEDNESDAY"),
+
+            ],
+        },
+
+        "THIRD_MONDAY_THIRD_WEDNESDAY_AND_THIRD_FRIDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="THIRD_MONDAY_THIRD_WEDNESDAY_AND_THIRD_FRIDAY"),
+
+            ],
+        },
+
+        "WHENEVER_NECESSARY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="WHENEVER_NECESSARY"),
+
+            ],
+        },
+
+        "HALF_BY_WEDNESDAY_BALANCE_BY_FRIDAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HALF_BY_WEDNESDAY_BALANCE_BY_FRIDAY"),
+
+            ],
+        },
+
+        "NONE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="NONE"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_DELIVERY = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckServiceDeliveryLimitDelivery"),
+
+    members={
+        "schedule": {
+            "target": ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_SCHEDULE,
+        },
+
+        "pattern": {
+            "target": ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_PATTERN,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_FREQUENCY_QUALIFIER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckServiceDeliveryLimitFrequencyQualifier"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "DAYS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DAYS"),
+
+            ],
+        },
+
+        "MONTHS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MONTHS"),
+
+            ],
+        },
+
+        "VISIT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="VISIT"),
+
+            ],
+        },
+
+        "WEEK": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="WEEK"),
+
+            ],
+        },
+
+        "YEARS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="YEARS"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_FREQUENCY = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckServiceDeliveryLimitFrequency"),
+
+    members={
+        "value": {
+            "target": STRING,
+        },
+
+        "qualifier": {
+            "target": ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_FREQUENCY_QUALIFIER,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_PERIOD_QUALIFIER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckServiceDeliveryLimitPeriodQualifier"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "HOUR": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HOUR"),
+
+            ],
+        },
+
+        "DAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DAY"),
+
+            ],
+        },
+
+        "YEARS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="YEARS"),
+
+            ],
+        },
+
+        "SERVICE_YEAR": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SERVICE_YEAR"),
+
+            ],
+        },
+
+        "CALENDAR_YEAR": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CALENDAR_YEAR"),
+
+            ],
+        },
+
+        "YEAR_TO_DATE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="YEAR_TO_DATE"),
+
+            ],
+        },
+
+        "CONTRACT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CONTRACT"),
+
+            ],
+        },
+
+        "EPISODE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="EPISODE"),
+
+            ],
+        },
+
+        "VISIT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="VISIT"),
+
+            ],
+        },
+
+        "OUTLIER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="OUTLIER"),
+
+            ],
+        },
+
+        "REMAINING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="REMAINING"),
+
+            ],
+        },
+
+        "EXCEEDED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="EXCEEDED"),
+
+            ],
+        },
+
+        "NOT_EXCEEDED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="NOT_EXCEEDED"),
+
+            ],
+        },
+
+        "LIFETIME": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="LIFETIME"),
+
+            ],
+        },
+
+        "LIFETIME_REMAINING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="LIFETIME_REMAINING"),
+
+            ],
+        },
+
+        "MONTH": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MONTH"),
+
+            ],
+        },
+
+        "WEEK": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="WEEK"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_PERIOD = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckServiceDeliveryLimitPeriod"),
+
+    members={
+        "value": {
+            "target": LONG,
+        },
+
+        "qualifier": {
+            "target": ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_PERIOD_QUALIFIER,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_QUANTITY_QUALIFIER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckServiceDeliveryLimitQuantityQualifier"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "DAYS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DAYS"),
+
+            ],
+        },
+
+        "UNITS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="UNITS"),
+
+            ],
+        },
+
+        "HOURS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HOURS"),
+
+            ],
+        },
+
+        "MONTH": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MONTH"),
+
+            ],
+        },
+
+        "VISITS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="VISITS"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_QUANTITY = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckServiceDeliveryLimitQuantity"),
+
+    members={
+        "value": {
+            "target": STRING,
+        },
+
+        "qualifier": {
+            "target": ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_QUANTITY_QUALIFIER,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckServiceDeliveryLimit"),
+
+    members={
+        "quantity": {
+            "target": ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_QUANTITY,
+        },
+
+        "period": {
+            "target": ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_PERIOD,
+        },
+
+        "frequency": {
+            "target": ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_FREQUENCY,
+        },
+
+        "delivery": {
+            "target": ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT_DELIVERY,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SERVICE_LIMIT = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckServiceLimit"),
+    shape_type=ShapeType.UNION,
+    members={
+        "ageMaximum": {
+            "target": INTEGER,
+        },
+
+        "ageMinimum": {
+            "target": INTEGER,
+        },
+
+        "delivery": {
+            "target": ELIGIBILITY_CHECK_SERVICE_DELIVERY_LIMIT,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SERVICE_LIMITS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckServiceLimits"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMIT,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckBenefitDescription"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_BENEFIT_DESCRIPTIONS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckBenefitDescriptions"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_BENEFIT_DESCRIPTION,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckBenefitDisclaimer"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_BENEFIT_DISCLAIMERS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckBenefitDisclaimers"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_BENEFIT_DISCLAIMER,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_CANNOT_PROCESS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckCannotProcess"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_CANNOT_PROCESSES = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckCannotProcesses"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_CANNOT_PROCESS,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckCardReportedStolen"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_CARD_REPORTED_STOLENS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckCardReportedStolens"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_CARD_REPORTED_STOLEN,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_TIME_PERIOD = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckTimePeriod"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "HOUR": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HOUR"),
+
+            ],
+        },
+
+        "DAY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DAY"),
+
+            ],
+        },
+
+        "N24_HOURS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="24_HOURS"),
+
+            ],
+        },
+
+        "YEARS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="YEARS"),
+
+            ],
+        },
+
+        "SERVICE_YEAR": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="SERVICE_YEAR"),
+
+            ],
+        },
+
+        "CALENDAR_YEAR": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CALENDAR_YEAR"),
+
+            ],
+        },
+
+        "YEAR_TO_DATE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="YEAR_TO_DATE"),
+
+            ],
+        },
+
+        "CONTRACT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="CONTRACT"),
+
+            ],
+        },
+
+        "EPISODE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="EPISODE"),
+
+            ],
+        },
+
+        "VISIT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="VISIT"),
+
+            ],
+        },
+
+        "OUTLIER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="OUTLIER"),
+
+            ],
+        },
+
+        "REMAINING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="REMAINING"),
+
+            ],
+        },
+
+        "EXCEEDED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="EXCEEDED"),
+
+            ],
+        },
+
+        "NOT_EXCEEDED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="NOT_EXCEEDED"),
+
+            ],
+        },
+
+        "LIFETIME": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="LIFETIME"),
+
+            ],
+        },
+
+        "LIFETIME_REMAINING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="LIFETIME_REMAINING"),
+
+            ],
+        },
+
+        "MONTH": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MONTH"),
+
+            ],
+        },
+
+        "WEEK": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="WEEK"),
+
+            ],
+        },
+
+        "ADMISSION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ADMISSION"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_CO_INSURANCE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckCoInsurance"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "timePeriod": {
+            "target": ELIGIBILITY_CHECK_TIME_PERIOD,
+        },
+
+        "percent": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_CO_INSURANCES = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckCoInsurances"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_CO_INSURANCE,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckContactFollowingEntityForInformation"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATIONS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckContactFollowingEntityForInformations"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATION,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_QUANTITY_QUALIFIER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckQuantityQualifier"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "MINIMUM": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MINIMUM"),
+
+            ],
+        },
+
+        "QUANTITY_USED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="QUANTITY_USED"),
+
+            ],
+        },
+
+        "COVERED_ACTUAL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="COVERED_ACTUAL"),
+
+            ],
+        },
+
+        "COVERED_ESTIMATED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="COVERED_ESTIMATED"),
+
+            ],
+        },
+
+        "NUMBER_OF_CO_INSURANCE_DAYS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="NUMBER_OF_CO_INSURANCE_DAYS"),
+
+            ],
+        },
+
+        "DEDUCTIBLE_BLOOD_UNITS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DEDUCTIBLE_BLOOD_UNITS"),
+
+            ],
+        },
+
+        "DAYS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="DAYS"),
+
+            ],
+        },
+
+        "HOURS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HOURS"),
+
+            ],
+        },
+
+        "LIFE_TIME_RESERVE_ACTUAL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="LIFE_TIME_RESERVE_ACTUAL"),
+
+            ],
+        },
+
+        "LIFE_TIME_RESERVE_ESTIMATED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="LIFE_TIME_RESERVE_ESTIMATED"),
+
+            ],
+        },
+
+        "MAXIMUM": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MAXIMUM"),
+
+            ],
+        },
+
+        "MONTH": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MONTH"),
+
+            ],
+        },
+
+        "NUMBER_OF_SERVICES_OR_PROCEDURES": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="NUMBER_OF_SERVICES_OR_PROCEDURES"),
+
+            ],
+        },
+
+        "QUANTITY_APPROVED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="QUANTITY_APPROVED"),
+
+            ],
+        },
+
+        "VISITS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="VISITS"),
+
+            ],
+        },
+
+        "YEARS": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="YEARS"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_QUANTITY = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckQuantity"),
+
+    members={
+        "value": {
+            "target": STRING,
+        },
+
+        "qualifier": {
+            "target": ELIGIBILITY_CHECK_QUANTITY_QUALIFIER,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_CO_PAYMENT = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckCoPayment"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "timePeriod": {
+            "target": ELIGIBILITY_CHECK_TIME_PERIOD,
+        },
+
+        "amount": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "quantity": {
+            "target": ELIGIBILITY_CHECK_QUANTITY,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_CO_PAYMENTS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckCoPayments"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_CO_PAYMENT,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_COST_CONTAINMENT = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckCostContainment"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "timePeriod": {
+            "target": ELIGIBILITY_CHECK_TIME_PERIOD,
+        },
+
+        "amount": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "quantity": {
+            "target": ELIGIBILITY_CHECK_QUANTITY,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_COST_CONTAINMENTS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckCostContainments"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_COST_CONTAINMENT,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_COVERAGE_BASIS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckCoverageBasis"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_COVERAGE_BASES = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckCoverageBases"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_BASIS,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_DEDUCTIBLE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckDeductible"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "timePeriod": {
+            "target": ELIGIBILITY_CHECK_TIME_PERIOD,
+        },
+
+        "amount": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "quantity": {
+            "target": ELIGIBILITY_CHECK_QUANTITY,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_DEDUCTIBLES = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckDeductibles"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_DEDUCTIBLE,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_EXCLUSION = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckExclusion"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_EXCLUSIONS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckExclusions"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_EXCLUSION,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckHealthCareFacility"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_HEALTH_CARE_FACILITIES = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckHealthCareFacilities"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_HEALTH_CARE_FACILITY,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_INVALID_ENTRY_REASON_CODE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckInvalidEntryReasonCode"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "MISSING_AMOUNT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MISSING_AMOUNT"),
+
+            ],
+        },
+
+        "MISSING_PERCENT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="MISSING_PERCENT"),
+
+            ],
+        },
+
+        "UNEXPECTED_AMOUNT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="UNEXPECTED_AMOUNT"),
+
+            ],
+        },
+
+        "UNEXPECTED_PERCENT": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="UNEXPECTED_PERCENT"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_INVALID_ENTRY_REASON = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckInvalidEntryReason"),
+
+    members={
+        "code": {
+            "target": ELIGIBILITY_CHECK_INVALID_ENTRY_REASON_CODE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "description": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_INVALID_ENTRY_REASONS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckInvalidEntryReasons"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_INVALID_ENTRY_REASON,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_INVALID_BENEFIT = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckInvalidBenefit"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "timePeriod": {
+            "target": ELIGIBILITY_CHECK_TIME_PERIOD,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+        "quantity": {
+            "target": ELIGIBILITY_CHECK_QUANTITY,
+        },
+
+        "invalidReasons": {
+            "target": ELIGIBILITY_CHECK_INVALID_ENTRY_REASONS,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_INVALID_BENEFITS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckInvalidBenefits"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_INVALID_BENEFIT,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_INVALID_ENTRIES = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckInvalidEntries"),
+
+    members={
+        "coInsurance": {
+            "target": ELIGIBILITY_CHECK_INVALID_BENEFITS,
+        },
+
+        "coPayment": {
+            "target": ELIGIBILITY_CHECK_INVALID_BENEFITS,
+        },
+
+        "deductible": {
+            "target": ELIGIBILITY_CHECK_INVALID_BENEFITS,
+        },
+
+        "outOfPocket": {
+            "target": ELIGIBILITY_CHECK_INVALID_BENEFITS,
+        },
+
+        "costContainment": {
+            "target": ELIGIBILITY_CHECK_INVALID_BENEFITS,
+        },
+
+        "spendDown": {
+            "target": ELIGIBILITY_CHECK_INVALID_BENEFITS,
+        },
+
+        "limitations": {
+            "target": ELIGIBILITY_CHECK_INVALID_BENEFITS,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_LIMITATION = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckLimitation"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "timePeriod": {
+            "target": ELIGIBILITY_CHECK_TIME_PERIOD,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+        "quantity": {
+            "target": ELIGIBILITY_CHECK_QUANTITY,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_LIMITATIONS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckLimitations"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_LIMITATION,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckManagedCareCoordinator"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATORS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckManagedCareCoordinators"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_NON_COVERED = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckNonCovered"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_NON_COVEREDS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckNonCovereds"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_NON_COVERED,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckNotDeemedMedicalNecessity"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITIES = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckNotDeemedMedicalNecessities"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckOtherOrAdditionalPayer"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYERS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckOtherOrAdditionalPayers"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckOtherSourceOfData"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATAS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckOtherSourceOfDatas"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_OUT_OF_POCKET = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckOutOfPocket"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "timePeriod": {
+            "target": ELIGIBILITY_CHECK_TIME_PERIOD,
+        },
+
+        "amount": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "quantity": {
+            "target": ELIGIBILITY_CHECK_QUANTITY,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_OUT_OF_POCKETS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckOutOfPockets"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_OUT_OF_POCKET,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPreExistingCondition"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PRE_EXISTING_CONDITIONS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPreExistingConditions"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_PRE_EXISTING_CONDITION,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPrimaryCareProvider"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDERS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPrimaryCareProviders"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDER,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPriorYearsHistory"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORIES = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPriorYearsHistories"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORY,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_RESERVE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckReserve"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_RESERVES = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckReserves"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_RESERVE,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckSecondSurgicalOpinionRequired"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIREDS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckSecondSurgicalOpinionRequireds"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIRED,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckServicesRestrictedToFollowingProvider"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDERS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckServicesRestrictedToFollowingProviders"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDER,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SPEND_DOWN = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckSpendDown"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "timePeriod": {
+            "target": ELIGIBILITY_CHECK_TIME_PERIOD,
+        },
+
+        "amount": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "quantity": {
+            "target": ELIGIBILITY_CHECK_QUANTITY,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SPEND_DOWNS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckSpendDowns"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_SPEND_DOWN,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_COVERAGE_STATUS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckCoverageStatus"),
+    shape_type=ShapeType.ENUM,
+    members={
+        "ACTIVE_COVERAGE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ACTIVE_COVERAGE"),
+
+            ],
+        },
+
+        "ACTIVE_FULL_RISK_CAPITATION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ACTIVE_FULL_RISK_CAPITATION"),
+
+            ],
+        },
+
+        "ACTIVE_SERVICES_CAPITATED": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ACTIVE_SERVICES_CAPITATED"),
+
+            ],
+        },
+
+        "ACTIVE_SERVICES_CAPITATED_TO_PRIMARY_CARE_PROVIDER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ACTIVE_SERVICES_CAPITATED_TO_PRIMARY_CARE_PROVIDER"),
+
+            ],
+        },
+
+        "ACTIVE_PENDING_INVESTIGATION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="ACTIVE_PENDING_INVESTIGATION"),
+
+            ],
+        },
+
+        "INACTIVE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="INACTIVE"),
+
+            ],
+        },
+
+        "INACTIVE_PENDING_ELIGIBILITY_UPDATE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="INACTIVE_PENDING_ELIGIBILITY_UPDATE"),
+
+            ],
+        },
+
+        "INACTIVE_PENDING_INVESTIGATION": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="INACTIVE_PENDING_INVESTIGATION"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_ELIGIBILITY_STATUS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckEligibilityStatus"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "status": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_STATUS,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_ELIGIBILITY_STATUSES = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckEligibilityStatuses"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_STATUS,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_UNLIMITED = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckUnlimited"),
+
+    members={
+        "coverageLevel": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_LEVEL,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#default"), value="INDIVIDUAL"),
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "insuranceType": {
+            "target": ELIGIBILITY_CHECK_INSURANCE_TYPE,
+        },
+
+        "network": {
+            "target": ELIGIBILITY_CHECK_NETWORK,
+        },
+
+        "priorAuthIndicator": {
+            "target": ELIGIBILITY_CHECK_PRIOR_AUTH_INDICATOR,
+        },
+
+        "service": {
+            "target": ELIGIBILITY_CHECK_SERVICE_OR_PROCEDURE,
+        },
+
+        "messages": {
+            "target": ELIGIBILITY_CHECK_MESSAGES,
+        },
+
+        "serviceLimits": {
+            "target": ELIGIBILITY_CHECK_SERVICE_LIMITS,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_DATE_RANGES,
+        },
+
+        "relatedEntities": {
+            "target": ELIGIBILITY_CHECK_RELATED_ENTITIES,
+        },
+
+        "placesOfService": {
+            "target": ELIGIBILITY_CHECK_PLACES_OF_SERVICE,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_AND_BENEFIT_ADDITIONAL_INFORMATION,
+        },
+
+        "planCoverageDescription": {
+            "target": STRING,
+        },
+
+        "diagnosis": {
+            "target": ELIGIBILITY_CHECK_DIAGNOSIS,
+        },
+
+        "amount": {
+            "target": STRING,
+        },
+
+        "percent": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_UNLIMITEDS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckUnlimiteds"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_UNLIMITED,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_BENEFITS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckBenefits"),
+
+    members={
+        "statuses": {
+            "target": ELIGIBILITY_CHECK_ELIGIBILITY_STATUSES,
+        },
+
+        "coInsurance": {
+            "target": ELIGIBILITY_CHECK_CO_INSURANCES,
+        },
+
+        "coPayment": {
+            "target": ELIGIBILITY_CHECK_CO_PAYMENTS,
+        },
+
+        "deductible": {
+            "target": ELIGIBILITY_CHECK_DEDUCTIBLES,
+        },
+
+        "outOfPocket": {
+            "target": ELIGIBILITY_CHECK_OUT_OF_POCKETS,
+        },
+
+        "costContainment": {
+            "target": ELIGIBILITY_CHECK_COST_CONTAINMENTS,
+        },
+
+        "spendDown": {
+            "target": ELIGIBILITY_CHECK_SPEND_DOWNS,
+        },
+
+        "limitations": {
+            "target": ELIGIBILITY_CHECK_LIMITATIONS,
+        },
+
+        "coverageBasis": {
+            "target": ELIGIBILITY_CHECK_COVERAGE_BASES,
+        },
+
+        "benefitDescription": {
+            "target": ELIGIBILITY_CHECK_BENEFIT_DESCRIPTIONS,
+        },
+
+        "exclusions": {
+            "target": ELIGIBILITY_CHECK_EXCLUSIONS,
+        },
+
+        "unlimited": {
+            "target": ELIGIBILITY_CHECK_UNLIMITEDS,
+        },
+
+        "nonCovered": {
+            "target": ELIGIBILITY_CHECK_NON_COVEREDS,
+        },
+
+        "reserve": {
+            "target": ELIGIBILITY_CHECK_RESERVES,
+        },
+
+        "primaryCareProvider": {
+            "target": ELIGIBILITY_CHECK_PRIMARY_CARE_PROVIDERS,
+        },
+
+        "preExistingCondition": {
+            "target": ELIGIBILITY_CHECK_PRE_EXISTING_CONDITIONS,
+        },
+
+        "managedCareCoordinator": {
+            "target": ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATORS,
+        },
+
+        "servicesRestrictedToFollowingProvider": {
+            "target": ELIGIBILITY_CHECK_SERVICES_RESTRICTED_TO_FOLLOWING_PROVIDERS,
+        },
+
+        "notDeemedMedicalNecessity": {
+            "target": ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITIES,
+        },
+
+        "benefitDisclaimer": {
+            "target": ELIGIBILITY_CHECK_BENEFIT_DISCLAIMERS,
+        },
+
+        "secondSurgicalOpinionRequired": {
+            "target": ELIGIBILITY_CHECK_SECOND_SURGICAL_OPINION_REQUIREDS,
+        },
+
+        "otherOrAdditionalPayer": {
+            "target": ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYERS,
+        },
+
+        "priorYearsHistory": {
+            "target": ELIGIBILITY_CHECK_PRIOR_YEARS_HISTORIES,
+        },
+
+        "cardReportedStolen": {
+            "target": ELIGIBILITY_CHECK_CARD_REPORTED_STOLENS,
+        },
+
+        "contactFollowingEntityForInformation": {
+            "target": ELIGIBILITY_CHECK_CONTACT_FOLLOWING_ENTITY_FOR_INFORMATIONS,
+        },
+
+        "cannotProcess": {
+            "target": ELIGIBILITY_CHECK_CANNOT_PROCESSES,
+        },
+
+        "otherSourceOfData": {
+            "target": ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATAS,
+        },
+
+        "healthCareFacility": {
+            "target": ELIGIBILITY_CHECK_HEALTH_CARE_FACILITIES,
+        },
+
+        "invalidEntries": {
+            "target": ELIGIBILITY_CHECK_INVALID_ENTRIES,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PLAN = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPlan"),
+
+    members={
+        "benefits": {
+            "target": ELIGIBILITY_CHECK_BENEFITS,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "name": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PLANS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPlans"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_PLAN,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_STATE_LICENSE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckStateLicense"),
+
+    members={
+        "state": {
+            "target": STRING,
+        },
+
+        "number": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckProviderAdditionalInformation"),
+
+    members={
+        "stateLicense": {
+            "target": ELIGIBILITY_CHECK_STATE_LICENSE,
+        },
+
+        "medicareProviderNumber": {
+            "target": STRING,
+        },
+
+        "medicaidProviderNumber": {
+            "target": STRING,
+        },
+
+        "facilityIdNumber": {
+            "target": STRING,
+        },
+
+        "personalIdentificationNumber": {
+            "target": STRING,
+        },
+
+        "contractNumber": {
+            "target": STRING,
+        },
+
+        "electronicDevicePin": {
+            "target": STRING,
+        },
+
+        "submitterId": {
+            "target": STRING,
+        },
+
+        "userId": {
+            "target": STRING,
+        },
+
+        "planNetworkId": {
+            "target": STRING,
+        },
+
+        "facilityNetworkId": {
+            "target": STRING,
+        },
+
+        "priorIdentifierNumber": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PROVIDER_ENTITY_IDENTIFIER_CODE = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckProviderEntityIdentifierCode"),
+    shape_type=ShapeType.ENUM,
+    traits=[
+        Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
+
+    ],
+    members={
+        "PROVIDER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PROVIDER"),
+
+            ],
+        },
+
+        "THIRD_PARTY_ADMINISTRATOR": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="THIRD_PARTY_ADMINISTRATOR"),
+
+            ],
+        },
+
+        "EMPLOYER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="EMPLOYER"),
+
+            ],
+        },
+
+        "HOSPITAL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="HOSPITAL"),
+
+            ],
+        },
+
+        "FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="FACILITY"),
+
+            ],
+        },
+
+        "GATEWAY_PROVIDER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="GATEWAY_PROVIDER"),
+
+            ],
+        },
+
+        "PLAN_SPONSOR": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PLAN_SPONSOR"),
+
+            ],
+        },
+
+        "PAYER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="PAYER"),
+
+            ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_PROVIDER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckProvider"),
+
+    members={
+        "name": {
+            "target": ELIGIBILITY_CHECK_PERSON_OR_ORGANIZATION_NAME,
+        },
+
+        "type": {
+            "target": ELIGIBILITY_CHECK_PROVIDER_ENTITY_IDENTIFIER_CODE,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "address": {
+            "target": ELIGIBILITY_CHECK_ADDRESS,
+        },
+
+        "provider": {
+            "target": ELIGIBILITY_CHECK_ENTITY_PROVIDER,
+        },
+
+        "tin": {
+            "target": STRING,
+        },
+
+        "ssn": {
+            "target": STRING,
+        },
+
+        "ein": {
+            "target": STRING,
+        },
+
+        "pharmacyProcessorNumber": {
+            "target": STRING,
+        },
+
+        "serviceProviderNumber": {
+            "target": STRING,
+        },
+
+        "npi": {
+            "target": STRING,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_PROVIDER_ADDITIONAL_INFORMATION,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckSubscriberAdditionalInformation"),
+
+    members={
+        "plan": {
+            "target": ELIGIBILITY_CHECK_ADDITIONAL_INFORMATION_WITH_NAME,
+        },
+
+        "group": {
+            "target": ELIGIBILITY_CHECK_ADDITIONAL_INFORMATION_WITH_NAME,
+        },
+
+        "planNetwork": {
+            "target": ELIGIBILITY_CHECK_ADDITIONAL_INFORMATION_WITH_NAME,
+        },
+
+        "groupOrPolicyNumber": {
+            "target": STRING,
+        },
+
+        "memberId": {
+            "target": STRING,
+        },
+
+        "familyUnitNumber": {
+            "target": STRING,
+        },
+
+        "classOfContractCode": {
+            "target": STRING,
+        },
+
+        "contractNumber": {
+            "target": STRING,
+        },
+
+        "medicalRecordId": {
+            "target": STRING,
+        },
+
+        "patientAccountNumber": {
+            "target": STRING,
+        },
+
+        "mbi": {
+            "target": STRING,
+        },
+
+        "identificationCardSerialNumber": {
+            "target": STRING,
+        },
+
+        "identityCardNumber": {
+            "target": STRING,
+        },
+
+        "issueNumber": {
+            "target": STRING,
+        },
+
+        "insurancePolicyNumber": {
+            "target": STRING,
+        },
+
+        "medicaidRecipientId": {
+            "target": STRING,
+        },
+
+        "priorIdentifierNumber": {
+            "target": STRING,
+        },
+
+        "ssn": {
+            "target": STRING,
+        },
+
+        "agencyClaimNumber": {
+            "target": STRING,
+        },
+
+        "caseNumber": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SUBSCRIBER = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckSubscriber"),
+
+    members={
+        "address": {
+            "target": ELIGIBILITY_CHECK_ADDRESS,
+        },
+
+        "provider": {
+            "target": ELIGIBILITY_CHECK_ENTITY_PROVIDER,
+        },
+
+        "dates": {
+            "target": ELIGIBILITY_CHECK_PATIENT_ATTRIBUTE_DATE_RANGES,
+        },
+
+        "dateOfBirth": {
+            "target": ELIGIBILITY_CHECK_ISO_DATE,
+        },
+
+        "gender": {
+            "target": ELIGIBILITY_CHECK_RESPONSE_PATIENT_GENDER,
+        },
+
+        "birthSequenceNumber": {
+            "target": LONG,
+        },
+
+        "maintenance": {
+            "target": ELIGIBILITY_CHECK_MAINTENANCE,
+        },
+
+        "name": {
+            "target": ELIGIBILITY_CHECK_PERSON_OR_ORGANIZATION_NAME,
+        },
+
+        "additionalInformation": {
+            "target": ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION,
+        },
+
+        "memberId": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_WARNING = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.common#EligibilityCheckWarning"),
+
+    members={
+        "code": {
+            "target": STRING,
+        },
+
+        "description": {
+            "target": STRING,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_WARNINGS = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.common#EligibilityCheckWarnings"),
+    shape_type=ShapeType.LIST,
+    members={
+        "member": {
+            "target": ELIGIBILITY_CHECK_WARNING,
+        },
+
+    }
+)
+
+CREATE_ELIGIBILITY_CHECK_OUTPUT = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4#CreateEligibilityCheckOutput"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#output")),
+
+    ],
+    members={
+        "id": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "meta": {
+            "target": ELIGIBILITY_CHECK_META,
+        },
+
+        "payerId": {
+            "target": STRING,
+        },
+
+        "eligibilitySearchId": {
+            "target": STRING,
+        },
+
+        "warnings": {
+            "target": ELIGIBILITY_CHECK_WARNINGS,
+        },
+
+        "x12": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "payer": {
+            "target": ELIGIBILITY_CHECK_PAYER,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "provider": {
+            "target": ELIGIBILITY_CHECK_PROVIDER,
+        },
+
+        "subscriber": {
+            "target": ELIGIBILITY_CHECK_SUBSCRIBER,
+        },
+
+        "dependent": {
+            "target": ELIGIBILITY_CHECK_DEPENDENT,
+        },
+
+        "plans": {
+            "target": ELIGIBILITY_CHECK_PLANS,
+        },
+
+        "errors": {
+            "target": ELIGIBILITY_CHECK_RESPONSE_ERROR_LIST,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_SERIALIZATION_EXCEPTION = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.errors#EligibilityCheckSerializationException"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#error"), value="client"),
+        Trait.new(id=ShapeID("smithy.api#httpError"), value=400),
+
+    ],
+    members={
+        "message": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+CONTENT_TOO_LARGE_EXCEPTION = Schema.collection(
+    id=ShapeID("com.stedi.smithy.model.errors#ContentTooLargeException"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#error"), value="client"),
+        Trait.new(id=ShapeID("smithy.api#httpError"), value=413),
+
+    ],
+    members={
+        "message": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+    }
+)
+
+CREATE_ELIGIBILITY_CHECK = Schema(
+    id=ShapeID("com.stedi.eligibility.v4#CreateEligibilityCheck"),
+    shape_type=ShapeType.OPERATION,
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#internal")),
+        Trait.new(id=ShapeID("smithy.rules#staticContextParams"), value=MappingProxyType({
+                "ServiceComponent": MappingProxyType({
+                    "value": "SdkEligibilityCheckService",
+                }),
+            })),
+        Trait.new(id=ShapeID("smithy.api#examples"), value=(
+                MappingProxyType({
+                    "title": "Eligibility check",
+                    "input": MappingProxyType({
+                        "payerId": "61101",
+                        "subscriber": MappingProxyType({
+                            "dateOfBirth": "1975-05-05",
+                            "memberId": "HUMANA123",
+                            "name": MappingProxyType({
+                                "person": MappingProxyType({
+                                    "firstName": "Jane",
+                                    "lastName": "Doe",
+                                }),
+                            }),
+                        }),
+                        "provider": MappingProxyType({
+                            "name": MappingProxyType({
+                                "organization": "Provider Name",
+                            }),
+                            "npi": "1999999984",
+                        }),
+                        "encounter": MappingProxyType({
+                            "services": (
+                                MappingProxyType({
+                                    "value": "30",
+                                    "system": "STC",
+                                }),
+                            ),
+                        }),
+                    }),
+                    "output": MappingProxyType({
+                        "id": "ec_01a06d4a-a0fa-77d2-8b49-ca9a74c9888a",
+                        "eligibilitySearchId": "01a06d4a-a0fa-77d2-8b49-caa0546ed292",
+                        "payerId": "61101",
+                        "x12": "ISA*00*          *00*          *ZZ*STEDI          *01*117151744      *260904*1640*^*00501*263887373*0*T*`~GS*HB*STEDI*117151744*20260904*164002*1*X*005010X279A1~ST*271*0001*005010X279A1~BHT*0022*11*01M1PMN87VXMME0ZV6SHJP3B9V*20260325*0901~HL*1**20*1~NM1*PR*2*HUMANA*****PI*61101~HL*2*1*21*1~NM1*1P*2*MEDICAL PROVIDER*****XX*1999999984~HL*3*2*22*0~TRN*1*000011112222333*0101010101~NM1*IL*1*DOE*JANE*L***MI*HUMANA123~REF*6P*11223344~REF*6P*11223344*HUMANA INSURANCE COMPANY~REF*F6*1A22BB3CC44~N3*101 MAIN ST~N4*ATLANTA*GA*303010001~DMG*D8*19750505*F~DTP*346*D8*20240101~DTP*472*D8*20240917~EB*1*EMP*30*PR*Humana Gold Plan*******W~MSG*000 111~MSG*Medicare PPO~MSG*Member cannot be balanced billed for medical copayments, coinsurance or deductibles on this Plan. Member is cost-share protected by the state Medicaid. In WA if Medicaid is not cost-share protecting members, Humana will process the claim paying member cost share.~MSG*THIS MEMBER MAY BE ELIGIBLE FOR A FREE FITNESS MEMBERSHIP.~EB*L***********W~LS*2120~NM1*P3*1*John*Dough~N3*202 Main St~N4*Tulsa*OK*74008~PER*IC**TE*9999999999~LE*2120~EB*F**30******YY*26**W~MSG*MAX DEPENDENT AGE~EB*F**30******YY*31**W~MSG*MAX STUDENT AGE~EB*L****AFFILIATION/CENTER*******W~LS*2120~NM1*GW*2*OK EMP PPO*****PI*34343434~LE*2120~EB*W***********W~MSG*NO DESCRIPTION PROVIDED~EB*1**1^54^33^98^88^UC^47^50^AL^MH^35^86^48*********W~EB*1*IND*1*PR***0*****Y~EB*A*IND*49*PR**36**0****Y~MSG*INPATIENT HOSPITAL ROOM AND BOARD~EB*B*IND*49*PR**36*2000*****Y~MSG*INPATIENT HOSPITAL ROOM AND BOARD~EB*C*IND*49*PR***0*****Y~MSG*INPATIENT HOSPITAL ROOM AND BOARD~EB*A*IND*48*PR**23**0****Y~MSG*INPATIENT HOSPITAL~EB*C*IND*48*PR***0*****Y~MSG*INPATIENT HOSPITAL~EB*A*IND*86*PR**23**0****Y~MSG*ER~EB*B*IND*86*PR**26*100*****Y~MSG*ER~EB*A*IND*86*PR**23**0****Y~MSG*ANESTHESIA~EB*B*IND*86*PR**26*100*****Y~MSG*ANESTHESIA~EB*C*IND*86*PR***0*****Y~MSG*ER~EB*C*IND*86*PR***0*****Y~MSG*ANESTHESIA~EB*I*IND*35*PR***0*****Y~MSG*VIEW CONTRACT FOR COVERAGE DETAILS~EB*A*IND*MH^98*PR**23**0****Y~MSG*TELEHEALTH VISIT PCP~III*ZZ*10~EB*A*IND*MH*PR**23**0****Y~MSG*TELEHEALTH VISIT SPECIALIST~III*ZZ*10~EB*C*IND*MH^98*PR***0*****Y~MSG*TELEHEALTH VISIT PCP~III*ZZ*10~EB*C*IND*MH^98*PR***0*****Y~MSG*TELEHEALTH VISIT SPECIALIST~III*ZZ*10~EB*1*IND*MH*PR***0*****Y~MSG*PHYSICIAN OFFICE VISIT SPECIALIST~EB*A*IND*AL*PR**23**0****Y~MSG*ROUTINE VISION EXAM~EB*F*IND*AL*PR**23*40*****Y~MSG*ROUTINE VISION EXAM~EB*C*IND*AL*PR***0*****Y~MSG*ROUTINE VISION EXAM~EB*A*IND*50*PR****.2****Y~MSG*OUTPATIENT HOSPITAL SURGERY~EB*A*IND*50*PR****.2****Y~MSG*OUTPATIENT HOSPITAL ANESTHESIA~EB*A*IND*50*PR****.2****Y~MSG*OUTPATIENT HOSPITAL MRI SCAN~EB*A*IND*50*PR****.2****Y~MSG*OUTPATIENT HOSPITAL CAT SCAN~EB*C*IND*50*PR***250*****Y~MSG*OUTPATIENT HOSPITAL SURGERY~EB*C*IND*50*PR***250*****Y~MSG*OUTPATIENT HOSPITAL ANESTHESIA~EB*C*IND*50*PR***250*****Y~MSG*OUTPATIENT HOSPITAL MRI SCAN~EB*C*IND*50*PR***250*****Y~MSG*OUTPATIENT HOSPITAL CAT SCAN~EB*1*IND*47*PR***0*****Y~MSG*INPATIENT HOSPITAL~EB*A*IND*UC*PR****.2****Y~MSG*PHYSICIAN OFFICE URGENT CARE~EB*A*IND*UC*PR****.2****Y~MSG*PHYSICIAN OFFICE PREFERRED URGENT CARE~EB*A*IND*UC*PR****.2****Y~MSG*TELEHEALTH URGENT CARE~EB*C*IND*UC*PR***0*****Y~MSG*PHYSICIAN OFFICE URGENT CARE~EB*C*IND*UC*PR***0*****Y~MSG*PHYSICIAN OFFICE PREFERRED URGENT CARE~EB*C*IND*UC*PR***0*****Y~MSG*TELEHEALTH URGENT CARE~EB*C**88****550*****Y~EB*C**88****0*****Y~EB*B**88****35*****Y~MSG*LEVEL 3~EB*B**88****35*****Y~EB*A*IND*98*PR****.2****Y~MSG*PHYSICIAN OFFICE VISIT PCP~EB*A*IND*98*PR****.2****Y~MSG*PHYSICIAN OFFICE VISIT SPECIALIST~EB*A*IND*98*PR****.2****Y~MSG*PHYSICIAN OFFICE VISIT FREESTANDING RAD CTR~EB*A*IND*98*PR****.2****Y~MSG*PHYSICIAN OFFICE VISIT COMP OUTPT REHAB FACILITY~EB*B*IND*98*PR**23*0*****Y~MSG*TELEHEALTH VISIT PCP~III*ZZ*10~EB*F*IND*98*PR**23**1****Y~MSG*TELEHEALTH VISIT PCP~III*ZZ*10~EB*A*IND*98*PR****.2****Y~MSG*TELEHEALTH VISIT SPECIALIST~III*ZZ*10~EB*C*IND*98*PR***250*****Y~MSG*PHYSICIAN OFFICE VISIT PCP~EB*C*IND*98*PR***250*****Y~MSG*PHYSICIAN OFFICE VISIT SPECIALIST~EB*C*IND*98*PR***250*****Y~MSG*PHYSICIAN OFFICE VISIT FREESTANDING RAD CTR~EB*C*IND*98*PR***250*****Y~MSG*PHYSICIAN OFFICE VISIT COMP OUTPT REHAB FACILITY~EB*I*IND*98*PR***0*****Y~MSG*PHYSICIAN OFFICE DOCTOR ON DEMAND NOT COVERED~EB*A*IND*33*PR****.2****Y~MSG*MEDICARE COVERED MANIPULATIONS~EB*I*IND*33*PR***0*****Y~MSG*MANIPULATIONS~EB*I*IND*33*PR***0*****Y~MSG*RADIOLOGY~EB*C*IND*33*PR***250*****Y~MSG*MEDICARE COVERED MANIPULATIONS~EB*C*IND*30*PR**23*250*****Y~MSG*SEE EXACT BENEFIT TO VERIFY IF DEDUCTIBLE APPLIES~EB*G*IND*30*PR**23*8000*****Y~EB*G*IND*30***24*200*****W~EB*G*IND*30***29*8500*****W~EB*G*IND*30***24*200*****Y~EB*G*IND*30***29*4000*****Y~EB*F*IND*30***24*30000*****W~EB*F*IND*30***29*9000000*****W~EB*C*IND*30***24*250*****W~EB*C*IND*30***29*0*****W~EB*F*IND*30***24*10000*****W~EB*F*IND*30***29*9000000*****W~EB*G*IND*30***24*400*****W~EB*G*IND*30***29*12000*****W~EB*G*IND*30***24*400*****Y~EB*G*IND*30***29*7500*****Y~EB*P***********W~MSG*THIS IS ONLY AN ESTIMATION OF BENEFITS, AND ALL PAYMENTS ARE SUBJECT TO POLICY GUIDELINES, MEDICAL NECESSITY, AND MEMBER ELIGIBILITY AT THE TIME SERVICES ARE PERFORMED.~SE*175*0001~GE*1*1~IEA*1*263887373~",
+                        "provider": MappingProxyType({
+                            "type": "PROVIDER",
+                            "name": MappingProxyType({
+                                "organization": "MEDICAL PROVIDER",
+                            }),
+                            "npi": "1999999984",
+                        }),
+                        "payer": MappingProxyType({
+                            "type": "PAYER",
+                            "name": MappingProxyType({
+                                "organization": "HUMANA",
+                            }),
+                            "identification": "61101",
+                        }),
+                        "meta": MappingProxyType({
+                            "traceId": "01M1PMN87VXMME0ZV6SHJP3B9V",
+                            "outboundTraceId": "01M1PMN87VXMME0ZV6SHJP3B9V",
+                            "subscriberTraceNumbers": (
+                                MappingProxyType({
+                                    "type": "CURRENT_TRANSACTION",
+                                    "referenceIdentification": "000011112222333",
+                                    "originatingCompanyIdentifier": "0101010101",
+                                }),
+                            ),
+                        }),
+                        "subscriber": MappingProxyType({
+                            "memberId": "HUMANA123",
+                            "dateOfBirth": "1975-05-05",
+                            "gender": "FEMALE",
+                            "name": MappingProxyType({
+                                "person": MappingProxyType({
+                                    "firstName": "JANE",
+                                    "lastName": "DOE",
+                                    "middleName": "L",
+                                }),
+                            }),
+                            "address": MappingProxyType({
+                                "addressLine1": "101 MAIN ST",
+                                "city": "ATLANTA",
+                                "state": "GA",
+                                "postalCode": "303010001",
+                            }),
+                            "dates": MappingProxyType({
+                                "plan": MappingProxyType({
+                                    "start": "2024-01-01",
+                                }),
+                                "service": MappingProxyType({
+                                    "start": "2024-09-17",
+                                }),
+                            }),
+                            "additionalInformation": MappingProxyType({
+                                "mbi": "1A22BB3CC44",
+                                "group": MappingProxyType({
+                                    "number": "11223344",
+                                    "name": "HUMANA INSURANCE COMPANY",
+                                }),
+                            }),
+                        }),
+                        "plans": (
+                            MappingProxyType({
+                                "benefits": MappingProxyType({
+                                    "statuses": (
+                                        MappingProxyType({
+                                            "status": "ACTIVE_COVERAGE",
+                                            "coverageLevel": "EMPLOYEE_ONLY",
+                                            "insuranceType": "PREFERRED_PROVIDER_ORGANIZATION_PPO",
+                                            "network": MappingProxyType({
+                                                "indicator": "IN_AND_OUT_OF_NETWORK",
+                                            }),
+                                            "service": MappingProxyType({
+                                                "value": "30",
+                                                "definition": "Health Benefit Plan Coverage",
+                                                "system": "STC",
+                                            }),
+                                            "planCoverageDescription": "Humana Gold Plan",
+                                            "messages": (
+                                                "000 111",
+                                                "Medicare PPO",
+                                                "Member cannot be balanced billed for medical copayments, coinsurance or deductibles on this Plan. Member is cost-share protected by the state Medicaid. In WA if Medicaid is not cost-share protecting members, Humana will process the claim paying member cost share.",
+                                                "THIS MEMBER MAY BE ELIGIBLE FOR A FREE FITNESS MEMBERSHIP.",
+                                            ),
+                                        }),
+                                    ),
+                                    "coPayment": (
+                                        MappingProxyType({
+                                            "coverageLevel": "INDIVIDUAL",
+                                            "amount": "2000",
+                                            "insuranceType": "PREFERRED_PROVIDER_ORGANIZATION_PPO",
+                                            "network": MappingProxyType({
+                                                "indicator": "IN_NETWORK",
+                                            }),
+                                            "service": MappingProxyType({
+                                                "value": "49",
+                                                "definition": "Hospital - Room and Board",
+                                                "system": "STC",
+                                            }),
+                                            "timePeriod": "ADMISSION",
+                                            "messages": (
+                                                "INPATIENT HOSPITAL ROOM AND BOARD",
+                                            ),
+                                        }),
+                                        MappingProxyType({
+                                            "coverageLevel": "INDIVIDUAL",
+                                            "amount": "100",
+                                            "insuranceType": "PREFERRED_PROVIDER_ORGANIZATION_PPO",
+                                            "network": MappingProxyType({
+                                                "indicator": "IN_NETWORK",
+                                            }),
+                                            "service": MappingProxyType({
+                                                "value": "86",
+                                                "definition": "Emergency Services",
+                                                "system": "STC",
+                                            }),
+                                            "timePeriod": "EPISODE",
+                                            "messages": (
+                                                "ER",
+                                            ),
+                                        }),
+                                    ),
+                                    "coInsurance": (
+                                        MappingProxyType({
+                                            "coverageLevel": "INDIVIDUAL",
+                                            "percent": "0",
+                                            "insuranceType": "PREFERRED_PROVIDER_ORGANIZATION_PPO",
+                                            "network": MappingProxyType({
+                                                "indicator": "IN_NETWORK",
+                                            }),
+                                            "service": MappingProxyType({
+                                                "value": "49",
+                                                "definition": "Hospital - Room and Board",
+                                                "system": "STC",
+                                            }),
+                                            "timePeriod": "ADMISSION",
+                                            "messages": (
+                                                "INPATIENT HOSPITAL ROOM AND BOARD",
+                                            ),
+                                        }),
+                                    ),
+                                    "deductible": (
+                                        MappingProxyType({
+                                            "coverageLevel": "INDIVIDUAL",
+                                            "amount": "0",
+                                            "insuranceType": "PREFERRED_PROVIDER_ORGANIZATION_PPO",
+                                            "network": MappingProxyType({
+                                                "indicator": "IN_NETWORK",
+                                            }),
+                                            "service": MappingProxyType({
+                                                "value": "49",
+                                                "definition": "Hospital - Room and Board",
+                                                "system": "STC",
+                                            }),
+                                            "messages": (
+                                                "INPATIENT HOSPITAL ROOM AND BOARD",
+                                            ),
+                                        }),
+                                    ),
+                                    "outOfPocket": (
+                                        MappingProxyType({
+                                            "coverageLevel": "INDIVIDUAL",
+                                            "amount": "8000",
+                                            "insuranceType": "PREFERRED_PROVIDER_ORGANIZATION_PPO",
+                                            "network": MappingProxyType({
+                                                "indicator": "IN_NETWORK",
+                                            }),
+                                            "service": MappingProxyType({
+                                                "value": "30",
+                                                "definition": "Health Benefit Plan Coverage",
+                                                "system": "STC",
+                                            }),
+                                            "timePeriod": "CALENDAR_YEAR",
+                                        }),
+                                    ),
+                                    "limitations": (
+                                        MappingProxyType({
+                                            "coverageLevel": "INDIVIDUAL",
+                                            "network": MappingProxyType({
+                                                "indicator": "IN_AND_OUT_OF_NETWORK",
+                                            }),
+                                            "service": MappingProxyType({
+                                                "value": "30",
+                                                "definition": "Health Benefit Plan Coverage",
+                                                "system": "STC",
+                                            }),
+                                            "quantity": MappingProxyType({
+                                                "value": "26",
+                                                "qualifier": "YEARS",
+                                            }),
+                                            "messages": (
+                                                "MAX DEPENDENT AGE",
+                                            ),
+                                        }),
+                                    ),
+                                    "nonCovered": (
+                                        MappingProxyType({
+                                            "coverageLevel": "INDIVIDUAL",
+                                            "amount": "0",
+                                            "insuranceType": "PREFERRED_PROVIDER_ORGANIZATION_PPO",
+                                            "network": MappingProxyType({
+                                                "indicator": "IN_NETWORK",
+                                            }),
+                                            "service": MappingProxyType({
+                                                "value": "35",
+                                                "definition": "Dental Care",
+                                                "system": "STC",
+                                            }),
+                                            "messages": (
+                                                "VIEW CONTRACT FOR COVERAGE DETAILS",
+                                            ),
+                                        }),
+                                    ),
+                                    "benefitDisclaimer": (
+                                        MappingProxyType({
+                                            "coverageLevel": "INDIVIDUAL",
+                                            "network": MappingProxyType({
+                                                "indicator": "IN_AND_OUT_OF_NETWORK",
+                                            }),
+                                            "messages": (
+                                                "THIS IS ONLY AN ESTIMATION OF BENEFITS, AND ALL PAYMENTS ARE SUBJECT TO POLICY GUIDELINES, MEDICAL NECESSITY, AND MEMBER ELIGIBILITY AT THE TIME SERVICES ARE PERFORMED.",
+                                            ),
+                                        }),
+                                    ),
+                                    "otherSourceOfData": (
+                                        MappingProxyType({
+                                            "coverageLevel": "INDIVIDUAL",
+                                            "network": MappingProxyType({
+                                                "indicator": "IN_AND_OUT_OF_NETWORK",
+                                            }),
+                                            "messages": (
+                                                "NO DESCRIPTION PROVIDED",
+                                            ),
+                                        }),
+                                    ),
+                                    "primaryCareProvider": (
+                                        MappingProxyType({
+                                            "coverageLevel": "INDIVIDUAL",
+                                            "network": MappingProxyType({
+                                                "indicator": "IN_AND_OUT_OF_NETWORK",
+                                            }),
+                                            "relatedEntities": (
+                                                MappingProxyType({
+                                                    "type": "PRIMARY_CARE_PROVIDER",
+                                                    "name": MappingProxyType({
+                                                        "person": MappingProxyType({
+                                                            "firstName": "Dough",
+                                                            "lastName": "John",
+                                                        }),
+                                                    }),
+                                                    "address": MappingProxyType({
+                                                        "addressLine1": "202 Main St",
+                                                        "city": "Tulsa",
+                                                        "state": "OK",
+                                                        "postalCode": "74008",
+                                                    }),
+                                                    "contacts": (
+                                                        MappingProxyType({
+                                                            "phoneNumbers": (
+                                                                "9999999999",
+                                                            ),
+                                                        }),
+                                                    ),
+                                                }),
+                                            ),
+                                        }),
+                                    ),
+                                }),
+                            }),
+                        ),
+                    }),
+                }),
+                MappingProxyType({
+                    "title": "Invalid request",
+                    "documentation": "The request is rejected before anything is sent to the payer. When the failure is specific to one or more members of the request, `errors` lists each one as a JSON pointer with its own message.",
+                    "input": MappingProxyType({
+                        "payerId": "NOTAPAYER",
+                        "subscriber": MappingProxyType({
+                            "dateOfBirth": "1975-05-05",
+                            "memberId": "HUMANA123",
+                            "name": MappingProxyType({
+                                "person": MappingProxyType({
+                                    "firstName": "Jane",
+                                    "lastName": "Doe",
+                                }),
+                            }),
+                        }),
+                        "provider": MappingProxyType({
+                            "name": MappingProxyType({
+                                "organization": "Provider Name",
+                            }),
+                            "npi": "1999999984",
+                        }),
+                        "encounter": MappingProxyType({
+                            "services": (
+                                MappingProxyType({
+                                    "value": "30",
+                                    "system": "STC",
+                                }),
+                            ),
+                        }),
+                    }),
+                    "error": MappingProxyType({
+                        "shapeId": "com.stedi.smithy.model.errors#InvalidRequestException",
+                        "content": MappingProxyType({
+                            "message": "Payer NOTAPAYER is not configured. Please check our published payer list or contact Stedi support to resolve.",
+                        }),
+                    }),
+                }),
+            )),
+        Trait.new(id=ShapeID("smithy.api#externalDocumentation"), value=MappingProxyType({
+                "Developer guide": "https://www.stedi.com/docs/healthcare/send-eligibility-checks",
+            })),
+        Trait.new(id=ShapeID("smithy.api#http"), value=MappingProxyType({
+                "method": "POST",
+                "uri": "/2026-06-01/eligibility-check",
+                "code": 200,
+            })),
+
+    ],
+
+)
+
 EVENT_DESTINATIONS_DESCRIPTION = Schema(
     id=ShapeID("com.stedi.events#EventDestinationsDescription"),
     shape_type=ShapeType.STRING,
@@ -6631,26 +15643,6 @@ EVENT_DESTINATIONS_LIMIT_EXCEEDED_EXCEPTION = Schema.collection(
     traits=[
         Trait.new(id=ShapeID("smithy.api#error"), value="client"),
         Trait.new(id=ShapeID("smithy.api#httpError"), value=403),
-
-    ],
-    members={
-        "message": {
-            "target": STRING,
-            "traits": [
-                Trait.new(id=ShapeID("smithy.api#required")),
-
-            ],
-        },
-
-    }
-)
-
-CONTENT_TOO_LARGE_EXCEPTION = Schema.collection(
-    id=ShapeID("com.stedi.smithy.model.errors#ContentTooLargeException"),
-
-    traits=[
-        Trait.new(id=ShapeID("smithy.api#error"), value="client"),
-        Trait.new(id=ShapeID("smithy.api#httpError"), value=413),
 
     ],
     members={
@@ -8111,6 +17103,23 @@ STEDI = Schema(
                         ),
                         "endpoint": MappingProxyType({
                             "url": "https://claims.us.stedi.com",
+                        }),
+                        "type": "endpoint",
+                    }),
+                    MappingProxyType({
+                        "conditions": (
+                            MappingProxyType({
+                                "fn": "stringEquals",
+                                "argv": (
+                                    MappingProxyType({
+                                        "ref": "ServiceComponent",
+                                    }),
+                                    "SdkEligibilityCheckService",
+                                ),
+                            }),
+                        ),
+                        "endpoint": MappingProxyType({
+                            "url": "https://healthcare.us.stedi.com",
                         }),
                         "type": "endpoint",
                     }),

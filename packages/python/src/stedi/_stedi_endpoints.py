@@ -11,6 +11,7 @@ from smithy_core.exceptions import EndpointResolutionError
 from smithy_core.interfaces import Endpoint as _Endpoint
 
 _HOSTS: dict[str, str] = {
+    "CreateEligibilityCheck": "healthcare.us.stedi.com",
     "CreateEventDestination": "events.us.stedi.com",
     "CreateProfessionalClaimSubmission": "claims.us.stedi.com",
     "DeleteEventDestination": "events.us.stedi.com",

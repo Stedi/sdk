@@ -5,6 +5,37 @@ import type {
   ClaimStatus,
   ClaimStatusReportedBy,
   ClaimType,
+  EligibilityCheckCoverageLevel,
+  EligibilityCheckCoverageStatus,
+  EligibilityCheckDependentRelationship,
+  EligibilityCheckDiagnosisCodeSystem,
+  EligibilityCheckEntityProviderCode,
+  EligibilityCheckEntityRelationship,
+  EligibilityCheckInsuranceType,
+  EligibilityCheckInvalidEntryReasonCode,
+  EligibilityCheckMaintenanceIndicator,
+  EligibilityCheckNetworkIndicator,
+  EligibilityCheckPayerEntityIdentifierCode,
+  EligibilityCheckPlaceOfServiceCode,
+  EligibilityCheckPriorAuthIndicator,
+  EligibilityCheckProviderEntityIdentifierCode,
+  EligibilityCheckQuantityQualifier,
+  EligibilityCheckRelatedEntityIdentifierCode,
+  EligibilityCheckRequestDependentRelationship,
+  EligibilityCheckRequestEntityProviderCode,
+  EligibilityCheckRequestPatientGender,
+  EligibilityCheckRequestProviderType,
+  EligibilityCheckRequestServiceCodeSystem,
+  EligibilityCheckResponseErrorLocation,
+  EligibilityCheckResponsePatientGender,
+  EligibilityCheckResponseServiceCodeSystem,
+  EligibilityCheckServiceDeliveryLimitFrequencyQualifier,
+  EligibilityCheckServiceDeliveryLimitPattern,
+  EligibilityCheckServiceDeliveryLimitPeriodQualifier,
+  EligibilityCheckServiceDeliveryLimitQuantityQualifier,
+  EligibilityCheckServiceDeliveryLimitSchedule,
+  EligibilityCheckTimePeriod,
+  EligibilityCheckTraceType,
   EventDestinationsDestinationInputStatus,
   EventDestinationsDestinationStatus,
   EventDestinationsEventEnvironment,
@@ -2659,6 +2690,5918 @@ export interface ListClaimsOutput {
    * @public
    */
   items: ClaimSummary[] | undefined;
+}
+
+/**
+ * Additional identification numbers for the dependent.
+ * @public
+ */
+export interface EligibilityCheckRequestDependentAdditionalInformation {
+  /**
+   * The dependent's Social Security Number (SSN). Don't use this for Federally-administered programs, such as Medicare.
+   * @public
+   */
+  ssn?: string | undefined;
+
+  /**
+   * The group number for the dependent's insurance plan.
+   * @public
+   */
+  groupNumber?: string | undefined;
+
+  /**
+   * The dependent's identity card number. Include this when this number differs from the subscriber's member ID.
+   * @public
+   */
+  identityCardNumber?: string | undefined;
+
+  /**
+   * The eligibility category for the dependent.
+   * @public
+   */
+  eligibilityCategory?: string | undefined;
+
+  /**
+   * The plan number for the dependent's insurance plan.
+   * @public
+   */
+  planNumber?: string | undefined;
+
+  /**
+   * The group or policy number.
+   * @public
+   */
+  groupOrPolicyNumber?: string | undefined;
+
+  /**
+   * The contract number associated with the dependent's insurance plan.
+   * @public
+   */
+  contractNumber?: string | undefined;
+
+  /**
+   * The patient account number for the dependent.
+   * @public
+   */
+  patientAccountNumber?: string | undefined;
+
+  /**
+   * The dependent's Medicare Beneficiary Identifier (MBI). The 270 carries it as the Health Insurance Claim (HIC) number, which CMS retired in favor of the MBI.
+   * @public
+   */
+  mbi?: string | undefined;
+
+  /**
+   * The identification card serial number, when it differs from the member ID.
+   * @public
+   */
+  identificationCardSerialNumber?: string | undefined;
+
+  /**
+   * The dependent's insurance policy number.
+   * @public
+   */
+  insurancePolicyNumber?: string | undefined;
+
+  /**
+   * The plan network identification number for the dependent.
+   * @public
+   */
+  planNetworkId?: string | undefined;
+
+  /**
+   * The agency claim number associated with the dependent.
+   * @public
+   */
+  agencyClaimNumber?: string | undefined;
+
+  /**
+   * The medical record identification number for the dependent.
+   * @public
+   */
+  medicalRecordId?: string | undefined;
+
+  /**
+   * The issue number for the dependent's insurance policy.
+   * @public
+   */
+  issueNumber?: string | undefined;
+
+  /**
+   * The dependent's member ID. Only set this when checking eligibility with a Property and Casualty payer and the patient identifier is a member ID that would be used in an 837 claim. If the dependent has their own member ID for a health plan, identify them in the `subscriber` object instead.
+   * @public
+   */
+  memberId?: string | undefined;
+}
+
+/**
+ * The address of the entity.
+ * @public
+ */
+export interface EligibilityCheckRequestAddress {
+  /**
+   * The first line of the address.
+   * @public
+   */
+  addressLine1: string | undefined;
+
+  /**
+   * The second line of the address.
+   * @public
+   */
+  addressLine2?: string | undefined;
+
+  /**
+   * The city.
+   * @public
+   */
+  city: string | undefined;
+
+  /**
+   * The US state or Canadian province code with unknown option. For example, `TN` for Tennessee or `NB` for New Brunswick.
+   * @public
+   */
+  state?: string | undefined;
+
+  /**
+   * The United States or Canadian postal code, excluding punctuation and blanks.
+   * @public
+   */
+  postalCode?: string | undefined;
+
+  /**
+   * The two-letter country code from [Part 1 of ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+   * @public
+   */
+  country?: string | undefined;
+
+  /**
+   * The country subdivision code from [Part 2 of ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-2).
+   * @public
+   */
+  countrySubdivision?: string | undefined;
+}
+
+/**
+ * The name of a dependent, who is always a person.
+ * @public
+ */
+export interface EligibilityCheckRequestDependentPersonName {
+  /**
+   * The dependent's first name.
+   * @public
+   */
+  firstName: string | undefined;
+
+  /**
+   * The dependent's last name. **Don't** include the dependent's name suffix, such as Jr. or III. Use the designated `suffix` property instead.
+   * @public
+   */
+  lastName: string | undefined;
+
+  /**
+   * The dependent's middle name or middle initial.
+   * @public
+   */
+  middleName?: string | undefined;
+
+  /**
+   * The dependent's name suffix, such as Jr. or III. Only include the dependent's personal name suffix - **don't** include professional or academic titles, such as M.D. or MBA.
+   * @public
+   */
+  suffix?: string | undefined;
+}
+
+/**
+ * The dependent's name.
+ * @public
+ */
+export interface EligibilityCheckRequestDependentName {
+  /**
+   * The dependent's name.
+   * @public
+   */
+  person: EligibilityCheckRequestDependentPersonName | undefined;
+}
+
+/**
+ * Information about a provider's role and taxonomy.
+ * @public
+ */
+export interface EligibilityCheckRequestEntityProvider {
+  /**
+   * A code indicating the type of provider. Visit [Eligibility code lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#provider-codes) for a complete list.
+   * @public
+   */
+  code?: EligibilityCheckRequestEntityProviderCode | undefined;
+
+  /**
+   * The provider's taxonomy code.
+   * @public
+   */
+  reference?: string | undefined;
+}
+
+/**
+ * A dependent for which you want to retrieve benefits information.
+ * - You can only submit one dependent per eligibility check.
+ * - Only include the patient's information here when they are listed as a dependent on the subscriber's insurance plan AND the payer cannot uniquely identify them through information outside the subscriber's policy. For example, if the dependent has their own member ID number, you should identify them in the `subscriber` object instead. This includes member IDs that differ only by a suffix, such as `01`, because the patient can still be uniquely identified.
+ * - Most Medicaid plans don't support dependents, with a [few exceptions](https://www.stedi.com/docs/healthcare/send-eligibility-checks#medicaid-dependents). Sending this information to payers that don't support dependents will either cause an error, or the payer may ignore the information and return results for the subscriber instead.
+ * - Each payer has different requirements, so you should supply the fields necessary for each payer to identify the dependent in their system. However, we **strongly recommend** including the dependent's date of birth in the request when available because many payers return errors without it.
+ * - Enter the patient's name exactly as written on their insurance card, if available, including any special or punctuation characters such as apostrophes, hyphens (dashes), or spaces. Visit [patient names](https://www.stedi.com/docs/healthcare/send-eligibility-checks#patient-names) for all best practices to avoid unnecessary failures.
+ * @public
+ */
+export interface EligibilityCheckRequestDependent {
+  /**
+   * The dependent's name.
+   * @public
+   */
+  name: EligibilityCheckRequestDependentName | undefined;
+
+  /**
+   * The dependent's relationship to the subscriber.
+   * @public
+   */
+  relationToSubscriber?: EligibilityCheckRequestDependentRelationship | undefined;
+
+  /**
+   * The dependent's date of birth (DOB). We **strongly recommend** including the DOB in your request. Many payers need this information to identify the patient in their system and may immediately return an error when it's not provided.
+   * @public
+   */
+  dateOfBirth?: string | undefined;
+
+  /**
+   * Code indicating the dependent's gender.
+   * @public
+   */
+  gender?: EligibilityCheckRequestPatientGender | undefined;
+
+  /**
+   * Additional identification numbers for the dependent.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckRequestDependentAdditionalInformation | undefined;
+
+  /**
+   * The dependent's address.
+   * @public
+   */
+  address?: EligibilityCheckRequestAddress | undefined;
+
+  /**
+   * Information about a provider associated with the dependent who isn't the entity requesting the eligibility check, such as a referring provider. The requesting provider is specified in the request's root `provider`.
+   * @public
+   */
+  provider?: EligibilityCheckRequestEntityProvider | undefined;
+}
+
+/**
+ * Additional information about the encounter.
+ * @public
+ */
+export interface EligibilityCheckRequestEncounterAdditionalInformation {
+  /**
+   * The prior authorization number for a particular benefit or procedure.
+   * @public
+   */
+  priorAuthNumber?: string | undefined;
+
+  /**
+   * The referral number for a particular benefit or procedure.
+   * @public
+   */
+  referralNumber?: string | undefined;
+}
+
+/**
+ * A calendar date range. Both bounds are optional and at least one is always present; `end` is inclusive. A point-in-time date is carried in `start`.
+ * @public
+ */
+export interface EligibilityCheckDateRange {
+  /**
+   * The start of the range, or a single point-in-time date.
+   * @public
+   */
+  start?: string | undefined;
+
+  /**
+   * The inclusive end of the range.
+   * @public
+   */
+  end?: string | undefined;
+}
+
+/**
+ * Dates of service for the eligibility inquiry. If you don't specify a service date, the payer defaults to using the current date in their timezone.
+ * @public
+ */
+export interface EligibilityCheckRequestEncounterDates {
+  /**
+   * The service date or date range.
+   * @public
+   */
+  service?: EligibilityCheckDateRange | undefined;
+}
+
+/**
+ * The type of facility where providers deliver the service.
+ * @public
+ */
+export interface EligibilityCheckRequestPlaceOfService {
+  /**
+   * The place of service code identifying the type of facility.
+   * @public
+   */
+  code: EligibilityCheckPlaceOfServiceCode | undefined;
+}
+
+/**
+ * A service or procedure code identifying the type of service for which you want to receive benefits information.
+ * @public
+ */
+export interface EligibilityCheckRequestService {
+  /**
+   * The service or procedure code value.
+   * @public
+   */
+  value: string | undefined;
+
+  /**
+   * The code system that the `value` belongs to, such as CPT, HCPCS, or STC.
+   * @public
+   */
+  system: EligibilityCheckRequestServiceCodeSystem | undefined;
+}
+
+/**
+ * Details about the eligibility or benefit information you are requesting for the patient.
+ * - You can optionally include service type codes (STCs) or procedure codes to request benefits for specific services.
+ * - You can specify either a single service date or a date range using `dates.service`. The payer defaults to using the current date in their timezone if you don't include one.
+ * - When checking eligibility for today, omit the service date to ensure consistent behavior across payers.
+ * - We recommend submitting dates up to 12 months in the past or up to the end of the current month. Payers aren't required to support dates outside these ranges. However, some payers such as the Centers for Medicare and Medicaid Services (CMS) do support requests for dates further in the future - especially the next calendar month. Check the payer's documentation to determine their specific behavior.
+ * @public
+ */
+export interface EligibilityCheckRequestEncounter {
+  /**
+   * One or more codes classifying the type of services for which you want to receive benefits information.
+   * - You can include service type codes (STCs) or procedure codes to request specific types of benefits information. For medical benefits, you'll almost always need an STC because most medical payers don't support procedure codes (CPT/HCPCS/CDT). For dental benefits, many payers support procedure codes. Visit [STCs and procedure codes](https://www.stedi.com/docs/healthcare/eligibility-stc-procedure-codes) for guidance on choosing the right codes.
+   * - We recommend including one service per request. Not all payers support all service type codes, not all payers support multiple codes in the same request, and payers aren't required to respond with exactly the same codes you sent.
+   * - If you don't specify any services, Stedi defaults to using service type code `30` (Health Benefit Plan Coverage).
+   * @public
+   */
+  services?: EligibilityCheckRequestService[] | undefined;
+
+  /**
+   * The dates of service for the eligibility inquiry.
+   * @public
+   */
+  dates?: EligibilityCheckRequestEncounterDates | undefined;
+
+  /**
+   * The type of facility where providers deliver the service. Uses one of the [place of service codes](https://www.cms.gov/medicare/coding-billing/place-of-service-codes/code-sets).
+   * @public
+   */
+  placeOfService?: EligibilityCheckRequestPlaceOfService | undefined;
+
+  /**
+   * Additional information about the encounter.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckRequestEncounterAdditionalInformation | undefined;
+}
+
+/**
+ * The provider's state license information.
+ * @public
+ */
+export interface EligibilityCheckRequestStateLicense {
+  /**
+   * The state or province code that issued the license.
+   * @public
+   */
+  state?: string | undefined;
+
+  /**
+   * The provider's state license number.
+   * @public
+   */
+  number: string | undefined;
+}
+
+/**
+ * Additional identification numbers for the provider. Only include when specifically required by a payer.
+ * @public
+ */
+export interface EligibilityCheckRequestProviderAdditionalInformation {
+  /**
+   * The provider's state license information. If you include this, you must provide at least the license `number`.
+   * @public
+   */
+  stateLicense?: EligibilityCheckRequestStateLicense | undefined;
+
+  /**
+   * The provider's Medicare provider number.
+   * @public
+   */
+  medicareProviderNumber?: string | undefined;
+
+  /**
+   * The provider's Medicaid provider number.
+   * @public
+   */
+  medicaidProviderNumber?: string | undefined;
+
+  /**
+   * The ID number for the provider's facility.
+   * @public
+   */
+  facilityIdNumber?: string | undefined;
+
+  /**
+   * The provider's contract number.
+   * @public
+   */
+  contractNumber?: string | undefined;
+
+  /**
+   * The provider's plan network identification number.
+   * @public
+   */
+  planNetworkId?: string | undefined;
+
+  /**
+   * The provider's facility network identification number.
+   * @public
+   */
+  facilityNetworkId?: string | undefined;
+
+  /**
+   * The provider's personal identification number.
+   * @public
+   */
+  personalIdentificationNumber?: string | undefined;
+
+  /**
+   * The provider's electronic device PIN.
+   * @public
+   */
+  electronicDevicePin?: string | undefined;
+
+  /**
+   * The provider's submitter ID.
+   * @public
+   */
+  submitterId?: string | undefined;
+
+  /**
+   * The provider's user ID.
+   * @public
+   */
+  userId?: string | undefined;
+
+  /**
+   * The provider's prior identifier number.
+   * @public
+   */
+  priorIdentifierNumber?: string | undefined;
+}
+
+/**
+ * The name of a provider who is a person.
+ * @public
+ */
+export interface EligibilityCheckRequestProviderPersonName {
+  /**
+   * The provider's first name.
+   * @public
+   */
+  firstName?: string | undefined;
+
+  /**
+   * The provider's last name.
+   * @public
+   */
+  lastName: string | undefined;
+
+  /**
+   * The provider's middle name or middle initial.
+   * @public
+   */
+  middleName?: string | undefined;
+
+  /**
+   * The provider's name suffix, such as Jr. or III.
+   * @public
+   */
+  suffix?: string | undefined;
+}
+
+/**
+ * The provider's name, as either a person or an organization.
+ * @public
+ */
+export type EligibilityCheckRequestProviderName =
+  | EligibilityCheckRequestProviderName.OrganizationMember
+  | EligibilityCheckRequestProviderName.PersonMember
+  | EligibilityCheckRequestProviderName.$UnknownMember;
+
+/**
+ * @public
+ */
+export namespace EligibilityCheckRequestProviderName {
+  /**
+   * The name of a provider who is a person.
+   * @public
+   */
+  export interface PersonMember {
+    person: EligibilityCheckRequestProviderPersonName;
+    organization?: never;
+    $unknown?: never;
+  }
+
+  /**
+   * An organization's business name.
+   * @public
+   */
+  export interface OrganizationMember {
+    person?: never;
+    organization: string;
+    $unknown?: never;
+  }
+
+  /**
+   * @public
+   */
+  export interface $UnknownMember {
+    person?: never;
+    organization?: never;
+    $unknown: [string, any];
+  }
+
+  /**
+   * @deprecated unused in schema-serde mode.
+   *
+   */
+  export interface Visitor<T> {
+    person: (value: EligibilityCheckRequestProviderPersonName) => T;
+    organization: (value: string) => T;
+    _: (name: string, value: any) => T;
+  }
+}
+
+/**
+ * Information about the entity requesting the eligibility check. This may be an individual practitioner, a medical group, a hospital, or another type of healthcare provider.
+ *  - You must provide the provider's name as either a person (with `name.person`) or an organization (with `name.organization`).
+ *  - You must also provide an identifier - this is typically the provider's [National Provider Identifier](https://www.stedi.com/docs/healthcare/national-provider-identifier) (`npi`). If the provider doesn't have an NPI, you can supply an alternative, such as their `tin` or `ssn`.
+ *  - Don't include additional properties, such as `tin` or `address`, unless they are specifically required or suggested by the payer.
+ * @public
+ */
+export interface EligibilityCheckRequestProvider {
+  /**
+   * The provider's name, as either a person or an organization.
+   * @public
+   */
+  name: EligibilityCheckRequestProviderName | undefined;
+
+  /**
+   * The type of provider making the request.
+   * @public
+   */
+  type?: EligibilityCheckRequestProviderType | undefined;
+
+  /**
+   * The provider's [National Provider Identifier (NPI)](https://www.stedi.com/docs/healthcare/national-provider-identifier).
+   *
+   * All healthcare providers eligible for an NPI must provide this identifier. Some non-traditional providers such as transportation services, durable medical equipment (DME) suppliers, or alternative medicine practitioners can't receive an NPI. If the provider doesn't have an NPI, payers virtually never support requests with alternate IDs. In the rare circumstance that a payer has instructed you to use an alternate ID, the payer will typically require you to supply either their `tin` or `ssn` instead.
+   * @public
+   */
+  npi?: string | undefined;
+
+  /**
+   * The provider's Federal Taxpayer Identification Number. This is typically the provider's EIN (Employer Identification Number), but you may use the provider's SSN if the provider doesn't have an EIN. Only include if the payer requires it.
+   * @public
+   */
+  tin?: string | undefined;
+
+  /**
+   * The Employer Identification Number (EIN), distinct from the Federal Taxpayer Identification Number in `tin`. Only include when the payer requires it.
+   * @public
+   */
+  ein?: string | undefined;
+
+  /**
+   * The provider's Social Security Number (SSN).
+   * - Only include when specifically instructed by a payer - for example, if the provider doesn't have an [NPI](https://www.stedi.com/docs/healthcare/national-provider-identifier). This use case is very rarely supported, and is typically when the provider is a non-medical provider, such as a social worker, home health aide, or transportation service.
+   * - If the payer has instructed you to send an EIN but the provider operates using their SSN, use `provider.tin` instead of this field.
+   * - Don't use this for Federally-administered programs, such as Medicare.
+   * @public
+   */
+  ssn?: string | undefined;
+
+  /**
+   * The provider's service provider number. Only include when specifically instructed by a payer - for example, when the provider doesn't have an [NPI](https://www.stedi.com/docs/healthcare/national-provider-identifier). This use case is very rarely supported, and is typically when the provider is a non-medical provider, such as a social worker, home health aide, or transportation service.
+   * @public
+   */
+  serviceProviderNumber?: string | undefined;
+
+  /**
+   * The provider's pharmacy processor number. Only include when specifically instructed by a payer - for example, when the provider doesn't have an [NPI](https://www.stedi.com/docs/healthcare/national-provider-identifier). This use case is very rarely supported, and is typically when the provider is a non-medical provider, such as a social worker, home health aide, or transportation service.
+   * @public
+   */
+  pharmacyProcessorNumber?: string | undefined;
+
+  /**
+   * The provider's address. Only include when specifically instructed by a payer, such as when the provider has multiple locations and you need to identify the specific location making the request.
+   * @public
+   */
+  address?: EligibilityCheckRequestAddress | undefined;
+
+  /**
+   * Additional identification numbers for the provider. Only include when specifically required by a payer.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckRequestProviderAdditionalInformation | undefined;
+
+  /**
+   * Information about the provider's role and taxonomy. Only include when required by a payer.
+   * @public
+   */
+  provider?: EligibilityCheckRequestEntityProvider | undefined;
+}
+
+/**
+ * Additional identification numbers for the subscriber. Use this object when you need to provide an identification number other than or in addition to the subscriber's member ID. For example, you may provide the patient account number.
+ *
+ * Don't include the health insurance claim number or the medicaid recipient ID number here unless they are different from the member ID.
+ * @public
+ */
+export interface EligibilityCheckRequestSubscriberAdditionalInformation {
+  /**
+   * The subscriber's Social Security Number (SSN). Many commercial and government payers ignore this property due to concerns about member privacy. However, some Medicaid programs support alternative searches using the patient's Social Security Number, instead of the member ID.
+   * @public
+   */
+  ssn?: string | undefined;
+
+  /**
+   * The group number associated with the subscriber's insurance policy.
+   * @public
+   */
+  groupNumber?: string | undefined;
+
+  /**
+   * The subscriber's identity card number. Include this property when this number differs from the subscriber's member ID. This is common in Medicaid.
+   * @public
+   */
+  identityCardNumber?: string | undefined;
+
+  /**
+   * The Medicaid Recipient Identification Number. You can provide this number to identify the subscriber when it is the primary number the payer knows a member by (such as for Medicare or Medicaid). Don't supply this value unless it differs from the `memberId`.
+   * @public
+   */
+  medicaidRecipientId?: string | undefined;
+
+  /**
+   * The case number associated with the subscriber.
+   * @public
+   */
+  caseNumber?: string | undefined;
+
+  /**
+   * The plan number for the subscriber's insurance plan.
+   * @public
+   */
+  planNumber?: string | undefined;
+
+  /**
+   * The group or policy number.
+   * @public
+   */
+  groupOrPolicyNumber?: string | undefined;
+
+  /**
+   * The contract number associated with the subscriber's insurance plan.
+   * @public
+   */
+  contractNumber?: string | undefined;
+
+  /**
+   * The patient account number for the subscriber.
+   * @public
+   */
+  patientAccountNumber?: string | undefined;
+
+  /**
+   * The subscriber's Medicare Beneficiary Identifier (MBI). The 270 carries it as the Health Insurance Claim (HIC) number, which CMS retired in favor of the MBI. Don't include it unless it differs from the member ID.
+   * @public
+   */
+  mbi?: string | undefined;
+
+  /**
+   * The identification card serial number, when it differs from the member ID.
+   * @public
+   */
+  identificationCardSerialNumber?: string | undefined;
+
+  /**
+   * The subscriber's insurance policy number.
+   * @public
+   */
+  insurancePolicyNumber?: string | undefined;
+
+  /**
+   * The plan network identification number for the subscriber.
+   * @public
+   */
+  planNetworkId?: string | undefined;
+
+  /**
+   * The agency claim number associated with the subscriber.
+   * @public
+   */
+  agencyClaimNumber?: string | undefined;
+
+  /**
+   * The medical record identification number for the subscriber.
+   * @public
+   */
+  medicalRecordId?: string | undefined;
+}
+
+/**
+ * The subscriber's address. When providing address information:
+ * - `addressLine1` and `city` are **required** for standard eligibility checks and MBI lookups with SSN. We also recommend including `state` for member identification.
+ * - When performing an [MBI lookup without SSN](https://www.stedi.com/docs/healthcare/mbi-lookup) (Payer ID: `MBILUNOSSN`), only `state` is required. You can omit `addressLine1` and `city`.
+ * @public
+ */
+export interface EligibilityCheckRequestSubscriberAddress {
+  /**
+   * The first line of the address. Required for all payers except payer ID `MBILUNOSSN`.
+   * @public
+   */
+  addressLine1?: string | undefined;
+
+  /**
+   * The second line of the address.
+   * @public
+   */
+  addressLine2?: string | undefined;
+
+  /**
+   * The city. Required for all payers except payer ID `MBILUNOSSN`.
+   * @public
+   */
+  city?: string | undefined;
+
+  /**
+   * The US state or Canadian province code. Required for payer ID `MBILUNOSSN`.
+   * @public
+   */
+  state?: string | undefined;
+
+  /**
+   * The United States or Canadian postal code, excluding punctuation and blanks.
+   * @public
+   */
+  postalCode?: string | undefined;
+
+  /**
+   * The two-letter country code from [Part 1 of ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+   * @public
+   */
+  country?: string | undefined;
+
+  /**
+   * The country subdivision code from [Part 2 of ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-2).
+   * @public
+   */
+  countrySubdivision?: string | undefined;
+}
+
+/**
+ * The name of a subscriber who is a person.
+ * @public
+ */
+export interface EligibilityCheckRequestSubscriberPersonName {
+  /**
+   * The subscriber's first name.
+   * @public
+   */
+  firstName?: string | undefined;
+
+  /**
+   * The subscriber's last name. **Don't** include the subscriber's name suffix, such as Jr. or III. Use the designated `suffix` property instead.
+   * @public
+   */
+  lastName?: string | undefined;
+
+  /**
+   * The subscriber's middle name or middle initial.
+   * @public
+   */
+  middleName?: string | undefined;
+
+  /**
+   * The subscriber's name suffix, such as Jr. or III. Only include the subscriber's personal name suffix - **don't** include professional or academic titles, such as M.D. or MBA.
+   * @public
+   */
+  suffix?: string | undefined;
+}
+
+/**
+ * The subscriber's name, as either a person or an organization.
+ * @public
+ */
+export type EligibilityCheckRequestSubscriberName =
+  | EligibilityCheckRequestSubscriberName.OrganizationMember
+  | EligibilityCheckRequestSubscriberName.PersonMember
+  | EligibilityCheckRequestSubscriberName.$UnknownMember;
+
+/**
+ * @public
+ */
+export namespace EligibilityCheckRequestSubscriberName {
+  /**
+   * The name of a subscriber who is a person.
+   * @public
+   */
+  export interface PersonMember {
+    person: EligibilityCheckRequestSubscriberPersonName;
+    organization?: never;
+    $unknown?: never;
+  }
+
+  /**
+   * An organization's business name.
+   * @public
+   */
+  export interface OrganizationMember {
+    person?: never;
+    organization: string;
+    $unknown?: never;
+  }
+
+  /**
+   * @public
+   */
+  export interface $UnknownMember {
+    person?: never;
+    organization?: never;
+    $unknown: [string, any];
+  }
+
+  /**
+   * @deprecated unused in schema-serde mode.
+   *
+   */
+  export interface Visitor<T> {
+    person: (value: EligibilityCheckRequestSubscriberPersonName) => T;
+    organization: (value: string) => T;
+    _: (name: string, value: any) => T;
+  }
+}
+
+/**
+ * The primary policyholder for the insurance plan _or_ a dependent with a unique member ID. If a dependent has a unique member ID, include their information here and leave `dependent` empty.
+ * - At a minimum, our API requires that you supply at least one of these fields in the request: `memberId`, `dateOfBirth`, or `name.person.lastName`. However, each payer has different requirements, so you should supply the fields necessary for each payer to identify the subscriber in their system.
+ * - When you provide all four of `memberId`, `dateOfBirth`, `name.person.firstName`, and `name.person.lastName`, payers must return a response if the member is in their database. Some payers may be able to search with less information, but this varies by payer.
+ * - We recommend always including the patient's member ID when possible.
+ * - Enter the patient's name exactly as written on their insurance card, if available, including any special or punctuation characters such as apostrophes, hyphens (dashes), or spaces. Visit [patient names](https://www.stedi.com/docs/healthcare/send-eligibility-checks#patient-names) for all best practices to avoid unnecessary failures.
+ * @public
+ */
+export interface EligibilityCheckRequestSubscriber {
+  /**
+   * The subscriber's name, as either a person or an organization.
+   * @public
+   */
+  name?: EligibilityCheckRequestSubscriberName | undefined;
+
+  /**
+   * The member ID for the subscriber's insurance policy.
+   * @public
+   */
+  memberId?: string | undefined;
+
+  /**
+   * The subscriber's date of birth.
+   * @public
+   */
+  dateOfBirth?: string | undefined;
+
+  /**
+   * Code indicating the subscriber's gender.
+   * @public
+   */
+  gender?: EligibilityCheckRequestPatientGender | undefined;
+
+  /**
+   * Additional identification numbers for the subscriber. Use this object when you need to provide an identification number other than or in addition to the subscriber's member ID. For example, you may provide the patient account number.
+   *
+   * Don't include the health insurance claim number or the medicaid recipient ID number here unless they are different from the member ID.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckRequestSubscriberAdditionalInformation | undefined;
+
+  /**
+   * The subscriber's address.
+   * @public
+   */
+  address?: EligibilityCheckRequestSubscriberAddress | undefined;
+
+  /**
+   * Information about a provider associated with the subscriber who isn't the entity requesting the eligibility check, such as a referring provider. The requesting provider is specified in the request's root `provider`.
+   * @public
+   */
+  provider?: EligibilityCheckRequestEntityProvider | undefined;
+}
+
+/**
+ * The eligibility check request payload.
+ * @public
+ */
+export interface CreateEligibilityCheckInput {
+  /**
+   * The payer ID. Visit the [Payer Network](https://www.stedi.com/healthcare/network) for a complete list.
+   *  - You can send requests using the primary payer ID, the Stedi payer ID, or any alias listed in the payer record.
+   *  - You must include leading `0` characters - payer IDs are alphanumeric strings and must be treated as complete strings, not integers. For example, use `00540` for SISCO, not `540`.
+   * @public
+   */
+  payerId: string | undefined;
+
+  /**
+   * The payer's name, such as Cigna or Aetna.
+   * @public
+   */
+  payerName?: string | undefined;
+
+  /**
+   * Information about the entity requesting the eligibility check. This may be an individual practitioner, a medical group, a hospital, or another type of healthcare provider.
+   *  - You must provide the provider's name as either a person (with `name.person`) or an organization (with `name.organization`).
+   *  - You must also provide an identifier - this is typically the provider's [National Provider Identifier](https://www.stedi.com/docs/healthcare/national-provider-identifier) (`npi`). If the provider doesn't have an NPI, you can supply an alternative, such as their `tin` or `ssn`.
+   *  - Don't include additional properties, such as `tin` or `address`, unless they are specifically required or suggested by the payer.
+   * @public
+   */
+  provider: EligibilityCheckRequestProvider | undefined;
+
+  /**
+   * The primary policyholder for the insurance plan _or_ a dependent with a unique member ID. If a dependent has a unique member ID, include their information here and leave `dependent` empty.
+   * - At a minimum, our API requires that you supply at least one of these fields in the request: `memberId`, `dateOfBirth`, or `name.person.lastName`. However, each payer has different requirements, so you should supply the fields necessary for each payer to identify the subscriber in their system.
+   * - When you provide all four of `memberId`, `dateOfBirth`, `name.person.firstName`, and `name.person.lastName`, payers must return a response if the member is in their database. Some payers may be able to search with less information, but this varies by payer.
+   * - We recommend always including the patient's member ID when possible.
+   * - Enter the patient's name exactly as written on their insurance card, if available, including any special or punctuation characters such as apostrophes, hyphens (dashes), or spaces. Visit [patient names](https://www.stedi.com/docs/healthcare/send-eligibility-checks#patient-names) for all best practices to avoid unnecessary failures.
+   * @public
+   */
+  subscriber: EligibilityCheckRequestSubscriber | undefined;
+
+  /**
+   * A dependent for which you want to retrieve benefits information.
+   * - You can only submit one dependent per eligibility check.
+   * - Only include the patient's information here when they are listed as a dependent on the subscriber's insurance plan AND the payer cannot uniquely identify them through information outside the subscriber's policy. For example, if the dependent has their own member ID number, you should identify them in the `subscriber` object instead. This includes member IDs that differ only by a suffix, such as `01`, because the patient can still be uniquely identified.
+   * - Most Medicaid plans don't support dependents, with a [few exceptions](https://www.stedi.com/docs/healthcare/send-eligibility-checks#medicaid-dependents). Sending this information to payers that don't support dependents will either cause an error, or the payer may ignore the information and return results for the subscriber instead.
+   * - Each payer has different requirements, so you should supply the fields necessary for each payer to identify the dependent in their system. However, we **strongly recommend** including the dependent's date of birth in the request when available because many payers return errors without it.
+   * - Enter the patient's name exactly as written on their insurance card, if available, including any special or punctuation characters such as apostrophes, hyphens (dashes), or spaces. Visit [patient names](https://www.stedi.com/docs/healthcare/send-eligibility-checks#patient-names) for all best practices to avoid unnecessary failures.
+   * @public
+   */
+  dependent?: EligibilityCheckRequestDependent | undefined;
+
+  /**
+   * Details about the eligibility or benefit information you are requesting for the patient.
+   * - You can optionally include service type codes (STCs) or procedure codes to request benefits for specific services.
+   * - You can specify either a single service date or a date range using `dates.service`. The payer defaults to using the current date in their timezone if you don't include one.
+   * - When checking eligibility for today, omit the service date to ensure consistent behavior across payers.
+   * - We recommend submitting dates up to 12 months in the past or up to the end of the current month. Payers aren't required to support dates outside these ranges. However, some payers such as the Centers for Medicare and Medicaid Services (CMS) do support requests for dates further in the future - especially the next calendar month. Check the payer's documentation to determine their specific behavior.
+   * @public
+   */
+  encounter?: EligibilityCheckRequestEncounter | undefined;
+
+  /**
+   * A unique identifier for the patient that Stedi uses to identify and correlate historical eligibility checks for the same individual. We recommend including this value in all requests.
+   * @public
+   */
+  externalPatientId?: string | undefined;
+
+  /**
+   * An identifier that allows Stedi to group eligibility checks for the same patient into a unified record in the Stedi portal called an [eligibility search](https://www.stedi.com/docs/healthcare/eligibility-views).
+   * @public
+   */
+  eligibilitySearchId?: string | undefined;
+}
+
+/**
+ * Additional information with description.
+ * @public
+ */
+export interface EligibilityCheckAdditionalInformationWithName {
+  /**
+   * The identification number.
+   * @public
+   */
+  number: string | undefined;
+
+  /**
+   * The name or description associated with `number`.
+   * @public
+   */
+  name?: string | undefined;
+}
+
+/**
+ * Additional identifying information about the dependent.
+ * @public
+ */
+export interface EligibilityCheckDependentAdditionalInformation {
+  /**
+   * The plan number and plan description.
+   * @public
+   */
+  plan?: EligibilityCheckAdditionalInformationWithName | undefined;
+
+  /**
+   * The group number and group description.
+   * @public
+   */
+  group?: EligibilityCheckAdditionalInformationWithName | undefined;
+
+  /**
+   * The plan network identification number and the plan, group, or plan network name.
+   * @public
+   */
+  planNetwork?: EligibilityCheckAdditionalInformationWithName | undefined;
+
+  /**
+   * The group or policy number.
+   * @public
+   */
+  groupOrPolicyNumber?: string | undefined;
+
+  /**
+   * The member identification number - only used when checking eligibility with a Workers' Compensation or Property and Casualty insurer.
+   * @public
+   */
+  memberId?: string | undefined;
+
+  /**
+   * The family unit number.
+   * @public
+   */
+  familyUnitNumber?: string | undefined;
+
+  /**
+   * The class of contract code - used to identify the applicable class of contract for claims processing.
+   * @public
+   */
+  classOfContractCode?: string | undefined;
+
+  /**
+   * The contract number of a contract between the payer and the provider that requested the eligibility check.
+   * @public
+   */
+  contractNumber?: string | undefined;
+
+  /**
+   * The medical record identification number.
+   * @public
+   */
+  medicalRecordId?: string | undefined;
+
+  /**
+   * The patient account number. If you included this value in the original eligibility request, the payer will return the same value here in the response.
+   * @public
+   */
+  patientAccountNumber?: string | undefined;
+
+  /**
+   * The patient's Medicare Beneficiary Identifier (MBI). If you receive an MBI, we recommend sending a follow-up eligibility check to CMS (payer ID: CMS) for additional benefits data. Visit [Medicare Beneficiary Identifier documentation](https://www.cms.gov/training-education/partner-outreach-resources/new-medicare-card/medical-beneficiary-identifiers-mbis) for more information about the MBI format. This most commonly occurs with patients who are covered by both Medicare and Medicaid.
+   * @public
+   */
+  mbi?: string | undefined;
+
+  /**
+   * Used when the identification card has a number in addition to the member ID.
+   * @public
+   */
+  identificationCardSerialNumber?: string | undefined;
+
+  /**
+   * The identity card number. Present when this number differs from the member ID.
+   * @public
+   */
+  identityCardNumber?: string | undefined;
+
+  /**
+   * The issue number.
+   * @public
+   */
+  issueNumber?: string | undefined;
+
+  /**
+   * The insurance policy number.
+   * @public
+   */
+  insurancePolicyNumber?: string | undefined;
+
+  /**
+   * The Medicaid recipient identification number.
+   * @public
+   */
+  medicaidRecipientId?: string | undefined;
+
+  /**
+   * The prior identifier number.
+   * @public
+   */
+  priorIdentifierNumber?: string | undefined;
+
+  /**
+   * The patient's Social Security Number (SSN).
+   * @public
+   */
+  ssn?: string | undefined;
+
+  /**
+   * The agency claim number, only used when the information source is a Property and Casualty payer.
+   * @public
+   */
+  agencyClaimNumber?: string | undefined;
+
+  /**
+   * The eligibility category for the dependent.
+   * @public
+   */
+  eligibilityCategory?: string | undefined;
+}
+
+/**
+ * The address of the entity.
+ * @public
+ */
+export interface EligibilityCheckAddress {
+  /**
+   * The first line of the address.
+   * @public
+   */
+  addressLine1?: string | undefined;
+
+  /**
+   * The second line of the address.
+   * @public
+   */
+  addressLine2?: string | undefined;
+
+  /**
+   * The city.
+   * @public
+   */
+  city?: string | undefined;
+
+  /**
+   * The US state or Canadian province code with unknown option. For example, `TN` for Tennessee or `NB` for New Brunswick.
+   * @public
+   */
+  state?: string | undefined;
+
+  /**
+   * The United States or Canadian postal code, excluding punctuation and blanks.
+   * @public
+   */
+  postalCode?: string | undefined;
+
+  /**
+   * The two-letter country code from [Part 1 of ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+   * @public
+   */
+  country?: string | undefined;
+
+  /**
+   * The country subdivision code from [Part 2 of ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-2).
+   * @public
+   */
+  countrySubdivision?: string | undefined;
+}
+
+/**
+ * Contains the dates associated with patient attributes, as ISO 8601 date ranges. These provide temporal context for patient-specific data and eligibility periods.
+ * @public
+ */
+export interface EligibilityCheckPatientAttributeDateRanges {
+  /**
+   * The discharge date.
+   * @public
+   */
+  discharge?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The issue date.
+   * @public
+   */
+  issue?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The effective date of change.
+   * @public
+   */
+  effectiveDateOfChange?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * Plan effective dates.
+   * @public
+   */
+  plan?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * Plan eligibility dates.
+   * @public
+   */
+  eligibility?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * Added date. Payers may return this information in the case of retroactive eligibility.
+   * @public
+   */
+  added?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * Consolidated Omnibus Budget Reconciliation Act (COBRA) date.
+   * @public
+   */
+  cobra?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * Premium paid to date.
+   * @public
+   */
+  premiumPaidToDate?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The enrollment date.
+   * @public
+   */
+  enrollment?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The admission date or dates.
+   * @public
+   */
+  admission?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The date of death.
+   * @public
+   */
+  dateOfDeath?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The certification date.
+   * @public
+   */
+  certification?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The service date or dates.
+   * @public
+   */
+  service?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The policy date.
+   * @public
+   */
+  policy?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The date when the patient information was last updated.
+   * @public
+   */
+  dateOfLastUpdate?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The status date.
+   * @public
+   */
+  status?: EligibilityCheckDateRange | undefined;
+}
+
+/**
+ * Information indicating whether the payer signaled that the patient's identifying information differs from what you submitted.
+ * @public
+ */
+export interface EligibilityCheckMaintenance {
+  /**
+   * Whether the payer signaled that the patient's identifying information differs from what you submitted.
+   * @public
+   */
+  indicator?: EligibilityCheckMaintenanceIndicator | undefined;
+}
+
+/**
+ * A person's name. Maps to elements NM103 through NM107.
+ * @public
+ */
+export interface EligibilityCheckPersonName {
+  /**
+   * The person's first name.
+   * @public
+   */
+  firstName?: string | undefined;
+
+  /**
+   * The person's last name.
+   * @public
+   */
+  lastName?: string | undefined;
+
+  /**
+   * The person's middle name or initial.
+   * @public
+   */
+  middleName?: string | undefined;
+
+  /**
+   * The person's name suffix, such as Jr. or III.
+   * @public
+   */
+  suffix?: string | undefined;
+}
+
+/**
+ * A person's name.
+ * @public
+ */
+export interface EligibilityCheckQualifiedPersonName {
+  /**
+   * The person's name.
+   * @public
+   */
+  person: EligibilityCheckPersonName | undefined;
+}
+
+/**
+ * Information about a provider associated with the related entity.
+ * @public
+ */
+export interface EligibilityCheckEntityProvider {
+  /**
+   * A code that communicates the entity's role in the type of benefits information in the response. Visit [Eligibility code lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#provider-codes) for a complete list.
+   * @public
+   */
+  code?: EligibilityCheckEntityProviderCode | undefined;
+
+  /**
+   * The provider's taxonomy code.
+   * @public
+   */
+  reference?: string | undefined;
+}
+
+/**
+ * Information about the dependent from the eligibility check request. Note that the payer may return the dependent in the subscriber object instead. When present, this object will always include the dependent's name for identification, but many payers also include the date of birth and other identifying information.
+ * @public
+ */
+export interface EligibilityCheckDependent {
+  /**
+   * The address of the entity, such as a provider or organization.
+   * @public
+   */
+  address?: EligibilityCheckAddress | undefined;
+
+  /**
+   * Information about a provider associated with this entity.
+   * @public
+   */
+  provider?: EligibilityCheckEntityProvider | undefined;
+
+  /**
+   * Dates associated with patient attributes, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckPatientAttributeDateRanges | undefined;
+
+  /**
+   * The patient's date of birth as an ISO 8601 `YYYY-MM-DD` string. For example, `1985-03-15` represents March 15, 1985.
+   * @public
+   */
+  dateOfBirth?: string | undefined;
+
+  /**
+   * Code indicating the patient's gender.
+   * @public
+   */
+  gender?: EligibilityCheckResponsePatientGender | undefined;
+
+  /**
+   * The number assigned to each family member born with the same birth date, such as twins or triplets. Indicates the birth order when there are multiple births associated with the provided birth date.
+   * @public
+   */
+  birthSequenceNumber?: number | undefined;
+
+  /**
+   * Maintenance information indicating whether the payer signaled that the patient's identifying information differs from what you submitted.
+   * @public
+   */
+  maintenance?: EligibilityCheckMaintenance | undefined;
+
+  /**
+   * The dependent's name.
+   * @public
+   */
+  name: EligibilityCheckQualifiedPersonName | undefined;
+
+  /**
+   * The dependent's relationship to the subscriber.
+   * @public
+   */
+  relationToSubscriber?: EligibilityCheckDependentRelationship | undefined;
+
+  /**
+   * Additional identifying information for the dependent.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckDependentAdditionalInformation | undefined;
+}
+
+/**
+ * An error from the payer.
+ * @public
+ */
+export interface EligibilityCheckResponseError {
+  /**
+   * The AAA reject reason code.
+   * @public
+   */
+  code: string | undefined;
+
+  /**
+   * The human-readable description of the error.
+   * @public
+   */
+  description: string | undefined;
+
+  /**
+   * The recommended follow-up action.
+   * @public
+   */
+  followupAction: string | undefined;
+
+  /**
+   * The location in the 271 response where the error occurred.
+   * @public
+   */
+  location: EligibilityCheckResponseErrorLocation | undefined;
+
+  /**
+   * Detailed guidance on possible ways to resolve the error.
+   * @public
+   */
+  possibleResolutions?: string | undefined;
+}
+
+/**
+ * A trace number the payer assigned to this transaction or echoed back from the request.
+ * @public
+ */
+export interface EligibilityCheckSubscriberTraceNumber {
+  /**
+   * Whether the payer assigned this trace number to the current transaction (`CURRENT_TRANSACTION`) or is echoing one from the original request (`REFERENCED_TRANSACTION`).
+   * @public
+   */
+  type?: EligibilityCheckTraceType | undefined;
+
+  /**
+   * The unique trace number assigned to the transaction.
+   * @public
+   */
+  referenceIdentification?: string | undefined;
+
+  /**
+   * The identifier of the organization that assigned the trace number.
+   * @public
+   */
+  originatingCompanyIdentifier?: string | undefined;
+
+  /**
+   * Identifies a subdivision within the organization that assigned the trace number.
+   * @public
+   */
+  secondaryReferenceIdentification?: string | undefined;
+}
+
+/**
+ * Metadata about the response. Stedi uses this data for tracking and troubleshooting.
+ * @public
+ */
+export interface EligibilityCheckMeta {
+  /**
+   * The transaction identifier from the response's `BHT03` element. Matches the request's `BHT03` if provided, otherwise matches the Stedi-generated `outboundTraceId`.
+   * @public
+   */
+  traceId?: string | undefined;
+
+  /**
+   * The transaction identifier Stedi assigns to the outbound request's `BHT03` element.
+   *
+   * Although this is a unique identifier, we recommend using `id` instead to identify and track eligibility checks. An eligibility check's `id` is guaranteed to be globally unique, and you can use it to deep link to the eligibility check's results within the Stedi portal.
+   * @public
+   */
+  outboundTraceId?: string | undefined;
+
+  /**
+   * A unique identifier the payer may assign to the transaction. Stedi doesn't support setting a subscriber trace number in the eligibility check request because there is no need to include a trace number for real-time queries.
+   * @public
+   */
+  subscriberTraceNumbers?: EligibilityCheckSubscriberTraceNumber[] | undefined;
+}
+
+/**
+ * Information about a contact person for the entity.
+ * @public
+ */
+export interface EligibilityCheckContact {
+  /**
+   * The name of the contact person.
+   * @public
+   */
+  name?: string | undefined;
+
+  /**
+   * The contact's phone numbers.
+   * @public
+   */
+  phoneNumbers?: string[] | undefined;
+
+  /**
+   * The contact's email addresses.
+   * @public
+   */
+  emails?: string[] | undefined;
+
+  /**
+   * The contact's fax numbers.
+   * @public
+   */
+  faxNumbers?: string[] | undefined;
+
+  /**
+   * The contact's EDI numbers.
+   * @public
+   */
+  ediNumbers?: string[] | undefined;
+
+  /**
+   * The contact's URLs.
+   * @public
+   */
+  urls?: string[] | undefined;
+}
+
+/**
+ * A name that is either a person or an organization.
+ * @public
+ */
+export type EligibilityCheckPersonOrOrganizationName =
+  | EligibilityCheckPersonOrOrganizationName.OrganizationMember
+  | EligibilityCheckPersonOrOrganizationName.PersonMember
+  | EligibilityCheckPersonOrOrganizationName.$UnknownMember;
+
+/**
+ * @public
+ */
+export namespace EligibilityCheckPersonOrOrganizationName {
+  /**
+   * A person's name. Maps to elements NM103 through NM107.
+   * @public
+   */
+  export interface PersonMember {
+    person: EligibilityCheckPersonName;
+    organization?: never;
+    $unknown?: never;
+  }
+
+  /**
+   * An organization's name. Maps to element NM103.
+   * @public
+   */
+  export interface OrganizationMember {
+    person?: never;
+    organization: string;
+    $unknown?: never;
+  }
+
+  /**
+   * @public
+   */
+  export interface $UnknownMember {
+    person?: never;
+    organization?: never;
+    $unknown: [string, any];
+  }
+
+  /**
+   * @deprecated unused in schema-serde mode.
+   *
+   */
+  export interface Visitor<T> {
+    person: (value: EligibilityCheckPersonName) => T;
+    organization: (value: string) => T;
+    _: (name: string, value: any) => T;
+  }
+}
+
+/**
+ * Information about the payer providing the benefits information. The response will always include the payer's business name and an identifier, such as the payer's tax ID. Most payers also include contact information.
+ * @public
+ */
+export interface EligibilityCheckPayer {
+  /**
+   * The entity's name, as either a person or an organization.
+   * @public
+   */
+  name?: EligibilityCheckPersonOrOrganizationName | undefined;
+
+  /**
+   * The entity identifier code for the payer.
+   * @public
+   */
+  type: EligibilityCheckPayerEntityIdentifierCode | undefined;
+
+  /**
+   * The entity's contact information.
+   * @public
+   */
+  contacts?: EligibilityCheckContact[] | undefined;
+
+  /**
+   * The Employer Identification Number (EIN), distinct from the Federal Taxpayer Identification Number in `tin`.
+   * @public
+   */
+  ein?: string | undefined;
+
+  /**
+   * Electronic Transmitter Identification Number.
+   * @public
+   */
+  etin?: string | undefined;
+
+  /**
+   * The Federal Taxpayer Identification Number.
+   * @public
+   */
+  tin?: string | undefined;
+
+  /**
+   * National Association of Insurance Commissioners Identification
+   * @public
+   */
+  naicId?: string | undefined;
+
+  /**
+   * Typically the identification the payer reported for itself in the 271 response (`NM109` with the `PI` qualifier). This value comes from the payer and may not match a [Stedi Payer Network](https://www.stedi.com/healthcare/network) ID; use the root-level `payerId` for the canonical payer ID.
+   * @public
+   */
+  identification?: string | undefined;
+}
+
+/**
+ * Additional plan, group, and policy identification numbers for this benefit entry.
+ * @public
+ */
+export interface EligibilityCheckEligibilityAndBenefitAdditionalInformation {
+  /**
+   * The insurance plan number and, when the payer sends one, the plan name.
+   * @public
+   */
+  plan?: EligibilityCheckAdditionalInformationWithName | undefined;
+
+  /**
+   * The group number for the patient's health insurance plan and, when the payer sends one, the group name.
+   * @public
+   */
+  group?: EligibilityCheckAdditionalInformationWithName | undefined;
+
+  /**
+   * A group or policy number from the payer. Present when Stedi can't determine the type. Contact the payer for confirmation.
+   * @public
+   */
+  groupOrPolicyNumber?: string | undefined;
+
+  /**
+   * The patient's member ID.
+   * @public
+   */
+  memberId?: string | undefined;
+
+  /**
+   * The family unit number. Pharmacy benefits managers (PBMs) return this when the patient has a suffix to their member ID. For all other payers, the suffix is considered part of the member ID.
+   * @public
+   */
+  familyUnitNumber?: string | undefined;
+
+  /**
+   * The referral number.
+   * @public
+   */
+  referralNumber?: string | undefined;
+
+  /**
+   * The alternative list ID. This identifier lets the payer point to a list of drugs and their alternatives, along with the formulary status that applies to the patient.
+   * @public
+   */
+  alternativeListId?: string | undefined;
+
+  /**
+   * The coverage list ID. This identifier lets the payer point to a list of drugs that have coverage limitations for the patient.
+   * @public
+   */
+  coverageListId?: string | undefined;
+
+  /**
+   * The Medicare Beneficiary Identifier (MBI), the randomized identifier CMS uses to identify Medicare beneficiaries. If you receive an MBI, we recommend sending a follow-up eligibility check to CMS (payer ID: CMS) for additional benefits data. Visit [Medicare Beneficiary Identifier documentation](https://www.cms.gov/training-education/partner-outreach-resources/new-medicare-card/medical-beneficiary-identifiers-mbis) for more information about the MBI format. This most commonly occurs with patients who are covered by both Medicare and Medicaid.
+   * @public
+   */
+  mbi?: string | undefined;
+
+  /**
+   * The drug formulary number.
+   * @public
+   */
+  drugFormularyNumber?: string | undefined;
+
+  /**
+   * The prior authorization number.
+   * @public
+   */
+  priorAuthNumber?: string | undefined;
+
+  /**
+   * The insurance policy number.
+   * @public
+   */
+  insurancePolicyNumber?: string | undefined;
+
+  /**
+   * The medical assistance category.
+   * @public
+   */
+  medicalAssistanceCategory?: string | undefined;
+
+  /**
+   * The Medicaid recipient identification number.
+   * @public
+   */
+  medicaidRecipientId?: string | undefined;
+}
+
+/**
+ * Contains the dates associated with specific benefits, as ISO 8601 date ranges. These dates determine eligibility for individual benefits, separate from overall plan eligibility dates.
+ * @public
+ */
+export interface EligibilityCheckEligibilityAndBenefitDateRanges {
+  /**
+   * The discharge date.
+   * @public
+   */
+  discharge?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * A period date range.
+   * @public
+   */
+  period?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The completion date.
+   * @public
+   */
+  completion?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The coordination of benefits date.
+   * @public
+   */
+  coordinationOfBenefits?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * Plan effective dates.
+   * @public
+   */
+  plan?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The benefit date.
+   * @public
+   */
+  benefit?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The primary care provider date.
+   * @public
+   */
+  primaryCareProvider?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The latest visit or consultation date.
+   * @public
+   */
+  latestVisit?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * Added date. Payers may return this information in the case of retroactive eligibility.
+   * @public
+   */
+  added?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * Plan eligibility dates.
+   * @public
+   */
+  eligibility?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The admission date or dates.
+   * @public
+   */
+  admission?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The service date or dates.
+   * @public
+   */
+  service?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The date when the plan information was last updated.
+   * @public
+   */
+  dateOfLastUpdate?: EligibilityCheckDateRange | undefined;
+
+  /**
+   * The status date.
+   * @public
+   */
+  status?: EligibilityCheckDateRange | undefined;
+}
+
+/**
+ * A single diagnosis code with its optional definition.
+ * @public
+ */
+export interface EligibilityCheckDiagnosisCode {
+  /**
+   * The diagnosis code value.
+   * @public
+   */
+  value: string | undefined;
+
+  /**
+   * The human-readable definition of the diagnosis code.
+   * @public
+   */
+  definition?: string | undefined;
+}
+
+/**
+ * A diagnosis associated with this benefit entry. Includes a code system and one or more diagnosis codes.
+ * @public
+ */
+export interface EligibilityCheckDiagnosis {
+  /**
+   * The code system for diagnosis codes. Only supports ICD-10-CM.
+   * @public
+   */
+  codeSystem: EligibilityCheckDiagnosisCodeSystem | undefined;
+
+  /**
+   * Diagnosis codes associated with this benefit entry.
+   * @public
+   */
+  codes: EligibilityCheckDiagnosisCode[] | undefined;
+}
+
+/**
+ * Network information for a benefit, including the in-plan network indicator and plan network identification.
+ * @public
+ */
+export interface EligibilityCheckNetwork {
+  /**
+   * Code indicating whether the benefit is in-network or out-of-network.
+   * @public
+   */
+  indicator?: EligibilityCheckNetworkIndicator | undefined;
+
+  /**
+   * The plan network identification number.
+   * @public
+   */
+  id?: string | undefined;
+
+  /**
+   * The plan, group, or plan network name.
+   * @public
+   */
+  description?: string | undefined;
+}
+
+/**
+ * Identifies a type of healthcare facility where providers may deliver services. Place of service codes are standardized identifiers used across the healthcare industry.
+ * @public
+ */
+export interface EligibilityCheckPlaceOfService {
+  /**
+   * The place of service code identifying the type of facility.
+   * @public
+   */
+  code?: EligibilityCheckPlaceOfServiceCode | undefined;
+
+  /**
+   * The human-readable name of the place of service.
+   * @public
+   */
+  name?: string | undefined;
+}
+
+/**
+ * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+ * @public
+ */
+export interface EligibilityCheckRelatedEntity {
+  /**
+   * The entity's name, as either a person or an organization.
+   * @public
+   */
+  name?: EligibilityCheckPersonOrOrganizationName | undefined;
+
+  /**
+   * The entity identifier code for the benefit related entity.
+   * @public
+   */
+  type: EligibilityCheckRelatedEntityIdentifierCode | undefined;
+
+  /**
+   * Code specifying the relationship between the entity and the patient.
+   * @public
+   */
+  relationship?: EligibilityCheckEntityRelationship | undefined;
+
+  /**
+   * The address of the entity, such as a provider or organization.
+   * @public
+   */
+  address?: EligibilityCheckAddress | undefined;
+
+  /**
+   * Information about a provider associated with the related entity.
+   * @public
+   */
+  provider?: EligibilityCheckEntityProvider | undefined;
+
+  /**
+   * The entity's contact information.
+   * @public
+   */
+  contacts?: EligibilityCheckContact[] | undefined;
+
+  /**
+   * The Employer Identification Number (EIN), distinct from the Federal Taxpayer Identification Number in `tin`.
+   * @public
+   */
+  ein?: string | undefined;
+
+  /**
+   * Social Security Number.
+   * @public
+   */
+  ssn?: string | undefined;
+
+  /**
+   * Electronic Transmitter Identification Number.
+   * @public
+   */
+  etin?: string | undefined;
+
+  /**
+   * Facility Identification.
+   * @public
+   */
+  facilityId?: string | undefined;
+
+  /**
+   * The Federal Taxpayer Identification Number.
+   * @public
+   */
+  tin?: string | undefined;
+
+  /**
+   * Member Identification Number
+   * @public
+   */
+  memberId?: string | undefined;
+
+  /**
+   * National Association of Insurance Commissioners Identification
+   * @public
+   */
+  naicId?: string | undefined;
+
+  /**
+   * Payer Identification
+   * @public
+   */
+  payerId?: string | undefined;
+
+  /**
+   * Pharmacy Processor Number
+   * @public
+   */
+  pharmacyProcessorNumber?: string | undefined;
+
+  /**
+   * Service Provider Number
+   * @public
+   */
+  serviceProviderNumber?: string | undefined;
+
+  /**
+   * Centers for Medicare and Medicaid Services National Provider Identifier
+   * @public
+   */
+  npi?: string | undefined;
+}
+
+/**
+ * A single service or procedure code with its definition.
+ * @public
+ */
+export interface EligibilityCheckServiceCode {
+  /**
+   * The service or procedure code value.
+   * @public
+   */
+  value: string | undefined;
+
+  /**
+   * The human-readable definition of the code.
+   * @public
+   */
+  definition?: string | undefined;
+}
+
+/**
+ * A range of service or procedure codes, defined by start and end codes. For example, CPT codes 99201 through 99215.
+ * @public
+ */
+export interface EligibilityCheckServiceCodeRange {
+  /**
+   * The first code in the range.
+   * @public
+   */
+  start: EligibilityCheckServiceCode | undefined;
+
+  /**
+   * The last code in the range. The range is inclusive of this code.
+   * @public
+   */
+  end: EligibilityCheckServiceCode | undefined;
+}
+
+/**
+ * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+ * @public
+ */
+export interface EligibilityCheckServiceOrProcedure {
+  /**
+   * The service or procedure code value.
+   * @public
+   */
+  value?: string | undefined;
+
+  /**
+   * The human-readable definition of the code.
+   * @public
+   */
+  definition?: string | undefined;
+
+  /**
+   * The code system that the `value` belongs to, such as CPT, HCPCS, or STC.
+   * @public
+   */
+  system?: EligibilityCheckResponseServiceCodeSystem | undefined;
+
+  /**
+   * A range of service or procedure codes, defined by start and end codes. For example, CPT codes 99201 through 99215.
+   * @public
+   */
+  range?: EligibilityCheckServiceCodeRange | undefined;
+}
+
+/**
+ * The delivery schedule and time pattern for a service delivery limit, like Monday through Friday during AM hours, or first week of the month.
+ * @public
+ */
+export interface EligibilityCheckServiceDeliveryLimitDelivery {
+  /**
+   * The days or calendar pattern on which the service can be delivered.
+   * @public
+   */
+  schedule?: EligibilityCheckServiceDeliveryLimitSchedule | undefined;
+
+  /**
+   * The time of day at which the service can be delivered.
+   * @public
+   */
+  pattern?: EligibilityCheckServiceDeliveryLimitPattern | undefined;
+}
+
+/**
+ * The frequency for a service delivery limit, like per day, per week, or per month.
+ * @public
+ */
+export interface EligibilityCheckServiceDeliveryLimitFrequency {
+  /**
+   * How often the service can be delivered, expressed in the unit given by `qualifier`. For example, `2` when the `qualifier` is `MONTHS` means every two months.
+   * @public
+   */
+  value?: string | undefined;
+
+  /**
+   * The unit of measure for `value`.
+   * @public
+   */
+  qualifier?: EligibilityCheckServiceDeliveryLimitFrequencyQualifier | undefined;
+}
+
+/**
+ * The time period for a service delivery limit, like per year, per day, or lifetime.
+ * @public
+ */
+export interface EligibilityCheckServiceDeliveryLimitPeriod {
+  /**
+   * The number of periods the limit spans. For example, `12` when the `qualifier` is `MONTH`.
+   * @public
+   */
+  value?: number | undefined;
+
+  /**
+   * The type of time period `value` counts.
+   * @public
+   */
+  qualifier?: EligibilityCheckServiceDeliveryLimitPeriodQualifier | undefined;
+}
+
+/**
+ * The quantity and unit for a service delivery limit, like 10 visits, 5 days, or 100 units.
+ * @public
+ */
+export interface EligibilityCheckServiceDeliveryLimitQuantity {
+  /**
+   * The number of units the limit allows. For example, `10` when the `qualifier` is `VISITS`.
+   * @public
+   */
+  value?: string | undefined;
+
+  /**
+   * The unit of measure for `value`.
+   * @public
+   */
+  qualifier?: EligibilityCheckServiceDeliveryLimitQuantityQualifier | undefined;
+}
+
+/**
+ * A service delivery limit combining quantity, time period, frequency, and delivery schedule. For example, 10 visits per year, weekly, Monday through Friday.
+ * @public
+ */
+export interface EligibilityCheckServiceDeliveryLimit {
+  /**
+   * How much of the service the limit allows, like 10 visits.
+   * @public
+   */
+  quantity?: EligibilityCheckServiceDeliveryLimitQuantity | undefined;
+
+  /**
+   * The time period the limit applies over, like per calendar year.
+   * @public
+   */
+  period?: EligibilityCheckServiceDeliveryLimitPeriod | undefined;
+
+  /**
+   * How often the service can be delivered within the period, like weekly.
+   * @public
+   */
+  frequency?: EligibilityCheckServiceDeliveryLimitFrequency | undefined;
+
+  /**
+   * The days and time of day on which the service can be delivered.
+   * @public
+   */
+  delivery?: EligibilityCheckServiceDeliveryLimitDelivery | undefined;
+}
+
+/**
+ * A service limit specified as an age boundary or a delivery restriction. For example, minimum age 18, or 10 visits per year on weekdays.
+ * @public
+ */
+export type EligibilityCheckServiceLimit =
+  | EligibilityCheckServiceLimit.AgeMaximumMember
+  | EligibilityCheckServiceLimit.AgeMinimumMember
+  | EligibilityCheckServiceLimit.DeliveryMember
+  | EligibilityCheckServiceLimit.$UnknownMember;
+
+/**
+ * @public
+ */
+export namespace EligibilityCheckServiceLimit {
+  /**
+   * The maximum patient age (in years) for this benefit.
+   * @public
+   */
+  export interface AgeMaximumMember {
+    ageMaximum: number;
+    ageMinimum?: never;
+    delivery?: never;
+    $unknown?: never;
+  }
+
+  /**
+   * The minimum patient age (in years) for this benefit.
+   * @public
+   */
+  export interface AgeMinimumMember {
+    ageMaximum?: never;
+    ageMinimum: number;
+    delivery?: never;
+    $unknown?: never;
+  }
+
+  /**
+   * A restriction on how much of the service the patient can receive, and how often or when it can be delivered.
+   * @public
+   */
+  export interface DeliveryMember {
+    ageMaximum?: never;
+    ageMinimum?: never;
+    delivery: EligibilityCheckServiceDeliveryLimit;
+    $unknown?: never;
+  }
+
+  /**
+   * @public
+   */
+  export interface $UnknownMember {
+    ageMaximum?: never;
+    ageMinimum?: never;
+    delivery?: never;
+    $unknown: [string, any];
+  }
+
+  /**
+   * @deprecated unused in schema-serde mode.
+   *
+   */
+  export interface Visitor<T> {
+    ageMaximum: (value: number) => T;
+    ageMinimum: (value: number) => T;
+    delivery: (value: EligibilityCheckServiceDeliveryLimit) => T;
+    _: (name: string, value: any) => T;
+  }
+}
+
+/**
+ * A payer-authored description of a benefit. Payers sometimes use this type to communicate information that's difficult to capture elsewhere in the response. The description is included as free text in `messages` or identifiers in `additionalInformation`.
+ * @public
+ */
+export interface EligibilityCheckBenefitDescription {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * A legal or advisory disclaimer attached to the benefit information. The X12 standard discourages use of this type, but many commercial payers still send disclaimers. When present, the disclaimer text arrives in `messages`, and there should be only one disclaimer per individual response.
+ * @public
+ */
+export interface EligibilityCheckBenefitDisclaimer {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * Indicates that the payer couldn't process your request. A common cause is requesting benefits information for a service type or procedure code the payer doesn't support.
+ * @public
+ */
+export interface EligibilityCheckCannotProcess {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * A fraud alert indicating the patient's insurance card was reported lost or stolen. This typically means that the payer has flagged the patient's member ID to prevent identity theft. The patient may still have active coverage, but you likely won't be able to run transactions with the patient's information until they resolve the issue.
+ * @public
+ */
+export interface EligibilityCheckCardReportedStolen {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * A co-insurance benefit entry. The `percent` is the patient's share of costs, expressed as a decimal (such as `0.8` for 80%). The decimal precision reflects what the payer sent. A value of `0` indicates the payer reported no co-insurance responsibility.
+ * @public
+ */
+export interface EligibilityCheckCoInsurance {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * Code specifying the time period for the benefit information. Visit [Eligibility code lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#time-qualifier-codes) for a complete list.
+   * @public
+   */
+  timePeriod?: EligibilityCheckTimePeriod | undefined;
+
+  /**
+   * The percentage value for this benefit, expressed as a decimal (e.g., 0.80 for 80%).
+   * @public
+   */
+  percent: string | undefined;
+}
+
+/**
+ * Indicates that the payer can't supply the information you requested and is directing you to another entity. The entity's information is listed in the `relatedEntities` array.
+ * @public
+ */
+export interface EligibilityCheckContactFollowingEntityForInformation {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * A quantity value with a qualifier describing the unit of measure. For example, a value of `10` with a qualifier of `VISITS` means 10 visits.
+ * @public
+ */
+export interface EligibilityCheckQuantity {
+  /**
+   * The numeric quantity. For example, `10` when the `qualifier` is `VISITS`.
+   * @public
+   */
+  value?: string | undefined;
+
+  /**
+   * The unit of measure for `value`.
+   * @public
+   */
+  qualifier?: EligibilityCheckQuantityQualifier | undefined;
+}
+
+/**
+ * A copayment benefit entry. The `amount` is the fixed amount the patient pays for a service. The decimal precision reflects what the payer sent (e.g., `25.0` or `40`).
+ * @public
+ */
+export interface EligibilityCheckCoPayment {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * Code specifying the time period for the benefit information. Visit [Eligibility code lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#time-qualifier-codes) for a complete list.
+   * @public
+   */
+  timePeriod?: EligibilityCheckTimePeriod | undefined;
+
+  /**
+   * The monetary amount for this benefit.
+   * @public
+   */
+  amount: string | undefined;
+
+  /**
+   * The quantity the `amount` applies to, when the payer sends one. For example, 60 days of inpatient care.
+   * @public
+   */
+  quantity?: EligibilityCheckQuantity | undefined;
+}
+
+/**
+ * A cost containment benefit entry. Cost containment refers to rules a health plan may have in place to control the cost of care. This benefit is typically included when the patient has Medicaid coverage. The `amount` represents the total the patient pays out-of-pocket before benefits begin. The decimal precision reflects what the payer sent (e.g., `500.0` or `500`).
+ * @public
+ */
+export interface EligibilityCheckCostContainment {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * Code specifying the time period for the benefit information. Visit [Eligibility code lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#time-qualifier-codes) for a complete list.
+   * @public
+   */
+  timePeriod?: EligibilityCheckTimePeriod | undefined;
+
+  /**
+   * The monetary amount for this benefit.
+   * @public
+   */
+  amount: string | undefined;
+
+  /**
+   * The quantity the `amount` applies to, when the payer sends one. For example, 60 days of inpatient care.
+   * @public
+   */
+  quantity?: EligibilityCheckQuantity | undefined;
+}
+
+/**
+ * Describes the financial basis of the patient's health plan or eligibility for enrollment. For example, payers may use this type to indicate that a plan is fully insured, meaning the payer assumes full financial responsibility for medical claims. Payers may also use this type to indicate carve-out benefits, such as when the patient is enrolled in state-managed health programs, or to explain why a member was allowed to enroll in the plan (such as age range or having a disability). The detail is usually included as free text in `messages` or identifiers in `additionalInformation`.
+ * @public
+ */
+export interface EligibilityCheckCoverageBasis {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * A deductible benefit entry. The `amount` is what the patient must pay before the plan begins covering costs. The decimal precision reflects what the payer sent (e.g., `1500.0` or `1000`). Check `timePeriod` to determine what the amount represents. A calendar-year deductible is the patient's total for the year, while a remaining deductible is the amount still owed before the plan pays.
+ * @public
+ */
+export interface EligibilityCheckDeductible {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * Code specifying the time period for the benefit information. Visit [Eligibility code lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#time-qualifier-codes) for a complete list.
+   * @public
+   */
+  timePeriod?: EligibilityCheckTimePeriod | undefined;
+
+  /**
+   * The monetary amount for this benefit.
+   * @public
+   */
+  amount: string | undefined;
+
+  /**
+   * The quantity the `amount` applies to, when the payer sends one. For example, 60 days of inpatient care.
+   * @public
+   */
+  quantity?: EligibilityCheckQuantity | undefined;
+}
+
+/**
+ * A service or condition the plan doesn't cover for any patient. This is different from a `nonCovered` entry, which reports that this patient doesn't have coverage for a specific service you submitted in the request.
+ * @public
+ */
+export interface EligibilityCheckExclusion {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * Identifies a medical facility associated with the benefit, typically indicating an institution or provider network the patient is required or expected to use. The facility's information is available in the `relatedEntities` array. Rarely returned.
+ * @public
+ */
+export interface EligibilityCheckHealthCareFacility {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * A specific reason why a benefit entry is invalid.
+ * @public
+ */
+export interface EligibilityCheckInvalidEntryReason {
+  /**
+   * A machine-readable code identifying the validation issue.
+   * @public
+   */
+  code: EligibilityCheckInvalidEntryReasonCode | undefined;
+
+  /**
+   * A human-readable description of the validation issue.
+   * @public
+   */
+  description: string | undefined;
+}
+
+/**
+ * An invalid benefit entry that Stedi couldn't include in the standard benefit arrays due to data validation issues. This structure includes all possible benefit properties (amount, percent, quantity) to capture what the payer actually sent.
+ * @public
+ */
+export interface EligibilityCheckInvalidBenefit {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * Code specifying the time period for the benefit information. Visit [Eligibility code lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#time-qualifier-codes) for a complete list.
+   * @public
+   */
+  timePeriod?: EligibilityCheckTimePeriod | undefined;
+
+  /**
+   * The monetary amount, if present.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage, if present.
+   * @public
+   */
+  percent?: string | undefined;
+
+  /**
+   * The quantity, if present.
+   * @public
+   */
+  quantity?: EligibilityCheckQuantity | undefined;
+
+  /**
+   * Reasons explaining why this entry is invalid.
+   * @public
+   */
+  invalidReasons: EligibilityCheckInvalidEntryReason[] | undefined;
+}
+
+/**
+ * Benefit entries that Stedi marked as invalid. Stedi marks entries when they're missing required data, like a co-insurance benefit without a percentage or a deductible without an amount. Stedi also marks entries when they have unexpected data, like a co-payment with a percentage instead of an amount.
+ * @public
+ */
+export interface EligibilityCheckInvalidEntries {
+  /**
+   * Invalid co-insurance entries.
+   * @public
+   */
+  coInsurance?: EligibilityCheckInvalidBenefit[] | undefined;
+
+  /**
+   * Invalid co-payment entries.
+   * @public
+   */
+  coPayment?: EligibilityCheckInvalidBenefit[] | undefined;
+
+  /**
+   * Invalid deductible entries.
+   * @public
+   */
+  deductible?: EligibilityCheckInvalidBenefit[] | undefined;
+
+  /**
+   * Invalid out-of-pocket entries.
+   * @public
+   */
+  outOfPocket?: EligibilityCheckInvalidBenefit[] | undefined;
+
+  /**
+   * Invalid cost containment entries.
+   * @public
+   */
+  costContainment?: EligibilityCheckInvalidBenefit[] | undefined;
+
+  /**
+   * Invalid spend down entries.
+   * @public
+   */
+  spendDown?: EligibilityCheckInvalidBenefit[] | undefined;
+
+  /**
+   * Invalid limitation entries.
+   * @public
+   */
+  limitations?: EligibilityCheckInvalidBenefit[] | undefined;
+}
+
+/**
+ * A benefit limitation entry, expressed as an amount, percent, or quantity. Dental and vision plans often use this benefit type to specify an annual maximum benefit amount.
+ *
+ * The Affordable Care Act prevents most commercial health plans from imposing limits on annual or lifetime benefit amounts, but this generally doesn't apply to government health plans and some commercial health plans may be exempt.
+ *
+ * When present, the `amount` indicates the maximum benefit amount the plan allocates to the patient. The `messages` array often includes values like "ANNUAL MAXIMUM".
+ * @public
+ */
+export interface EligibilityCheckLimitation {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * Code specifying the time period for the benefit information. Visit [Eligibility code lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#time-qualifier-codes) for a complete list.
+   * @public
+   */
+  timePeriod?: EligibilityCheckTimePeriod | undefined;
+
+  /**
+   * The monetary amount for this limitation.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage value for this limitation, expressed as a decimal (e.g., 0.80 for 80%).
+   * @public
+   */
+  percent?: string | undefined;
+
+  /**
+   * The quantity for this limitation, when the payer expresses the limit as a count rather than an amount or percentage. For example, 20 visits.
+   * @public
+   */
+  quantity?: EligibilityCheckQuantity | undefined;
+}
+
+/**
+ * A care coordinator associated with the patient's managed care arrangement. When present, the care coordinator's details are in the `relatedEntities` array.
+ * @public
+ */
+export interface EligibilityCheckManagedCareCoordinator {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * Indicates that the patient's plan doesn't cover a specific service type you submitted in the eligibility check. Note that the absence of a `nonCovered` entry doesn't mean that a specific service is covered.
+ * @public
+ */
+export interface EligibilityCheckNonCovered {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * Indicates the payer has determined this service isn't medically necessary and won't cover it on that basis.
+ * @public
+ */
+export interface EligibilityCheckNotDeemedMedicalNecessity {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * Indicates another payer that has coverage responsibility for the patient. This is the signal for coordination of benefits (COB) scenarios. The other payer's details are available in the `relatedEntities` array.
+ * @public
+ */
+export interface EligibilityCheckOtherOrAdditionalPayer {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * Indicates the information provided came from a source other than the payer's own system. Rarely returned.
+ * @public
+ */
+export interface EligibilityCheckOtherSourceOfData {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * An out-of-pocket maximum benefit entry. The `amount` is the limit on what the patient pays. The decimal precision reflects what the payer sent (e.g., `5000.0` or `5000`). Check `timePeriod` to determine whether an amount is the full maximum or the amount remaining.
+ * @public
+ */
+export interface EligibilityCheckOutOfPocket {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * Code specifying the time period for the benefit information. Visit [Eligibility code lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#time-qualifier-codes) for a complete list.
+   * @public
+   */
+  timePeriod?: EligibilityCheckTimePeriod | undefined;
+
+  /**
+   * The monetary amount for this benefit.
+   * @public
+   */
+  amount: string | undefined;
+
+  /**
+   * The quantity the `amount` applies to, when the payer sends one. For example, 60 days of inpatient care.
+   * @public
+   */
+  quantity?: EligibilityCheckQuantity | undefined;
+}
+
+/**
+ * Indicates coverage for this benefit is restricted because of a pre-existing condition.
+ * @public
+ */
+export interface EligibilityCheckPreExistingCondition {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * The patient's assigned primary care provider (PCP). A PCP is the main healthcare provider responsible for managing a patient's care and coordinating referrals to specialists. When present, the provider's information is available in the `relatedEntities` array.
+ * @public
+ */
+export interface EligibilityCheckPrimaryCareProvider {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * Benefit information relating to a previous coverage year.
+ * @public
+ */
+export interface EligibilityCheckPriorYearsHistory {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * Benefits the payer holds in reserve for the patient. This type is primarily used by Medicare (HETS) to indicate lifetime reserve benefit amounts separate from annual limits. For example, Medicare Lifetime Reserve days – the limited pool of additional inpatient hospital days a patient can use after exhausting a benefit period.
+ * @public
+ */
+export interface EligibilityCheckReserve {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * Indicates the plan requires a second surgical opinion before this benefit is available. This is a precondition for obtaining the benefit.
+ * @public
+ */
+export interface EligibilityCheckSecondSurgicalOpinionRequired {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * Indicates the benefit is available only when delivered by a particular provider, identified in `relatedEntities`. This doesn't confirm whether that provider is in or out of network with the payer.
+ * @public
+ */
+export interface EligibilityCheckServicesRestrictedToFollowingProvider {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * A spend down benefit entry. Spend down is a process that allows individuals with high medical expenses to qualify for Medicaid even if their income is above the Medicaid income limit. The `amount` represents the total the patient pays out-of-pocket before they can receive Medicaid benefits. The decimal precision reflects what the payer sent (e.g., `1500.0` or `1500`).
+ * @public
+ */
+export interface EligibilityCheckSpendDown {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * Code specifying the time period for the benefit information. Visit [Eligibility code lists](https://www.stedi.com/docs/healthcare/eligibility-code-lists#time-qualifier-codes) for a complete list.
+   * @public
+   */
+  timePeriod?: EligibilityCheckTimePeriod | undefined;
+
+  /**
+   * The monetary amount for this benefit.
+   * @public
+   */
+  amount: string | undefined;
+
+  /**
+   * The quantity the `amount` applies to, when the payer sends one. For example, 60 days of inpatient care.
+   * @public
+   */
+  quantity?: EligibilityCheckQuantity | undefined;
+}
+
+/**
+ * Whether the patient has active or inactive coverage for a specific service, network, and coverage level. For example, active coverage for service type code `30` (Health Benefit Plan Coverage) at the individual coverage level.
+ * @public
+ */
+export interface EligibilityCheckEligibilityStatus {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The patient's coverage status, indicating whether their coverage is active or inactive for specific services.
+   * @public
+   */
+  status: EligibilityCheckCoverageStatus | undefined;
+}
+
+/**
+ * Indicates that there's no limit for the benefit. For example, unlimited physical therapy visits or unlimited preventive care.
+ * @public
+ */
+export interface EligibilityCheckUnlimited {
+  /**
+   * The level of coverage this benefit applies to, such as `INDIVIDUAL` or `FAMILY`. Defaults to `INDIVIDUAL` when the payer doesn't send a coverage level.
+   * @public
+   */
+  coverageLevel: EligibilityCheckCoverageLevel | undefined;
+
+  /**
+   * Code identifying the type of insurance policy.
+   * @public
+   */
+  insuranceType?: EligibilityCheckInsuranceType | undefined;
+
+  /**
+   * Network information for a benefit, including the in-plan network indicator and plan network identification.
+   * @public
+   */
+  network?: EligibilityCheckNetwork | undefined;
+
+  /**
+   * Code indicating whether the benefit is subject to prior authorization or certification.
+   * @public
+   */
+  priorAuthIndicator?: EligibilityCheckPriorAuthIndicator | undefined;
+
+  /**
+   * The service or procedure that this benefit applies to, using a code or code range within a code system like CPT, HCPCS, or NDC.
+   * @public
+   */
+  service?: EligibilityCheckServiceOrProcedure | undefined;
+
+  /**
+   * Free-form messages from the payer providing additional information about this benefit entry, like prior authorization requirements, network restrictions, benefit limits, or plan details. Message content isn't standardized and varies by payer.
+   * @public
+   */
+  messages?: string[] | undefined;
+
+  /**
+   * Service delivery limits for this benefit, like visit frequency restrictions, age boundaries, or delivery schedules.
+   * @public
+   */
+  serviceLimits?: EligibilityCheckServiceLimit[] | undefined;
+
+  /**
+   * Dates associated with this benefit, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckEligibilityAndBenefitDateRanges | undefined;
+
+  /**
+   * Another entity associated with the eligibility or benefits. This could be a provider, an individual, an organization, or another payer.
+   * @public
+   */
+  relatedEntities?: EligibilityCheckRelatedEntity[] | undefined;
+
+  /**
+   * The locations where providers may deliver healthcare services for this benefit. Common examples include physician offices, hospitals, and patient homes. When present, this indicates facility-specific coverage details.
+   * @public
+   */
+  placesOfService?: EligibilityCheckPlaceOfService[] | undefined;
+
+  /**
+   * Additional plan, group, and policy identification numbers for this benefit entry.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
+
+  /**
+   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * @public
+   */
+  planCoverageDescription?: string | undefined;
+
+  /**
+   * The diagnosis this benefit covers. Present when the benefit is limited to specific diagnoses from the patient's diagnosis list.
+   * @public
+   */
+  diagnosis?: EligibilityCheckDiagnosis | undefined;
+
+  /**
+   * The monetary amount associated with this benefit.
+   * @public
+   */
+  amount?: string | undefined;
+
+  /**
+   * The percentage associated with this benefit.
+   * @public
+   */
+  percent?: string | undefined;
+}
+
+/**
+ * Benefit information from the payer, organized into categories like cost-sharing (co-insurance, deductibles, copayments), coverage details (exclusions, limitations), and eligibility statuses.
+ * @public
+ */
+export interface EligibilityCheckBenefits {
+  /**
+   * Eligibility status benefit entries from the payer. Each entry indicates whether the patient has active or inactive coverage for a specific service, network, and coverage level.
+   * @public
+   */
+  statuses?: EligibilityCheckEligibilityStatus[] | undefined;
+
+  /**
+   * A list of co-insurance benefit entries from the payer.
+   *
+   * The `percent` is the patient's share of costs, expressed as a decimal (such as `0.8` for 80%). The decimal precision reflects what the payer sent. A value of `0` indicates the payer reported no co-insurance responsibility.
+   * @public
+   */
+  coInsurance?: EligibilityCheckCoInsurance[] | undefined;
+
+  /**
+   * A list of copayment benefit entries from the payer.
+   *
+   * The `amount` is the fixed amount the patient pays for a service. The decimal precision reflects what the payer sent (for example, `25.0` or `40`).
+   * @public
+   */
+  coPayment?: EligibilityCheckCoPayment[] | undefined;
+
+  /**
+   * A list of deductible benefit entries from the payer.
+   *
+   * The `amount` is what the patient must pay before the plan begins covering costs. The decimal precision reflects what the payer sent (for example, `1500.0` or `1000`). Check `timePeriod` to determine what the amount represents. A calendar-year deductible is the patient's total for the year, while a remaining deductible is the amount still owed before the plan pays.
+   * @public
+   */
+  deductible?: EligibilityCheckDeductible[] | undefined;
+
+  /**
+   * A list of out-of-pocket maximum benefit entries from the payer.
+   *
+   * The `amount` is the limit on what the patient pays. The decimal precision reflects what the payer sent (for example, `5000.0` or `5000`). Check `timePeriod` to determine whether an amount is the full maximum or the amount remaining.
+   * @public
+   */
+  outOfPocket?: EligibilityCheckOutOfPocket[] | undefined;
+
+  /**
+   * A list of cost containment benefit entries from the payer.
+   *
+   * Cost containment refers to rules a health plan may have in place to control the cost of care. This benefit is typically included when the patient has Medicaid coverage. The `amount` represents the total the patient pays out-of-pocket before benefits begin. The decimal precision reflects what the payer sent (for example, `500.0` or `500`).
+   * @public
+   */
+  costContainment?: EligibilityCheckCostContainment[] | undefined;
+
+  /**
+   * A list of spend down benefit entries from the payer.
+   *
+   * Spend down is a process that allows individuals with high medical expenses to qualify for Medicaid even if their income is above the Medicaid income limit. The `amount` represents the total the patient pays out-of-pocket before they can receive Medicaid benefits. The decimal precision reflects what the payer sent (for example, `1500.0` or `1500`).
+   * @public
+   */
+  spendDown?: EligibilityCheckSpendDown[] | undefined;
+
+  /**
+   * A list of benefit limitation entries, expressed as an amount, percent, or quantity.
+   *
+   * Dental and vision plans often use this benefit type to specify an annual maximum benefit amount.
+   *
+   * The Affordable Care Act prevents most commercial health plans from imposing limits on annual or lifetime benefit amounts, but this generally doesn't apply to government health plans and some commercial health plans may be exempt.
+   *
+   * When present, the `amount` indicates the maximum benefit amount the plan allocates to the patient. The `messages` array often includes values like "ANNUAL MAXIMUM".
+   * @public
+   */
+  limitations?: EligibilityCheckLimitation[] | undefined;
+
+  /**
+   * A list of coverage basis entries from the payer.
+   *
+   * Describes the financial basis of the patient's health plan or eligibility for enrollment. For example, payers may use this type to indicate that a plan is fully insured, meaning the payer assumes full financial responsibility for medical claims. Payers may also use this type to indicate carve-out benefits, such as when the patient is enrolled in state-managed health programs, or to explain why a member was allowed to enroll in the plan (such as age range or having a disability). The detail is usually included as free text in `messages` or identifiers in `additionalInformation`.
+   * @public
+   */
+  coverageBasis?: EligibilityCheckCoverageBasis[] | undefined;
+
+  /**
+   * A list of free-text benefit descriptions from the payer.
+   *
+   * Payers sometimes use this type to communicate information that's difficult to capture elsewhere in the response. The description is included as free text in `messages` or identifiers in `additionalInformation`.
+   * @public
+   */
+  benefitDescription?: EligibilityCheckBenefitDescription[] | undefined;
+
+  /**
+   * A list of services or conditions the plan excludes from coverage.
+   *
+   * An exclusion is a service or condition the plan doesn't cover for any patient. This is different from a `nonCovered` entry, which reports that this patient doesn't have coverage for a specific service you submitted in the request.
+   * @public
+   */
+  exclusions?: EligibilityCheckExclusion[] | undefined;
+
+  /**
+   * A list of unlimited benefits for the patient's plan.
+   *
+   * For example, unlimited physical therapy visits or unlimited preventive care.
+   * @public
+   */
+  unlimited?: EligibilityCheckUnlimited[] | undefined;
+
+  /**
+   * A list of non-covered services for the patient.
+   *
+   * Indicates that the patient's plan doesn't cover a specific service type you submitted in the eligibility check. Note that the absence of a `nonCovered` entry doesn't mean that a specific service is covered.
+   * @public
+   */
+  nonCovered?: EligibilityCheckNonCovered[] | undefined;
+
+  /**
+   * A list of reserve benefits for the patient.
+   *
+   * This type is primarily used by Medicare (HETS) to indicate lifetime reserve benefit amounts separate from annual limits. For example, Medicare Lifetime Reserve days – the limited pool of additional inpatient hospital days a patient can use after exhausting a benefit period.
+   * @public
+   */
+  reserve?: EligibilityCheckReserve[] | undefined;
+
+  /**
+   * A list of primary care providers for the patient.
+   *
+   * A PCP is the main healthcare provider responsible for managing a patient's care and coordinating referrals to specialists. When present, the provider's information is available in the `relatedEntities` array.
+   * @public
+   */
+  primaryCareProvider?: EligibilityCheckPrimaryCareProvider[] | undefined;
+
+  /**
+   * A list of coverage restrictions due to pre-existing conditions.
+   *
+   * Indicates coverage for this benefit is restricted because of a pre-existing condition.
+   * @public
+   */
+  preExistingCondition?: EligibilityCheckPreExistingCondition[] | undefined;
+
+  /**
+   * A list of managed care coordinator information for the patient.
+   *
+   * When present, the care coordinator's details are in the `relatedEntities` array.
+   * @public
+   */
+  managedCareCoordinator?: EligibilityCheckManagedCareCoordinator[] | undefined;
+
+  /**
+   * A list of services restricted to specific providers.
+   *
+   * Indicates the benefit is available only when delivered by a particular provider, identified in `relatedEntities`. This doesn't confirm whether that provider is in or out of network with the payer.
+   * @public
+   */
+  servicesRestrictedToFollowingProvider?: EligibilityCheckServicesRestrictedToFollowingProvider[] | undefined;
+
+  /**
+   * A list of services the payer determined aren't medically necessary for the patient.
+   *
+   * Indicates the payer has determined this service isn't medically necessary and won't cover it on that basis.
+   * @public
+   */
+  notDeemedMedicalNecessity?: EligibilityCheckNotDeemedMedicalNecessity[] | undefined;
+
+  /**
+   * A list of disclaimers from the payer.
+   *
+   * A legal or advisory disclaimer attached to the benefit information. The X12 standard discourages use of this type, but many commercial payers still send disclaimers. When present, the disclaimer text arrives in `messages`, and there should be only one disclaimer per individual response.
+   * @public
+   */
+  benefitDisclaimer?: EligibilityCheckBenefitDisclaimer[] | undefined;
+
+  /**
+   * A list of benefits requiring a second surgical opinion for coverage.
+   *
+   * Indicates the plan requires a second surgical opinion before this benefit is available. This is a precondition for obtaining the benefit.
+   * @public
+   */
+  secondSurgicalOpinionRequired?: EligibilityCheckSecondSurgicalOpinionRequired[] | undefined;
+
+  /**
+   * A list of other payers with coverage responsibility for the patient.
+   *
+   * Indicates another payer that has coverage responsibility for the patient. This is the signal for coordination of benefits (COB) scenarios. The other payer's details are available in the `relatedEntities` array.
+   * @public
+   */
+  otherOrAdditionalPayer?: EligibilityCheckOtherOrAdditionalPayer[] | undefined;
+
+  /**
+   * A list of historical benefits information for the patient.
+   * @public
+   */
+  priorYearsHistory?: EligibilityCheckPriorYearsHistory[] | undefined;
+
+  /**
+   * A list of entries indicating the patient's card has been reported lost or stolen.
+   *
+   * This typically means that the payer has flagged the patient's member ID to prevent identity theft. The patient may still have active coverage, but you likely won't be able to run transactions with the patient's information until they resolve the issue.
+   * @public
+   */
+  cardReportedStolen?: EligibilityCheckCardReportedStolen[] | undefined;
+
+  /**
+   * A list of entries directing you to contact another entity for benefit information.
+   *
+   * Indicates that the payer can't supply the information you requested and is directing you to another entity. The entity's information is listed in the `relatedEntities` array.
+   * @public
+   */
+  contactFollowingEntityForInformation?: EligibilityCheckContactFollowingEntityForInformation[] | undefined;
+
+  /**
+   * A list of entries indicating the payer couldn't process your request.
+   *
+   * Indicates that the payer couldn't process your request. A common cause is requesting benefits information for a service type or procedure code the payer doesn't support.
+   * @public
+   */
+  cannotProcess?: EligibilityCheckCannotProcess[] | undefined;
+
+  /**
+   * A list of entries indicating the benefit information originates from another source.
+   *
+   * Indicates the information provided came from a source other than the payer's own system. Rarely returned.
+   * @public
+   */
+  otherSourceOfData?: EligibilityCheckOtherSourceOfData[] | undefined;
+
+  /**
+   * A list of health care facility information relevant to the patient's benefits.
+   *
+   * These typically indicate an institution or provider network the patient is required or expected to use. The facility's information is available in the `relatedEntities` array. Rarely returned.
+   * @public
+   */
+  healthCareFacility?: EligibilityCheckHealthCareFacility[] | undefined;
+
+  /**
+   * Benefit entries that Stedi couldn't include in the standard arrays due to data validation issues, such as missing required amounts or incorrect unit types.
+   * @public
+   */
+  invalidEntries?: EligibilityCheckInvalidEntries | undefined;
+}
+
+/**
+ * An insurance plan and its benefits.
+ * @public
+ */
+export interface EligibilityCheckPlan {
+  /**
+   * Benefit information from the payer, organized into categories like cost-sharing (co-insurance, deductibles, copayments), coverage details (exclusions, limitations), and eligibility statuses.
+   * @public
+   */
+  benefits: EligibilityCheckBenefits | undefined;
+
+  /**
+   * The name of the plan. Stedi derives this from the plan names the payer sends in the benefit entries. This property is present when the payer sends consistent plan names, and absent when the data is missing, ambiguous, or contradictory. When absent, check each benefit's `planCoverageDescription` for the plan information.
+   * @public
+   */
+  name?: string | undefined;
+}
+
+/**
+ * The provider's state license information.
+ * @public
+ */
+export interface EligibilityCheckStateLicense {
+  /**
+   * The state or province code that issued the license.
+   * @public
+   */
+  state?: string | undefined;
+
+  /**
+   * The provider's state license number.
+   * @public
+   */
+  number: string | undefined;
+}
+
+/**
+ * Additional identifying information about the provider.
+ * @public
+ */
+export interface EligibilityCheckProviderAdditionalInformation {
+  /**
+   * The provider's state license information.
+   * @public
+   */
+  stateLicense?: EligibilityCheckStateLicense | undefined;
+
+  /**
+   * The provider's Medicare provider number.
+   * @public
+   */
+  medicareProviderNumber?: string | undefined;
+
+  /**
+   * The provider's Medicaid provider number.
+   * @public
+   */
+  medicaidProviderNumber?: string | undefined;
+
+  /**
+   * The ID number for the provider's facility.
+   * @public
+   */
+  facilityIdNumber?: string | undefined;
+
+  /**
+   * The provider's personal identification number.
+   * @public
+   */
+  personalIdentificationNumber?: string | undefined;
+
+  /**
+   * The provider's contract number.
+   * @public
+   */
+  contractNumber?: string | undefined;
+
+  /**
+   * The provider's electronic device PIN.
+   * @public
+   */
+  electronicDevicePin?: string | undefined;
+
+  /**
+   * The provider's submitter ID.
+   * @public
+   */
+  submitterId?: string | undefined;
+
+  /**
+   * The provider's user ID.
+   * @public
+   */
+  userId?: string | undefined;
+
+  /**
+   * The provider's plan network identification number.
+   * @public
+   */
+  planNetworkId?: string | undefined;
+
+  /**
+   * The provider's facility network identification number.
+   * @public
+   */
+  facilityNetworkId?: string | undefined;
+
+  /**
+   * The provider's prior identifier number.
+   * @public
+   */
+  priorIdentifierNumber?: string | undefined;
+}
+
+/**
+ * Information about the entity that submitted the original eligibility check request. This may be an individual practitioner, a medical group, a hospital, or another type of healthcare provider. This object will always include at least one identifier, such as the provider's [NPI](https://www.stedi.com/docs/healthcare/national-provider-identifier), tax ID, or EIN.
+ * @public
+ */
+export interface EligibilityCheckProvider {
+  /**
+   * The entity's name, as either a person or an organization.
+   * @public
+   */
+  name?: EligibilityCheckPersonOrOrganizationName | undefined;
+
+  /**
+   * A code identifying the type of provider.
+   * @public
+   */
+  type: EligibilityCheckProviderEntityIdentifierCode | undefined;
+
+  /**
+   * The address of the entity, such as a provider or organization.
+   * @public
+   */
+  address?: EligibilityCheckAddress | undefined;
+
+  /**
+   * Information about the provider's role and taxonomy.
+   * @public
+   */
+  provider?: EligibilityCheckEntityProvider | undefined;
+
+  /**
+   * The Federal Taxpayer Identification Number.
+   * @public
+   */
+  tin?: string | undefined;
+
+  /**
+   * The Social Security Number (SSN).
+   * @public
+   */
+  ssn?: string | undefined;
+
+  /**
+   * The Employer Identification Number (EIN), distinct from the Federal Taxpayer Identification Number in `tin`.
+   * @public
+   */
+  ein?: string | undefined;
+
+  /**
+   * The pharmacy processor number.
+   * @public
+   */
+  pharmacyProcessorNumber?: string | undefined;
+
+  /**
+   * The service provider number. This is an identification number the payer assigns.
+   * @public
+   */
+  serviceProviderNumber?: string | undefined;
+
+  /**
+   * The provider's [National Provider Identifier (NPI)](https://www.stedi.com/docs/healthcare/national-provider-identifier).
+   * @public
+   */
+  npi?: string | undefined;
+
+  /**
+   * Additional identifying information for the provider.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckProviderAdditionalInformation | undefined;
+}
+
+/**
+ * Additional identifying information about the subscriber.
+ * @public
+ */
+export interface EligibilityCheckSubscriberAdditionalInformation {
+  /**
+   * The plan number and plan description.
+   * @public
+   */
+  plan?: EligibilityCheckAdditionalInformationWithName | undefined;
+
+  /**
+   * The group number and group description.
+   * @public
+   */
+  group?: EligibilityCheckAdditionalInformationWithName | undefined;
+
+  /**
+   * The plan network identification number and the plan, group, or plan network name.
+   * @public
+   */
+  planNetwork?: EligibilityCheckAdditionalInformationWithName | undefined;
+
+  /**
+   * The group or policy number.
+   * @public
+   */
+  groupOrPolicyNumber?: string | undefined;
+
+  /**
+   * The member identification number - only used when checking eligibility with a Workers' Compensation or Property and Casualty insurer.
+   * @public
+   */
+  memberId?: string | undefined;
+
+  /**
+   * The family unit number.
+   * @public
+   */
+  familyUnitNumber?: string | undefined;
+
+  /**
+   * The class of contract code - used to identify the applicable class of contract for claims processing.
+   * @public
+   */
+  classOfContractCode?: string | undefined;
+
+  /**
+   * The contract number of a contract between the payer and the provider that requested the eligibility check.
+   * @public
+   */
+  contractNumber?: string | undefined;
+
+  /**
+   * The medical record identification number.
+   * @public
+   */
+  medicalRecordId?: string | undefined;
+
+  /**
+   * The patient account number. If you included this value in the original eligibility request, the payer will return the same value here in the response.
+   * @public
+   */
+  patientAccountNumber?: string | undefined;
+
+  /**
+   * The patient's Medicare Beneficiary Identifier (MBI). If you receive an MBI, we recommend sending a follow-up eligibility check to CMS (payer ID: CMS) for additional benefits data. Visit [Medicare Beneficiary Identifier documentation](https://www.cms.gov/training-education/partner-outreach-resources/new-medicare-card/medical-beneficiary-identifiers-mbis) for more information about the MBI format. This most commonly occurs with patients who are covered by both Medicare and Medicaid.
+   * @public
+   */
+  mbi?: string | undefined;
+
+  /**
+   * Used when the identification card has a number in addition to the member ID.
+   * @public
+   */
+  identificationCardSerialNumber?: string | undefined;
+
+  /**
+   * The identity card number. Present when this number differs from the member ID.
+   * @public
+   */
+  identityCardNumber?: string | undefined;
+
+  /**
+   * The issue number.
+   * @public
+   */
+  issueNumber?: string | undefined;
+
+  /**
+   * The insurance policy number.
+   * @public
+   */
+  insurancePolicyNumber?: string | undefined;
+
+  /**
+   * The Medicaid recipient identification number.
+   * @public
+   */
+  medicaidRecipientId?: string | undefined;
+
+  /**
+   * The prior identifier number.
+   * @public
+   */
+  priorIdentifierNumber?: string | undefined;
+
+  /**
+   * The patient's Social Security Number (SSN).
+   * @public
+   */
+  ssn?: string | undefined;
+
+  /**
+   * The agency claim number, only used when the information source is a Property and Casualty payer.
+   * @public
+   */
+  agencyClaimNumber?: string | undefined;
+
+  /**
+   * The case number associated with the subscriber.
+   * @public
+   */
+  caseNumber?: string | undefined;
+}
+
+/**
+ * Information about the primary policyholder for the insurance plan listed in the original eligibility check request. The response will always include either the subscriber's name or member ID for identification, but most payers will also return the subscriber's date of birth and other identifying information.
+ * @public
+ */
+export interface EligibilityCheckSubscriber {
+  /**
+   * The address of the entity, such as a provider or organization.
+   * @public
+   */
+  address?: EligibilityCheckAddress | undefined;
+
+  /**
+   * Information about a provider associated with this entity.
+   * @public
+   */
+  provider?: EligibilityCheckEntityProvider | undefined;
+
+  /**
+   * Dates associated with patient attributes, as ISO 8601 date ranges.
+   * @public
+   */
+  dates?: EligibilityCheckPatientAttributeDateRanges | undefined;
+
+  /**
+   * The patient's date of birth as an ISO 8601 `YYYY-MM-DD` string. For example, `1985-03-15` represents March 15, 1985.
+   * @public
+   */
+  dateOfBirth?: string | undefined;
+
+  /**
+   * Code indicating the patient's gender.
+   * @public
+   */
+  gender?: EligibilityCheckResponsePatientGender | undefined;
+
+  /**
+   * The number assigned to each family member born with the same birth date, such as twins or triplets. Indicates the birth order when there are multiple births associated with the provided birth date.
+   * @public
+   */
+  birthSequenceNumber?: number | undefined;
+
+  /**
+   * Maintenance information indicating whether the payer signaled that the patient's identifying information differs from what you submitted.
+   * @public
+   */
+  maintenance?: EligibilityCheckMaintenance | undefined;
+
+  /**
+   * The entity's name, as either a person or an organization.
+   * @public
+   */
+  name?: EligibilityCheckPersonOrOrganizationName | undefined;
+
+  /**
+   * Additional identifying information for the subscriber.
+   * @public
+   */
+  additionalInformation?: EligibilityCheckSubscriberAdditionalInformation | undefined;
+
+  /**
+   * The member ID for the insurance policy.
+   * @public
+   */
+  memberId?: string | undefined;
+}
+
+/**
+ * An issue with your eligibility request that could affect the results, or information about the response.
+ * @public
+ */
+export interface EligibilityCheckWarning {
+  /**
+   * The warning code.
+   * @public
+   */
+  code?: string | undefined;
+
+  /**
+   * The warning description.
+   * @public
+   */
+  description?: string | undefined;
+}
+
+/**
+ * The eligibility check response payload.
+ * @public
+ */
+export interface CreateEligibilityCheckOutput {
+  /**
+   * A globally unique identifier for this eligibility check across all Stedi accounts. It's formatted as `ec_<uuid>`. For example: `ec_550e8400-e29b-41d4-a716-446655440000`. You can use this ID to track this eligibility check and to construct deep links to eligibility checks in the Stedi portal.
+   * @public
+   */
+  id: string | undefined;
+
+  /**
+   * Metadata about the response. Stedi uses this data for tracking and troubleshooting.
+   * @public
+   */
+  meta?: EligibilityCheckMeta | undefined;
+
+  /**
+   * The primary payer ID from the [Stedi Payer Network](https://www.stedi.com/healthcare/network). This ID is consistent across eligibility and claims systems and matches the payer ID printed on the member's ID card. You can use it as the `payerId` in subsequent eligibility check requests.
+   * @public
+   */
+  payerId?: string | undefined;
+
+  /**
+   * An identifier that allows Stedi to group eligibility checks for the same patient into a unified record in the Stedi portal called an [eligibility search](https://www.stedi.com/docs/healthcare/eligibility-views).
+   *
+   * This property is for use by Stedi tools only, such as Stedi's MCP server.
+   * @public
+   */
+  eligibilitySearchId?: string | undefined;
+
+  /**
+   * Issues with your eligibility request that could affect the results, or information about the response. For example, warnings can help explain why the request was rejected.
+   * @public
+   */
+  warnings?: EligibilityCheckWarning[] | undefined;
+
+  /**
+   * Typically this property contains the raw X12 EDI [271 Eligibility Benefit Response](https://portal.stedi.com/app/guides/view/hipaa/health-care-eligibility-benefit-response-x279a1/01GS66YHZPB37ABF34DBPSR213) from the payer.
+   *
+   * In some circumstances, this property may contain a [999 Implementation Acknowledgment](https://portal.stedi.com/app/guides/view/hipaa/implementation-acknowledgment-x231a1/01HMRQV0N8SPHG58M4ZG1CRHH0) instead of a 271. A 999 indicates validation errors in the X12 EDI transaction, such as improper formatting or missing or invalid values.
+   *
+   * If this property contains a 999, many of the other response properties will be empty, as Stedi populates them with information from the 271.
+   * @public
+   */
+  x12: string | undefined;
+
+  /**
+   * Information about the payer providing the benefits information. The response will always include the payer's business name and an identifier, such as the payer's tax ID. Most payers also include contact information.
+   * @public
+   */
+  payer: EligibilityCheckPayer | undefined;
+
+  /**
+   * Information about the entity that submitted the original eligibility check request. This may be an individual practitioner, a medical group, a hospital, or another type of healthcare provider. This object will always include at least one identifier, such as the provider's [NPI](https://www.stedi.com/docs/healthcare/national-provider-identifier), tax ID, or EIN.
+   * @public
+   */
+  provider?: EligibilityCheckProvider | undefined;
+
+  /**
+   * Information about the primary policyholder for the insurance plan listed in the original eligibility check request. The response will always include either the subscriber's name or member ID for identification, but most payers will also return the subscriber's date of birth and other identifying information.
+   * @public
+   */
+  subscriber?: EligibilityCheckSubscriber | undefined;
+
+  /**
+   * Information about the dependent from the eligibility check request. Note that the payer may return the dependent in the subscriber object instead. When present, this object will always include the dependent's name for identification, but many payers also include the date of birth and other identifying information.
+   * @public
+   */
+  dependent?: EligibilityCheckDependent | undefined;
+
+  /**
+   * The patient's insurance plans, grouped by plan name. Each plan contains the benefits that apply to the patient.
+   * @public
+   */
+  plans?: EligibilityCheckPlan[] | undefined;
+
+  /**
+   * `AAA` rejection errors from the payer. [`AAA` errors](https://www.stedi.com/docs/healthcare/eligibility-troubleshooting#payer-aaa-errors) specify the reasons for the rejection and any recommended follow-up actions.
+   * @public
+   */
+  errors?: EligibilityCheckResponseError[] | undefined;
 }
 
 /**

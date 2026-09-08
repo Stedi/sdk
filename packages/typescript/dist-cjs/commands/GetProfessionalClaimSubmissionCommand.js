@@ -3,6 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GetProfessionalClaimSubmissionCommand = void 0;
 const commandBuilder_1 = require("../commandBuilder");
 const schemas_0_1 = require("../schemas/schemas_0");
-class GetProfessionalClaimSubmissionCommand extends (0, commandBuilder_1.command)(commandBuilder_1._ep1, commandBuilder_1._mw0, "GetProfessionalClaimSubmission", schemas_0_1.GetProfessionalClaimSubmission$) {
+class GetProfessionalClaimSubmissionCommand extends (0, commandBuilder_1.command)(commandBuilder_1._ep2, commandBuilder_1._mw0, "GetProfessionalClaimSubmission", schemas_0_1.GetProfessionalClaimSubmission$) {
 }
 exports.GetProfessionalClaimSubmissionCommand = GetProfessionalClaimSubmissionCommand;

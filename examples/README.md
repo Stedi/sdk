@@ -55,13 +55,14 @@ The SDK itself reads no environment variable — the examples pass the key to th
 explicitly, which is where your own code passes whatever your secret manager hands it. Get a
 key from [your Stedi account](https://www.stedi.com/app):
 
-- **Test keys** (`test_*`) return free mocked responses for the requests [test mode](https://www.stedi.com/docs/healthcare/test-mode) supports. They cannot submit claims.
-- **Production keys** are required for claim submission. Combined with payloads billing the Stedi test payer (`payer.id: "STEDITEST"`), you exercise the [Stedi Test Payer](https://www.stedi.com/docs/healthcare/test-claims-workflow) for free — no real payer contact.
+- **Test keys** (`test_*`) return free mocked responses for the requests [test mode](https://www.stedi.com/docs/healthcare/test-mode) supports. The `eligibility/` examples send one of the documented [mock eligibility requests](https://www.stedi.com/docs/healthcare/api-reference/mock-requests-eligibility-checks), so they take a test key and never reach a payer. Test keys cannot submit claims.
+- **Production keys** are required for claim submission. Combined with payloads billing the Stedi test payer (`payer.id: "STEDITEST"`), the `claims/` examples exercise the [Stedi Test Payer](https://www.stedi.com/docs/healthcare/test-claims-workflow) for free, with no real payer contact.
 
 ## See also
 
 - [docs.stedi.com](https://docs.stedi.com) — full API reference and guides.
 - [Test mode](https://www.stedi.com/docs/healthcare/test-mode)
+- [Mock eligibility requests](https://www.stedi.com/docs/healthcare/api-reference/mock-requests-eligibility-checks)
 - [Test claims workflow](https://www.stedi.com/docs/healthcare/test-claims-workflow)
 - [Claim edits and repairs](https://www.stedi.com/docs/healthcare/claim-edits-and-repairs)
 - [Event types](https://www.stedi.com/docs/healthcare/event-destinations-event-types) — what a destination can subscribe to

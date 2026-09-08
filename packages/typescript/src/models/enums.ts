@@ -995,6 +995,1784 @@ export type ClaimStatus = (typeof ClaimStatus)[keyof typeof ClaimStatus];
  * @public
  * @enum
  */
+export const EligibilityCheckRequestPatientGender = {
+  /**
+   * Female
+   */
+  FEMALE: "FEMALE",
+  /**
+   * Male
+   */
+  MALE: "MALE",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckRequestPatientGender =
+  (typeof EligibilityCheckRequestPatientGender)[keyof typeof EligibilityCheckRequestPatientGender];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckRequestEntityProviderCode = {
+  /**
+   * Admitting
+   */
+  ADMITTING: "ADMITTING",
+  /**
+   * Attending
+   */
+  ATTENDING: "ATTENDING",
+  /**
+   * Billing
+   */
+  BILLING: "BILLING",
+  /**
+   * Consulting
+   */
+  CONSULTING: "CONSULTING",
+  /**
+   * Covering
+   */
+  COVERING: "COVERING",
+  /**
+   * Home Health Care
+   */
+  HOME_HEALTH_CARE: "HOME_HEALTH_CARE",
+  /**
+   * Hospital
+   */
+  HOSPITAL: "HOSPITAL",
+  /**
+   * Laboratory
+   */
+  LABORATORY: "LABORATORY",
+  /**
+   * Other Physician
+   */
+  OTHER_PHYSICIAN: "OTHER_PHYSICIAN",
+  /**
+   * Performing
+   */
+  PERFORMING: "PERFORMING",
+  /**
+   * Pharmacist
+   */
+  PHARMACIST: "PHARMACIST",
+  /**
+   * Pharmacy
+   */
+  PHARMACY: "PHARMACY",
+  /**
+   * Primary Care Physician
+   */
+  PRIMARY_CARE_PHYSICIAN: "PRIMARY_CARE_PHYSICIAN",
+  /**
+   * Referring
+   */
+  REFERRING: "REFERRING",
+  /**
+   * Rural Health Clinic
+   */
+  RURAL_HEALTH_CLINIC: "RURAL_HEALTH_CLINIC",
+  /**
+   * Skilled Nursing Facility
+   */
+  SKILLED_NURSING_FACILITY: "SKILLED_NURSING_FACILITY",
+  /**
+   * Submitting
+   */
+  SUBMITTING: "SUBMITTING",
+  /**
+   * Supervising
+   */
+  SUPERVISING: "SUPERVISING",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckRequestEntityProviderCode =
+  (typeof EligibilityCheckRequestEntityProviderCode)[keyof typeof EligibilityCheckRequestEntityProviderCode];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckRequestDependentRelationship = {
+  /**
+   * Child
+   */
+  CHILD: "CHILD",
+  /**
+   * Other Adult
+   */
+  OTHER_ADULT: "OTHER_ADULT",
+  /**
+   * Spouse
+   */
+  SPOUSE: "SPOUSE",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckRequestDependentRelationship =
+  (typeof EligibilityCheckRequestDependentRelationship)[keyof typeof EligibilityCheckRequestDependentRelationship];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckPlaceOfServiceCode = {
+  /**
+   * Ambulance - Air or Water
+   */
+  AMBULANCE_AIR_OR_WATER: "42",
+  /**
+   * Ambulance - Land
+   */
+  AMBULANCE_LAND: "41",
+  /**
+   * Ambulatory Surgical Center
+   */
+  AMBULATORY_SURGICAL_CENTER: "24",
+  /**
+   * Assisted Living Facility
+   */
+  ASSISTED_LIVING_FACILITY: "13",
+  /**
+   * Birthing Center
+   */
+  BIRTHING_CENTER: "25",
+  /**
+   * Community Mental Health Center
+   */
+  COMMUNITY_MENTAL_HEALTH_CENTER: "53",
+  /**
+   * Comprehensive Inpatient Rehabilitation Facility
+   */
+  COMPREHENSIVE_INPATIENT_REHABILITATION_FACILITY: "61",
+  /**
+   * Comprehensive Outpatient Rehabilitation Facility
+   */
+  COMPREHENSIVE_OUTPATIENT_REHABILITATION_FACILITY: "62",
+  /**
+   * Custodial Care Facility
+   */
+  CUSTODIAL_CARE_FACILITY: "33",
+  /**
+   * Emergency Room - Hospital
+   */
+  EMERGENCY_ROOM_HOSPITAL: "23",
+  /**
+   * End-Stage Renal Disease Treatment Facility
+   */
+  END_STAGE_RENAL_DISEASE_TREATMENT_FACILITY: "65",
+  /**
+   * Federally Qualified Health Center
+   */
+  FEDERALLY_QUALIFIED_HEALTH_CENTER: "50",
+  /**
+   * Group Home
+   */
+  GROUP_HOME: "14",
+  /**
+   * Home
+   */
+  HOME: "12",
+  /**
+   * Homeless Shelter
+   */
+  HOMELESS_SHELTER: "04",
+  /**
+   * Hospice
+   */
+  HOSPICE: "34",
+  /**
+   * Independent Clinic
+   */
+  INDEPENDENT_CLINIC: "49",
+  /**
+   * Independent Laboratory
+   */
+  INDEPENDENT_LABORATORY: "81",
+  /**
+   * Indian Health Service Free-standing Facility
+   */
+  INDIAN_HEALTH_SERVICE_FREE_STANDING_FACILITY: "05",
+  /**
+   * Indian Health Service Provider-based Facility
+   */
+  INDIAN_HEALTH_SERVICE_PROVIDER_BASED_FACILITY: "06",
+  /**
+   * Inpatient Hospital
+   */
+  INPATIENT_HOSPITAL: "21",
+  /**
+   * Inpatient Psychiatric Facility
+   */
+  INPATIENT_PSYCHIATRIC_FACILITY: "51",
+  /**
+   * Intermediate Care Facility/Mentally Retarded
+   */
+  INTERMEDIATE_CARE_FACILITY_MENTALLY_RETARDED: "54",
+  /**
+   * Mass Immunization Center
+   */
+  MASS_IMMUNIZATION_CENTER: "60",
+  /**
+   * Military Treatment Facility
+   */
+  MILITARY_TREATMENT_FACILITY: "26",
+  /**
+   * Mobile Unit
+   */
+  MOBILE_UNIT: "15",
+  /**
+   * Non-residential Substance Abuse Treatment Facility
+   */
+  NON_RESIDENTIAL_SUBSTANCE_ABUSE_TREATMENT_FACILITY: "57",
+  /**
+   * Nursing Facility
+   */
+  NURSING_FACILITY: "32",
+  /**
+   * Office
+   */
+  OFFICE: "11",
+  /**
+   * Other Place of Service
+   */
+  OTHER_PLACE_OF_SERVICE: "99",
+  /**
+   * Outpatient Hospital
+   */
+  OUTPATIENT_HOSPITAL: "22",
+  /**
+   * Pharmacy
+   */
+  PHARMACY: "01",
+  /**
+   * Psychiatric Facility - Partial Hospitalization
+   */
+  PSYCHIATRIC_FACILITY_PARTIAL_HOSPITALIZATION: "52",
+  /**
+   * Psychiatric Residential Treatment Center
+   */
+  PSYCHIATRIC_RESIDENTIAL_TREATMENT_CENTER: "56",
+  /**
+   * Residential Substance Abuse Treatment Facility
+   */
+  RESIDENTIAL_SUBSTANCE_ABUSE_TREATMENT_FACILITY: "55",
+  /**
+   * Rural Health Clinic
+   */
+  RURAL_HEALTH_CLINIC: "72",
+  /**
+   * School
+   */
+  SCHOOL: "03",
+  /**
+   * Skilled Nursing Facility
+   */
+  SKILLED_NURSING_FACILITY: "31",
+  /**
+   * State or Local Public Health Clinic
+   */
+  STATE_OR_LOCAL_PUBLIC_HEALTH_CLINIC: "71",
+  /**
+   * Tribal 638 Free-standing Facility
+   */
+  TRIBAL_638_FREE_STANDING_FACILITY: "07",
+  /**
+   * Tribal 638 Provider-based Facility
+   */
+  TRIBAL_638_PROVIDER_BASED_FACILITY: "08",
+  /**
+   * Urgent Care Facility
+   */
+  URGENT_CARE_FACILITY: "20",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckPlaceOfServiceCode =
+  (typeof EligibilityCheckPlaceOfServiceCode)[keyof typeof EligibilityCheckPlaceOfServiceCode];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckRequestServiceCodeSystem = {
+  /**
+   * Current Dental Terminology (CDT) procedure code
+   */
+  CDT: "CDT",
+  /**
+   * Current Procedural Terminology (CPT) procedure code
+   */
+  CPT: "CPT",
+  /**
+   * Healthcare Common Procedure Coding System (HCPCS) code
+   */
+  HCPCS: "HCPCS",
+  /**
+   * ICD-10 Procedure Coding System (ICD-10-PCS) code
+   */
+  ICD_10_PCS: "ICD-10-PCS",
+  /**
+   * National Drug Code (NDC)
+   */
+  NDC: "NDC",
+  /**
+   * Service Type Code
+   */
+  STC: "STC",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckRequestServiceCodeSystem =
+  (typeof EligibilityCheckRequestServiceCodeSystem)[keyof typeof EligibilityCheckRequestServiceCodeSystem];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckRequestProviderType = {
+  /**
+   * Employer
+   */
+  EMPLOYER: "EMPLOYER",
+  /**
+   * Facility
+   */
+  FACILITY: "FACILITY",
+  /**
+   * Gateway Provider
+   */
+  GATEWAY_PROVIDER: "GATEWAY_PROVIDER",
+  /**
+   * Hospital
+   */
+  HOSPITAL: "HOSPITAL",
+  /**
+   * Plan Sponsor
+   */
+  PLAN_SPONSOR: "PLAN_SPONSOR",
+  /**
+   * Provider
+   */
+  PROVIDER: "PROVIDER",
+  /**
+   * Third Party Administrator
+   */
+  THIRD_PARTY_ADMINISTRATOR: "THIRD_PARTY_ADMINISTRATOR",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckRequestProviderType =
+  (typeof EligibilityCheckRequestProviderType)[keyof typeof EligibilityCheckRequestProviderType];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckResponsePatientGender = {
+  /**
+   * Female
+   */
+  FEMALE: "FEMALE",
+  /**
+   * Male
+   */
+  MALE: "MALE",
+  /**
+   * Unknown. The payer stated that the patient's gender is unknown.
+   */
+  REPORTED_UNKNOWN: "UNKNOWN",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckResponsePatientGender =
+  (typeof EligibilityCheckResponsePatientGender)[keyof typeof EligibilityCheckResponsePatientGender];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckMaintenanceIndicator = {
+  /**
+   * The payer didn't signal a change to the patient's identifying information.
+   */
+  NONE: "NONE",
+  /**
+   * The payer indicated that the patient's identifying information differs from the information you submitted. The values returned in this response reflect the payer's records.
+   */
+  PAYER_INDICATED: "PAYER_INDICATED",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckMaintenanceIndicator =
+  (typeof EligibilityCheckMaintenanceIndicator)[keyof typeof EligibilityCheckMaintenanceIndicator];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckEntityProviderCode = {
+  /**
+   * Admitting
+   */
+  ADMITTING: "ADMITTING",
+  /**
+   * Attending
+   */
+  ATTENDING: "ATTENDING",
+  /**
+   * Billing
+   */
+  BILLING: "BILLING",
+  /**
+   * Consulting
+   */
+  CONSULTING: "CONSULTING",
+  /**
+   * Covering
+   */
+  COVERING: "COVERING",
+  /**
+   * Home Health Care
+   */
+  HOME_HEALTH_CARE: "HOME_HEALTH_CARE",
+  /**
+   * Hospital
+   */
+  HOSPITAL: "HOSPITAL",
+  /**
+   * Laboratory
+   */
+  LABORATORY: "LABORATORY",
+  /**
+   * Other Physician
+   */
+  OTHER_PHYSICIAN: "OTHER_PHYSICIAN",
+  /**
+   * Performing
+   */
+  PERFORMING: "PERFORMING",
+  /**
+   * Pharmacist
+   */
+  PHARMACIST: "PHARMACIST",
+  /**
+   * Pharmacy
+   */
+  PHARMACY: "PHARMACY",
+  /**
+   * Primary Care Physician
+   */
+  PRIMARY_CARE_PHYSICIAN: "PRIMARY_CARE_PHYSICIAN",
+  /**
+   * Referring
+   */
+  REFERRING: "REFERRING",
+  /**
+   * Rural Health Clinic
+   */
+  RURAL_HEALTH_CLINIC: "RURAL_HEALTH_CLINIC",
+  /**
+   * Skilled Nursing Facility
+   */
+  SKILLED_NURSING_FACILITY: "SKILLED_NURSING_FACILITY",
+  /**
+   * Submitting
+   */
+  SUBMITTING: "SUBMITTING",
+  /**
+   * Supervising
+   */
+  SUPERVISING: "SUPERVISING",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckEntityProviderCode =
+  (typeof EligibilityCheckEntityProviderCode)[keyof typeof EligibilityCheckEntityProviderCode];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckDependentRelationship = {
+  /**
+   * Cadaver Donor
+   */
+  CADAVER_DONOR: "CADAVER_DONOR",
+  /**
+   * Child
+   */
+  CHILD: "CHILD",
+  /**
+   * Employee
+   */
+  EMPLOYEE: "EMPLOYEE",
+  /**
+   * Life Partner
+   */
+  LIFE_PARTNER: "LIFE_PARTNER",
+  /**
+   * Organ Donor
+   */
+  ORGAN_DONOR: "ORGAN_DONOR",
+  /**
+   * Other Relationship
+   */
+  OTHER_RELATIONSHIP: "OTHER_RELATIONSHIP",
+  /**
+   * Unknown. The payer reported that relationship information is unavailable.
+   */
+  REPORTED_UNKNOWN: "UNKNOWN",
+  /**
+   * Spouse
+   */
+  SPOUSE: "SPOUSE",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckDependentRelationship =
+  (typeof EligibilityCheckDependentRelationship)[keyof typeof EligibilityCheckDependentRelationship];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckResponseErrorLocation = {
+  /**
+   * Error from the 2100D loop (dependent name level).
+   */
+  DEPENDENT: "DEPENDENT",
+  /**
+   * Error from the 2110D loop (dependent eligibility/benefit information level).
+   */
+  DEPENDENT_BENEFITS: "DEPENDENT_BENEFITS",
+  /**
+   * Error from the 2000A loop (envelope/information source level).
+   */
+  ENVELOPE: "ENVELOPE",
+  /**
+   * Error from the 2100A loop (payer name level).
+   */
+  PAYER: "PAYER",
+  /**
+   * Error from the 2100B loop (provider/information receiver level).
+   */
+  PROVIDER: "PROVIDER",
+  /**
+   * Error from the 2100C loop (subscriber name level).
+   */
+  SUBSCRIBER: "SUBSCRIBER",
+  /**
+   * Error from the 2110C loop (subscriber eligibility/benefit information level).
+   */
+  SUBSCRIBER_BENEFITS: "SUBSCRIBER_BENEFITS",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckResponseErrorLocation =
+  (typeof EligibilityCheckResponseErrorLocation)[keyof typeof EligibilityCheckResponseErrorLocation];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckTraceType = {
+  /**
+   * Current Transaction Trace Numbers. The payer assigned this trace number to this response.
+   */
+  CURRENT_TRANSACTION: "CURRENT_TRANSACTION",
+  /**
+   * Referenced Transaction Trace Numbers. The payer is echoing a trace number that was sent in the original eligibility check request.
+   */
+  REFERENCED_TRANSACTION: "REFERENCED_TRANSACTION",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckTraceType = (typeof EligibilityCheckTraceType)[keyof typeof EligibilityCheckTraceType];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckPayerEntityIdentifierCode = {
+  /**
+   * Employer
+   */
+  EMPLOYER: "EMPLOYER",
+  /**
+   * Gateway Provider
+   */
+  GATEWAY_PROVIDER: "GATEWAY_PROVIDER",
+  /**
+   * Payer
+   */
+  PAYER: "PAYER",
+  /**
+   * Plan Sponsor
+   */
+  PLAN_SPONSOR: "PLAN_SPONSOR",
+  /**
+   * Third Party Administrator
+   */
+  THIRD_PARTY_ADMINISTRATOR: "THIRD_PARTY_ADMINISTRATOR",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckPayerEntityIdentifierCode =
+  (typeof EligibilityCheckPayerEntityIdentifierCode)[keyof typeof EligibilityCheckPayerEntityIdentifierCode];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckCoverageLevel = {
+  /**
+   * Children Only
+   */
+  CHILDREN_ONLY: "CHILDREN_ONLY",
+  /**
+   * Dependents Only
+   */
+  DEPENDENTS_ONLY: "DEPENDENTS_ONLY",
+  /**
+   * Employee and Children
+   */
+  EMPLOYEE_AND_CHILDREN: "EMPLOYEE_AND_CHILDREN",
+  /**
+   * Employee and Spouse
+   */
+  EMPLOYEE_AND_SPOUSE: "EMPLOYEE_AND_SPOUSE",
+  /**
+   * Employee Only
+   */
+  EMPLOYEE_ONLY: "EMPLOYEE_ONLY",
+  /**
+   * Family
+   */
+  FAMILY: "FAMILY",
+  /**
+   * Individual
+   */
+  INDIVIDUAL: "INDIVIDUAL",
+  /**
+   * Spouse and Children
+   */
+  SPOUSE_AND_CHILDREN: "SPOUSE_AND_CHILDREN",
+  /**
+   * Spouse Only
+   */
+  SPOUSE_ONLY: "SPOUSE_ONLY",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckCoverageLevel =
+  (typeof EligibilityCheckCoverageLevel)[keyof typeof EligibilityCheckCoverageLevel];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckDiagnosisCodeSystem = {
+  /**
+   * International Classification of Diseases, 10th Revision, Clinical Modification (ICD-10-CM), the diagnosis code set maintained by CMS.
+   */
+  ICD_10_CM: "ICD-10-CM",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckDiagnosisCodeSystem =
+  (typeof EligibilityCheckDiagnosisCodeSystem)[keyof typeof EligibilityCheckDiagnosisCodeSystem];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckInsuranceType = {
+  /**
+   * Auto Insurance Policy
+   */
+  AUTO_INSURANCE_POLICY: "AUTO_INSURANCE_POLICY",
+  /**
+   * Commercial
+   */
+  COMMERCIAL: "COMMERCIAL",
+  /**
+   * Consolidated Omnibus Budget Reconciliation Act (COBRA)
+   */
+  CONSOLIDATED_OMNIBUS_BUDGET_RECONCILIATION_ACT_COBRA: "CONSOLIDATED_OMNIBUS_BUDGET_RECONCILIATION_ACT_COBRA",
+  /**
+   * Disability
+   */
+  DISABILITY: "DISABILITY",
+  /**
+   * Disability Benefits
+   */
+  DISABILITY_BENEFITS: "DISABILITY_BENEFITS",
+  /**
+   * Exclusive Provider Organization
+   */
+  EXCLUSIVE_PROVIDER_ORGANIZATION: "EXCLUSIVE_PROVIDER_ORGANIZATION",
+  /**
+   * Family or Friends
+   */
+  FAMILY_OR_FRIENDS: "FAMILY_OR_FRIENDS",
+  /**
+   * Group Policy
+   */
+  GROUP_POLICY: "GROUP_POLICY",
+  /**
+   * Health Maintenance Organization (HMO)
+   */
+  HEALTH_MAINTENANCE_ORGANIZATION_HMO: "HEALTH_MAINTENANCE_ORGANIZATION_HMO",
+  /**
+   * Health Maintenance Organization (HMO) - Medicare Risk
+   */
+  HEALTH_MAINTENANCE_ORGANIZATION_HMO_MEDICARE_RISK: "HEALTH_MAINTENANCE_ORGANIZATION_HMO_MEDICARE_RISK",
+  /**
+   * Indemnity
+   */
+  INDEMNITY: "INDEMNITY",
+  /**
+   * Individual Policy
+   */
+  INDIVIDUAL_POLICY: "INDIVIDUAL_POLICY",
+  /**
+   * Life Insurance
+   */
+  LIFE_INSURANCE: "LIFE_INSURANCE",
+  /**
+   * Litigation
+   */
+  LITIGATION: "LITIGATION",
+  /**
+   * Long Term Care
+   */
+  LONG_TERM_CARE: "LONG_TERM_CARE",
+  /**
+   * Long Term Policy
+   */
+  LONG_TERM_POLICY: "LONG_TERM_POLICY",
+  /**
+   * Medicaid
+   */
+  MEDICAID: "MEDICAID",
+  /**
+   * Medicare Conditionally Primary
+   */
+  MEDICARE_CONDITIONALLY_PRIMARY: "MEDICARE_CONDITIONALLY_PRIMARY",
+  /**
+   * Medicare Part A
+   */
+  MEDICARE_PART_A: "MEDICARE_PART_A",
+  /**
+   * Medicare Part B
+   */
+  MEDICARE_PART_B: "MEDICARE_PART_B",
+  /**
+   * Medicare Point of Service (POS)
+   */
+  MEDICARE_POINT_OF_SERVICE_POS: "MEDICARE_POINT_OF_SERVICE_POS",
+  /**
+   * Medicare Primary
+   */
+  MEDICARE_PRIMARY: "MEDICARE_PRIMARY",
+  /**
+   * Medicare Secondary Black Lung
+   */
+  MEDICARE_SECONDARY_BLACK_LUNG: "MEDICARE_SECONDARY_BLACK_LUNG",
+  /**
+   * Medicare Secondary Disabled Beneficiary Under Age 65 with Large Group Health Plan (LGHP)
+   */
+  MEDICARE_SECONDARY_DISABLED_BENEFICIARY_UNDER_AGE_65_WITH_LARGE_GROUP_HEALTH_PLAN_LGHP: "MEDICARE_SECONDARY_DISABLED_BENEFICIARY_UNDER_AGE_65_WITH_LARGE_GROUP_HEALTH_PLAN_LGHP",
+  /**
+   * Medicare Secondary End-Stage Renal Disease Beneficiary in the Mandated Coordination Period with an Employer's Group Health Plan
+   */
+  MEDICARE_SECONDARY_ENDSTAGE_RENAL_DISEASE_BENEFICIARY_IN_THE_MANDATED_COORDINATION_PERIOD_WITH_AN_EMPLOYERS_GROUP_HEALTH_PLAN: "MEDICARE_SECONDARY_ENDSTAGE_RENAL_DISEASE_BENEFICIARY_IN_THE_MANDATED_COORDINATION_PERIOD_WITH_AN_EMPLOYERS_GROUP_HEALTH_PLAN",
+  /**
+   * Medicare Secondary, No-fault Insurance including Auto is Primary
+   */
+  MEDICARE_SECONDARY_NOFAULT_INSURANCE_INCLUDING_AUTO_IS_PRIMARY: "MEDICARE_SECONDARY_NOFAULT_INSURANCE_INCLUDING_AUTO_IS_PRIMARY",
+  /**
+   * Medicare Secondary, Other Liability Insurance is Primary
+   */
+  MEDICARE_SECONDARY_OTHER_LIABILITY_INSURANCE_IS_PRIMARY: "MEDICARE_SECONDARY_OTHER_LIABILITY_INSURANCE_IS_PRIMARY",
+  /**
+   * Medicare Secondary Public Health Service (PHS) or Other Federal Agency
+   */
+  MEDICARE_SECONDARY_PUBLIC_HEALTH_SERVICE_PHS_OR_OTHER_FEDERAL_AGENCY: "MEDICARE_SECONDARY_PUBLIC_HEALTH_SERVICE_PHS_OR_OTHER_FEDERAL_AGENCY",
+  /**
+   * Medicare Secondary Veteran's Administration
+   */
+  MEDICARE_SECONDARY_VETERANS_ADMINISTRATION: "MEDICARE_SECONDARY_VETERANS_ADMINISTRATION",
+  /**
+   * Medicare Secondary Worker's Compensation
+   */
+  MEDICARE_SECONDARY_WORKERS_COMPENSATION: "MEDICARE_SECONDARY_WORKERS_COMPENSATION",
+  /**
+   * Medicare Secondary Working Aged Beneficiary or Spouse with Employer Group Health Plan
+   */
+  MEDICARE_SECONDARY_WORKING_AGED_BENEFICIARY_OR_SPOUSE_WITH_EMPLOYER_GROUP_HEALTH_PLAN: "MEDICARE_SECONDARY_WORKING_AGED_BENEFICIARY_OR_SPOUSE_WITH_EMPLOYER_GROUP_HEALTH_PLAN",
+  /**
+   * Medigap Part A
+   */
+  MEDIGAP_PART_A: "MEDIGAP_PART_A",
+  /**
+   * Medigap Part B
+   */
+  MEDIGAP_PART_B: "MEDIGAP_PART_B",
+  /**
+   * Multiple Options Health Plan
+   */
+  MULTIPLE_OPTIONS_HEALTH_PLAN: "MULTIPLE_OPTIONS_HEALTH_PLAN",
+  /**
+   * Other. When Medicare or a Medicare Part D administrator returns this value, it indicates Medicare Part D coverage.
+   */
+  OTHER: "OTHER",
+  /**
+   * Personal
+   */
+  PERSONAL: "PERSONAL",
+  /**
+   * Personal Payment (Cash - No Insurance)
+   */
+  PERSONAL_PAYMENT_CASH_NO_INSURANCE: "PERSONAL_PAYMENT_CASH_NO_INSURANCE",
+  /**
+   * Point of Service (POS)
+   */
+  POINT_OF_SERVICE_POS: "POINT_OF_SERVICE_POS",
+  /**
+   * Preferred Provider Organization (PPO)
+   */
+  PREFERRED_PROVIDER_ORGANIZATION_PPO: "PREFERRED_PROVIDER_ORGANIZATION_PPO",
+  /**
+   * Property Insurance - Personal
+   */
+  PROPERTY_INSURANCE_PERSONAL: "PROPERTY_INSURANCE_PERSONAL",
+  /**
+   * Property Insurance - Real
+   */
+  PROPERTY_INSURANCE_REAL: "PROPERTY_INSURANCE_REAL",
+  /**
+   * Qualified Medicare Beneficiary
+   */
+  QUALIFIED_MEDICARE_BENEFICIARY: "QUALIFIED_MEDICARE_BENEFICIARY",
+  /**
+   * Special Low Income Medicare Beneficiary
+   */
+  SPECIAL_LOW_INCOME_MEDICARE_BENEFICIARY: "SPECIAL_LOW_INCOME_MEDICARE_BENEFICIARY",
+  /**
+   * Supplemental Policy
+   */
+  SUPPLEMENTAL_POLICY: "SUPPLEMENTAL_POLICY",
+  /**
+   * Tax Equity Fiscal Responsibility Act (TEFRA)
+   */
+  TAX_EQUITY_FISCAL_RESPONSIBILITY_ACT_TEFRA: "TAX_EQUITY_FISCAL_RESPONSIBILITY_ACT_TEFRA",
+  /**
+   * Workers Compensation
+   */
+  WORKERS_COMPENSATION: "WORKERS_COMPENSATION",
+  /**
+   * Wrap Up Policy
+   */
+  WRAP_UP_POLICY: "WRAP_UP_POLICY",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckInsuranceType =
+  (typeof EligibilityCheckInsuranceType)[keyof typeof EligibilityCheckInsuranceType];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckNetworkIndicator = {
+  /**
+   * In and Out of Network. The benefit applies to both in-network and out-of-network care.
+   */
+  IN_AND_OUT_OF_NETWORK: "IN_AND_OUT_OF_NETWORK",
+  /**
+   * In Network. The benefit applies when the service is delivered in-network.
+   */
+  IN_NETWORK: "IN_NETWORK",
+  /**
+   * Out of Network. The benefit applies when the service is delivered out-of-network.
+   */
+  OUT_OF_NETWORK: "OUT_OF_NETWORK",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckNetworkIndicator =
+  (typeof EligibilityCheckNetworkIndicator)[keyof typeof EligibilityCheckNetworkIndicator];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckPriorAuthIndicator = {
+  /**
+   * Not Required. The benefit isn't subject to prior authorization or certification.
+   */
+  NOT_REQUIRED: "NOT_REQUIRED",
+  /**
+   * Required. The benefit is subject to prior authorization or certification.
+   */
+  REQUIRED: "REQUIRED",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckPriorAuthIndicator =
+  (typeof EligibilityCheckPriorAuthIndicator)[keyof typeof EligibilityCheckPriorAuthIndicator];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckEntityRelationship = {
+  /**
+   * Child
+   */
+  CHILD: "CHILD",
+  /**
+   * Domestic Partner
+   */
+  DOMESTIC_PARTNER: "DOMESTIC_PARTNER",
+  /**
+   * Employee
+   */
+  EMPLOYEE: "EMPLOYEE",
+  /**
+   * Other
+   */
+  OTHER: "OTHER",
+  /**
+   * Parent
+   */
+  PARENT: "PARENT",
+  /**
+   * Spouse
+   */
+  SPOUSE: "SPOUSE",
+  /**
+   * Unknown
+   */
+  UNKNOWN_RELATIONSHIP: "UNKNOWN_RELATIONSHIP",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckEntityRelationship =
+  (typeof EligibilityCheckEntityRelationship)[keyof typeof EligibilityCheckEntityRelationship];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckRelatedEntityIdentifierCode = {
+  /**
+   * Contracted Service Provider
+   */
+  CONTRACTED_SERVICE_PROVIDER: "CONTRACTED_SERVICE_PROVIDER",
+  /**
+   * Employer
+   */
+  EMPLOYER: "EMPLOYER",
+  /**
+   * Facility
+   */
+  FACILITY: "FACILITY",
+  /**
+   * Gateway Provider
+   */
+  GATEWAY_PROVIDER: "GATEWAY_PROVIDER",
+  /**
+   * Group
+   */
+  GROUP: "GROUP",
+  /**
+   * Independent Physicians Association
+   */
+  INDEPENDENT_PHYSICIANS_ASSOCIATION: "INDEPENDENT_PHYSICIANS_ASSOCIATION",
+  /**
+   * Insured or Subscriber
+   */
+  INSURED_OR_SUBSCRIBER: "INSURED_OR_SUBSCRIBER",
+  /**
+   * Legal Representative
+   */
+  LEGAL_REPRESENTATIVE: "LEGAL_REPRESENTATIVE",
+  /**
+   * Managed Care Organization
+   */
+  MANAGED_CARE_ORGANIZATION: "MANAGED_CARE_ORGANIZATION",
+  /**
+   * Organization Completing Configuration Change
+   */
+  ORGANIZATION_COMPLETING_CONFIGURATION_CHANGE: "ORGANIZATION_COMPLETING_CONFIGURATION_CHANGE",
+  /**
+   * Origin Carrier
+   */
+  ORIGIN_CARRIER: "ORIGIN_CARRIER",
+  /**
+   * Other Physician
+   */
+  OTHER_PHYSICIAN: "OTHER_PHYSICIAN",
+  /**
+   * Party Performing Verification
+   */
+  PARTY_PERFORMING_VERIFICATION: "PARTY_PERFORMING_VERIFICATION",
+  /**
+   * Payer
+   */
+  PAYER: "PAYER",
+  /**
+   * Plan Sponsor
+   */
+  PLAN_SPONSOR: "PLAN_SPONSOR",
+  /**
+   * Preferred Provider Organization
+   */
+  PREFERRED_PROVIDER_ORGANIZATION: "PREFERRED_PROVIDER_ORGANIZATION",
+  /**
+   * Primary Care Provider
+   */
+  PRIMARY_CARE_PROVIDER: "PRIMARY_CARE_PROVIDER",
+  /**
+   * Primary Payer
+   */
+  PRIMARY_PAYER: "PRIMARY_PAYER",
+  /**
+   * Prior Insurance Carrier
+   */
+  PRIOR_INSURANCE_CARRIER: "PRIOR_INSURANCE_CARRIER",
+  /**
+   * Provider
+   */
+  PROVIDER: "PROVIDER",
+  /**
+   * Secondary Payer
+   */
+  SECONDARY_PAYER: "SECONDARY_PAYER",
+  /**
+   * Tertiary Payer
+   */
+  TERTIARY_PAYER: "TERTIARY_PAYER",
+  /**
+   * Third Party Administrator
+   */
+  THIRD_PARTY_ADMINISTRATOR: "THIRD_PARTY_ADMINISTRATOR",
+  /**
+   * Utilization Management Organization
+   */
+  UTILIZATION_MANAGEMENT_ORGANIZATION: "UTILIZATION_MANAGEMENT_ORGANIZATION",
+  /**
+   * Vendor
+   */
+  VENDOR: "VENDOR",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckRelatedEntityIdentifierCode =
+  (typeof EligibilityCheckRelatedEntityIdentifierCode)[keyof typeof EligibilityCheckRelatedEntityIdentifierCode];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckResponseServiceCodeSystem = {
+  /**
+   * Current Dental Terminology (CDT), the dental procedure code set maintained by the American Dental Association.
+   */
+  CDT: "CDT",
+  /**
+   * Current Procedural Terminology (CPT), the procedure code set maintained by the American Medical Association.
+   */
+  CPT: "CPT",
+  /**
+   * Healthcare Common Procedure Coding System (HCPCS), the procedure and supply code set maintained by CMS.
+   */
+  HCPCS: "HCPCS",
+  /**
+   * ICD-10 Procedure Coding System (ICD-10-PCS), the inpatient procedure code set maintained by CMS.
+   */
+  ICD_10_PCS: "ICD-10-PCS",
+  /**
+   * National Drug Code (NDC), the drug identifier maintained by the FDA.
+   */
+  NDC: "NDC",
+  /**
+   * Service Type Code. The X12 code list that identifies categories of service, like `30` (Health Benefit Plan Coverage).
+   */
+  STC: "STC",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckResponseServiceCodeSystem =
+  (typeof EligibilityCheckResponseServiceCodeSystem)[keyof typeof EligibilityCheckResponseServiceCodeSystem];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckServiceDeliveryLimitPattern = {
+  /**
+   * A.M.
+   */
+  AM: "AM",
+  /**
+   * Any Shift
+   */
+  ANY_SHIFT: "ANY_SHIFT",
+  /**
+   * As Directed
+   */
+  AS_DIRECTED: "AS_DIRECTED",
+  /**
+   * 1st Shift (Normal Working Hours)
+   */
+  FIRST_SHIFT: "FIRST_SHIFT",
+  /**
+   * None. Also used to cancel or override a previously sent pattern.
+   */
+  NONE: "NONE",
+  /**
+   * P.M.
+   */
+  PM: "PM",
+  /**
+   * 2nd Shift
+   */
+  SECOND_SHIFT: "SECOND_SHIFT",
+  /**
+   * 3rd Shift
+   */
+  THIRD_SHIFT: "THIRD_SHIFT",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckServiceDeliveryLimitPattern =
+  (typeof EligibilityCheckServiceDeliveryLimitPattern)[keyof typeof EligibilityCheckServiceDeliveryLimitPattern];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckServiceDeliveryLimitSchedule = {
+  /**
+   * As Directed
+   */
+  AS_DIRECTED: "AS_DIRECTED",
+  /**
+   * Daily Mon. through Fri.
+   */
+  DAILY_MONDAY_THROUGH_FRIDAY: "DAILY_MONDAY_THROUGH_FRIDAY",
+  /**
+   * 5th Week of the Month
+   */
+  FIFTH_WEEK_OF_THE_MONTH: "FIFTH_WEEK_OF_THE_MONTH",
+  /**
+   * 1st & 3rd Weeks of the Month
+   */
+  FIRST_AND_THIRD_WEEKS_OF_THE_MONTH: "FIRST_AND_THIRD_WEEKS_OF_THE_MONTH",
+  /**
+   * 1st Week of the Month
+   */
+  FIRST_WEEK_OF_THE_MONTH: "FIRST_WEEK_OF_THE_MONTH",
+  /**
+   * 1st Working Day of Period
+   */
+  FIRST_WORKING_DAY_OF_PERIOD: "FIRST_WORKING_DAY_OF_PERIOD",
+  /**
+   * 4th Week of the Month
+   */
+  FOURTH_WEEK_OF_THE_MONTH: "FOURTH_WEEK_OF_THE_MONTH",
+  /**
+   * Friday
+   */
+  FRIDAY: "FRIDAY",
+  /**
+   * 1/2 By Wed., Bal. By Fri. Half the service is delivered by Wednesday and the balance by Friday.
+   */
+  HALF_BY_WEDNESDAY_BALANCE_BY_FRIDAY: "HALF_BY_WEDNESDAY_BALANCE_BY_FRIDAY",
+  /**
+   * 1/2 Mon. & 1/2 Thurs. The service is split, with half delivered on Monday and half on Thursday.
+   */
+  HALF_MONDAY_AND_HALF_THURSDAY: "HALF_MONDAY_AND_HALF_THURSDAY",
+  /**
+   * 1/2 Mon. & 1/2 Wed. The service is split, with half delivered on Monday and half on Wednesday.
+   */
+  HALF_MONDAY_AND_HALF_WEDNESDAY: "HALF_MONDAY_AND_HALF_WEDNESDAY",
+  /**
+   * 1/2 Tue. & 1/2 Fri. The service is split, with half delivered on Tuesday and half on Friday.
+   */
+  HALF_TUESDAY_AND_HALF_FRIDAY: "HALF_TUESDAY_AND_HALF_FRIDAY",
+  /**
+   * 1/2 Tues. & 1/2 Thurs. The service is split, with half delivered on Tuesday and half on Thursday.
+   */
+  HALF_TUESDAY_AND_HALF_THURSDAY: "HALF_TUESDAY_AND_HALF_THURSDAY",
+  /**
+   * 1/2 Wed. & 1/2 Fri. The service is split, with half delivered on Wednesday and half on Friday.
+   */
+  HALF_WEDNESDAY_AND_HALF_FRIDAY: "HALF_WEDNESDAY_AND_HALF_FRIDAY",
+  /**
+   * Immediately
+   */
+  IMMEDIATELY: "IMMEDIATELY",
+  /**
+   * Last Working Day of Period
+   */
+  LAST_WORKING_DAY_OF_PERIOD: "LAST_WORKING_DAY_OF_PERIOD",
+  /**
+   * Monday
+   */
+  MONDAY: "MONDAY",
+  /**
+   * Monday through Friday
+   */
+  MONDAY_THROUGH_FRIDAY: "MONDAY_THROUGH_FRIDAY",
+  /**
+   * Monday through Saturday
+   */
+  MONDAY_THROUGH_SATURDAY: "MONDAY_THROUGH_SATURDAY",
+  /**
+   * Monday through Sunday
+   */
+  MONDAY_THROUGH_SUNDAY: "MONDAY_THROUGH_SUNDAY",
+  /**
+   * Monday through Thursday
+   */
+  MONDAY_THROUGH_THURSDAY: "MONDAY_THROUGH_THURSDAY",
+  /**
+   * Monday, Tuesday and Friday
+   */
+  MONDAY_TUESDAY_AND_FRIDAY: "MONDAY_TUESDAY_AND_FRIDAY",
+  /**
+   * Monday, Tuesday and Thursday
+   */
+  MONDAY_TUESDAY_AND_THURSDAY: "MONDAY_TUESDAY_AND_THURSDAY",
+  /**
+   * Monday, Wednesday and Thursday
+   */
+  MONDAY_WEDNESDAY_AND_THURSDAY: "MONDAY_WEDNESDAY_AND_THURSDAY",
+  /**
+   * None. Also used to cancel or override a previously sent pattern.
+   */
+  NONE: "NONE",
+  /**
+   * Once Anytime Mon. through Fri.
+   */
+  ONCE_ANYTIME_MONDAY_THROUGH_FRIDAY: "ONCE_ANYTIME_MONDAY_THROUGH_FRIDAY",
+  /**
+   * Saturday
+   */
+  SATURDAY: "SATURDAY",
+  /**
+   * 2nd & 4th Weeks of the Month
+   */
+  SECOND_AND_FOURTH_WEEKS_OF_THE_MONTH: "SECOND_AND_FOURTH_WEEKS_OF_THE_MONTH",
+  /**
+   * 2nd Week of the Month
+   */
+  SECOND_WEEK_OF_THE_MONTH: "SECOND_WEEK_OF_THE_MONTH",
+  /**
+   * Sunday
+   */
+  SUNDAY: "SUNDAY",
+  /**
+   * 1/3 Mon., 1/3 Wed., 1/3 Fri. The service is split into thirds delivered on Monday, Wednesday, and Friday.
+   */
+  THIRD_MONDAY_THIRD_WEDNESDAY_AND_THIRD_FRIDAY: "THIRD_MONDAY_THIRD_WEDNESDAY_AND_THIRD_FRIDAY",
+  /**
+   * 3rd Week of the Month
+   */
+  THIRD_WEEK_OF_THE_MONTH: "THIRD_WEEK_OF_THE_MONTH",
+  /**
+   * Thursday
+   */
+  THURSDAY: "THURSDAY",
+  /**
+   * Tuesday
+   */
+  TUESDAY: "TUESDAY",
+  /**
+   * Tuesday through Friday
+   */
+  TUESDAY_THROUGH_FRIDAY: "TUESDAY_THROUGH_FRIDAY",
+  /**
+   * Tuesday, Thursday and Friday
+   */
+  TUESDAY_THURSDAY_AND_FRIDAY: "TUESDAY_THURSDAY_AND_FRIDAY",
+  /**
+   * Wednesday
+   */
+  WEDNESDAY: "WEDNESDAY",
+  /**
+   * Wednesday and Thursday
+   */
+  WEDNESDAY_AND_THURSDAY: "WEDNESDAY_AND_THURSDAY",
+  /**
+   * Whenever Necessary
+   */
+  WHENEVER_NECESSARY: "WHENEVER_NECESSARY",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckServiceDeliveryLimitSchedule =
+  (typeof EligibilityCheckServiceDeliveryLimitSchedule)[keyof typeof EligibilityCheckServiceDeliveryLimitSchedule];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckServiceDeliveryLimitFrequencyQualifier = {
+  /**
+   * Days
+   */
+  DAYS: "DAYS",
+  /**
+   * Months
+   */
+  MONTHS: "MONTHS",
+  /**
+   * Visit
+   */
+  VISIT: "VISIT",
+  /**
+   * Week
+   */
+  WEEK: "WEEK",
+  /**
+   * Years
+   */
+  YEARS: "YEARS",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckServiceDeliveryLimitFrequencyQualifier =
+  (typeof EligibilityCheckServiceDeliveryLimitFrequencyQualifier)[keyof typeof EligibilityCheckServiceDeliveryLimitFrequencyQualifier];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckServiceDeliveryLimitPeriodQualifier = {
+  /**
+   * Calendar Year
+   */
+  CALENDAR_YEAR: "CALENDAR_YEAR",
+  /**
+   * Contract. The term of the patient's contract with the plan.
+   */
+  CONTRACT: "CONTRACT",
+  /**
+   * Day
+   */
+  DAY: "DAY",
+  /**
+   * Episode. A single episode of care.
+   */
+  EPISODE: "EPISODE",
+  /**
+   * Exceeded. The patient has gone past the limit.
+   */
+  EXCEEDED: "EXCEEDED",
+  /**
+   * Hour
+   */
+  HOUR: "HOUR",
+  /**
+   * Lifetime
+   */
+  LIFETIME: "LIFETIME",
+  /**
+   * Lifetime Remaining. The portion of the lifetime limit the patient hasn't used yet.
+   */
+  LIFETIME_REMAINING: "LIFETIME_REMAINING",
+  /**
+   * Month
+   */
+  MONTH: "MONTH",
+  /**
+   * Not Exceeded. The patient hasn't reached the limit.
+   */
+  NOT_EXCEEDED: "NOT_EXCEEDED",
+  /**
+   * Outlier. Applies to care that falls outside the plan's normal limits.
+   */
+  OUTLIER: "OUTLIER",
+  /**
+   * Remaining. The portion of the limit the patient hasn't used yet.
+   */
+  REMAINING: "REMAINING",
+  /**
+   * Service Year. The plan's own 12-month benefit year, which may not align with the calendar year.
+   */
+  SERVICE_YEAR: "SERVICE_YEAR",
+  /**
+   * Visit
+   */
+  VISIT: "VISIT",
+  /**
+   * Week
+   */
+  WEEK: "WEEK",
+  /**
+   * Years
+   */
+  YEARS: "YEARS",
+  /**
+   * Year to Date. Accumulated from the start of the year through the date of the response.
+   */
+  YEAR_TO_DATE: "YEAR_TO_DATE",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckServiceDeliveryLimitPeriodQualifier =
+  (typeof EligibilityCheckServiceDeliveryLimitPeriodQualifier)[keyof typeof EligibilityCheckServiceDeliveryLimitPeriodQualifier];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckServiceDeliveryLimitQuantityQualifier = {
+  /**
+   * Days
+   */
+  DAYS: "DAYS",
+  /**
+   * Hours
+   */
+  HOURS: "HOURS",
+  /**
+   * Month
+   */
+  MONTH: "MONTH",
+  /**
+   * Units
+   */
+  UNITS: "UNITS",
+  /**
+   * Visits
+   */
+  VISITS: "VISITS",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckServiceDeliveryLimitQuantityQualifier =
+  (typeof EligibilityCheckServiceDeliveryLimitQuantityQualifier)[keyof typeof EligibilityCheckServiceDeliveryLimitQuantityQualifier];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckTimePeriod = {
+  /**
+   * Admission. Applies per hospital admission.
+   */
+  ADMISSION: "ADMISSION",
+  /**
+   * Calendar Year. For a deductible, this is the patient's total for the year rather than the amount they still owe.
+   */
+  CALENDAR_YEAR: "CALENDAR_YEAR",
+  /**
+   * Contract. The term of the patient's contract with the plan.
+   */
+  CONTRACT: "CONTRACT",
+  /**
+   * Day
+   */
+  DAY: "DAY",
+  /**
+   * Episode. A single episode of care.
+   */
+  EPISODE: "EPISODE",
+  /**
+   * Exceeded. The patient has gone past the limit.
+   */
+  EXCEEDED: "EXCEEDED",
+  /**
+   * Hour
+   */
+  HOUR: "HOUR",
+  /**
+   * Lifetime
+   */
+  LIFETIME: "LIFETIME",
+  /**
+   * Lifetime Remaining. The portion of the lifetime limit the patient hasn't used yet.
+   */
+  LIFETIME_REMAINING: "LIFETIME_REMAINING",
+  /**
+   * Month
+   */
+  MONTH: "MONTH",
+  /**
+   * 24 Hours
+   */
+  N24_HOURS: "24_HOURS",
+  /**
+   * Not Exceeded. The patient hasn't reached the limit.
+   */
+  NOT_EXCEEDED: "NOT_EXCEEDED",
+  /**
+   * Outlier. Applies to care that falls outside the plan's normal limits.
+   */
+  OUTLIER: "OUTLIER",
+  /**
+   * Remaining. For a deductible, this is the amount the patient still owes rather than their total for the year.
+   */
+  REMAINING: "REMAINING",
+  /**
+   * Service Year. The plan's own 12-month benefit year, which may not align with the calendar year.
+   */
+  SERVICE_YEAR: "SERVICE_YEAR",
+  /**
+   * Visit
+   */
+  VISIT: "VISIT",
+  /**
+   * Week
+   */
+  WEEK: "WEEK",
+  /**
+   * Years
+   */
+  YEARS: "YEARS",
+  /**
+   * Year to Date. Accumulated from the start of the year through the date of the response.
+   */
+  YEAR_TO_DATE: "YEAR_TO_DATE",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckTimePeriod = (typeof EligibilityCheckTimePeriod)[keyof typeof EligibilityCheckTimePeriod];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckQuantityQualifier = {
+  /**
+   * Covered - Actual. A confirmed count of covered units.
+   */
+  COVERED_ACTUAL: "COVERED_ACTUAL",
+  /**
+   * Covered - Estimated. An estimated count of covered units.
+   */
+  COVERED_ESTIMATED: "COVERED_ESTIMATED",
+  /**
+   * Days
+   */
+  DAYS: "DAYS",
+  /**
+   * Deductible Blood Units. The number of units of blood the patient must pay for before the plan covers them.
+   */
+  DEDUCTIBLE_BLOOD_UNITS: "DEDUCTIBLE_BLOOD_UNITS",
+  /**
+   * Hours
+   */
+  HOURS: "HOURS",
+  /**
+   * Life-time Reserve - Actual. A confirmed count of Medicare lifetime reserve days.
+   */
+  LIFE_TIME_RESERVE_ACTUAL: "LIFE_TIME_RESERVE_ACTUAL",
+  /**
+   * Life-time Reserve - Estimated. An estimated count of Medicare lifetime reserve days.
+   */
+  LIFE_TIME_RESERVE_ESTIMATED: "LIFE_TIME_RESERVE_ESTIMATED",
+  /**
+   * Maximum
+   */
+  MAXIMUM: "MAXIMUM",
+  /**
+   * Minimum
+   */
+  MINIMUM: "MINIMUM",
+  /**
+   * Month
+   */
+  MONTH: "MONTH",
+  /**
+   * Number of Co-insurance Days
+   */
+  NUMBER_OF_CO_INSURANCE_DAYS: "NUMBER_OF_CO_INSURANCE_DAYS",
+  /**
+   * Number of Services or Procedures
+   */
+  NUMBER_OF_SERVICES_OR_PROCEDURES: "NUMBER_OF_SERVICES_OR_PROCEDURES",
+  /**
+   * Quantity Approved. The number of units the payer has authorized.
+   */
+  QUANTITY_APPROVED: "QUANTITY_APPROVED",
+  /**
+   * Quantity Used. The portion of the benefit the patient has already consumed.
+   */
+  QUANTITY_USED: "QUANTITY_USED",
+  /**
+   * Visits
+   */
+  VISITS: "VISITS",
+  /**
+   * Years
+   */
+  YEARS: "YEARS",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckQuantityQualifier =
+  (typeof EligibilityCheckQuantityQualifier)[keyof typeof EligibilityCheckQuantityQualifier];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckInvalidEntryReasonCode = {
+  /**
+   * Required amount is missing for a benefit that expects an amount.
+   */
+  MISSING_AMOUNT: "MISSING_AMOUNT",
+  /**
+   * Required percent is missing for a benefit that expects a percent.
+   */
+  MISSING_PERCENT: "MISSING_PERCENT",
+  /**
+   * Benefit has an unexpected amount value.
+   */
+  UNEXPECTED_AMOUNT: "UNEXPECTED_AMOUNT",
+  /**
+   * Benefit has an unexpected percent value.
+   */
+  UNEXPECTED_PERCENT: "UNEXPECTED_PERCENT",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckInvalidEntryReasonCode =
+  (typeof EligibilityCheckInvalidEntryReasonCode)[keyof typeof EligibilityCheckInvalidEntryReasonCode];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckCoverageStatus = {
+  /**
+   * The patient has active coverage for the specified service.
+   */
+  ACTIVE_COVERAGE: "ACTIVE_COVERAGE",
+  /**
+   * The patient has active coverage under a full risk capitation arrangement, where the provider receives a fixed payment per patient regardless of the services provided.
+   */
+  ACTIVE_FULL_RISK_CAPITATION: "ACTIVE_FULL_RISK_CAPITATION",
+  /**
+   * The patient has active coverage, but the payer is investigating the patient's eligibility or coverage details.
+   */
+  ACTIVE_PENDING_INVESTIGATION: "ACTIVE_PENDING_INVESTIGATION",
+  /**
+   * The patient has active coverage where some services are capitated (the provider receives a fixed payment) and others aren't.
+   */
+  ACTIVE_SERVICES_CAPITATED: "ACTIVE_SERVICES_CAPITATED",
+  /**
+   * The patient has active coverage where services provided by the primary care physician are capitated (the provider receives a fixed payment).
+   */
+  ACTIVE_SERVICES_CAPITATED_TO_PRIMARY_CARE_PROVIDER: "ACTIVE_SERVICES_CAPITATED_TO_PRIMARY_CARE_PROVIDER",
+  /**
+   * The patient doesn't have active coverage for the specified service.
+   */
+  INACTIVE: "INACTIVE",
+  /**
+   * The patient's coverage is inactive while the payer updates their eligibility information.
+   */
+  INACTIVE_PENDING_ELIGIBILITY_UPDATE: "INACTIVE_PENDING_ELIGIBILITY_UPDATE",
+  /**
+   * The patient's coverage is inactive while the payer investigates the patient's eligibility or coverage details.
+   */
+  INACTIVE_PENDING_INVESTIGATION: "INACTIVE_PENDING_INVESTIGATION",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckCoverageStatus =
+  (typeof EligibilityCheckCoverageStatus)[keyof typeof EligibilityCheckCoverageStatus];
+
+/**
+ * @public
+ * @enum
+ */
+export const EligibilityCheckProviderEntityIdentifierCode = {
+  /**
+   * Employer
+   */
+  EMPLOYER: "EMPLOYER",
+  /**
+   * Facility
+   */
+  FACILITY: "FACILITY",
+  /**
+   * Gateway Provider
+   */
+  GATEWAY_PROVIDER: "GATEWAY_PROVIDER",
+  /**
+   * Hospital
+   */
+  HOSPITAL: "HOSPITAL",
+  /**
+   * Payer
+   */
+  PAYER: "PAYER",
+  /**
+   * Plan Sponsor
+   */
+  PLAN_SPONSOR: "PLAN_SPONSOR",
+  /**
+   * Provider
+   */
+  PROVIDER: "PROVIDER",
+  /**
+   * Third Party Administrator
+   */
+  THIRD_PARTY_ADMINISTRATOR: "THIRD_PARTY_ADMINISTRATOR",
+} as const;
+/**
+ * @public
+ */
+export type EligibilityCheckProviderEntityIdentifierCode =
+  (typeof EligibilityCheckProviderEntityIdentifierCode)[keyof typeof EligibilityCheckProviderEntityIdentifierCode];
+
+/**
+ * @public
+ * @enum
+ */
 export const EventDestinationsDestinationInputStatus = {
   /**
    * The destination is paused and will not receive event deliveries.

@@ -89,16 +89,16 @@ export class NotFoundException extends __BaseException {
         Object.setPrototypeOf(this, NotFoundException.prototype);
     }
 }
-export class EventDestinationsLimitExceededException extends __BaseException {
-    name = "EventDestinationsLimitExceededException";
+export class EligibilityCheckSerializationException extends __BaseException {
+    name = "EligibilityCheckSerializationException";
     $fault = "client";
     constructor(opts) {
         super({
-            name: "EventDestinationsLimitExceededException",
+            name: "EligibilityCheckSerializationException",
             $fault: "client",
             ...opts,
         });
-        Object.setPrototypeOf(this, EventDestinationsLimitExceededException.prototype);
+        Object.setPrototypeOf(this, EligibilityCheckSerializationException.prototype);
     }
 }
 export class ContentTooLargeException extends __BaseException {
@@ -111,5 +111,17 @@ export class ContentTooLargeException extends __BaseException {
             ...opts,
         });
         Object.setPrototypeOf(this, ContentTooLargeException.prototype);
+    }
+}
+export class EventDestinationsLimitExceededException extends __BaseException {
+    name = "EventDestinationsLimitExceededException";
+    $fault = "client";
+    constructor(opts) {
+        super({
+            name: "EventDestinationsLimitExceededException",
+            $fault: "client",
+            ...opts,
+        });
+        Object.setPrototypeOf(this, EventDestinationsLimitExceededException.prototype);
     }
 }

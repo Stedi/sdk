@@ -1,7 +1,7 @@
 // smithy-typescript generated code
 import type { MetadataBearer as __MetadataBearer } from "@smithy/types";
 
-import { _ep1, _mw0, command } from "../commandBuilder";
+import { _ep2, _mw0, command } from "../commandBuilder";
 import type {
   CreateProfessionalClaimSubmissionInput,
   CreateProfessionalClaimSubmissionOutput,
@@ -787,7 +787,7 @@ export interface CreateProfessionalClaimSubmissionCommandOutput extends CreatePr
  * @internal
  */
 export class CreateProfessionalClaimSubmissionCommand extends command<CreateProfessionalClaimSubmissionCommandInput, CreateProfessionalClaimSubmissionCommandOutput>(
-  _ep1,
+  _ep2,
   _mw0,
   "CreateProfessionalClaimSubmission",
   CreateProfessionalClaimSubmission$

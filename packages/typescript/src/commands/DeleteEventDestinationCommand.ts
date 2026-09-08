@@ -1,7 +1,7 @@
 // smithy-typescript generated code
 import type { MetadataBearer as __MetadataBearer } from "@smithy/types";
 
-import { _ep0, _mw0, command } from "../commandBuilder";
+import { _ep1, _mw0, command } from "../commandBuilder";
 import type { DeleteEventDestinationInput, DeleteEventDestinationOutput } from "../models/models_0";
 import { DeleteEventDestination$ } from "../schemas/schemas_0";
 
@@ -90,7 +90,7 @@ export interface DeleteEventDestinationCommandOutput extends DeleteEventDestinat
  * @public
  */
 export class DeleteEventDestinationCommand extends command<DeleteEventDestinationCommandInput, DeleteEventDestinationCommandOutput>(
-  _ep0,
+  _ep1,
   _mw0,
   "DeleteEventDestination",
   DeleteEventDestination$

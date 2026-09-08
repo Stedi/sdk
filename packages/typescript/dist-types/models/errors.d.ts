@@ -95,16 +95,16 @@ export declare class NotFoundException extends __BaseException {
     constructor(opts: __ExceptionOptionType<NotFoundException, __BaseException>);
 }
 /**
- * The account has reached its maximum number of event destinations. Delete an existing destination or request a limit increase before creating another. Not retryable — the caller must change account state before retrying.
+ * The request body could not be parsed.
  * @public
  */
-export declare class EventDestinationsLimitExceededException extends __BaseException {
-    readonly name: "EventDestinationsLimitExceededException";
+export declare class EligibilityCheckSerializationException extends __BaseException {
+    readonly name: "EligibilityCheckSerializationException";
     readonly $fault: "client";
     /**
      * @internal
      */
-    constructor(opts: __ExceptionOptionType<EventDestinationsLimitExceededException, __BaseException>);
+    constructor(opts: __ExceptionOptionType<EligibilityCheckSerializationException, __BaseException>);
 }
 /**
  * The request payload is larger than the service accepts. Send less in one request.
@@ -117,4 +117,16 @@ export declare class ContentTooLargeException extends __BaseException {
      * @internal
      */
     constructor(opts: __ExceptionOptionType<ContentTooLargeException, __BaseException>);
+}
+/**
+ * The account has reached its maximum number of event destinations. Delete an existing destination or request a limit increase before creating another. Not retryable — the caller must change account state before retrying.
+ * @public
+ */
+export declare class EventDestinationsLimitExceededException extends __BaseException {
+    readonly name: "EventDestinationsLimitExceededException";
+    readonly $fault: "client";
+    /**
+     * @internal
+     */
+    constructor(opts: __ExceptionOptionType<EventDestinationsLimitExceededException, __BaseException>);
 }

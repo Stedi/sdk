@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProfessionalClaimSubmissionServiceFacility$ = exports.ProfessionalClaimSubmissionResubmission$ = exports.ProfessionalClaimSubmissionRenderingProviderIdentifiers$ = exports.ProfessionalClaimSubmissionRenderingProvider$ = exports.ProfessionalClaimSubmissionReferringProviderIdentifiers$ = exports.ProfessionalClaimSubmissionReferringProvider$ = exports.ProfessionalClaimSubmissionReferenceNumbers$ = exports.ProfessionalClaimSubmissionPurchasedServiceProviderIdentifiers$ = exports.ProfessionalClaimSubmissionPurchasedServiceProvider$ = exports.ProfessionalClaimSubmissionPurchasedService$ = exports.ProfessionalClaimSubmissionProcedureCode$ = exports.ProfessionalClaimSubmissionPersonName$ = exports.ProfessionalClaimSubmissionPayer$ = exports.ProfessionalClaimSubmissionPatientCondition$ = exports.ProfessionalClaimSubmissionPatient$ = exports.ProfessionalClaimSubmissionOtherPayer$ = exports.ProfessionalClaimSubmissionOtherInsuredAuthorization$ = exports.ProfessionalClaimSubmissionOtherInsured$ = exports.ProfessionalClaimSubmissionOrderingProviderIdentifiers$ = exports.ProfessionalClaimSubmissionOrderingProvider$ = exports.ProfessionalClaimSubmissionInsured$ = exports.ProfessionalClaimSubmissionEncounter$ = exports.ProfessionalClaimSubmissionDrugIdentification$ = exports.ProfessionalClaimSubmissionDateRange$ = exports.ProfessionalClaimSubmissionData$ = exports.ProfessionalClaimSubmissionContact$ = exports.ProfessionalClaimSubmissionClinicalDates$ = exports.ProfessionalClaimSubmissionBillingProviderIdentifiers$ = exports.ProfessionalClaimSubmissionBillingProvider$ = exports.ProfessionalClaimSubmissionBilling$ = exports.ProfessionalClaimSubmissionAuthorization$ = exports.ProfessionalClaimSubmissionAttachment$ = exports.ProfessionalClaimSubmissionAddress$ = exports.GetProfessionalClaimSubmissionOutput$ = exports.GetProfessionalClaimSubmissionInput$ = exports.CreateProfessionalClaimSubmissionOutput$ = exports.CreateProfessionalClaimSubmissionInput$ = exports.ClaimRejectionError$ = exports.errorTypeRegistries = exports.TooManyRequestsException$ = exports.NotFoundException$ = exports.InvalidRequestException$ = exports.InternalServerException$ = exports.ForbiddenException$ = exports.ContentTooLargeException$ = exports.ConflictException$ = exports.AuthenticationFailedException$ = exports.EventDestinationsLimitExceededException$ = exports.EligibilityCheckSerializationException$ = exports.StediServiceException$ = void 0;
-exports.EligibilityCheckCoInsurance$ = exports.EligibilityCheckCardReportedStolen$ = exports.EligibilityCheckCannotProcess$ = exports.EligibilityCheckBenefits$ = exports.EligibilityCheckBenefitDisclaimer$ = exports.EligibilityCheckBenefitDescription$ = exports.EligibilityCheckAddress$ = exports.EligibilityCheckAdditionalInformationWithName$ = exports.EligibilityCheckRequestSubscriberPersonName$ = exports.EligibilityCheckRequestSubscriberAddress$ = exports.EligibilityCheckRequestSubscriberAdditionalInformation$ = exports.EligibilityCheckRequestSubscriber$ = exports.EligibilityCheckRequestStateLicense$ = exports.EligibilityCheckRequestService$ = exports.EligibilityCheckRequestProviderPersonName$ = exports.EligibilityCheckRequestProviderAdditionalInformation$ = exports.EligibilityCheckRequestProvider$ = exports.EligibilityCheckRequestPlaceOfService$ = exports.EligibilityCheckRequestEntityProvider$ = exports.EligibilityCheckRequestEncounterDates$ = exports.EligibilityCheckRequestEncounterAdditionalInformation$ = exports.EligibilityCheckRequestEncounter$ = exports.EligibilityCheckRequestDependentPersonName$ = exports.EligibilityCheckRequestDependentName$ = exports.EligibilityCheckRequestDependentAdditionalInformation$ = exports.EligibilityCheckRequestDependent$ = exports.EligibilityCheckRequestAddress$ = exports.EligibilityCheckWarning$ = exports.CreateEligibilityCheckOutput$ = exports.CreateEligibilityCheckInput$ = exports.ListClaimsOutput$ = exports.ListClaimsInput$ = exports.GetClaimTimelineOutput$ = exports.GetClaimTimelineInput$ = exports.GetClaimOutput$ = exports.GetClaimInput$ = exports.ClaimSummary$ = exports.ClaimSubmissionSummary$ = exports.ClaimPaymentInformationSummary$ = exports.ClaimPatientName$ = exports.ClaimAcknowledgmentSummary$ = exports.ClaimDateRange$ = exports.ValidateProfessionalClaimSubmissionOutput$ = exports.ValidateProfessionalClaimSubmissionInput$ = exports.ProfessionalClaimSubmissionSupervisingProviderIdentifiers$ = exports.ProfessionalClaimSubmissionSupervisingProvider$ = exports.ProfessionalClaimSubmissionSubmitter$ = exports.ProfessionalClaimSubmissionServiceLinePriorAuthorizationNumber$ = exports.ProfessionalClaimSubmissionServiceLine$ = exports.ProfessionalClaimSubmissionServiceFacilityIdentifiers$ = void 0;
-exports.EligibilityCheckServiceDeliveryLimitDelivery$ = exports.EligibilityCheckServiceDeliveryLimit$ = exports.EligibilityCheckServiceCodeRange$ = exports.EligibilityCheckServiceCode$ = exports.EligibilityCheckSecondSurgicalOpinionRequired$ = exports.EligibilityCheckResponseError$ = exports.EligibilityCheckReserve$ = exports.EligibilityCheckRelatedEntity$ = exports.EligibilityCheckQuantity$ = exports.EligibilityCheckQualifiedPersonName$ = exports.EligibilityCheckProviderAdditionalInformation$ = exports.EligibilityCheckProvider$ = exports.EligibilityCheckPriorYearsHistory$ = exports.EligibilityCheckPrimaryCareProvider$ = exports.EligibilityCheckPreExistingCondition$ = exports.EligibilityCheckPlan$ = exports.EligibilityCheckPlaceOfService$ = exports.EligibilityCheckPersonName$ = exports.EligibilityCheckPayer$ = exports.EligibilityCheckPatientAttributeDateRanges$ = exports.EligibilityCheckOutOfPocket$ = exports.EligibilityCheckOtherSourceOfData$ = exports.EligibilityCheckOtherOrAdditionalPayer$ = exports.EligibilityCheckNotDeemedMedicalNecessity$ = exports.EligibilityCheckNonCovered$ = exports.EligibilityCheckNetwork$ = exports.EligibilityCheckMeta$ = exports.EligibilityCheckManagedCareCoordinator$ = exports.EligibilityCheckMaintenance$ = exports.EligibilityCheckLimitation$ = exports.EligibilityCheckInvalidEntryReason$ = exports.EligibilityCheckInvalidEntries$ = exports.EligibilityCheckInvalidBenefit$ = exports.EligibilityCheckHealthCareFacility$ = exports.EligibilityCheckExclusion$ = exports.EligibilityCheckEntityProvider$ = exports.EligibilityCheckEligibilityStatus$ = exports.EligibilityCheckEligibilityAndBenefitDateRanges$ = exports.EligibilityCheckEligibilityAndBenefitAdditionalInformation$ = exports.EligibilityCheckDiagnosisCode$ = exports.EligibilityCheckDiagnosis$ = exports.EligibilityCheckDependentAdditionalInformation$ = exports.EligibilityCheckDependent$ = exports.EligibilityCheckDeductible$ = exports.EligibilityCheckDateRange$ = exports.EligibilityCheckCoverageBasis$ = exports.EligibilityCheckCostContainment$ = exports.EligibilityCheckCoPayment$ = exports.EligibilityCheckContactFollowingEntityForInformation$ = exports.EligibilityCheckContact$ = void 0;
-exports.ValidateProfessionalClaimSubmission$ = exports.GetProfessionalClaimSubmission$ = exports.CreateProfessionalClaimSubmission$ = exports.EventDestinationsEventPayload$ = exports.EligibilityCheckServiceLimit$ = exports.EligibilityCheckPersonOrOrganizationName$ = exports.EligibilityCheckRequestSubscriberName$ = exports.EligibilityCheckRequestProviderName$ = exports.ClaimTimelineEvent$ = exports.ProfessionalClaimSubmissionTaxId$ = exports.ProfessionalClaimSubmissionQualifiedPersonName$ = exports.ProfessionalClaimSubmissionQualifiedOrganizationName$ = exports.ProfessionalClaimSubmissionQualifiedName$ = exports.ProfessionalClaimSubmissionPrescriptionOrCompoundDrugAssociationNumber$ = exports.ProfessionalClaimSubmissionOtherPayerId$ = exports.ProfessionalClaimSubmissionClaimNote$ = exports.ValidationFailure$ = exports.UpdateEventDestinationOutput$ = exports.UpdateEventDestinationInput$ = exports.RotateEventDestinationSecretOutput$ = exports.RotateEventDestinationSecretInput$ = exports.ListEventDestinationsOutput$ = exports.ListEventDestinationsInput$ = exports.ListEventDestinationEventsOutput$ = exports.ListEventDestinationEventsInput$ = exports.GetEventDestinationSecretOutput$ = exports.GetEventDestinationSecretInput$ = exports.GetEventDestinationOutput$ = exports.GetEventDestinationInput$ = exports.GetEventDestinationEventOutput$ = exports.GetEventDestinationEventInput$ = exports.EventDestinationsV1EventPayload$ = exports.EventDestinationsEventSummary$ = exports.EventDestinationsEventPayloadResourceRef$ = exports.EventDestinationsDestinationSummary$ = exports.DeleteEventDestinationOutput$ = exports.DeleteEventDestinationInput$ = exports.CreateEventDestinationOutput$ = exports.CreateEventDestinationInput$ = exports.EligibilityCheckUnlimited$ = exports.EligibilityCheckSubscriberTraceNumber$ = exports.EligibilityCheckSubscriberAdditionalInformation$ = exports.EligibilityCheckSubscriber$ = exports.EligibilityCheckStateLicense$ = exports.EligibilityCheckSpendDown$ = exports.EligibilityCheckServicesRestrictedToFollowingProvider$ = exports.EligibilityCheckServiceOrProcedure$ = exports.EligibilityCheckServiceDeliveryLimitQuantity$ = exports.EligibilityCheckServiceDeliveryLimitPeriod$ = exports.EligibilityCheckServiceDeliveryLimitFrequency$ = void 0;
-exports.UpdateEventDestination$ = exports.RotateEventDestinationSecret$ = exports.ListEventDestinations$ = exports.ListEventDestinationEvents$ = exports.GetEventDestinationSecret$ = exports.GetEventDestinationEvent$ = exports.GetEventDestination$ = exports.DeleteEventDestination$ = exports.CreateEventDestination$ = exports.CreateEligibilityCheck$ = exports.ListClaims$ = exports.GetClaimTimeline$ = exports.GetClaim$ = void 0;
+exports.ProfessionalClaimSubmissionRenderingProvider$ = exports.ProfessionalClaimSubmissionReferringProviderIdentifiers$ = exports.ProfessionalClaimSubmissionReferringProvider$ = exports.ProfessionalClaimSubmissionReferenceNumbers$ = exports.ProfessionalClaimSubmissionPurchasedServiceProviderIdentifiers$ = exports.ProfessionalClaimSubmissionPurchasedServiceProvider$ = exports.ProfessionalClaimSubmissionPurchasedService$ = exports.ProfessionalClaimSubmissionProcedureCode$ = exports.ProfessionalClaimSubmissionPersonName$ = exports.ProfessionalClaimSubmissionPayer$ = exports.ProfessionalClaimSubmissionPatientCondition$ = exports.ProfessionalClaimSubmissionPatient$ = exports.ProfessionalClaimSubmissionOtherPayer$ = exports.ProfessionalClaimSubmissionOtherInsuredAuthorization$ = exports.ProfessionalClaimSubmissionOtherInsured$ = exports.ProfessionalClaimSubmissionOrderingProviderIdentifiers$ = exports.ProfessionalClaimSubmissionOrderingProvider$ = exports.ProfessionalClaimSubmissionInsured$ = exports.ProfessionalClaimSubmissionEncounter$ = exports.ProfessionalClaimSubmissionDrugIdentification$ = exports.ProfessionalClaimSubmissionDateRange$ = exports.ProfessionalClaimSubmissionData$ = exports.ProfessionalClaimSubmissionContact$ = exports.ProfessionalClaimSubmissionClinicalDates$ = exports.ProfessionalClaimSubmissionBillingProviderIdentifiers$ = exports.ProfessionalClaimSubmissionBillingProvider$ = exports.ProfessionalClaimSubmissionBilling$ = exports.ProfessionalClaimSubmissionAuthorization$ = exports.ProfessionalClaimSubmissionAttachment$ = exports.ProfessionalClaimSubmissionAddress$ = exports.GetProfessionalClaimSubmissionOutput$ = exports.GetProfessionalClaimSubmissionInput$ = exports.CreateProfessionalClaimSubmissionOutput$ = exports.CreateProfessionalClaimSubmissionInput$ = exports.ClaimRejectionError$ = exports.errorTypeRegistries = exports.TooManyRequestsException$ = exports.NotFoundException$ = exports.InvalidRequestException$ = exports.InternalServerException$ = exports.ForbiddenException$ = exports.ContentTooLargeException$ = exports.ConflictException$ = exports.AuthenticationFailedException$ = exports.EventDestinationsLimitExceededException$ = exports.EligibilityCheckThrottledException$ = exports.EligibilityCheckSerializationException$ = exports.EligibilityCheckNonUsOriginException$ = exports.EligibilityCheckInvalidParticipantException$ = exports.StediServiceException$ = void 0;
+exports.EligibilityCheckBenefits$ = exports.EligibilityCheckBenefitDisclaimer$ = exports.EligibilityCheckBenefitDescription$ = exports.EligibilityCheckAddress$ = exports.EligibilityCheckAdditionalInformationWithName$ = exports.EligibilityCheckRequestSubscriberPersonName$ = exports.EligibilityCheckRequestSubscriberAddress$ = exports.EligibilityCheckRequestSubscriberAdditionalInformation$ = exports.EligibilityCheckRequestSubscriber$ = exports.EligibilityCheckRequestStateLicense$ = exports.EligibilityCheckRequestService$ = exports.EligibilityCheckRequestProviderPersonName$ = exports.EligibilityCheckRequestProviderAdditionalInformation$ = exports.EligibilityCheckRequestProvider$ = exports.EligibilityCheckRequestPlaceOfService$ = exports.EligibilityCheckRequestEntityProvider$ = exports.EligibilityCheckRequestEncounterDates$ = exports.EligibilityCheckRequestEncounterAdditionalInformation$ = exports.EligibilityCheckRequestEncounter$ = exports.EligibilityCheckRequestDependentPersonName$ = exports.EligibilityCheckRequestDependentName$ = exports.EligibilityCheckRequestDependentAdditionalInformation$ = exports.EligibilityCheckRequestDependent$ = exports.EligibilityCheckRequestAddress$ = exports.EligibilityCheckWarning$ = exports.CreateEligibilityCheckOutput$ = exports.CreateEligibilityCheckInput$ = exports.ListClaimsOutput$ = exports.ListClaimsInput$ = exports.GetClaimTimelineOutput$ = exports.GetClaimTimelineInput$ = exports.GetClaimOutput$ = exports.GetClaimInput$ = exports.ClaimSummary$ = exports.ClaimSubmissionSummary$ = exports.ClaimPaymentInformationSummary$ = exports.ClaimPatientName$ = exports.ClaimAcknowledgmentSummary$ = exports.ClaimDateRange$ = exports.ValidateProfessionalClaimSubmissionOutput$ = exports.ValidateProfessionalClaimSubmissionInput$ = exports.ProfessionalClaimSubmissionSupervisingProviderIdentifiers$ = exports.ProfessionalClaimSubmissionSupervisingProvider$ = exports.ProfessionalClaimSubmissionSubmitter$ = exports.ProfessionalClaimSubmissionServiceLinePriorAuthorizationNumber$ = exports.ProfessionalClaimSubmissionServiceLine$ = exports.ProfessionalClaimSubmissionServiceFacilityIdentifiers$ = exports.ProfessionalClaimSubmissionServiceFacility$ = exports.ProfessionalClaimSubmissionResubmission$ = exports.ProfessionalClaimSubmissionRenderingProviderIdentifiers$ = void 0;
+exports.EligibilityCheckServiceCode$ = exports.EligibilityCheckSecondSurgicalOpinionRequired$ = exports.EligibilityCheckResponseError$ = exports.EligibilityCheckReserve$ = exports.EligibilityCheckRelatedEntity$ = exports.EligibilityCheckQuantity$ = exports.EligibilityCheckQualifiedPersonName$ = exports.EligibilityCheckProviderAdditionalInformation$ = exports.EligibilityCheckProvider$ = exports.EligibilityCheckPriorYearsHistory$ = exports.EligibilityCheckPrimaryCareProvider$ = exports.EligibilityCheckPreExistingCondition$ = exports.EligibilityCheckPlan$ = exports.EligibilityCheckPlaceOfService$ = exports.EligibilityCheckPersonName$ = exports.EligibilityCheckPayer$ = exports.EligibilityCheckPatientAttributeDateRanges$ = exports.EligibilityCheckOutOfPocket$ = exports.EligibilityCheckOtherSourceOfData$ = exports.EligibilityCheckOtherOrAdditionalPayer$ = exports.EligibilityCheckNotDeemedMedicalNecessity$ = exports.EligibilityCheckNonCovered$ = exports.EligibilityCheckNetwork$ = exports.EligibilityCheckMeta$ = exports.EligibilityCheckManagedCareCoordinator$ = exports.EligibilityCheckMaintenance$ = exports.EligibilityCheckLimitation$ = exports.EligibilityCheckInvalidEntryReason$ = exports.EligibilityCheckInvalidEntries$ = exports.EligibilityCheckInvalidBenefit$ = exports.EligibilityCheckHealthCareFacility$ = exports.EligibilityCheckExclusion$ = exports.EligibilityCheckEntityProvider$ = exports.EligibilityCheckEligibilityStatus$ = exports.EligibilityCheckEligibilityAndBenefitDateRanges$ = exports.EligibilityCheckEligibilityAndBenefitAdditionalInformation$ = exports.EligibilityCheckDiagnosisCode$ = exports.EligibilityCheckDiagnosis$ = exports.EligibilityCheckDependentAdditionalInformation$ = exports.EligibilityCheckDependent$ = exports.EligibilityCheckDeductible$ = exports.EligibilityCheckDateRange$ = exports.EligibilityCheckCoverageBasis$ = exports.EligibilityCheckCostContainment$ = exports.EligibilityCheckCoPayment$ = exports.EligibilityCheckContactFollowingEntityForInformation$ = exports.EligibilityCheckContact$ = exports.EligibilityCheckCoInsurance$ = exports.EligibilityCheckCardReportedStolen$ = exports.EligibilityCheckCannotProcess$ = void 0;
+exports.EventDestinationsEventPayload$ = exports.EligibilityCheckServiceLimit$ = exports.EligibilityCheckPersonOrOrganizationName$ = exports.EligibilityCheckRequestSubscriberName$ = exports.EligibilityCheckRequestProviderName$ = exports.ClaimTimelineEvent$ = exports.ProfessionalClaimSubmissionTaxId$ = exports.ProfessionalClaimSubmissionQualifiedPersonName$ = exports.ProfessionalClaimSubmissionQualifiedOrganizationName$ = exports.ProfessionalClaimSubmissionQualifiedName$ = exports.ProfessionalClaimSubmissionPrescriptionOrCompoundDrugAssociationNumber$ = exports.ProfessionalClaimSubmissionOtherPayerId$ = exports.ProfessionalClaimSubmissionClaimNote$ = exports.ValidationFailure$ = exports.UpdateEventDestinationOutput$ = exports.UpdateEventDestinationInput$ = exports.RotateEventDestinationSecretOutput$ = exports.RotateEventDestinationSecretInput$ = exports.ListEventDestinationsOutput$ = exports.ListEventDestinationsInput$ = exports.ListEventDestinationEventsOutput$ = exports.ListEventDestinationEventsInput$ = exports.GetEventDestinationSecretOutput$ = exports.GetEventDestinationSecretInput$ = exports.GetEventDestinationOutput$ = exports.GetEventDestinationInput$ = exports.GetEventDestinationEventOutput$ = exports.GetEventDestinationEventInput$ = exports.EventDestinationsV1EventPayload$ = exports.EventDestinationsEventSummary$ = exports.EventDestinationsEventPayloadResourceRef$ = exports.EventDestinationsDestinationSummary$ = exports.DeleteEventDestinationOutput$ = exports.DeleteEventDestinationInput$ = exports.CreateEventDestinationOutput$ = exports.CreateEventDestinationInput$ = exports.EligibilityCheckUnlimited$ = exports.EligibilityCheckSubscriberTraceNumber$ = exports.EligibilityCheckSubscriberAdditionalInformation$ = exports.EligibilityCheckSubscriber$ = exports.EligibilityCheckStateLicense$ = exports.EligibilityCheckSpendDown$ = exports.EligibilityCheckServicesRestrictedToFollowingProvider$ = exports.EligibilityCheckServiceOrProcedure$ = exports.EligibilityCheckServiceDeliveryLimitQuantity$ = exports.EligibilityCheckServiceDeliveryLimitPeriod$ = exports.EligibilityCheckServiceDeliveryLimitFrequency$ = exports.EligibilityCheckServiceDeliveryLimitDelivery$ = exports.EligibilityCheckServiceDeliveryLimit$ = exports.EligibilityCheckServiceCodeRange$ = void 0;
+exports.UpdateEventDestination$ = exports.RotateEventDestinationSecret$ = exports.ListEventDestinations$ = exports.ListEventDestinationEvents$ = exports.GetEventDestinationSecret$ = exports.GetEventDestinationEvent$ = exports.GetEventDestination$ = exports.DeleteEventDestination$ = exports.CreateEventDestination$ = exports.CreateEligibilityCheck$ = exports.ListClaims$ = exports.GetClaimTimeline$ = exports.GetClaim$ = exports.ValidateProfessionalClaimSubmission$ = exports.GetProfessionalClaimSubmission$ = exports.CreateProfessionalClaimSubmission$ = void 0;
 const _AFE = "AuthenticationFailedException";
 const _CAS = "ClaimAcknowledgmentSummary";
 const _CDR = "ClaimDateRange";
@@ -76,6 +76,7 @@ const _ECIBl = "EligibilityCheckInvalidBenefits";
 const _ECIE = "EligibilityCheckInvalidEntries";
 const _ECIER = "EligibilityCheckInvalidEntryReason";
 const _ECIERl = "EligibilityCheckInvalidEntryReasons";
+const _ECIPE = "EligibilityCheckInvalidParticipantException";
 const _ECL = "EligibilityCheckLimitation";
 const _ECLl = "EligibilityCheckLimitations";
 const _ECM = "EligibilityCheckMaintenance";
@@ -87,6 +88,7 @@ const _ECNC = "EligibilityCheckNonCovered";
 const _ECNCl = "EligibilityCheckNonCovereds";
 const _ECNDMN = "EligibilityCheckNotDeemedMedicalNecessity";
 const _ECNDMNl = "EligibilityCheckNotDeemedMedicalNecessities";
+const _ECNUOE = "EligibilityCheckNonUsOriginException";
 const _ECOOAP = "EligibilityCheckOtherOrAdditionalPayer";
 const _ECOOAPl = "EligibilityCheckOtherOrAdditionalPayers";
 const _ECOOP = "EligibilityCheckOutOfPocket";
@@ -161,6 +163,7 @@ const _ECSSOR = "EligibilityCheckSecondSurgicalOpinionRequired";
 const _ECSSORl = "EligibilityCheckSecondSurgicalOpinionRequireds";
 const _ECSTN = "EligibilityCheckSubscriberTraceNumber";
 const _ECSTNl = "EligibilityCheckSubscriberTraceNumbers";
+const _ECTE = "EligibilityCheckThrottledException";
 const _ECU = "EligibilityCheckUnlimited";
 const _ECUl = "EligibilityCheckUnlimiteds";
 const _ECW = "EligibilityCheckWarning";
@@ -352,7 +355,7 @@ const _com = "completion";
 const _con = "contacts";
 const _cou = "country";
 const _cr = "created";
-const _d = "description";
+const _d = "dependent";
 const _dC = "diagnosisCodes";
 const _dCS = "dentalClaimSubmission";
 const _dD = "diagnosisDescription";
@@ -366,7 +369,7 @@ const _dOS = "datesOfService";
 const _dU = "destinationUrl";
 const _da = "data";
 const _dat = "dates";
-const _de = "dependent";
+const _de = "description";
 const _ded = "deductible";
 const _def = "definition";
 const _del = "delivery";
@@ -417,7 +420,7 @@ const _hE = "httpError";
 const _hH = "httpHeader";
 const _hQ = "httpQuery";
 const _ht = "http";
-const _i = "insured";
+const _i = "id";
 const _iAA = "insuredAuthorizesAssignment";
 const _iAAR = "isAutoAccidentRelated";
 const _iCN = "identityCardNumber";
@@ -436,10 +439,10 @@ const _iR = "invalidReasons";
 const _iT = "initialTreatment";
 const _iTd = "idempotencyToken";
 const _iTn = "insuranceType";
-const _id = "id";
-const _ide = "identifiers";
-const _iden = "identification";
-const _in = "indicator";
+const _id = "identifiers";
+const _ide = "identification";
+const _in = "insured";
+const _ind = "indicator";
 const _is = "issue";
 const _it = "items";
 const _l = "limitations";
@@ -495,7 +498,7 @@ const _oRN = "originalReferenceNumber";
 const _oSOD = "otherSourceOfData";
 const _oTI = "outboundTraceId";
 const _or = "organization";
-const _p = "purpose";
+const _p = "payer";
 const _pA = "processedAt";
 const _pAA = "providerAcceptsAssignment";
 const _pAI = "priorAuthIndicator";
@@ -547,18 +550,18 @@ const _pSa = "pageSize";
 const _pSu = "purchasedService";
 const _pT = "pageToken";
 const _pYH = "priorYearsHistory";
-const _pa = "payer";
-const _pat = "patient";
+const _pa = "patient";
+const _pat = "pattern";
 const _path = "path";
-const _patt = "pattern";
 const _pe = "person";
 const _per = "percent";
 const _peri = "period";
 const _pl = "plans";
 const _pla = "plan";
 const _po = "policy";
-const _pr = "prescription";
-const _pro = "provider";
+const _pr = "provider";
+const _pre = "prescription";
+const _pu = "purpose";
 const _q = "quantity";
 const _qu = "qualifier";
 const _r = "resubmission";
@@ -616,8 +619,8 @@ const _st = "state";
 const _sta = "start";
 const _stat = "status";
 const _statu = "statuses";
-const _su = "submitter";
-const _sub = "subscriber";
+const _su = "subscriber";
+const _sub = "submitter";
 const _suf = "suffix";
 const _sy = "system";
 const _t = "type";
@@ -657,18 +660,36 @@ const n9 = "com.stedi.eligibility.v4.request";
 const schema_1 = require("@smithy/core/schema");
 const errors_1 = require("../models/errors");
 const StediServiceException_1 = require("../models/StediServiceException");
-const _s_registry = schema_1.TypeRegistry.for(_s);
+const _s_registry = new schema_1.TypeRegistry(_s);
 exports.StediServiceException$ = [-3, _s, "StediServiceException", 0, [], []];
 _s_registry.registerError(exports.StediServiceException$, StediServiceException_1.StediServiceException);
-const n0_registry = schema_1.TypeRegistry.for(n0);
-const n1_registry = schema_1.TypeRegistry.for(n1);
-const n2_registry = schema_1.TypeRegistry.for(n2);
+const n0_registry = new schema_1.TypeRegistry(n0);
+const n1_registry = new schema_1.TypeRegistry(n1);
+const n2_registry = new schema_1.TypeRegistry(n2);
+exports.EligibilityCheckInvalidParticipantException$ = [-3, n0, _ECIPE,
+    { [_e]: _c, [_hE]: 400 },
+    [_m, _x, _p, _i, _me, _pI, _pr, _su, _d, _pl, _eSI, _w, _er],
+    [0, 0, () => exports.EligibilityCheckPayer$, 0, () => exports.EligibilityCheckMeta$, 0, () => exports.EligibilityCheckProvider$, () => exports.EligibilityCheckSubscriber$, () => exports.EligibilityCheckDependent$, () => EligibilityCheckPlans, 0, () => EligibilityCheckWarnings, () => EligibilityCheckResponseErrorList], 4
+];
+n0_registry.registerError(exports.EligibilityCheckInvalidParticipantException$, errors_1.EligibilityCheckInvalidParticipantException);
+exports.EligibilityCheckNonUsOriginException$ = [-3, n0, _ECNUOE,
+    { [_e]: _c, [_hE]: 451 },
+    [_m, _x, _p, _i, _me, _pI, _pr, _su, _d, _pl, _eSI, _w, _er],
+    [0, 0, () => exports.EligibilityCheckPayer$, 0, () => exports.EligibilityCheckMeta$, 0, () => exports.EligibilityCheckProvider$, () => exports.EligibilityCheckSubscriber$, () => exports.EligibilityCheckDependent$, () => EligibilityCheckPlans, 0, () => EligibilityCheckWarnings, () => EligibilityCheckResponseErrorList], 4
+];
+n0_registry.registerError(exports.EligibilityCheckNonUsOriginException$, errors_1.EligibilityCheckNonUsOriginException);
 exports.EligibilityCheckSerializationException$ = [-3, n0, _ECSE,
     { [_e]: _c, [_hE]: 400 },
     [_m],
     [0], 1
 ];
 n0_registry.registerError(exports.EligibilityCheckSerializationException$, errors_1.EligibilityCheckSerializationException);
+exports.EligibilityCheckThrottledException$ = [-3, n0, _ECTE,
+    { [_e]: _c, [_hE]: 429 },
+    [_m, _x, _p, _i, _me, _pI, _pr, _su, _d, _pl, _eSI, _w, _er],
+    [0, 0, () => exports.EligibilityCheckPayer$, 0, () => exports.EligibilityCheckMeta$, 0, () => exports.EligibilityCheckProvider$, () => exports.EligibilityCheckSubscriber$, () => exports.EligibilityCheckDependent$, () => EligibilityCheckPlans, 0, () => EligibilityCheckWarnings, () => EligibilityCheckResponseErrorList], 4
+];
+n0_registry.registerError(exports.EligibilityCheckThrottledException$, errors_1.EligibilityCheckThrottledException);
 exports.EventDestinationsLimitExceededException$ = [-3, n1, _EDLEE,
     { [_e]: _c, [_hE]: 403 },
     [_m],
@@ -743,12 +764,12 @@ var ProfessionalClaimSubmissionSsn = [0, n3, _PCSS, 8, 0];
 var EventDestinationsSigningSecret = [0, n1, _EDSS, 8, 0];
 exports.ClaimRejectionError$ = [3, n4, _CRE,
     0,
-    [_d],
+    [_de],
     [0], 1
 ];
 exports.CreateProfessionalClaimSubmissionInput$ = [3, n3, _CPCSI,
     0,
-    [_p, _pa, _su, _i, _a, _en, _b, _sL, _pat, _oI, _iK],
+    [_pu, _p, _sub, _in, _a, _en, _b, _sL, _pa, _oI, _iK],
     [0, [() => exports.ProfessionalClaimSubmissionPayer$, 0], [() => exports.ProfessionalClaimSubmissionSubmitter$, 0], [() => exports.ProfessionalClaimSubmissionInsured$, 0], () => exports.ProfessionalClaimSubmissionAuthorization$, [() => exports.ProfessionalClaimSubmissionEncounter$, 0], [() => exports.ProfessionalClaimSubmissionBilling$, 0], [() => ProfessionalClaimSubmissionServiceLines, 0], [() => exports.ProfessionalClaimSubmissionPatient$, 0], [() => ProfessionalClaimSubmissionOtherInsuredList, 0], [0, { [_hH]: _IK }]], 8
 ];
 exports.CreateProfessionalClaimSubmissionOutput$ = [3, n3, _CPCSO,
@@ -758,7 +779,7 @@ exports.CreateProfessionalClaimSubmissionOutput$ = [3, n3, _CPCSO,
 ];
 exports.GetProfessionalClaimSubmissionInput$ = [3, n3, _GPCSI,
     0,
-    [_id],
+    [_i],
     [[0, 1]], 1
 ];
 exports.GetProfessionalClaimSubmissionOutput$ = [3, n3, _GPCSO,
@@ -788,7 +809,7 @@ exports.ProfessionalClaimSubmissionBilling$ = [3, n3, _PCSB,
 ];
 exports.ProfessionalClaimSubmissionBillingProvider$ = [3, n3, _PCSBP,
     0,
-    [_n, _ad, _co, _ide],
+    [_n, _ad, _co, _id],
     [[() => exports.ProfessionalClaimSubmissionQualifiedName$, 0], [() => exports.ProfessionalClaimSubmissionAddress$, 0], [() => exports.ProfessionalClaimSubmissionContact$, 0], () => exports.ProfessionalClaimSubmissionBillingProviderIdentifiers$], 2
 ];
 exports.ProfessionalClaimSubmissionBillingProviderIdentifiers$ = [3, n3, _PCSBPI,
@@ -798,7 +819,7 @@ exports.ProfessionalClaimSubmissionBillingProviderIdentifiers$ = [3, n3, _PCSBPI
 ];
 exports.ProfessionalClaimSubmissionClinicalDates$ = [3, n3, _PCSCD,
     0,
-    [_oOCI, _lMP, _iT, _lS, _aMOCC, _ac, _lX, _pr, _aC, _rC, _fVOC, _rR, _lW, _rTW, _uTW, _h],
+    [_oOCI, _lMP, _iT, _lS, _aMOCC, _ac, _lX, _pre, _aC, _rC, _fVOC, _rR, _lW, _rTW, _uTW, _h],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, () => exports.ProfessionalClaimSubmissionDateRange$, () => exports.ProfessionalClaimSubmissionDateRange$]
 ];
 exports.ProfessionalClaimSubmissionContact$ = [3, n3, _PCSC,
@@ -808,7 +829,7 @@ exports.ProfessionalClaimSubmissionContact$ = [3, n3, _PCSC,
 ];
 exports.ProfessionalClaimSubmissionData$ = [3, n3, _PCSD,
     0,
-    [_p, _pa, _su, _i, _a, _en, _b, _sL, _pat, _oI],
+    [_pu, _p, _sub, _in, _a, _en, _b, _sL, _pa, _oI],
     [0, [() => exports.ProfessionalClaimSubmissionPayer$, 0], [() => exports.ProfessionalClaimSubmissionSubmitter$, 0], [() => exports.ProfessionalClaimSubmissionInsured$, 0], () => exports.ProfessionalClaimSubmissionAuthorization$, [() => exports.ProfessionalClaimSubmissionEncounter$, 0], [() => exports.ProfessionalClaimSubmissionBilling$, 0], [() => ProfessionalClaimSubmissionServiceLines, 0], [() => exports.ProfessionalClaimSubmissionPatient$, 0], [() => ProfessionalClaimSubmissionOtherInsuredList, 0]], 8
 ];
 exports.ProfessionalClaimSubmissionDateRange$ = [3, n3, _PCSDR,
@@ -833,7 +854,7 @@ exports.ProfessionalClaimSubmissionInsured$ = [3, n3, _PCSI,
 ];
 exports.ProfessionalClaimSubmissionOrderingProvider$ = [3, n3, _PCSOP,
     0,
-    [_n, _ide],
+    [_n, _id],
     [[() => exports.ProfessionalClaimSubmissionQualifiedPersonName$, 0], () => exports.ProfessionalClaimSubmissionOrderingProviderIdentifiers$], 1
 ];
 exports.ProfessionalClaimSubmissionOrderingProviderIdentifiers$ = [3, n3, _PCSOPI,
@@ -853,7 +874,7 @@ exports.ProfessionalClaimSubmissionOtherInsuredAuthorization$ = [3, n3, _PCSOIA,
 ];
 exports.ProfessionalClaimSubmissionOtherPayer$ = [3, n3, _PCSOPr,
     0,
-    [_n, _id],
+    [_n, _i],
     [() => exports.ProfessionalClaimSubmissionQualifiedOrganizationName$, () => exports.ProfessionalClaimSubmissionOtherPayerId$], 2
 ];
 exports.ProfessionalClaimSubmissionPatient$ = [3, n3, _PCSP,
@@ -868,7 +889,7 @@ exports.ProfessionalClaimSubmissionPatientCondition$ = [3, n3, _PCSPC,
 ];
 exports.ProfessionalClaimSubmissionPayer$ = [3, n3, _PCSPr,
     0,
-    [_id, _n, _ad, _rI],
+    [_i, _n, _ad, _rI],
     [0, () => exports.ProfessionalClaimSubmissionQualifiedOrganizationName$, [() => exports.ProfessionalClaimSubmissionAddress$, 0], 0], 1
 ];
 exports.ProfessionalClaimSubmissionPersonName$ = [3, n3, _PCSPNro,
@@ -883,12 +904,12 @@ exports.ProfessionalClaimSubmissionProcedureCode$ = [3, n3, _PCSPCr,
 ];
 exports.ProfessionalClaimSubmissionPurchasedService$ = [3, n3, _PCSPS,
     0,
-    [_cA, _pro],
+    [_cA, _pr],
     [0, () => exports.ProfessionalClaimSubmissionPurchasedServiceProvider$], 2
 ];
 exports.ProfessionalClaimSubmissionPurchasedServiceProvider$ = [3, n3, _PCSPSP,
     0,
-    [_eT, _ide],
+    [_eT, _id],
     [0, () => exports.ProfessionalClaimSubmissionPurchasedServiceProviderIdentifiers$], 2
 ];
 exports.ProfessionalClaimSubmissionPurchasedServiceProviderIdentifiers$ = [3, n3, _PCSPSPI,
@@ -903,7 +924,7 @@ exports.ProfessionalClaimSubmissionReferenceNumbers$ = [3, n3, _PCSRN,
 ];
 exports.ProfessionalClaimSubmissionReferringProvider$ = [3, n3, _PCSRP,
     0,
-    [_n, _ide],
+    [_n, _id],
     [[() => exports.ProfessionalClaimSubmissionQualifiedPersonName$, 0], () => exports.ProfessionalClaimSubmissionReferringProviderIdentifiers$], 1
 ];
 exports.ProfessionalClaimSubmissionReferringProviderIdentifiers$ = [3, n3, _PCSRPI,
@@ -913,7 +934,7 @@ exports.ProfessionalClaimSubmissionReferringProviderIdentifiers$ = [3, n3, _PCSR
 ];
 exports.ProfessionalClaimSubmissionRenderingProvider$ = [3, n3, _PCSRPr,
     0,
-    [_n, _ide],
+    [_n, _id],
     [[() => exports.ProfessionalClaimSubmissionQualifiedName$, 0], () => exports.ProfessionalClaimSubmissionRenderingProviderIdentifiers$], 1
 ];
 exports.ProfessionalClaimSubmissionRenderingProviderIdentifiers$ = [3, n3, _PCSRPIr,
@@ -928,7 +949,7 @@ exports.ProfessionalClaimSubmissionResubmission$ = [3, n3, _PCSR,
 ];
 exports.ProfessionalClaimSubmissionServiceFacility$ = [3, n3, _PCSSF,
     0,
-    [_n, _ad, _ide],
+    [_n, _ad, _id],
     [() => exports.ProfessionalClaimSubmissionQualifiedOrganizationName$, [() => exports.ProfessionalClaimSubmissionAddress$, 0], () => exports.ProfessionalClaimSubmissionServiceFacilityIdentifiers$], 2
 ];
 exports.ProfessionalClaimSubmissionServiceFacilityIdentifiers$ = [3, n3, _PCSSFI,
@@ -953,7 +974,7 @@ exports.ProfessionalClaimSubmissionSubmitter$ = [3, n3, _PCSSr,
 ];
 exports.ProfessionalClaimSubmissionSupervisingProvider$ = [3, n3, _PCSSP,
     0,
-    [_n, _ide],
+    [_n, _id],
     [[() => exports.ProfessionalClaimSubmissionQualifiedPersonName$, 0], () => exports.ProfessionalClaimSubmissionSupervisingProviderIdentifiers$], 1
 ];
 exports.ProfessionalClaimSubmissionSupervisingProviderIdentifiers$ = [3, n3, _PCSSPI,
@@ -963,7 +984,7 @@ exports.ProfessionalClaimSubmissionSupervisingProviderIdentifiers$ = [3, n3, _PC
 ];
 exports.ValidateProfessionalClaimSubmissionInput$ = [3, n3, _VPCSI,
     0,
-    [_p, _pa, _su, _i, _a, _en, _b, _sL, _pat, _oI],
+    [_pu, _p, _sub, _in, _a, _en, _b, _sL, _pa, _oI],
     [0, [() => exports.ProfessionalClaimSubmissionPayer$, 0], [() => exports.ProfessionalClaimSubmissionSubmitter$, 0], [() => exports.ProfessionalClaimSubmissionInsured$, 0], () => exports.ProfessionalClaimSubmissionAuthorization$, [() => exports.ProfessionalClaimSubmissionEncounter$, 0], [() => exports.ProfessionalClaimSubmissionBilling$, 0], [() => ProfessionalClaimSubmissionServiceLines, 0], [() => exports.ProfessionalClaimSubmissionPatient$, 0], [() => ProfessionalClaimSubmissionOtherInsuredList, 0]], 8
 ];
 exports.ValidateProfessionalClaimSubmissionOutput$ = [3, n3, _VPCSO,
@@ -978,7 +999,7 @@ exports.ClaimDateRange$ = [3, n5, _CDR,
 ];
 exports.ClaimAcknowledgmentSummary$ = [3, n6, _CAS,
     0,
-    [_id, _stat, _rB, _sN, _pA],
+    [_i, _stat, _rB, _sN, _pA],
     [0, 0, 0, 0, 5], 5
 ];
 exports.ClaimPatientName$ = [3, n6, _CPN,
@@ -988,32 +1009,32 @@ exports.ClaimPatientName$ = [3, n6, _CPN,
 ];
 exports.ClaimPaymentInformationSummary$ = [3, n6, _CPIS,
     0,
-    [_id, _sC, _tCCA, _cPA, _pA, _pRA, _cOETN],
+    [_i, _sC, _tCCA, _cPA, _pA, _pRA, _cOETN],
     [0, 0, 0, 0, 5, 0, 0], 5
 ];
 exports.ClaimSubmissionSummary$ = [3, n6, _CSS,
     0,
-    [_id, _pCN, _tCCA, _pA, _sPI, _pNa, _dOS],
+    [_i, _pCN, _tCCA, _pA, _sPI, _pNa, _dOS],
     [0, 0, 0, 5, 0, () => exports.ClaimPatientName$, () => exports.ClaimDateRange$], 4
 ];
 exports.ClaimSummary$ = [3, n6, _CS,
     0,
-    [_id, _pCN, _stat, _sRB, _t, _tCCA, _sA, _sPI, _pNa, _tCPA, _dOS],
+    [_i, _pCN, _stat, _sRB, _t, _tCCA, _sA, _sPI, _pNa, _tCPA, _dOS],
     [0, 0, 0, 0, 0, 0, 5, 0, () => exports.ClaimPatientName$, 0, () => exports.ClaimDateRange$], 7
 ];
 exports.GetClaimInput$ = [3, n6, _GCI,
     0,
-    [_id],
+    [_i],
     [[0, 1]], 1
 ];
 exports.GetClaimOutput$ = [3, n6, _GCO,
     0,
-    [_id, _pCN, _stat, _sRB, _t, _tCCA, _sA, _sPI, _pNa, _tCPA, _dOS],
+    [_i, _pCN, _stat, _sRB, _t, _tCCA, _sA, _sPI, _pNa, _tCPA, _dOS],
     [0, 0, 0, 0, 0, 0, 5, 0, () => exports.ClaimPatientName$, 0, () => exports.ClaimDateRange$], 7
 ];
 exports.GetClaimTimelineInput$ = [3, n6, _GCTI,
     0,
-    [_id, _pSa, _pT],
+    [_i, _pSa, _pT],
     [[0, 1], [1, { [_hQ]: _pSa }], [0, { [_hQ]: _pT }]], 1
 ];
 exports.GetClaimTimelineOutput$ = [3, n6, _GCTO,
@@ -1033,17 +1054,17 @@ exports.ListClaimsOutput$ = [3, n6, _LCO,
 ];
 exports.CreateEligibilityCheckInput$ = [3, n7, _CECI,
     0,
-    [_pI, _pro, _sub, _pNay, _de, _en, _ePI, _eSI],
+    [_pI, _pr, _su, _pNay, _d, _en, _ePI, _eSI],
     [0, () => exports.EligibilityCheckRequestProvider$, () => exports.EligibilityCheckRequestSubscriber$, 0, () => exports.EligibilityCheckRequestDependent$, () => exports.EligibilityCheckRequestEncounter$, 0, 0], 3
 ];
 exports.CreateEligibilityCheckOutput$ = [3, n7, _CECO,
     0,
-    [_id, _x, _pa, _me, _pI, _eSI, _w, _pro, _sub, _de, _pl, _er],
-    [0, 0, () => exports.EligibilityCheckPayer$, () => exports.EligibilityCheckMeta$, 0, 0, () => EligibilityCheckWarnings, () => exports.EligibilityCheckProvider$, () => exports.EligibilityCheckSubscriber$, () => exports.EligibilityCheckDependent$, () => EligibilityCheckPlans, () => EligibilityCheckResponseErrorList], 3
+    [_x, _p, _i, _me, _pI, _pr, _su, _d, _pl, _eSI, _w, _er],
+    [0, () => exports.EligibilityCheckPayer$, 0, () => exports.EligibilityCheckMeta$, 0, () => exports.EligibilityCheckProvider$, () => exports.EligibilityCheckSubscriber$, () => exports.EligibilityCheckDependent$, () => EligibilityCheckPlans, 0, () => EligibilityCheckWarnings, () => EligibilityCheckResponseErrorList], 3
 ];
 exports.EligibilityCheckWarning$ = [3, n8, _ECW,
     0,
-    [_cod, _d],
+    [_cod, _de],
     [0, 0]
 ];
 exports.EligibilityCheckRequestAddress$ = [3, n9, _ECRA,
@@ -1053,8 +1074,8 @@ exports.EligibilityCheckRequestAddress$ = [3, n9, _ECRA,
 ];
 exports.EligibilityCheckRequestDependent$ = [3, n9, _ECRD,
     0,
-    [_n, _rTS, _dOB, _g, _aId, _ad, _pro],
-    [() => exports.EligibilityCheckRequestDependentName$, 0, 0, 0, () => exports.EligibilityCheckRequestDependentAdditionalInformation$, () => exports.EligibilityCheckRequestAddress$, () => exports.EligibilityCheckRequestEntityProvider$], 1
+    [_n, _rTS, _dOB, _g, _bSN, _aId, _ad, _pr],
+    [() => exports.EligibilityCheckRequestDependentName$, 0, 0, 0, 1, () => exports.EligibilityCheckRequestDependentAdditionalInformation$, () => exports.EligibilityCheckRequestAddress$, () => exports.EligibilityCheckRequestEntityProvider$], 1
 ];
 exports.EligibilityCheckRequestDependentAdditionalInformation$ = [3, n9, _ECRDAI,
     0,
@@ -1098,8 +1119,8 @@ exports.EligibilityCheckRequestPlaceOfService$ = [3, n9, _ECRPOS,
 ];
 exports.EligibilityCheckRequestProvider$ = [3, n9, _ECRP,
     0,
-    [_n, _t, _np, _ti, _ei, _ss, _sPN, _pPN, _ad, _aId, _pro],
-    [() => exports.EligibilityCheckRequestProviderName$, 0, 0, 0, 0, 0, 0, 0, () => exports.EligibilityCheckRequestAddress$, () => exports.EligibilityCheckRequestProviderAdditionalInformation$, () => exports.EligibilityCheckRequestEntityProvider$], 1
+    [_n, _t, _np, _ti, _ei, _ss, _sPN, _pPN, _ad, _aId, _pr],
+    [() => exports.EligibilityCheckRequestProviderName$, 0, 0, 0, 0, 0, 0, 0, () => exports.EligibilityCheckRequestAddress$, () => exports.EligibilityCheckRequestProviderAdditionalInformation$, () => exports.EligibilityCheckRequestEntityProvider$]
 ];
 exports.EligibilityCheckRequestProviderAdditionalInformation$ = [3, n9, _ECRPAI,
     0,
@@ -1108,8 +1129,8 @@ exports.EligibilityCheckRequestProviderAdditionalInformation$ = [3, n9, _ECRPAI,
 ];
 exports.EligibilityCheckRequestProviderPersonName$ = [3, n9, _ECRPPN,
     0,
-    [_lNa, _fNi, _mN, _suf],
-    [0, 0, 0, 0], 1
+    [_fNi, _lNa, _mN, _suf],
+    [0, 0, 0, 0]
 ];
 exports.EligibilityCheckRequestService$ = [3, n9, _ECRS,
     0,
@@ -1123,8 +1144,8 @@ exports.EligibilityCheckRequestStateLicense$ = [3, n9, _ECRSL,
 ];
 exports.EligibilityCheckRequestSubscriber$ = [3, n9, _ECRSl,
     0,
-    [_n, _mI, _dOB, _g, _aId, _ad, _pro],
-    [() => exports.EligibilityCheckRequestSubscriberName$, 0, 0, 0, () => exports.EligibilityCheckRequestSubscriberAdditionalInformation$, () => exports.EligibilityCheckRequestSubscriberAddress$, () => exports.EligibilityCheckRequestEntityProvider$]
+    [_n, _mI, _dOB, _g, _bSN, _aId, _ad, _pr],
+    [() => exports.EligibilityCheckRequestSubscriberName$, 0, 0, 0, 1, () => exports.EligibilityCheckRequestSubscriberAdditionalInformation$, () => exports.EligibilityCheckRequestSubscriberAddress$, () => exports.EligibilityCheckRequestEntityProvider$]
 ];
 exports.EligibilityCheckRequestSubscriberAdditionalInformation$ = [3, n9, _ECRSAI,
     0,
@@ -1218,7 +1239,7 @@ exports.EligibilityCheckDeductible$ = [3, n10, _ECD,
 ];
 exports.EligibilityCheckDependent$ = [3, n10, _ECDl,
     0,
-    [_n, _ad, _pro, _dat, _dOB, _g, _bSN, _ma, _rTS, _aId],
+    [_n, _ad, _pr, _dat, _dOB, _g, _bSN, _ma, _rTS, _aId],
     [() => exports.EligibilityCheckQualifiedPersonName$, () => exports.EligibilityCheckAddress$, () => exports.EligibilityCheckEntityProvider$, () => exports.EligibilityCheckPatientAttributeDateRanges$, 0, 0, 1, () => exports.EligibilityCheckMaintenance$, 0, () => exports.EligibilityCheckDependentAdditionalInformation$], 1
 ];
 exports.EligibilityCheckDependentAdditionalInformation$ = [3, n10, _ECDAI,
@@ -1278,7 +1299,7 @@ exports.EligibilityCheckInvalidEntries$ = [3, n10, _ECIE,
 ];
 exports.EligibilityCheckInvalidEntryReason$ = [3, n10, _ECIER,
     0,
-    [_cod, _d],
+    [_cod, _de],
     [0, 0], 2
 ];
 exports.EligibilityCheckLimitation$ = [3, n10, _ECL,
@@ -1288,7 +1309,7 @@ exports.EligibilityCheckLimitation$ = [3, n10, _ECL,
 ];
 exports.EligibilityCheckMaintenance$ = [3, n10, _ECM,
     0,
-    [_in],
+    [_ind],
     [0]
 ];
 exports.EligibilityCheckManagedCareCoordinator$ = [3, n10, _ECMCC,
@@ -1303,7 +1324,7 @@ exports.EligibilityCheckMeta$ = [3, n10, _ECMl,
 ];
 exports.EligibilityCheckNetwork$ = [3, n10, _ECN,
     0,
-    [_in, _id, _d],
+    [_ind, _i, _de],
     [0, 0, 0]
 ];
 exports.EligibilityCheckNonCovered$ = [3, n10, _ECNC,
@@ -1338,7 +1359,7 @@ exports.EligibilityCheckPatientAttributeDateRanges$ = [3, n10, _ECPADR,
 ];
 exports.EligibilityCheckPayer$ = [3, n10, _ECP,
     0,
-    [_t, _n, _con, _ei, _et, _ti, _nI, _iden],
+    [_t, _n, _con, _ei, _et, _ti, _nI, _ide],
     [0, () => exports.EligibilityCheckPersonOrOrganizationName$, () => EligibilityCheckEntityContacts, 0, 0, 0, 0, 0], 1
 ];
 exports.EligibilityCheckPersonName$ = [3, n10, _ECPN,
@@ -1373,7 +1394,7 @@ exports.EligibilityCheckPriorYearsHistory$ = [3, n10, _ECPYH,
 ];
 exports.EligibilityCheckProvider$ = [3, n10, _ECPli,
     0,
-    [_t, _n, _ad, _pro, _ti, _ss, _ei, _pPN, _sPN, _np, _aId],
+    [_t, _n, _ad, _pr, _ti, _ss, _ei, _pPN, _sPN, _np, _aId],
     [0, () => exports.EligibilityCheckPersonOrOrganizationName$, () => exports.EligibilityCheckAddress$, () => exports.EligibilityCheckEntityProvider$, 0, 0, 0, 0, 0, 0, () => exports.EligibilityCheckProviderAdditionalInformation$], 1
 ];
 exports.EligibilityCheckProviderAdditionalInformation$ = [3, n10, _ECPAI,
@@ -1393,7 +1414,7 @@ exports.EligibilityCheckQuantity$ = [3, n10, _ECQ,
 ];
 exports.EligibilityCheckRelatedEntity$ = [3, n10, _ECREl,
     0,
-    [_t, _n, _rel, _ad, _pro, _con, _ei, _ss, _et, _fI, _ti, _mI, _nI, _pI, _pPN, _sPN, _np],
+    [_t, _n, _rel, _ad, _pr, _con, _ei, _ss, _et, _fI, _ti, _mI, _nI, _pI, _pPN, _sPN, _np],
     [0, () => exports.EligibilityCheckPersonOrOrganizationName$, 0, () => exports.EligibilityCheckAddress$, () => exports.EligibilityCheckEntityProvider$, () => EligibilityCheckEntityContacts, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 1
 ];
 exports.EligibilityCheckReserve$ = [3, n10, _ECR,
@@ -1403,7 +1424,7 @@ exports.EligibilityCheckReserve$ = [3, n10, _ECR,
 ];
 exports.EligibilityCheckResponseError$ = [3, n10, _ECREli,
     0,
-    [_cod, _d, _fA, _lo, _pR],
+    [_cod, _de, _fA, _lo, _pR],
     [0, 0, 0, 0, 0], 4
 ];
 exports.EligibilityCheckSecondSurgicalOpinionRequired$ = [3, n10, _ECSSOR,
@@ -1428,7 +1449,7 @@ exports.EligibilityCheckServiceDeliveryLimit$ = [3, n10, _ECSDL,
 ];
 exports.EligibilityCheckServiceDeliveryLimitDelivery$ = [3, n10, _ECSDLD,
     0,
-    [_sc, _patt],
+    [_sc, _pat],
     [0, 0]
 ];
 exports.EligibilityCheckServiceDeliveryLimitFrequency$ = [3, n10, _ECSDLF,
@@ -1468,7 +1489,7 @@ exports.EligibilityCheckStateLicense$ = [3, n10, _ECSL,
 ];
 exports.EligibilityCheckSubscriber$ = [3, n10, _ECS,
     0,
-    [_ad, _pro, _dat, _dOB, _g, _bSN, _ma, _n, _aId, _mI],
+    [_ad, _pr, _dat, _dOB, _g, _bSN, _ma, _n, _aId, _mI],
     [() => exports.EligibilityCheckAddress$, () => exports.EligibilityCheckEntityProvider$, () => exports.EligibilityCheckPatientAttributeDateRanges$, 0, 0, 1, () => exports.EligibilityCheckMaintenance$, () => exports.EligibilityCheckPersonOrOrganizationName$, () => exports.EligibilityCheckSubscriberAdditionalInformation$, 0]
 ];
 exports.EligibilityCheckSubscriberAdditionalInformation$ = [3, n10, _ECSAI,
@@ -1488,12 +1509,12 @@ exports.EligibilityCheckUnlimited$ = [3, n10, _ECU,
 ];
 exports.CreateEventDestinationInput$ = [3, n1, _CEDI,
     0,
-    [_n, _eTv, _dU, _d, _cLo, _stat, _iK],
+    [_n, _eTv, _dU, _de, _cLo, _stat, _iK],
     [0, 64 | 0, 0, 0, 1, 0, [0, { [_hH]: _IK, [_iTd]: 1 }]], 3
 ];
 exports.CreateEventDestinationOutput$ = [3, n1, _CEDO,
     0,
-    [_id, _cAr, _uA, _stat, _n, _d, _eTv, _dU, _sS, _lDT, _cLo],
+    [_i, _cAr, _uA, _stat, _n, _de, _eTv, _dU, _sS, _lDT, _cLo],
     [0, 5, 5, 0, 0, 0, 64 | 0, 0, [() => EventDestinationsSigningSecret, 0], 5, 1], 9
 ];
 exports.DeleteEventDestinationInput$ = [3, n1, _DEDI,
@@ -1508,22 +1529,22 @@ exports.DeleteEventDestinationOutput$ = [3, n1, _DEDO,
 ];
 exports.EventDestinationsDestinationSummary$ = [3, n1, _EDDS,
     0,
-    [_id, _cAr, _uA, _stat, _n, _d, _eTv, _dU, _lDT, _cLo],
+    [_i, _cAr, _uA, _stat, _n, _de, _eTv, _dU, _lDT, _cLo],
     [0, 5, 5, 0, 0, 0, 64 | 0, 0, 5, 1], 8
 ];
 exports.EventDestinationsEventPayloadResourceRef$ = [3, n1, _EDEPRR,
     0,
-    [_id, _t],
+    [_i, _t],
     [0, 0], 2
 ];
 exports.EventDestinationsEventSummary$ = [3, n1, _EDES,
     0,
-    [_id, _stat, _cAr, _eTve],
+    [_i, _stat, _cAr, _eTve],
     [0, 0, 5, 0], 4
 ];
 exports.EventDestinationsV1EventPayload$ = [3, n1, _EDVEP,
     0,
-    [_o, _acc, _env, _cr, _reso, _id, _t, _rRe],
+    [_o, _acc, _env, _cr, _reso, _i, _t, _rRe],
     [0, 0, 0, 5, () => exports.EventDestinationsEventPayloadResourceRef$, 0, 0, () => EventDestinationsEventPayloadResourceRefList], 5
 ];
 exports.GetEventDestinationEventInput$ = [3, n1, _GEDEI,
@@ -1533,7 +1554,7 @@ exports.GetEventDestinationEventInput$ = [3, n1, _GEDEI,
 ];
 exports.GetEventDestinationEventOutput$ = [3, n1, _GEDEO,
     0,
-    [_id, _stat, _cAr, _eTve, _eP],
+    [_i, _stat, _cAr, _eTve, _eP],
     [0, 0, 5, 0, () => exports.EventDestinationsEventPayload$], 5
 ];
 exports.GetEventDestinationInput$ = [3, n1, _GEDI,
@@ -1543,7 +1564,7 @@ exports.GetEventDestinationInput$ = [3, n1, _GEDI,
 ];
 exports.GetEventDestinationOutput$ = [3, n1, _GEDO,
     0,
-    [_id, _cAr, _uA, _stat, _n, _d, _eTv, _dU, _lDT, _cLo],
+    [_i, _cAr, _uA, _stat, _n, _de, _eTv, _dU, _lDT, _cLo],
     [0, 5, 5, 0, 0, 0, 64 | 0, 0, 5, 1], 8
 ];
 exports.GetEventDestinationSecretInput$ = [3, n1, _GEDSI,
@@ -1588,12 +1609,12 @@ exports.RotateEventDestinationSecretOutput$ = [3, n1, _REDSO,
 ];
 exports.UpdateEventDestinationInput$ = [3, n1, _UEDI,
     0,
-    [_dIe, _n, _d, _eTv, _dU, _cLo, _stat, _iK],
+    [_dIe, _n, _de, _eTv, _dU, _cLo, _stat, _iK],
     [[0, 1], 0, 0, 64 | 0, 0, 1, 0, [0, { [_hH]: _IK, [_iTd]: 1 }]], 1
 ];
 exports.UpdateEventDestinationOutput$ = [3, n1, _UEDO,
     0,
-    [_id, _cAr, _uA, _stat, _n, _d, _eTv, _dU, _lDT, _cLo],
+    [_i, _cAr, _uA, _stat, _n, _de, _eTv, _dU, _lDT, _cLo],
     [0, 5, 5, 0, 0, 0, 64 | 0, 0, 5, 1], 8
 ];
 exports.ValidationFailure$ = [3, n2, _VF,

@@ -1,7 +1,7 @@
 {
   "name": "@stedi/sdk",
   "description": "The Stedi SDK for TypeScript / Node.js.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "scripts": {
     "build": "concurrently 'npm:build:cjs' 'npm:build:es' 'npm:build:types'",
     "build:cjs": "tsc -p tsconfig.cjs.json",
@@ -16,14 +16,12 @@
   "module": "./dist-es/index.js",
   "sideEffects": false,
   "dependencies": {
-    "@smithy/protocol-http": "^5.3.12",
-    "@smithy/signature-v4": "^5.1.2",
     "tslib": "^2.6.2",
-    "@aws-sdk/core": "^3.975.2",
-    "@smithy/core": "^3.29.3",
-    "@smithy/fetch-http-handler": "^5.6.5",
-    "@smithy/node-http-handler": "^4.9.5",
-    "@smithy/types": "^4.16.1"
+    "@aws-sdk/core": "^3.978.6",
+    "@smithy/core": "^3.37.0",
+    "@smithy/fetch-http-handler": "^5.8.0",
+    "@smithy/node-http-handler": "^4.13.0",
+    "@smithy/types": "^4.19.0"
   },
   "devDependencies": {
     "@tsconfig/node20": "20.1.8",

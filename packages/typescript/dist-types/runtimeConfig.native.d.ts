@@ -4,7 +4,7 @@ import type { StediClientConfig } from "./StediClient";
  */
 export declare const getRuntimeConfig: (config: StediClientConfig) => {
     runtime: string;
-    requestHandler: import("@smithy/types").NodeHttpHandlerOptions | import("@smithy/types").FetchHttpHandlerOptions | Record<string, unknown> | import("@smithy/fetch-http-handler").FetchHttpHandler | import("@smithy/core/protocols").HttpHandler<any>;
+    requestHandler: import("@smithy/types").NodeHttpHandlerOptions | import("@smithy/types").FetchHttpHandlerOptions | Record<string, unknown> | import("@smithy/core/protocols").HttpHandler<any> | import("@smithy/fetch-http-handler").FetchHttpHandler;
     cacheMiddleware?: boolean;
     protocol: import("@smithy/types").ClientProtocol<any, any> | import("@smithy/types").ClientProtocolCtor<any, any> | typeof import("./protocol/stediRestJsonProtocol").StediRestJsonProtocol;
     protocolSettings: {
@@ -38,6 +38,7 @@ export declare const getRuntimeConfig: (config: StediClientConfig) => {
     tls?: boolean;
     useDualstackEndpoint?: boolean | import("@smithy/types").Provider<boolean | undefined>;
     useFipsEndpoint?: boolean | import("@smithy/types").Provider<boolean | undefined>;
+    ignoreConfiguredEndpointUrls?: boolean;
     serviceConfiguredEndpoint?: never;
     authSchemePreference?: string[] | import("@smithy/types").Provider<string[]>;
     httpAuthSchemes: ({

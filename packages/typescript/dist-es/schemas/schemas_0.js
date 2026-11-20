@@ -69,6 +69,7 @@ const _ECIBl = "EligibilityCheckInvalidBenefits";
 const _ECIE = "EligibilityCheckInvalidEntries";
 const _ECIER = "EligibilityCheckInvalidEntryReason";
 const _ECIERl = "EligibilityCheckInvalidEntryReasons";
+const _ECIPE = "EligibilityCheckInvalidParticipantException";
 const _ECL = "EligibilityCheckLimitation";
 const _ECLl = "EligibilityCheckLimitations";
 const _ECM = "EligibilityCheckMaintenance";
@@ -80,6 +81,7 @@ const _ECNC = "EligibilityCheckNonCovered";
 const _ECNCl = "EligibilityCheckNonCovereds";
 const _ECNDMN = "EligibilityCheckNotDeemedMedicalNecessity";
 const _ECNDMNl = "EligibilityCheckNotDeemedMedicalNecessities";
+const _ECNUOE = "EligibilityCheckNonUsOriginException";
 const _ECOOAP = "EligibilityCheckOtherOrAdditionalPayer";
 const _ECOOAPl = "EligibilityCheckOtherOrAdditionalPayers";
 const _ECOOP = "EligibilityCheckOutOfPocket";
@@ -154,6 +156,7 @@ const _ECSSOR = "EligibilityCheckSecondSurgicalOpinionRequired";
 const _ECSSORl = "EligibilityCheckSecondSurgicalOpinionRequireds";
 const _ECSTN = "EligibilityCheckSubscriberTraceNumber";
 const _ECSTNl = "EligibilityCheckSubscriberTraceNumbers";
+const _ECTE = "EligibilityCheckThrottledException";
 const _ECU = "EligibilityCheckUnlimited";
 const _ECUl = "EligibilityCheckUnlimiteds";
 const _ECW = "EligibilityCheckWarning";
@@ -345,7 +348,7 @@ const _com = "completion";
 const _con = "contacts";
 const _cou = "country";
 const _cr = "created";
-const _d = "description";
+const _d = "dependent";
 const _dC = "diagnosisCodes";
 const _dCS = "dentalClaimSubmission";
 const _dD = "diagnosisDescription";
@@ -359,7 +362,7 @@ const _dOS = "datesOfService";
 const _dU = "destinationUrl";
 const _da = "data";
 const _dat = "dates";
-const _de = "dependent";
+const _de = "description";
 const _ded = "deductible";
 const _def = "definition";
 const _del = "delivery";
@@ -410,7 +413,7 @@ const _hE = "httpError";
 const _hH = "httpHeader";
 const _hQ = "httpQuery";
 const _ht = "http";
-const _i = "insured";
+const _i = "id";
 const _iAA = "insuredAuthorizesAssignment";
 const _iAAR = "isAutoAccidentRelated";
 const _iCN = "identityCardNumber";
@@ -429,10 +432,10 @@ const _iR = "invalidReasons";
 const _iT = "initialTreatment";
 const _iTd = "idempotencyToken";
 const _iTn = "insuranceType";
-const _id = "id";
-const _ide = "identifiers";
-const _iden = "identification";
-const _in = "indicator";
+const _id = "identifiers";
+const _ide = "identification";
+const _in = "insured";
+const _ind = "indicator";
 const _is = "issue";
 const _it = "items";
 const _l = "limitations";
@@ -488,7 +491,7 @@ const _oRN = "originalReferenceNumber";
 const _oSOD = "otherSourceOfData";
 const _oTI = "outboundTraceId";
 const _or = "organization";
-const _p = "purpose";
+const _p = "payer";
 const _pA = "processedAt";
 const _pAA = "providerAcceptsAssignment";
 const _pAI = "priorAuthIndicator";
@@ -540,18 +543,18 @@ const _pSa = "pageSize";
 const _pSu = "purchasedService";
 const _pT = "pageToken";
 const _pYH = "priorYearsHistory";
-const _pa = "payer";
-const _pat = "patient";
+const _pa = "patient";
+const _pat = "pattern";
 const _path = "path";
-const _patt = "pattern";
 const _pe = "person";
 const _per = "percent";
 const _peri = "period";
 const _pl = "plans";
 const _pla = "plan";
 const _po = "policy";
-const _pr = "prescription";
-const _pro = "provider";
+const _pr = "provider";
+const _pre = "prescription";
+const _pu = "purpose";
 const _q = "quantity";
 const _qu = "qualifier";
 const _r = "resubmission";
@@ -609,8 +612,8 @@ const _st = "state";
 const _sta = "start";
 const _stat = "status";
 const _statu = "statuses";
-const _su = "submitter";
-const _sub = "subscriber";
+const _su = "subscriber";
+const _sub = "submitter";
 const _suf = "suffix";
 const _sy = "system";
 const _t = "type";
@@ -648,20 +651,38 @@ const n7 = "com.stedi.eligibility.v4";
 const n8 = "com.stedi.eligibility.v4.common";
 const n9 = "com.stedi.eligibility.v4.request";
 import { TypeRegistry } from "@smithy/core/schema";
-import { AuthenticationFailedException, ConflictException, ContentTooLargeException, EligibilityCheckSerializationException, EventDestinationsLimitExceededException, ForbiddenException, InternalServerException, InvalidRequestException, NotFoundException, TooManyRequestsException, } from "../models/errors";
+import { AuthenticationFailedException, ConflictException, ContentTooLargeException, EligibilityCheckInvalidParticipantException, EligibilityCheckNonUsOriginException, EligibilityCheckSerializationException, EligibilityCheckThrottledException, EventDestinationsLimitExceededException, ForbiddenException, InternalServerException, InvalidRequestException, NotFoundException, TooManyRequestsException, } from "../models/errors";
 import { StediServiceException } from "../models/StediServiceException";
-const _s_registry = TypeRegistry.for(_s);
+const _s_registry = new TypeRegistry(_s);
 export var StediServiceException$ = [-3, _s, "StediServiceException", 0, [], []];
 _s_registry.registerError(StediServiceException$, StediServiceException);
-const n0_registry = TypeRegistry.for(n0);
-const n1_registry = TypeRegistry.for(n1);
-const n2_registry = TypeRegistry.for(n2);
+const n0_registry = new TypeRegistry(n0);
+const n1_registry = new TypeRegistry(n1);
+const n2_registry = new TypeRegistry(n2);
+export var EligibilityCheckInvalidParticipantException$ = [-3, n0, _ECIPE,
+    { [_e]: _c, [_hE]: 400 },
+    [_m, _x, _p, _i, _me, _pI, _pr, _su, _d, _pl, _eSI, _w, _er],
+    [0, 0, () => EligibilityCheckPayer$, 0, () => EligibilityCheckMeta$, 0, () => EligibilityCheckProvider$, () => EligibilityCheckSubscriber$, () => EligibilityCheckDependent$, () => EligibilityCheckPlans, 0, () => EligibilityCheckWarnings, () => EligibilityCheckResponseErrorList], 4
+];
+n0_registry.registerError(EligibilityCheckInvalidParticipantException$, EligibilityCheckInvalidParticipantException);
+export var EligibilityCheckNonUsOriginException$ = [-3, n0, _ECNUOE,
+    { [_e]: _c, [_hE]: 451 },
+    [_m, _x, _p, _i, _me, _pI, _pr, _su, _d, _pl, _eSI, _w, _er],
+    [0, 0, () => EligibilityCheckPayer$, 0, () => EligibilityCheckMeta$, 0, () => EligibilityCheckProvider$, () => EligibilityCheckSubscriber$, () => EligibilityCheckDependent$, () => EligibilityCheckPlans, 0, () => EligibilityCheckWarnings, () => EligibilityCheckResponseErrorList], 4
+];
+n0_registry.registerError(EligibilityCheckNonUsOriginException$, EligibilityCheckNonUsOriginException);
 export var EligibilityCheckSerializationException$ = [-3, n0, _ECSE,
     { [_e]: _c, [_hE]: 400 },
     [_m],
     [0], 1
 ];
 n0_registry.registerError(EligibilityCheckSerializationException$, EligibilityCheckSerializationException);
+export var EligibilityCheckThrottledException$ = [-3, n0, _ECTE,
+    { [_e]: _c, [_hE]: 429 },
+    [_m, _x, _p, _i, _me, _pI, _pr, _su, _d, _pl, _eSI, _w, _er],
+    [0, 0, () => EligibilityCheckPayer$, 0, () => EligibilityCheckMeta$, 0, () => EligibilityCheckProvider$, () => EligibilityCheckSubscriber$, () => EligibilityCheckDependent$, () => EligibilityCheckPlans, 0, () => EligibilityCheckWarnings, () => EligibilityCheckResponseErrorList], 4
+];
+n0_registry.registerError(EligibilityCheckThrottledException$, EligibilityCheckThrottledException);
 export var EventDestinationsLimitExceededException$ = [-3, n1, _EDLEE,
     { [_e]: _c, [_hE]: 403 },
     [_m],
@@ -736,12 +757,12 @@ var ProfessionalClaimSubmissionSsn = [0, n3, _PCSS, 8, 0];
 var EventDestinationsSigningSecret = [0, n1, _EDSS, 8, 0];
 export var ClaimRejectionError$ = [3, n4, _CRE,
     0,
-    [_d],
+    [_de],
     [0], 1
 ];
 export var CreateProfessionalClaimSubmissionInput$ = [3, n3, _CPCSI,
     0,
-    [_p, _pa, _su, _i, _a, _en, _b, _sL, _pat, _oI, _iK],
+    [_pu, _p, _sub, _in, _a, _en, _b, _sL, _pa, _oI, _iK],
     [0, [() => ProfessionalClaimSubmissionPayer$, 0], [() => ProfessionalClaimSubmissionSubmitter$, 0], [() => ProfessionalClaimSubmissionInsured$, 0], () => ProfessionalClaimSubmissionAuthorization$, [() => ProfessionalClaimSubmissionEncounter$, 0], [() => ProfessionalClaimSubmissionBilling$, 0], [() => ProfessionalClaimSubmissionServiceLines, 0], [() => ProfessionalClaimSubmissionPatient$, 0], [() => ProfessionalClaimSubmissionOtherInsuredList, 0], [0, { [_hH]: _IK }]], 8
 ];
 export var CreateProfessionalClaimSubmissionOutput$ = [3, n3, _CPCSO,
@@ -751,7 +772,7 @@ export var CreateProfessionalClaimSubmissionOutput$ = [3, n3, _CPCSO,
 ];
 export var GetProfessionalClaimSubmissionInput$ = [3, n3, _GPCSI,
     0,
-    [_id],
+    [_i],
     [[0, 1]], 1
 ];
 export var GetProfessionalClaimSubmissionOutput$ = [3, n3, _GPCSO,
@@ -781,7 +802,7 @@ export var ProfessionalClaimSubmissionBilling$ = [3, n3, _PCSB,
 ];
 export var ProfessionalClaimSubmissionBillingProvider$ = [3, n3, _PCSBP,
     0,
-    [_n, _ad, _co, _ide],
+    [_n, _ad, _co, _id],
     [[() => ProfessionalClaimSubmissionQualifiedName$, 0], [() => ProfessionalClaimSubmissionAddress$, 0], [() => ProfessionalClaimSubmissionContact$, 0], () => ProfessionalClaimSubmissionBillingProviderIdentifiers$], 2
 ];
 export var ProfessionalClaimSubmissionBillingProviderIdentifiers$ = [3, n3, _PCSBPI,
@@ -791,7 +812,7 @@ export var ProfessionalClaimSubmissionBillingProviderIdentifiers$ = [3, n3, _PCS
 ];
 export var ProfessionalClaimSubmissionClinicalDates$ = [3, n3, _PCSCD,
     0,
-    [_oOCI, _lMP, _iT, _lS, _aMOCC, _ac, _lX, _pr, _aC, _rC, _fVOC, _rR, _lW, _rTW, _uTW, _h],
+    [_oOCI, _lMP, _iT, _lS, _aMOCC, _ac, _lX, _pre, _aC, _rC, _fVOC, _rR, _lW, _rTW, _uTW, _h],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, () => ProfessionalClaimSubmissionDateRange$, () => ProfessionalClaimSubmissionDateRange$]
 ];
 export var ProfessionalClaimSubmissionContact$ = [3, n3, _PCSC,
@@ -801,7 +822,7 @@ export var ProfessionalClaimSubmissionContact$ = [3, n3, _PCSC,
 ];
 export var ProfessionalClaimSubmissionData$ = [3, n3, _PCSD,
     0,
-    [_p, _pa, _su, _i, _a, _en, _b, _sL, _pat, _oI],
+    [_pu, _p, _sub, _in, _a, _en, _b, _sL, _pa, _oI],
     [0, [() => ProfessionalClaimSubmissionPayer$, 0], [() => ProfessionalClaimSubmissionSubmitter$, 0], [() => ProfessionalClaimSubmissionInsured$, 0], () => ProfessionalClaimSubmissionAuthorization$, [() => ProfessionalClaimSubmissionEncounter$, 0], [() => ProfessionalClaimSubmissionBilling$, 0], [() => ProfessionalClaimSubmissionServiceLines, 0], [() => ProfessionalClaimSubmissionPatient$, 0], [() => ProfessionalClaimSubmissionOtherInsuredList, 0]], 8
 ];
 export var ProfessionalClaimSubmissionDateRange$ = [3, n3, _PCSDR,
@@ -826,7 +847,7 @@ export var ProfessionalClaimSubmissionInsured$ = [3, n3, _PCSI,
 ];
 export var ProfessionalClaimSubmissionOrderingProvider$ = [3, n3, _PCSOP,
     0,
-    [_n, _ide],
+    [_n, _id],
     [[() => ProfessionalClaimSubmissionQualifiedPersonName$, 0], () => ProfessionalClaimSubmissionOrderingProviderIdentifiers$], 1
 ];
 export var ProfessionalClaimSubmissionOrderingProviderIdentifiers$ = [3, n3, _PCSOPI,
@@ -846,7 +867,7 @@ export var ProfessionalClaimSubmissionOtherInsuredAuthorization$ = [3, n3, _PCSO
 ];
 export var ProfessionalClaimSubmissionOtherPayer$ = [3, n3, _PCSOPr,
     0,
-    [_n, _id],
+    [_n, _i],
     [() => ProfessionalClaimSubmissionQualifiedOrganizationName$, () => ProfessionalClaimSubmissionOtherPayerId$], 2
 ];
 export var ProfessionalClaimSubmissionPatient$ = [3, n3, _PCSP,
@@ -861,7 +882,7 @@ export var ProfessionalClaimSubmissionPatientCondition$ = [3, n3, _PCSPC,
 ];
 export var ProfessionalClaimSubmissionPayer$ = [3, n3, _PCSPr,
     0,
-    [_id, _n, _ad, _rI],
+    [_i, _n, _ad, _rI],
     [0, () => ProfessionalClaimSubmissionQualifiedOrganizationName$, [() => ProfessionalClaimSubmissionAddress$, 0], 0], 1
 ];
 export var ProfessionalClaimSubmissionPersonName$ = [3, n3, _PCSPNro,
@@ -876,12 +897,12 @@ export var ProfessionalClaimSubmissionProcedureCode$ = [3, n3, _PCSPCr,
 ];
 export var ProfessionalClaimSubmissionPurchasedService$ = [3, n3, _PCSPS,
     0,
-    [_cA, _pro],
+    [_cA, _pr],
     [0, () => ProfessionalClaimSubmissionPurchasedServiceProvider$], 2
 ];
 export var ProfessionalClaimSubmissionPurchasedServiceProvider$ = [3, n3, _PCSPSP,
     0,
-    [_eT, _ide],
+    [_eT, _id],
     [0, () => ProfessionalClaimSubmissionPurchasedServiceProviderIdentifiers$], 2
 ];
 export var ProfessionalClaimSubmissionPurchasedServiceProviderIdentifiers$ = [3, n3, _PCSPSPI,
@@ -896,7 +917,7 @@ export var ProfessionalClaimSubmissionReferenceNumbers$ = [3, n3, _PCSRN,
 ];
 export var ProfessionalClaimSubmissionReferringProvider$ = [3, n3, _PCSRP,
     0,
-    [_n, _ide],
+    [_n, _id],
     [[() => ProfessionalClaimSubmissionQualifiedPersonName$, 0], () => ProfessionalClaimSubmissionReferringProviderIdentifiers$], 1
 ];
 export var ProfessionalClaimSubmissionReferringProviderIdentifiers$ = [3, n3, _PCSRPI,
@@ -906,7 +927,7 @@ export var ProfessionalClaimSubmissionReferringProviderIdentifiers$ = [3, n3, _P
 ];
 export var ProfessionalClaimSubmissionRenderingProvider$ = [3, n3, _PCSRPr,
     0,
-    [_n, _ide],
+    [_n, _id],
     [[() => ProfessionalClaimSubmissionQualifiedName$, 0], () => ProfessionalClaimSubmissionRenderingProviderIdentifiers$], 1
 ];
 export var ProfessionalClaimSubmissionRenderingProviderIdentifiers$ = [3, n3, _PCSRPIr,
@@ -921,7 +942,7 @@ export var ProfessionalClaimSubmissionResubmission$ = [3, n3, _PCSR,
 ];
 export var ProfessionalClaimSubmissionServiceFacility$ = [3, n3, _PCSSF,
     0,
-    [_n, _ad, _ide],
+    [_n, _ad, _id],
     [() => ProfessionalClaimSubmissionQualifiedOrganizationName$, [() => ProfessionalClaimSubmissionAddress$, 0], () => ProfessionalClaimSubmissionServiceFacilityIdentifiers$], 2
 ];
 export var ProfessionalClaimSubmissionServiceFacilityIdentifiers$ = [3, n3, _PCSSFI,
@@ -946,7 +967,7 @@ export var ProfessionalClaimSubmissionSubmitter$ = [3, n3, _PCSSr,
 ];
 export var ProfessionalClaimSubmissionSupervisingProvider$ = [3, n3, _PCSSP,
     0,
-    [_n, _ide],
+    [_n, _id],
     [[() => ProfessionalClaimSubmissionQualifiedPersonName$, 0], () => ProfessionalClaimSubmissionSupervisingProviderIdentifiers$], 1
 ];
 export var ProfessionalClaimSubmissionSupervisingProviderIdentifiers$ = [3, n3, _PCSSPI,
@@ -956,7 +977,7 @@ export var ProfessionalClaimSubmissionSupervisingProviderIdentifiers$ = [3, n3, 
 ];
 export var ValidateProfessionalClaimSubmissionInput$ = [3, n3, _VPCSI,
     0,
-    [_p, _pa, _su, _i, _a, _en, _b, _sL, _pat, _oI],
+    [_pu, _p, _sub, _in, _a, _en, _b, _sL, _pa, _oI],
     [0, [() => ProfessionalClaimSubmissionPayer$, 0], [() => ProfessionalClaimSubmissionSubmitter$, 0], [() => ProfessionalClaimSubmissionInsured$, 0], () => ProfessionalClaimSubmissionAuthorization$, [() => ProfessionalClaimSubmissionEncounter$, 0], [() => ProfessionalClaimSubmissionBilling$, 0], [() => ProfessionalClaimSubmissionServiceLines, 0], [() => ProfessionalClaimSubmissionPatient$, 0], [() => ProfessionalClaimSubmissionOtherInsuredList, 0]], 8
 ];
 export var ValidateProfessionalClaimSubmissionOutput$ = [3, n3, _VPCSO,
@@ -971,7 +992,7 @@ export var ClaimDateRange$ = [3, n5, _CDR,
 ];
 export var ClaimAcknowledgmentSummary$ = [3, n6, _CAS,
     0,
-    [_id, _stat, _rB, _sN, _pA],
+    [_i, _stat, _rB, _sN, _pA],
     [0, 0, 0, 0, 5], 5
 ];
 export var ClaimPatientName$ = [3, n6, _CPN,
@@ -981,32 +1002,32 @@ export var ClaimPatientName$ = [3, n6, _CPN,
 ];
 export var ClaimPaymentInformationSummary$ = [3, n6, _CPIS,
     0,
-    [_id, _sC, _tCCA, _cPA, _pA, _pRA, _cOETN],
+    [_i, _sC, _tCCA, _cPA, _pA, _pRA, _cOETN],
     [0, 0, 0, 0, 5, 0, 0], 5
 ];
 export var ClaimSubmissionSummary$ = [3, n6, _CSS,
     0,
-    [_id, _pCN, _tCCA, _pA, _sPI, _pNa, _dOS],
+    [_i, _pCN, _tCCA, _pA, _sPI, _pNa, _dOS],
     [0, 0, 0, 5, 0, () => ClaimPatientName$, () => ClaimDateRange$], 4
 ];
 export var ClaimSummary$ = [3, n6, _CS,
     0,
-    [_id, _pCN, _stat, _sRB, _t, _tCCA, _sA, _sPI, _pNa, _tCPA, _dOS],
+    [_i, _pCN, _stat, _sRB, _t, _tCCA, _sA, _sPI, _pNa, _tCPA, _dOS],
     [0, 0, 0, 0, 0, 0, 5, 0, () => ClaimPatientName$, 0, () => ClaimDateRange$], 7
 ];
 export var GetClaimInput$ = [3, n6, _GCI,
     0,
-    [_id],
+    [_i],
     [[0, 1]], 1
 ];
 export var GetClaimOutput$ = [3, n6, _GCO,
     0,
-    [_id, _pCN, _stat, _sRB, _t, _tCCA, _sA, _sPI, _pNa, _tCPA, _dOS],
+    [_i, _pCN, _stat, _sRB, _t, _tCCA, _sA, _sPI, _pNa, _tCPA, _dOS],
     [0, 0, 0, 0, 0, 0, 5, 0, () => ClaimPatientName$, 0, () => ClaimDateRange$], 7
 ];
 export var GetClaimTimelineInput$ = [3, n6, _GCTI,
     0,
-    [_id, _pSa, _pT],
+    [_i, _pSa, _pT],
     [[0, 1], [1, { [_hQ]: _pSa }], [0, { [_hQ]: _pT }]], 1
 ];
 export var GetClaimTimelineOutput$ = [3, n6, _GCTO,
@@ -1026,17 +1047,17 @@ export var ListClaimsOutput$ = [3, n6, _LCO,
 ];
 export var CreateEligibilityCheckInput$ = [3, n7, _CECI,
     0,
-    [_pI, _pro, _sub, _pNay, _de, _en, _ePI, _eSI],
+    [_pI, _pr, _su, _pNay, _d, _en, _ePI, _eSI],
     [0, () => EligibilityCheckRequestProvider$, () => EligibilityCheckRequestSubscriber$, 0, () => EligibilityCheckRequestDependent$, () => EligibilityCheckRequestEncounter$, 0, 0], 3
 ];
 export var CreateEligibilityCheckOutput$ = [3, n7, _CECO,
     0,
-    [_id, _x, _pa, _me, _pI, _eSI, _w, _pro, _sub, _de, _pl, _er],
-    [0, 0, () => EligibilityCheckPayer$, () => EligibilityCheckMeta$, 0, 0, () => EligibilityCheckWarnings, () => EligibilityCheckProvider$, () => EligibilityCheckSubscriber$, () => EligibilityCheckDependent$, () => EligibilityCheckPlans, () => EligibilityCheckResponseErrorList], 3
+    [_x, _p, _i, _me, _pI, _pr, _su, _d, _pl, _eSI, _w, _er],
+    [0, () => EligibilityCheckPayer$, 0, () => EligibilityCheckMeta$, 0, () => EligibilityCheckProvider$, () => EligibilityCheckSubscriber$, () => EligibilityCheckDependent$, () => EligibilityCheckPlans, 0, () => EligibilityCheckWarnings, () => EligibilityCheckResponseErrorList], 3
 ];
 export var EligibilityCheckWarning$ = [3, n8, _ECW,
     0,
-    [_cod, _d],
+    [_cod, _de],
     [0, 0]
 ];
 export var EligibilityCheckRequestAddress$ = [3, n9, _ECRA,
@@ -1046,8 +1067,8 @@ export var EligibilityCheckRequestAddress$ = [3, n9, _ECRA,
 ];
 export var EligibilityCheckRequestDependent$ = [3, n9, _ECRD,
     0,
-    [_n, _rTS, _dOB, _g, _aId, _ad, _pro],
-    [() => EligibilityCheckRequestDependentName$, 0, 0, 0, () => EligibilityCheckRequestDependentAdditionalInformation$, () => EligibilityCheckRequestAddress$, () => EligibilityCheckRequestEntityProvider$], 1
+    [_n, _rTS, _dOB, _g, _bSN, _aId, _ad, _pr],
+    [() => EligibilityCheckRequestDependentName$, 0, 0, 0, 1, () => EligibilityCheckRequestDependentAdditionalInformation$, () => EligibilityCheckRequestAddress$, () => EligibilityCheckRequestEntityProvider$], 1
 ];
 export var EligibilityCheckRequestDependentAdditionalInformation$ = [3, n9, _ECRDAI,
     0,
@@ -1091,8 +1112,8 @@ export var EligibilityCheckRequestPlaceOfService$ = [3, n9, _ECRPOS,
 ];
 export var EligibilityCheckRequestProvider$ = [3, n9, _ECRP,
     0,
-    [_n, _t, _np, _ti, _ei, _ss, _sPN, _pPN, _ad, _aId, _pro],
-    [() => EligibilityCheckRequestProviderName$, 0, 0, 0, 0, 0, 0, 0, () => EligibilityCheckRequestAddress$, () => EligibilityCheckRequestProviderAdditionalInformation$, () => EligibilityCheckRequestEntityProvider$], 1
+    [_n, _t, _np, _ti, _ei, _ss, _sPN, _pPN, _ad, _aId, _pr],
+    [() => EligibilityCheckRequestProviderName$, 0, 0, 0, 0, 0, 0, 0, () => EligibilityCheckRequestAddress$, () => EligibilityCheckRequestProviderAdditionalInformation$, () => EligibilityCheckRequestEntityProvider$]
 ];
 export var EligibilityCheckRequestProviderAdditionalInformation$ = [3, n9, _ECRPAI,
     0,
@@ -1101,8 +1122,8 @@ export var EligibilityCheckRequestProviderAdditionalInformation$ = [3, n9, _ECRP
 ];
 export var EligibilityCheckRequestProviderPersonName$ = [3, n9, _ECRPPN,
     0,
-    [_lNa, _fNi, _mN, _suf],
-    [0, 0, 0, 0], 1
+    [_fNi, _lNa, _mN, _suf],
+    [0, 0, 0, 0]
 ];
 export var EligibilityCheckRequestService$ = [3, n9, _ECRS,
     0,
@@ -1116,8 +1137,8 @@ export var EligibilityCheckRequestStateLicense$ = [3, n9, _ECRSL,
 ];
 export var EligibilityCheckRequestSubscriber$ = [3, n9, _ECRSl,
     0,
-    [_n, _mI, _dOB, _g, _aId, _ad, _pro],
-    [() => EligibilityCheckRequestSubscriberName$, 0, 0, 0, () => EligibilityCheckRequestSubscriberAdditionalInformation$, () => EligibilityCheckRequestSubscriberAddress$, () => EligibilityCheckRequestEntityProvider$]
+    [_n, _mI, _dOB, _g, _bSN, _aId, _ad, _pr],
+    [() => EligibilityCheckRequestSubscriberName$, 0, 0, 0, 1, () => EligibilityCheckRequestSubscriberAdditionalInformation$, () => EligibilityCheckRequestSubscriberAddress$, () => EligibilityCheckRequestEntityProvider$]
 ];
 export var EligibilityCheckRequestSubscriberAdditionalInformation$ = [3, n9, _ECRSAI,
     0,
@@ -1211,7 +1232,7 @@ export var EligibilityCheckDeductible$ = [3, n10, _ECD,
 ];
 export var EligibilityCheckDependent$ = [3, n10, _ECDl,
     0,
-    [_n, _ad, _pro, _dat, _dOB, _g, _bSN, _ma, _rTS, _aId],
+    [_n, _ad, _pr, _dat, _dOB, _g, _bSN, _ma, _rTS, _aId],
     [() => EligibilityCheckQualifiedPersonName$, () => EligibilityCheckAddress$, () => EligibilityCheckEntityProvider$, () => EligibilityCheckPatientAttributeDateRanges$, 0, 0, 1, () => EligibilityCheckMaintenance$, 0, () => EligibilityCheckDependentAdditionalInformation$], 1
 ];
 export var EligibilityCheckDependentAdditionalInformation$ = [3, n10, _ECDAI,
@@ -1271,7 +1292,7 @@ export var EligibilityCheckInvalidEntries$ = [3, n10, _ECIE,
 ];
 export var EligibilityCheckInvalidEntryReason$ = [3, n10, _ECIER,
     0,
-    [_cod, _d],
+    [_cod, _de],
     [0, 0], 2
 ];
 export var EligibilityCheckLimitation$ = [3, n10, _ECL,
@@ -1281,7 +1302,7 @@ export var EligibilityCheckLimitation$ = [3, n10, _ECL,
 ];
 export var EligibilityCheckMaintenance$ = [3, n10, _ECM,
     0,
-    [_in],
+    [_ind],
     [0]
 ];
 export var EligibilityCheckManagedCareCoordinator$ = [3, n10, _ECMCC,
@@ -1296,7 +1317,7 @@ export var EligibilityCheckMeta$ = [3, n10, _ECMl,
 ];
 export var EligibilityCheckNetwork$ = [3, n10, _ECN,
     0,
-    [_in, _id, _d],
+    [_ind, _i, _de],
     [0, 0, 0]
 ];
 export var EligibilityCheckNonCovered$ = [3, n10, _ECNC,
@@ -1331,7 +1352,7 @@ export var EligibilityCheckPatientAttributeDateRanges$ = [3, n10, _ECPADR,
 ];
 export var EligibilityCheckPayer$ = [3, n10, _ECP,
     0,
-    [_t, _n, _con, _ei, _et, _ti, _nI, _iden],
+    [_t, _n, _con, _ei, _et, _ti, _nI, _ide],
     [0, () => EligibilityCheckPersonOrOrganizationName$, () => EligibilityCheckEntityContacts, 0, 0, 0, 0, 0], 1
 ];
 export var EligibilityCheckPersonName$ = [3, n10, _ECPN,
@@ -1366,7 +1387,7 @@ export var EligibilityCheckPriorYearsHistory$ = [3, n10, _ECPYH,
 ];
 export var EligibilityCheckProvider$ = [3, n10, _ECPli,
     0,
-    [_t, _n, _ad, _pro, _ti, _ss, _ei, _pPN, _sPN, _np, _aId],
+    [_t, _n, _ad, _pr, _ti, _ss, _ei, _pPN, _sPN, _np, _aId],
     [0, () => EligibilityCheckPersonOrOrganizationName$, () => EligibilityCheckAddress$, () => EligibilityCheckEntityProvider$, 0, 0, 0, 0, 0, 0, () => EligibilityCheckProviderAdditionalInformation$], 1
 ];
 export var EligibilityCheckProviderAdditionalInformation$ = [3, n10, _ECPAI,
@@ -1386,7 +1407,7 @@ export var EligibilityCheckQuantity$ = [3, n10, _ECQ,
 ];
 export var EligibilityCheckRelatedEntity$ = [3, n10, _ECREl,
     0,
-    [_t, _n, _rel, _ad, _pro, _con, _ei, _ss, _et, _fI, _ti, _mI, _nI, _pI, _pPN, _sPN, _np],
+    [_t, _n, _rel, _ad, _pr, _con, _ei, _ss, _et, _fI, _ti, _mI, _nI, _pI, _pPN, _sPN, _np],
     [0, () => EligibilityCheckPersonOrOrganizationName$, 0, () => EligibilityCheckAddress$, () => EligibilityCheckEntityProvider$, () => EligibilityCheckEntityContacts, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 1
 ];
 export var EligibilityCheckReserve$ = [3, n10, _ECR,
@@ -1396,7 +1417,7 @@ export var EligibilityCheckReserve$ = [3, n10, _ECR,
 ];
 export var EligibilityCheckResponseError$ = [3, n10, _ECREli,
     0,
-    [_cod, _d, _fA, _lo, _pR],
+    [_cod, _de, _fA, _lo, _pR],
     [0, 0, 0, 0, 0], 4
 ];
 export var EligibilityCheckSecondSurgicalOpinionRequired$ = [3, n10, _ECSSOR,
@@ -1421,7 +1442,7 @@ export var EligibilityCheckServiceDeliveryLimit$ = [3, n10, _ECSDL,
 ];
 export var EligibilityCheckServiceDeliveryLimitDelivery$ = [3, n10, _ECSDLD,
     0,
-    [_sc, _patt],
+    [_sc, _pat],
     [0, 0]
 ];
 export var EligibilityCheckServiceDeliveryLimitFrequency$ = [3, n10, _ECSDLF,
@@ -1461,7 +1482,7 @@ export var EligibilityCheckStateLicense$ = [3, n10, _ECSL,
 ];
 export var EligibilityCheckSubscriber$ = [3, n10, _ECS,
     0,
-    [_ad, _pro, _dat, _dOB, _g, _bSN, _ma, _n, _aId, _mI],
+    [_ad, _pr, _dat, _dOB, _g, _bSN, _ma, _n, _aId, _mI],
     [() => EligibilityCheckAddress$, () => EligibilityCheckEntityProvider$, () => EligibilityCheckPatientAttributeDateRanges$, 0, 0, 1, () => EligibilityCheckMaintenance$, () => EligibilityCheckPersonOrOrganizationName$, () => EligibilityCheckSubscriberAdditionalInformation$, 0]
 ];
 export var EligibilityCheckSubscriberAdditionalInformation$ = [3, n10, _ECSAI,
@@ -1481,12 +1502,12 @@ export var EligibilityCheckUnlimited$ = [3, n10, _ECU,
 ];
 export var CreateEventDestinationInput$ = [3, n1, _CEDI,
     0,
-    [_n, _eTv, _dU, _d, _cLo, _stat, _iK],
+    [_n, _eTv, _dU, _de, _cLo, _stat, _iK],
     [0, 64 | 0, 0, 0, 1, 0, [0, { [_hH]: _IK, [_iTd]: 1 }]], 3
 ];
 export var CreateEventDestinationOutput$ = [3, n1, _CEDO,
     0,
-    [_id, _cAr, _uA, _stat, _n, _d, _eTv, _dU, _sS, _lDT, _cLo],
+    [_i, _cAr, _uA, _stat, _n, _de, _eTv, _dU, _sS, _lDT, _cLo],
     [0, 5, 5, 0, 0, 0, 64 | 0, 0, [() => EventDestinationsSigningSecret, 0], 5, 1], 9
 ];
 export var DeleteEventDestinationInput$ = [3, n1, _DEDI,
@@ -1501,22 +1522,22 @@ export var DeleteEventDestinationOutput$ = [3, n1, _DEDO,
 ];
 export var EventDestinationsDestinationSummary$ = [3, n1, _EDDS,
     0,
-    [_id, _cAr, _uA, _stat, _n, _d, _eTv, _dU, _lDT, _cLo],
+    [_i, _cAr, _uA, _stat, _n, _de, _eTv, _dU, _lDT, _cLo],
     [0, 5, 5, 0, 0, 0, 64 | 0, 0, 5, 1], 8
 ];
 export var EventDestinationsEventPayloadResourceRef$ = [3, n1, _EDEPRR,
     0,
-    [_id, _t],
+    [_i, _t],
     [0, 0], 2
 ];
 export var EventDestinationsEventSummary$ = [3, n1, _EDES,
     0,
-    [_id, _stat, _cAr, _eTve],
+    [_i, _stat, _cAr, _eTve],
     [0, 0, 5, 0], 4
 ];
 export var EventDestinationsV1EventPayload$ = [3, n1, _EDVEP,
     0,
-    [_o, _acc, _env, _cr, _reso, _id, _t, _rRe],
+    [_o, _acc, _env, _cr, _reso, _i, _t, _rRe],
     [0, 0, 0, 5, () => EventDestinationsEventPayloadResourceRef$, 0, 0, () => EventDestinationsEventPayloadResourceRefList], 5
 ];
 export var GetEventDestinationEventInput$ = [3, n1, _GEDEI,
@@ -1526,7 +1547,7 @@ export var GetEventDestinationEventInput$ = [3, n1, _GEDEI,
 ];
 export var GetEventDestinationEventOutput$ = [3, n1, _GEDEO,
     0,
-    [_id, _stat, _cAr, _eTve, _eP],
+    [_i, _stat, _cAr, _eTve, _eP],
     [0, 0, 5, 0, () => EventDestinationsEventPayload$], 5
 ];
 export var GetEventDestinationInput$ = [3, n1, _GEDI,
@@ -1536,7 +1557,7 @@ export var GetEventDestinationInput$ = [3, n1, _GEDI,
 ];
 export var GetEventDestinationOutput$ = [3, n1, _GEDO,
     0,
-    [_id, _cAr, _uA, _stat, _n, _d, _eTv, _dU, _lDT, _cLo],
+    [_i, _cAr, _uA, _stat, _n, _de, _eTv, _dU, _lDT, _cLo],
     [0, 5, 5, 0, 0, 0, 64 | 0, 0, 5, 1], 8
 ];
 export var GetEventDestinationSecretInput$ = [3, n1, _GEDSI,
@@ -1581,12 +1602,12 @@ export var RotateEventDestinationSecretOutput$ = [3, n1, _REDSO,
 ];
 export var UpdateEventDestinationInput$ = [3, n1, _UEDI,
     0,
-    [_dIe, _n, _d, _eTv, _dU, _cLo, _stat, _iK],
+    [_dIe, _n, _de, _eTv, _dU, _cLo, _stat, _iK],
     [[0, 1], 0, 0, 64 | 0, 0, 1, 0, [0, { [_hH]: _IK, [_iTd]: 1 }]], 1
 ];
 export var UpdateEventDestinationOutput$ = [3, n1, _UEDO,
     0,
-    [_id, _cAr, _uA, _stat, _n, _d, _eTv, _dU, _lDT, _cLo],
+    [_i, _cAr, _uA, _stat, _n, _de, _eTv, _dU, _lDT, _cLo],
     [0, 5, 5, 0, 0, 0, 64 | 0, 0, 5, 1], 8
 ];
 export var ValidationFailure$ = [3, n2, _VF,

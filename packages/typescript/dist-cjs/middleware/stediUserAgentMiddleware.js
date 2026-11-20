@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getStediUserAgentPlugin = getStediUserAgentPlugin;
 const tslib_1 = require("tslib");
 const package_json_1 = tslib_1.__importDefault(require("../../package.json"));
-const protocol_http_1 = require("@smithy/protocol-http");
+const protocols_1 = require("@smithy/core/protocols");
 function getStediUserAgentPlugin(config) {
     return {
         applyToStack: (stack) => {
             stack.addRelativeTo((next) => async (args) => {
-                if (protocol_http_1.HttpRequest.isInstance(args.request)) {
+                if (protocols_1.HttpRequest.isInstance(args.request)) {
                     const runtime = config.runtime ?? "unknown";
                     const onNode = runtime === "node" && typeof process !== "undefined" && !!process.versions?.node;
                     const runtimeTag = onNode ? `node/${process.versions.node}` : runtime;

@@ -66,12 +66,14 @@ from ._private.schemas import (
     ELIGIBILITY_CHECK_INVALID_BENEFIT as _SCHEMA_ELIGIBILITY_CHECK_INVALID_BENEFIT,
     ELIGIBILITY_CHECK_INVALID_ENTRIES as _SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRIES,
     ELIGIBILITY_CHECK_INVALID_ENTRY_REASON as _SCHEMA_ELIGIBILITY_CHECK_INVALID_ENTRY_REASON,
+    ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION as _SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION,
     ELIGIBILITY_CHECK_LIMITATION as _SCHEMA_ELIGIBILITY_CHECK_LIMITATION,
     ELIGIBILITY_CHECK_MAINTENANCE as _SCHEMA_ELIGIBILITY_CHECK_MAINTENANCE,
     ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR as _SCHEMA_ELIGIBILITY_CHECK_MANAGED_CARE_COORDINATOR,
     ELIGIBILITY_CHECK_META as _SCHEMA_ELIGIBILITY_CHECK_META,
     ELIGIBILITY_CHECK_NETWORK as _SCHEMA_ELIGIBILITY_CHECK_NETWORK,
     ELIGIBILITY_CHECK_NON_COVERED as _SCHEMA_ELIGIBILITY_CHECK_NON_COVERED,
+    ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION as _SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION,
     ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY as _SCHEMA_ELIGIBILITY_CHECK_NOT_DEEMED_MEDICAL_NECESSITY,
     ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER as _SCHEMA_ELIGIBILITY_CHECK_OTHER_OR_ADDITIONAL_PAYER,
     ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA as _SCHEMA_ELIGIBILITY_CHECK_OTHER_SOURCE_OF_DATA,
@@ -130,6 +132,7 @@ from ._private.schemas import (
     ELIGIBILITY_CHECK_SUBSCRIBER as _SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER,
     ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION as _SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_ADDITIONAL_INFORMATION,
     ELIGIBILITY_CHECK_SUBSCRIBER_TRACE_NUMBER as _SCHEMA_ELIGIBILITY_CHECK_SUBSCRIBER_TRACE_NUMBER,
+    ELIGIBILITY_CHECK_THROTTLED_EXCEPTION as _SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION,
     ELIGIBILITY_CHECK_UNLIMITED as _SCHEMA_ELIGIBILITY_CHECK_UNLIMITED,
     ELIGIBILITY_CHECK_WARNING as _SCHEMA_ELIGIBILITY_CHECK_WARNING,
     EVENT_DESTINATIONS_DESTINATION_SUMMARY as _SCHEMA_EVENT_DESTINATIONS_DESTINATION_SUMMARY,
@@ -8284,6 +8287,14 @@ class EligibilityCheckRequestDependent:
     gender: EligibilityCheckRequestPatientGender | None = None
     """Code indicating the dependent's gender."""
 
+    birth_sequence_number: int | None = None
+    """
+    The number assigned to each family member born with the same birth date,
+    such as twins or triplets. Use to indicate the birth order when there
+    are multiple births associated with the provided birth date. Requires
+    `relationToSubscriber`; the request is rejected when it is omitted.
+    """
+
     additional_information: EligibilityCheckRequestDependentAdditionalInformation | None = None
     """Additional identification numbers for the dependent."""
 
@@ -8311,6 +8322,9 @@ class EligibilityCheckRequestDependent:
 
         if self.gender is not None:
             serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT.members["gender"], self.gender)
+
+        if self.birth_sequence_number is not None:
+            serializer.write_long(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT.members["birthSequenceNumber"], self.birth_sequence_number)
 
         if self.additional_information is not None:
             serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT.members["additionalInformation"], self.additional_information)
@@ -8344,12 +8358,15 @@ class EligibilityCheckRequestDependent:
                     kwargs["gender"] = EligibilityCheckRequestPatientGender(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT.members["gender"]))
 
                 case 4:
-                    kwargs["additional_information"] = EligibilityCheckRequestDependentAdditionalInformation.deserialize(de)
+                    kwargs["birth_sequence_number"] = de.read_long(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_DEPENDENT.members["birthSequenceNumber"])
 
                 case 5:
-                    kwargs["address"] = EligibilityCheckRequestAddress.deserialize(de)
+                    kwargs["additional_information"] = EligibilityCheckRequestDependentAdditionalInformation.deserialize(de)
 
                 case 6:
+                    kwargs["address"] = EligibilityCheckRequestAddress.deserialize(de)
+
+                case 7:
                     kwargs["provider"] = EligibilityCheckRequestEntityProvider.deserialize(de)
 
                 case _:
@@ -8492,6 +8509,8 @@ class EligibilityCheckPlaceOfServiceCode(UnknownEnumMixin, StrEnum):
     """
     PHARMACY = "01"
     """Pharmacy    """
+    TELEHEALTH_PROVIDED_OTHER_THAN_PATIENT_HOME = "02"
+    """Telehealth Provided Other than in Patient's Home    """
     SCHOOL = "03"
     """School    """
     HOMELESS_SHELTER = "04"
@@ -8504,6 +8523,10 @@ class EligibilityCheckPlaceOfServiceCode(UnknownEnumMixin, StrEnum):
     """Tribal 638 Free-standing Facility    """
     TRIBAL_638_PROVIDER_BASED_FACILITY = "08"
     """Tribal 638 Provider-based Facility    """
+    PRISON_CORRECTIONAL_FACILITY = "09"
+    """Prison/Correctional Facility    """
+    TELEHEALTH_PROVIDED_IN_PATIENT_HOME = "10"
+    """Telehealth Provided in Patient's Home    """
     OFFICE = "11"
     """Office    """
     HOME = "12"
@@ -8514,12 +8537,20 @@ class EligibilityCheckPlaceOfServiceCode(UnknownEnumMixin, StrEnum):
     """Group Home    """
     MOBILE_UNIT = "15"
     """Mobile Unit    """
+    TEMPORARY_LODGING = "16"
+    """Temporary Lodging    """
+    WALK_IN_RETAIL_HEALTH_CLINIC = "17"
+    """Walk-in Retail Health Clinic    """
+    PLACE_OF_EMPLOYMENT_WORKSITE = "18"
+    """Place of Employment-Worksite    """
+    OFF_CAMPUS_OUTPATIENT_HOSPITAL = "19"
+    """Off Campus-Outpatient Hospital    """
     URGENT_CARE_FACILITY = "20"
     """Urgent Care Facility    """
     INPATIENT_HOSPITAL = "21"
     """Inpatient Hospital    """
     OUTPATIENT_HOSPITAL = "22"
-    """Outpatient Hospital    """
+    """On Campus-Outpatient Hospital    """
     EMERGENCY_ROOM_HOSPITAL = "23"
     """Emergency Room - Hospital    """
     AMBULATORY_SURGICAL_CENTER = "24"
@@ -8528,6 +8559,8 @@ class EligibilityCheckPlaceOfServiceCode(UnknownEnumMixin, StrEnum):
     """Birthing Center    """
     MILITARY_TREATMENT_FACILITY = "26"
     """Military Treatment Facility    """
+    OUTREACH_SITE_STREET = "27"
+    """Outreach Site/Street    """
     SKILLED_NURSING_FACILITY = "31"
     """Skilled Nursing Facility    """
     NURSING_FACILITY = "32"
@@ -8550,14 +8583,16 @@ class EligibilityCheckPlaceOfServiceCode(UnknownEnumMixin, StrEnum):
     """Psychiatric Facility - Partial Hospitalization    """
     COMMUNITY_MENTAL_HEALTH_CENTER = "53"
     """Community Mental Health Center    """
-    INTERMEDIATE_CARE_FACILITY_MENTALLY_RETARDED = "54"
-    """Intermediate Care Facility/Mentally Retarded    """
+    INTERMEDIATE_CARE_FACILITY_INDIVIDUALS_WITH_INTELLECTUAL_DISABILITIES = "54"
+    """Intermediate Care Facility/Individuals with Intellectual Disabilities    """
     RESIDENTIAL_SUBSTANCE_ABUSE_TREATMENT_FACILITY = "55"
     """Residential Substance Abuse Treatment Facility    """
     PSYCHIATRIC_RESIDENTIAL_TREATMENT_CENTER = "56"
     """Psychiatric Residential Treatment Center    """
     NON_RESIDENTIAL_SUBSTANCE_ABUSE_TREATMENT_FACILITY = "57"
     """Non-residential Substance Abuse Treatment Facility    """
+    NON_RESIDENTIAL_OPIOID_TREATMENT_FACILITY = "58"
+    """Non-residential Opioid Treatment Facility    """
     MASS_IMMUNIZATION_CENTER = "60"
     """Mass Immunization Center    """
     COMPREHENSIVE_INPATIENT_REHABILITATION_FACILITY = "61"
@@ -8566,6 +8601,8 @@ class EligibilityCheckPlaceOfServiceCode(UnknownEnumMixin, StrEnum):
     """Comprehensive Outpatient Rehabilitation Facility    """
     END_STAGE_RENAL_DISEASE_TREATMENT_FACILITY = "65"
     """End-Stage Renal Disease Treatment Facility    """
+    PACE_CENTER = "66"
+    """Programs of All-Inclusive Care for the Elderly (PACE) Center    """
     STATE_OR_LOCAL_PUBLIC_HEALTH_CLINIC = "71"
     """State or Local Public Health Clinic    """
     RURAL_HEALTH_CLINIC = "72"
@@ -8863,7 +8900,14 @@ class EligibilityCheckRequestProviderAdditionalInformation:
     """The provider's facility network identification number."""
 
     personal_identification_number: str | None = None
-    """The provider's personal identification number."""
+    """
+    The provider's personal identification number (PIN). For payers
+    Medicaid California, AltaMed, and Kern Family Health Care, this property
+    is **required** and should be the [password the provider uses to log in
+    to the payer's
+    portal](https://www.stedi.com/docs/healthcare/eligibility-troubleshooting#portal-credentials).
+    Otherwise, this isn't commonly used.
+    """
 
     electronic_device_pin: str | None = None
     """The provider's electronic device PIN."""
@@ -8973,11 +9017,15 @@ class EligibilityCheckRequestProviderAdditionalInformation:
 class EligibilityCheckRequestProviderPersonName:
     """The name of a provider who is a person."""
 
-    last_name: str
-    """The provider's last name."""
-
     first_name: str | None = None
     """The provider's first name."""
+
+    last_name: str | None = None
+    """
+    The provider's last name. If you include `firstName` but leave out
+    `lastName`, Stedi treats the name as missing and fills in the whole name
+    from the provider's NPPES record when one is available.
+    """
 
     middle_name: str | None = None
     """The provider's middle name or middle initial."""
@@ -8992,7 +9040,9 @@ class EligibilityCheckRequestProviderPersonName:
         if self.first_name is not None:
             serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME.members["firstName"], self.first_name)
 
-        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME.members["lastName"], self.last_name)
+        if self.last_name is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME.members["lastName"], self.last_name)
+
         if self.middle_name is not None:
             serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME.members["middleName"], self.middle_name)
 
@@ -9025,8 +9075,6 @@ class EligibilityCheckRequestProviderPersonName:
                     logger.debug("Unexpected member schema: %s", schema)
 
         deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME, consumer=_consumer)
-        if "last_name" not in kwargs:
-            kwargs["last_name"] = ""
         return kwargs
 
 @dataclass
@@ -9138,8 +9186,13 @@ class EligibilityCheckRequestProvider:
     be an individual practitioner, a medical group, a hospital, or another
     type of healthcare provider.
 
-    - You must provide the provider's name as either a person (with
-      `name.person`) or an organization (with `name.organization`).
+    - We recommend omitting the provider's name. If omitted, Stedi uses the
+      name associated with the provider's `npi` record in the National Plan
+      and Provider Enumeration System (NPPES). We only recommend explicitly
+      setting the provider name if you believe that the provider name on
+      file with the payer differs from the provider name in NPPES. If you
+      set it, provide it as either a person (with `name.person`) or an
+      organization (with `name.organization`).
     - You must also provide an identifier - this is typically the
       provider's [National Provider
       Identifier](https://www.stedi.com/docs/healthcare/national-provider-identifier)
@@ -9149,8 +9202,17 @@ class EligibilityCheckRequestProvider:
       unless they are specifically required or suggested by the payer.
     """
 
-    name: EligibilityCheckRequestProviderName
-    """The provider's name, as either a person or an organization."""
+    name: EligibilityCheckRequestProviderName | None = None
+    """
+    The provider's name, as either a person or an organization. We
+    recommend omitting this. Certain payers return different benefits
+    information depending on the correctness of the provider name submitted.
+    If omitted, Stedi uses the name associated with the provider's `npi`
+    record in the National Plan and Provider Enumeration System (NPPES). We
+    only recommend explicitly setting the provider name if you believe that
+    the provider name on file with the payer differs from the provider name
+    in NPPES.
+    """
 
     type: EligibilityCheckRequestProviderType | None = None
     """The type of provider making the request."""
@@ -9244,7 +9306,9 @@ class EligibilityCheckRequestProvider:
         serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER, self)
 
     def serialize_members(self, serializer: ShapeSerializer):
-        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["name"], self.name)
+        if self.name is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["name"], self.name)
+
         if self.type is not None:
             serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER.members["type"], self.type)
 
@@ -9322,8 +9386,6 @@ class EligibilityCheckRequestProvider:
                     logger.debug("Unexpected member schema: %s", schema)
 
         deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_PROVIDER, consumer=_consumer)
-        if "name" not in kwargs:
-            kwargs["name"] = EligibilityCheckRequestProviderNameUnknown(tag="")
         return kwargs
 
 @dataclass(kw_only=True)
@@ -9816,6 +9878,13 @@ class EligibilityCheckRequestSubscriber:
     gender: EligibilityCheckRequestPatientGender | None = None
     """Code indicating the subscriber's gender."""
 
+    birth_sequence_number: int | None = None
+    """
+    The number assigned to each family member born with the same birth date,
+    such as twins or triplets. Use to indicate the birth order when there
+    are multiple births associated with the provided birth date.
+    """
+
     additional_information: EligibilityCheckRequestSubscriberAdditionalInformation | None = None
     """
     Additional identification numbers for the subscriber. Use this object
@@ -9854,6 +9923,9 @@ class EligibilityCheckRequestSubscriber:
         if self.gender is not None:
             serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER.members["gender"], self.gender)
 
+        if self.birth_sequence_number is not None:
+            serializer.write_long(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER.members["birthSequenceNumber"], self.birth_sequence_number)
+
         if self.additional_information is not None:
             serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER.members["additionalInformation"], self.additional_information)
 
@@ -9886,12 +9958,15 @@ class EligibilityCheckRequestSubscriber:
                     kwargs["gender"] = EligibilityCheckRequestPatientGender(de.read_string(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER.members["gender"]))
 
                 case 4:
-                    kwargs["additional_information"] = EligibilityCheckRequestSubscriberAdditionalInformation.deserialize(de)
+                    kwargs["birth_sequence_number"] = de.read_long(_SCHEMA_ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER.members["birthSequenceNumber"])
 
                 case 5:
-                    kwargs["address"] = EligibilityCheckRequestSubscriberAddress.deserialize(de)
+                    kwargs["additional_information"] = EligibilityCheckRequestSubscriberAdditionalInformation.deserialize(de)
 
                 case 6:
+                    kwargs["address"] = EligibilityCheckRequestSubscriberAddress.deserialize(de)
+
+                case 7:
                     kwargs["provider"] = EligibilityCheckRequestEntityProvider.deserialize(de)
 
                 case _:
@@ -9925,8 +10000,13 @@ class CreateEligibilityCheckInput:
     be an individual practitioner, a medical group, a hospital, or another
     type of healthcare provider.
 
-    - You must provide the provider's name as either a person (with
-      `name.person`) or an organization (with `name.organization`).
+    - We recommend omitting the provider's name. If omitted, Stedi uses the
+      name associated with the provider's `npi` record in the National Plan
+      and Provider Enumeration System (NPPES). We only recommend explicitly
+      setting the provider name if you believe that the provider name on
+      file with the payer differs from the provider name in NPPES. If you
+      set it, provide it as either a person (with `name.person`) or an
+      organization (with `name.organization`).
     - You must also provide an identifier - this is typically the
       provider's [National Provider
       Identifier](https://www.stedi.com/docs/healthcare/national-provider-identifier)
@@ -10929,7 +11009,9 @@ class EligibilityCheckDependent:
     that the payer may return the dependent in the subscriber object
     instead. When present, this object will always include the dependent's
     name for identification, but many payers also include the date of birth
-    and other identifying information.
+    and other identifying information. Some payers truncate names to fit
+    their own technical limits, so the payer may not return the dependent's
+    full legal name.
     """
 
     name: EligibilityCheckQualifiedPersonName
@@ -13606,9 +13688,11 @@ class EligibilityCheckBenefitDescription:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -13825,9 +13909,11 @@ class EligibilityCheckBenefitDisclaimer:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -14042,9 +14128,11 @@ class EligibilityCheckCannotProcess:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -14261,9 +14349,11 @@ class EligibilityCheckCardReportedStolen:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -14546,9 +14636,11 @@ class EligibilityCheckCoInsurance:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -14766,9 +14858,11 @@ class EligibilityCheckContactFollowingEntityForInformation:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -15081,9 +15175,11 @@ class EligibilityCheckCoPayment:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -15318,9 +15414,11 @@ class EligibilityCheckCostContainment:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -15555,9 +15653,11 @@ class EligibilityCheckCoverageBasis:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -15778,9 +15878,11 @@ class EligibilityCheckDeductible:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -16010,9 +16112,11 @@ class EligibilityCheckExclusion:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -16228,9 +16332,11 @@ class EligibilityCheckHealthCareFacility:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -16520,9 +16626,11 @@ class EligibilityCheckInvalidBenefit:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -16869,9 +16977,11 @@ class EligibilityCheckLimitation:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -17115,9 +17225,11 @@ class EligibilityCheckManagedCareCoordinator:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -17332,9 +17444,11 @@ class EligibilityCheckNonCovered:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -17548,9 +17662,11 @@ class EligibilityCheckNotDeemedMedicalNecessity:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -17766,9 +17882,11 @@ class EligibilityCheckOtherOrAdditionalPayer:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -17982,9 +18100,11 @@ class EligibilityCheckOtherSourceOfData:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -18203,9 +18323,11 @@ class EligibilityCheckOutOfPocket:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -18433,9 +18555,11 @@ class EligibilityCheckPreExistingCondition:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -18651,9 +18775,11 @@ class EligibilityCheckPrimaryCareProvider:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -18864,9 +18990,11 @@ class EligibilityCheckPriorYearsHistory:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -19083,9 +19211,11 @@ class EligibilityCheckReserve:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -19299,9 +19429,11 @@ class EligibilityCheckSecondSurgicalOpinionRequired:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -19516,9 +19648,11 @@ class EligibilityCheckServicesRestrictedToFollowingProvider:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -19739,9 +19873,11 @@ class EligibilityCheckSpendDown:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -20018,9 +20154,11 @@ class EligibilityCheckEligibilityStatus:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -20223,9 +20361,11 @@ class EligibilityCheckUnlimited:
 
     plan_coverage_description: str | None = None
     """
-    The plan coverage description from EB05. Populated when the EB05 value
-    doesn't relate to a plan (e.g., payer used EB05 for benefit-level info
-    rather than a plan name).
+    The plan coverage description the payer sent for this benefit entry.
+    Payers typically send the plan name, but some send benefit-level
+    information instead. Stedi omits this property when it matches the
+    plan's `name`. When the plan has no `name`, check this property for the
+    payer's plan information.
     """
 
     diagnosis: EligibilityCheckDiagnosis | None = None
@@ -21500,7 +21640,9 @@ class EligibilityCheckSubscriber:
     in the original eligibility check request. The response will always
     include either the subscriber's name or member ID for identification,
     but most payers will also return the subscriber's date of birth and
-    other identifying information.
+    other identifying information. Some payers truncate names to fit their
+    own technical limits, so the payer may not return the subscriber's full
+    legal name.
     """
 
     address: EligibilityCheckAddress | None = None
@@ -21689,6 +21831,30 @@ def _deserialize_eligibility_check_warnings(deserializer: ShapeDeserializer, sch
 class CreateEligibilityCheckOutput:
     """The eligibility check response payload."""
 
+    x12: str
+    """
+    Typically this property contains the raw X12 EDI [271 Eligibility
+    Benefit
+    Response](https://portal.stedi.com/app/guides/view/hipaa/health-care-eligibility-benefit-response-x279a1/01GS66YHZPB37ABF34DBPSR213)
+    from the payer.
+
+    In some circumstances, this property may contain a [999 Implementation
+    Acknowledgment](https://portal.stedi.com/app/guides/view/hipaa/implementation-acknowledgment-x231a1/01HMRQV0N8SPHG58M4ZG1CRHH0)
+    instead of a 271. A 999 indicates validation errors in the X12 EDI
+    transaction, such as improper formatting or missing or invalid values.
+
+    If this property contains a 999, many of the other response properties
+    will be empty, as Stedi populates them with information from the 271.
+    """
+
+    payer: EligibilityCheckPayer
+    """
+    Information about the payer providing the benefits information. The
+    response will always include the payer's business name and an
+    identifier, such as the payer's tax ID. Most payers also include
+    contact information.
+    """
+
     id: str
     """
     A globally unique identifier for this eligibility check across all Stedi
@@ -21697,6 +21863,185 @@ class CreateEligibilityCheckOutput:
     this eligibility check and to construct deep links to eligibility checks
     in the Stedi portal.
     """
+
+    meta: EligibilityCheckMeta | None = None
+    """
+    Metadata about the response. Stedi uses this data for tracking and
+    troubleshooting.
+    """
+
+    payer_id: str | None = None
+    """
+    The primary payer ID from the [Stedi Payer
+    Network](https://www.stedi.com/healthcare/network). This ID is
+    consistent across eligibility and claims systems and matches the payer
+    ID printed on the member's ID card. You can use it as the `payerId` in
+    subsequent eligibility check requests.
+    """
+
+    provider: EligibilityCheckProvider | None = None
+    """
+    Information about the entity that submitted the original eligibility
+    check request. This may be an individual practitioner, a medical group,
+    a hospital, or another type of healthcare provider. This object will
+    always include at least one identifier, such as the provider's
+    [NPI](https://www.stedi.com/docs/healthcare/national-provider-identifier),
+    tax ID, or EIN. If you left the provider name out of the request, this
+    object typically contains the name that Stedi filled in from the
+    provider's National Plan and Provider Enumeration System (NPPES)
+    record, or `PROVIDER`.
+    """
+
+    subscriber: EligibilityCheckSubscriber | None = None
+    """
+    Information about the primary policyholder for the insurance plan listed
+    in the original eligibility check request. The response will always
+    include either the subscriber's name or member ID for identification,
+    but most payers will also return the subscriber's date of birth and
+    other identifying information. Some payers truncate names to fit their
+    own technical limits, so the payer may not return the subscriber's full
+    legal name.
+    """
+
+    dependent: EligibilityCheckDependent | None = None
+    """
+    Information about the dependent from the eligibility check request. Note
+    that the payer may return the dependent in the subscriber object
+    instead. When present, this object will always include the dependent's
+    name for identification, but many payers also include the date of birth
+    and other identifying information. Some payers truncate names to fit
+    their own technical limits, so the payer may not return the dependent's
+    full legal name.
+    """
+
+    plans: list[EligibilityCheckPlan] | None = None
+    """
+    The patient's insurance plans, grouped by plan name. Each plan contains
+    the benefits that apply to the patient.
+    """
+
+    eligibility_search_id: str | None = None
+    """
+    An identifier that allows Stedi to group eligibility checks for the same
+    patient into a unified record in the Stedi portal called an [eligibility
+    search](https://www.stedi.com/docs/healthcare/eligibility-views).
+
+    This property is for use by Stedi tools only, such as Stedi's MCP
+    server.
+    """
+
+    warnings: list[EligibilityCheckWarning] | None = None
+    """
+    Issues with your eligibility request that could affect the results, or
+    information about the response. For example, warnings can help explain
+    why the request was rejected.
+    """
+
+    errors: list[EligibilityCheckResponseError] | None = None
+    """
+    `AAA` rejection errors from the payer. [`AAA`
+    errors](https://www.stedi.com/docs/healthcare/eligibility-troubleshooting#payer-aaa-errors)
+    specify the reasons for the rejection and any recommended follow-up
+    actions.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        if self.meta is not None:
+            serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["meta"], self.meta)
+
+        if self.payer_id is not None:
+            serializer.write_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["payerId"], self.payer_id)
+
+        serializer.write_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["x12"], self.x12)
+        serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["payer"], self.payer)
+        if self.provider is not None:
+            serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["provider"], self.provider)
+
+        if self.subscriber is not None:
+            serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["subscriber"], self.subscriber)
+
+        if self.dependent is not None:
+            serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["dependent"], self.dependent)
+
+        if self.plans is not None:
+            _serialize_eligibility_check_plans(serializer, _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["plans"], self.plans)
+
+        serializer.write_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["id"], self.id)
+        if self.eligibility_search_id is not None:
+            serializer.write_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["eligibilitySearchId"], self.eligibility_search_id)
+
+        if self.warnings is not None:
+            _serialize_eligibility_check_warnings(serializer, _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["warnings"], self.warnings)
+
+        if self.errors is not None:
+            _serialize_eligibility_check_response_error_list(serializer, _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["errors"], self.errors)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["meta"] = EligibilityCheckMeta.deserialize(de)
+
+                case 1:
+                    kwargs["payer_id"] = de.read_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["payerId"])
+
+                case 2:
+                    kwargs["x12"] = de.read_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["x12"])
+
+                case 3:
+                    kwargs["payer"] = EligibilityCheckPayer.deserialize(de)
+
+                case 4:
+                    kwargs["provider"] = EligibilityCheckProvider.deserialize(de)
+
+                case 5:
+                    kwargs["subscriber"] = EligibilityCheckSubscriber.deserialize(de)
+
+                case 6:
+                    kwargs["dependent"] = EligibilityCheckDependent.deserialize(de)
+
+                case 7:
+                    kwargs["plans"] = _deserialize_eligibility_check_plans(de, _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["plans"])
+
+                case 8:
+                    kwargs["id"] = de.read_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["id"])
+
+                case 9:
+                    kwargs["eligibility_search_id"] = de.read_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["eligibilitySearchId"])
+
+                case 10:
+                    kwargs["warnings"] = _deserialize_eligibility_check_warnings(de, _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["warnings"])
+
+                case 11:
+                    kwargs["errors"] = _deserialize_eligibility_check_response_error_list(de, _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["errors"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT, consumer=_consumer)
+        if "x12" not in kwargs:
+            kwargs["x12"] = ""
+        if "payer" not in kwargs:
+            kwargs["payer"] = EligibilityCheckPayer._smithy_default()
+        if "id" not in kwargs:
+            kwargs["id"] = ""
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckInvalidParticipantException(ServiceError):
+    """The request resulted in a AAA-79 \"Invalid Participant\" response."""
+
+    fault: Literal["client", "server"] | None = "client"
 
     x12: str
     """
@@ -21722,6 +22067,15 @@ class CreateEligibilityCheckOutput:
     contact information.
     """
 
+    id: str
+    """
+    A globally unique identifier for this eligibility check across all Stedi
+    accounts. It's formatted as `ec_<uuid>`. For example:
+    `ec_550e8400-e29b-41d4-a716-446655440000`. You can use this ID to track
+    this eligibility check and to construct deep links to eligibility checks
+    in the Stedi portal.
+    """
+
     meta: EligibilityCheckMeta | None = None
     """
     Metadata about the response. Stedi uses this data for tracking and
@@ -21735,6 +22089,47 @@ class CreateEligibilityCheckOutput:
     consistent across eligibility and claims systems and matches the payer
     ID printed on the member's ID card. You can use it as the `payerId` in
     subsequent eligibility check requests.
+    """
+
+    provider: EligibilityCheckProvider | None = None
+    """
+    Information about the entity that submitted the original eligibility
+    check request. This may be an individual practitioner, a medical group,
+    a hospital, or another type of healthcare provider. This object will
+    always include at least one identifier, such as the provider's
+    [NPI](https://www.stedi.com/docs/healthcare/national-provider-identifier),
+    tax ID, or EIN. If you left the provider name out of the request, this
+    object typically contains the name that Stedi filled in from the
+    provider's National Plan and Provider Enumeration System (NPPES)
+    record, or `PROVIDER`.
+    """
+
+    subscriber: EligibilityCheckSubscriber | None = None
+    """
+    Information about the primary policyholder for the insurance plan listed
+    in the original eligibility check request. The response will always
+    include either the subscriber's name or member ID for identification,
+    but most payers will also return the subscriber's date of birth and
+    other identifying information. Some payers truncate names to fit their
+    own technical limits, so the payer may not return the subscriber's full
+    legal name.
+    """
+
+    dependent: EligibilityCheckDependent | None = None
+    """
+    Information about the dependent from the eligibility check request. Note
+    that the payer may return the dependent in the subscriber object
+    instead. When present, this object will always include the dependent's
+    name for identification, but many payers also include the date of birth
+    and other identifying information. Some payers truncate names to fit
+    their own technical limits, so the payer may not return the dependent's
+    full legal name.
+    """
+
+    plans: list[EligibilityCheckPlan] | None = None
+    """
+    The patient's insurance plans, grouped by plan name. Each plan contains
+    the benefits that apply to the patient.
     """
 
     eligibility_search_id: str | None = None
@@ -21754,40 +22149,6 @@ class CreateEligibilityCheckOutput:
     why the request was rejected.
     """
 
-    provider: EligibilityCheckProvider | None = None
-    """
-    Information about the entity that submitted the original eligibility
-    check request. This may be an individual practitioner, a medical group,
-    a hospital, or another type of healthcare provider. This object will
-    always include at least one identifier, such as the provider's
-    [NPI](https://www.stedi.com/docs/healthcare/national-provider-identifier),
-    tax ID, or EIN.
-    """
-
-    subscriber: EligibilityCheckSubscriber | None = None
-    """
-    Information about the primary policyholder for the insurance plan listed
-    in the original eligibility check request. The response will always
-    include either the subscriber's name or member ID for identification,
-    but most payers will also return the subscriber's date of birth and
-    other identifying information.
-    """
-
-    dependent: EligibilityCheckDependent | None = None
-    """
-    Information about the dependent from the eligibility check request. Note
-    that the payer may return the dependent in the subscriber object
-    instead. When present, this object will always include the dependent's
-    name for identification, but many payers also include the date of birth
-    and other identifying information.
-    """
-
-    plans: list[EligibilityCheckPlan] | None = None
-    """
-    The patient's insurance plans, grouped by plan name. Each plan contains
-    the benefits that apply to the patient.
-    """
-
     errors: list[EligibilityCheckResponseError] | None = None
     """
     `AAA` rejection errors from the payer. [`AAA`
@@ -21797,38 +22158,39 @@ class CreateEligibilityCheckOutput:
     """
 
     def serialize(self, serializer: ShapeSerializer):
-        serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT, self)
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION, self)
 
     def serialize_members(self, serializer: ShapeSerializer):
-        serializer.write_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["id"], self.id)
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["message"], self.message)
         if self.meta is not None:
-            serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["meta"], self.meta)
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["meta"], self.meta)
 
         if self.payer_id is not None:
-            serializer.write_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["payerId"], self.payer_id)
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["payerId"], self.payer_id)
 
-        if self.eligibility_search_id is not None:
-            serializer.write_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["eligibilitySearchId"], self.eligibility_search_id)
-
-        if self.warnings is not None:
-            _serialize_eligibility_check_warnings(serializer, _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["warnings"], self.warnings)
-
-        serializer.write_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["x12"], self.x12)
-        serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["payer"], self.payer)
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["x12"], self.x12)
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["payer"], self.payer)
         if self.provider is not None:
-            serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["provider"], self.provider)
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["provider"], self.provider)
 
         if self.subscriber is not None:
-            serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["subscriber"], self.subscriber)
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["subscriber"], self.subscriber)
 
         if self.dependent is not None:
-            serializer.write_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["dependent"], self.dependent)
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["dependent"], self.dependent)
 
         if self.plans is not None:
-            _serialize_eligibility_check_plans(serializer, _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["plans"], self.plans)
+            _serialize_eligibility_check_plans(serializer, _SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["plans"], self.plans)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["id"], self.id)
+        if self.eligibility_search_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["eligibilitySearchId"], self.eligibility_search_id)
+
+        if self.warnings is not None:
+            _serialize_eligibility_check_warnings(serializer, _SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["warnings"], self.warnings)
 
         if self.errors is not None:
-            _serialize_eligibility_check_response_error_list(serializer, _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["errors"], self.errors)
+            _serialize_eligibility_check_response_error_list(serializer, _SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["errors"], self.errors)
 
     @classmethod
     def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
@@ -21841,51 +22203,276 @@ class CreateEligibilityCheckOutput:
         def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
             match schema.expect_member_index():
                 case 0:
-                    kwargs["id"] = de.read_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["id"])
+                    kwargs["message"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["message"])
 
                 case 1:
                     kwargs["meta"] = EligibilityCheckMeta.deserialize(de)
 
                 case 2:
-                    kwargs["payer_id"] = de.read_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["payerId"])
+                    kwargs["payer_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["payerId"])
 
                 case 3:
-                    kwargs["eligibility_search_id"] = de.read_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["eligibilitySearchId"])
+                    kwargs["x12"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["x12"])
 
                 case 4:
-                    kwargs["warnings"] = _deserialize_eligibility_check_warnings(de, _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["warnings"])
-
-                case 5:
-                    kwargs["x12"] = de.read_string(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["x12"])
-
-                case 6:
                     kwargs["payer"] = EligibilityCheckPayer.deserialize(de)
 
-                case 7:
+                case 5:
                     kwargs["provider"] = EligibilityCheckProvider.deserialize(de)
 
-                case 8:
+                case 6:
                     kwargs["subscriber"] = EligibilityCheckSubscriber.deserialize(de)
 
-                case 9:
+                case 7:
                     kwargs["dependent"] = EligibilityCheckDependent.deserialize(de)
 
+                case 8:
+                    kwargs["plans"] = _deserialize_eligibility_check_plans(de, _SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["plans"])
+
+                case 9:
+                    kwargs["id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["id"])
+
                 case 10:
-                    kwargs["plans"] = _deserialize_eligibility_check_plans(de, _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["plans"])
+                    kwargs["eligibility_search_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["eligibilitySearchId"])
 
                 case 11:
-                    kwargs["errors"] = _deserialize_eligibility_check_response_error_list(de, _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT.members["errors"])
+                    kwargs["warnings"] = _deserialize_eligibility_check_warnings(de, _SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["warnings"])
+
+                case 12:
+                    kwargs["errors"] = _deserialize_eligibility_check_response_error_list(de, _SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION.members["errors"])
 
                 case _:
                     logger.debug("Unexpected member schema: %s", schema)
 
-        deserializer.read_struct(_SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT, consumer=_consumer)
-        if "id" not in kwargs:
-            kwargs["id"] = ""
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION, consumer=_consumer)
         if "x12" not in kwargs:
             kwargs["x12"] = ""
         if "payer" not in kwargs:
             kwargs["payer"] = EligibilityCheckPayer._smithy_default()
+        if "id" not in kwargs:
+            kwargs["id"] = ""
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckNonUsOriginException(ServiceError):
+    """
+    The request was not sent to the payer because the originating IP address
+    or an `X-Forwarded-For` IP address is outside the United States. This
+    applies to payers that require US-origin traffic, such as CMS. The body
+    carries the same properties as a successful response, with a synthesized
+    271 whose `AAA` error reports the rejection.
+    """
+
+    fault: Literal["client", "server"] | None = "client"
+
+    x12: str
+    """
+    Typically this property contains the raw X12 EDI [271 Eligibility
+    Benefit
+    Response](https://portal.stedi.com/app/guides/view/hipaa/health-care-eligibility-benefit-response-x279a1/01GS66YHZPB37ABF34DBPSR213)
+    from the payer.
+
+    In some circumstances, this property may contain a [999 Implementation
+    Acknowledgment](https://portal.stedi.com/app/guides/view/hipaa/implementation-acknowledgment-x231a1/01HMRQV0N8SPHG58M4ZG1CRHH0)
+    instead of a 271. A 999 indicates validation errors in the X12 EDI
+    transaction, such as improper formatting or missing or invalid values.
+
+    If this property contains a 999, many of the other response properties
+    will be empty, as Stedi populates them with information from the 271.
+    """
+
+    payer: EligibilityCheckPayer
+    """
+    Information about the payer providing the benefits information. The
+    response will always include the payer's business name and an
+    identifier, such as the payer's tax ID. Most payers also include
+    contact information.
+    """
+
+    id: str
+    """
+    A globally unique identifier for this eligibility check across all Stedi
+    accounts. It's formatted as `ec_<uuid>`. For example:
+    `ec_550e8400-e29b-41d4-a716-446655440000`. You can use this ID to track
+    this eligibility check and to construct deep links to eligibility checks
+    in the Stedi portal.
+    """
+
+    meta: EligibilityCheckMeta | None = None
+    """
+    Metadata about the response. Stedi uses this data for tracking and
+    troubleshooting.
+    """
+
+    payer_id: str | None = None
+    """
+    The primary payer ID from the [Stedi Payer
+    Network](https://www.stedi.com/healthcare/network). This ID is
+    consistent across eligibility and claims systems and matches the payer
+    ID printed on the member's ID card. You can use it as the `payerId` in
+    subsequent eligibility check requests.
+    """
+
+    provider: EligibilityCheckProvider | None = None
+    """
+    Information about the entity that submitted the original eligibility
+    check request. This may be an individual practitioner, a medical group,
+    a hospital, or another type of healthcare provider. This object will
+    always include at least one identifier, such as the provider's
+    [NPI](https://www.stedi.com/docs/healthcare/national-provider-identifier),
+    tax ID, or EIN. If you left the provider name out of the request, this
+    object typically contains the name that Stedi filled in from the
+    provider's National Plan and Provider Enumeration System (NPPES)
+    record, or `PROVIDER`.
+    """
+
+    subscriber: EligibilityCheckSubscriber | None = None
+    """
+    Information about the primary policyholder for the insurance plan listed
+    in the original eligibility check request. The response will always
+    include either the subscriber's name or member ID for identification,
+    but most payers will also return the subscriber's date of birth and
+    other identifying information. Some payers truncate names to fit their
+    own technical limits, so the payer may not return the subscriber's full
+    legal name.
+    """
+
+    dependent: EligibilityCheckDependent | None = None
+    """
+    Information about the dependent from the eligibility check request. Note
+    that the payer may return the dependent in the subscriber object
+    instead. When present, this object will always include the dependent's
+    name for identification, but many payers also include the date of birth
+    and other identifying information. Some payers truncate names to fit
+    their own technical limits, so the payer may not return the dependent's
+    full legal name.
+    """
+
+    plans: list[EligibilityCheckPlan] | None = None
+    """
+    The patient's insurance plans, grouped by plan name. Each plan contains
+    the benefits that apply to the patient.
+    """
+
+    eligibility_search_id: str | None = None
+    """
+    An identifier that allows Stedi to group eligibility checks for the same
+    patient into a unified record in the Stedi portal called an [eligibility
+    search](https://www.stedi.com/docs/healthcare/eligibility-views).
+
+    This property is for use by Stedi tools only, such as Stedi's MCP
+    server.
+    """
+
+    warnings: list[EligibilityCheckWarning] | None = None
+    """
+    Issues with your eligibility request that could affect the results, or
+    information about the response. For example, warnings can help explain
+    why the request was rejected.
+    """
+
+    errors: list[EligibilityCheckResponseError] | None = None
+    """
+    `AAA` rejection errors from the payer. [`AAA`
+    errors](https://www.stedi.com/docs/healthcare/eligibility-troubleshooting#payer-aaa-errors)
+    specify the reasons for the rejection and any recommended follow-up
+    actions.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["message"], self.message)
+        if self.meta is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["meta"], self.meta)
+
+        if self.payer_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["payerId"], self.payer_id)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["x12"], self.x12)
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["payer"], self.payer)
+        if self.provider is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["provider"], self.provider)
+
+        if self.subscriber is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["subscriber"], self.subscriber)
+
+        if self.dependent is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["dependent"], self.dependent)
+
+        if self.plans is not None:
+            _serialize_eligibility_check_plans(serializer, _SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["plans"], self.plans)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["id"], self.id)
+        if self.eligibility_search_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["eligibilitySearchId"], self.eligibility_search_id)
+
+        if self.warnings is not None:
+            _serialize_eligibility_check_warnings(serializer, _SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["warnings"], self.warnings)
+
+        if self.errors is not None:
+            _serialize_eligibility_check_response_error_list(serializer, _SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["errors"], self.errors)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["message"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["message"])
+
+                case 1:
+                    kwargs["meta"] = EligibilityCheckMeta.deserialize(de)
+
+                case 2:
+                    kwargs["payer_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["payerId"])
+
+                case 3:
+                    kwargs["x12"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["x12"])
+
+                case 4:
+                    kwargs["payer"] = EligibilityCheckPayer.deserialize(de)
+
+                case 5:
+                    kwargs["provider"] = EligibilityCheckProvider.deserialize(de)
+
+                case 6:
+                    kwargs["subscriber"] = EligibilityCheckSubscriber.deserialize(de)
+
+                case 7:
+                    kwargs["dependent"] = EligibilityCheckDependent.deserialize(de)
+
+                case 8:
+                    kwargs["plans"] = _deserialize_eligibility_check_plans(de, _SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["plans"])
+
+                case 9:
+                    kwargs["id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["id"])
+
+                case 10:
+                    kwargs["eligibility_search_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["eligibilitySearchId"])
+
+                case 11:
+                    kwargs["warnings"] = _deserialize_eligibility_check_warnings(de, _SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["warnings"])
+
+                case 12:
+                    kwargs["errors"] = _deserialize_eligibility_check_response_error_list(de, _SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION.members["errors"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION, consumer=_consumer)
+        if "x12" not in kwargs:
+            kwargs["x12"] = ""
+        if "payer" not in kwargs:
+            kwargs["payer"] = EligibilityCheckPayer._smithy_default()
+        if "id" not in kwargs:
+            kwargs["id"] = ""
         return kwargs
 
 @dataclass(kw_only=True)
@@ -21917,6 +22504,229 @@ class EligibilityCheckSerializationException(ServiceError):
                     logger.debug("Unexpected member schema: %s", schema)
 
         deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_SERIALIZATION_EXCEPTION, consumer=_consumer)
+        return kwargs
+
+@dataclass(kw_only=True)
+class EligibilityCheckThrottledException(ServiceError):
+    """
+    The request was not sent to the payer because your account's real-time
+    concurrency limit was exceeded. Retry with backoff. The body carries the
+    same properties as a successful response, with a synthesized 271 whose
+    `AAA` error reports the rejection.
+    """
+
+    fault: Literal["client", "server"] | None = "client"
+    is_retry_safe: bool | None = True
+    is_throttling_error: bool = True
+
+    x12: str
+    """
+    Typically this property contains the raw X12 EDI [271 Eligibility
+    Benefit
+    Response](https://portal.stedi.com/app/guides/view/hipaa/health-care-eligibility-benefit-response-x279a1/01GS66YHZPB37ABF34DBPSR213)
+    from the payer.
+
+    In some circumstances, this property may contain a [999 Implementation
+    Acknowledgment](https://portal.stedi.com/app/guides/view/hipaa/implementation-acknowledgment-x231a1/01HMRQV0N8SPHG58M4ZG1CRHH0)
+    instead of a 271. A 999 indicates validation errors in the X12 EDI
+    transaction, such as improper formatting or missing or invalid values.
+
+    If this property contains a 999, many of the other response properties
+    will be empty, as Stedi populates them with information from the 271.
+    """
+
+    payer: EligibilityCheckPayer
+    """
+    Information about the payer providing the benefits information. The
+    response will always include the payer's business name and an
+    identifier, such as the payer's tax ID. Most payers also include
+    contact information.
+    """
+
+    id: str
+    """
+    A globally unique identifier for this eligibility check across all Stedi
+    accounts. It's formatted as `ec_<uuid>`. For example:
+    `ec_550e8400-e29b-41d4-a716-446655440000`. You can use this ID to track
+    this eligibility check and to construct deep links to eligibility checks
+    in the Stedi portal.
+    """
+
+    meta: EligibilityCheckMeta | None = None
+    """
+    Metadata about the response. Stedi uses this data for tracking and
+    troubleshooting.
+    """
+
+    payer_id: str | None = None
+    """
+    The primary payer ID from the [Stedi Payer
+    Network](https://www.stedi.com/healthcare/network). This ID is
+    consistent across eligibility and claims systems and matches the payer
+    ID printed on the member's ID card. You can use it as the `payerId` in
+    subsequent eligibility check requests.
+    """
+
+    provider: EligibilityCheckProvider | None = None
+    """
+    Information about the entity that submitted the original eligibility
+    check request. This may be an individual practitioner, a medical group,
+    a hospital, or another type of healthcare provider. This object will
+    always include at least one identifier, such as the provider's
+    [NPI](https://www.stedi.com/docs/healthcare/national-provider-identifier),
+    tax ID, or EIN. If you left the provider name out of the request, this
+    object typically contains the name that Stedi filled in from the
+    provider's National Plan and Provider Enumeration System (NPPES)
+    record, or `PROVIDER`.
+    """
+
+    subscriber: EligibilityCheckSubscriber | None = None
+    """
+    Information about the primary policyholder for the insurance plan listed
+    in the original eligibility check request. The response will always
+    include either the subscriber's name or member ID for identification,
+    but most payers will also return the subscriber's date of birth and
+    other identifying information. Some payers truncate names to fit their
+    own technical limits, so the payer may not return the subscriber's full
+    legal name.
+    """
+
+    dependent: EligibilityCheckDependent | None = None
+    """
+    Information about the dependent from the eligibility check request. Note
+    that the payer may return the dependent in the subscriber object
+    instead. When present, this object will always include the dependent's
+    name for identification, but many payers also include the date of birth
+    and other identifying information. Some payers truncate names to fit
+    their own technical limits, so the payer may not return the dependent's
+    full legal name.
+    """
+
+    plans: list[EligibilityCheckPlan] | None = None
+    """
+    The patient's insurance plans, grouped by plan name. Each plan contains
+    the benefits that apply to the patient.
+    """
+
+    eligibility_search_id: str | None = None
+    """
+    An identifier that allows Stedi to group eligibility checks for the same
+    patient into a unified record in the Stedi portal called an [eligibility
+    search](https://www.stedi.com/docs/healthcare/eligibility-views).
+
+    This property is for use by Stedi tools only, such as Stedi's MCP
+    server.
+    """
+
+    warnings: list[EligibilityCheckWarning] | None = None
+    """
+    Issues with your eligibility request that could affect the results, or
+    information about the response. For example, warnings can help explain
+    why the request was rejected.
+    """
+
+    errors: list[EligibilityCheckResponseError] | None = None
+    """
+    `AAA` rejection errors from the payer. [`AAA`
+    errors](https://www.stedi.com/docs/healthcare/eligibility-troubleshooting#payer-aaa-errors)
+    specify the reasons for the rejection and any recommended follow-up
+    actions.
+    """
+
+    def serialize(self, serializer: ShapeSerializer):
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION, self)
+
+    def serialize_members(self, serializer: ShapeSerializer):
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["message"], self.message)
+        if self.meta is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["meta"], self.meta)
+
+        if self.payer_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["payerId"], self.payer_id)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["x12"], self.x12)
+        serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["payer"], self.payer)
+        if self.provider is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["provider"], self.provider)
+
+        if self.subscriber is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["subscriber"], self.subscriber)
+
+        if self.dependent is not None:
+            serializer.write_struct(_SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["dependent"], self.dependent)
+
+        if self.plans is not None:
+            _serialize_eligibility_check_plans(serializer, _SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["plans"], self.plans)
+
+        serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["id"], self.id)
+        if self.eligibility_search_id is not None:
+            serializer.write_string(_SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["eligibilitySearchId"], self.eligibility_search_id)
+
+        if self.warnings is not None:
+            _serialize_eligibility_check_warnings(serializer, _SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["warnings"], self.warnings)
+
+        if self.errors is not None:
+            _serialize_eligibility_check_response_error_list(serializer, _SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["errors"], self.errors)
+
+    @classmethod
+    def deserialize(cls, deserializer: ShapeDeserializer) -> Self:
+        return cls(**cls.deserialize_kwargs(deserializer))
+
+    @classmethod
+    def deserialize_kwargs(cls, deserializer: ShapeDeserializer) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+
+        def _consumer(schema: Schema, de: ShapeDeserializer) -> None:
+            match schema.expect_member_index():
+                case 0:
+                    kwargs["message"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["message"])
+
+                case 1:
+                    kwargs["meta"] = EligibilityCheckMeta.deserialize(de)
+
+                case 2:
+                    kwargs["payer_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["payerId"])
+
+                case 3:
+                    kwargs["x12"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["x12"])
+
+                case 4:
+                    kwargs["payer"] = EligibilityCheckPayer.deserialize(de)
+
+                case 5:
+                    kwargs["provider"] = EligibilityCheckProvider.deserialize(de)
+
+                case 6:
+                    kwargs["subscriber"] = EligibilityCheckSubscriber.deserialize(de)
+
+                case 7:
+                    kwargs["dependent"] = EligibilityCheckDependent.deserialize(de)
+
+                case 8:
+                    kwargs["plans"] = _deserialize_eligibility_check_plans(de, _SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["plans"])
+
+                case 9:
+                    kwargs["id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["id"])
+
+                case 10:
+                    kwargs["eligibility_search_id"] = de.read_string(_SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["eligibilitySearchId"])
+
+                case 11:
+                    kwargs["warnings"] = _deserialize_eligibility_check_warnings(de, _SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["warnings"])
+
+                case 12:
+                    kwargs["errors"] = _deserialize_eligibility_check_response_error_list(de, _SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION.members["errors"])
+
+                case _:
+                    logger.debug("Unexpected member schema: %s", schema)
+
+        deserializer.read_struct(_SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION, consumer=_consumer)
+        if "x12" not in kwargs:
+            kwargs["x12"] = ""
+        if "payer" not in kwargs:
+            kwargs["payer"] = EligibilityCheckPayer._smithy_default()
+        if "id" not in kwargs:
+            kwargs["id"] = ""
         return kwargs
 
 @dataclass(kw_only=True)
@@ -21960,7 +22770,10 @@ CREATE_ELIGIBILITY_CHECK = APIOperation(
         input_schema = _SCHEMA_CREATE_ELIGIBILITY_CHECK_INPUT,
         output_schema = _SCHEMA_CREATE_ELIGIBILITY_CHECK_OUTPUT,
         error_registry = TypeRegistry({
-            ShapeID("com.stedi.eligibility.v4.errors#EligibilityCheckSerializationException"): EligibilityCheckSerializationException,
+            ShapeID("com.stedi.eligibility.v4.errors#EligibilityCheckInvalidParticipantException"): EligibilityCheckInvalidParticipantException,
+ShapeID("com.stedi.eligibility.v4.errors#EligibilityCheckNonUsOriginException"): EligibilityCheckNonUsOriginException,
+ShapeID("com.stedi.eligibility.v4.errors#EligibilityCheckSerializationException"): EligibilityCheckSerializationException,
+ShapeID("com.stedi.eligibility.v4.errors#EligibilityCheckThrottledException"): EligibilityCheckThrottledException,
 ShapeID("com.stedi.smithy.model.errors#AuthenticationFailedException"): AuthenticationFailedException,
 ShapeID("com.stedi.smithy.model.errors#ContentTooLargeException"): ContentTooLargeException,
 ShapeID("com.stedi.smithy.model.errors#ForbiddenException"): ForbiddenException,
@@ -21973,7 +22786,10 @@ ShapeID("com.stedi.smithy.model.errors#TooManyRequestsException"): TooManyReques
 ShapeID("smithy.api#httpBearerAuth"),
         ],
         error_schemas = [
-            _SCHEMA_ELIGIBILITY_CHECK_SERIALIZATION_EXCEPTION,
+            _SCHEMA_ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION,
+_SCHEMA_ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION,
+_SCHEMA_ELIGIBILITY_CHECK_SERIALIZATION_EXCEPTION,
+_SCHEMA_ELIGIBILITY_CHECK_THROTTLED_EXCEPTION,
 _SCHEMA_AUTHENTICATION_FAILED_EXCEPTION,
 _SCHEMA_CONTENT_TOO_LARGE_EXCEPTION,
 _SCHEMA_FORBIDDEN_EXCEPTION,

@@ -9,7 +9,7 @@ export declare const getRuntimeConfig: (config: StediClientConfig) => {
     bodyLengthChecker: import("@smithy/types").BodyLengthCalculator;
     defaultUserAgentProvider: (config?: import("@aws-sdk/core/client").PreviouslyResolved) => Promise<import("@smithy/types").UserAgent>;
     maxAttempts: number | import("@smithy/types").Provider<number>;
-    requestHandler: RequestHandler | import("@smithy/core/protocols").HttpHandler<any>;
+    requestHandler: import("@smithy/core/protocols").HttpHandler<any> | RequestHandler;
     retryMode: string | import("@smithy/types").Provider<string>;
     streamCollector: (stream: import("stream").Readable | import("stream/web").ReadableStream | ReadableStream | Blob) => Promise<Uint8Array>;
     cacheMiddleware?: boolean | undefined;
@@ -39,6 +39,7 @@ export declare const getRuntimeConfig: (config: StediClientConfig) => {
     tls?: boolean;
     useDualstackEndpoint?: boolean | import("@smithy/types").Provider<boolean | undefined>;
     useFipsEndpoint?: boolean | import("@smithy/types").Provider<boolean | undefined>;
+    ignoreConfiguredEndpointUrls?: boolean;
     serviceConfiguredEndpoint?: never;
     authSchemePreference?: string[] | import("@smithy/types").Provider<string[]>;
     httpAuthSchemes: ({

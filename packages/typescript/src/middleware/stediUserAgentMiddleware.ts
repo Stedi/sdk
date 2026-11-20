@@ -3,7 +3,7 @@
 // identity: stedi-sdk-typescript/<version> <runtime> (runtime: node/<v>, react-native, or browser).
 // @ts-ignore: package.json is imported from the dist folders at runtime.
 import packageInfo from "../../package.json"; // eslint-disable-line
-import { HttpRequest } from "@smithy/protocol-http";
+import { HttpRequest } from "@smithy/core/protocols";
 
 export function getStediUserAgentPlugin(config: { runtime?: string }) {
   return {

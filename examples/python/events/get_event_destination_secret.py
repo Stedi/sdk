@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["stedi==1.0.0"]
+# dependencies = ["stedi==1.1.0"]
 # ///
 
 """Read a destination's current signing secret.

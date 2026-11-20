@@ -1213,9 +1213,9 @@ export const EligibilityCheckPlaceOfServiceCode = {
    */
   INPATIENT_PSYCHIATRIC_FACILITY: "51",
   /**
-   * Intermediate Care Facility/Mentally Retarded
+   * Intermediate Care Facility/Individuals with Intellectual Disabilities
    */
-  INTERMEDIATE_CARE_FACILITY_MENTALLY_RETARDED: "54",
+  INTERMEDIATE_CARE_FACILITY_INDIVIDUALS_WITH_INTELLECTUAL_DISABILITIES: "54",
   /**
    * Mass Immunization Center
    */
@@ -1229,6 +1229,10 @@ export const EligibilityCheckPlaceOfServiceCode = {
    */
   MOBILE_UNIT: "15",
   /**
+   * Non-residential Opioid Treatment Facility
+   */
+  NON_RESIDENTIAL_OPIOID_TREATMENT_FACILITY: "58",
+  /**
    * Non-residential Substance Abuse Treatment Facility
    */
   NON_RESIDENTIAL_SUBSTANCE_ABUSE_TREATMENT_FACILITY: "57",
@@ -1241,17 +1245,37 @@ export const EligibilityCheckPlaceOfServiceCode = {
    */
   OFFICE: "11",
   /**
+   * Off Campus-Outpatient Hospital
+   */
+  OFF_CAMPUS_OUTPATIENT_HOSPITAL: "19",
+  /**
    * Other Place of Service
    */
   OTHER_PLACE_OF_SERVICE: "99",
   /**
-   * Outpatient Hospital
+   * On Campus-Outpatient Hospital
    */
   OUTPATIENT_HOSPITAL: "22",
+  /**
+   * Outreach Site/Street
+   */
+  OUTREACH_SITE_STREET: "27",
+  /**
+   * Programs of All-Inclusive Care for the Elderly (PACE) Center
+   */
+  PACE_CENTER: "66",
   /**
    * Pharmacy
    */
   PHARMACY: "01",
+  /**
+   * Place of Employment-Worksite
+   */
+  PLACE_OF_EMPLOYMENT_WORKSITE: "18",
+  /**
+   * Prison/Correctional Facility
+   */
+  PRISON_CORRECTIONAL_FACILITY: "09",
   /**
    * Psychiatric Facility - Partial Hospitalization
    */
@@ -1281,6 +1305,18 @@ export const EligibilityCheckPlaceOfServiceCode = {
    */
   STATE_OR_LOCAL_PUBLIC_HEALTH_CLINIC: "71",
   /**
+   * Telehealth Provided in Patient's Home
+   */
+  TELEHEALTH_PROVIDED_IN_PATIENT_HOME: "10",
+  /**
+   * Telehealth Provided Other than in Patient's Home
+   */
+  TELEHEALTH_PROVIDED_OTHER_THAN_PATIENT_HOME: "02",
+  /**
+   * Temporary Lodging
+   */
+  TEMPORARY_LODGING: "16",
+  /**
    * Tribal 638 Free-standing Facility
    */
   TRIBAL_638_FREE_STANDING_FACILITY: "07",
@@ -1292,6 +1328,10 @@ export const EligibilityCheckPlaceOfServiceCode = {
    * Urgent Care Facility
    */
   URGENT_CARE_FACILITY: "20",
+  /**
+   * Walk-in Retail Health Clinic
+   */
+  WALK_IN_RETAIL_HEALTH_CLINIC: "17",
 } as const;
 /**
  * @public

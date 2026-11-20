@@ -2937,6 +2937,12 @@ export interface EligibilityCheckRequestDependent {
   gender?: EligibilityCheckRequestPatientGender | undefined;
 
   /**
+   * The number assigned to each family member born with the same birth date, such as twins or triplets. Use to indicate the birth order when there are multiple births associated with the provided birth date. Requires `relationToSubscriber`; the request is rejected when it is omitted.
+   * @public
+   */
+  birthSequenceNumber?: number | undefined;
+
+  /**
    * Additional identification numbers for the dependent.
    * @public
    */
@@ -3136,7 +3142,7 @@ export interface EligibilityCheckRequestProviderAdditionalInformation {
   facilityNetworkId?: string | undefined;
 
   /**
-   * The provider's personal identification number.
+   * The provider's personal identification number (PIN). For payers Medicaid California, AltaMed, and Kern Family Health Care, this property is **required** and should be the [password the provider uses to log in to the payer's portal](https://www.stedi.com/docs/healthcare/eligibility-troubleshooting#portal-credentials). Otherwise, this isn't commonly used.
    * @public
    */
   personalIdentificationNumber?: string | undefined;
@@ -3178,10 +3184,10 @@ export interface EligibilityCheckRequestProviderPersonName {
   firstName?: string | undefined;
 
   /**
-   * The provider's last name.
+   * The provider's last name. If you include `firstName` but leave out `lastName`, Stedi treats the name as missing and fills in the whole name from the provider's NPPES record when one is available.
    * @public
    */
-  lastName: string | undefined;
+  lastName?: string | undefined;
 
   /**
    * The provider's middle name or middle initial.
@@ -3251,17 +3257,17 @@ export namespace EligibilityCheckRequestProviderName {
 
 /**
  * Information about the entity requesting the eligibility check. This may be an individual practitioner, a medical group, a hospital, or another type of healthcare provider.
- *  - You must provide the provider's name as either a person (with `name.person`) or an organization (with `name.organization`).
+ *  - We recommend omitting the provider's name. If omitted, Stedi uses the name associated with the provider's `npi` record in the National Plan and Provider Enumeration System (NPPES). We only recommend explicitly setting the provider name if you believe that the provider name on file with the payer differs from the provider name in NPPES. If you set it, provide it as either a person (with `name.person`) or an organization (with `name.organization`).
  *  - You must also provide an identifier - this is typically the provider's [National Provider Identifier](https://www.stedi.com/docs/healthcare/national-provider-identifier) (`npi`). If the provider doesn't have an NPI, you can supply an alternative, such as their `tin` or `ssn`.
  *  - Don't include additional properties, such as `tin` or `address`, unless they are specifically required or suggested by the payer.
  * @public
  */
 export interface EligibilityCheckRequestProvider {
   /**
-   * The provider's name, as either a person or an organization.
+   * The provider's name, as either a person or an organization. We recommend omitting this. Certain payers return different benefits information depending on the correctness of the provider name submitted. If omitted, Stedi uses the name associated with the provider's `npi` record in the National Plan and Provider Enumeration System (NPPES). We only recommend explicitly setting the provider name if you believe that the provider name on file with the payer differs from the provider name in NPPES.
    * @public
    */
-  name: EligibilityCheckRequestProviderName | undefined;
+  name?: EligibilityCheckRequestProviderName | undefined;
 
   /**
    * The type of provider making the request.
@@ -3594,6 +3600,12 @@ export interface EligibilityCheckRequestSubscriber {
   gender?: EligibilityCheckRequestPatientGender | undefined;
 
   /**
+   * The number assigned to each family member born with the same birth date, such as twins or triplets. Use to indicate the birth order when there are multiple births associated with the provided birth date.
+   * @public
+   */
+  birthSequenceNumber?: number | undefined;
+
+  /**
    * Additional identification numbers for the subscriber. Use this object when you need to provide an identification number other than or in addition to the subscriber's member ID. For example, you may provide the patient account number.
    *
    * Don't include the health insurance claim number or the medicaid recipient ID number here unless they are different from the member ID.
@@ -3635,7 +3647,7 @@ export interface CreateEligibilityCheckInput {
 
   /**
    * Information about the entity requesting the eligibility check. This may be an individual practitioner, a medical group, a hospital, or another type of healthcare provider.
-   *  - You must provide the provider's name as either a person (with `name.person`) or an organization (with `name.organization`).
+   *  - We recommend omitting the provider's name. If omitted, Stedi uses the name associated with the provider's `npi` record in the National Plan and Provider Enumeration System (NPPES). We only recommend explicitly setting the provider name if you believe that the provider name on file with the payer differs from the provider name in NPPES. If you set it, provide it as either a person (with `name.person`) or an organization (with `name.organization`).
    *  - You must also provide an identifier - this is typically the provider's [National Provider Identifier](https://www.stedi.com/docs/healthcare/national-provider-identifier) (`npi`). If the provider doesn't have an NPI, you can supply an alternative, such as their `tin` or `ssn`.
    *  - Don't include additional properties, such as `tin` or `address`, unless they are specifically required or suggested by the payer.
    * @public
@@ -4053,7 +4065,7 @@ export interface EligibilityCheckEntityProvider {
 }
 
 /**
- * Information about the dependent from the eligibility check request. Note that the payer may return the dependent in the subscriber object instead. When present, this object will always include the dependent's name for identification, but many payers also include the date of birth and other identifying information.
+ * Information about the dependent from the eligibility check request. Note that the payer may return the dependent in the subscriber object instead. When present, this object will always include the dependent's name for identification, but many payers also include the date of birth and other identifying information. Some payers truncate names to fit their own technical limits, so the payer may not return the dependent's full legal name.
  * @public
  */
 export interface EligibilityCheckDependent {
@@ -5034,7 +5046,7 @@ export interface EligibilityCheckBenefitDescription {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -5130,7 +5142,7 @@ export interface EligibilityCheckBenefitDisclaimer {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -5226,7 +5238,7 @@ export interface EligibilityCheckCannotProcess {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -5322,7 +5334,7 @@ export interface EligibilityCheckCardReportedStolen {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -5418,7 +5430,7 @@ export interface EligibilityCheckCoInsurance {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -5514,7 +5526,7 @@ export interface EligibilityCheckContactFollowingEntityForInformation {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -5628,7 +5640,7 @@ export interface EligibilityCheckCoPayment {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -5730,7 +5742,7 @@ export interface EligibilityCheckCostContainment {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -5832,7 +5844,7 @@ export interface EligibilityCheckCoverageBasis {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -5928,7 +5940,7 @@ export interface EligibilityCheckDeductible {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -6030,7 +6042,7 @@ export interface EligibilityCheckExclusion {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -6126,7 +6138,7 @@ export interface EligibilityCheckHealthCareFacility {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -6240,7 +6252,7 @@ export interface EligibilityCheckInvalidBenefit {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -6406,7 +6418,7 @@ export interface EligibilityCheckLimitation {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -6514,7 +6526,7 @@ export interface EligibilityCheckManagedCareCoordinator {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -6610,7 +6622,7 @@ export interface EligibilityCheckNonCovered {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -6706,7 +6718,7 @@ export interface EligibilityCheckNotDeemedMedicalNecessity {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -6802,7 +6814,7 @@ export interface EligibilityCheckOtherOrAdditionalPayer {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -6898,7 +6910,7 @@ export interface EligibilityCheckOtherSourceOfData {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -6994,7 +7006,7 @@ export interface EligibilityCheckOutOfPocket {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -7096,7 +7108,7 @@ export interface EligibilityCheckPreExistingCondition {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -7192,7 +7204,7 @@ export interface EligibilityCheckPrimaryCareProvider {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -7288,7 +7300,7 @@ export interface EligibilityCheckPriorYearsHistory {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -7384,7 +7396,7 @@ export interface EligibilityCheckReserve {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -7480,7 +7492,7 @@ export interface EligibilityCheckSecondSurgicalOpinionRequired {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -7576,7 +7588,7 @@ export interface EligibilityCheckServicesRestrictedToFollowingProvider {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -7672,7 +7684,7 @@ export interface EligibilityCheckSpendDown {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -7774,7 +7786,7 @@ export interface EligibilityCheckEligibilityStatus {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -7864,7 +7876,7 @@ export interface EligibilityCheckUnlimited {
   additionalInformation?: EligibilityCheckEligibilityAndBenefitAdditionalInformation | undefined;
 
   /**
-   * The plan coverage description from EB05. Populated when the EB05 value doesn't relate to a plan (e.g., payer used EB05 for benefit-level info rather than a plan name).
+   * The plan coverage description the payer sent for this benefit entry. Payers typically send the plan name, but some send benefit-level information instead. Stedi omits this property when it matches the plan's `name`. When the plan has no `name`, check this property for the payer's plan information.
    * @public
    */
   planCoverageDescription?: string | undefined;
@@ -8437,7 +8449,7 @@ export interface EligibilityCheckSubscriberAdditionalInformation {
 }
 
 /**
- * Information about the primary policyholder for the insurance plan listed in the original eligibility check request. The response will always include either the subscriber's name or member ID for identification, but most payers will also return the subscriber's date of birth and other identifying information.
+ * Information about the primary policyholder for the insurance plan listed in the original eligibility check request. The response will always include either the subscriber's name or member ID for identification, but most payers will also return the subscriber's date of birth and other identifying information. Some payers truncate names to fit their own technical limits, so the payer may not return the subscriber's full legal name.
  * @public
  */
 export interface EligibilityCheckSubscriber {
@@ -8526,12 +8538,6 @@ export interface EligibilityCheckWarning {
  */
 export interface CreateEligibilityCheckOutput {
   /**
-   * A globally unique identifier for this eligibility check across all Stedi accounts. It's formatted as `ec_<uuid>`. For example: `ec_550e8400-e29b-41d4-a716-446655440000`. You can use this ID to track this eligibility check and to construct deep links to eligibility checks in the Stedi portal.
-   * @public
-   */
-  id: string | undefined;
-
-  /**
    * Metadata about the response. Stedi uses this data for tracking and troubleshooting.
    * @public
    */
@@ -8542,20 +8548,6 @@ export interface CreateEligibilityCheckOutput {
    * @public
    */
   payerId?: string | undefined;
-
-  /**
-   * An identifier that allows Stedi to group eligibility checks for the same patient into a unified record in the Stedi portal called an [eligibility search](https://www.stedi.com/docs/healthcare/eligibility-views).
-   *
-   * This property is for use by Stedi tools only, such as Stedi's MCP server.
-   * @public
-   */
-  eligibilitySearchId?: string | undefined;
-
-  /**
-   * Issues with your eligibility request that could affect the results, or information about the response. For example, warnings can help explain why the request was rejected.
-   * @public
-   */
-  warnings?: EligibilityCheckWarning[] | undefined;
 
   /**
    * Typically this property contains the raw X12 EDI [271 Eligibility Benefit Response](https://portal.stedi.com/app/guides/view/hipaa/health-care-eligibility-benefit-response-x279a1/01GS66YHZPB37ABF34DBPSR213) from the payer.
@@ -8574,19 +8566,19 @@ export interface CreateEligibilityCheckOutput {
   payer: EligibilityCheckPayer | undefined;
 
   /**
-   * Information about the entity that submitted the original eligibility check request. This may be an individual practitioner, a medical group, a hospital, or another type of healthcare provider. This object will always include at least one identifier, such as the provider's [NPI](https://www.stedi.com/docs/healthcare/national-provider-identifier), tax ID, or EIN.
+   * Information about the entity that submitted the original eligibility check request. This may be an individual practitioner, a medical group, a hospital, or another type of healthcare provider. This object will always include at least one identifier, such as the provider's [NPI](https://www.stedi.com/docs/healthcare/national-provider-identifier), tax ID, or EIN. If you left the provider name out of the request, this object typically contains the name that Stedi filled in from the provider's National Plan and Provider Enumeration System (NPPES) record, or `PROVIDER`.
    * @public
    */
   provider?: EligibilityCheckProvider | undefined;
 
   /**
-   * Information about the primary policyholder for the insurance plan listed in the original eligibility check request. The response will always include either the subscriber's name or member ID for identification, but most payers will also return the subscriber's date of birth and other identifying information.
+   * Information about the primary policyholder for the insurance plan listed in the original eligibility check request. The response will always include either the subscriber's name or member ID for identification, but most payers will also return the subscriber's date of birth and other identifying information. Some payers truncate names to fit their own technical limits, so the payer may not return the subscriber's full legal name.
    * @public
    */
   subscriber?: EligibilityCheckSubscriber | undefined;
 
   /**
-   * Information about the dependent from the eligibility check request. Note that the payer may return the dependent in the subscriber object instead. When present, this object will always include the dependent's name for identification, but many payers also include the date of birth and other identifying information.
+   * Information about the dependent from the eligibility check request. Note that the payer may return the dependent in the subscriber object instead. When present, this object will always include the dependent's name for identification, but many payers also include the date of birth and other identifying information. Some payers truncate names to fit their own technical limits, so the payer may not return the dependent's full legal name.
    * @public
    */
   dependent?: EligibilityCheckDependent | undefined;
@@ -8596,6 +8588,26 @@ export interface CreateEligibilityCheckOutput {
    * @public
    */
   plans?: EligibilityCheckPlan[] | undefined;
+
+  /**
+   * A globally unique identifier for this eligibility check across all Stedi accounts. It's formatted as `ec_<uuid>`. For example: `ec_550e8400-e29b-41d4-a716-446655440000`. You can use this ID to track this eligibility check and to construct deep links to eligibility checks in the Stedi portal.
+   * @public
+   */
+  id: string | undefined;
+
+  /**
+   * An identifier that allows Stedi to group eligibility checks for the same patient into a unified record in the Stedi portal called an [eligibility search](https://www.stedi.com/docs/healthcare/eligibility-views).
+   *
+   * This property is for use by Stedi tools only, such as Stedi's MCP server.
+   * @public
+   */
+  eligibilitySearchId?: string | undefined;
+
+  /**
+   * Issues with your eligibility request that could affect the results, or information about the response. For example, warnings can help explain why the request was rejected.
+   * @public
+   */
+  warnings?: EligibilityCheckWarning[] | undefined;
 
   /**
    * `AAA` rejection errors from the payer. [`AAA` errors](https://www.stedi.com/docs/healthcare/eligibility-troubleshooting#payer-aaa-errors) specify the reasons for the rejection and any recommended follow-up actions.

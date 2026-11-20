@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["stedi==1.0.0"]
+# dependencies = ["stedi==1.1.0"]
 # ///
 
 """Retrieve a claim record, with summary information about its most recent submission.

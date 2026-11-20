@@ -6916,6 +6916,17 @@ ELIGIBILITY_CHECK_REQUEST_DEPENDENT = Schema.collection(
             "target": ELIGIBILITY_CHECK_REQUEST_PATIENT_GENDER,
         },
 
+        "birthSequenceNumber": {
+            "target": LONG,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#range"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 999999999,
+                    })),
+
+            ],
+        },
+
         "additionalInformation": {
             "target": ELIGIBILITY_CHECK_REQUEST_DEPENDENT_ADDITIONAL_INFORMATION,
         },
@@ -6987,7 +6998,7 @@ ELIGIBILITY_CHECK_REQUEST_ENCOUNTER_DATES = Schema.collection(
 )
 
 ELIGIBILITY_CHECK_PLACE_OF_SERVICE_CODE = Schema.collection(
-    id=ShapeID("com.stedi.eligibility.v4.response#EligibilityCheckPlaceOfServiceCode"),
+    id=ShapeID("com.stedi.eligibility.v4.common#EligibilityCheckPlaceOfServiceCode"),
     shape_type=ShapeType.ENUM,
     traits=[
         Trait.new(id=ShapeID("com.stedi.smithy.rust#infallibleEnum")),
@@ -6998,6 +7009,14 @@ ELIGIBILITY_CHECK_PLACE_OF_SERVICE_CODE = Schema.collection(
             "target": UNIT,
             "traits": [
                 Trait.new(id=ShapeID("smithy.api#enumValue"), value="01"),
+
+            ],
+        },
+
+        "TELEHEALTH_PROVIDED_OTHER_THAN_PATIENT_HOME": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="02"),
 
             ],
         },
@@ -7050,6 +7069,22 @@ ELIGIBILITY_CHECK_PLACE_OF_SERVICE_CODE = Schema.collection(
             ],
         },
 
+        "PRISON_CORRECTIONAL_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="09"),
+
+            ],
+        },
+
+        "TELEHEALTH_PROVIDED_IN_PATIENT_HOME": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="10"),
+
+            ],
+        },
+
         "OFFICE": {
             "target": UNIT,
             "traits": [
@@ -7086,6 +7121,38 @@ ELIGIBILITY_CHECK_PLACE_OF_SERVICE_CODE = Schema.collection(
             "target": UNIT,
             "traits": [
                 Trait.new(id=ShapeID("smithy.api#enumValue"), value="15"),
+
+            ],
+        },
+
+        "TEMPORARY_LODGING": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="16"),
+
+            ],
+        },
+
+        "WALK_IN_RETAIL_HEALTH_CLINIC": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="17"),
+
+            ],
+        },
+
+        "PLACE_OF_EMPLOYMENT_WORKSITE": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="18"),
+
+            ],
+        },
+
+        "OFF_CAMPUS_OUTPATIENT_HOSPITAL": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="19"),
 
             ],
         },
@@ -7142,6 +7209,14 @@ ELIGIBILITY_CHECK_PLACE_OF_SERVICE_CODE = Schema.collection(
             "target": UNIT,
             "traits": [
                 Trait.new(id=ShapeID("smithy.api#enumValue"), value="26"),
+
+            ],
+        },
+
+        "OUTREACH_SITE_STREET": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="27"),
 
             ],
         },
@@ -7234,7 +7309,7 @@ ELIGIBILITY_CHECK_PLACE_OF_SERVICE_CODE = Schema.collection(
             ],
         },
 
-        "INTERMEDIATE_CARE_FACILITY_MENTALLY_RETARDED": {
+        "INTERMEDIATE_CARE_FACILITY_INDIVIDUALS_WITH_INTELLECTUAL_DISABILITIES": {
             "target": UNIT,
             "traits": [
                 Trait.new(id=ShapeID("smithy.api#enumValue"), value="54"),
@@ -7262,6 +7337,14 @@ ELIGIBILITY_CHECK_PLACE_OF_SERVICE_CODE = Schema.collection(
             "target": UNIT,
             "traits": [
                 Trait.new(id=ShapeID("smithy.api#enumValue"), value="57"),
+
+            ],
+        },
+
+        "NON_RESIDENTIAL_OPIOID_TREATMENT_FACILITY": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="58"),
 
             ],
         },
@@ -7294,6 +7377,14 @@ ELIGIBILITY_CHECK_PLACE_OF_SERVICE_CODE = Schema.collection(
             "target": UNIT,
             "traits": [
                 Trait.new(id=ShapeID("smithy.api#enumValue"), value="65"),
+
+            ],
+        },
+
+        "PACE_CENTER": {
+            "target": UNIT,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#enumValue"), value="66"),
 
             ],
         },
@@ -7667,7 +7758,6 @@ ELIGIBILITY_CHECK_REQUEST_PROVIDER_PERSON_NAME = Schema.collection(
         "lastName": {
             "target": STRING,
             "traits": [
-                Trait.new(id=ShapeID("smithy.api#required")),
                 Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
                         "min": 1,
                         "max": 60,
@@ -7805,10 +7895,6 @@ ELIGIBILITY_CHECK_REQUEST_PROVIDER = Schema.collection(
     members={
         "name": {
             "target": ELIGIBILITY_CHECK_REQUEST_PROVIDER_NAME,
-            "traits": [
-                Trait.new(id=ShapeID("smithy.api#required")),
-
-            ],
         },
 
         "type": {
@@ -8210,6 +8296,17 @@ ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER = Schema.collection(
             "target": ELIGIBILITY_CHECK_REQUEST_PATIENT_GENDER,
         },
 
+        "birthSequenceNumber": {
+            "target": LONG,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#range"), value=MappingProxyType({
+                        "min": 1,
+                        "max": 999999999,
+                    })),
+
+            ],
+        },
+
         "additionalInformation": {
             "target": ELIGIBILITY_CHECK_REQUEST_SUBSCRIBER_ADDITIONAL_INFORMATION,
         },
@@ -8250,7 +8347,7 @@ CREATE_ELIGIBILITY_CHECK_INPUT = Schema.collection(
             "traits": [
                 Trait.new(id=ShapeID("smithy.api#length"), value=MappingProxyType({
                         "min": 1,
-                        "max": 60,
+                        "max": 120,
                     })),
 
             ],
@@ -14859,28 +14956,12 @@ CREATE_ELIGIBILITY_CHECK_OUTPUT = Schema.collection(
 
     ],
     members={
-        "id": {
-            "target": STRING,
-            "traits": [
-                Trait.new(id=ShapeID("smithy.api#required")),
-
-            ],
-        },
-
         "meta": {
             "target": ELIGIBILITY_CHECK_META,
         },
 
         "payerId": {
             "target": STRING,
-        },
-
-        "eligibilitySearchId": {
-            "target": STRING,
-        },
-
-        "warnings": {
-            "target": ELIGIBILITY_CHECK_WARNINGS,
         },
 
         "x12": {
@@ -14915,6 +14996,182 @@ CREATE_ELIGIBILITY_CHECK_OUTPUT = Schema.collection(
             "target": ELIGIBILITY_CHECK_PLANS,
         },
 
+        "id": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "eligibilitySearchId": {
+            "target": STRING,
+        },
+
+        "warnings": {
+            "target": ELIGIBILITY_CHECK_WARNINGS,
+        },
+
+        "errors": {
+            "target": ELIGIBILITY_CHECK_RESPONSE_ERROR_LIST,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_INVALID_PARTICIPANT_EXCEPTION = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.errors#EligibilityCheckInvalidParticipantException"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#error"), value="client"),
+        Trait.new(id=ShapeID("smithy.api#httpError"), value=400),
+
+    ],
+    members={
+        "message": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "meta": {
+            "target": ELIGIBILITY_CHECK_META,
+        },
+
+        "payerId": {
+            "target": STRING,
+        },
+
+        "x12": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "payer": {
+            "target": ELIGIBILITY_CHECK_PAYER,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "provider": {
+            "target": ELIGIBILITY_CHECK_PROVIDER,
+        },
+
+        "subscriber": {
+            "target": ELIGIBILITY_CHECK_SUBSCRIBER,
+        },
+
+        "dependent": {
+            "target": ELIGIBILITY_CHECK_DEPENDENT,
+        },
+
+        "plans": {
+            "target": ELIGIBILITY_CHECK_PLANS,
+        },
+
+        "id": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "eligibilitySearchId": {
+            "target": STRING,
+        },
+
+        "warnings": {
+            "target": ELIGIBILITY_CHECK_WARNINGS,
+        },
+
+        "errors": {
+            "target": ELIGIBILITY_CHECK_RESPONSE_ERROR_LIST,
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_NON_US_ORIGIN_EXCEPTION = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.errors#EligibilityCheckNonUsOriginException"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#error"), value="client"),
+        Trait.new(id=ShapeID("smithy.api#httpError"), value=451),
+
+    ],
+    members={
+        "message": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "meta": {
+            "target": ELIGIBILITY_CHECK_META,
+        },
+
+        "payerId": {
+            "target": STRING,
+        },
+
+        "x12": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "payer": {
+            "target": ELIGIBILITY_CHECK_PAYER,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "provider": {
+            "target": ELIGIBILITY_CHECK_PROVIDER,
+        },
+
+        "subscriber": {
+            "target": ELIGIBILITY_CHECK_SUBSCRIBER,
+        },
+
+        "dependent": {
+            "target": ELIGIBILITY_CHECK_DEPENDENT,
+        },
+
+        "plans": {
+            "target": ELIGIBILITY_CHECK_PLANS,
+        },
+
+        "id": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "eligibilitySearchId": {
+            "target": STRING,
+        },
+
+        "warnings": {
+            "target": ELIGIBILITY_CHECK_WARNINGS,
+        },
+
         "errors": {
             "target": ELIGIBILITY_CHECK_RESPONSE_ERROR_LIST,
         },
@@ -14937,6 +15194,89 @@ ELIGIBILITY_CHECK_SERIALIZATION_EXCEPTION = Schema.collection(
                 Trait.new(id=ShapeID("smithy.api#required")),
 
             ],
+        },
+
+    }
+)
+
+ELIGIBILITY_CHECK_THROTTLED_EXCEPTION = Schema.collection(
+    id=ShapeID("com.stedi.eligibility.v4.errors#EligibilityCheckThrottledException"),
+
+    traits=[
+        Trait.new(id=ShapeID("smithy.api#error"), value="client"),
+        Trait.new(id=ShapeID("smithy.api#httpError"), value=429),
+        Trait.new(id=ShapeID("smithy.api#retryable"), value=MappingProxyType({
+                "throttling": True,
+            })),
+
+    ],
+    members={
+        "message": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "meta": {
+            "target": ELIGIBILITY_CHECK_META,
+        },
+
+        "payerId": {
+            "target": STRING,
+        },
+
+        "x12": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "payer": {
+            "target": ELIGIBILITY_CHECK_PAYER,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "provider": {
+            "target": ELIGIBILITY_CHECK_PROVIDER,
+        },
+
+        "subscriber": {
+            "target": ELIGIBILITY_CHECK_SUBSCRIBER,
+        },
+
+        "dependent": {
+            "target": ELIGIBILITY_CHECK_DEPENDENT,
+        },
+
+        "plans": {
+            "target": ELIGIBILITY_CHECK_PLANS,
+        },
+
+        "id": {
+            "target": STRING,
+            "traits": [
+                Trait.new(id=ShapeID("smithy.api#required")),
+
+            ],
+        },
+
+        "eligibilitySearchId": {
+            "target": STRING,
+        },
+
+        "warnings": {
+            "target": ELIGIBILITY_CHECK_WARNINGS,
+        },
+
+        "errors": {
+            "target": ELIGIBILITY_CHECK_RESPONSE_ERROR_LIST,
         },
 
     }
@@ -14966,7 +15306,6 @@ CREATE_ELIGIBILITY_CHECK = Schema(
     id=ShapeID("com.stedi.eligibility.v4#CreateEligibilityCheck"),
     shape_type=ShapeType.OPERATION,
     traits=[
-        Trait.new(id=ShapeID("smithy.api#internal")),
         Trait.new(id=ShapeID("smithy.rules#staticContextParams"), value=MappingProxyType({
                 "ServiceComponent": MappingProxyType({
                     "value": "SdkEligibilityCheckService",
@@ -15067,6 +15406,7 @@ CREATE_ELIGIBILITY_CHECK = Schema(
                         }),
                         "plans": (
                             MappingProxyType({
+                                "name": "Humana Gold Plan",
                                 "benefits": MappingProxyType({
                                     "statuses": (
                                         MappingProxyType({
@@ -15081,7 +15421,6 @@ CREATE_ELIGIBILITY_CHECK = Schema(
                                                 "definition": "Health Benefit Plan Coverage",
                                                 "system": "STC",
                                             }),
-                                            "planCoverageDescription": "Humana Gold Plan",
                                             "messages": (
                                                 "000 111",
                                                 "Medicare PPO",
@@ -15310,6 +15649,237 @@ CREATE_ELIGIBILITY_CHECK = Schema(
                         "shapeId": "com.stedi.smithy.model.errors#InvalidRequestException",
                         "content": MappingProxyType({
                             "message": "Payer NOTAPAYER is not configured. Please check our published payer list or contact Stedi support to resolve.",
+                        }),
+                    }),
+                }),
+                MappingProxyType({
+                    "title": "Could not identify a participant",
+                    "documentation": "The payer answered with an `AAA` rejection of code `79` rather than benefits, meaning it could not identify one of the participants — most often the payer ID on the route or the member's details. A 79 is not transient, so nothing was retried. The body carries the same properties as a successful response: the `x12` is the payer's own 271 and `errors` describes the rejection.",
+                    "input": MappingProxyType({
+                        "payerId": "61101",
+                        "subscriber": MappingProxyType({
+                            "dateOfBirth": "1975-05-05",
+                            "memberId": "HUMANA123",
+                            "name": MappingProxyType({
+                                "person": MappingProxyType({
+                                    "firstName": "Jane",
+                                    "lastName": "Doe",
+                                }),
+                            }),
+                        }),
+                        "provider": MappingProxyType({
+                            "name": MappingProxyType({
+                                "organization": "Provider Name",
+                            }),
+                            "npi": "1999999984",
+                        }),
+                        "encounter": MappingProxyType({
+                            "services": (
+                                MappingProxyType({
+                                    "value": "30",
+                                    "system": "STC",
+                                }),
+                            ),
+                        }),
+                    }),
+                    "error": MappingProxyType({
+                        "shapeId": "com.stedi.eligibility.v4.errors#EligibilityCheckInvalidParticipantException",
+                        "content": MappingProxyType({
+                            "message": "One of the participants in the request could not be identified. Check the payer ID, provider identifiers and member details against the payer's requirements.",
+                            "id": "ec_01a06d4a-a0fa-77d2-8b49-ca9a74c9888d",
+                            "eligibilitySearchId": "01a06d4a-a0fa-77d2-8b49-caa0546ed295",
+                            "payerId": "61101",
+                            "x12": "ISA*00*          *00*          *ZZ*STEDI          *01*117151744      *260916*1200*^*00501*000000001*0*P*`~GS*HB*STEDI*117151744*20260916*120000*1*X*005010X279A1~ST*271*0001*005010X279A1~BHT*0022*11*01M1PMN87VXMME0ZV6SHJP3B9Y*20260916*120000~HL*1**20*1~NM1*PR*2*HUMANA*****PI*61101~AAA*N**79*C~SE*7*0001~GE*1*1~IEA*1*000000001~",
+                            "payer": MappingProxyType({
+                                "type": "PAYER",
+                                "name": MappingProxyType({
+                                    "organization": "HUMANA",
+                                }),
+                                "identification": "61101",
+                            }),
+                            "provider": MappingProxyType({
+                                "type": "PROVIDER",
+                                "name": MappingProxyType({
+                                    "organization": "Provider Name",
+                                }),
+                                "npi": "1999999984",
+                            }),
+                            "subscriber": MappingProxyType({
+                                "memberId": "HUMANA123",
+                                "dateOfBirth": "1975-05-05",
+                                "name": MappingProxyType({
+                                    "person": MappingProxyType({
+                                        "firstName": "Jane",
+                                        "lastName": "Doe",
+                                    }),
+                                }),
+                            }),
+                            "meta": MappingProxyType({
+                                "traceId": "01M1PMN87VXMME0ZV6SHJP3B9Y",
+                                "outboundTraceId": "01M1PMN87VXMME0ZV6SHJP3B9Y",
+                            }),
+                            "errors": (
+                                MappingProxyType({
+                                    "code": "79",
+                                    "description": "Invalid Participant Identification",
+                                    "followupAction": "Please Correct and Resubmit",
+                                    "location": "PAYER",
+                                }),
+                            ),
+                        }),
+                    }),
+                }),
+                MappingProxyType({
+                    "title": "Request from outside the United States",
+                    "documentation": "CMS requires eligibility traffic to originate in the United States. When the originating IP address or any `X-Forwarded-For` IP address is outside the U.S., the request is not sent to the payer and the response is an `EligibilityCheckNonUsOriginException`. Its body has the same properties as a successful response: the `x12` is a synthesized 271 whose `AAA` error reports the rejection, and `errors` describes it.",
+                    "input": MappingProxyType({
+                        "payerId": "CMS",
+                        "subscriber": MappingProxyType({
+                            "dateOfBirth": "1975-05-05",
+                            "memberId": "1EG4TE5MK72",
+                            "name": MappingProxyType({
+                                "person": MappingProxyType({
+                                    "firstName": "Jane",
+                                    "lastName": "Doe",
+                                }),
+                            }),
+                        }),
+                        "provider": MappingProxyType({
+                            "name": MappingProxyType({
+                                "organization": "Provider Name",
+                            }),
+                            "npi": "1999999984",
+                        }),
+                        "encounter": MappingProxyType({
+                            "services": (
+                                MappingProxyType({
+                                    "value": "30",
+                                    "system": "STC",
+                                }),
+                            ),
+                        }),
+                    }),
+                    "error": MappingProxyType({
+                        "shapeId": "com.stedi.eligibility.v4.errors#EligibilityCheckNonUsOriginException",
+                        "content": MappingProxyType({
+                            "message": "Stedi requires the originating and X-Forwarded-For IP addresses to be in the U.S.",
+                            "id": "ec_01a06d4a-a0fa-77d2-8b49-ca9a74c9888b",
+                            "eligibilitySearchId": "01a06d4a-a0fa-77d2-8b49-caa0546ed293",
+                            "payerId": "CMS",
+                            "x12": "ISA*00*          *00*          *ZZ*STEDI          *01*117151744      *260916*1200*^*00501*000000001*0*P*`~GS*HB*STEDI*117151744*20260916*120000*1*X*005010X279A1~ST*271*0001*005010X279A1~BHT*0022*11*01M1PMN87VXMME0ZV6SHJP3B9W*20260916*120000~HL*1**20*1~AAA*N**41*N~NM1*PR*2*CMS*****PI*CMS~HL*2*1*21*1~NM1*1P*2*Provider Name*****XX*1999999984~HL*3*2*22*0~TRN*1*01M1PMN87VXMME0ZV6SHJP3B9W*3117151744~NM1*IL*1*Doe*Jane****MI*1EG4TE5MK72~DMG*D8*19750505~SE*12*0001~GE*1*1~IEA*1*000000001~",
+                            "payer": MappingProxyType({
+                                "type": "PAYER",
+                                "name": MappingProxyType({
+                                    "organization": "CMS",
+                                }),
+                                "identification": "CMS",
+                            }),
+                            "provider": MappingProxyType({
+                                "type": "PROVIDER",
+                                "name": MappingProxyType({
+                                    "organization": "Provider Name",
+                                }),
+                                "npi": "1999999984",
+                            }),
+                            "subscriber": MappingProxyType({
+                                "memberId": "1EG4TE5MK72",
+                                "dateOfBirth": "1975-05-05",
+                                "name": MappingProxyType({
+                                    "person": MappingProxyType({
+                                        "firstName": "Jane",
+                                        "lastName": "Doe",
+                                    }),
+                                }),
+                            }),
+                            "meta": MappingProxyType({
+                                "traceId": "01M1PMN87VXMME0ZV6SHJP3B9W",
+                                "outboundTraceId": "01M1PMN87VXMME0ZV6SHJP3B9W",
+                            }),
+                            "errors": (
+                                MappingProxyType({
+                                    "code": "41",
+                                    "description": "Stedi requires the originating and X-Forwarded-For IP addresses to be in the U.S.",
+                                    "followupAction": "Resubmission Not Allowed",
+                                    "location": "ENVELOPE",
+                                }),
+                            ),
+                        }),
+                    }),
+                }),
+                MappingProxyType({
+                    "title": "Concurrency limit exceeded",
+                    "documentation": "When your account's real-time concurrency limit is exceeded, the request is not sent to the payer and the response is an `EligibilityCheckThrottledException`. Its body has the same properties as a successful response: the `x12` is a synthesized 271 whose `AAA` error reports the rejection, and `errors` describes it. Retry with backoff.",
+                    "input": MappingProxyType({
+                        "payerId": "61101",
+                        "subscriber": MappingProxyType({
+                            "dateOfBirth": "1975-05-05",
+                            "memberId": "HUMANA123",
+                            "name": MappingProxyType({
+                                "person": MappingProxyType({
+                                    "firstName": "Jane",
+                                    "lastName": "Doe",
+                                }),
+                            }),
+                        }),
+                        "provider": MappingProxyType({
+                            "name": MappingProxyType({
+                                "organization": "Provider Name",
+                            }),
+                            "npi": "1999999984",
+                        }),
+                        "encounter": MappingProxyType({
+                            "services": (
+                                MappingProxyType({
+                                    "value": "30",
+                                    "system": "STC",
+                                }),
+                            ),
+                        }),
+                    }),
+                    "error": MappingProxyType({
+                        "shapeId": "com.stedi.eligibility.v4.errors#EligibilityCheckThrottledException",
+                        "content": MappingProxyType({
+                            "message": "Unable to Respond at Current Time",
+                            "id": "ec_01a06d4a-a0fa-77d2-8b49-ca9a74c9888c",
+                            "eligibilitySearchId": "01a06d4a-a0fa-77d2-8b49-caa0546ed294",
+                            "payerId": "61101",
+                            "x12": "ISA*00*          *00*          *ZZ*STEDI          *01*117151744      *260916*1200*^*00501*000000001*0*P*`~GS*HB*STEDI*117151744*20260916*120000*1*X*005010X279A1~ST*271*0001*005010X279A1~BHT*0022*11*01M1PMN87VXMME0ZV6SHJP3B9X*20260916*120000~HL*1**20*1~NM1*PR*2*HUMANA*****PI*61101~AAA*Y**42*R~HL*2*1*21*1~NM1*1P*2*Provider Name*****XX*1999999984~HL*3*2*22*0~TRN*1*01M1PMN87VXMME0ZV6SHJP3B9X*3117151744~NM1*IL*1*Doe*Jane****MI*HUMANA123~DMG*D8*19750505~SE*12*0001~GE*1*1~IEA*1*000000001~",
+                            "payer": MappingProxyType({
+                                "type": "PAYER",
+                                "name": MappingProxyType({
+                                    "organization": "HUMANA",
+                                }),
+                                "identification": "61101",
+                            }),
+                            "provider": MappingProxyType({
+                                "type": "PROVIDER",
+                                "name": MappingProxyType({
+                                    "organization": "Provider Name",
+                                }),
+                                "npi": "1999999984",
+                            }),
+                            "subscriber": MappingProxyType({
+                                "memberId": "HUMANA123",
+                                "dateOfBirth": "1975-05-05",
+                                "name": MappingProxyType({
+                                    "person": MappingProxyType({
+                                        "firstName": "Jane",
+                                        "lastName": "Doe",
+                                    }),
+                                }),
+                            }),
+                            "meta": MappingProxyType({
+                                "traceId": "01M1PMN87VXMME0ZV6SHJP3B9X",
+                                "outboundTraceId": "01M1PMN87VXMME0ZV6SHJP3B9X",
+                            }),
+                            "errors": (
+                                MappingProxyType({
+                                    "code": "42",
+                                    "description": "Unable to Respond at Current Time",
+                                    "followupAction": "Resubmission Allowed",
+                                    "location": "PAYER",
+                                }),
+                            ),
                         }),
                     }),
                 }),

@@ -4,6 +4,7 @@ exports.StediServiceException = exports.__ServiceException = void 0;
 const client_1 = require("@smithy/core/client");
 Object.defineProperty(exports, "__ServiceException", { enumerable: true, get: function () { return client_1.ServiceException; } });
 class StediServiceException extends client_1.ServiceException {
+    static shapeId = "smithy.ts.sdk.synthetic.com.stedi.sdk#StediServiceException";
     constructor(options) {
         super(options);
         Object.setPrototypeOf(this, StediServiceException.prototype);

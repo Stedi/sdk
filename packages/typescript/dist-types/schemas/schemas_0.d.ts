@@ -1,7 +1,10 @@
 import { TypeRegistry } from "@smithy/core/schema";
 import type { StaticErrorSchema, StaticOperationSchema, StaticStructureSchema, StaticUnionSchema } from "@smithy/types";
 export declare var StediServiceException$: StaticErrorSchema;
+export declare var EligibilityCheckInvalidParticipantException$: StaticErrorSchema;
+export declare var EligibilityCheckNonUsOriginException$: StaticErrorSchema;
 export declare var EligibilityCheckSerializationException$: StaticErrorSchema;
+export declare var EligibilityCheckThrottledException$: StaticErrorSchema;
 export declare var EventDestinationsLimitExceededException$: StaticErrorSchema;
 export declare var AuthenticationFailedException$: StaticErrorSchema;
 export declare var ConflictException$: StaticErrorSchema;

@@ -1,5 +1,5 @@
 import packageInfo from "../../package.json";
-import { HttpRequest } from "@smithy/protocol-http";
+import { HttpRequest } from "@smithy/core/protocols";
 export function getStediUserAgentPlugin(config) {
     return {
         applyToStack: (stack) => {

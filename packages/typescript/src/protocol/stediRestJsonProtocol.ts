@@ -1,9 +1,9 @@
 // Request-ID metadata — generated, do not edit.
 // Surfaces the Stedi-Request-Id response header as `$metadata.requestId`, on success and failure.
 import { AwsRestJsonProtocol } from "@aws-sdk/core/protocols";
-import type { HttpResponse } from "@smithy/protocol-http";
 import type {
   HandlerExecutionContext,
+  HttpResponse,
   MetadataBearer,
   OperationSchema,
   ResponseMetadata,

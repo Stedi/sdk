@@ -1,6 +1,5 @@
 import { AwsRestJsonProtocol } from "@aws-sdk/core/protocols";
-import type { HttpResponse } from "@smithy/protocol-http";
-import type { HandlerExecutionContext, MetadataBearer, OperationSchema, ResponseMetadata, SerdeFunctions } from "@smithy/types";
+import type { HandlerExecutionContext, HttpResponse, MetadataBearer, OperationSchema, ResponseMetadata, SerdeFunctions } from "@smithy/types";
 export declare class StediRestJsonProtocol extends AwsRestJsonProtocol {
     /** `HttpProtocol` calls this on both the success and the error path. */
     protected deserializeMetadata(response: HttpResponse): ResponseMetadata;

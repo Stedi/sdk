@@ -39,7 +39,7 @@ export interface CreateEligibilityCheckCommandOutput extends CreateEligibilityCh
  *     name: { // EligibilityCheckRequestProviderName Union: only one key present
  *       person: { // EligibilityCheckRequestProviderPersonName
  *         firstName: "STRING_VALUE",
- *         lastName: "STRING_VALUE", // required
+ *         lastName: "STRING_VALUE",
  *         middleName: "STRING_VALUE",
  *         suffix: "STRING_VALUE",
  *       },
@@ -96,6 +96,7 @@ export interface CreateEligibilityCheckCommandOutput extends CreateEligibilityCh
  *     memberId: "STRING_VALUE",
  *     dateOfBirth: "STRING_VALUE",
  *     gender: "FEMALE" || "MALE",
+ *     birthSequenceNumber: Number("long"),
  *     additionalInformation: { // EligibilityCheckRequestSubscriberAdditionalInformation
  *       ssn: "STRING_VALUE",
  *       groupNumber: "STRING_VALUE",
@@ -139,6 +140,7 @@ export interface CreateEligibilityCheckCommandOutput extends CreateEligibilityCh
  *     relationToSubscriber: "SPOUSE" || "CHILD" || "OTHER_ADULT",
  *     dateOfBirth: "STRING_VALUE",
  *     gender: "FEMALE" || "MALE",
+ *     birthSequenceNumber: Number("long"),
  *     additionalInformation: { // EligibilityCheckRequestDependentAdditionalInformation
  *       ssn: "STRING_VALUE",
  *       groupNumber: "STRING_VALUE",
@@ -185,7 +187,7 @@ export interface CreateEligibilityCheckCommandOutput extends CreateEligibilityCh
  *       },
  *     },
  *     placeOfService: { // EligibilityCheckRequestPlaceOfService
- *       code: "01" || "03" || "04" || "05" || "06" || "07" || "08" || "11" || "12" || "13" || "14" || "15" || "20" || "21" || "22" || "23" || "24" || "25" || "26" || "31" || "32" || "33" || "34" || "41" || "42" || "49" || "50" || "51" || "52" || "53" || "54" || "55" || "56" || "57" || "60" || "61" || "62" || "65" || "71" || "72" || "81" || "99", // required
+ *       code: "01" || "02" || "03" || "04" || "05" || "06" || "07" || "08" || "09" || "10" || "11" || "12" || "13" || "14" || "15" || "16" || "17" || "18" || "19" || "20" || "21" || "22" || "23" || "24" || "25" || "26" || "27" || "31" || "32" || "33" || "34" || "41" || "42" || "49" || "50" || "51" || "52" || "53" || "54" || "55" || "56" || "57" || "58" || "60" || "61" || "62" || "65" || "66" || "71" || "72" || "81" || "99", // required
  *     },
  *     additionalInformation: { // EligibilityCheckRequestEncounterAdditionalInformation
  *       priorAuthNumber: "STRING_VALUE",
@@ -198,7 +200,6 @@ export interface CreateEligibilityCheckCommandOutput extends CreateEligibilityCh
  * const command = new CreateEligibilityCheckCommand(input);
  * const response = await client.send(command);
  * // { // CreateEligibilityCheckOutput
- * //   id: "STRING_VALUE", // required
  * //   meta: { // EligibilityCheckMeta
  * //     traceId: "STRING_VALUE",
  * //     outboundTraceId: "STRING_VALUE",
@@ -212,13 +213,6 @@ export interface CreateEligibilityCheckCommandOutput extends CreateEligibilityCh
  * //     ],
  * //   },
  * //   payerId: "STRING_VALUE",
- * //   eligibilitySearchId: "STRING_VALUE",
- * //   warnings: [ // EligibilityCheckWarnings
- * //     { // EligibilityCheckWarning
- * //       code: "STRING_VALUE",
- * //       description: "STRING_VALUE",
- * //     },
- * //   ],
  * //   x12: "STRING_VALUE", // required
  * //   payer: { // EligibilityCheckPayer
  * //     name: { // EligibilityCheckPersonOrOrganizationName Union: only one key present
@@ -608,7 +602,7 @@ export interface CreateEligibilityCheckCommandOutput extends CreateEligibilityCh
  * //             ],
  * //             placesOfService: [ // EligibilityCheckPlacesOfService
  * //               { // EligibilityCheckPlaceOfService
- * //                 code: "01" || "03" || "04" || "05" || "06" || "07" || "08" || "11" || "12" || "13" || "14" || "15" || "20" || "21" || "22" || "23" || "24" || "25" || "26" || "31" || "32" || "33" || "34" || "41" || "42" || "49" || "50" || "51" || "52" || "53" || "54" || "55" || "56" || "57" || "60" || "61" || "62" || "65" || "71" || "72" || "81" || "99",
+ * //                 code: "01" || "02" || "03" || "04" || "05" || "06" || "07" || "08" || "09" || "10" || "11" || "12" || "13" || "14" || "15" || "16" || "17" || "18" || "19" || "20" || "21" || "22" || "23" || "24" || "25" || "26" || "27" || "31" || "32" || "33" || "34" || "41" || "42" || "49" || "50" || "51" || "52" || "53" || "54" || "55" || "56" || "57" || "58" || "60" || "61" || "62" || "65" || "66" || "71" || "72" || "81" || "99",
  * //                 name: "STRING_VALUE",
  * //               },
  * //             ],
@@ -765,7 +759,7 @@ export interface CreateEligibilityCheckCommandOutput extends CreateEligibilityCh
  * //             ],
  * //             placesOfService: [
  * //               {
- * //                 code: "01" || "03" || "04" || "05" || "06" || "07" || "08" || "11" || "12" || "13" || "14" || "15" || "20" || "21" || "22" || "23" || "24" || "25" || "26" || "31" || "32" || "33" || "34" || "41" || "42" || "49" || "50" || "51" || "52" || "53" || "54" || "55" || "56" || "57" || "60" || "61" || "62" || "65" || "71" || "72" || "81" || "99",
+ * //                 code: "01" || "02" || "03" || "04" || "05" || "06" || "07" || "08" || "09" || "10" || "11" || "12" || "13" || "14" || "15" || "16" || "17" || "18" || "19" || "20" || "21" || "22" || "23" || "24" || "25" || "26" || "27" || "31" || "32" || "33" || "34" || "41" || "42" || "49" || "50" || "51" || "52" || "53" || "54" || "55" || "56" || "57" || "58" || "60" || "61" || "62" || "65" || "66" || "71" || "72" || "81" || "99",
  * //                 name: "STRING_VALUE",
  * //               },
  * //             ],
@@ -906,7 +900,7 @@ export interface CreateEligibilityCheckCommandOutput extends CreateEligibilityCh
  * //             ],
  * //             placesOfService: [
  * //               {
- * //                 code: "01" || "03" || "04" || "05" || "06" || "07" || "08" || "11" || "12" || "13" || "14" || "15" || "20" || "21" || "22" || "23" || "24" || "25" || "26" || "31" || "32" || "33" || "34" || "41" || "42" || "49" || "50" || "51" || "52" || "53" || "54" || "55" || "56" || "57" || "60" || "61" || "62" || "65" || "71" || "72" || "81" || "99",
+ * //                 code: "01" || "02" || "03" || "04" || "05" || "06" || "07" || "08" || "09" || "10" || "11" || "12" || "13" || "14" || "15" || "16" || "17" || "18" || "19" || "20" || "21" || "22" || "23" || "24" || "25" || "26" || "27" || "31" || "32" || "33" || "34" || "41" || "42" || "49" || "50" || "51" || "52" || "53" || "54" || "55" || "56" || "57" || "58" || "60" || "61" || "62" || "65" || "66" || "71" || "72" || "81" || "99",
  * //                 name: "STRING_VALUE",
  * //               },
  * //             ],
@@ -1048,7 +1042,7 @@ export interface CreateEligibilityCheckCommandOutput extends CreateEligibilityCh
  * //             ],
  * //             placesOfService: [
  * //               {
- * //                 code: "01" || "03" || "04" || "05" || "06" || "07" || "08" || "11" || "12" || "13" || "14" || "15" || "20" || "21" || "22" || "23" || "24" || "25" || "26" || "31" || "32" || "33" || "34" || "41" || "42" || "49" || "50" || "51" || "52" || "53" || "54" || "55" || "56" || "57" || "60" || "61" || "62" || "65" || "71" || "72" || "81" || "99",
+ * //                 code: "01" || "02" || "03" || "04" || "05" || "06" || "07" || "08" || "09" || "10" || "11" || "12" || "13" || "14" || "15" || "16" || "17" || "18" || "19" || "20" || "21" || "22" || "23" || "24" || "25" || "26" || "27" || "31" || "32" || "33" || "34" || "41" || "42" || "49" || "50" || "51" || "52" || "53" || "54" || "55" || "56" || "57" || "58" || "60" || "61" || "62" || "65" || "66" || "71" || "72" || "81" || "99",
  * //                 name: "STRING_VALUE",
  * //               },
  * //             ],
@@ -1171,7 +1165,7 @@ export interface CreateEligibilityCheckCommandOutput extends CreateEligibilityCh
  * //             ],
  * //             placesOfService: [
  * //               {
- * //                 code: "01" || "03" || "04" || "05" || "06" || "07" || "08" || "11" || "12" || "13" || "14" || "15" || "20" || "21" || "22" || "23" || "24" || "25" || "26" || "31" || "32" || "33" || "34" || "41" || "42" || "49" || "50" || "51" || "52" || "53" || "54" || "55" || "56" || "57" || "60" || "61" || "62" || "65" || "71" || "72" || "81" || "99",
+ * //                 code: "01" || "02" || "03" || "04" || "05" || "06" || "07" || "08" || "09" || "10" || "11" || "12" || "13" || "14" || "15" || "16" || "17" || "18" || "19" || "20" || "21" || "22" || "23" || "24" || "25" || "26" || "27" || "31" || "32" || "33" || "34" || "41" || "42" || "49" || "50" || "51" || "52" || "53" || "54" || "55" || "56" || "57" || "58" || "60" || "61" || "62" || "65" || "66" || "71" || "72" || "81" || "99",
  * //                 name: "STRING_VALUE",
  * //               },
  * //             ],
@@ -1799,6 +1793,14 @@ export interface CreateEligibilityCheckCommandOutput extends CreateEligibilityCh
  * //       name: "STRING_VALUE",
  * //     },
  * //   ],
+ * //   id: "STRING_VALUE", // required
+ * //   eligibilitySearchId: "STRING_VALUE",
+ * //   warnings: [ // EligibilityCheckWarnings
+ * //     { // EligibilityCheckWarning
+ * //       code: "STRING_VALUE",
+ * //       description: "STRING_VALUE",
+ * //     },
+ * //   ],
  * //   errors: [ // EligibilityCheckResponseErrorList
  * //     { // EligibilityCheckResponseError
  * //       code: "STRING_VALUE", // required
@@ -1818,8 +1820,17 @@ export interface CreateEligibilityCheckCommandOutput extends CreateEligibilityCh
  * @see {@link CreateEligibilityCheckCommandOutput} for command's `response` shape.
  * @see {@link StediClientResolvedConfig | config} for StediClient's `config` shape.
  *
+ * @throws {@link EligibilityCheckInvalidParticipantException} (client fault)
+ *  The request resulted in a AAA-79 "Invalid Participant" response.
+ *
+ * @throws {@link EligibilityCheckNonUsOriginException} (client fault)
+ *  The request was not sent to the payer because the originating IP address or an `X-Forwarded-For` IP address is outside the United States. This applies to payers that require US-origin traffic, such as CMS. The body carries the same properties as a successful response, with a synthesized 271 whose `AAA` error reports the rejection.
+ *
  * @throws {@link EligibilityCheckSerializationException} (client fault)
  *  The request body could not be parsed.
+ *
+ * @throws {@link EligibilityCheckThrottledException} (client fault)
+ *  The request was not sent to the payer because your account's real-time concurrency limit was exceeded. Retry with backoff. The body carries the same properties as a successful response, with a synthesized 271 whose `AAA` error reports the rejection.
  *
  * @throws {@link AuthenticationFailedException} (client fault)
  *  The request credentials are missing or not valid.
@@ -2095,7 +2106,6 @@ export interface CreateEligibilityCheckCommandOutput extends CreateEligibilityCh
  *             network: {
  *               indicator: "IN_AND_OUT_OF_NETWORK"
  *             },
- *             planCoverageDescription: "Humana Gold Plan",
  *             service: {
  *               definition: "Health Benefit Plan Coverage",
  *               system: "STC",
@@ -2104,7 +2114,8 @@ export interface CreateEligibilityCheckCommandOutput extends CreateEligibilityCh
  *             status: "ACTIVE_COVERAGE"
  *           }
  *         ]
- *       }
+ *       },
+ *       name: "Humana Gold Plan"
  *     }
  *   ],
  *   provider: {
@@ -2189,7 +2200,118 @@ export interface CreateEligibilityCheckCommandOutput extends CreateEligibilityCh
  * *\/
  * ```
  *
- * @internal
+ * @example Could not identify a participant
+ * ```javascript
+ * // The payer answered with an `AAA` rejection of code `79` rather than benefits, meaning it could not identify one of the participants — most often the payer ID on the route or the member's details. A 79 is not transient, so nothing was retried. The body carries the same properties as a successful response: the `x12` is the payer's own 271 and `errors` describes the rejection.
+ * const input = {
+ *   encounter: {
+ *     services: [
+ *       {
+ *         system: "STC",
+ *         value: "30"
+ *       }
+ *     ]
+ *   },
+ *   payerId: "61101",
+ *   provider: {
+ *     name: {
+ *       organization: "Provider Name"
+ *     },
+ *     npi: "1999999984"
+ *   },
+ *   subscriber: {
+ *     dateOfBirth: "1975-05-05",
+ *     memberId: "HUMANA123",
+ *     name: {
+ *       person: {
+ *         firstName: "Jane",
+ *         lastName: "Doe"
+ *       }
+ *     }
+ *   }
+ * };
+ * const command = new CreateEligibilityCheckCommand(input);
+ * const response = await client.send(command);
+ * /* response is
+ * { /* metadata only *\/ }
+ * *\/
+ * ```
+ *
+ * @example Request from outside the United States
+ * ```javascript
+ * // CMS requires eligibility traffic to originate in the United States. When the originating IP address or any `X-Forwarded-For` IP address is outside the U.S., the request is not sent to the payer and the response is an `EligibilityCheckNonUsOriginException`. Its body has the same properties as a successful response: the `x12` is a synthesized 271 whose `AAA` error reports the rejection, and `errors` describes it.
+ * const input = {
+ *   encounter: {
+ *     services: [
+ *       {
+ *         system: "STC",
+ *         value: "30"
+ *       }
+ *     ]
+ *   },
+ *   payerId: "CMS",
+ *   provider: {
+ *     name: {
+ *       organization: "Provider Name"
+ *     },
+ *     npi: "1999999984"
+ *   },
+ *   subscriber: {
+ *     dateOfBirth: "1975-05-05",
+ *     memberId: "1EG4TE5MK72",
+ *     name: {
+ *       person: {
+ *         firstName: "Jane",
+ *         lastName: "Doe"
+ *       }
+ *     }
+ *   }
+ * };
+ * const command = new CreateEligibilityCheckCommand(input);
+ * const response = await client.send(command);
+ * /* response is
+ * { /* metadata only *\/ }
+ * *\/
+ * ```
+ *
+ * @example Concurrency limit exceeded
+ * ```javascript
+ * // When your account's real-time concurrency limit is exceeded, the request is not sent to the payer and the response is an `EligibilityCheckThrottledException`. Its body has the same properties as a successful response: the `x12` is a synthesized 271 whose `AAA` error reports the rejection, and `errors` describes it. Retry with backoff.
+ * const input = {
+ *   encounter: {
+ *     services: [
+ *       {
+ *         system: "STC",
+ *         value: "30"
+ *       }
+ *     ]
+ *   },
+ *   payerId: "61101",
+ *   provider: {
+ *     name: {
+ *       organization: "Provider Name"
+ *     },
+ *     npi: "1999999984"
+ *   },
+ *   subscriber: {
+ *     dateOfBirth: "1975-05-05",
+ *     memberId: "HUMANA123",
+ *     name: {
+ *       person: {
+ *         firstName: "Jane",
+ *         lastName: "Doe"
+ *       }
+ *     }
+ *   }
+ * };
+ * const command = new CreateEligibilityCheckCommand(input);
+ * const response = await client.send(command);
+ * /* response is
+ * { /* metadata only *\/ }
+ * *\/
+ * ```
+ *
+ * @public
  */
 export class CreateEligibilityCheckCommand extends command<CreateEligibilityCheckCommandInput, CreateEligibilityCheckCommandOutput>(
   _ep0,

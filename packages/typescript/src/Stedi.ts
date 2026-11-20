@@ -1,6 +1,11 @@
 // smithy-typescript generated code
 import { createAggregatedClient } from "@smithy/core/client";
-import type { HttpHandlerOptions as __HttpHandlerOptions, PaginationConfiguration, Paginator } from "@smithy/types";
+import type {
+  HttpHandlerOptions as __HttpHandlerOptions,
+  MetricsRecorder as __MetricsRecorder,
+  PaginationConfiguration,
+  Paginator,
+} from "@smithy/types";
 
 import {
   type CreateEligibilityCheckCommandInput,
@@ -109,13 +114,20 @@ const paginators = {
   paginateListEventDestinations,
 };
 
+/**
+ * @public
+ */
+export interface StediRequestOptions extends __HttpHandlerOptions {
+  metricsRecorder?: __MetricsRecorder<unknown>;
+}
+
 export interface Stedi {
   /**
    * @see {@link CreateProfessionalClaimSubmissionCommand}
    */
   createProfessionalClaimSubmission(
     args: CreateProfessionalClaimSubmissionCommandInput,
-    options?: __HttpHandlerOptions
+    options?: StediRequestOptions
   ): Promise<CreateProfessionalClaimSubmissionCommandOutput>;
   createProfessionalClaimSubmission(
     args: CreateProfessionalClaimSubmissionCommandInput,
@@ -123,7 +135,7 @@ export interface Stedi {
   ): void;
   createProfessionalClaimSubmission(
     args: CreateProfessionalClaimSubmissionCommandInput,
-    options: __HttpHandlerOptions,
+    options: StediRequestOptions,
     cb: (err: any, data?: CreateProfessionalClaimSubmissionCommandOutput) => void
   ): void;
 
@@ -132,7 +144,7 @@ export interface Stedi {
    */
   getProfessionalClaimSubmission(
     args: GetProfessionalClaimSubmissionCommandInput,
-    options?: __HttpHandlerOptions
+    options?: StediRequestOptions
   ): Promise<GetProfessionalClaimSubmissionCommandOutput>;
   getProfessionalClaimSubmission(
     args: GetProfessionalClaimSubmissionCommandInput,
@@ -140,7 +152,7 @@ export interface Stedi {
   ): void;
   getProfessionalClaimSubmission(
     args: GetProfessionalClaimSubmissionCommandInput,
-    options: __HttpHandlerOptions,
+    options: StediRequestOptions,
     cb: (err: any, data?: GetProfessionalClaimSubmissionCommandOutput) => void
   ): void;
 
@@ -149,7 +161,7 @@ export interface Stedi {
    */
   validateProfessionalClaimSubmission(
     args: ValidateProfessionalClaimSubmissionCommandInput,
-    options?: __HttpHandlerOptions
+    options?: StediRequestOptions
   ): Promise<ValidateProfessionalClaimSubmissionCommandOutput>;
   validateProfessionalClaimSubmission(
     args: ValidateProfessionalClaimSubmissionCommandInput,
@@ -157,7 +169,7 @@ export interface Stedi {
   ): void;
   validateProfessionalClaimSubmission(
     args: ValidateProfessionalClaimSubmissionCommandInput,
-    options: __HttpHandlerOptions,
+    options: StediRequestOptions,
     cb: (err: any, data?: ValidateProfessionalClaimSubmissionCommandOutput) => void
   ): void;
 
@@ -166,7 +178,7 @@ export interface Stedi {
    */
   getClaim(
     args: GetClaimCommandInput,
-    options?: __HttpHandlerOptions
+    options?: StediRequestOptions
   ): Promise<GetClaimCommandOutput>;
   getClaim(
     args: GetClaimCommandInput,
@@ -174,7 +186,7 @@ export interface Stedi {
   ): void;
   getClaim(
     args: GetClaimCommandInput,
-    options: __HttpHandlerOptions,
+    options: StediRequestOptions,
     cb: (err: any, data?: GetClaimCommandOutput) => void
   ): void;
 
@@ -183,7 +195,7 @@ export interface Stedi {
    */
   getClaimTimeline(
     args: GetClaimTimelineCommandInput,
-    options?: __HttpHandlerOptions
+    options?: StediRequestOptions
   ): Promise<GetClaimTimelineCommandOutput>;
   getClaimTimeline(
     args: GetClaimTimelineCommandInput,
@@ -191,7 +203,7 @@ export interface Stedi {
   ): void;
   getClaimTimeline(
     args: GetClaimTimelineCommandInput,
-    options: __HttpHandlerOptions,
+    options: StediRequestOptions,
     cb: (err: any, data?: GetClaimTimelineCommandOutput) => void
   ): void;
 
@@ -201,7 +213,7 @@ export interface Stedi {
   listClaims(): Promise<ListClaimsCommandOutput>;
   listClaims(
     args: ListClaimsCommandInput,
-    options?: __HttpHandlerOptions
+    options?: StediRequestOptions
   ): Promise<ListClaimsCommandOutput>;
   listClaims(
     args: ListClaimsCommandInput,
@@ -209,7 +221,7 @@ export interface Stedi {
   ): void;
   listClaims(
     args: ListClaimsCommandInput,
-    options: __HttpHandlerOptions,
+    options: StediRequestOptions,
     cb: (err: any, data?: ListClaimsCommandOutput) => void
   ): void;
 
@@ -218,7 +230,7 @@ export interface Stedi {
    */
   createEligibilityCheck(
     args: CreateEligibilityCheckCommandInput,
-    options?: __HttpHandlerOptions
+    options?: StediRequestOptions
   ): Promise<CreateEligibilityCheckCommandOutput>;
   createEligibilityCheck(
     args: CreateEligibilityCheckCommandInput,
@@ -226,7 +238,7 @@ export interface Stedi {
   ): void;
   createEligibilityCheck(
     args: CreateEligibilityCheckCommandInput,
-    options: __HttpHandlerOptions,
+    options: StediRequestOptions,
     cb: (err: any, data?: CreateEligibilityCheckCommandOutput) => void
   ): void;
 
@@ -235,7 +247,7 @@ export interface Stedi {
    */
   createEventDestination(
     args: CreateEventDestinationCommandInput,
-    options?: __HttpHandlerOptions
+    options?: StediRequestOptions
   ): Promise<CreateEventDestinationCommandOutput>;
   createEventDestination(
     args: CreateEventDestinationCommandInput,
@@ -243,7 +255,7 @@ export interface Stedi {
   ): void;
   createEventDestination(
     args: CreateEventDestinationCommandInput,
-    options: __HttpHandlerOptions,
+    options: StediRequestOptions,
     cb: (err: any, data?: CreateEventDestinationCommandOutput) => void
   ): void;
 
@@ -252,7 +264,7 @@ export interface Stedi {
    */
   deleteEventDestination(
     args: DeleteEventDestinationCommandInput,
-    options?: __HttpHandlerOptions
+    options?: StediRequestOptions
   ): Promise<DeleteEventDestinationCommandOutput>;
   deleteEventDestination(
     args: DeleteEventDestinationCommandInput,
@@ -260,7 +272,7 @@ export interface Stedi {
   ): void;
   deleteEventDestination(
     args: DeleteEventDestinationCommandInput,
-    options: __HttpHandlerOptions,
+    options: StediRequestOptions,
     cb: (err: any, data?: DeleteEventDestinationCommandOutput) => void
   ): void;
 
@@ -269,7 +281,7 @@ export interface Stedi {
    */
   getEventDestination(
     args: GetEventDestinationCommandInput,
-    options?: __HttpHandlerOptions
+    options?: StediRequestOptions
   ): Promise<GetEventDestinationCommandOutput>;
   getEventDestination(
     args: GetEventDestinationCommandInput,
@@ -277,7 +289,7 @@ export interface Stedi {
   ): void;
   getEventDestination(
     args: GetEventDestinationCommandInput,
-    options: __HttpHandlerOptions,
+    options: StediRequestOptions,
     cb: (err: any, data?: GetEventDestinationCommandOutput) => void
   ): void;
 
@@ -286,7 +298,7 @@ export interface Stedi {
    */
   getEventDestinationEvent(
     args: GetEventDestinationEventCommandInput,
-    options?: __HttpHandlerOptions
+    options?: StediRequestOptions
   ): Promise<GetEventDestinationEventCommandOutput>;
   getEventDestinationEvent(
     args: GetEventDestinationEventCommandInput,
@@ -294,7 +306,7 @@ export interface Stedi {
   ): void;
   getEventDestinationEvent(
     args: GetEventDestinationEventCommandInput,
-    options: __HttpHandlerOptions,
+    options: StediRequestOptions,
     cb: (err: any, data?: GetEventDestinationEventCommandOutput) => void
   ): void;
 
@@ -303,7 +315,7 @@ export interface Stedi {
    */
   getEventDestinationSecret(
     args: GetEventDestinationSecretCommandInput,
-    options?: __HttpHandlerOptions
+    options?: StediRequestOptions
   ): Promise<GetEventDestinationSecretCommandOutput>;
   getEventDestinationSecret(
     args: GetEventDestinationSecretCommandInput,
@@ -311,7 +323,7 @@ export interface Stedi {
   ): void;
   getEventDestinationSecret(
     args: GetEventDestinationSecretCommandInput,
-    options: __HttpHandlerOptions,
+    options: StediRequestOptions,
     cb: (err: any, data?: GetEventDestinationSecretCommandOutput) => void
   ): void;
 
@@ -321,7 +333,7 @@ export interface Stedi {
   listEventDestinationEvents(): Promise<ListEventDestinationEventsCommandOutput>;
   listEventDestinationEvents(
     args: ListEventDestinationEventsCommandInput,
-    options?: __HttpHandlerOptions
+    options?: StediRequestOptions
   ): Promise<ListEventDestinationEventsCommandOutput>;
   listEventDestinationEvents(
     args: ListEventDestinationEventsCommandInput,
@@ -329,7 +341,7 @@ export interface Stedi {
   ): void;
   listEventDestinationEvents(
     args: ListEventDestinationEventsCommandInput,
-    options: __HttpHandlerOptions,
+    options: StediRequestOptions,
     cb: (err: any, data?: ListEventDestinationEventsCommandOutput) => void
   ): void;
 
@@ -339,7 +351,7 @@ export interface Stedi {
   listEventDestinations(): Promise<ListEventDestinationsCommandOutput>;
   listEventDestinations(
     args: ListEventDestinationsCommandInput,
-    options?: __HttpHandlerOptions
+    options?: StediRequestOptions
   ): Promise<ListEventDestinationsCommandOutput>;
   listEventDestinations(
     args: ListEventDestinationsCommandInput,
@@ -347,7 +359,7 @@ export interface Stedi {
   ): void;
   listEventDestinations(
     args: ListEventDestinationsCommandInput,
-    options: __HttpHandlerOptions,
+    options: StediRequestOptions,
     cb: (err: any, data?: ListEventDestinationsCommandOutput) => void
   ): void;
 
@@ -356,7 +368,7 @@ export interface Stedi {
    */
   rotateEventDestinationSecret(
     args: RotateEventDestinationSecretCommandInput,
-    options?: __HttpHandlerOptions
+    options?: StediRequestOptions
   ): Promise<RotateEventDestinationSecretCommandOutput>;
   rotateEventDestinationSecret(
     args: RotateEventDestinationSecretCommandInput,
@@ -364,7 +376,7 @@ export interface Stedi {
   ): void;
   rotateEventDestinationSecret(
     args: RotateEventDestinationSecretCommandInput,
-    options: __HttpHandlerOptions,
+    options: StediRequestOptions,
     cb: (err: any, data?: RotateEventDestinationSecretCommandOutput) => void
   ): void;
 
@@ -373,7 +385,7 @@ export interface Stedi {
    */
   updateEventDestination(
     args: UpdateEventDestinationCommandInput,
-    options?: __HttpHandlerOptions
+    options?: StediRequestOptions
   ): Promise<UpdateEventDestinationCommandOutput>;
   updateEventDestination(
     args: UpdateEventDestinationCommandInput,
@@ -381,7 +393,7 @@ export interface Stedi {
   ): void;
   updateEventDestination(
     args: UpdateEventDestinationCommandInput,
-    options: __HttpHandlerOptions,
+    options: StediRequestOptions,
     cb: (err: any, data?: UpdateEventDestinationCommandOutput) => void
   ): void;
 

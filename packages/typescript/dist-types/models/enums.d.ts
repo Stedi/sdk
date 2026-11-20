@@ -1162,9 +1162,9 @@ export declare const EligibilityCheckPlaceOfServiceCode: {
      */
     readonly INPATIENT_PSYCHIATRIC_FACILITY: "51";
     /**
-     * Intermediate Care Facility/Mentally Retarded
+     * Intermediate Care Facility/Individuals with Intellectual Disabilities
      */
-    readonly INTERMEDIATE_CARE_FACILITY_MENTALLY_RETARDED: "54";
+    readonly INTERMEDIATE_CARE_FACILITY_INDIVIDUALS_WITH_INTELLECTUAL_DISABILITIES: "54";
     /**
      * Mass Immunization Center
      */
@@ -1178,6 +1178,10 @@ export declare const EligibilityCheckPlaceOfServiceCode: {
      */
     readonly MOBILE_UNIT: "15";
     /**
+     * Non-residential Opioid Treatment Facility
+     */
+    readonly NON_RESIDENTIAL_OPIOID_TREATMENT_FACILITY: "58";
+    /**
      * Non-residential Substance Abuse Treatment Facility
      */
     readonly NON_RESIDENTIAL_SUBSTANCE_ABUSE_TREATMENT_FACILITY: "57";
@@ -1190,17 +1194,37 @@ export declare const EligibilityCheckPlaceOfServiceCode: {
      */
     readonly OFFICE: "11";
     /**
+     * Off Campus-Outpatient Hospital
+     */
+    readonly OFF_CAMPUS_OUTPATIENT_HOSPITAL: "19";
+    /**
      * Other Place of Service
      */
     readonly OTHER_PLACE_OF_SERVICE: "99";
     /**
-     * Outpatient Hospital
+     * On Campus-Outpatient Hospital
      */
     readonly OUTPATIENT_HOSPITAL: "22";
+    /**
+     * Outreach Site/Street
+     */
+    readonly OUTREACH_SITE_STREET: "27";
+    /**
+     * Programs of All-Inclusive Care for the Elderly (PACE) Center
+     */
+    readonly PACE_CENTER: "66";
     /**
      * Pharmacy
      */
     readonly PHARMACY: "01";
+    /**
+     * Place of Employment-Worksite
+     */
+    readonly PLACE_OF_EMPLOYMENT_WORKSITE: "18";
+    /**
+     * Prison/Correctional Facility
+     */
+    readonly PRISON_CORRECTIONAL_FACILITY: "09";
     /**
      * Psychiatric Facility - Partial Hospitalization
      */
@@ -1230,6 +1254,18 @@ export declare const EligibilityCheckPlaceOfServiceCode: {
      */
     readonly STATE_OR_LOCAL_PUBLIC_HEALTH_CLINIC: "71";
     /**
+     * Telehealth Provided in Patient's Home
+     */
+    readonly TELEHEALTH_PROVIDED_IN_PATIENT_HOME: "10";
+    /**
+     * Telehealth Provided Other than in Patient's Home
+     */
+    readonly TELEHEALTH_PROVIDED_OTHER_THAN_PATIENT_HOME: "02";
+    /**
+     * Temporary Lodging
+     */
+    readonly TEMPORARY_LODGING: "16";
+    /**
      * Tribal 638 Free-standing Facility
      */
     readonly TRIBAL_638_FREE_STANDING_FACILITY: "07";
@@ -1241,6 +1277,10 @@ export declare const EligibilityCheckPlaceOfServiceCode: {
      * Urgent Care Facility
      */
     readonly URGENT_CARE_FACILITY: "20";
+    /**
+     * Walk-in Retail Health Clinic
+     */
+    readonly WALK_IN_RETAIL_HEALTH_CLINIC: "17";
 };
 /**
  * @public

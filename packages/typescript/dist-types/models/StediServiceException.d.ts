@@ -7,6 +7,7 @@ export { __ServiceException };
  * Base exception class for all service exceptions from Stedi service.
  */
 export declare class StediServiceException extends __ServiceException {
+    static readonly shapeId: string;
     /**
      * @internal
      */
